@@ -115,6 +115,9 @@ class IceMe(Window):
 
         self.command = Entry()
         self.command.connect("changed", self.on_command_changed)
+	self.command.set_data("sensitive",0)
+	self.command.set_data("is_command",1)
+	addDragSupport(self.command,self.setDrag)  # added 12.21.2003, Erica Andrews DnD support
         self.command.show()
 
         cmd_icon =getImage(getPixDir()+"iceme_open.png",_CP("Browse..."))
@@ -122,6 +125,8 @@ class IceMe(Window):
         self.command_button = Button()
         self.command_button.add(cmd_icon)
         self.command_button.connect("clicked", self.on_command_button_clicked)
+	self.command_button.set_data("is_command",1)
+	addDragSupport(self.command_button,self.setDrag)  # added 12.21.2003, Erica Andrews DnD support
         self.command_button.show()
 
         command_hbox = HBox(FALSE, 5)
@@ -134,6 +139,7 @@ class IceMe(Window):
         icon_label.show()
 
         self.icon_name = Entry()
+	self.icon_name.set_data("sensitive",0)
 	addDragSupport(self.icon_name,self.setDrag)  # 2.24.2003 - drag-n-drop support, drop icons on text entry
         self.icon_name.connect("focus-out-event", self.on_icon_name_focus_out_event)
         self.icon_name.show()
@@ -808,10 +814,12 @@ class IceMe(Window):
         # enable/disable items on right frame:
         self.command_label.set_sensitive(is_normal)
         self.command.set_sensitive(is_normal)
+	self.command.set_data("sensitive",is_normal)
         self.command_button.set_sensitive(is_normal)
         self.is_restart.set_sensitive(is_not_embedded)  # changed 12.20.2003, Erica Andrews
         self.add_shortcut.set_sensitive(is_not_embedded)  # changed 12.20.2003, Erica Andrews
         self.rightframe.set_sensitive(not (is_inactive or is_sep))
+	self.icon_name.set_data("sensitive", not (is_inactive or is_sep))
 
         # enable/disable toolbar/menu buttons:
         can_up = self.tree.canMoveUp(self.cur_node)
@@ -1098,20 +1106,31 @@ class IceMe(Window):
     def setDrag(self,*args): # drag-n-drop support, added 2.23.2003
 	drago=args
 	if len(drago)<7: 
-		args[0].drag_highlight()
-		args[0].grab_focus()
+		return
 	else: 
 		#print str(drago[4].data)  # file:/root/something.txt
 		try:
-			new_icon_name=""+str(drago[4].data).replace("\r\n","").replace("\x00","").replace("file:","").strip()
-			if (not new_icon_name.endswith(".xpm")) and (not new_icon_name.endswith(".png")): return		
+			new_icon_name=""+str(drago[4].data).replace("\r\n","")
+			new_icon_name=new_icon_name.replace("\x00","").replace("file:","").strip()
+			if (drago[0].get_data("is_command")) :
+				# handle the 'command' entry, 12.21.2003, Erica Andrews	
+				if not self.command.get_data("sensitive"): return
+				self.command.set_text(new_icon_name)
+				return
+
+			# handle icon dropping on icon entry or icon button
+			if (not new_icon_name.endswith(".xpm")) and (not new_icon_name.endswith(".png")): 
+				return
+			# Fix, 12.21.2003 - don't allow dropping of icons if the 
+			# icon entry or button is insensitive - Erica Andrews 
+			if not self.icon_name.get_data("sensitive"): return
+
 			dummy, pix, mask = self.getCachedIcon(new_icon_name)
 			self.tree.setNodeIcon(self.cur_node, pix, mask)
 			self.tree.setNodeIconName(self.cur_node, new_icon_name)
 			self.setIconButton(new_icon_name)
 		except: 
 			pass
-		args[0].drag_unhighlight()
 
 
     def on_name_changed(self, namefield):
