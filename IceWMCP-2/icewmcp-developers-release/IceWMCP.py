@@ -18,13 +18,24 @@
 # 
 #######################################
 
-import os,GTK,gtk,sys,glob
-from gtk import *
-
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
+
 
 global APPLET_DIRECTORY
 APPLET_DIRECTORY=None
@@ -37,28 +48,31 @@ class controlwin:
 	global WMNAME
 	WMNAME="IceWMControlPanel"
 	self.version=this_software_version
-	controlwin=GtkWindow(GTK.WINDOW_TOPLEVEL)
+	controlwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(controlwin)
 	controlwin.set_wmclass(WMCLASS,WMNAME)
 	controlwin.realize()
 	controlwin.set_title(_("IceWM Control Panel"))
-	controlwin.set_position(GTK.WIN_POS_CENTER)
+	controlwin.set_position(WIN_POS_CENTER)
 	self.controlwin=controlwin
-	mainvbox1=GtkVBox(0,1)
+	mainvbox1=VBox(0,1)
 	mainvbox1.set_spacing(1)
-	mainvbox=GtkVBox(0,1)
+	mainvbox=VBox(0,1)
 	mainvbox.set_spacing(0)
-	mymenubar=GtkMenuBar()
+	mymenubar=MenuBar()
 	self.mymenubar=mymenubar
 
-        ag=GtkAccelGroup()
-        itemf=GtkItemFactory(GtkMenuBar, "<main>", ag)
+        ag=AccelGroup()
+        itemf=ItemFactory(MenuBar, "<main>", ag)
+	self.itemf=itemf
+	self.ag=ag
         itemf.create_items([
             # path              key           callback    action#  type
   (_("/ _File"),  "<alt>F",  None,  0,"<Branch>"),
   (_("/ _File/_Refresh View"), "<control>V", self.refreshAppletView,2,""),
   (_("/ _File/_Configuration..."), "<control>C", self.showConfig,4,""),
   (_("/ _File/sep4"), None,  None,  49, "<Separator>"),
- 				[_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
+ 				(_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
   (_("/ _File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
   (_("/ _File/sep4"), None,  None,  49, "<Separator>"),
   (_("/ _File/_Quit"), "<control>Q", self.doQuit,10,""),
@@ -76,24 +90,25 @@ class controlwin:
         controlwin.add_accel_group(ag)
         mymenubar=itemf.get_widget("<main>")
         mymenubar.show()
+	self.mymenubar=mymenubar
 	mainvbox1.pack_start(mymenubar,0,0,0)
 	mainvbox1.pack_start(mainvbox,1,1,0)
 
-	titlebar=GtkHBox(0,0)
+	titlebar=HBox(0,0)
 	titlebar.set_spacing(0)
 	mainvbox.pack_start(titlebar,0,0,0)
-	titlebar.pack_start(GtkLabel(" "),1,1,0)
+	titlebar.pack_start(Label(" "),1,1,0)
 	titlebar.pack_start(getImage(getBaseDir()+"icewmcp.png","IceWM Control Panel"),0,0,0)
-	titlebar.pack_start(GtkLabel(" "),1,1,0)
+	titlebar.pack_start(Label(" "),1,1,0)
 
 	try:   # added 5.6.2003 - add a 'button box' for changing views
-		buttonbox=GtkVBox(0,0)
+		buttonbox=VBox(0,0)
 		buttonbox.set_spacing(0)
 		for buttons in  [ ['view_icon.png',_("/_View/_Icon View"),self.iconView] , ['view_list.png',_("/_View/_List View"), self.listView] , ['view_col.png',_("Column View"),self.columnView]]:
 			# seem complicated, but needed to use already gettext-translated strings
 			butname=buttons[1]
 			butname=butname[butname.rfind("/")+1:len(butname)].replace("_","").strip()
-			bicon=GtkButton()
+			bicon=Button()
 			bicon.add(loadScaledImage(getBaseDir()+buttons[0],20,20))
 			bicon.connect("clicked",buttons[2])
 			bicon.set_relief(2)
@@ -103,8 +118,8 @@ class controlwin:
 	except:
 		pass
 
-	sc=GtkScrolledWindow()
-	glayout=GtkLayout()
+	sc=ScrolledWindow()
+	glayout=Layout()
 	self.glayout=glayout
 	self.sc=sc
 	self.LIST_VIEW=0
@@ -164,24 +179,25 @@ class controlwin:
 	alist.sort()
 	global WMCLASS
 	global WMNAME
-	confwin=GtkWindow(GTK.WINDOW_TOPLEVEL)
+	confwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(confwin)
 	confwin.set_wmclass(WMCLASS,WMNAME)
 	confwin.realize()
 	confwin.set_title(_("IceWM Control Panel"))
-	confwin.set_position(GTK.WIN_POS_CENTER)
-	mainvbox=GtkVBox(0,1)
+	confwin.set_position(WIN_POS_CENTER)
+	mainvbox=VBox(0,1)
 	mainvbox.set_spacing(2)
-	mainvbox.pack_start(GtkLabel(_("  Choose which icons to hide or show:  ")),0,0,3)
-	sc=GtkScrolledWindow()
-	gl=GtkLayout()
+	mainvbox.pack_start(Label(_("  Choose which icons to hide or show:  ")),0,0,3)
+	sc=ScrolledWindow()
+	gl=Layout()
 	max_x=5
 	max_y=3
 	yspacing=8
 	for ii in alist:
 		myapp=applets[ii]
-		hb=GtkHBox(0,0)
+		hb=HBox(0,0)
 		hb.set_spacing(3)
-		cb=GtkCheckButton(_("Hide"))				
+		cb=CheckButton(_("Hide"))				
 		TIPS.set_tip(cb,_("Hide"))
 		if myapp.get_data("my_name") in self.ignore_list:
 			myapp.set_data("ignored",1)
@@ -200,11 +216,11 @@ class controlwin:
 	sc.add(gl)
 	mainvbox.pack_start(sc,1,1,0)
 	mainvbox.set_border_width(4)
-	hb2=GtkHBox(0,0)
+	hb2=HBox(0,0)
 	hb2.set_spacing(10)
-	sbutton=GtkButton(_("Save"))
+	sbutton=getPixmapButton(None, STOCK_SAVE ,_("Save"))
 	TIPS.set_tip(sbutton,_("Save"))
-	cbutton=GtkButton(DIALOG_CANCEL)
+	cbutton=getPixmapButton(None, STOCK_CANCEL ,DIALOG_CANCEL)
 	TIPS.set_tip(cbutton,DIALOG_CANCEL)
 	sbutton.connect("clicked",self.saveConfig)
 	sbutton.set_data("applets",applets)
@@ -280,7 +296,7 @@ class controlwin:
     def refreshAppletView(self,*args) :
 	myapplets=self.loadApplets(self.LIST_VIEW)
 	self.myapplets=myapplets
-	c=self.glayout.children()
+	c=self.glayout.get_children()
 	for ii in c:
 		try:
 			self.glayout.remove(ii)
@@ -289,13 +305,13 @@ class controlwin:
 	self.displayApplets(myapplets)
 	if self.LIST_VIEW==1:  # list view
 		self.controlwin.set_default_size(385,395)
-		self.controlwin.set_usize(385,395)
+		self.controlwin.set_size_request(385,395)
 	elif self.LIST_VIEW==2:  # column view
 		self.controlwin.set_default_size(500,395)
-		self.controlwin.set_usize(500,395)
+		self.controlwin.set_size_request(500,395)
 	else: 
 		self.controlwin.set_default_size(450,395)
-		self.controlwin.set_usize(450,395)
+		self.controlwin.set_size_request(450,395)
 
     def displayApplets(self,applet_dict) :
 	startx=5
@@ -469,69 +485,76 @@ class controlwin:
 	# create a dictionary for looking up 'special' fonts in the future...Finnish?
 
 	# These are 'default' fonts: seem to work well with English, Spanish
-	font1="-*-helvetica-medium-r-normal-*-14-*"  # big applets
-	font2="-*-helvetica-medium-r-normal-*-12-*"  # small applets: lists/columns
+	font1="Arial 10"  # big applets
+	font2="Helvetica 9"  # small applets: lists/columns
 
 	# some locales use more than one font, like Chinese
 	rc_style=None
 
-	mylocale=getLocaleDir().replace(os.sep,"")
+	mylocale=getLocaleDir().replace(os.sep,"").lower()
 
 	APPLET_DIRECTORY=getBaseDir()+"applets"+os.sep   # default is top applet directory, English
 	# try the locale-specific sub-directory for applets: icewmcp_common -> getLocaleDir
 	# Will only load special fonts if the applets for this locale are there...
 	if len(glob.glob(APPLET_DIRECTORY+getLocaleDir()+"*.cpl"))>0: 
-		if font_lang_dict.has_key(mylocale):
-			if len(font_lang_dict[mylocale])==2: 
-				font1=font_lang_dict[mylocale][0]
-				font2=font_lang_dict[mylocale][1]
-			else: rc_style=font_lang_dict[mylocale]
+		APPLET_DIRECTORY=APPLET_DIRECTORY+getLocaleDir()
+		if special_fonts_map.has_key(mylocale):
+			font1=special_fonts_map[mylocale][0]
+			font2=special_fonts_map[mylocale][1]
 
 	p=loadScaledImage(getBaseDir()+"applet-icons"+os.sep+str(micon),newh,newwidth)
 	if p==None: p=loadScaledImage(getBaseDir()+"applet-icons"+os.sep+"default.xpm",newh,newwidth)
 	relief=2
-	try:
-		if rc_style==None: 
-			if listview==1: MYFONT=load_font(font1) 
-			else: MYFONT=load_font(font2) 
-	except:
-		pass
+
+	if rc_style==None: 
+			if listview==1: MYFONT=font1 
+			else: MYFONT=font2
 	if p:
-		if listview==1:  v=GtkHBox(0,0)
-		else: v=GtkVBox(0,0)
+		if listview==1:  v=HBox(0,0)
+		else: v=VBox(0,0)
 		v.set_spacing(1)
 		v.pack_start(p,0,0,0)
-		if listview==1:		labname=GtkLabel("  "+str(mdesc).replace("\n"," ").replace("\r"," ").replace("\t"," ").replace("  "," ").replace(" -","-").replace("- ","-").strip())
-		else:		labname=GtkLabel(str(mdesc).strip())
+		if listview==1:		labname=Label(to_utf8("  "+str(mdesc).replace("\n"," ").replace("\r"," ").replace("\t"," ").replace("  "," ").replace(" -","-").replace("- ","-").strip()))
+		else:		labname=Label(to_utf8(str(mdesc).strip()))
 		try:			
-			if rc_style==None: 
-				style =labname.get_style().copy()
-				style.font=MYFONT
-				labname.set_style(style)
+			if rc_style==None: 				
+				#style =labname.get_style().copy()				
+				#cont=labname.get_pango_context()
+				#cont.load_fontset(MYFONT, mylocale)
+				#lang=pango.pango_language_from_string("en_US")
+				#layo=labname.get_layout()
+				#attr=pango.AttrList()
+				#attr.insert(pango.AttrLanguage(lang))
+				#layo.set_attributes(attr)
+				#print "LOC: "+mylocale
+				#cont.set_language(lang)
+				#cont.set_font_description(pango.FontDescription(MYFONT))
+				#print "MYFONT: "+MYFONT
+				labname.modify_font(pango.FontDescription(MYFONT))
 			else: rc_parse_string(rc_style)
 			labname.ensure_style()
 		except:
+			#print "ERR"
 			pass
 
 		v.pack_start(labname,0,0,0)
 		v.show_all()
-		if listvw==1: v.set_usize(445,-2)
-		elif listvw==2: v.set_usize(v.size_request()[0]+5,v.size_request()[1]+3)
-		else: v.set_usize(90,-2)
+		if listvw==1: v.set_size_request(445,-1)
+		elif listvw==2: v.set_size_request(v.size_request()[0]+8,v.size_request()[1]+3)
+		else: v.set_size_request(90,-1)
 		
-		b=GtkButton()
+		b=Button()
 		b.add(v)
 		b.set_relief(relief)
 		b.show_all()
 	else:
-		if listview==1: b=GtkButton("  "+str(mdesc).replace("\n"," ").replace("\r"," ").replace("\t"," ").replace("  "," ").replace(" -","-").replace("- ","-").strip())
-		else: b=GtkButton(str(mdesc).strip())
+		if listview==1: b=Button(to_utf8("  "+str(mdesc).replace("\n"," ").replace("\r"," ").replace("\t"," ").replace("  "," ").replace(" -","-").replace("- ","-").strip()))
+		else: b=Button(to_utf8(str(mdesc).strip()))
 		try:
-			labname=b.children()[0]			
+			labname=b.get_children()[0]			
 			if rc_style==None: 
 				style =labname.get_style().copy()
-				style.font=MYFONT
-				labname.set_style(style)
+				labname.modify_font(pango.FontDescription(MYFONT))
 			else: rc_parse_string(rc_style)			
 			labname.ensure_style()
 		except:
@@ -541,7 +564,7 @@ class controlwin:
 	b.set_data("my_size",b.size_request())
 	b.set_data("my_app",str(mexec).strip())
 	b.set_data("my_name",str(mdesc).strip())
-	if len(str(mtooltip).strip())>0: TIPS.set_tip(b,str(mtooltip).strip())
+	if len(str(mtooltip).strip())>0: TIPS.set_tip(b,to_utf8(str(mtooltip).strip()))
 	b.connect("clicked",self.runApplet)
 	return b
 

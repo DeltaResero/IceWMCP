@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IceWMCP 2.5\n"
+"Project-Id-Version: IceWMCP 3.0\n"
 "POT-Creation-Date: Mon Apr 26 20:47:48 2003\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -1473,4 +1473,17 @@ msgstr ""
 #: IceWMCPEnergyStar.py:98 IceWMCPEnergyStar.py:99 IceWMCPEnergyStar.py:100
 msgid "minutes"
 msgstr ""
+
+#: phrozenclock.py- new IceWM-1.2.13
+msgid "View the first half of the list of time zones"
+msgstr ""
+
+#: phrozenclock.py- new IceWM-1.2.13
+msgid "View the last half of the list of time zones"
+msgstr ""
+
+#: IceWMCPWallpaper.py- new IceWM-1.2.13
+msgid " Scaled "
+msgstr ""
+
 

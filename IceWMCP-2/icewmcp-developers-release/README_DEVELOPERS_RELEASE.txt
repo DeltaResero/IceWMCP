@@ -5,7 +5,7 @@ Copyright (c) 2003 Erica Andrews
 <PhrozenSmoke@yahoo.com>
 
 
-THIS IS THE DEVELOPER'S RELEASE OF ICEWM CONTROL PANEL (VERSION 2.4)
+THIS IS THE DEVELOPER'S RELEASE OF ICEWM CONTROL PANEL (VERSION 3.0)
 
 
 NO TECHNICAL SUPPORT OF ANY KIND IS PROVIDED FOR THIS RELEASE!!!  DO NOT CONTACT ME WITH QUESTIONS OR REQUESTS FOR HELP REGARDING THIS RELEASE.  IF YOU ARE NOT KNOWLEDGEABLE ABOUT PYTHON PROGRAMMING (AND ARE NOT WILLING TO LEARN ON YOUR OWN), YOU SHOULD *NOT* BE USING THIS RELEASE.
@@ -18,7 +18,7 @@ As noted on the IceWM Control Panel home page (http://icesoundmanager.sourceforg
 
 Three sample control panel 'applets' are included.  For more information on developing your own control panel applets, please see the document 'ControlPanel-APPLETS.html' in the 'docs' directory of this distribution.
 
-This software is written in 100% Python.  So, the following are required: Python 2.2, PyGtk 0.6.9 or better (with the GdkImlib and GdkPixbuf modules).  
+This software is written in 100% Python.  So, the following are required: Python 2.2, PyGtk 1.9.9 or better (with the GdkPixbuf modules).  
 
 As an added plus, the IceWM Control Panel features foreign language (gettext) support, as well as software update checking and on-demand bug reporting from within IceWM Control Panel to help users send bug reports quickly and easily.  The following languages are currently supported: English, Spanish, Russian, and Traditional Chinese (zh_TW).  An end-user help file is currently available in the following languages:  English, Spanish.
 

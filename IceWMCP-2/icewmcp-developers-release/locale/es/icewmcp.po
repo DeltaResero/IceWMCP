@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IceWM Control Panel 2.5\n"
+"Project-Id-Version: IceWM Control Panel 3.0\n"
 "POT-Creation-Date: 2003-02-18 11:35+0100\n"
-"PO-Revision-Date: 2003-08-25 15:51+0400\n"
+"PO-Revision-Date: 2003-12-11 15:51+0400\n"
 "Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
 "Language-Team: SPANISH\n"
 "MIME-Version: 1.0\n"
@@ -1466,3 +1466,14 @@ msgstr "'Standby' después de ser inactivo por"
 msgid "minutes"
 msgstr "minutos"
 
+#: phrozenclock.py
+msgid "View the first half of the list of time zones"
+msgstr "Ver primero mitad de la lista de zonas de tiempo"
+
+#: phrozenclock.py
+msgid "View the last half of the list of time zones"
+msgstr "Ver segunda mitad de la lista de zonas de tiempo"
+
+#: IceWMCPWallpaper.py
+msgid " Scaled "
+msgstr " Escalado "

@@ -10,76 +10,123 @@
 # This software is distributed under the GNU General Public License
 #######################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), April 2003
-# This is a modified version of the 'MessageBox.py" module 
+#  With Modifications by Erica Andrews 
+#  (PhrozenSmoke ['at'] yahoo.com), April 2003
+#  This is a modified version of the 'MessageBox.py" module 
 #  from IceMe 1.0.0, optimized for IceWM ControlPanel.
-# Copyright (c) 2003 Erica Andrews
+#  Copyright (c) 2003 Erica Andrews
 #
 #  Changes to the original IceMe message box code are noted 
 #  throughout the source as comments.
 ##################
 
+
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+
 from string import join
-from gtk import *
-from GDK import Escape, Return
+
+try:
+	import sys
+	sys.path=["/usr/lib/python2.2/site-packages/gtk-2.0"]+sys.path
+except:
+	pass
 
 
-ICON_STOP = 4  # changed, 4.2.2003 - Erica Andrews, 'icon_stop' changed from 1st to 5th list element
-ICON_ALERT = 1
-ICON_INFO = 2
+import gtk
+
+
+ICON_STOP     = 4 # changed, 4.2.2003 - Erica Andrews, 'icon_stop' changed 
+                  # from 1st to 5th list element
+
+ICON_ALERT    = 1
+ICON_INFO     = 2
 ICON_QUESTION = 3
+ICON_ERROR    = 4
 
+# will be defined later by icewmcp_common, leave alone
+icon_setter_method=None
+pix_button_setter=None
 
-class _MessageBox(GtkDialog):
-    def __init__(self, title="Message", message="", buttons=("Ok",),
-                 pixmap=ICON_INFO, modal=TRUE):
+class _MessageBox(gtk.Dialog):
+    def __init__(self, 
+                 title="Message", 
+                 message="", 
+                 buttons=("Ok",),
+                 pixmap=ICON_INFO, 
+                 modal=gtk.TRUE,
+		 stock_icons=[]):
         """
         message: either a string or a list of strings
         pixmap: either a filename string, or one of: ICON_STOP, ICON_ALERT,
                 ICON_INFO or ICON_QUESTION, or None
 
         """
-        GtkDialog.__init__(self)
+        gtk.Dialog.__init__(self)
         self.set_title(title)
-	self.set_wmclass("icewmcontrolpanel","IceWMControlPanel") # added, 4.2.2003 - Erica Andrews
+	if icon_setter_method:  icon_setter_method(self,icon_info)
+        self.set_wmclass("icewmcontrolpanel","IceWMControlPanel") # added, 4.2.2003 - Erica Andrews
         self.connect("destroy", self.quit)
         self.connect("delete_event", self.quit)
         self.connect("key-press-event", self.__press)
-        self.modal = modal
-        if self.modal:
-            grab_add(self)
-        hbox = GtkHBox(spacing=5)
+        self.set_modal(gtk.TRUE)
+        hbox = gtk.HBox(spacing=5)
         hbox.set_border_width(10)
         self.vbox.pack_start(hbox)
         hbox.show()
         if pixmap:
             self.realize()
-            if type(pixmap) == type(""):
-                pic = GtkPixmap(self, pixmap)
+            pic = gtk.Image()
+	    selicon=pixmap
+	    if type(selicon)==type(1): selicon=icons[pixmap]
+            if type(selicon) == type(""):
+		try:
+                	pic.set_from_stock(selicon, gtk.ICON_SIZE_DIALOG)
+		except:
+			pic.set_from_file(selicon)
             else:
-                p, m = create_pixmap_from_xpm_d(self, None, icons[pixmap])
-                pic = GtkPixmap(p, m)
+                p, m = gtk.gdk.pixmap_create_from_xpm_d(self.window, 
+                                                        None, 
+                                                        selicon)
+                pic.set_from_pixmap(p, m)
             pic.set_alignment(0.5, 0.0)
-            hbox.pack_start(pic, expand=FALSE)
+            hbox.pack_start(pic, expand=gtk.FALSE)
             pic.show()
         if type(message) == type(""):
-            label = GtkLabel(message)
+            label = gtk.Label(message)
         else:
-            label = GtkLabel(join(message, "\n"))
-        label.set_justify(JUSTIFY_LEFT)
-	label.set_line_wrap(1)  # added 4.4.2003 - for better readibility on low-res screens, Erica Andrews
+            label = gtk.Label(join(message, "\n"))
+        label.set_justify(gtk.JUSTIFY_LEFT)
+        label.set_line_wrap(1)  # added 4.4.2003 - for better readibility on low-res screens, Erica Andrews
         hbox.pack_start(label)
         label.show()
         if not buttons:
             buttons = ("Ok",)
-	tips=GtkTooltips()
+        tips=gtk.Tooltips()
+        use_stock=0
+        if len(stock_icons)>0:
+		if len(buttons)==len(stock_icons):
+			if pix_button_setter: use_stock=1
+	bcount=0
         for text in buttons:
-            b = GtkButton(text)
-	    tips.set_tip(b,text)
+	    if use_stock: b=pix_button_setter(None, stock_icons[bcount] , text)
+            else : b = gtk.Button(text)
+            tips.set_tip(b,text)
+	    bcount=bcount+1
             if text == buttons[0]:
                 # the first button will always be the default button:
-                b.set_flags(CAN_FOCUS|CAN_DEFAULT|HAS_FOCUS|HAS_DEFAULT)
-            b.set_flags(CAN_DEFAULT)
+                b.set_flags(gtk.CAN_FOCUS|gtk.CAN_DEFAULT|gtk.HAS_FOCUS|gtk.HAS_DEFAULT)
+            b.set_flags(gtk.CAN_DEFAULT)
             b.set_data("user_data", text)
             b.connect("clicked", self.__click)
             self.action_area.pack_start(b)
@@ -88,408 +135,35 @@ class _MessageBox(GtkDialog):
         self.ret = None
 
     def quit(self, *args):
-        if self.modal:
-            grab_remove(self)
         self.hide()
         self.destroy()
-        mainquit()
+        gtk.mainquit()
 
     def __click(self, button):
         self.ret = button.get_data("user_data")
         self.quit()
 
     def __press(self, widget, event):
-        if event.keyval == GDK.Escape:
-            self.quit()
-        elif event.keyval == GDK.Return:
+        if event.keyval == gtk.keysyms.Return:
             self.ret = self.default
             self.quit()
+#        elif event.keyval == gtk.keysyms.Escape:
+#            self.quit()
 
 
 def message(title="Message", message="", buttons=("Ok",),
-            pixmap=ICON_INFO, modal=TRUE):
+            pixmap=ICON_INFO, modal=gtk.TRUE, stock_icons=[]):
     "create a message box, and return which button was pressed"
-    win = _MessageBox(title, message, buttons, pixmap, modal)
+    win = _MessageBox(title, message, buttons, pixmap, modal, stock_icons)
     win.show()
-    mainloop()
+    gtk.mainloop()
     return win.ret
 
 
-################################################################################
-# some icons that can be used for the dialog
-################################################################################
 
 # changed 4.2.2003 - Erica Andrews:  new icon colors
-
-icon_stop = [
-"32 32 72 1",
-"  c opaque",
-". c #8b0000",
-"X c #930000",
-"o c #9b0000",
-"O c #9c0a0a",
-"+ c #a20000",
-"@ c #a10b0b",
-"# c #ab0000",
-"$ c #aa0a0a",
-"% c #ae1717",
-"& c #b30000",
-"* c #b70b0b",
-"= c #bb0000",
-"- c #b41414",
-"; c #c40000",
-": c #ca0000",
-"> c #cd0909",
-", c #ca1212",
-"< c #d10000",
-"1 c #d30b0b",
-"2 c #dc0000",
-"3 c #dd0909",
-"4 c #c72929",
-"5 c #cd2929",
-"6 c #d62929",
-"7 c #e40000",
-"8 c #ec0303",
-"9 c #ee1515",
-"0 c #eb1f1f",
-"q c #f20000",
-"w c #fd0202",
-"e c #f90808",
-"r c #f51616",
-"t c #f31818",
-"y c #fe1111",
-"u c #fe1c1c",
-"i c #ec2b2b",
-"p c #ed3f3f",
-"a c #f52222",
-"s c #f72c2c",
-"d c #fd2222",
-"f c #ff2828",
-"g c #f23636",
-"h c #f33c3c",
-"j c #fe3333",
-"k c #ff3f3f",
-"l c #ec4444",
-"z c #ff4545",
-"x c #ff4a4a",
-"c c #f75656",
-"v c #f75c5c",
-"b c #fe5555",
-"n c #ff6767",
-"m c #fc6b6b",
-"M c #f57272",
-"N c #fd7272",
-"B c #fc7979",
-"V c #ff8a8a",
-"C c #fe9090",
-"Z c #fd9c9c",
-"A c #fea2a2",
-"S c #feabab",
-"D c #ffb1b1",
-"F c #febcbc",
-"G c #ffc4c4",
-"H c #fecccc",
-"J c #ffd4d4",
-"K c #ffdbdb",
-"L c #ffe1e1",
-"P c #ffebeb",
-"I c white",
-"U c None",
-"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
-"UUUUUUUUUUU;;;;;=====UUUUUUUUUUU",
-"UUUUUUUU:::;;::::;;==&&&UUUUUUUU",
-"UUUUUUU::;:20vBBBBMi<;&&&UUUUUUU",
-"UUUUUU:::2cDPPPPPPPPHM1&&#UUUUUU",
-"UUUUU::<iAKKKKKKKKKKKKHl=##UUUUU",
-"UUUU::2hFHHHHHHHHHHHHHHHM;#+UUUU",
-"UUU:::hFFFHFFFFFFFFFFHFFFM=++UUU",
-"UU:::9ZSSHILSSSSSASSLIHSSSl#++UU",
-"UU:;2NZZFIIIKZZCZZZKIIIFZZV1o+UU",
-"UU::aVVZIIIIIJVVVVJIIIIIZVVc#oUU",
-"U:;2bBBBHIIIIIHBBHIIIIIHNbsr:ooU",
-"U;;8nnnnnGIIIIIGGIIIIISsq8qq7ooU",
-"U;;rbbbbbbFIIIIIIIIIIZ8qqqqq8+XU",
-"U;:dxzzzzzzFIIIIIIIIZ8qqqq8qq#XU",
-"U;:tjjjjjjjjDIIIIIIZqqq8qqqqq#XU",
-"U;:rddddddddSIIIIIIZ8qqqq8qqq#XU",
-"U=:eeyyeyyeSIIIIIIIIZ8qq8wqqq#XU",
-"U=;wewwwwwZIIIIIIIIIIZwqw8wqwX.U",
-"U==8wwwwwZIIIIIZZIIIIIZwwwwq7X.U",
-"U=&2wwwwZIIIIIZwwZIIIIIZwwww;..U",
-"UU&=eeejIIIIIAeeeeZIIIIIjeeeo.UU",
-"UU&&3yyynIIIAyyyyyySIIImyyy>..UU",
-"UU&&&tduuNISuuuuuuuuSINuuu9X..UU",
-"UUU&#*dfffbffffffffffbfffaO..UUU",
-"UUUU##,sjjjjjjjjjjjjjjjjj-..UUUU",
-"UUUUU##*gzkkkkkkzkkkkkzg@..UUUUU",
-"UUUUUU#+#6xxxxxxxxxxxz5X..UUUUUU",
-"UUUUUUU++o$5lbbbbbbl4O...UUUUUUU",
-"UUUUUUUU+ooooO-%%%O.....UUUUUUUU",
-"UUUUUUUUUUUooXXXXX...UUUUUUUUUUU",
-"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
-]
-
-# changed 4.2.2003 - Erica Andrews:  new icon colors
-
-icon_alert = [
-"34 34 220 2",
-"  	c None",
-". 	c #100F0F",
-"+ 	c #000000",
-"@ 	c #060606",
-"# 	c #0B0B0B",
-"$ 	c #74736E",
-"% 	c #B4B19F",
-"& 	c #F9F1CC",
-"* 	c #F7EAA6",
-"= 	c #B3A767",
-"- 	c #736930",
-"; 	c #454545",
-"> 	c #EDEDEC",
-", 	c #FFFCF1",
-"' 	c #FEED91",
-") 	c #FEDF49",
-"! 	c #FCD828",
-"~ 	c #FEDF46",
-"{ 	c #FEE460",
-"] 	c #DFC330",
-"^ 	c #3B3309",
-"/ 	c #1E1E1E",
-"( 	c #020202",
-"_ 	c #999998",
-": 	c #FFFFFB",
-"< 	c #FEEE99",
-"[ 	c #FCD621",
-"} 	c #FCD416",
-"| 	c #FCD51B",
-"1 	c #FCDA30",
-"2 	c #856F0C",
-"3 	c #8E8A7A",
-"4 	c #FFFAE2",
-"5 	c #FEE258",
-"6 	c #FBD316",
-"7 	c #FAD116",
-"8 	c #F7D016",
-"9 	c #F6CF16",
-"0 	c #F9D016",
-"a 	c #FBD626",
-"b 	c #6C5A09",
-"c 	c #2B2A28",
-"d 	c #74715E",
-"e 	c #FFFBE3",
-"f 	c #FEE45F",
-"g 	c #8E760D",
-"h 	c #655509",
-"i 	c #635409",
-"j 	c #CFAE13",
-"k 	c #EDC815",
-"l 	c #FBD627",
-"m 	c #544708",
-"n 	c #4E4A38",
-"o 	c #FFFAE0",
-"p 	c #FEE771",
-"q 	c #675709",
-"r 	c #564908",
-"s 	c #D8B514",
-"t 	c #F3CC16",
-"u 	c #352D05",
-"v 	c #030303",
-"w 	c #15140F",
-"x 	c #F3EABB",
-"y 	c #FEEC8E",
-"z 	c #A1870F",
-"A 	c #3D3305",
-"B 	c #C1A211",
-"C 	c #E2BE14",
-"D 	c #D9B714",
-"E 	c #100E03",
-"F 	c #282727",
-"G 	c #020201",
-"H 	c #B8AD6E",
-"I 	c #FEF3BB",
-"J 	c #FCD51D",
-"K 	c #AE9210",
-"L 	c #3E3405",
-"M 	c #B29610",
-"N 	c #DAB814",
-"O 	c #FCD519",
-"P 	c #917A0D",
-"Q 	c #534C2A",
-"R 	c #FFF6CA",
-"S 	c #FCDE42",
-"T 	c #E7C114",
-"U 	c #181402",
-"V 	c #AC900F",
-"W 	c #D6B413",
-"X 	c #F2CB16",
-"Y 	c #FCD823",
-"Z 	c #F1CA16",
-"` 	c #3B3205",
-" .	c #171716",
-"..	c #090805",
-"+.	c #ECDE8C",
-"@.	c #FEEC8A",
-"#.	c #E8C315",
-"$.	c #282103",
-"%.	c #AB8F0F",
-"&.	c #D5B313",
-"*.	c #FCD61E",
-"=.	c #C4A511",
-"-.	c #73692E",
-";.	c #FFF5BD",
-">.	c #EAC515",
-",.	c #0F0D01",
-"'.	c #443906",
-").	c #AD910F",
-"!.	c #504307",
-"~.	c #100F0E",
-"{.	c #0F0D07",
-"].	c #F2E287",
-"^.	c #FEE772",
-"/.	c #251F03",
-"(.	c #5B4C08",
-"_.	c #B19510",
-":.	c #F5CE16",
-"<.	c #FCD622",
-"[.	c #CFAE12",
-"}.	c #736626",
-"|.	c #FEF3B5",
-"1.	c #F0C915",
-"2.	c #4E4207",
-"3.	c #5D4F08",
-"4.	c #B79910",
-"5.	c #DFBB14",
-"6.	c #5E5008",
-"7.	c #060503",
-"8.	c #ECD665",
-"9.	c #FEE873",
-"0.	c #7F6C0B",
-"a.	c #846E0B",
-"b.	c #BEA011",
-"c.	c #E3BF14",
-"d.	c #B99C10",
-"e.	c #4D4414",
-"f.	c #FEEE9A",
-"g.	c #A68C0F",
-"h.	c #171402",
-"i.	c #977E0D",
-"j.	c #C5A611",
-"k.	c #382F05",
-"l.	c #B29A24",
-"m.	c #2B2404",
-"n.	c #A0860E",
-"o.	c #CEAD12",
-"p.	c #816D0B",
-"q.	c #060501",
-"r.	c #F6D93E",
-"s.	c #0F0C01",
-"t.	c #4C4007",
-"u.	c #C6A712",
-"v.	c #332B06",
-"w.	c #FEE35D",
-"x.	c #957D0D",
-"y.	c #B99C11",
-"z.	c #DEBA14",
-"A.	c #FCD419",
-"B.	c #221D03",
-"C.	c #645409",
-"D.	c #FEE35B",
-"E.	c #6F5E0A",
-"F.	c #544608",
-"G.	c #CCAC12",
-"H.	c #E0BD14",
-"I.	c #705E0A",
-"J.	c #FCDD3B",
-"K.	c #CAAA12",
-"L.	c #EEC815",
-"M.	c #4D4007",
-"N.	c #615109",
-"O.	c #DDB914",
-"P.	c #362D05",
-"Q.	c #261F03",
-"R.	c #88720C",
-"S.	c #ECC615",
-"T.	c #DBB814",
-"U.	c #403605",
-"V.	c #443A06",
-"W.	c #A1880F",
-"X.	c #2B2504",
-"Y.	c #100D02",
-"Z.	c #715F0A",
-"`.	c #B79A10",
-" +	c #7B670B",
-".+	c #191502",
-"++	c #A2880F",
-"@+	c #CBAB12",
-"#+	c #5A4C08",
-"$+	c #050400",
-"%+	c #A78C0F",
-"&+	c #534508",
-"*+	c #473C06",
-"=+	c #8F790D",
-"-+	c #D0AF13",
-";+	c #87710C",
-">+	c #090801",
-",+	c #86710C",
-"'+	c #D1B113",
-")+	c #BB9E11",
-"!+	c #6E5B09",
-"~+	c #312904",
-"{+	c #BFA111",
-"]+	c #E5C014",
-"^+	c #E4C014",
-"/+	c #C9A812",
-"(+	c #73610A",
-"_+	c #262103",
-":+	c #110F02",
-"<+	c #6E5C0A",
-"[+	c #836E0C",
-"}+	c #B89A11",
-"|+	c #B79A11",
-"1+	c #B59811",
-"2+	c #B39710",
-"3+	c #A88D0F",
-"4+	c #7F6B0B",
-"5+	c #372E05",
-"6+	c #151102",
-"7+	c #070707",
-"                            . + + + + .                             ",
-"                        @ + + + + + + + + @                         ",
-"                      + + + + + + + + + + + +                       ",
-"                    + + + # $ % & * = - # + + +                     ",
-"                  + + + ; > , ' ) ! ~ { ] ^ + + +                   ",
-"                / + ( _ : < [ } } } } | 1 [ 2 ( + /                 ",
-"              + + + 3 4 5 } } 6 7 8 9 8 0 a 0 b + + +               ",
-"            c + + d e f } } 6 8 g h i j k 9 l 8 m + + c             ",
-"          + + + n o p } } } 8 q + + + r s k 0 ! t u + + +           ",
-"          v + w x y } } } 6 z + + + + A B C 9 } [ D E + v           ",
-"        F + G H I J } } } 7 K + + + + L M N t } O 6 P G + F         ",
-"      + + + Q R S } } } } 7 T + + + + U V W X } } Y Z ` + + +       ",
-"       .+ ..+.@.} } } } } 6 #.+ + + + $.%.&.X } } } *.=...+  .      ",
-"    + + + -.;.[ } } } } } } >.,.+ + + '.).s X } } } | t !.+ + +     ",
-"    ~.+ {.].^.} } } } } } } k /.+ + + (._.N :.} } } } <.[.{.+ ~.    ",
-"  + + + }.|.J } } } } } } } 1.2.+ + + 3.4.5.8 } } } } O X 6.+ + +   ",
-"  + + 7.8.9.} } } } } } } } X 0.+ + + a.b.c.0 } } } } } J d.7.+ +   ",
-"  + + e.f.[ } } } } } } } } 9 g.+ + h.i.j.#.7 } } } } } J #.k.+ +   ",
-"+ + + l.' } } } } } } } } } 0 c.+ + m.n.o.k 6 } } } } } } 7 p.+ + + ",
-"+ + q.r.~ } } } } } } } } } 6 #.s.+ t.V &.X } } } } } } } [ u.q.+ + ",
-"+ + v.w.O } } } } } } } } } } k /.+ x.y.z.9 } } } } } } } A.s B.+ + ",
-"+ + C.D.} } } } } } } } } } } Z E.F.4.G.#.0 } } } } } } } } H.k.+ + ",
-"+ + I.J.} } } } } } } } } } } t H.o.K.N L.6 } } } } } } } } C M.+ + ",
-"+ + N.[ } } } } } } } } } } 6 O.P.Q.R.D S.0 } } } } } } } } T.U.+ + ",
-"+ + V.0 } } } } } } } } } } 8 k.+ + + W.5.X 6 } } } } } } } o.X.+ + ",
-"+ + Y.S.0 } } } } } } } } } t + + + + Z.[.S.6 } } } } } } 1.`.Y.+ + ",
-"+ + +  +#.6 } } } } } } } } Z !.+ + .+++@+>.7 } } } } } 8 G.#++ +   ",
-"  + + $+%+T 7 } } } } } } } t z.&+*+=+M &.1.6 } } } } t -+;+$++     ",
-"  + + + >+,+'+L.6 } } } } } 0 S.&.=.B '+T 9 } } } :.z.)+!+>++ +     ",
-"    + + + + ~+2 {+&.T :.6 } 6 9 k ]+^+S.:.9 L.z./+M (+_++ + +       ",
-"      + + + + + :+L <+[+).M }+}+|+1+1+2+).3+4+h 5+:++ + + +         ",
-"          + + + + + + + + >+6+6+6+6+6+6+>++ + + + + + +             ",
-"              + + + + + + + + + + + + + + + + + + 7+                ",
-"                    + + + + + + + + + + + + + +                     "
-]
-
-# changed 4.2.2003 - Erica Andrews:  new icon colors
+# We are now using stock icons for most dialogs (UGH! I caved)...but this icon is needed
+# for the window icon on dialogs
 
 icon_info = [
 "32 32 127 2",
@@ -654,164 +328,10 @@ icon_info = [
 "y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y.y."
 ]
 
-# changed 4.2.2003 - Erica Andrews:  new icon colors
-
-icon_question = [
-"32 32 117 2",
-"   c opaque",
-".  c #660089",
-"X  c #69008d",
-"o  c #6d0092",
-"O  c #700096",
-"+  c #73009a",
-"@  c #760a9a",
-"#  c #7a00a3",
-"$  c #7e00a8",
-"%  c #8100ac",
-"&  c #820aaa",
-"*  c #8500b2",
-"=  c #8900b6",
-"-  c #8d00bb",
-";  c #9926bf",
-":  c #9200c3",
-">  c #9600c8",
-",  c #9800ca",
-"<  c #980ec5",
-"1  c #9b0bca",
-"2  c #9e00d3",
-"3  c #9d22c5",
-"4  c #a101d5",
-"5  c #a300da",
-"6  c #a30ed3",
-"7  c #a411d4",
-"8  c #a419d2",
-"9  c #ac1bdc",
-"0  c #a900e1",
-"q  c #af01e8",
-"w  c #ae0de2",
-"e  c #b104e9",
-"r  c #b600f2",
-"t  c #b800f5",
-"y  c #bd00fc",
-"u  c #ba0af3",
-"i  c #b31fe4",
-"p  c #b718eb",
-"a  c #bb10f3",
-"s  c #a620d1",
-"d  c #aa22d7",
-"f  c #ac23da",
-"g  c #ab2fd4",
-"h  c #aa3dce",
-"j  c #b02fda",
-"k  c #b53bdd",
-"l  c #bc2fea",
-"z  c #bf20f3",
-"x  c #bf3dea",
-"c  c #b64ad9",
-"v  c #b352d3",
-"b  c #b852d9",
-"n  c #c107fe",
-"m  c #c20efd",
-"M  c #c413fe",
-"N  c #c71ffe",
-"B  c #c721fe",
-"V  c #c42df6",
-"C  c #c62ff8",
-"Z  c #ca2bfe",
-"A  c #c330f3",
-"S  c #c73df4",
-"D  c #cc34fe",
-"F  c #c838f7",
-"G  c #c247ea",
-"H  c #c348eb",
-"J  c #c944f5",
-"K  c #ce47fa",
-"L  c #cf57f6",
-"P  c #d044fe",
-"I  c #d24dfe",
-"U  c #d456fd",
-"Y  c #d55bfe",
-"T  c #cc6fea",
-"R  c #d462f9",
-"E  c #d26bf4",
-"W  c #d66df8",
-"Q  c #d866fe",
-"!  c #d969fe",
-"~  c #d775f8",
-"^  c #db73fe",
-"/  c #dd7bfd",
-"(  c #c381d8",
-")  c #cb82e3",
-"_  c #d08be7",
-"`  c #d38fea",
-"'  c #d881f4",
-"]  c #db80f9",
-"[  c #d491ea",
-"{  c #d89dec",
-"}  c #dc9df2",
-"|  c #ddaded",
-" . c #ddbee7",
-".. c #debce9",
-"X. c #e08bfd",
-"o. c #e393fe",
-"O. c #e59cfd",
-"+. c #e5a3fb",
-"@. c #e7a9fc",
-"#. c #e9acfe",
-"$. c #e0b2ef",
-"%. c #e3b7f2",
-"&. c #e9b4fa",
-"*. c #edbefd",
-"=. c #e5ceec",
-"-. c #e8c0f5",
-";. c #edc2fc",
-":. c #f0c5fe",
-">. c #f1cbfd",
-",. c #f2d1fd",
-"<. c #f5dafd",
-"1. c #f7e1fe",
-"2. c #f6eef9",
-"3. c #f9eefd",
-"4. c #fbf3fe",
-"5. c white",
-"6. c None",
-"6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.6.6.6.6.> > : : : - - - 6.6.6.6.6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.6., > > > : : - - : - - - = = 6.6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6., > > , 4 0 l S S x 5 2 - = = * 6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6., , , , 0 L +.3.3.3.3.3.4.;.~ 9 - % % % 6.6.6.6.6.6.",
-"6.6.6.6.6., , > 5 J :.1.1.,.{ ` $.| %.<.1.1.W 6 % % % 6.6.6.6.6.",
-"6.6.6.6., > > w ] ,.,.%.` | 5.5.5.5.5...%.,.,.@.f % $ # 6.6.6.6.",
-"6.6.6.6., > 0 O.*.*.} _ 5.5.5.5.5.5.5.5.5.<.*.*.&.f $ # 6.6.6.6.",
-"6.6.6., > 5 W #.#.@._ 5.5.5.5.5.5.5.5.5.5.5.>.#.#.X.1 $ # 6.6.6.",
-"6.6.> > , V O.O.O.T 5.5.5.5.<.+.O.@.3.5.5.5.3.O.O.O.R % + # 6.6.",
-"6.6.> > 0 / X.X.X.[ 5.5.5.3.X.X.X.X.' 2.5.5.5.o.X.X.X.7 # + 6.6.",
-"6.6.> > V / / / / } 5.5.5.@./ / / / E  .5.5.5.O./ L F a $ + 6.6.",
-"6.> > 4 K ! ! ! ! X.5.5.4.^ ! ! Q ! v 5.5.5.5.A t e r r - + O 6.",
-"6.: : 0 U U U U U U X.@.! U U U U b =.5.5.5.*.r r r r r 5 O O 6.",
-"6.: : e K P P P P P P P P P P P c 2.5.5.5.3.z r r r r r 0 O O 6.",
-"6.: - u D Z D D D D D D D D D h 2.5.5.5.2.A r r r r r r r O o 6.",
-"6.: - t B B B B B B B B B B d 2.5.5.5.3.V r r r r r r r r o o 6.",
-"6.- - q m M M y m m m m m m ( 5.5.5.<.V r r r r r r r r 0 o o 6.",
-"6.- - 0 n y y n y y y y y t  .5.5.5.A t r r t t y r r r 2 o X 6.",
-"6.- - 4 y y y y y y y t y y  .5.5.,.y y y y y y y y y y - X X 6.",
-"6.6.- - n y y n y y n y y y { 5.5./ n n y n y n n y y n + X 6.6.",
-"6.6.= * 0 n n n n n n n n n M / ! y m y n n n n n n n 4 X X 6.6.",
-"6.6.* * - M M M M M M M M M 8 ) ) A M M m M M M m M M + . . 6.6.",
-"6.6.6.* * 6 N N N N N N N p =.5.5.3.Z B N N N N N N < . . 6.6.6.",
-"6.6.6.6.% % 9 Z Z Z Z D Z l 5.5.5.5.Y Z Z Z Z Z Z 8 . . 6.6.6.6.",
-"6.6.6.6.% % $ 9 D D D D D l 3.5.5.5.U D D D D D s . . . 6.6.6.6.",
-"6.6.6.6.6.$ $ $ 8 P P P D P ! :.,./ P P P P P 3 X . . 6.6.6.6.6.",
-"6.6.6.6.6.6.$ # # & j I I I I I I I I I I g @ . . . 6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.# # + & 3 x H U U G k ; @ X . . 6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.6.+ + + O O O o o o o X X . . 6.6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.6.6.6.6.O O o o o X X X 6.6.6.6.6.6.6.6.6.6.6.6.",
-"6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6.6."
-]
-
 
 # changed, 4.2.2003 - Erica Andrews, added 'icon_stop' as 5th list element
-icons = [ icon_stop, icon_alert, icon_info, icon_question,icon_stop ]  
+icons = [ gtk.STOCK_STOP, gtk.STOCK_DIALOG_WARNING, gtk.STOCK_DIALOG_INFO, gtk.STOCK_DIALOG_QUESTION, gtk.STOCK_STOP ]
+
 
 
 #############
@@ -821,11 +341,23 @@ icons = [ icon_stop, icon_alert, icon_info, icon_question,icon_stop ]
 # changed 4.2.2003 - Erica Andrews:  'test' method now tests all 4 built-in icon types
 
 if __name__ == "__main__":
+    import pygtk
+    pygtk.require("2.0")
+    import gtk
+    from gtk import *
     ret = message("Test MessageBox #1",
-                  ["This is a test for the message box.", "", "Enjoy."])
-    ret = message("Test MessageBox #1", ["This is a test for the message box.", "", "Enjoy."],("Ok",),ICON_STOP,FALSE)
-    ret = message("Test MessageBox #1", ["This is a test for the message box.", "", "Enjoy."],("Ok",),ICON_ALERT,FALSE)
-    ret = message("Test MessageBox #1", "America\n\nThe\nBeautiful".split("\n"),("Ok",),ICON_QUESTION,FALSE)
+                  ["This is a test for the message box.", "", "Enjoy."], ('Ok',) ,2,1, [STOCK_OK])
+    ret = message("Test MessageBox #1", 
+                  ["This is a test for the message box.", "", "Enjoy."],
+                  ("Ok",),ICON_STOP,gtk.FALSE)
+    ret = message("Test MessageBox #1", 
+                  ["This is a test for the message box.", "", "Enjoy."],
+                  ("Ok",),ICON_ALERT,gtk.FALSE)
+    ret = message("Test MessageBox #1", "America\n\nRich and\nPowerful".split("\n"),
+                  ("Ok",),ICON_QUESTION,gtk.FALSE)
+    print "ret:  "+str(message("Test","Sample\nMessage".split("\n"),("OK","Cancel",),3,1))
+
+
 
 
 
