@@ -64,7 +64,7 @@ msgstr "El programa que este applet señala no existe en su sistema."
 
 #: IceWMCPGtkIconSelection.py:106 IceWMCPGtkIconSelection.py:215
 msgid "IceWMCP Icon Browser"
-msgstr "IceWMCP: Explorador de Iconos"
+msgstr "IceWMCP: Navegador de Iconos"
 
 #: IceWMCPGtkIconSelection.py:128
 msgid "Columns:"
@@ -139,7 +139,7 @@ msgstr "Se requiere una conexión del Internet."
 #: IceWMCP.py:201
 #: icewmcp_common.py:107
 msgid "IceWM Control Panel"
-msgstr "Panel De Control De IceWM"
+msgstr "Panel de Control de IceWM"
 
 #: IceWMCP.py:53
 #: pyspool.py:49

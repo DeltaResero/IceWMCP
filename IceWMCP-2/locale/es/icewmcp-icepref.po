@@ -1298,10 +1298,10 @@ msgid "Menus"
 msgstr "Menús"
 
 msgid "Task Bar"
-msgstr "Barra de Tarea"
+msgstr "Barra de Tareas"
 
 msgid "Task Bar Applets"
-msgstr "Applets de la Barra de Tarea"
+msgstr "Applets de la Barra de Tareas"
 
 msgid "Scroll Bars"
 msgstr "Barras de Enrollar"
