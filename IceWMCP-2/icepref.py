@@ -183,6 +183,22 @@ THEME_SET_FILE= getIceWMPrivConfigPath()+'theme'
 
 THEME_PATH = [	getIceWMConfigPath()+'themes/*',
 		HOME + '/.icewm/themes/*',getIceWMPrivConfigPath()+'themes/*'	]
+
+# This is a bug-fix for some Debian systems... 2.25.2004
+# Should fix BUG NUMBER: 6333136
+
+THICE_OTHER_PATHS=["/usr/X11R6/lib/X11/icewm/","/usr/local/lib/X11/icewm/","/usr/local/share/icewm/","/usr/local/lib/icewm/","/usr/share/icewm/","/usr/X11R6/share/icewm/","/usr/lib/icewm/"]
+
+for tgop in THICE_OTHER_PATHS:
+	try:
+		tgopp=tgop+"themes/*"
+		if not tgopp in THEME_PATH:
+			tgoppp=tgop+"themes/"
+			if os.path.exists(tgoppp):
+				THEME_PATH.append(tgopp)
+	except:
+		pass 
+
 			
 SAMPLE_TEXT = 'IcePref2, for IceWM (http://icesoundmanager.sourceforge.net):\n AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp\nQqRrSsTtUuVvWwXxYyZz1234567890'
 ERROR_TEXT = 'Invalid Font'
@@ -2247,7 +2263,8 @@ class Application(Window):
 	def find_global_preferences(self):
 	    
 	    # make list of possibilities for various operating systems
-	    possibilities = [ '/usr/local/lib/X11/icewm/',
+	    possibilities = [getIceWMConfigPath(),		
+					 '/usr/local/lib/X11/icewm/',
 	                      '/usr/X11R6/lib/X11/icewm/',
 			      '/etc/X11/icewm/',
 			      '/usr/X11R6/share/icewm/',
