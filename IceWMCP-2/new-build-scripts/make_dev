@@ -48,6 +48,6 @@ cp -f ./applets/zh_tw/gnorpm.cpl ./icewmcp-developers-release/applets/zh_tw/
 cp -f ./applets/zh_tw/gfloppy.cpl ./icewmcp-developers-release/applets/zh_tw/
 rm -f ./icewmcp-developers-release/*.pyc
 rm -f ./icewmcp-developers-release/*.pyo
-tar -cjf IceWMCP-3.0-for-programmers.tar.bz2 ./icewmcp-developers-release/*
+tar -cjf IceWMCP-3.2-for-programmers.tar.bz2 ./icewmcp-developers-release/*
 mv -f IceWMCP*for-programmers.tar.bz2 /Compile/distro/icewmcp/
 cp -f ./icewmcp-developers-release/README_DEVELOPERS_RELEASE.txt /Compile/distro/icewmcp/

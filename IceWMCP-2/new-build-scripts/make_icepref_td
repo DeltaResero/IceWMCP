@@ -6,6 +6,7 @@ mkdir /INSTALL-IcePref2-TD/help/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/doc/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/help/es/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/help/ru/ &> /dev/null
+mkdir /INSTALL-IcePref2-TD/help/fr/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/locale/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/locale/es/ &> /dev/null
 mkdir /INSTALL-IcePref2-TD/locale/ru/ &> /dev/null
@@ -34,6 +35,7 @@ cp -f ./licenses/GPL /INSTALL-IcePref2-TD/doc/IcePref2-ThemeDesigner-LICENSE
 cp -f ./help/icepref_td.txt /INSTALL-IcePref2-TD/help/
 cp -f ./help/es/icepref_td.txt /INSTALL-IcePref2-TD/help/es/
 cp -f ./help/ru/icepref_td.txt /INSTALL-IcePref2-TD/help/ru/
+cp -f ./help/fr/icepref_td.txt /INSTALL-IcePref2-TD/help/fr/
 cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2-TD/locale/es/LC_MESSAGES/
 cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2-TD/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2-TD/locale/ru/LC_MESSAGES/

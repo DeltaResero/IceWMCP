@@ -1,6 +1,6 @@
 Summary: A small icon in the 'icewmtray' system tray for quick access to all IceWMCP programs
 Name: IceWMCP-TrayIcon-plugin
-Version: 0.1
+Version: 0.2
 Release: 1
 Copyright: Erica Andrews (PhrozenSmoke@yahoo.com)
 Group: Desktop/IceWM
@@ -17,5 +17,6 @@ One of IceWMCP's newest plugins: This is the IceWMCP Tray Icon program. It shows
 %files
 /usr/X11R6/bin/IceWMCP-TrayIcon
 /usr/share/IceWMCP/locale/es/LC_MESSAGES/icewmcp-trayicon.mo
+/usr/share/IceWMCP/locale/ru/LC_MESSAGES/icewmcp-trayicon.mo
 /usr/share/IceWMCP/doc/IceWMCP-TrayIcon-LICENSE
 /usr/share/IceWMCP/doc/IceWMCP-TrayIcon-README.txt

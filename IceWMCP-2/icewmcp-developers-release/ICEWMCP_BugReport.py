@@ -1,13 +1,17 @@
+# -*- coding: ISO-8859-1 -*-
+
 #############################
-#  IceWM Control Panel - Bug Report Module
+#  IceWM Control Panel
+#  Bug Report Module
 #  
-#  Copyright (c) 2003 by Erica Andrews
+#  Copyright (c) 2003-2004
+#  Erica Andrews
 #  PhrozenSmoke ['at'] yahoo.com
 #  http://icesoundmanager.sourceforge.net
 #  
 #  This program is distributed free
-#  of charge (open source) under the GNU
-#  General Public License
+#  of charge (open source) under the 
+#  GNU General Public License
 #############################
 #       Bug Report Module
 #
@@ -28,7 +32,25 @@
 #       'pop-before-smtp': The user is on their
 #       own if they use such a mail server.
 #############################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -44,7 +66,7 @@
 
 import smtplib,random,time,os,sys,string
 
-BUG_REPORT_ADDRESS="PhrozenSmoke@yahoo.com"   # who to send bug reports to
+BUG_REPORT_ADDRESS="PhrozenSmoke [at] yahoo.com"   # who to send bug reports to
 DEFAULT_SMTP_PORT="25"
 
 
@@ -83,7 +105,8 @@ def sendEmail(msgtext,sserver,from_addie):
                 msg_err(_("Bug Report"),_("Unable to connect to SMTP server")+":\n\nHost: "+str(sserver).strip()+"\nPort: "+DEFAULT_SMTP_PORT)
                 return 0
         try:
-                smtpserver.sendmail(str(from_addie).strip(),BUG_REPORT_ADDRESS,str(msgtext))
+                smtpserver.sendmail(str(from_addie).strip(),
+			BUG_REPORT_ADDRESS.replace(" [at] ","@"),str(msgtext))
         except:
                 do_fail=1
         try:
@@ -97,7 +120,7 @@ def sendEmail(msgtext,sserver,from_addie):
         if do_fail==1:
                 msg_err(_("Bug Report"),_("Unable to send your bug report message")+"\n\n"+_("Your SMTP server may require a password or may require you to check your POP3 mail first.")+"\n\n"+_("Be sure that you are connected to the internet."))
                 return 0  
-        msg_info(_("Bug Report"),_("Your bug report message was successfully sent to")+":\n\n"+BUG_REPORT_ADDRESS)
+        msg_info(_("Bug Report"),_("Your bug report message was successfully sent to")+":\n\n"+BUG_REPORT_ADDRESS.replace(" [at] ","@"))
         return 1
 
 def getSysInfo(*args): # gather useful system information for bug-reporting, info users always fail to send
@@ -191,7 +214,7 @@ def file_bug_report(app_num=5000,*args):
         table1.attach(Label(_("To")+":"), 0, 1, 0, 1, (GTK.FILL), (0), 0, 0)
         table1.attach(Label(_("From")+":"), 0, 1, 1, 2, (GTK.FILL), (0), 0, 0)
         table1.attach(Label(_("SMTP Server")+":"), 0, 1, 2, 3, (GTK.FILL), (0), 0, 0)
-        table1.attach(Label("<"+BUG_REPORT_ADDRESS+">"), 1, 2, 0, 1, (GTK.EXPAND+GTK.FILL), (0), 0, 0)
+        table1.attach(Label("<"+BUG_REPORT_ADDRESS.replace(" [at] ","@")+">"), 1, 2, 0, 1, (GTK.EXPAND+GTK.FILL), (0), 0, 0)
         sserver=Entry()
         sfrom=Entry()
         table1.attach(sfrom, 1, 2, 1, 2, (GTK.EXPAND+GTK.FILL), (0), 0, 0)

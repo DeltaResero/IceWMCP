@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-IceWMCP/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IceWMControlPanel"
-VERSION="3.1"
+VERSION="3.2"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

@@ -6,6 +6,7 @@ mkdir /INSTALL-IcePref2/help/ &> /dev/null
 mkdir /INSTALL-IcePref2/doc/ &> /dev/null
 mkdir /INSTALL-IcePref2/help/es/ &> /dev/null
 mkdir /INSTALL-IcePref2/help/ru/ &> /dev/null
+mkdir /INSTALL-IcePref2/help/fr/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/es/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/fr/ &> /dev/null
@@ -35,6 +36,7 @@ cp -f ./licenses/GPL /INSTALL-IcePref2/doc/IcePref2-LICENSE
 cp -f ./help/icepref.txt /INSTALL-IcePref2/help/
 cp -f ./help/es/icepref.txt /INSTALL-IcePref2/help/es/
 cp -f ./help/ru/icepref.txt /INSTALL-IcePref2/help/ru/
+cp -f ./help/fr/icepref.txt /INSTALL-IcePref2/help/fr/
 cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/es/LC_MESSAGES/
 cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/ru/LC_MESSAGES/
