@@ -282,8 +282,8 @@ class IceMe(Window):
 	#   to fix BUG NUMBER: 1523884
 	#   Reported By: david ['-at-'] jetnet.co.uk
 	#   Reported At: Fri Oct 31 23:47:12 2003
-	os.popen(BASH_SHELL_EXEC+" -c \"killall -HUP -q icewm &\"")
-	os.popen(BASH_SHELL_EXEC+" -c \"killall -HUP -q icewm &\"")
+	fork_process("killall -HUP -q icewm")
+	fork_process("killall -HUP -q icewm-gnome")
 
 
     # added 6.18.2003, Erica Andews - allow loading of menu,program, and toolbar 
@@ -710,7 +710,7 @@ class IceMe(Window):
 	#   to fix BUG NUMBER: 1523884
 	#   Reported By: david ['-at-'] jetnet.co.uk
 	#   Reported At: Fri Oct 31 23:47:12 2003
-	os.popen(BASH_SHELL_EXEC+" -c \"icepref &\"")
+	fork_process("icepref")
 	#  old way: os.popen("icepref &")
 
 

@@ -150,7 +150,7 @@ class energywin:
 
     def apply_settings(self,*args) :
 	if self.onoff.get_active():
-		# turn Energy Start features on
+		# turn Energy Star features on
 		os.popen("xset +dpms")
 
 		standby=0

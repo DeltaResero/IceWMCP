@@ -2,7 +2,7 @@
 import os
 
 TO_DIR="/Compile/cvs/IceWMCP-HW/INSTALL/"
-VERSION="1.3-beta"
+VERSION="1.4-beta"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

@@ -380,17 +380,25 @@ class wallwin:
 			if icewm_vers[1] >= 2:
 				if icewm_vers[2] >= 11:
 					old_restart=0
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
 		if old_restart==1: # IceWM 1.2.10 and below, also unknown versions
-			if get_pidof("icewm"): os.system('killall -HUP -q icewm &')
-			if get_pidof("icewm-gnome"): os.system('killall -HUP -q icewm-gnome &')
+			if get_pidof("icewm"): 
+				fork_process("killall -HUP -q icewm")
+			if get_pidof("icewm-gnome"): 
+				fork_process("killall -HUP -q icewm-gnome")
 
 		# The rest of this should have no effecton lower versions of IceWM
 		# added  8.14.2003, needed by IceWM 1.2.10 and above
-		if not get_pidof("icewmbg"): os.system("icewmbg &")
+		if not get_pidof("icewmbg"): 
+			fork_process("icewmbg")
 		else: 
-			os.system('killall -HUP -q icewmbg &')  # slightly older versions, and newer versions
-			# os.system('icewmbg -r')  # newer versions
-		if not get_pidof("icewmbg"): os.system("icewmbg &")
+			fork_process("killall -HUP -q icewmbg") # slightly older versions, and newer versions
+			# os.system('icewmbg -r')  # newer versions, questionable, doesnt work consistently
+		if not get_pidof("icewmbg"): 
+			fork_process("icewmbg")
 	
     def save_prefs(self,*args) :
 	g=self.get_prefs()
@@ -592,7 +600,11 @@ class wallwin:
     def editWall(self, *args):  # added 5.10.2003, feature to launch Gimp for editing
 	if self.imvalue==None: return
 	if self.imvalue=='': return
-	os.popen("gimp-remote -n "+str(self.imvalue).replace(" ","\\ ")+" &")
+	#   changed 12.19.2003 - use common Bash shell probing
+	#   to fix BUG NUMBER: 1523884
+	#   Reported By: david ['-at-'] jetnet.co.uk
+	#   Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("gimp-remote -n "+str(self.imvalue).replace(" ","\\ "))
 
     def clist_cb(self, widget, row, col, event):
 	self.imvalue = widget.get_row_data(row)

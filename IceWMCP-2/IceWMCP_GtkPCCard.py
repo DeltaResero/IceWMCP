@@ -33,7 +33,7 @@ DO_QUIT=1
 
 class gtkpccard:
     def __init__(self) :
-	self.version="1.4"
+	self.version="1.5"
 	self.socket_count=0
 	gtkpccardwin=Window(WINDOW_TOPLEVEL)
 	gtkpccardwin.set_wmclass("gtkpccard","GtkPCCard")

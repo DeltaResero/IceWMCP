@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-IcePref2/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IcePref2"
-VERSION="3.2"
+VERSION="3.3"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

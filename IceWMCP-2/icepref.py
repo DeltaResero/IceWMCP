@@ -2438,13 +2438,20 @@ class Application(Window):
 		if self.os=="BSD":
 			win = msg_confirm(_('Warning'), _("Restarting IceWM from IcePref is buggy on BSD systems.  You should restart IceWM yourself."))
 			if not win==1: return
-		os.system('killall -HUP -q icewm &')
-		os.system('killall -HUP -q icewm-gnome &')
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("killall -HUP -q icewm")
+		fork_process("killall -HUP -q icewm-gnome")
 		# added  8.14.2003, needed by IceWM 1.2.10 and above
 		# run icewmbg if it's not already running, restart it if it is
-		if not get_pidof("icewmbg"): os.system("icewmbg &")
-		else: os.system('killall -HUP -q icewmbg &')
-		if not get_pidof("icewmbg"): os.system("icewmbg &")
+		if not get_pidof("icewmbg"): 
+			fork_process("icewmbg")
+		else: 
+			fork_process("killall -HUP -q icewmbg")
+		if not get_pidof("icewmbg"): 
+			fork_process("icewmbg")
 	
 
 	
@@ -2474,13 +2481,29 @@ class Application(Window):
 
 	# added 1.27.2003 - 2 methods to launch IceMe and IceSoundManager
 	def run_iceme(self, *args):
-		os.popen("iceme &> /dev/null &")
+		# changed 12.24.2003 - use common Bash shell probing
+		# to fix BUG NUMBER: 1523884
+		# Reported By: david ['-at-'] jetnet.co.uk
+		# Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("iceme &> /dev/null")
 	def run_ism(self, *args):
-		os.popen("IceSoundManager &> /dev/null &")
+		# changed 12.24.2003 - use common Bash shell probing
+		# to fix BUG NUMBER: 1523884
+		# Reported By: david ['-at-'] jetnet.co.uk
+		# Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("IceSoundManager &> /dev/null")
 	def run_icecp(self, *args):
-		os.popen("IceWMCP &> /dev/null &")
+		# changed 12.24.2003 - use common Bash shell probing
+		# to fix BUG NUMBER: 1523884
+		# Reported By: david ['-at-'] jetnet.co.uk
+		# Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("IceWMCP &> /dev/null")
 	def run_icetd(self, *args):
-		os.popen("icepref-td &> /dev/null &")
+		# changed 12.24.2003 - use common Bash shell probing
+		# to fix BUG NUMBER: 1523884
+		# Reported By: david ['-at-'] jetnet.co.uk
+		# Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("icepref-td &> /dev/null")
 	
 	# creates the menubar
 		

@@ -1,8 +1,10 @@
 [PHTITLE]IceWMCP - IceMe
 [PHSECTION]Descripción  
-La herramienta IceWMCP - IceMe permite que usted corrija fácilmente el menú y el toolbar de IceWM.  Este texto de ayuda incluye solamente la información más básica.  Todos los botones en el programa de IceMe tienen [PH-HI]'indirectas'[/PH-HI] que usted puede ver colocando su cursor de ratón sobre cualquier botón.  Estas [PH-HI]'indirectas'[/PH-HI] proporcionan a la mayoría de la información que usted necesita para uso más avanzado.  Usted debe prestar atención especial a la colección de botones en la tapa de la ventana de IceMe.  
-[PHSECTION]IceMe  
-La ventana principal de IceMe se divide en dos secciones.  A la izquierda, está el [PH-HI]'árbol' de menú[/PH-HI]  que contiene el menú de IceWM.  A la derecha, está [PH-HI]'el área de la entrada de menú'[/PH-HI] para corregir artículos en el [PH-HI]'árbol'[/PH-HI].  
+La herramienta IceWMCP - IceMe permite que usted corrija fácilmente el menú y la barra de herramientas (toolbar) de IceWM.  Además, IceWMCP - IceMe permite que usted configure el comportamiento y el estilo de sus menús de IceWM.  Este texto de ayuda incluye solamente la información más básica.  Todos los botones en el programa de IceMe tienen [PH-HI]'indirectas'[/PH-HI] que usted puede ver colocando su cursor de ratón sobre cualquier botón.  Estas [PH-HI]'indirectas'[/PH-HI] le ofrecen la mayoría de la información que usted necesita para uso más avanzado.  Usted debe prestar atención especial a la colección de botones en la tapa de la ventana de IceMe. 
+
+ 
+[PHTITLE] IceMe : Menú
+Seleccione el marbete nombrado [PH-HI]'Menú'[/PH-HI].  La ventana principal de [PH-HI]IceMe : Menú[/PH-HI] se divide en dos secciones.  A la izquierda, está el [PH-HI]'árbol' de menú[/PH-HI]  que contiene el menú de IceWM.  A la derecha, está [PH-HI]'el área de la entrada de menú'[/PH-HI] para corregir artículos en el [PH-HI]'árbol'[/PH-HI].  
 [PHSECTION]Añadir Un Artículo De Menú
 Un [PH-HI]'artículo de menú'[/PH-HI] es un solo programa en el [PH-HI]'árbol' de menú[/PH-HI].  Para añadir un nuevo artículo de menú, abra la carpeta en el [PH-HI]'árbol'[/PH-HI] donde usted desea añadir el nuevo artículo.  Usted puede abrir la carpeta ampliando el [PH-HI]'árbol'[/PH-HI] o haciendo un doble-clic en la carpeta.  Haga clic en el botón [PH-HI]'Crear un nuevo artículo de menú'[/PH-HI] en la tapa de la ventana de IceMe.  (el botón contiene una imagen de [PH-HI]'una hoja en blanco'[/PH-HI].)  En [PH-HI]'el área de la entrada de menú'[/PH-HI], en el derecho de la ventana de IceMe, escriba la información solicitada sobre su nuevo [PH-HI]'artículo de menú'[/PH-HI].  Escriba un nombre para el programa en el área [PH-HI]Nombre:[/PH-HI] .  Escriba el ejecutable que se lanzará en el área [PH-HI]Mando:[/PH-HI], o haga clic en la [PH-HI]'carpeta'[/PH-HI].  Finalmente, seleccione un icono para el [PH-HI]'artículo de menú'[/PH-HI] en el área [PH-HI]Icono:[/PH-HI], o haga clic en la [PH-HI]'carpeta'[/PH-HI].
 [PHSECTION]Añadir Una Carpeta De Menú
@@ -17,8 +19,8 @@ Para copiar un artículo o una carpeta de menú, seleccione el artículo o la carpe
 Para cortar un artículo o una carpeta de menú, seleccione el artículo o la carpeta que usted desea cortar.  Presione [PH-HI]Ctrl+X[/PH-HI] en su teclado, o seleccione [PH-HI]Corregir -> Cortar[/PH-HI]  en el menú de IceMe.  
 [PHSECTION]Pegar Un Artículo O Una Carpeta De Menú.  
 Para pegar un artículo o una carpeta de menú, seleccione el artículo o la carpeta donde usted desea pegar.  Presione [PH-HI]Ctrl+V[/PH-HI] en su teclado, o seleccione [PH-HI]Corregir -> Pegar[/PH-HI] en el menú de IceMe.  
-[PHSECTION]Toolbar
-En el fondo del [PH-HI]'árbol' de menú[/PH-HI] de IceMe, usted verá una carpeta nombrada [PH-HI]'Toolbar'[/PH-HI].  Esta carpeta contiene la configuración para su [PH-HI]toolbar[/PH-HI] de IceWM (en el taskbar de IceWM) y se puede corregir de la misma manera que el resto de las porciones del [PH-HI]'árbol' de menú[/PH-HI].  
+[PHSECTION]Barra de Herramientas (Toolbar)
+En el fondo del [PH-HI]'árbol' de menú[/PH-HI] de IceMe, usted verá una carpeta nombrada [PH-HI]'Barra de Herramientas'[/PH-HI].  Esta carpeta contiene la configuración para su  [PH-HI]barra de herramientas (toolbar)[/PH-HI] de IceWM (en la barra de tarea de IceWM) y se puede corregir de la misma manera que el resto de las porciones del [PH-HI]'árbol' de menú[/PH-HI].  
 [PHSECTION]Vista Previa
 Para una [PH-HI]vista previa[/PH-HI] de su menú de IceWM, presione [PH-HI]Ctrl+P[/PH-HI] en su teclado, o seleccione [PH-HI]Fichero -> Vista Previa[/PH-HI] en el menú de IceMe.  
 [PHSECTION]Guardar Su Menú
@@ -27,6 +29,12 @@ Antes de salir del programa, usted debe ser seguro [PH-HI]guardar[/PH-HI] su men
 Si Usted sea el usuario 'root' y desee corregir los menús IceWM del sistema, seleccione [PH-HI]Fichero -> Usar Como Root[/PH-HI]  en el menú de IceMe.  Obviamente, se requiere los   poderes de 'root'.
 [PHSECTION] Abrir Fichero de Menú IceWM
 Abrir un fichero de menú IceWM situado en cualquier directorio de su sistema seleccionado [PH-HI]Fichero -> Abrir Fichero de Menú IceWM[/PH-HI]  en el menú de IceMe o presionado [PH-HI]Ctrl+O[/PH-HI] en su teclado.  Obviamente, se requiere los poderes de 'root' para corregir ciertos ficheros. 
+
+
+[PHTITLE] IceMe : Comportamiento
+Seleccione el marbete nombrado [PH-HI]'Comportamiento'[/PH-HI]. La herramienta [PH-HI]IceMe : Comportamiento[/PH-HI] permite que usted configure el comportamiento y el estilo de sus menús de IceWM usando una versión empotrada del gestor de menús de IcePref2.  Además, esta herramienta permite que usted controle los artículos de menú especiales se mostrarán en su menú de IceWM.  Cambie las propiedades como su desea.  Para aplicar los cambios, haga clic en el botón [PH-HI]'Aplicar los cambios'[/PH-HI].  
+
+
 [PHSECTION]Salir del Programa
 Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
 [PHSECTION]Saber si hay una más nueva versión

@@ -85,8 +85,12 @@ def restart_ice(*args) :
 	KEY_TAB.doApply()
 	ICE_TAB.save_current_settings("nowarn")
 	SHORT_TAB.doSave()
-	os.system('killall -HUP -q icewm &')
-	os.system('killall -HUP -q icewm-gnome &')
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("killall -HUP -q icewm")
+	fork_process("killall -HUP -q icewm-gnome")
 
 def doQuit(*args):
 	mainquit()
@@ -103,7 +107,11 @@ def reapplySettings1(*args):
 	for ii in KB_SETTINGS:  # execute all of our 'saved' settings commands on exit
 		if ii==None: continue
 		if ii.strip()=='': continue
-		os.popen(ii+" &")
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process(ii)
 	if DO_QUIT==1: sys.exit(1)  # better to call sys.exit instead of mainquit in this situation
 
 
@@ -557,8 +565,13 @@ class keypanel:
 	if msg_confirm(DIALOG_TITLE,_("WARNING:\nThis feature doesn't work perfectly on all systems.\nBSD and some other systems may experience problems."))	== 1:
 		i=self.doSave()
 		if i==1:
-			os.system('killall -HUP -q icewm &')
-			os.system('killall -HUP -q icewm-gnome &')
+			#    changed 12.24.2003 - use common Bash shell probing
+			#    to fix BUG NUMBER: 1523884
+			#    Reported By: david ['-at-'] jetnet.co.uk
+			#    Reported At: Fri Oct 31 23:47:12 2003
+			fork_process("killall -HUP -q icewm")
+			fork_process("killall -HUP -q icewm-gnome")
+
 
     def setStatus(self,stattext):
 	self.status.set_text(_(str(stattext)))
@@ -588,7 +601,11 @@ class keypanel:
 	path_find=self.is_on_path(""+exec_n)
 	if path_find==1:  
 		# launch the app and see if it works
-		os.popen(exec_n+" &") # for to bash/bourne
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process(exec_n) # for to bash/bourne
 	else:
 		if path_find==0: # no full path given and not on system $PATH
 			msg_warn(DIALOG_TITLE,_("The executable is not on your PATH")+":\n"+self.get_exec_short(""+exec_n))	
@@ -706,7 +723,11 @@ class keywintab:
 
     def doReset(self,*args) : # reset to a reasonable speed
 	global KB_SETTINGS
-	os.popen("xset r rate 400 20 &> /dev/null &")
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("xset r rate 400 20 &> /dev/null")
 	KB_SETTINGS[0]="xset r rate 400 20"
 	self.adj2.set_value(400)
 	self.adj1.set_value(20)

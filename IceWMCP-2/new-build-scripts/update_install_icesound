@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-IceSoundManager/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IceSoundManager"
-VERSION="3.0"
+VERSION="3.1"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

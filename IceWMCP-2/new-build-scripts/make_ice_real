@@ -28,10 +28,12 @@ mkdir /INSTALL-IceWMCP/help/es/ &> /dev/null
 mkdir /INSTALL-IceWMCP/help/ru/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/es/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/fi/ &> /dev/null
+mkdir /INSTALL-IceWMCP/locale/fr/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/ru/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/zh_TW/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/es/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/fi/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IceWMCP/locale/fr/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/ru/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IceWMCP/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f /Compile/cvs/IceWMCP-2/PyInstallShield/PyInstallShield /INSTALL-IceWMCP/PyInstallShield
@@ -251,6 +253,7 @@ cp -f /Compile/cvs/IceWMCP-2/help/phrozenclock.txt /INSTALL-IceWMCP/help/phrozen
 cp -f /Compile/cvs/IceWMCP-2/help/pyspool.txt /INSTALL-IceWMCP/help/pyspool.txt
 cp -f /Compile/cvs/IceWMCP-2/help/es/IceMe.txt /INSTALL-IceWMCP/help/es/IceMe.txt
 cp -f /Compile/cvs/IceWMCP-2/help/es/IceWMCP.txt /INSTALL-IceWMCP/help/es/IceWMCP.txt
+cp -f /Compile/cvs/IceWMCP-2/help/es/IceWMCPEnergyStar.txt /INSTALL-IceWMCP/help/es/IceWMCPEnergyStar.txt
 cp -f /Compile/cvs/IceWMCP-2/help/es/IceWMCPKeyEdit.txt /INSTALL-IceWMCP/help/es/IceWMCPKeyEdit.txt
 cp -f /Compile/cvs/IceWMCP-2/help/es/IceWMCPKeyboard.txt /INSTALL-IceWMCP/help/es/IceWMCPKeyboard.txt
 cp -f /Compile/cvs/IceWMCP-2/help/es/IceWMCPMouse.txt /INSTALL-IceWMCP/help/es/IceWMCPMouse.txt
@@ -303,6 +306,10 @@ cp -f /Compile/cvs/IceWMCP-2/locale/es/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-I
 cp -f /Compile/cvs/IceWMCP-2/locale/es/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceWMCP/locale/es/LC_MESSAGES/icewmcp-ism.mo
 cp -f /Compile/cvs/IceWMCP-2/locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IceWMCP/locale/es/LC_MESSAGES/icewmcp.mo
 cp -f /Compile/cvs/IceWMCP-2/locale/fi/LC_MESSAGES/icewmcp-iceme.mo /INSTALL-IceWMCP/locale/fi/LC_MESSAGES/icewmcp-iceme.mo
+cp -f /Compile/cvs/IceWMCP-2/locale/fr/LC_MESSAGES/icewmcp-iceme.mo /INSTALL-IceWMCP/locale/fr/LC_MESSAGES/icewmcp-iceme.mo
+cp -f /Compile/cvs/IceWMCP-2/locale/fr/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IceWMCP/locale/fr/LC_MESSAGES/icewmcp-icepref.mo
+cp -f /Compile/cvs/IceWMCP-2/locale/fr/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceWMCP/locale/fr/LC_MESSAGES/icewmcp-ism.mo
+cp -f /Compile/cvs/IceWMCP-2/locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IceWMCP/locale/fr/LC_MESSAGES/icewmcp.mo
 cp -f /Compile/cvs/IceWMCP-2/locale/ru/LC_MESSAGES/icewmcp-iceme.mo /INSTALL-IceWMCP/locale/ru/LC_MESSAGES/icewmcp-iceme.mo
 cp -f /Compile/cvs/IceWMCP-2/locale/ru/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IceWMCP/locale/ru/LC_MESSAGES/icewmcp-icepref.mo
 cp -f /Compile/cvs/IceWMCP-2/locale/ru/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceWMCP/locale/ru/LC_MESSAGES/icewmcp-ism.mo
@@ -319,6 +326,8 @@ cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_edit_cut.png /INSTALL-IceWMCP/pixmaps
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_edit_delete.png /INSTALL-IceWMCP/pixmaps/iceme_edit_delete.png
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_edit_paste.png /INSTALL-IceWMCP/pixmaps/iceme_edit_paste.png
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_empty.png /INSTALL-IceWMCP/pixmaps/iceme_empty.png
+cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_gnome1.png /INSTALL-IceWMCP/pixmaps/iceme_gnome1.png
+cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_gnome2.png /INSTALL-IceWMCP/pixmaps/iceme_gnome2.png
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_icepref.png /INSTALL-IceWMCP/pixmaps/iceme_icepref.png
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_icewm.png /INSTALL-IceWMCP/pixmaps/iceme_icewm.png
 cp -f /Compile/cvs/IceWMCP-2/pixmaps/iceme_keys.png /INSTALL-IceWMCP/pixmaps/iceme_keys.png

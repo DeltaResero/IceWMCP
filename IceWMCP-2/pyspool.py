@@ -381,9 +381,6 @@ class pyspoolwin :
     def doAbout(self,*args):
 	showAbout(_("PySpool is a simple Gtk-based spool monitor and manager written\nin 100% Python. It is intended to monitor LPRng and LPR-based\nprinter spools. This is BETA code. PySpool has only been\ntested with LPRng 3.8.12 on local printers.\nPySpool requires the following executables on your PATH:\nlpstat, cancel, checkpc"),"PySpool")
 
-    def runPyPrint(self,*args):
-	launch("pyprint &")
-
     def doQuit(self,*args) :
 	gtk.mainquit()
 

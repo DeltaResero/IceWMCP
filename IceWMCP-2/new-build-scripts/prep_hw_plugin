@@ -85,6 +85,6 @@ rm -f hwinfo2
 rm -f hwscan
 cd /Compile/cvs
 echo "Building hardware-plugin source package"
-tar -cjf IceWMCP-Hardware-plugin-1.3beta.source.tar.bz2  ./IceWMCP-HW/
+tar -cjf IceWMCP-Hardware-plugin-1.4beta.source.tar.bz2  ./IceWMCP-HW/
 echo "moving tar ball to /Compile/distro/icewmcp/..."
 mv -f IceWMCP-Hardware-plugin*.tar.bz2 /Compile/distro/icewmcp/

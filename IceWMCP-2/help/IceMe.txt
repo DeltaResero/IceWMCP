@@ -1,8 +1,10 @@
 [PHTITLE] IceWMCP IceMe
 [PHSECTION] Overview
-The IceWMCP IceMe tool allows you to easily edit your IceWM menu and toolbar.  This help text includes only the most basic information.  All buttons in the IceMe program have popup [PH-HI]'hints'[/PH-HI], which you can see by placing your mouse cursor over any button.  These [PH-HI]'hints'[/PH-HI] provide the majority of the information you need for more advanced usage.  You should pay close attention to the collection of buttons at the top of the IceMe window.
-[PHSECTION] IceMe
-The main window of IceMe is divided into two sections.  On the left, is the [PH-HI]menu 'tree'[/PH-HI] containing IceWM menu.  On the right, is the [PH-HI]'Menu entry'[/PH-HI] area for editing items on the [PH-HI]menu 'tree'[/PH-HI].
+The IceWMCP IceMe tool allows you to easily edit your IceWM menu and toolbar and configure the look and behavior of your IceWM menus.  This help text includes only the most basic information.  All buttons in the IceMe program have popup [PH-HI]'hints'[/PH-HI], which you can see by placing your mouse cursor over any button.  These [PH-HI]'hints'[/PH-HI] provide the majority of the information you need for more advanced usage.  You should pay close attention to the collection of buttons at the top of the IceMe window.
+
+
+[PHTITLE] IceMe : Menu
+Click the [PH-HI]Menu[/PH-HI] tab. The main window of [PH-HI]IceMe : Menu[/PH-HI] module is divided into two sections.  On the left, is the [PH-HI]menu 'tree'[/PH-HI] containing IceWM menu.  On the right, is the [PH-HI]'Menu entry'[/PH-HI] area for editing items on the [PH-HI]menu 'tree'[/PH-HI].
 [PHSECTION] Adding A Menu Item
 A [PH-HI]'menu item'[/PH-HI] is a single program on the menu 'tree'.  To add a new menu item, open the [PH-HI]folder[/PH-HI] on the menu 'tree' where you wish to add the new item.  You can open the folder by either expanding the menu 'tree' or by double-clicking on the folder.  Click the button [PH-HI]'Create a new normal entry'[/PH-HI] at the top of the IceMe window.  (The button contains a picture of a 'blank' sheet of paper.)   In the [PH-HI]'Menu entry'[/PH-HI] area, on the right side of the IceMe window, complete the requested information about your new 'menu item'.  Provide a name for the program in the [PH-HI]Name:[/PH-HI] area.  Specify the executable to be launched in the [PH-HI]Command:[/PH-HI] area, or click the [PH-HI]'folder'[/PH-HI] button.  Finally, select an icon for the 'menu item' in the [PH-HI]Icon:[/PH-HI] area, or click the [PH-HI]'folder'[/PH-HI] button.
 [PHSECTION] Adding A Menu Folder
@@ -27,6 +29,12 @@ Before exiting the program, you should be sure to save your menu.  To save your 
 If you are the 'root' user and wish to edit the system-wide IceWM menus, select [PH-HI] File -> Run As Root [/PH-HI] on the IceMe top menu.
 [PHSECTION] Open IceWM Menu File
 To open an IceWM menu in ANY directory on the system, select [PH-HI] File -> Open IceWM Menu File [/PH-HI] on the IceMe top menu, or press [PH-HI] Ctrl+O [/PH-HI] on your keyboard.  Please be aware that you may need to be 'root' to open and edit some menu files.
+
+
+[PHTITLE] IceMe : Behavior
+Click the [PH-HI]Behavior[/PH-HI] tab. The [PH-HI]IceMe : Behavior[/PH-HI] module allows you to easily configure the look and behavior of your IceWM menus using an embedded version of the IcePref2 menu configuration tool.  This module also allows you to control what special menu items are displayed on your IceWM menus.  Change the properties as you see fit.  When you are done, click the [PH-HI]'Apply Changes Now'[/PH-HI] button at the bottom of your screen.
+
+
 [PHSECTION] Exiting the Program
 To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
 [PHSECTION] Checking for New Versions of the Software

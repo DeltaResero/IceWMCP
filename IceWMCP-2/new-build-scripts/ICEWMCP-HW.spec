@@ -1,6 +1,6 @@
 Summary: The hardware and system information plugin for IceWM Control Panel
 Name: IceWMCP-Hardware-plugin
-Version: 1.3beta
+Version: 1.4beta
 Release: 1
 Copyright: Erica Andrews (PhrozenSmoke@yahoo.com)
 Group: Desktop/IceWM

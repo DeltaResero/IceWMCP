@@ -1,6 +1,6 @@
 Summary: A full-featured, Gtk-based control panel for the IceWM desktop environment
 Name: IceWMControlPanel
-Version: 3.0
+Version: 3.1
 Release: 1
 Copyright: Erica Andrews (PhrozenSmoke@yahoo.com)
 Group: Desktop/IceWM

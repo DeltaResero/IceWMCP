@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-gtkpccard/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="GtkPCCard"
-VERSION="1.4"
+VERSION="1.5"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

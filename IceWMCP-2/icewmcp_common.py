@@ -689,7 +689,7 @@ def closeUpdateWin(*args):
 
 #######  VERSION  #######
 
-this_software_version="3.1pre"     # must match the same variable in IceWMCP_BugReport.py
+this_software_version="3.1"     # must match the same variable in IceWMCP_BugReport.py
 
 SOFTWARE_UPDATE_URL= "http://icesoundmanager.sourceforge.net/ICEWMCP_WEB_VERSION"
 
@@ -1222,6 +1222,12 @@ if BASH_SHELL_EXEC=="bash":
 				break
 		except:
 			pass
+
+# added 12.24.2003, common process forking using  BASH_SHELL_EXEC
+# To fix several bugs caused when users use the app under a non-Bash shell
+
+def fork_process(some_proc):
+	os.popen(BASH_SHELL_EXEC+" -c \""+str(some_proc).strip()+" &\"")
 
 
 import IceWMCPRun    # THis should always be the last function defined in this module

@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-ICEWMCP-HW/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IceWMCP-Hardware-plugin"
-VERSION="1.3beta"
+VERSION="1.4beta"
 
 def updateinstall():
 	print "building tar-ball:  "+PACKAGE+"-"+VERSION+"-i586.tar.bz2  "

@@ -68,8 +68,13 @@ def restart_ice(*args) :
 	BSD_WARN=1
 	global ICE_TAB
 	ICE_TAB.save_current_settings("nowarn")
-	os.system('killall -HUP -q icewm &')
-	os.system('killall -HUP -q icewm-gnome &')
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("killall -HUP -q icewm")
+	fork_process("killall -HUP -q icewm-gnome")
+
 
 def doQuit(*args):
 	global DO_QUIT
@@ -126,12 +131,20 @@ class mousetab:
 	mainvbox.show_all()
 
     def doReset(self,*args) : # reset to a reasonable speed
-	os.popen("xset m 4 &> /dev/null &")
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("xset m 4 &> /dev/null")
 	self.adj.set_value(4)
 
     def doApply(self,*args) : # set to desired speed
 	self.swin=None
-	os.popen("xset m "+str(int(self.adj.value))+" &> /dev/null &")
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	fork_process("xset m "+str(int(self.adj.value))+" &> /dev/null")
 	self.doSafe()
 
     def doSafe(self,*args):

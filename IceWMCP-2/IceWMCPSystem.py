@@ -38,7 +38,7 @@ def getHwIconDir():
 
 class hardwaregui:
     def __init__(self):
-	self.version="1.3-beta"
+	self.version="1.4-beta"
 	hideSplash()
 
 	self.locales= {
@@ -330,13 +330,29 @@ class hardwaregui:
 		except: 
 			pass
 	if appnum==533:
-		os.popen("eject -r &")  # cdrom
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("eject -r")  # cdrom
 	if appnum==534:
-		os.popen("eject -f &") # floppy
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("eject -f")  # floppy
 	if appnum==535:
-		os.popen("eject -s &") # scsi
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("eject -s")  # scsi
 	if appnum==536:
-		os.popen("eject -q &") # tape
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("eject -q")  # tape
 	
 
     def doQuit(self,*args):

@@ -329,8 +329,12 @@ class wallwin:
 		self.warn_ok=1
 		i=self.doSave()
 		if i==1:
-			os.system('killall -HUP -q icewm &')
-			os.system('killall -HUP -q icewm-gnome &')
+			#    changed 12.24.2003 - use common Bash shell probing
+			#    to fix BUG NUMBER: 1523884
+			#    Reported By: david ['-at-'] jetnet.co.uk
+			#    Reported At: Fri Oct 31 23:47:12 2003
+			fork_process("killall -HUP -q icewm")
+			fork_process("killall -HUP -q icewm-gnome")
 
     def setStatus(self,stattext):
 	self.status.set_text(_(str(stattext)))

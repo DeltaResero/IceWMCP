@@ -544,7 +544,11 @@ class clockwin:
 	month=self.mycal.get_date()[1]+1
 	day=self.mycal.get_date()[2]
 	upstring="date --set='"+str(month)+"/"+str(day)+"/"+str(year)+" "+hour+":"+min+":"+sec+" "+ap+"'"
-	os.popen(upstring +" > /dev/null")
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	os.popen(BASH_SHELL_EXEC+" -c \""+upstring +" > /dev/null"+"\"")
 	if set_zone==1:
 		global TIME_ZONE_DESC_FILE
 		global ZONEINFO_DIR
@@ -579,15 +583,23 @@ class clockwin:
 			self.doReset(0)
 			return			
 		self.showMessage(_("Phrozen Clock will now be quickly RESTARTED.\nThis is absolutely necessary.\n\nYou may see a quick flicker on your display,\nor may see the screen 'black' for a moment.\nDo not be alarmed, as this is normal."))
-		f=os.popen(upstring +" &> /dev/null")
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		f=os.popen(BASH_SHELL_EXEC+" -c \""+upstring +" > /dev/null"+"\"")
 		time.sleep(1.5)
 		runit=sys.argv[0]
 		if not runit.endswith("phrozenclock.py"):
 			runit=sys.argv[0]+" phrozenclock.py"
-		os.system('killall -HUP -q icewm &')
-		os.system('killall -HUP -q icewm-gnome &')
+		#    changed 12.24.2003 - use common Bash shell probing
+		#    to fix BUG NUMBER: 1523884
+		#    Reported By: david ['-at-'] jetnet.co.uk
+		#    Reported At: Fri Oct 31 23:47:12 2003
+		fork_process("killall -HUP -q icewm")
+		fork_process("killall -HUP -q icewm-gnome")
 		#print runit
-		os.popen(runit+"  TZ_WARN &")
+		fork_process(runit+"  TZ_WARN")
 		doQuit()
 	self.doReset(0)
 

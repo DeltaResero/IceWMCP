@@ -473,7 +473,7 @@ class controlwin:
 
 			# Old way:	os.popen(to_run+" &> /dev/null &")
 			# new way: BASH_SHELL_EXEC -c 'gyach &> /dev/null &'
-			os.popen(BASH_SHELL_EXEC+" -c \""+to_run+" &> /dev/null &\"")
+			fork_process(to_run+" &> /dev/null")
 	except:
 		pass
 

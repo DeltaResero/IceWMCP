@@ -27,10 +27,14 @@ def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 global PYPRINT_VERSION
-PYPRINT_VERSION="0.3"
+PYPRINT_VERSION="0.3.1"
 
 def launch(launch_command):
-	os.popen(str(launch_command))
+	#    changed 12.24.2003 - use common Bash shell probing
+	#    to fix BUG NUMBER: 1523884
+	#    Reported By: david ['-at-'] jetnet.co.uk
+	#    Reported At: Fri Oct 31 23:47:12 2003
+	os.popen(BASH_SHELL_EXEC+" -c \""+str(launch_command)+"\"")
 
 def showMessage(message_text,wintitle="PyPrint"):
 	global PYPRINT_VERSION

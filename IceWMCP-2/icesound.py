@@ -1270,8 +1270,12 @@ def stopSound(*args):
     try:
      if not wav_pid:
        return 
-     os.popen("kill -9 "+str(wav_pid) +" > /dev/null" )
-     os.popen("kill -9 "+str(wav_pid) +" > /dev/null" )
+     #    changed 12.24.2003 - use common Bash shell probing
+     #    to fix BUG NUMBER: 1523884
+     #    Reported By: david ['-at-'] jetnet.co.uk
+     #    Reported At: Fri Oct 31 23:47:12 2003
+     os.popen(BASH_SHELL_EXEC+" -c \""+"kill -9 "+str(wav_pid) +" > /dev/null"+"\"")
+     os.popen(BASH_SHELL_EXEC+" -c \""+"kill -9 "+str(wav_pid) +" > /dev/null"+"\"")
     except:
      pass
     wav_pid=0
@@ -1282,7 +1286,13 @@ def editSound(*args):
      if wav_edit.strip():
         if getSoundForEvent(getSoundEventForDesc(icey.event_entry.get_text())) == _("[NONE]"):
           return
-        f=os.popen(wav_edit.strip().replace("%f",getSoundForEvent(getSoundEventForDesc(icey.event_entry.get_text())) ))
+        #    changed 12.24.2003 - use common Bash shell probing
+        #    to fix BUG NUMBER: 1523884
+        #    Reported By: david ['-at-'] jetnet.co.uk
+        #    Reported At: Fri Oct 31 23:47:12 2003
+        sd=wav_edit.strip().replace("%f",getSoundForEvent(getSoundEventForDesc(icey.event_entry.get_text())))
+	sd=sd.replace("&","")
+        fork_process(sd)
      else:
         showStatus(_("ERROR: No Wav editor configured.  Click 'Options -> Preferences' on the menu."))
    except:
@@ -1885,7 +1895,11 @@ def startServer(*args):
     else:  # for any other terminals that accept the -e command, i.e. xterm, etc.
       f=os.popen(xterm+" -e "+getSuggestedCommandLine())
   else:
-    f=os.popen(getSuggestedCommandLine()+" &> /dev/null") 
+    #    changed 12.24.2003 - use common Bash shell probing
+    #    to fix BUG NUMBER: 1523884
+    #    Reported By: david ['-at-'] jetnet.co.uk
+    #    Reported At: Fri Oct 31 23:47:12 2003
+    f=os.popen(BASH_SHELL_EXEC+" -c \""+getSuggestedCommandLine()+" &> /dev/null"+"\"")
   try:
     time.sleep(3)
     if serverIsRunning():
@@ -1912,9 +1926,13 @@ def stopServer(*args):
    global server_version
    global audio_defaults
    try:
-     f=os.popen("killall -q -9 "+getServerExecShort() +" &> /dev/null")
-     f=os.popen("killall -q -9 "+getServerExecShort() +" &> /dev/null")
-     f=os.popen("killall -q -9 "+getServerExecShort() +" &> /dev/null")
+     #    changed 12.24.2003 - use common Bash shell probing
+     #    to fix BUG NUMBER: 1523884
+     #    Reported By: david ['-at-'] jetnet.co.uk
+     #    Reported At: Fri Oct 31 23:47:12 2003
+     f=os.popen(BASH_SHELL_EXEC+" -c \""+"killall -q -9 "+getServerExecShort() +" &> /dev/null"+"\"")
+     f=os.popen(BASH_SHELL_EXEC+" -c \""+"killall -q -9 "+getServerExecShort() +" &> /dev/null"+"\"")
+     f=os.popen(BASH_SHELL_EXEC+" -c \""+"killall -q -9 "+getServerExecShort() +" &> /dev/null"+"\"")
      #if we are using the ESD interface, we need to clear the 'icesound' samples from ESD's server cache
      iface=str(audio_defaults["interface"]).lower()
      if iface=="esd":
@@ -1957,7 +1975,11 @@ def getServerVersion(*args):
   
 def refreshServer(*args):
    try:
-     f=os.popen("killall -HUP "+getServerExecShort())
+     #    changed 12.24.2003 - use common Bash shell probing
+     #    to fix BUG NUMBER: 1523884
+     #    Reported By: david ['-at-'] jetnet.co.uk
+     #    Reported At: Fri Oct 31 23:47:12 2003
+     f=os.popen(BASH_SHELL_EXEC+" -c \""+"killall -HUP "+getServerExecShort()+"\"")
    except:
      pass
 
