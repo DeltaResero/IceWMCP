@@ -1,4 +1,5 @@
-cd /Compile/IceWMCP/
+cd ../
+thisdir=`pwd`
 rm -fr /INSTALL-gtkpccard/*
 mkdir /INSTALL-gtkpccard/ &> /dev/null
 mkdir /INSTALL-gtkpccard/doc/ &> /dev/null
@@ -33,14 +34,11 @@ cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-gtkpccard/locale/zh_TW/LC_M
 cp -f ./PyInstallShield/gtkpccard-install-config.txt /INSTALL-gtkpccard/install-config.txt
 cp -f ./PyInstallShield/PyInstallShield /INSTALL-gtkpccard/
 cp -f ./PyInstallShield/INSTALL-ME.sh /INSTALL-gtkpccard/
-cp -f ./PyInstallShield/es.mo /INSTALL-gtkpccard/
-cp -f ./PyInstallShield/dir.xpm /INSTALL-gtkpccard/
-cp -f ./PyInstallShield/close.xpm /INSTALL-gtkpccard/
-cp -f ./PyInstallShield/next.xpm /INSTALL-gtkpccard/
-cp -f ./build-scripts/make_file_list /INSTALL-gtkpccard/
+cp -f ./new-build-scripts/make_file_list /INSTALL-gtkpccard/
 convert ./icons/icewmcp-gtkpccard.png  /INSTALL-gtkpccard/install-icon.xpm
 cd /INSTALL-gtkpccard/
 ./make_file_list
 rm -f make_file_list
-cd /Compile/IceWMCP/build-scripts
+cd $thisdir
+cd ./new-build-scripts/
 ./update_install_gtkpccard

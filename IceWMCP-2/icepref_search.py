@@ -12,6 +12,19 @@
 # Public License (open source).
 # 
 #######################################
+
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
 from icewmcp_common import *
 
 #set translation support
@@ -33,6 +46,7 @@ def hideSearch(*args):
 
 def showSearchWindow(pair_list):
 	swin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(swin)
 	swin.set_wmclass("icepref","IcePref")
 	swin.realize()
 	swin.set_title("IcePref2:  "+_("Search"))
@@ -121,6 +135,7 @@ def runSearchDialog(*args):
 		# added 5.10.2003 - basic search functionality
 		swin=Window(WINDOW_TOPLEVEL)
 		swin.set_wmclass("icepref","IcePref")
+		set_basic_window_icon(swin)
 		swin.realize()
 		swin.set_title("IcePref2:  "+_("Search"))
 		swin.set_position(WIN_POS_CENTER)	

@@ -11,6 +11,19 @@
 # Public License (open source).
 #######################################
 
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import binascii
 from icewmcp_common import *
 
 # drag-n-drop support, added 2.23.2003
@@ -25,44 +38,31 @@ def addDragSupport(widget, drag_callback):
 
 def initColorDrag():   # mainly for IcePref2, IcePref-TD, and IceWMCPWallpaper - 'color buttons'
 	# added 5.16.2003, a hidden color dialog for handling drag-n-drop color support on 'color buttons'
-	global COLOR_HOLDER
+	# define these method only if drag-n-drop color support is requested
 
-	# using a 'popup' (frameless) window type, so it wont map to the taskbar and make the screen 'flicker'
-	COLOR_HOLDER=Window(WINDOW_POPUP) 
-	COLOR_HOLDER.colorsel=ColorSelection()
-	COLOR_HOLDER.add(COLOR_HOLDER.colorsel)
-	COLOR_HOLDER.set_position(WIN_POS_CENTER)
-	COLOR_HOLDER.set_size_request(1,1)
-	COLOR_HOLDER.show_all() # must be called now, before use, to avoid 'GtkCritical' whining on stdout
-	COLOR_HOLDER.hide()
-	#COLOR_HOLDER.colorsel.set_update_policy(UPDATE_CONTINUOUS)
+	# setDrag2 has been re-written, 12.2.2003, Erica Andrews
+	# We no longer need the hidden color dialog thanks to some snooping I did on the 
+	# binascii module - HAPPY haPPy JoY jOY!
 
 	global setDrag2
 	def setDrag2(*args): # drag-n-drop callback, added 5.16.2003, drag-n-drop support for 'color buttons'
-		drago=args
+		drago=args		
 		if len(drago)==7: 
 			try:			
-				global COLOR_HOLDER
-				COLOR_HOLDER.show()
-				COLOR_HOLDER.set_position(WIN_POS_MOUSE)
-				COLOR_HOLDER.hide()
+				if str(drago[4].type)==str("application/x-color"):
+					# returns a string that looks something like 'ffffb9b9ffffffff'
+					rgbhex=binascii.hexlify(drago[4].data)
+					#print "rgbhex  " +rgbhex	
+					#print "len :  "+str(len(rgbhex))				
+					if not len(rgbhex)==16: return   # something weird happened
+					# translate to 6-char html-style color string like #FF00EE
+					rgbhex2="#"+rgbhex[2:4]+rgbhex[6:8]+rgbhex[10:12]
+					#print "rgb2  : "+rgbhex2
+					r,g,b=getRGBForHex(rgbhex2)  # from icewmcp_common
+					#print "Colors:  "+str(r) +"  "+str(g)+"  "+str(b)
 
-				""" 5.16.2003 - Erica Andrews
-			 	send the same drag-n-drop signal we just received to the hidden COLOR_HOLDER's  
-				 'preview' (GtkPreview) box, to set the color - I don't know a work-around
-				 for this yet, since the 'application/x-color' returned by the drag-n-drop
-			 	GtkSelectionData.data object is some type of unparseable 'native' unicode 
-			 	junk that Python doesn't appear to be able to turn into a string, int or 
-			 	anything useful - so, we will let the built-in drag-n-drop of the 
-			 	ColorSelectionDialog handle it the way it knows how since it has direct 
-			 	access to the 'secret' C code underneath PyGtk  """
-
-				wprev=COLOR_HOLDER.colorsel.get_children()[0].get_children()[0].get_children()[1].get_children()[0]	
-				wprev.emit("drag_data_received",drago[1],drago[2],drago[3],drago[4],drago[5],drago[6])
-				col=COLOR_HOLDER.colorsel.get_color()
-
-				# update the color on the 'color button' can called this drag-n-drop
-				drago[0].get_data("colorbutton").updateColorProperties(col[0],col[1],col[2])
+					# update the color on the 'color button' can called this drag-n-drop
+					drago[0].get_data("colorbutton").updateColorProperties(r,g,b)
 			except:
 				pass
 

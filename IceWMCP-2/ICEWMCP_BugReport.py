@@ -48,7 +48,7 @@ BUG_REPORT_ADDRESS="PhrozenSmoke@yahoo.com"   # who to send bug reports to
 DEFAULT_SMTP_PORT="25"
 
 
-from icewmcp_common import  getImage,getBaseDir,msg_err,msg_info,checkSoftUpdate,msg_confirm,app_map,this_software_version,keyPressClose,TIPS,IS_STATIC_BINARY,GTK,GDK,translateCP, to_utf8
+from icewmcp_common import  getImage,getBaseDir,msg_err,msg_info,checkSoftUpdate,msg_confirm,app_map,this_software_version,keyPressClose,TIPS,IS_STATIC_BINARY,GTK,GDK,translateCP, to_utf8,set_basic_window_icon
 
 from gtk import *
 
@@ -166,6 +166,7 @@ def file_bug_report(app_num=5000,*args):
         if not msg_confirm(_("Bug Report"),string.join([_("Before reporting a bug, please make sure you have the NEWEST version of this software."),"",_("Please do not submit bug reports if you are using an older version of this software."),_("If you are using an older version of this software, first upgrade to the NEWEST version."),"",_("Send your bug report ONLY if you continue to have the same problem with the NEWEST version of this software."),"",_("A check for the NEWEST version of this software will now be conducted."),"",_("Do you wish to continue?")] , "\n")  )==1:  
                 return  
         bugwin=Window(GTK.WINDOW_TOPLEVEL)
+	set_basic_window_icon(bugwin)
         bugwin.set_wmclass("icewmcontrolpanel","IceWMControlPanel")
         bugwin.realize()
         bugwin.set_title("IceWMCP: "+_("Bug Report"))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 ###################################################
-#                                IcePref2 3.0
+#                                IcePref2 3.2
 #
 # This is (or will be) the best IceWM configuration utility
 # known to man.  It requires a recent version of python as well as Gtk ( >
@@ -19,19 +19,31 @@
 # program.
 ####################################################
 ##########################################################
-#	This is an experimental IceWM Theme designer based on IcePref2 version 3.0
-#        IcePref2-TD version 2.1
+#	This is an experimental IceWM Theme designer based on IcePref2 version 3.2
+#        IcePref2-TD 
 #
-#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - June 2003
+#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - December 2003
 #	Copyright (c) 2003  Erica Andrews
 # 	This work comes with no warranty regarding its suitability for any purpose.
 # 	The author is not responsible for any damages caused by the use of this
 # 	program.
 ##########################################################
 
-from string import *
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
 
+from string import *
 import re,commands,math,icepref_search
+import pangoxlfd
 
 #set translation support
 from icewmcp_common import *
@@ -40,9 +52,8 @@ def _(somestr):
 	return to_utf8(translateP(somestr))  # from icewmcp_common.py
 
 
-
-
-## new in version 2.8 - 4/27/2003, IcePref2-TD can take a moment to start...show a nice splash screen while we load
+## new in version 2.8 - 4/27/2003, IcePref2-TD can take 
+# a moment to start...show a nice splash screen while we load
 
 def donada(*args):  # does nothing, just a 'dummy' method for the Splash screen, app=Application() does all the real work
 	pass
@@ -69,7 +80,7 @@ if NOSPLASH==0:
 #######################################
 
 VERSION = this_software_version
-ICE_VERSION = "1.2.8"
+ICE_VERSION = "1.2.11"
 
 
 # these define the types of configuration widgets
@@ -144,7 +155,7 @@ CONFIG_THEME_PATH= ''
 
 THEME_PATH = [	CONFIG_THEME_PATH ]
 			
-SAMPLE_TEXT = 'IcePref2 Theme Designer (http://icesoundmanager.sourceforge.net): AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890'
+SAMPLE_TEXT = 'IcePref2, for IceWM (http://icesoundmanager.sourceforge.net):\n AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp\nQqRrSsTtUuVvWwXxYyZz1234567890'
 ERROR_TEXT = 'Invalid Font'
 
 ## added 1.27.2003 - variables that require image previewers after them
@@ -805,7 +816,9 @@ class IceLabel(Label):
  
 class IceDialog(Window):
 	def __init__(self, titlebar, title):
-		Window.__init__(self, title=titlebar)
+		Window.__init__(self)
+		self.set_title(str(titlebar))
+		set_basic_window_icon(self)
 		self.set_modal(TRUE)
 		self.init_widgets(title)
 		self.init_buttons()
@@ -817,11 +830,11 @@ class IceDialog(Window):
 		self.add(vbox)
 		vbox.show()
 
-		label = Label(title,180)
+		label = IceLabel(title)
 		vbox.pack_start(label)
 		label.show()
 
-		self.bbox = GtkHButtonBox()
+		self.bbox = HButtonBox()
 		vbox.pack_start(self.bbox)
 		self.bbox.show()
 
@@ -863,7 +876,7 @@ class IceEntry(VBox):
 	def init_widgets(self, title):
 		label=IceLabel(title)
 		label.show()
-		self.pack_start(label, FALSE, FALSE)	
+		self.pack_start(label, FALSE, FALSE)
 		self.entry = Entry()
 		self.entry.show()
 		self.pack_start(self.entry, 0, 0)
@@ -955,6 +968,7 @@ class IceRange(VBox):
 		return str(ret)
 
 
+
 def setDrag(*args): # drag-n-drop support, added 2.23.2003
 	global CONFIG_THEME_PATH
 	drago=args
@@ -988,7 +1002,7 @@ class ImagePreviewer:
 		self.no_scale=0
 		if warn_type==0: self.no_scale=1
 		self.gl=Layout()
-
+		self.gl.set_redraw_on_allocate(1)
 		self.gl.set_size(400,300)
 		self.sc.add(self.gl)
 		self.current_image=None
@@ -1035,7 +1049,7 @@ class ImagePreviewer:
 			if not os.path.exists(self.current_image): raise TypeError
 			self.update_image(self.current_image)
 		except:
-			Dialog("IcePref2",_("A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."))	
+			IceDialog("IcePref2",_("A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."))	
 
 			# NOTE: We must leave the above message as using 'Dialog' instead of one of the common 
 			# dialogs, because we need a Dialog box that doesn't call 'mainloop' while running in a gtk 'timeout'.
@@ -1055,12 +1069,14 @@ class ImagePreviewer:
 			if not os.path.exists(self.current_image): return
 			if os.path.isdir(self.current_image): return
 			pixtemp=loadImage(self.current_image)
-			dims=pixtemp.get_size_request()
+			dims=[pixtemp.get_pixbuf().get_width(), pixtemp.get_pixbuf().get_height()]
 			aspect=float(dims[0])/float(dims[1])
 			sug_x=220
 			sug_y=int( math.floor(sug_x/aspect)  )
 			if self.no_scale==0:
-				myim_real=loadScaledImage(self.current_image, sug_x,sug_y)		
+				if (dims[0]>sug_x) or (dims[1]>sug_y):
+					myim_real=loadScaledImage(self.current_image, sug_x,sug_y)		
+				else: myim_real=pixtemp
 			else: myim_real=pixtemp
 			self.gl.put(myim_real,3,2)
 			self.gl.set_size_request(myim_real.get_size_request()[0]+15,myim_real.get_size_request()[1]+15)
@@ -1149,18 +1165,23 @@ class ButtonEntry(VBox):
 class IceColor(ButtonEntry):
 	def select(self, data=None):
 		value = self.entry.get_text()
-		self.win = ColorSelectionDialog(name=_('Select Color'))
-		self.win.colorsel.set_opacity(FALSE)
-		self.win.colorsel.set_update_policy(UPDATE_CONTINUOUS)
+		self.win = ColorSelectionDialog(_('Select Color'))
+		#self.win.colorsel.set_opacity(FALSE)
+		#self.win.colorsel.set_update_policy(UPDATE_CONTINUOUS)
 		self.win.set_position(WIN_POS_MOUSE)
 		self.win.ok_button.connect('clicked', self.ok)
 		self.win.cancel_button.connect('clicked', self.cancel)
 		self.win.help_button.destroy()
 		if value != '':
-			r = atoi(value[4:6], 16) / 255.0
-			g = atoi(value[7:9], 16) / 255.0
-			b = atoi(value[10:12], 16) / 255.0
-			self.win.colorsel.set_color((r, g, b))
+			r=g=b=0
+			try:
+            			r = atoi(value[4:6], 16) << 8
+            			g = atoi(value[7:9], 16) << 8
+            			b = atoi(value[10:12], 16) << 8
+			except:
+				pass
+            		colour = self.win.get_colormap().alloc_color(r, g, b)
+            		self.win.colorsel.set_current_color(colour)
 		self.win.set_modal(TRUE)
 		self.win.show()
 
@@ -1180,22 +1201,23 @@ class IceColor(ButtonEntry):
 		TIPS.set_tip(button,_("Select"))
 		self.button=button
 		button.set_relief(2)
+		button.connect('clicked', self.select)
 		self.gc=None
 		self.color_i16=[0,0,0]
 		value = self.INITVALUE
-		if value != '':
-			r = atoi(value[4:6], 16) / 255.0
-			g = atoi(value[7:9], 16) / 255.0
-			b = atoi(value[10:12], 16) / 255.0
-			self.color_i16=[r,g,b]
+        	if value != '':
+           		r = atoi(value[4:6], 16)
+            		g = atoi(value[7:9], 16)
+            		b = atoi(value[10:12], 16)
+            		self.color_i16=[r,g,b]
 		f=Frame()
 		f.set_shadow_type(SHADOW_ETCHED_OUT)
 		drawing_area = DrawingArea()
-		drawing_area.size(22, 18)
+		drawing_area.set_size_request(22, 18)
 		drawing_area.show() 
 		self.drawing_area=drawing_area
 		f.add(drawing_area)
-		self.drawwin=drawing_area.get_window()
+		self.drawwin=drawing_area.window
 		drawing_area.connect("expose_event", self.setColor)
 		drawing_area.set_events(GDK.EXPOSURE_MASK |
 		GDK.LEAVE_NOTIFY_MASK |
@@ -1203,53 +1225,44 @@ class IceColor(ButtonEntry):
 		button.add(f)
 		button.show()
 		hbox.pack_start(button, FALSE, FALSE, 1)
-		self.hbox.show_all()
-		button.set_data("colorbutton",self)  # added 5.16.2003
 		addDragSupportColor(button)  # added 5.16.2003
+		button.set_data("colorbutton",self)  # added 5.16.2003
 		self.entry.set_data("colorbutton",self)  # added 5.16.2003
 		addDragSupportColor(self.entry)  # added 5.16.2003
-		button.connect('clicked', self.select)
+		self.hbox.show_all()
 
 	def setColor(self,*args):
-		if not self.drawwin: self.drawwin=self.drawing_area.get_window()
-		if not self.gc: self.gc=self.drawwin.new_gc()
-		self.gc.foreground=self.drawwin.colormap.alloc_color(self.color_i16[0]*65535,self.color_i16[1]*65535,self.color_i16[2]*65535)
-		draw_rectangle(self.drawwin,self.gc,TRUE,0,0,self.drawwin.width,self.drawwin.height)
-
-	def set_value(self, value):
-		# make allowances for HTML-style color specs
-		value=value.lower().replace("\"","").replace("'","").replace("/","").replace("rgb:","").replace(" ","").replace("#","").strip()
-		if not len(value)==6: 
-			return
-		hvalue=""+value
-		value="rgb:"+ hvalue[0:2]+"/"+hvalue[2:4]+ "/"  +hvalue[4:6]
-		self.entry.set_text(value)
-		r,g,b=getRGBForHex(hvalue)		
-		self.color_i16=[r/255.0,g/255.0,b/255.0]
-		try:
-			self.setColor()
-		except:
-			pass
-
+	  try:
+        	if not self.drawwin: self.drawwin=self.drawing_area.window
+       		if not self.gc: self.gc=self.drawwin.new_gc()
+       		self.gc.foreground=self.drawwin.get_colormap().alloc_color(self.color_i16[0] << 8,
+                                                                   self.color_i16[1] << 8,
+                                                                   self.color_i16[2] << 8)
+        	width, height = self.drawwin.get_size()
+        	self.drawwin.draw_rectangle(self.gc,gtk.TRUE,0,0,width,height)
+	  except:
+		pass
+        
 	def updateColorProperties(self, r, g, b): # new method,functionality separation, 5.16.2003
-		self.color_i16=[r,g,b]
-		color = [r, g, b]
-		for i in range(0,3):
-			color[i] = hex(int(color[i] * 255.0))[2:]
-			if len(color[i]) == 1:
-				color[i] = '0' + color[i]				
-		r,g,b = color[0], color[1], color[2]			
-		value = 'rgb:' + r + '/' + g + '/' + b
-		self.entry.set_text(value)
-		self.setColor()
-		
+        	self.color_i16=[r,g,b]
+		rstr="%02x" % r
+		gstr="%02x" % g
+		bstr="%02x" % b
+		#print str(self.color_i16)
+        	self.entry.set_text("rgb:"+rstr+"/"+gstr+"/"+bstr)
+        	self.setColor()
+        
 	def ok(self, data=None):
-		raw_values = self.win.colorsel.get_color()
-		r,g,b = raw_values
-		self.win.hide()
-		self.win.destroy()
-		self.updateColorProperties(r,g,b)
-
+	  try:
+        	colour = self.win.colorsel.get_current_color()
+        	r = colour.red   >> 8
+        	g = colour.green >> 8
+        	b = colour.blue  >> 8
+        	self.win.hide()
+        	self.win.destroy()
+        	self.updateColorProperties(r,g,b)
+	  except:
+		pass
 
 # Font class is used (wonder of wonders) to select a font and returns an X
 # font descriptor, which coincidentally is just what icewm demands.  It is
@@ -1262,19 +1275,23 @@ class IceFont(ButtonEntry):
 		label.show()
 		self.pack_start(label, FALSE, FALSE, 0)
 		
+		self.sw=ScrolledWindow()
 		self.sample = TextView()
+		self.sw.add(self.sample)
 		self.sample.set_editable(FALSE)
-		self.sample.set_size_request(-2,50)
-		self.pack_start(self.sample)
-		self.sample.show()
+		self.sw.set_size_request(-1,65)
+		self.pack_start(self.sw,0,0,0)
+		self.sw.show_all()
+		self.sample=self.sample.get_buffer()
 		
 		hbox = HBox(FALSE, SP)
 		hbox.show()
-		self.pack_start(hbox, 0, 0, 0)
+		self.pack_start(hbox, FALSE, FALSE, 0)
 		self.pack_start(Label(""),1,1,0)
 		
 		self.entry = Entry()
-		self.entry.connect('changed', self.update)
+		#self.entry.connect('changed', self.update)
+		self.entry.connect("key-press-event",self.update)
 		self.entry.show()
 		hbox.pack_start(self.entry, TRUE, TRUE, 0)
 		
@@ -1285,37 +1302,52 @@ class IceFont(ButtonEntry):
 		except:
 			button.add(Label("..."))
 		TIPS.set_tip(button,_("Select"))
-		self.button=button
 		button.connect('clicked', self.select)
 		button.show()
 		hbox.pack_start(button, FALSE, FALSE, 0)
 		
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
-		self.entry.set_text(value)
+		if len(value.split("-"))<9:
+			self.entry.set_text(pangoxlfd.pango2XLFD(value))
+		else: 
+			self.entry.set_text(value)
 		self.set_sample(value)
 		
 	def set_sample(self, value):
-		length = self.sample.get_length()
-		if length > 0:
-			self.sample.delete_text(0, length)		
+		self.sample.set_text("")
+		#self.sample.delete_text(0, length)		
 		# The structure catches errors which are caused by invalid
 		# font specifications.
 		try:
-			font = load_font(value)
+			val=value
+			# support legacy fonts like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*'
+			valls=val.split("-")
+			if len(valls)>8:
+				val=pangoxlfd.XLFD2pango(val)
+			# try to create a GdkFont to see if our conversion is valid
+			# This catches those stupid pango 'fallback' warnings
+			if not GDK.font_from_description(pango.FontDescription(val)):
+					raise TypeError
 			#print "Font:  "+str(value)
-			self.sample.insert(fg=None, bg=None, font=font, string=SAMPLE_TEXT)
-		# If the font is invalid, it should trigger this little wonder
-		except RuntimeError:
-			self.sample.insert(fg=None, bg=None, font=None, string=ERROR_TEXT)
+			text_buffer_insert(self.sample, get_renderable_tab(self.sample,val,COL_BLACK,"iso8859-1"),to_utf8(SAMPLE_TEXT))
+
+		except:
+			#print "Invalid: "+val
+			#print "Value: "+value
+			text_buffer_insert(self.sample, get_renderable_tab(self.sample,"Sans 12",COL_BLACK,"iso8859-1"),to_utf8(ERROR_TEXT))
 
 	def select(self, data=None):
 		self.win = FontSelectionDialog(_('Select Font'))
+		self.win.set_preview_text(to_utf8(SAMPLE_TEXT))
 		self.win.ok_button.connect('clicked', self.ok)
 		self.win.cancel_button.connect('clicked', self.cancel)
 		value = self.entry.get_text()
 		if value !='':
-			self.win.fontsel.set_font_name(value)
+			if len(value.split("-"))>8:
+				self.win.fontsel.set_font_name(pangoxlfd.XLFD2pango(value))
+			else:
+				self.win.fontsel.set_font_name(value)
 		self.win.set_modal(TRUE)
 		self.win.show()
 		
@@ -1323,12 +1355,17 @@ class IceFont(ButtonEntry):
 		value = self.win.fontsel.get_font_name()
 		self.win.hide()
 		self.win.destroy()
-		self.entry.set_text(value)
+		if len(value.split("-"))<9:
+			self.entry.set_text(pangoxlfd.pango2XLFD(value))
+		else: 
+			self.entry.set_text(value)
 		self.set_sample(value)
 		
-	def update(self, widget, data=None):
-		value = self.entry.get_text()
-		self.set_sample(value)
+	def update(self, widget, event,*args):
+		if event.keyval == gtk.keysyms.Return:
+			value = self.entry.get_text()
+			self.set_sample(value)
+
 		
 # The File class is used for options that require a file name and path.  It is
 # a derivative of the Button Entry class and takes the same options.
@@ -1524,16 +1561,32 @@ class ThemeSel(VBox):
 	    self.value = value[1 : len(value) - 1]
 	    if self.value == '':
 		self.value = self.theme_list[0].path
+	    selval=self.value
 	    if self.t_map.has_key(self.value):
-		previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.png"
-		#print previm
-	   	if not self.iprev==None: self.iprev.update_image(previm)
+		previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
+	   	if not self.iprev==None: 
+			self.iprev.update_image(previm)
+	    if self.value.rfind("themes/")>-1:
+	    	shortval=self.value[self.value.rfind("themes/")+len("themes/"):]
+	    	if self.t_map.has_key(shortval):
+			selval=shortval
+			previm=self.t_map[shortval][0:self.t_map[shortval].rfind(os.sep)+1]+"preview.jpg"
+	   		if not self.iprev==None: 
+				self.iprev.update_image(previm)
 	    if (self.a_map.has_key(self.value)) :	  
 		if not self.author_entry==None:
 			self.author_entry.set_value(self.a_map[self.value])
 	    if (self.d_map.has_key(self.value)) :	  
 		if not self.desc_entry==None:
 			self.desc_entry.set_value(self.d_map[self.value])
+	    # added 12.2.2003, Erica Andrews - highlight and scroll to the row of the current theme
+	    try:
+				k=self.t_map.keys()
+				k.sort()
+				self.CLIST.moveto(k.index(selval),0,0 ,0)
+				self.CLIST.select_row(k.index(selval),0)
+	    except:
+				pass
 			
 	def get_value(self):
 	    value = '"' + self.value + '"'
@@ -1555,7 +1608,7 @@ class ThemeSel(VBox):
 		clist.connect('select_row', self.clist_cb)
 		swin.add(clist)
 		clist.show()
-		
+		self.CLIST=clist		
 		clist.freeze()
 		row_count = 0
 		for item in self.theme_list:
@@ -1634,10 +1687,12 @@ class IceOptionMenu(VBox):
 class Application(Window):
 	
 	def __init__(self, argv):
-		Window.__init__(self, title='IcePref2: '+_('Theme Designer'))
+		Window.__init__(self)
 		global APP_WINDOW
 		APP_WINDOW=self
 		self.my_last_file=''
+		self.set_title('IcePref2: '+_('Theme Designer'))
+		set_basic_window_icon(self)
 		self.set_position(WIN_POS_CENTER)
 		self.set_wmclass("icepref-td","IcePref-TD")
 		self.connect('destroy', mainquit)
@@ -1667,16 +1722,20 @@ class Application(Window):
 		self.vbox.pack_start(Label(_("Theme Designer")),0,0,1)
 		self.init_notebook()
 		self.init_buttons()
-		self.set_default_size(gtk.screen_width()-100, gtk.screen_height()-150)
+		self.set_default_size(GDK.screen_width()-100, GDK.screen_height()-150)
 		self.stat_label=Label("IcePref2 "+_("Theme Designer")+" "+VERSION)
 		self.vbox.pack_start(self.stat_label,0,0,2)
-		self.set_default_size(gtk.screen_width()-150, gtk.screen_height()-280)
+		self.set_default_size(GDK.screen_width()-150, GDK.screen_height()-280)
 		self.vbox1.pack_start(self.vbox,1,1,0)
 		self.show_all()
 		if len(argv)>1:		
-			if not argv[1].endswith(".py"): self.openThemeFile(argv[1])
+			if not argv[1].endswith(".py"): 
+				self.openThemeFile(argv[1])
+				SET_SELECTED_FILE(argv[1])
 			else:
-				if len(argv)>2: self.openThemeFile(argv[2])
+				if len(argv)>2: 
+					self.openThemeFile(argv[2])
+					SET_SELECTED_FILE(argv[2])
 		
 	def mainloop(self):
 		mainloop()
@@ -1802,7 +1861,7 @@ class Application(Window):
 		# this stuff saves the actual info
 		try: 			
 			f = open(CONFIG_FILE, 'w')
-			f.write('# This theme file automatically generated by IcePref2 Theme Designer %s (updated by PhrozenSmoke, March 2003) --your friendly pythonated config util (http://icesoundmanager.sourceforge.net).\n\n' % VERSION)
+			f.write('# This theme file automatically generated by IcePref2 Theme Designer %s (updated by PhrozenSmoke, December 2003) --your friendly pythonated config util (http://icesoundmanager.sourceforge.net).\n\n' % VERSION)
 			for name in ORDER:
 				string =''
 				# this adds some descriptors depending upon the type of
@@ -1823,6 +1882,9 @@ class Application(Window):
 					# Even worse, the person USING the theme cant load any other background either: 
 					# if the background doesn't exist, comment it out for now
 					if name=="DesktopBackgroundImage": 
+						if not os.path.exists(CONFIG_THEME_PATH+self.widget_dict[name].get_value()):
+							line="# "+line
+					if name=="DesktopTransparencyImage": 
 						if not os.path.exists(CONFIG_THEME_PATH+self.widget_dict[name].get_value()):
 							line="# "+line
 				else:
@@ -1882,32 +1944,34 @@ class Application(Window):
 		
 	def init_menu(self):
 		menu_items = [  
-				[_('/_File'), None, None, 0, '<Branch>'],
-				[_('/File/tearoff1'), None, None, 0, '<Tearoff>'],
-				[_('/File/_New Theme...'), '<control>N', self.newThemeAsk, 0, ''],
-				[_('/File/_Open Theme...'), '<control>O', self.openTheme, 0, ''],
+				(_('/_File'), None, None, 0, '<Branch>'),
+				# 12.1.2003 - Tearoff disabled due to seg-faults in PyGtk2
+				# (_('/File/tearoff1'), None, None, 0, '<Tearoff>'),
+				(_('/File/_New Theme...'), '<control>N', self.newThemeAsk, 0, ''),
+				(_('/File/_Open Theme...'), '<control>O', self.openTheme, 0, ''),
 
 				# added 5.10.2003 - basic search functionality
-				[_('/_File')+"/"+_('Search')+'...', '<control>B', icepref_search.runSearchDialog, 0, ''],
+				(_('/_File')+"/"+_('Search')+'...', '<control>B', icepref_search.runSearchDialog, 0, ''),
 
-				[_('/File/sep1'), None, None, 0, '<Separator>'],
-				[_('/File/_Save Theme'), '<control>S', self.save_current_settings, 0, ''],
-				[_('/File/sep1'), None, None, 0, '<Separator>'],
-				[_('/File/_Restart IceWM'), '<control>I', self.restart, 0, ''],
-				[_('/File/sep2'), None, None, 0, '<Separator>'],
- 				[_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""],
-				[_('/_File')+"/_"+_("Check for newer versions of this program..."), '<control>U',checkSoftUpdate, 420, ''],
-				[_('/File/sep2'), None, None, 0, '<Separator>'],
-				[_('/File/_Exit IcePref2 Theme Designer'), '<control>Q', mainquit, 0, ''],
-				[_('/_Category'), None, None, 400, '<Branch>'],
-				[_('/_Category/tearoff2'), None, None, 401, '<Tearoff>'],
-				[_('/_Tools'), None, None, 500, '<Branch>'],
-				[_('/_Tools/Configure IceWM (requires IcePref2)...'), None, self.run_icepref, 509, ''],
-				[_('/_Tools/Edit task bar menus (requires IceMe)...'), None, self.run_iceme, 501, ''],
-				[_('/_Tools/Manage sound events (requires IceSoundManager)...'), None, self.run_ism, 503, ''],
-				[_('/_Tools/Open Control Panel (requires IceControlPanel)...').replace("IceControlPanel","IceWMCP"), None, self.run_icecp, 502, ''],
-				[_('/_Help'), None, None, 0, '<LastBranch>'],
-				[_('/Help/_About IcePref2 Theme Designer...'), "F2", self.about_cb, 0, ''],
+				(_('/File/sep1'), None, None, 0, '<Separator>'),
+				(_('/File/_Save Theme'), '<control>S', self.save_current_settings, 0, ''),
+				(_('/File/sep1'), None, None, 0, '<Separator>'),
+				(_('/File/_Restart IceWM'), '<control>I', self.restart, 0, ''),
+				(_('/File/sep2'), None, None, 0, '<Separator>'),
+ 				(_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""),
+				(_('/_File')+"/_"+_("Check for newer versions of this program..."), '<control>U',checkSoftUpdate, 420, ''),
+				(_('/File/sep2'), None, None, 0, '<Separator>'),
+				(_('/File/_Exit IcePref2 Theme Designer'), '<control>Q', mainquit, 0, ''),
+				(_('/_Category'), None, None, 400, '<Branch>'),
+				# 12.1.2003 - Tearoff disabled due to seg-faults in PyGtk2
+				# (_('/_Category/tearoff2'), None, None, 401, '<Tearoff>'),
+				(_('/_Tools'), None, None, 500, '<Branch>'),
+				(_('/_Tools/Configure IceWM (requires IcePref2)...'), None, self.run_icepref, 509, ''),
+				(_('/_Tools/Edit task bar menus (requires IceMe)...'), None, self.run_iceme, 501, ''),
+				(_('/_Tools/Manage sound events (requires IceSoundManager)...'), None, self.run_ism, 503, ''),
+				(_('/_Tools/Open Control Panel (requires IceControlPanel)...').replace("IceControlPanel","IceWMCP"), None, self.run_icecp, 502, ''),
+				(_('/_Help'), None, None, 0, '<LastBranch>'),
+				(_('/Help/_About IcePref2 Theme Designer...'), "F2", self.about_cb, 0, ''),
 				  (_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5007, ""),
   				(_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
   				(_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5007, ""),
@@ -1917,9 +1981,11 @@ class Application(Window):
 		ikeys=self.my_tabs.keys()
 		ikeys.sort()
 		for ii in ikeys:
-			menu_items.append([_('/_Category/')+ii, None, self.switchTab, self.my_tabs[ii], ''])
+			menu_items.append((_('/_Category/')+ii, None, self.switchTab, self.my_tabs[ii], ''))
 		ag = AccelGroup()
 		itemf = ItemFactory(MenuBar, '<main>', ag)
+		self.ag=ag
+		self.itemf=itemf
 		self.add_accel_group(ag)
 		itemf.create_items(menu_items)
 		self.menubar = itemf.get_widget('<main>')
@@ -1929,7 +1995,7 @@ class Application(Window):
 	# added 1.26.2003 - quick category tab switching - added by PhrozenSmoke
 	def switchTab(self,*args):
 		try:
-			self.mynotebook.set_page(args[0])
+			self.mynotebook.set_current_page(args[0])
 		except:
 			pass
 		
@@ -1984,9 +2050,7 @@ class Application(Window):
 			
 			# Creates a table for the widgets
 			
-			table = Table(	rows = rows,
-							cols = cols,
-							homogeneous=FALSE)
+			table = Table( rows,cols, FALSE)
 			table.show()
 			if cols==2: table.set_col_spacings(25)
 			table.set_row_spacings(5)
@@ -2121,6 +2185,7 @@ class Application(Window):
 		w.set_data("ignore_return",1)
 		w.connect("key-press-event", keyPressClose)
 		w.set_position(WIN_POS_CENTER)
+		set_basic_window_icon(w)
 		w.set_wmclass("icepref-td","IcePref-TD")
 		w.connect('destroy', self.hideNewTheme)
 		w.set_title(_("Create A New IceWM Theme")+"...")
@@ -2166,7 +2231,7 @@ class Application(Window):
 		okbutt.set_data("theme_author",entries[1])
 		okbutt.set_data("theme_desc",entries[2])
 		okbutt.set_data("cfg_path",entries[3])
-		w.set_default_size(375,-2)
+		w.set_default_size(375,-1)
 		w.add(v)
 		w.show_all()
 

@@ -27,10 +27,11 @@ class energywin:
     def __init__(self) :
 	self.version=this_software_version
 	global WMCLASS
-	WMCLASS="icewmcpEnergy Star"
+	WMCLASS="icewmcpEnergyStar"
 	global WMNAME
-	WMNAME="IceWMCPEnergy Star"
+	WMNAME="IceWMCPEnergyStar"
 	energywin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(energywin)
 	energywin.set_wmclass(WMCLASS,WMNAME)
 	energywin.realize()
 	energywin.set_title("IceWM CP - Energy Star "+self.version)

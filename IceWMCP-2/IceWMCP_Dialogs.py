@@ -34,9 +34,7 @@
 #############################
 
 
-
 from string import join
-#from gtk import *
 
 try:
 	import sys
@@ -55,6 +53,8 @@ ICON_INFO     = 2
 ICON_QUESTION = 3
 ICON_ERROR    = 4
 
+# will be defined later by icewmcp_common, leave alone
+icon_setter_method=None
 
 class _MessageBox(gtk.Dialog):
     def __init__(self, 
@@ -71,6 +71,7 @@ class _MessageBox(gtk.Dialog):
         """
         gtk.Dialog.__init__(self)
         self.set_title(title)
+	if icon_setter_method:  icon_setter_method(self,icon_info)
         self.set_wmclass("icewmcontrolpanel","IceWMControlPanel") # added, 4.2.2003 - Erica Andrews
         self.connect("destroy", self.quit)
         self.connect("delete_event", self.quit)

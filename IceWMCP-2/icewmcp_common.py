@@ -104,6 +104,216 @@ import gettext,sys,os,gtk.gdk,glob,string
 TIPS=gtk.Tooltips()  # added 4/27/2003
 
 
+# added 12.3.2003, two methods for setting basic window icons
+# These icons, of course, can be over-ridden by the use if they choose
+# using a program like IceWMCP-WinOptions, also a builtin pixmap for icons
+
+# A simple 20x20 builtin pixmap for window icons, we don't want to rely images on the DISK
+# for something like an app's window icon...one click of the delete button= No more icons
+# WARNING: Editing this pixmap code by hand can produce an invalid pixmap which 
+# wil cause PyGtk-2 to seg-fault
+
+icon_icewmcp=[
+"20 20 163 2",
+"  	c None",
+". 	c #46527A",
+"+ 	c #7A86B2",
+"@ 	c #56628A",
+"# 	c #8A8EA6",
+"$ 	c #96A2CA",
+"% 	c #8A92C2",
+"& 	c #525A72",
+"* 	c #8A8A96",
+"= 	c #929AB2",
+"- 	c #9296AA",
+"; 	c #929ECA",
+"> 	c #C2CAEE",
+", 	c #8A92B2",
+"' 	c #A2A6B6",
+") 	c #DEDEE6",
+"! 	c #8E96BA",
+"~ 	c #A6AABA",
+"{ 	c #929AB6",
+"] 	c #9EAAD6",
+"^ 	c #E2E6F6",
+"/ 	c #BAC2DA",
+"( 	c #9A9EB6",
+"_ 	c #E6E6EA",
+": 	c #AEB6D6",
+"< 	c #626A92",
+"[ 	c #8E8E96",
+"} 	c #B6B6BE",
+"| 	c #828EB6",
+"1 	c #F2F2F6",
+"2 	c #CED2E6",
+"3 	c #727A96",
+"4 	c #B2B6BE",
+"5 	c #DADEE6",
+"6 	c #9EA6C6",
+"7 	c #525A82",
+"8 	c #52525E",
+"9 	c #7A82AA",
+"0 	c #BAC2E2",
+"a 	c #EEF2FA",
+"b 	c #DEE2EE",
+"c 	c #6E769A",
+"d 	c #AEB6CA",
+"e 	c #828AB2",
+"f 	c #A6AECA",
+"g 	c #929ABE",
+"h 	c #42465A",
+"i 	c #868692",
+"j 	c #D6D6DA",
+"k 	c #EEEEF6",
+"l 	c #7E8AAE",
+"m 	c #7E86AA",
+"n 	c #8E92B2",
+"o 	c #727EAE",
+"p 	c #AEB2C2",
+"q 	c #C2C6DE",
+"r 	c #EAEAEE",
+"s 	c #B6BACE",
+"t 	c #CACEDE",
+"u 	c #C6CEE2",
+"v 	c #F6FAF6",
+"w 	c #BEC2D2",
+"x 	c #8E96AE",
+"y 	c #AAB2D6",
+"z 	c #828EBA",
+"A 	c #6A7AAA",
+"B 	c #7E86A2",
+"C 	c #D2D6DE",
+"D 	c #FAFAFA",
+"E 	c #D6DADE",
+"F 	c #7A82A2",
+"G 	c #9A9AAA",
+"H 	c #E2E6EA",
+"I 	c #BEC2CE",
+"J 	c #DADEEA",
+"K 	c #9EA2B2",
+"L 	c #E2E2EA",
+"M 	c #8A96C2",
+"N 	c #F2F2F2",
+"O 	c #EAEAEA",
+"P 	c #868A9E",
+"Q 	c #82869A",
+"R 	c #C6CAD2",
+"S 	c #E6EAEE",
+"T 	c #C6CADA",
+"U 	c #868EB2",
+"V 	c #A6AAC6",
+"W 	c #8A8EA2",
+"X 	c #D2D2DA",
+"Y 	c #CED2DE",
+"Z 	c #C2C6D2",
+"` 	c #BEC2DA",
+" .	c #D2DAF2",
+"..	c #8A92BE",
+"+.	c #9AA2B6",
+"@.	c #5E6A8E",
+"#.	c #B6BAC2",
+"$.	c #CACED2",
+"%.	c #A2A6C2",
+"&.	c #EEF2F6",
+"*.	c #B6BEDE",
+"=.	c #A2A6BA",
+"-.	c #8A92B6",
+";.	c #868EAA",
+">.	c #B2B6C2",
+",.	c #CED2EA",
+"'.	c #7E8296",
+").	c #D6DAE2",
+"!.	c #D6DEFA",
+"~.	c #F6F6F6",
+"{.	c #E2E2EE",
+"].	c #F6F6FA",
+"^.	c #82869E",
+"/.	c #8A92AE",
+"(.	c #727EA2",
+"_.	c #AAB2C6",
+":.	c #565E82",
+"<.	c #868EAE",
+"[.	c #56668A",
+"}.	c #565E86",
+"|.	c #525E8A",
+"1.	c #3E4E7E",
+"2.	c #46527E",
+"3.	c #4A5682",
+"4.	c #3E4E86",
+"5.	c #364672",
+"6.	c #56628E",
+"7.	c #767E96",
+"8.	c #4E5E8E",
+"9.	c #6A769A",
+"0.	c #4A5A86",
+"a.	c #525E86",
+"b.	c #4E5E86",
+"c.	c #465682",
+"d.	c #4E5E8A",
+"e.	c #525E8E",
+"f.	c #42528A",
+"g.	c #364A82",
+"h.	c #3A4E86",
+"i.	c #36467A",
+"j.	c #3A4A7A",
+"k.	c #626E92",
+"l.	c #626E96",
+"m.	c #4A5A8A",
+"n.	c #4A5A82",
+"o.	c #465A8A",
+"p.	c #465686",
+"q.	c #3A4E7E",
+"r.	c #324276",
+"s.	c #3A4A7E",
+"t.	c #424E7E",
+"u.	c #465282",
+"v.	c #46568A",
+"w.	c #425286",
+"x.	c #3E4E82",
+"y.	c #425282",
+"z.	c #3A4E82",
+"A.	c #4E5A86",
+"B.	c #3E5286",
+"C.	c #52628E",
+"D.	c #4E5A8A",
+"E.	c #32427A",
+"F.	c #2E427A",
+"                    .                   ",
+"                    + @                 ",
+"                  # $ % & * =           ",
+"                  - ; > , ' ) !         ",
+"                ~ { ] ^ / ( _ : <       ",
+"              [ } | > 1 2 3 4 5 6 7     ",
+"            8 ~ ~ 9 0 a b c c - d e     ",
+"      f g h i j ~ $ ; b k = l m n o     ",
+"    p b q 3 4 r s t e u v w x y z A     ",
+"  B C D E F G H I J K q L b y / M |     ",
+"  K ) N O P Q j R S T q } 5 H u U V M   ",
+"  ' R E v 4 W X C H Y t Z ` k  ...+.:   ",
+"@.#.+.t D O +.} k ^ ^ S $.%.^ &.*.m =.-.",
+";.>.U ,.v k %.'.).!.&.~.} g {.].T 9 ^./.",
+"x 3 (.*.E _.(.:.4  .k N G <.5 ).x [.}.|.",
+"1.2.7 @.[.3.4.5.6.U / I 7.8.9.[.0.a.b.c.",
+"0.d.e.e.f.g.h.i.j.a.k.l.[.m.d.2.n.b.b.m.",
+"n.c.o.p.q.r.r.g.s.p.a.b.|.|.|.c.t.u.v.w.",
+"t.2.x.j.y.0.t.q.z.o.A.t.1.1.c.B.B.4.h.z.",
+"j.c.a.d.n.p.C.8.D.6.C.b.p.x.x.f.g.E.E.F."]
+
+
+def set_special_window_icon(mywindow,my_xpm):
+	try:
+		mywindow.set_icon(GDK.pixbuf_new_from_xpm_data(my_xpm))
+	except:
+		pass
+
+def set_basic_window_icon(mywindow):
+	try:
+		mywindow.set_icon(GDK.pixbuf_new_from_xpm_data(icon_icewmcp))
+	except:
+		pass
+
+
+
 # added 6.8.2003, mainly for developer testing, 
 # but may be of use to others: allows IceWMCP
 # programs to be 'forced' to run in a certain locale
@@ -122,7 +332,6 @@ TIPS=gtk.Tooltips()  # added 4/27/2003
 # "-cronyx-helvetica-medium-r-normal-*-*-140-*-*-p-*-koi8-r"
 
 FORCE_LOCALE=""    # example:  'ru'
-
 
 def getBaseDir() :
 	if sys.argv[0][0:sys.argv[0].rfind(os.sep)+1]=='': return "."+os.sep
@@ -146,8 +355,6 @@ def getForcedLocale(catalog):  # This fails for chinese zh_tw
 		except:
 			pass
 	return None
-	
-
 
 
 
@@ -414,6 +621,7 @@ def getImage(im_file,lab_err=DIALOG_TITLE) : # GdkImlib Image loading
 
 # added 4.2.2003 - common message dialogs with attractive icons, version 1.2
 import IceWMCP_Dialogs
+IceWMCP_Dialogs.icon_setter_method=set_special_window_icon
 def msg_info(wintitle,message):
 	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),2,1)
 
@@ -460,6 +668,7 @@ def checkSoftUpdate(*args):
 
         w=gtk.Window(gtk.WINDOW_TOPLEVEL)
         w.set_wmclass("icewmcontrolpanel","IceWMControlPanel")
+	set_basic_window_icon(w)
         w.realize()
         w.set_title(_("IceWM Control Panel"))
         w.set_position(gtk.WIN_POS_CENTER)
@@ -674,6 +883,7 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
                                  replace("[ICEWMCP-BREAK]","\n\n")+"\n"
 
     aboutwin=gtk.Window(gtk.WINDOW_TOPLEVEL)
+    set_basic_window_icon(aboutwin)
     aboutwin.set_wmclass("icewmcontrolpanel","IceWMControlPanel")
     aboutwin.realize()
     aboutwin.set_title(wintitle)
@@ -853,6 +1063,7 @@ def SET_SELECTED_FILE(file_name):
 def SELECT_A_FILE(file_sel_cb,title=FILE_SELECTOR_TITLE,wm_class="icewmcontrolpanel",wm_name="IceWMControlPanel",widget=None,ok_button_title=None,cancel_button_title=None):
 		global ICEWMCP_FILE_WIN
 		ICEWMCP_FILE_WIN = FileSelection(title)
+		set_basic_window_icon(ICEWMCP_FILE_WIN)
 		ICEWMCP_FILE_WIN.set_wmclass(wm_class,wm_name)
 		ICEWMCP_FILE_WIN.ok_button.connect('clicked', file_sel_cb)
 		value = ICEWMCP_LAST_FILE
@@ -878,12 +1089,6 @@ def SELECT_A_FILE(file_sel_cb,title=FILE_SELECTOR_TITLE,wm_class="icewmcontrolpa
 # end - common file selection functionality
 
 
-
-import IceWMCPRun    # THis should always be the last function defined in this module
-def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
-	IceWMCPRun.runwindow()
-
-
 # added 8.25.20003, common code for getting a process ID
 def get_pidof(someapp):
 	try:
@@ -895,9 +1100,12 @@ def get_pidof(someapp):
 	except:
 		return None
 
+import IceWMCPRun    # THis should always be the last function defined in this module
+def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
+	IceWMCPRun.runwindow()
+
 # Special fonts for special languages, 12.1.2003, Erica Andrews
 special_fonts_map= {
 	"ru":["Arial 10","Arial 9"],
 }
-
 

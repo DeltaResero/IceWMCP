@@ -9,7 +9,7 @@ install_type=1
 # uninstallation, and an 'uninstall' script or Start Menu link will automatically be created. The direction of the
 #  slashes no longer matters - PyInstallShield will auto-detect the right 'slash' for the operating system
 
-install_dir=/usr/share/GtkPCCard/
+install_dir=/usr/share/IcePref2-TD/
 #install_dir=C:/Program Files/PyBabelPhish/
 
 # Choose a place to put executables (Unix/Linux only)
@@ -19,10 +19,10 @@ bin_dir=/usr/X11R6/bin/
 icon_dir=/usr/share/icons/
 
 # The name of your program - will be showed to the users in PyInstallShield - do NOT include the version number in the name
-install_app_name=GtkPCCard
+install_app_name=IcePref2-ThemeDesigner
 
 # The version number of your application - put the version HERE, not in the name above
-install_app_version=1.4
+install_app_version=3.0pre-release
 
 # The XPM to show at the top of the setup program - best to put it in the same directory as PyInstallShield.py
 # However, it can be in a subdirectory, as shown below. This directory is relative to the location of
@@ -37,7 +37,7 @@ show_license=1
 # Enter the file name of the license, this should be a plain text file
 # If you you have show_license set to '1' but still see no license, make sure you have the path and filename of the
 # license file name correct
-license=GtkPCCard-LICENSE
+license=IcePref2-ThemeDesigner-LICENSE
 
 # a license in the 'doc' subdirectory of your distribution (on linux)...
 #license=doc/PyBabelPhish-LICENSE
@@ -62,7 +62,7 @@ license=GtkPCCard-LICENSE
 #  that appears in the Start Menu....on Linux/Unix, this is the name of the startup shell script to be placed in
 #  either /usr/X11R6/bin or /usr/bin....to do this: use   [script],[link name]  - see below
 
-exe=IceWMCP_GtkPCCard.py,GtkPCCard
+exe=icepref_td.py,IcePref2-TD
 
 
 
@@ -92,7 +92,7 @@ install_links=1
 #  to keep an extra copy of the icon in the installation directory
 
 
-icon=icewmcp-gtkpccard.png
+icon=icewmcp-icepref-td.png
 
 # Application files:  Here you specify ALL other supporting files for you application. All files will be either in the 'install_dir'
 #  or a sub-directory of 'install_dir'.  Installing to directories outside of 'install_dir' is not supported at this time. Do NOT
@@ -103,22 +103,33 @@ icon=icewmcp-gtkpccard.png
 
 
 
-file=GtkPCCard-LICENSE
+
+
+
 file=ICEWMCP_BugReport.py
 file=ICEWMCP_URLRead.py
+file=IcePref2-ThemeDesigner-LICENSE
 file=IceWMCPRun.py
 file=IceWMCP_Dialogs.py
-file=IceWMCP_GtkPCCard.py
-file=icewmcp-gtkpccard.png
+file=icepref2.png
+file=icepref_search.py
+file=icepref_td.py
+file=icewmcp-icepref-td.png
 file=icewmcp.png
 file=icewmcp_common.py
+file=icewmcp_dnd.py
 file=icewmcp_help.png
 file=icewmcp_short.png
 file=install-icon.xpm
-file=doc/GtkPCCard-Readme.txt
-file=help/IceWMCP_GtkPCCard.txt
-file=help/es/IceWMCP_GtkPCCard.txt
-file=help/ru/IceWMCP_GtkPCCard.txt
+file=pangoxlfd.py
+file=doc/IcePref2-ThemeDesigner-LICENSE
+file=doc/theme_preview.html
+file=help/icepref_td.txt
+file=help/es/icepref_td.txt
+file=help/ru/icepref_td.txt
+file=locale/es/LC_MESSAGES/icewmcp-icepref.mo
 file=locale/es/LC_MESSAGES/icewmcp.mo
+file=locale/ru/LC_MESSAGES/icewmcp-icepref.mo
 file=locale/ru/LC_MESSAGES/icewmcp.mo
+file=locale/zh_TW/LC_MESSAGES/icewmcp-icepref.mo
 file=locale/zh_TW/LC_MESSAGES/icewmcp.mo

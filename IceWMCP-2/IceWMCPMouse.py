@@ -126,6 +126,7 @@ class mousetab:
 	global WMCLASS
 	global WMNAME
 	swin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(swin)
 	swin.set_wmclass("icewmcp-mouse","icewmcp-Mouse")
 	swin.realize()
 	swin.set_title(_("IceWM CP - Mouse Settings"))
@@ -251,6 +252,7 @@ class mousewin:
 	self.version=this_software_version
 	cwin=Window()
 	cwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(cwin)
 	cwin.set_wmclass("icewmcp-mouse","icewmcp-Mouse")
 	cwin.realize()
 	cwin.set_title(_("IceWM CP - Mouse Settings")+" "+self.version)

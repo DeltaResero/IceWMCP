@@ -35,8 +35,19 @@
 # 	program.
 ##########################################################
 
-from string import *
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
 
+from string import *
 import re,commands,math,icepref_search
 import pangoxlfd
 
@@ -72,7 +83,7 @@ if NOSPLASH==0:
 # Constants in a Changing World
 #############################
 
-VERSION = "3.2"
+VERSION = "3.2pre-release"
 ICE_VERSION = "1.2.11"
 
 # these define the types of configuration widgets
@@ -1140,7 +1151,9 @@ class IceLabel(Label):
  
 class IceDialog(Window):
 	def __init__(self, titlebar, title):
-		Window.__init__(self, title=titlebar)
+		Window.__init__(self)
+		self.set_title(str(titlebar))
+		set_basic_window_icon(self)
 		self.set_modal(TRUE)
 		self.init_widgets(title)
 		self.init_buttons()
@@ -1152,7 +1165,7 @@ class IceDialog(Window):
 		self.add(vbox)
 		vbox.show()
 
-		label = Label(title,180)
+		label = IceLabel(title)
 		vbox.pack_start(label)
 		label.show()
 
@@ -1441,7 +1454,7 @@ class ImagePreviewer:
 			if not os.path.exists(self.current_image): raise TypeError
 			self.update_image(self.current_image)
 		except:
-			Dialog("IcePref2",_("A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."))	
+			IceDialog("IcePref2",_("A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."))	
 
 			# NOTE: We must leave the above message as using 'Dialog' instead of one of the common 
 			# dialogs, because we need a Dialog box that doesn't call 'mainloop' while running in a gtk 'timeout'.
@@ -1468,12 +1481,14 @@ class ImagePreviewer:
 			if not os.path.exists(self.current_image): return
 			if os.path.isdir(self.current_image): return
 			pixtemp=loadImage(self.current_image)
-			dims=pixtemp.get_size_request()
+			dims=[pixtemp.get_pixbuf().get_width(), pixtemp.get_pixbuf().get_height()]
 			aspect=float(dims[0])/float(dims[1])
 			sug_x=220
 			sug_y=int( math.floor(sug_x/aspect)  )
 			if self.no_scale==0:
-				myim_real=loadScaledImage(self.current_image, sug_x,sug_y)		
+				if (dims[0]>sug_x) or (dims[1]>sug_y):
+					myim_real=loadScaledImage(self.current_image, sug_x,sug_y)		
+				else: myim_real=pixtemp
 			else: myim_real=pixtemp
 			self.gl.put(myim_real,3,2)
 			self.gl.set_size_request(myim_real.get_size_request()[0]+15,myim_real.get_size_request()[1]+15)
@@ -1554,9 +1569,13 @@ class IceColor(ButtonEntry):
 		self.win.cancel_button.connect('clicked', self.cancel)
 		self.win.help_button.destroy()
 		if value != '':
-            		r = atoi(value[4:6], 16) << 8
-            		g = atoi(value[7:9], 16) << 8
-            		b = atoi(value[10:12], 16) << 8
+			r=g=b=0
+			try:
+            			r = atoi(value[4:6], 16) << 8
+            			g = atoi(value[7:9], 16) << 8
+            			b = atoi(value[10:12], 16) << 8
+			except:
+				pass
             		colour = self.win.get_colormap().alloc_color(r, g, b)
             		self.win.colorsel.set_current_color(colour)
 		self.win.set_modal(TRUE)
@@ -1609,6 +1628,7 @@ class IceColor(ButtonEntry):
 		self.hbox.show_all()
 
 	def setColor(self,*args):
+	  try:
         	if not self.drawwin: self.drawwin=self.drawing_area.window
        		if not self.gc: self.gc=self.drawwin.new_gc()
        		self.gc.foreground=self.drawwin.get_colormap().alloc_color(self.color_i16[0] << 8,
@@ -1616,6 +1636,8 @@ class IceColor(ButtonEntry):
                                                                    self.color_i16[2] << 8)
         	width, height = self.drawwin.get_size()
         	self.drawwin.draw_rectangle(self.gc,gtk.TRUE,0,0,width,height)
+	  except:
+		pass
         
 	def updateColorProperties(self, r, g, b): # new method,functionality separation, 5.16.2003
         	self.color_i16=[r,g,b]
@@ -1627,6 +1649,7 @@ class IceColor(ButtonEntry):
         	self.setColor()
         
 	def ok(self, data=None):
+	  try:
         	colour = self.win.colorsel.get_current_color()
         	r = colour.red   >> 8
         	g = colour.green >> 8
@@ -1634,6 +1657,8 @@ class IceColor(ButtonEntry):
         	self.win.hide()
         	self.win.destroy()
         	self.updateColorProperties(r,g,b)
+	  except:
+		pass
 
 # Font class is used (wonder of wonders) to select a font and returns an X
 # font descriptor, which coincidentally is just what icewm demands.  It is
@@ -1704,8 +1729,8 @@ class IceFont(ButtonEntry):
 			text_buffer_insert(self.sample, get_renderable_tab(self.sample,val,COL_BLACK,"iso8859-1"),to_utf8(SAMPLE_TEXT))
 
 		except:
-			print "Invalid: "+val
-			print "Value: "+value
+			#print "Invalid: "+val
+			#print "Value: "+value
 			text_buffer_insert(self.sample, get_renderable_tab(self.sample,"Sans 12",COL_BLACK,"iso8859-1"),to_utf8(ERROR_TEXT))
 
 	def select(self, data=None):
@@ -1902,6 +1927,7 @@ class ThemeSel(VBox):
 	    self.iprev=Image_prev  # added 1.27.2003
 	    self.set_value(value)
 	    self.init_widgets(title)
+	    self.set_value(value)
 	    self.show()
 		
 	def init_theme_list(self):
@@ -1931,16 +1957,32 @@ class ThemeSel(VBox):
 	    self.value = value[1 : len(value) - 1]
 	    if self.value == '':
 		self.value = self.theme_list[0].path
+	    selval=self.value
 	    if self.t_map.has_key(self.value):
 		previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
-		#print previm
-	   	if not self.iprev==None: self.iprev.update_image(previm)
+	   	if not self.iprev==None: 
+			self.iprev.update_image(previm)
+	    if self.value.rfind("themes/")>-1:
+	    	shortval=self.value[self.value.rfind("themes/")+len("themes/"):]
+	    	if self.t_map.has_key(shortval):
+			selval=shortval
+			previm=self.t_map[shortval][0:self.t_map[shortval].rfind(os.sep)+1]+"preview.jpg"
+	   		if not self.iprev==None: 
+				self.iprev.update_image(previm)
 	    if (self.a_map.has_key(self.value)) :	  
 		if not self.author_entry==None:
 			self.author_entry.set_value(self.a_map[self.value])
 	    if (self.d_map.has_key(self.value)) :	  
 		if not self.desc_entry==None:
 			self.desc_entry.set_value(self.d_map[self.value])
+	    # added 12.2.2003, Erica Andrews - highlight and scroll to the row of the current theme
+	    try:
+				k=self.t_map.keys()
+				k.sort()
+				self.CLIST.moveto(k.index(selval),0,0 ,0)
+				self.CLIST.select_row(k.index(selval),0)
+	    except:
+				pass
 			
 	def get_value(self):
 	    if not self.fvalue=='': value = '"' + self.fvalue + '"'
@@ -1963,7 +2005,7 @@ class ThemeSel(VBox):
 		clist.connect('select_row', self.clist_cb)
 		swin.add(clist)
 		clist.show()
-		
+		self.CLIST=clist		
 		clist.freeze()
 		row_count = 0
 		for item in self.theme_list:
@@ -2091,6 +2133,7 @@ class Application(Window):
 		global APP_WINDOW
 		APP_WINDOW=self
 		self.set_title('IcePref2')
+		set_basic_window_icon(self)
 		self.set_position(WIN_POS_CENTER)
 		self.set_wmclass("icepref","IcePref")
 		self.connect('destroy', mainquit)

@@ -20,23 +20,25 @@
 #  General Public License
 #############################
 
-import os,GTK,gtk,time
-from gtk import *
+import time
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 global DO_QUIT
 DO_QUIT=1
 
 class gtkpccard:
     def __init__(self) :
-	self.version="1.3"
+	self.version="1.4"
 	self.socket_count=0
 	gtkpccardwin=Window(WINDOW_TOPLEVEL)
 	gtkpccardwin.set_wmclass("gtkpccard","GtkPCCard")
-	self.tips=Tooltips()
+	set_basic_window_icon(gtkpccardwin)
+	self.tips=TIPS
 	gtkpccardwin.realize()
 	gtkpccardwin.set_title("GtkPCCard"+" v."+self.version)
 	gtkpccardwin.set_position(WIN_POS_CENTER)
@@ -50,10 +52,12 @@ class gtkpccard:
 
         ag=AccelGroup()
         itemf=ItemFactory(MenuBar, "<main>", ag)
+	self.ag=ag
+	self.itemf=itemf
         itemf.create_items([
             # path              key           callback    action#  type
   (_("/ _File"),  "<alt>F",  None,  0,"<Branch>"),
- 				[_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
+  (_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
   (_("/ _File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
   (_("/ _File/sep4"), None,  None,  49, "<Separator>"),
   (_("/ _File/_Quit"), "<control>Q", self.doQuit,10,""),
@@ -67,6 +71,7 @@ class gtkpccard:
         gtkpccardwin.add_accel_group(ag)
         mymenubar=itemf.get_widget("<main>")
         mymenubar.show()
+	self.menubar=mymenubar
 	mainvbox1.pack_start(mymenubar,0,0,0)
 	mainvbox1.pack_start(mainvbox,1,1,0)
 
@@ -78,7 +83,7 @@ class gtkpccard:
 	mainvbox.pack_start(self.mynotebook,1,1,2)
 	gtkpccardwin.add(mainvbox1)
 	self.gtkpccardwin=gtkpccardwin
-	gtkpccardwin.set_default_size(-2,440)
+	gtkpccardwin.set_default_size(-1,440)
 	gtkpccardwin.connect("destroy",self.doQuit)
 	gtkpccardwin.show_all()
 
@@ -108,14 +113,20 @@ class gtkpccard:
      return self.socket_count
 
     def addWidgets(self):
+	card_warn=0
     	if not self.getSocketCount():
 		msg_warn("GtkPCCard",_("No PCMCIA slots detected on this computer."))
 		self.socket_count=1
+		card_warn=1
 	icounter=0
 	while icounter<self.socket_count:
 		mi_tarjeta=miTarjeta()
 		mi_tarjeta.setSocketNum(icounter)
-		mi_tarjeta.loadFacts(icounter)
+		# Changed here, 12.3.2003, Don't attempt to load card facts if no cards are available
+		if card_warn==1:
+			mi_tarjeta.insertFact("No PCMCIA slots detected on this computer.")
+		else:
+			mi_tarjeta.loadFacts(icounter)
 		self.mynotebook.append_page(mi_tarjeta,Label(_("Slot  ")+str(icounter)))
 		icounter=icounter+1
 
@@ -132,8 +143,8 @@ class miTarjeta(VBox):
 		sc=ScrolledWindow()
 		self.infobox=TextView()
 		self.infobox.set_editable(0)
-		self.infobox.set_wrap_mode(1)
-		self.infobox.set_wrap_mode(1)
+		self.infobox.set_wrap_mode(WRAP_WORD)
+		self.infoboxbuf=self.infobox.get_buffer()
 		sc.add(self.infobox)
 		self.pack_start(sc,1,1,0)
 		buttbox=HBox(2,1)
@@ -160,17 +171,15 @@ class miTarjeta(VBox):
 		self.show_all()
 
   def clearText(self):
-	try:
-		self.infobox.delete_text(0,self.infobox.get_length())
-		self.infobox.delete_text(0,self.infobox.get_length()+1)
-	except:
-		pass
+	self.infoboxbuf.set_text("")
 
   def showMessage(self,mess):
     msg_info("GtkPCCard",mess)
 
   def insertFact(self,mess):
-    self.infobox.insert_defaults(str(mess)+"\n")
+    text_buffer_insert(self.infoboxbuf, 					  get_renderable_tab(self.infoboxbuf,HELP_FONT2,
+	COL_BLACK,"iso8859-1"), to_utf8(str(mess)+"\n")
+					 )
 
   def setSocketNum(self,num):
     self.socket_num=num
@@ -262,7 +271,6 @@ class miTarjeta(VBox):
       msg_err("GtkPCCard",_("An error occurred while resetting this card."))
 
 #### Main methods ####
-
 
 def run(doquit=1) :
 	global DO_QUIT

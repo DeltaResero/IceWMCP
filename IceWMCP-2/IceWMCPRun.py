@@ -39,6 +39,7 @@ def _(somestr):
 class runwindow:
   def __init__ (self) :
     runwindow = gtk.Window (GTK.WINDOW_TOPLEVEL)
+    set_basic_window_icon(runwindow)
     runwindow.set_wmclass("icewmcontrolpanel","IceWMControlPanel")
     self._root = runwindow
     tips=gtk.Tooltips()

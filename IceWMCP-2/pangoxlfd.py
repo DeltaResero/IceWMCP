@@ -95,6 +95,7 @@ def get_pango_font_style(some_val):
 	return "r"  #Normal
 
 def pango2XLFD(pango_str):
+    try:
 	mystr=pango_str
 	fontdesc=pango.FontDescription(mystr)
 	face=fontdesc.get_family()
@@ -106,8 +107,11 @@ def pango2XLFD(pango_str):
 	#now reconstruct an XLFD compatible string and hope for the best
 	fontval="-*-"+face+"-"+weight+"-"+fstyle+"-"+condense+"-*-*-"+fsize+"-*-*-p-*-"+str(ASSUME_CHARSET)
 	return fontval.lower().strip()
+    except:
+	return pango_str
 
 def XLFD2pango(xlfd_str):
+    try:
 	mystr=xlfd_str
 	# support legacy fonts like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*'
 	# This should convert '-adobe-courier-medium-r-*-*-*-140-*-*-'
@@ -130,5 +134,7 @@ def XLFD2pango(xlfd_str):
 			if not valls[5].lower()=="regular":  
 				condense=valls[5]+" "
 	fontval=face+", "+weight+fstyle+" "+condense+fsize
-	return fontval.lower().replace("  "," ").strip()
+	return fontval.lower().replace("*","").replace("  "," ").strip()
+    except:
+	return xlfd_str
 

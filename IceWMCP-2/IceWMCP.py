@@ -18,6 +18,18 @@
 # 
 #######################################
 
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
 #set translation support
 from icewmcp_common import *
 
@@ -37,6 +49,7 @@ class controlwin:
 	WMNAME="IceWMControlPanel"
 	self.version=this_software_version
 	controlwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(controlwin)
 	controlwin.set_wmclass(WMCLASS,WMNAME)
 	controlwin.realize()
 	controlwin.set_title(_("IceWM Control Panel"))
@@ -77,6 +90,7 @@ class controlwin:
         controlwin.add_accel_group(ag)
         mymenubar=itemf.get_widget("<main>")
         mymenubar.show()
+	self.mymenubar=mymenubar
 	mainvbox1.pack_start(mymenubar,0,0,0)
 	mainvbox1.pack_start(mainvbox,1,1,0)
 
@@ -166,6 +180,7 @@ class controlwin:
 	global WMCLASS
 	global WMNAME
 	confwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(confwin)
 	confwin.set_wmclass(WMCLASS,WMNAME)
 	confwin.realize()
 	confwin.set_title(_("IceWM Control Panel"))

@@ -22,7 +22,7 @@ icon_dir=/usr/share/icons/
 install_app_name=IcePref2
 
 # The version number of your application - put the version HERE, not in the name above
-install_app_version=3.2pre-test-release
+install_app_version=3.2pre-release
 
 # The XPM to show at the top of the setup program - best to put it in the same directory as PyInstallShield.py
 # However, it can be in a subdirectory, as shown below. This directory is relative to the location of
@@ -100,6 +100,8 @@ icon=icewmcp-icepref.png
 #  installation directory.   For example, if you have  a file called  'pixmaps/mytitle.xpm' in a subdirectory called 'pixmaps',
 #  mytitle.xpm will be copied to  install_dir/pixmaps/mytitle.xpm,  will be in install_dir. Remeber to list all of you, 'exe'
 #  values here.  Only list your 'icon' values here if you want to store an additional copy of the icon in install_dir
+
+
 
 
 

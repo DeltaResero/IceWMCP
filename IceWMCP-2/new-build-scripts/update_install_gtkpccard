@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-gtkpccard/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="GtkPCCard"
-VERSION="1.3"
+VERSION="1.4"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")
@@ -27,7 +27,7 @@ def updateinstall():
 	ff=os.popen("rm -f "+TO_DIR+"file_list.txt")
 	ff.readlines()
 	print "building tar-ball:  "+PACKAGE+"-"+VERSION+".tar.bz2  "
-	ff=os.popen("tar -cIf "+PACKAGE+"-"+VERSION+".tar.bz2  "+TO_DIR)
+	ff=os.popen("tar -cjf "+PACKAGE+"-"+VERSION+".tar.bz2  "+TO_DIR)
 	ff.readlines()
 	print "moving tar-ball "+PACKAGE+"-"+VERSION+".tar.bz2   to  "+DISTRO_DIR
 	ff=os.popen("mv -f "+PACKAGE+"-"+VERSION+".tar.bz2  "+DISTRO_DIR)
