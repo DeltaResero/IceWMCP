@@ -1,0 +1,22 @@
+[PHTITLE] IceWMCP EnergyStar
+
+[PHSECTION] Descripción  
+La herramienta IceWMCP - EnergyStar permite que usted configure fácilmente DPMS en su sistema. DPMS puede conservar la electricidad y la batería de su computadora si su sistem apoye EnergyStar. 
+[PHSECTION] Inhabilitar/Permitir EnergyStar
+Para permitir EnergyStar, sea seguro que el botón [PH-HI] Permitir Energy Star (DPMS) [/PH-HI] está [PH-HI]seleccionado[/PH-HI]. Para inhabilitar EnergyStar, sea seguro que este botón [PH-HI]NO está seleccionado[/PH-HI]. 
+[PHSECTION] Modo Standby (Esperar)
+Si usted quisiera que [PH-HI]la computadora entrara modo 'Standby'[/PH-HI] después de que no se haya utilizado por cierto período de tiempo, seleccione la cantidad de tiempo de la lista drop-down [PH-HI]'Standby después de ser inactivo por:'[/PH-HI].  Si usted NO quisiera que [PH-HI]la computadora entrara modo 'Standby'[/PH-HI], seleccione la opción  [PH-HI]'NUNCA'[/PH-HI].
+[PHSECTION] Modo Suspendido
+Si usted quisiera que [PH-HI]la computadora entrara modo 'Suspendido'[/PH-HI] después de que no se haya utilizado por cierto período de tiempo, seleccione la cantidad de tiempo de la lista drop-down [PH-HI]'Suspender la computadora después de:'[/PH-HI].  Si usted NO quisiera que [PH-HI]la computadora entrara modo 'Suspendido'[/PH-HI], seleccione la opción  [PH-HI]'NUNCA'[/PH-HI].
+[PHSECTION] Modo de Cerrar la Computadora Automáticamente
+Si usted quisiera que [PH-HI]la computadora fuera cerrada automáticamente[/PH-HI] después de que no se haya utilizado por cierto período de tiempo, seleccione la cantidad de tiempo de la lista drop-down [PH-HI]'Cerrar la estación de trabajo después de:'[/PH-HI].  Si usted NO quisiera que [PH-HI]la computadora fuera cerrada automáticamente[/PH-HI], seleccione la opción  [PH-HI]'NUNCA'[/PH-HI].
+[PHSECTION] Applying Changes
+Para aplicar cualquieres cambios que usted haya realizado, haga clic en el botón [PH-HI]'Aplicar'[/PH-HI] al  izquierdo más bajo de la ventana principal.
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 

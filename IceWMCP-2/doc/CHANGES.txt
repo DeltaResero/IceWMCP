@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.1pre - 12/19/2003 - 12/22/2003
+VERSION 3.1pre - 12/19/2003 - 12/23/2003
 
 The focus of this release bug fixes and internationalization improvements.
 
@@ -53,6 +53,7 @@ IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
 	- Version is now 3.1pre
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: complete
+	- A Help file in Spanish is now available (English version already exists)
 
 
 IceSoundManager        (icesound.py):
