@@ -1,9 +1,8 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: IceSoundManager 3.0\n"
 "POT-Creation-Date: 2003-02-21 11:35+0100\n"
-"PO-Revision-Date: 2003-12-06 10:48+0100\n"
+"PO-Revision-Date: 2004-03-10 13:26+0100\n"
 "Last-Translator: Yves Perraudin <yploglib@free.fr>\n"
 "Language-Team: FRENCH\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +59,7 @@ msgstr "Fenêtre cachée"
 
 #: icesound.py:95
 msgid "Window Lowered"
-msgstr ""
+msgstr "Fenêtre réduite"
 
 #: icesound.py:95
 msgid "Window Maximized"
@@ -161,7 +160,7 @@ msgstr "/Serveur _IceSound/sep2"
 
 #: icesound.py:187
 msgid "/_IceSound Server/_Stop Sound Server"
-msgstr "/Serveur _IceSound/_Stopper le serveur de son"
+msgstr "/Serveur _IceSound/_Arrêter le serveur de son"
 
 #: icesound.py:188
 msgid "/_IceSound Server/sep3"
@@ -201,7 +200,7 @@ msgstr "/_Aide/Aide du _serveur IceSound"
 
 #: icesound.py:197
 msgid "/_Help/_Sample Server Script"
-msgstr "/_Aide/_Exemples de script  pour le serveur"
+msgstr "/_Aide/_Exemples de scripts pour le serveur"
 
 #: icesound.py:198
 msgid "/_Help/_Bug Reports and Comments"
@@ -261,11 +260,11 @@ msgstr "Son sélectionné"
 
 #: icesound.py:296
 msgid "Stop"
-msgstr "Stopper"
+msgstr "Arrêter"
 
 #: icesound.py:298
 msgid "Stop playing this sound"
-msgstr "Stopper la lecture de ce son"
+msgstr "Arrêter la lecture de ce son"
 
 #: icesound.py:301
 msgid "Play"
@@ -301,11 +300,11 @@ msgstr "Editer ce son avec l'éditeur sonore choisi"
 
 #: icesound.py:336
 msgid "Suggested Sound Server Command Line:"
-msgstr "Ligne de commande suggérée pour le serveur sonore :"
+msgstr "Ligne de commande suggérée pour le serveur de sons :"
 
 #: icesound.py:351
 msgid "Help on the Sound Server Command Line"
-msgstr "Aide à propos de la ligne de commande pour le serveur sonore"
+msgstr "Aide à propos de la ligne de commande pour le serveur de sons"
 
 #: icesound.py:357
 msgid "(Re)start IceSound Server"
@@ -317,11 +316,11 @@ msgstr "(Re)démarrer le serveur IceSound pour permettre les événements sonore Ic
 
 #: icesound.py:362
 msgid "Stop IceSound Server"
-msgstr "Stopper le serveur IceSound"
+msgstr "Arrêter le serveur IceSound"
 
 #: icesound.py:364
 msgid "Stopping the IceSound server will disable IceWM sound events"
-msgstr ""
+msgstr "L'arrêt du serveur IceSound entraîne la désactivation des évènements sonores de IceCM"
 
 #: icesound.py:368
 msgid "Apply Sound Theme"
@@ -353,7 +352,7 @@ msgstr "Démarrer automatiquement le serveur IceSound lorsque le gestionnaire Ice
 #: icesound.py:497
 #: icesound.py:498
 msgid "Copy files instead of linking them"
-msgstr "Copier les fichiers au lieu de les lier"
+msgstr "Copier les fichiers au lieu de créer des liens symboliques"
 
 #: icesound.py:501
 #: icesound.py:503
@@ -413,60 +412,71 @@ msgid ""
 "STOP ICESOUND SERVER:\n"
 "Very simply, this feature stops your IceSound Server, disabling all future sound events in IceWM.  NOTE:  Ice Sound Manager does not shutdown your sound server automatically when you exit Ice Sound Manager (it is assumed you want to keep your sound events enabled).  If you quit Ice Sound Manager, your IceSound Server will continue running, until you either click 'Stop IceSound Server' or issue a 'kill' command to your IceSound Server process. However, on most systems, the IceSound Server will shutdown automatically if you quit/restart your X Server."
 msgstr ""
+"Cette partie du Gestionnaire IceSound Manager concerne le serveur IceSound lui-même.\n"
+"\n"
+"LIGNE DE COMMANDE SUGGÉRÉECe champ vous indique la commande générée automatiquement qui est utilisée pour démarrer le serveur IceSound. Elle vous est fournie afin que vous puissiez voir exactement ce qui est exécuté sur votre système et de quelle manière. Elle peut être utile pour résoudre des problèmes : vous pouvez copier et coller le contenu de champ dans un terminal ce qui vous aidera à trouver une solution. Ce champ contient exactement la même commande que celle qui est exécutée quand vous cliquez le bouton '(Re)Démarrer le serveur IceSound' et lors du démarrage automatique du serveur si cette option a été activée dans le Gestionnaire IceSound. Cette ligne de commande est uniquement fournie à titre d'information. Il peut également être utile de copier cette ligne dans des scripts, etc.\n"
+"\n"
+"(RE)DEMARRER LE SERVEUR ICESOUND\n"
+"Ceci va (re)démarrer votre serveur IceSound en éxécutant la version non modifiée de la ligne de commande qui apparaît dans 'LIGNE DE COMMANDE SUGGÉRÉE'. Vos évènements sonores ne fonctionneront pas tant que le serveur IceSound ne sera pas démarré. Il est judicieux de redémarrer le serveur dès que vous changez votre thème sonore, même si le Gestionnaire IceSound est supposé le faire pour vous.\n"
+"\n"
+"ARRÊTER LE SERVEUR ICESOUND\n"
+"Très logiquement, cette fonction arrête votre serveur IceSound, ce qui désactive tous les futurs évènements sonores. NB : le Gestionnaire IceSound n'éteint pas le serveur IceSound lorsque vous le fermez (on présume que vous souhaitez gardez les sons, une fois le gestionnaire quitté). Si vous quittez le Gestionnaire IceSound, le serveur de sons IceSound continuera donc de fonctionner, jusqu'à ce qu'il reçoive le signal 'TERM'. Ainsi, le serveur sera arrêté si vous cliquez sur 'Arrêter le Serveur IceSound' ; ou bien si vous utilisez la commande 'kill' ; ou bien (sur la plupart des système) si vous fermez votre session IceWM."
 
 #: icesound.py:656
 msgid "If CHECKED, your Ice Sound Server will be started in a terminal window.  The terminal application to be used is determined by the value of your $TERM environment variable (generally, xterm, gnome-terminal, kterm, or eterm).  You can determine the terminal application used to launch your Ice Sound Server, by setting the environment variable $TERM.  Type 'echo $TERM' to see what your default terminal application is.  NOTE: Your default terminal application in $TERM must accept the -e command line option and must understand it in a way similiar to xterm  for this option to work.  The only exception to this rule is gnome-terminal."
-msgstr ""
+msgstr "Si SÉLECTIONNÉ, votre serveur IceSound sera démarré dans un terminal.  Le terminal à utiliser est déterminé par la valeur de la variable d'environnement $TERM (usuellement : xtermn, gnoem-terminal, kterm, ou eterm).  Tapez 'echo $XTERM' pour voir quel terminal est utilisé actuellement, et 'export TERM=xterm' pour utiliser xterm à la place.  NB : Le terminal spécifié dans $XTERM doit supporté l'option '-e' et doit la comprendre de façon similaire à celle de xterm.  La seule exception à cette règle est gnome-terminal."
 
 #: icesound.py:659
 msgid "This option only applies to when ICE SOUND MANAGER is started, not when IceWM is started.  If CHECKED, Ice Sound Manager will start your Ice Sound Server (if it is not already running) whenever you start Ice Sound Manager.  Your Ice Sound Server will be started with the command shown in the field 'Suggested Sound Server Command Line'.  Leave this option unchecked if you do NOT want automatic starting of your Ice Sound Server when Ice Sound Manager is launched."
-msgstr ""
+msgstr "Cette option est appliquée quand le Gestionnaire IceSound est démarré, et non quand le serveur IceSound est démarré.  Si sélectionnée, le Gestionnaire IceSound démarre votre serveur IceSound dès que vous ouvrez le Gestionnaire IceSound (et si le serveur ne fonctionne pas déjà). Votre serveur IceSound sera démarré avec la commande indiquée dans le champ 'Ligne de commande suggérée'.  Laissez la case non cochée si vous ne voulez pas du démarrage automatique du server IceSound."
 
 #: icesound.py:662
 msgid "This option determines whether your .wav sounds will be LINKED or COPIED into your IceSound Server's Wav Storage Directory (as defined under the menu 'IceSound Server' -> 'Wav Directory'.  Leave this option UNCHECKED if you would rather your files be LINKED into your IceSound Server's Wav Storage Directory.  (This will save disk space, but your sound events will not play if you move/delete the original files.  Be sure to keep your sound themes current if you choose this method.)   CHECK this option if you would rather your .wav sounds be COPIED to your IceSound Server's Wav Storage Directory.  (This method uses more disk space, but ensures that your sound events will be unaffected should you move/delete the original .wav files.)  Which method you choose is up to you."
-msgstr ""
+msgstr "Cette option détermine si vos sons .wav seront liés symboliquement ou bien copiés dans le répertoire des sons Wav de IceWM (tel qu'il est défini dans 'Serveur IceSound' -> 'Répertoire Wav'). Laissez cette case non cochée si vous préférez que vos fichiers soient liés symboliquement (Les liens symboliques sont écrits dans le répertoire des sons Wav de IceWM. Ceci économise de l'espace disque. Mais les sons ne pourront plus être joués si vous déplacez, renommez ou supprimez les fichiers originaux.  Soyez sûr de garder vos thèmes sonores à jour si vous choisissez cette méthode). Cochez cette option si vous préférez que les fichiers soient copiés dans le répertoire des sons Wav de IceWM. (Cette méthode consomme davantage d'espace disque, mais assure que les évènements sonores ne sont pas affectés, même si vous renommez ou efffacez les fichiers originaux.) Les deux méthodes sont possibles, choisir l'une ou l'autre ne dépend que de vous."
 
 #: icesound.py:665
 msgid "If you want to be able to PLAY your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound player on your system.  Most people should be able to use the default command.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav player.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to play your sounds.  I personally suggest you use a command line that opens a fast, console-based .wav player (like wavplay) for the sake of speed. "
-msgstr ""
+msgstr "Si vous voulez pouvoir jouer des sons dans le gestionnaire IceSound, vous devez entrer la commande qui permet d'exécuter sur votre système un lecteur de sons wav.  La commande par défaut devrait fonctionner dans la plupart des cas.  Cependant, il est possible que vous vouliez ou deviez changer cette commande.  NB : Toute ligne de commande que vous entrez doit contenir la chaîne \"%f\"  (ceci signifie que le nom du fichier wav doit figurer dans la ligne de commande).  C'est à vous de savoir comment démarrer un lecteur de wav sur votre système.  Si vous omettez d'inclure \"%f\" dans votre ligne de commande, vous allez voir un message d'erreur apparaître dans la barre d'état à chaque fois que l'évènement sonore correspond a lieu.  Je vous recommande que vous utilisiez un lecteur de wav rapide et en mode console (tout comme wavplay) pour préserver la réactiviter de votre système. "
 
 #: icesound.py:668
 msgid "If you want to be able to EDIT your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound editor on your system.  Most people should be able to use the default command, IF they have the Sweep sound editor installed.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav editor.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to edit your sounds."
-msgstr ""
+msgstr "Si vous voulez pouvoir éditer vos sons directement depuis le Gestionnaire IceSound, vous devez entrer la ligne de commande qui permet de lancer  un éditeur de sns wav sur votre système.  La commande par défaut devrait fonctionner dans la plupart des cas, à condition de disposer de l'éditeur de son 'Sweep'. Cependant, il est possible que vous souhaitiez ou deviez changer cette comamnde.  NB : Toute ligne de commande que vous entrez doit contenir la chaîne \"%f\"  (ceci signifie que le nom du fichier wav doit figurer dans la ligne de commande).  C'est à vous de savoir comment démarrer un éditeur de wav sur votre système.  Si vous omettez d'inclure \"%f\" dans votre ligne de commande, vous allez voir un message d'erreur apparaître dans la barre d'état à chaque fois que l'évènement sonore correspond a lieu."
 
 #: icesound.py:671
 msgid "Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  The project is still in its formative stages.  Expect bugs. COURTEOUSLY report bugs in Ice Sound Manager to PhrozenSmoke@yahoo.com.  If you have any other comments or suggestions, those are welcomed as well.  Please do NOT report bugs in your IceSound Server, your IceWM environment, or ask me for help on getting your IceSound Server to run.  Also, please read 'Ice Sound Manager Help' under the 'Help' menu (or press F4) before reporting a 'bug'. You will find useful troubleshooting suggestions there. "
-msgstr ""
+msgstr "Le Gestionnaire IceSound n'est en aucun cas affilié officiellement avec IceWM, avec le serveur IceSound, ou avec leurs auteurs. Le Gestionnaire IceSound est une interface graphique du serveur IceSound. Le projet en est encore à ces étapes de formation. Attendez-vous à rencontrer des bogues. Reportez les bogues de Ice Sound Manager POLIMENT à PhrozenSmoke@yahoo.com. Si vous avez des commentaires ou des suggestions, vous êtes évidement les bienvenus. S'il vous plaît, Ne reportez PAS de bogues de votre serveur IceSound ou de votre environnement IceWM ; et NE me demandez PAS de l'aide pour faire fonctionner votre serveur IceSound. De plus, veuillez, s'il vous plaît, lire l'aide de Ice Sound Manager dans le menu 'Aide' (ou appuyez sur F4) avant de reporter un bogue. Vous y trouverez des suggestions pour résoudre les problèmes."
 
 #: icesound.py:676
 msgid "ICESOUND SERVER HELP"
-msgstr ""
+msgstr "AIDE DU SERVEUR ICESOUND"
 
 #: icesound.py:676
 msgid "The following is the output returned by running your IceSound Server executable"
-msgstr ""
+msgstr "Ce qui suit est retourné lors de l'exécution du Serveur IceSound"
 
 #: icesound.py:676
 msgid "You are running IceSound Server version"
-msgstr ""
+msgstr "Vous utilisez le Serveur IceSound version"
 
 #: icesound.py:676
 msgid "You may find it useful for trouble shooting problems with your sound server.  If you see nothing below or see an error message, try modifying your IceSound Server command line, by clicking 'IceSound Server' on the menu. Also, make sure you have the permissions necessary to run the server executable"
-msgstr ""
+msgstr "Ceci peut être utile pour résoudre d'éventuels incidents avec votre serveur de sons. Si rien ne se passe ou si un message d'erreur apparaît, essayez de modifier votre ligne de commande du serveur IceSound, en cliquant sur 'Serveur IceSound' dans le menu. De plus, assurez-vous que vous possèdez les permissions nécessaires pour lancer l'exécutable du serveur"
 
 #: icesound.py:676
 msgid "with the --help switch."
-msgstr ""
+msgstr "avec l'option '--help'."
 
 #: icesound.py:695
 msgid ""
 "SAMPLE SERVER SCRIPT\n"
 "Here is a simple bourne/bash shell script you can use to easily start and stop your IceSound server.  All you should have to do is copy and paste it to a file.  Save it as /usr/bin/icesoundsh.  Type 'chmod 755 /usr/bin/icesoundsh' at a terminal.  You can start the server by typing 'icesoundsh start', and shutdown the server by typing 'icesoundsh stop'.  Hopefully, this is useful.  Note: It's probably not a smart idea to save this script under /usr/bin/icesound, especially if the server executable itself is called 'icesound'.  Copy and paste the section below this line"
 msgstr ""
+"EXEMPLES DE SCRIPTS POUR LE SERVEUR\n"
+"Voici un exemple simple de script shell/bash que vous pouvez utiliser pour démarrer ou arrêter votre Serveur IceSound facilement.  Normalement, il vous suffit de copier/coller ce script dans un fichier ; sauver ce fichier dans /usr/bin/iccesounds.sh (vous devez être root) ; puis saisir dans un terminal la commande 'chmod 755 /usr/bin/iccesound.sh'.  Vous pourrez alors démarrer le serveur par la commande 'icesound.sh start' et l'arrêter par 'icesound.sh stop'.  J'espère que cet exemple est utile.  NB : Ce n'est probablement pas une bonne idée d'appeler le script '/usr/bin/icesound', en particulier si l'exécutable du serveur porte déjà ce nom.  Copiez et collez la section qui commence sous cette ligne "
 
 #: icesound.py:700
 msgid "ABOUT ICE SOUND MANAGER"
-msgstr ""
+msgstr "À PROPOS DU GESTIONNAIRE ICESOUND"
 
 #: icesound.py:700
 msgid ""
@@ -476,6 +486,11 @@ msgid ""
 "\n"
 "Visit   http://members.aol.com/ButchWhipAppeal/  for my other software projects."
 msgstr ""
+"Le Gestionnaire IceSound n'est en aucun cas officiellement affilié avec IceWM, avec le Serveur IceSound, ou avec leurs auteurs. Le Gestionnaire IceSound est une interface graphique du serveur IceSound. Le Gestionnaire IceSound est gratuit et libre (ndt : freeware et open source).  Par ailleurs, le Gestionnaire IceSound fait maintenant partie d'un projet plus vaste appelé 'Panneau de Contrôle de IceWM'. La version 0.2-beta-2 du Gestionnaire IceSound est distribuée sous les termes de la General Public License (GNU GPL). Voir le fichier 'IceSoundManager-LICENSE' pour plus de détails. Toute modification et distribution de ce programme est autorisée, à condition de laisser ces crédits inchangés.  Ce logiciel est distribué tel quel, sans aucune assurance ni garantie d'aucune sorte. Utilisez-le à vos risques et périls !\n"
+"\n"
+"Le Gestionnaire IceSound a été conçu pour faciliter la gestion des évènements sonores, des thèmes sonores, et du serveur de sons dans l'environnement IceWM.  Son but est également d'apporter des améliorations par rapport au noble mais primitif 'icesndcfg'. Le projet n'est pas encore mature, attendez-vous donc à rencontrer des bogues.  (Reportez les bogues à PhrozenSmoke@yahoo.com s'il vous plaît) \n"
+"\n"
+"Visitez  http://members.aol.com/ButchWhipAppeal/ pour voir les autres projets de l'auteur de ce logiciel."
 
 #: icesound.py:733
 #: icesound.py:989
@@ -486,35 +501,35 @@ msgstr "Explorer..."
 #: icesound.py:912
 #: icesound.py:1569
 msgid "OK"
-msgstr "OK"
+msgstr "Valider"
 
 #: icesound.py:743
 msgid "Close and save changes"
-msgstr ""
+msgstr "Enregistrer les modifications et fermer"
 
 #: icesound.py:774
 msgid "Select your IceSound Server executable.  This is generally either in the /usr/X11R6/bin/  or  /usr/bin/  directory and is generally named either 'icesound' or 'icesound-gnome'.  Be sure you have the correct permissions to execute the IceSound Server and that you have the permissions to run servers/daemons on your system."
-msgstr ""
+msgstr "Sélectionnez l'exécutable du Serveur IceSound.  En général, il se trouve dans le répertoire '/usr/X11R6/bin/' ou '/usr/bin/' et porte le nom 'icesound' or 'icesound-gnome'.  Assurez-vous d'avoir les privilèges suffisants pour exécuter le Serveur IceSound, et pour exécuter un service/démon sur votre système."
 
 #: icesound.py:785
 msgid "ERROR!  Select your IceSound Server executable file first."
-msgstr ""
+msgstr "ERREUR !  Choisissez d'abord l'exécutable du Serveur IceSound."
 
 #: icesound.py:791
 msgid "Select Your IceSound Server Executable"
-msgstr ""
+msgstr "Choisissez d'abord l'exécutable du Serveur IceSound."
 
 #: icesound.py:818
 msgid "Select the directory where your IceSound server looks  for its .wav files.  On most systems, this directory will be either    ~/.icesound/sounds/  or  /usr/X11R6/lib/X11/icewm/sounds/.  If you aren't sure, check the documentation for your IceSound server or do the trial-and-error method.   Generally, you should not go wrong with ~/.icesound/sounds/  under your home directory (example: /home/phrozen/.icewm/sounds/).  You may have to create this directory yourself if Ice Sound Manager can't. Be sure to select only directories where you have both 'read' and 'write' permissions. See the section entitled 'Wav Storage Directory' under 'Help' -> 'Ice Sound Manager Help' (or press F4)."
-msgstr ""
+msgstr "Choisissez le répertoire dans lequel le Serveur IceSound cherchera les fichiers .wav qu'il doit jouer. Sur la plupart des systèmes, il s'agit de  '~/.icesound/sounds/'  ou  '/usr/X11R6/lib/X11/icewm/sounds/'. Si vous n'êtes pas sûr, consultez la documentation du Serveur IceSound ; ou bien essayez par tâtonnement. En général, vous ne pouvez pas vous tromper avec '~/.icesound/sounds/' (ex : /home/phrozen/.icewm/sounds/). Vous devez créer ce répertoire vous-même si le Gestionnaire IceSound n'y parvient pas. Assurez vous de sélectionner un répertoire sur lequel vous avez les droits d'écriture et de lecture. Voir la section intitulée 'Répertoire de Stockage des Wav' dans le menu 'Aide' -> 'Aide du Gestionnaire IceSound' (ou pressez F4)."
 
 #: icesound.py:828
 msgid "ERROR!  Select the IceSound Server's Wav storage directory first."
-msgstr ""
+msgstr "ERREUR !  Choisissez d'abord le répertoire de stockage des Wav."
 
 #: icesound.py:835
 msgid "Updating Wav Storage Directory..."
-msgstr ""
+msgstr "Mise-à-jour du répertoire de stockage des wav..."
 
 #: icesound.py:859
 msgid " to "
@@ -522,22 +537,22 @@ msgstr " vers "
 
 #: icesound.py:859
 msgid "TRANSFER TO NEW DIRECTORY FAILED"
-msgstr ""
+msgstr "LE TRANSFER VERS LE NOUVEAU RÉPERTOIRE A ÉCHOUÉ"
 
 #: icesound.py:859
 #: icesound.py:1117
 #: icesound.py:1217
 #: icesound.py:1258
 msgid "Link/Copy"
-msgstr ""
+msgstr "Lier/Copier"
 
 #: icesound.py:866
 msgid "Done."
-msgstr ""
+msgstr "Terminé."
 
 #: icesound.py:873
 msgid "Wav Storage Directory Selection"
-msgstr ""
+msgstr "Sélection du répertoire de stockage des Wav"
 
 #: icesound.py:948
 msgid "Save Theme..."
@@ -577,7 +592,7 @@ msgstr "Sauvegarder le thème et fermer cette fenêtre"
 
 #: icesound.py:1043
 msgid "Save Sound Theme As..."
-msgstr ""
+msgstr "Enregistrer ce thème sonore sous..."
 
 #: icesound.py:1071
 msgid "ERROR!  Enter a theme NAME and theme FILE first."
@@ -599,139 +614,139 @@ msgstr "ERREUR lors de la sauvegarde du thème"
 #: icesound.py:1093
 #: icesound.py:1258
 msgid "to"
-msgstr ""
+msgstr "à"
 
 #: icesound.py:1106
 #: icesound.py:1235
 msgid "Remove"
-msgstr ""
+msgstr "Effacer"
 
 #: icesound.py:1152
 msgid "Could not save Theme File:  Unknown thread error."
-msgstr ""
+msgstr "Ne peut pas sauver le fichier de thème :  Erreur de thread inconnue."
 
 #: icesound.py:1235
 #: icesound.py:1258
 msgid "FAILED"
-msgstr ""
+msgstr "ECHEC"
 
 #: icesound.py:1248
 msgid "Select Wav File"
-msgstr ""
+msgstr "Sélectionner le fichier Wav"
 
 #: icesound.py:1258
 msgid "in"
-msgstr ""
+msgstr "dans"
 
 #: icesound.py:1291
 msgid "Playing sound"
-msgstr ""
+msgstr "Lecture du son en cours"
 
 #: icesound.py:1293
 msgid "ERROR: No Wav player configured.  Click 'Options -> Preferences' on the menu."
-msgstr ""
+msgstr "ERREUR : Aucun lecteur de Wav n'est configuré. Définissez-en un : menu 'Options' > 'Préférences'."
 
 #: icesound.py:1314
 msgid "ERROR: No Wav editor configured.  Click 'Options -> Preferences' on the menu."
-msgstr ""
+msgstr "ERREUR : Aucun éditeur de Wav n'est configuré.  Définissez-en un : menu 'Options' > 'Préférences'."
 
 #: icesound.py:1320
 msgid "error(s) occurred setting your sound events for the IceSound server.  The errors were as follows"
-msgstr ""
+msgstr "erreur(s) ont eu lieu lors de la configuration des évènements sonores du Serveur IeSound. Voici la liste des erreurs :"
 
 #: icesound.py:1323
 msgid "Please check that the files you are linking/copying exist, that you have the proper read/write permissions for this directory and these files, AND that you have correctly configured your Wav Storage Directory in the menu under 'IceSound Server'. Also, make sure you haven't run out of disk space."
-msgstr ""
+msgstr "Veuillez vérifier que le fichier que vous tenter de lier/copier existe, que vous avez les droits d'écriture/lecture suffisants sur ces fichiers et répertoires, ET que vous avez correctement configuré le Répertoire de stockage des Wav dans le menu, sous 'Serveur IceSound'. Enfin, vérifez qu'il reste de l'espace disponible sur le disque."
 
 #: icesound.py:1323
 msgid "These types of errors generally mean that Ice Sound Manager experienced trouble linking, copying, or removing Wav files from your selected Wav Storage Directory"
-msgstr ""
+msgstr "Ce type d'erreur signifie en général que le gestionnaire IceSound a rencontré des problèmes en liant, en copiant, ou en effaçant les fichiers Wav du répertoire de stockage des Wav."
 
 #: icesound.py:1378
 msgid "Loading theme"
-msgstr ""
+msgstr "Chargement du thème"
 
 #: icesound.py:1394
 msgid "successfully loaded."
-msgstr ""
+msgstr "chargé avec succès."
 
 #: icesound.py:1399
 msgid "ERROR loading theme from file"
-msgstr ""
+msgstr "ERREUR pendant le chargement du thème depuis le fichier"
 
 #: icesound.py:1399
 msgid "Unknown file type."
-msgstr ""
+msgstr "Type de fichier inconnu."
 
 #: icesound.py:1435
 msgid "Select Ice Sound Manager Theme File"
-msgstr ""
+msgstr "Sélectionner un fichier de thème du Gestionnaire IceSound"
 
 #: icesound.py:1473
 msgid "Ice Sound Manager: Audio Interface"
-msgstr ""
+msgstr "Gestionnaire IceSound : interface audio"
 
 #: icesound.py:1488
 msgid "Select to use the OSS audio interface"
-msgstr ""
+msgstr "Sélectionner pour utiliser l'interface audio OSS"
 
 #: icesound.py:1492
 msgid "Select to use the ESD audio interface"
-msgstr ""
+msgstr "Sélectionner pour utiliser l'interface audio ESD"
 
 #: icesound.py:1497
 msgid "Select to use the YIFF audio interface"
-msgstr ""
+msgstr "Sélectionner pour utiliser l'interface audio YIFF"
 
 #: icesound.py:1501
 msgid "Device"
-msgstr ""
+msgstr "Périphérique"
 
 #: icesound.py:1505
 #: icesound.py:1509
 msgid "Host"
-msgstr ""
+msgstr "Hôte"
 
 #: icesound.py:1514
 msgid "Enter the Digital Signal Processing  DSP  to use"
-msgstr ""
+msgstr "Entrer le processeur de traitement du signal (DSP) à utiliser"
 
 #: icesound.py:1518
 msgid "Enter the host of the ESD server"
-msgstr ""
+msgstr "Entrer l'hôte du serveur ESD"
 
 #: icesound.py:1522
 msgid "Enter the host of the YIFF server"
-msgstr ""
+msgstr "Enter l'hôte du serveur YIFF"
 
 #: icesound.py:1525
 #: icesound.py:1529
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: icesound.py:1534
 msgid "Enter the port number of the ESD server"
-msgstr ""
+msgstr "Enter le numéro de port du serveur ESD"
 
 #: icesound.py:1538
 msgid "Local Interface"
-msgstr ""
+msgstr "Interface locale"
 
 #: icesound.py:1539
 msgid "If checked  the local (non-TCP) ESD server will be used. The 'Host' and 'Port' will be ignored, since it is not needed if this option is checked."
-msgstr ""
+msgstr "Si coché, l'option locale (non-CTP) du serveur ESD sera utilisée. Les champs 'Hôte' et 'Port' seront ignorés, puisque c'est inutile dans ce cas."
 
 #: icesound.py:1544
 msgid "Enter the port number of the YIFF server"
-msgstr ""
+msgstr "Entrer le numéro de port du serveur YIFF"
 
 #: icesound.py:1547
 msgid "Auto Audio Mode"
-msgstr ""
+msgstr "Mode audi automatique"
 
 #: icesound.py:1548
 msgid "If checked  the YIFF server will attempt to automatically adjust to the correct audio mode"
-msgstr ""
+msgstr "Si coché, le serveur YIFF essayera d'ajuster automatiquement le mode audio"
 
 #: icesound.py:1551
 msgid "Help"
@@ -739,19 +754,19 @@ msgstr "Aide"
 
 #: icesound.py:1553
 msgid "Click for help on the audio interface options"
-msgstr ""
+msgstr "Cliquer pour obtenir de l'aide sur les options de l'interface audio"
 
 #: icesound.py:1596
 msgid "ERROR!   The port number must be an INTEGER!"
-msgstr ""
+msgstr "ERREUR !  Le numéro de port doit être un nombre entier !"
 
 #: icesound.py:1629
 msgid "Audio interface options successfully saved."
-msgstr ""
+msgstr "Les options de l'interface audio ont été correctement enregistrées."
 
 #: icesound.py:1631
 msgid "ERROR:  While saving audio interface preferences to"
-msgstr ""
+msgstr "ERREUR pendant l'enregistrement des préférences de l'interface audio dans"
 
 #: icesound.py:1653
 msgid ""
@@ -765,14 +780,24 @@ msgid ""
 "\n"
 "YIFF:  If you know that you need to use YIFF, please make sure that your copy of the IceSound Server has been compiled with YIFF support (not all copies are YIFF-enabled.).  To use the YIFF interface, click 'YIFF', then enter the host and port of your YIFF sound server.  You may also check 'Auto Audio Mode' to enable your IceSound Server to automatically choose the best sampling rate and playback mode for your sounds. "
 msgstr ""
+"C'est ici que vous pouvez configurer le périphérique sonore que le Serveur IceSound doit utiliser pour jouer les évènements sonrores. La plupart des gens utilisent ESD ou bien OSS. C'est à vous de savoir quel type de périphérique votre système utilise.\n"
+"\n"
+"OSS :\n"
+"Pour OSS, cliquez sur 'OSS' et tapez la localisation 'dev' de votre périphérique de traitement du signal (càd /dev/dsp)\n"
+"\n"
+"ESD :\n"
+"Pour ESD, cliquez sur 'ESD' et entrez l'hôte et le port du serveur ESD que vous voulez utiliser. Dans la pluaprt des cas, c'est 'localhost' et '16001'.  Vous pouvez obtenir le port sur lequel le serveur ESD fonctionne par la commande 'netstat -lp | grep -E \\(esp\\|esound\\)'. Si cette commande ne renvoie rien, c'est probablement parce qu'aucun serveur ESD ne fonctionne sur votre système. Vous devez faire fonctionner un serveur ESD pour pouvoir utiliser l'interface ESD.\n"
+"\n"
+"YIFF :\n"
+"Si vous savez que vous devez utiliser YIFF, assurez-vous que votre Serveur IceSound a été compilé avec le support YIFF (ce n'est pas toujours le cas).  Pour utiliser l'interface YIFF, cliquez sur 'YIFF', puis entrez l'hôte et le port de serveur YIFF.  Vous pouvez aussi cocher la case 'Mode audio automatique' pour laisser le Serveur IceSound choisir la meilleure fréquence d'échantillonage et le mode de lecture pour vos sons."
 
 #: icesound.py:1716
 msgid "Ice Sound Manager Setup"
-msgstr ""
+msgstr "Configuration du Gestionnaire IceSound"
 
 #: icesound.py:1734
 msgid "SETUP"
-msgstr ""
+msgstr "CONFIGURATION"
 
 #: icesound.py:1747
 msgid "Next"
@@ -780,7 +805,7 @@ msgstr "Suivant"
 
 #: icesound.py:1749
 msgid "Proceed with Setup"
-msgstr ""
+msgstr "Continuer la configuration"
 
 #: icesound.py:1753
 msgid ""
@@ -790,6 +815,11 @@ msgid ""
 "\n"
 "STEP ONE:  Select the executable for your IceSound Server.   Click the 'Next' button to proceed."
 msgstr ""
+"BIENVENUE DANS L'ASSISTANT DE CONFIGURATION DU GESTINNAIRE ICESOUND\n"
+"\n"
+"Cet assistant va vous aider dans la configuration du serveur IceSound (le serveur de sons de IceWM) et va vous aider en 4 étapes simples à définir vos préférences. Vous pouvez démarrer cet assistant à n'importe quel moment en choisissant dans le menu 'Options', puis 'Configuration'.  NB : cet assisant apparaît également si le Gestionnaire IceSound n'a pas réussi à lire le fichier de configuration présent dans votre répertoire personnel.\n"
+"\n"
+"PREMIÈRE ÉTAPE : Choisissez le programme correspondant au Serveur IceSound. Cliquez sur 'Suivant' pour continuer."
 
 #: icesound.py:1787
 msgid ""
@@ -797,6 +827,9 @@ msgid ""
 "\n"
 "Click the 'Next' button to proceed."
 msgstr ""
+"DEUXIÈME ÉTAPE :  Configuration du périphérique audio que le Serveur IceSound doit utiliser pour jouer les évènements sonores.  La plupart des gens peuvent certainement utiliser l'interface ESD localement, sur le port 16001.\n"
+"\n"
+"Cliquez sur 'Suivant' pour continuer."
 
 #: icesound.py:1792
 msgid ""
@@ -804,63 +837,66 @@ msgid ""
 "\n"
 "Click the 'Next' button to proceed."
 msgstr ""
+"TROISIÈME ÉTAPE : Choisissez le répertoire où votre Serveur IceSound doit chercher les fichiers .wav à jouer pour les évènements sonores.  Normalement, ce répertoire est soit '~/.icewm/sounds/', soit '/usr/X11R6/lib/X11/icewm/sounds/', mais vous devriez vérifier dans la documentation de votre Serveur IceSound. Si vous n'êtes pas sûr, '/home/nomutilisateur/.icewm/sounds' est probablement correct. Ceci peut prendre du temps : veuillez patienter.\n"
+"\n"
+"Cliquez sur 'Suivant' pour continuer."
 
 #: icesound.py:1797
 msgid "Click the 'Next' button to proceed."
-msgstr ""
+msgstr "Cliquez sur 'Suivant' pour continuer."
 
 #: icesound.py:1797
 msgid "STEP FOUR:  This is the LAST step.  You can now configure your personal preferences for Ice Sound Manager"
-msgstr ""
+msgstr "QUATRIÈME ÉTAPE:  Dernière étape. Vous pouvez maintenant configurer vos préférences pour le Gestionnaire IceSound."
 
 #: icesound.py:1802
 msgid "Setup for Ice Sound Manager is now COMPLETE.  Click the 'Next' button to exit setup.  Enjoy!"
-msgstr ""
+msgstr "L'assitant du Gestionnaire IceSound a maintenant terminé. Cliquez sur 'Suivant' pour terminer. Profitez-en !"
 
 #: icesound.py:1842
 msgid "Preferences successfully saved."
-msgstr ""
+msgstr "Vos préférences ont été enregistrées."
 
 #: icesound.py:1844
 msgid "ERROR:  While saving preferences to"
-msgstr ""
+msgstr "ERREUR lors de l'enregistrement des préférences dans"
 
 #: icesound.py:1917
 msgid "ERROR: No IceSound SERVER EXECUTABLE selected!  Click 'IceSound Server' on the menu."
-msgstr ""
+msgstr "ERREUR : Aucun EXÉCUTABLE DU SERVEUR n'est sélectionné ! Cliquez sur 'Serveur IceSound' dans le menu."
 
 #: icesound.py:1920
 msgid "ERROR: No IceSound server WAV DIRECTORY selected!  Click 'IceSound Server' on the menu."
-msgstr ""
+msgstr "ERREUR : Aucun RÉPERTOIRE DE WAV n'est sélectionné ! Cliquez sur 'Serveur IceSound' dans le menu."
 
 #: icesound.py:1923
 msgid "ERROR: Your IceSound server could not be (re)started because it could not be STOPPED!"
-msgstr ""
+msgstr "ERREUR : Votre serveur IceSound n'a pas pu être (re)démarré parce qu'il n'a pas pu être ARRÊTÉ !"
 
 #: icesound.py:1935
 msgid "successfully (RE)STARTED."
-msgstr ""
+msgstr "(RE)DÉMARRÉ avec succès"
 
 #: icesound.py:1935
 #: icesound.py:1966
 msgid "IceSound Server (version"
-msgstr ""
+msgstr "Serveur IceSound (version"
 
 #: icesound.py:1937
 msgid "ERROR!  IceSound server could NOT be (re)started!  Check 'Options' and 'IceSound Server' on the menu."
-msgstr ""
+msgstr "ERREUR : Le Serveur IceSound n'a pas pu être (re)démarré !  Vérifiez 'Options' et 'Serveur IceSound' dans le menu."
 
 #: icesound.py:1966
 msgid "successfully STOPPED.  Future sound events disabled until server re-start."
-msgstr ""
+msgstr "ARRÊTÉ avec succès.  Il n'y aura plus d'évènements sonores tant que le serveur ne sera pas redémarré."
 
 #: icesound.py:1991
 msgid "unknown"
-msgstr ""
+msgstr "inconnu"
 
 #: icesound.py:2010
 msgid "SPANISH HELP IS AVAILABLE IN THE 'icesound-es-help.html'  FILE."
-msgstr ""
+msgstr "L'aide en français n'est pas disponible pour l'instant."
 
 # Software update checker
 msgid "Check for newer versions of this program..."

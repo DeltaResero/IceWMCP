@@ -1,9 +1,8 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: IceMe - IceWMCP Edition 3.0\n"
 "POT-Creation-Date: 2003-02-22 11:35+0100\n"
-"PO-Revision-Date: 2003-09-28 16:00+0100\n"
+"PO-Revision-Date: 2004-03-10 10:45+0100\n"
 "Last-Translator: Yves Perraudin <yploglib@free.fr>\n"
 "Language-Team: FRENCH\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +19,7 @@ msgstr "Commande :"
 
 #: IceMe.py:103
 msgid "Icon:"
-msgstr "Icone :"
+msgstr "Icône :"
 
 #: IceMe.py:128
 msgid "Start as a new window manager"
@@ -36,11 +35,11 @@ msgstr "Entrée du menu"
 
 #: IceMe.py:184
 msgid "Click here to select an executable via a file selection box."
-msgstr "Cliquer ici pour sélectionner un exécutable via une boîte de sélection d'un fichier."
+msgstr "Cliquez ici pour sélectionner un exécutable via une boîte de sélection d'un fichier."
 
 #: IceMe.py:186
 msgid "Click here to select another icon"
-msgstr "Cliquer ici pour sélectionner un autre icone"
+msgstr "Cliquez ici pour sélectionner une autre icône"
 
 #: IceMe.py:188
 msgid "If selected, this entry will cause IceWM to quit and start the command as new window manager."
@@ -263,7 +262,7 @@ msgid ""
 "This is a Special Edition of IceMe for IceWM Control Panel,\n"
 "with modifications and optimizations by"
 msgstr ""
-"Il s'agit d'une édition spécial de IceMe pour le Panneau de contrôle de IceWM,\n"
+"Il s'agit d'une édition spéciale de IceMe pour le Panneau de contrôle de IceWM,\n"
 "comprenant des modifications et des optimisations de"
 
 #: IceMe.py:725
@@ -297,7 +296,7 @@ msgstr "Presse-papier"
 #: IconSelectionDialog.py:55
 #: IconSelectionDialog.py:234
 msgid "Please select an icon."
-msgstr "Veuillez sélectionner un icone."
+msgstr "Veuillez sélectionner une icône."
 
 #: IconSelectionDialog.py:74
 msgid "Columns:"
@@ -339,17 +338,17 @@ msgid "Menu Preview"
 msgstr "Aperçu du menu"
 
 msgid "In the future, you should close the icon window with the 'Cancel' button to avoid having to reload the icons."
-msgstr "A l'avenir, vous devrez fermer la fenêtre des icones en utilisant le bouton 'Annuler' pour éviter d'avoir à recharger les icones."
+msgstr "A l'avenir, vous devrez fermer la fenêtre des icônes en utilisant le bouton 'Annuler' pour éviter d'avoir à recharger les icônes."
 
 msgid "Loading menus and icons...please wait."
-msgstr "Chargement des menus et des icones... veuillez patienter."
+msgstr "Chargement des menus et des icônes... veuillez patienter."
 
 msgid "Open IceWM Menu File"
 msgstr "Ouvrir le fichier du menu de IceWM"
 
 msgid "Create a new Gnome 1 menu"
-msgstr ""
+msgstr "Créer un nouveau menu Gnome 1"
 
 msgid "Create a new Gnome 2 menu"
-msgstr ""
+msgstr "Créer un nouveau menu Gnome 2"
 
