@@ -15,13 +15,26 @@
 #  General Public License
 #############################
 
-import os,GTK,gtk,GdkImlib,sys,string
-from gtk import *
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import string
 import IceWMCPGtkIconSelection as icons_dlg
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 from icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
 
@@ -35,6 +48,7 @@ class wallwin:
 	WMNAME="IceWMCPWinOptions"
 	wallwin=Window(WINDOW_TOPLEVEL)
 	wallwin.set_wmclass(WMCLASS,WMNAME)
+	set_basic_window_icon(wallwin)
 	wallwin.realize()
 	wallwin.set_title("IceWM CP - "+_("Window Options")+" "+self.version)
 	wallwin.set_position(WIN_POS_CENTER)
@@ -58,18 +72,18 @@ class wallwin:
 	self.layers_list=[self.LAYER_NORMAL,self.LAYER_ABOVED,self.LAYER_BELOW,self.LAYER_DESKTOP,self.LAYER_DOCK,self.LAYER_ONTOP,self.LAYER_MENU]
 
 	menu_items = [
-				[_('/_File'), None, None, 0, '<Branch>'],
-				[_('/File/_Open...'), '<control>O', self.openKey, 0, ''],
-				[_('/File/_Save'), '<control>S', self.doSave, 0, ''],
-				[_('/File/sep1'), None, None, 1, '<Separator>'],
-				[_('/File/_Apply Changes Now...'), "<control>A", self.restart_ice, 0, ''],
-				[_('/File/sep2'), None, None, 2, '<Separator>'],
- 				[_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
+				(_('/_File'), None, None, 0, '<Branch>'),
+				(_('/File/_Open...'), '<control>O', self.openKey, 0, ''),
+				(_('/File/_Save'), '<control>S', self.doSave, 0, ''),
+				(_('/File/sep1'), None, None, 1, '<Separator>'),
+				(_('/File/_Apply Changes Now...'), "<control>A", self.restart_ice, 0, ''),
+				(_('/File/sep2'), None, None, 2, '<Separator>'),
+ 				(_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
   				(_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
-				[_('/File/sep2'), None, None, 2, '<Separator>'],
-				[_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''],
-				[_('/_Help'), None, None, 0, '<LastBranch>'],
-				[_('/Help/_About...'), "F2", self.do_about, 0, ''],
+				(_('/File/sep2'), None, None, 2, '<Separator>'),
+				(_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''),
+				(_('/_Help'), None, None, 0, '<LastBranch>'),
+				(_('/Help/_About...'), "F2", self.do_about, 0, ''),
   (_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5004, ""),
   (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
   (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5004, ""),
@@ -77,17 +91,17 @@ class wallwin:
 
 	ag = AccelGroup()
 	itemf = ItemFactory(MenuBar, '<main>', ag)
+	self.ag=ag
+	self.itemf=itemf
 	wallwin.add_accel_group(ag)
 	itemf.create_items(menu_items)
 	self.menubar = itemf.get_widget('<main>')
 
 	# added 6.21.2003 - "run as root" menu selector
 	self.leftmenu=self.menubar.get_children()[0].get_submenu()
-	self.run_root_button=CheckButton(" "+RUN_AS_ROOT)
-	self.run_root_menu=MenuItem()
-	self.run_root_menu.add(self.run_root_button)
-	self.leftmenu.prepend(self.run_root_menu)
-	self.run_root_button.connect("clicked",self.run_as_root)
+	self.run_root_button=CheckMenuItem(" "+RUN_AS_ROOT)
+	self.leftmenu.prepend(self.run_root_button)
+	self.run_root_button.connect("toggled",self.run_as_root)
 
 	self.preffile=""
 	try:
@@ -108,7 +122,7 @@ class wallwin:
 	self.winlist=CList(2,[' '+'wm_class',' '+'wm_name'])
 	self.sc=sc
 	sc.add(self.winlist)
-	sc.set_size_request(300,-2)
+	sc.set_size_request(300,-1)
 	self.winlist.set_column_width(0,120)
 
 	vb=VBox(0,0)
@@ -252,6 +266,7 @@ class wallwin:
 	self.loadUp()
 	self.winlist.connect("select_row",self.clist_cb)
 	self.winlist.connect("unselect_row",self.clist_unselect)
+	self.wallwin=wallwin
 	wallwin.show_all()
 
     def run_as_root(self,*args):
@@ -259,13 +274,20 @@ class wallwin:
 	if self.run_root_button.get_active():
 		self.preffile=getIceWMConfigPath()+"winoptions"
 		self.wallwin.set_title("IceWM CP - "+_("Window Options")+" "+self.version+"   [ROOT]")
-		self.status.set_text("[ROOT]    "+str(self.preffile))
+		status_stuff= "[ROOT]    "+str(self.preffile)
 	else:
 		self.preffile=getIceWMPrivConfigPath()+"winoptions"
 		self.wallwin.set_title("IceWM CP - "+_("Window Options")+" "+self.version)
-		self.status.set_text(str(self.preffile))
+		status_stuff= str(self.preffile)
 	self.menubar.deactivate()
-
+	self.loadUp()
+	if len(status_stuff)>55: status_stuff=status_stuff[:54]+"..."
+	self.status.set_text(status_stuff)
+	# clear the picture by requesting non-existent image
+	self.update_image("diifififickdiiridhdhdhf384hgtk203930dke")
+	self.iconentry.set_text("")
+	self.select_first_row()
+	self.wallwin.show_all()
 
 
     def loadUp(self,*args) :
@@ -462,12 +484,7 @@ class wallwin:
 		try:
 			if str(image_file).find(os.sep)==-1:
 				image_file=getIceWMConfigPath()+"icons"+os.sep+str(image_file).strip()+"_32x32.xpm"
-			myim=GdkImlib.Image(str(image_file).strip())
-			myim.changed_image() # disabled cached regurgitation
-			myim.render()
-			myim_real=myim.clone_scaled_image(28,28)
-			myim_real.render()
-			pixreal=myim_real.make_pixmap()
+			pixreal=loadScaledImage(str(image_file).strip() ,28,28)
 			pixreal.show()
 			self.prevlay.put(pixreal,0,0)
 			self.last_icon=str(image_file).strip()
@@ -480,6 +497,7 @@ class wallwin:
     def show_addkey(self,*args):
 	w=Window(WINDOW_TOPLEVEL)
 	w.set_wmclass(WMCLASS,WMNAME)
+	set_basic_window_icon(w)
     	w.set_data("ignore_return",1)  # don't close the window on 'Return' key press, just 'Esc' , 4/27/2003
     	w.connect("key-press-event", keyPressClose)
 	w.realize()
@@ -564,7 +582,7 @@ class wallwin:
 			try:
 				k=self.window_options.keys()
 				k.sort()
-				self.winlist.moveto(k.index(wm),0)
+				self.winlist.moveto(k.index(wm),0,0,0)
 				self.winlist.select_row(k.index(wm),0)
 			except:
 				pass
@@ -577,8 +595,8 @@ class wallwin:
 		try:
 			k=self.window_options.keys()
 			k.sort()
-			self.winlist.moveto(k.index(wm),0)
 			self.winlist.select_row(k.index(wm),0)
+			self.winlist.moveto(k.index(wm),0,0,0)
 		except:
 			pass
 		
@@ -618,7 +636,7 @@ class wallwin:
 			self.current_wmclass=None
 			self.setStatus(_("Modified."))
 			self.winlist.select_row(myrow,0)
-			self.winlist.moveto(myrow,0)
+			self.winlist.moveto(myrow,0,0,0)
 	except:
 		pass
 
@@ -630,6 +648,15 @@ class wallwin:
 			if value != '""':
 				SET_SELECTED_FILE(value)
 		SELECT_A_FILE(self.fileok)
+
+    def select_first_row(self,*args):
+			try:
+				if len(self.window_options.keys())>0:
+					self.winlist.moveto(0,0,0,0)
+					self.winlist.select_row(0,0)
+					self.current_row=0
+			except:
+				pass
 		
     def fileok(self, *args):
 		# changed 6.20.2003 -use new common file selection functions in icewmcp_common
@@ -637,6 +664,11 @@ class wallwin:
 		if os.path.exists(dirvalue):
 				self.preffile=dirvalue
 				self.loadUp()
+				# clear the picture by requesting non-existent image
+				self.update_image("diifififickdiiridhdhdhf384hgtk203930dke")
+				self.iconentry.set_text("")
+				self.wallwin.set_title("IceWM CP - "+_("Window Options")+" "+self.version)
+				self.select_first_row()
 				self.setStatus(_("Ready."))
 		else:				
 				msg_err(DIALOG_TITLE,_("No such file or directory:\n")+dirvalue)	

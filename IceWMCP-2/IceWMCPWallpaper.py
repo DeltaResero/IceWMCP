@@ -20,13 +20,26 @@
 # and images.
 #######################################
 
-import os,GTK,gtk,sys,GdkImlib,math
-from gtk import *
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import math
 from string import atoi
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 
 # import drag-n-drop support, 5.16.2003
@@ -49,21 +62,22 @@ class wallwin:
 	WMNAME="IceWMControlPanelWallpaper"
 	wallwin=Window(WINDOW_TOPLEVEL)
 	wallwin.set_wmclass(WMCLASS,WMNAME)
+	set_basic_window_icon(wallwin)
 	wallwin.realize()
 	wallwin.set_title("IceWM CP - "+_("Wallpaper Settings")+" "+self.version)
 	wallwin.set_position(WIN_POS_CENTER)
 	self.wallwin=wallwin
 
 	menu_items = [
-				[_('/_File'), None, None, 0, '<Branch>'],
- 				[_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""],
+				(_('/_File'), None, None, 0, '<Branch>'),
+ 				(_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""),
   				(_("/_File")+"/_"+_("Check for newer versions of this program..."), '<control>U', checkSoftUpdate,420,""),
-				[_('/File/sep1'), None, None, 1, '<Separator>'],
-				[_('/File/_Apply Changes Now...'), '<control>A', self.restart_ice, 0, ''],
-				[_('/File/sep2'), None, None, 2, '<Separator>'],
-				[_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''],
-				[_('/_Help'), None, None, 0, '<LastBranch>'],
-				[_('/Help/_About...'), "F2", self.about_cb, 0, ''],
+				(_('/File/sep1'), None, None, 1, '<Separator>'),
+				(_('/File/_Apply Changes Now...'), '<control>A', self.restart_ice, 0, ''),
+				(_('/File/sep2'), None, None, 2, '<Separator>'),
+				(_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''),
+				(_('/_Help'), None, None, 0, '<LastBranch>'),
+				(_('/Help/_About...'), "F2", self.about_cb, 0, ''),
   (_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5003, ""),
   (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
   (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5003, ""),
@@ -71,17 +85,17 @@ class wallwin:
 
 	ag = AccelGroup()
 	itemf = ItemFactory(MenuBar, '<main>', ag)
+	self.ag=ag
+	self.itemf=itemf
 	wallwin.add_accel_group(ag)
 	itemf.create_items(menu_items)
 	self.menubar = itemf.get_widget('<main>')
 
 	# added 6.21.2003 - "run as root" menu selector
 	self.leftmenu=self.menubar.get_children()[0].get_submenu()
-	self.run_root_button=CheckButton(" "+RUN_AS_ROOT)
-	self.run_root_menu=MenuItem()
-	self.run_root_menu.add(self.run_root_button)
-	self.leftmenu.prepend(self.run_root_menu)
-	self.run_root_button.connect("clicked",self.run_as_root)
+	self.run_root_button=CheckMenuItem(" "+RUN_AS_ROOT)
+	self.leftmenu.prepend(self.run_root_button)
+	self.run_root_button.connect("toggled",self.run_as_root)
 
 	mainvbox1=VBox(0,1)
 	mainvbox=VBox(0,1)
@@ -94,12 +108,15 @@ class wallwin:
 	mainvbox.pack_start(Label(" "+_("Wallpaper Settings")+" "),0,0,3)	
 
 	#color box
+	topbox=HBox(0,0)
+
 	colbox=HBox(0,0)
 	colbox.set_spacing(10)
 	colbox.set_border_width(3)
 	colframe=Frame()
 	colframe.set_label(_(" Desktop Color "))
 	self.colentry=Entry()
+	self.colentry.connect("key-press-event",self.enter_on_color_choose_cb)
 	TIPS.set_tip(self.colentry,_(" Desktop Color ").strip())
 	self.colbutton=ColorButton(self.selectcol,self.colentry)
 	TIPS.set_tip(self.colbutton,_(" Change... ").strip())
@@ -120,7 +137,9 @@ class wallwin:
 	colbox.show_all()
 	colframe.add(colbox)
 	colframe.show_all()
-	mainvbox.pack_start(colframe,0,0,0)
+	topbox.pack_start(colframe,0,0,0)	
+	topbox.pack_start(Label("   "),0,0,0)	
+	mainvbox.pack_start(topbox,0,0,0)
 
 	#imabe box
 	imbox=HBox(0,0)
@@ -133,8 +152,9 @@ class wallwin:
 	leftbox.set_spacing(3)
 	self.sc=ScrolledWindow()
 	self.clist=CList(1)
+	self.clist.set_column_width(0,395)
 	self.clist.connect('select_row', self.clist_cb)
-	self.clist.set_size_request(215,-2)
+	self.clist.set_size_request(215,-1)
 	self.sc.add(self.clist)
 	leftbox.pack_start(self.sc,1,1,0)
 	reloadbutt=Button(_(" Reload Images "))
@@ -145,7 +165,7 @@ class wallwin:
 	leftbox.show_all()
 
 	rightbox=VBox(0,0)
-	rightbox.set_spacing(3)
+	rightbox.set_spacing(2)
 
 	dirbox=HBox(0,0)
 	dirbox.set_spacing(10)
@@ -153,6 +173,7 @@ class wallwin:
 	dirframe=Frame()
 	dirframe.set_label(_(" Directory "))
 	self.direntry=Entry()
+	self.direntry.connect("key-press-event",self.enter_on_dir_choose_cb)
 	TIPS.set_tip(self.direntry,_(" Directory ").strip())
 	addDragSupport(self.direntry,self.setDrag) # drag-n-drop support, added 2.23.2003
 	try:
@@ -173,10 +194,10 @@ class wallwin:
 	dirbox.show_all()
 	dirframe.add(dirbox)
 	dirframe.show()
-	rightbox.pack_start(dirframe,0,0,0)
+	topbox.pack_start(dirframe,1,1,0)
 
 	checkbox=HBox(0,0)
-	checkbox.set_spacing(25)
+	checkbox.set_spacing(18)
 	checkbox.set_border_width(2)
 	self.checkbutton=RadioButton(None,_(" Centered "))	
 	self.checkbutton2=RadioButton(self.checkbutton,_(" Tiled "))
@@ -184,7 +205,7 @@ class wallwin:
 	TIPS.set_tip(self.checkbutton2,_(" Tiled ").strip())
 	checkbox.pack_start(self.checkbutton,0,0,0)
 	checkbox.pack_start(self.checkbutton2,0,0,0)
-	checkbox.pack_start(Label("  "),1,1,0)
+	checkbox.pack_start(Label(" "),1,1,0)
 	edbutton=Button()
 	edbox=HBox(0,0)
 	edbox.set_border_width(2)
@@ -282,7 +303,7 @@ class wallwin:
 
 	wallwin.add(mainvbox1)
 	wallwin.connect("destroy",self.doQuit)
-	wallwin.set_default_size(690, -2)
+	#wallwin.set_default_size(690, -1)
 	self.checkbutton.set_active(1)
 	self.set_prefs()
 	self.reloadImages()
@@ -296,12 +317,17 @@ class wallwin:
 	if self.run_root_button.get_active():
 		self.preffile=getIceWMConfigPath()+"preferences"
 		self.wallwin.set_title("IceWM CP - "+_("Wallpaper Settings")+" "+self.version+"   [ROOT]")
-		self.status.set_text("[ROOT]    "+str(self.preffile))
+		status_stuff= "[ROOT]    "+str(self.preffile)
 	else:
 		self.preffile=getIceWMPrivConfigPath()+"preferences"
 		self.wallwin.set_title("IceWM CP - "+_("Wallpaper Settings")+" "+self.version)
-		self.status.set_text(str(self.preffile))
+		status_stuff= str(self.preffile)
 	self.menubar.deactivate()
+	self.set_prefs()
+	self.reloadImages()
+	self.displayImage()
+	if len(status_stuff)>55: status_stuff=status_stuff[:54]+"..."
+	self.status.set_text(status_stuff)
 
 
     def setDrag(self,*args): # drag-n-drop support, added 2.23.2003
@@ -427,22 +453,43 @@ class wallwin:
     def doQuit(self,*args) :
 	gtk.mainquit()
 
+    def update_desktop_color(self,*args):
+		# added 12.3.2003, we can now preview the background color under the wallpaper!
+		colvalue = self.colentry.get_text().strip()
+		if colvalue != '':
+			try:
+				r=g=b=0
+            			r = atoi(colvalue[4:6], 16) << 8
+            			g = atoi(colvalue[7:9], 16) << 8
+            			b = atoi(colvalue[10:12], 16) << 8
+				colour = self.gl.get_colormap().alloc_color(r, g, b)
+				for gg in [STATE_NORMAL, STATE_ACTIVE, STATE_PRELIGHT,
+					STATE_SELECTED, STATE_INSENSITIVE]:
+					self.gl.modify_bg(gg,colour)
+				# make sure colors stay synchronized
+				self.colbutton.ok((r >> 8,g >> 8,b >> 8,))
+			except:
+				pass
 
     def selectcol(self, *args):
 		colvalue = self.colentry.get_text().strip()
-		self.colwin = ColorSelectionDialog(name=_('Select Color'))
-		self.colwin.colorsel.set_opacity(FALSE)
-		self.colwin.colorsel.set_update_policy(UPDATE_CONTINUOUS)
+		self.colwin = ColorSelectionDialog(_('Select Color'))
+		set_basic_window_icon(self.colwin)
 		self.colwin.set_position(WIN_POS_CENTER)
 		self.colwin.ok_button.connect('clicked', self.colok)
 		self.colwin.cancel_button.connect('clicked', self.colcancel)
 		self.colwin.help_button.destroy()
 		if colvalue != '':
+			r=g=b=0
+			try:
+            			r = atoi(colvalue[4:6], 16) << 8
+            			g = atoi(colvalue[7:9], 16) << 8
+            			b = atoi(colvalue[10:12], 16) << 8
+			except:
+				pass
+            		colour = self.colwin.get_colormap().alloc_color(r, g, b)
+            		self.colwin.colorsel.set_current_color(colour)
 			self.colvalue=colvalue
-			r = atoi(self.colvalue[4:6], 16) / 255.0
-			g = atoi(self.colvalue[7:9], 16) / 255.0
-			b = atoi(self.colvalue[10:12], 16) / 255.0
-			self.colwin.colorsel.set_color((r, g, b))
 		self.colwin.set_modal(TRUE)
 		self.colwin.show()
 
@@ -450,19 +497,17 @@ class wallwin:
 		self.colwin.destroy()
 		self.colwin.unmap()
     def colok(self, *args):
-		raw_values = self.colwin.colorsel.get_color()
-		r,g,b = raw_values
-		color = [r, g, b]
-		for i in range(0,3):
-			color[i] = hex(int(color[i] * 255.0))[2:]
-			if len(color[i]) == 1:
-				color[i] = '0' + color[i]
-				
-		r,g,b = color[0], color[1], color[2]
-			
-		self.colvalue = 'rgb:' + r + '/' + g + '/' + b
+		colour = self.colwin.colorsel.get_current_color()
+        	r = colour.red   >> 8
+        	g = colour.green >> 8
+        	b = colour.blue  >> 8
+		rstr="%02x" % r
+		gstr="%02x" % g
+		bstr="%02x" % b			
+		self.colvalue = "rgb:"+rstr+"/"+gstr+"/"+bstr
 		self.colentry.set_text(self.colvalue)
-		self.colbutton.ok(raw_values)
+		self.colbutton.ok((r,g,b,))
+		self.update_desktop_color()
 		self.colwin.hide()
 		self.colwin.destroy()
 		self.colwin.unmap()
@@ -481,6 +526,30 @@ class wallwin:
 			self.dirvalue=self.dirvalue[0:self.dirvalue.rfind(os.sep)+1]
 		self.direntry.set_text(self.dirvalue)
 		self.reloadImages()
+		self.wallwin.set_title("IceWM CP - "+_("Wallpaper Settings")+" "+self.version)
+
+    def enter_on_dir_choose_cb(self, widget, event,*args):
+		if event.keyval == gtk.keysyms.Return:
+			self.reloadImages()
+
+    def enter_on_color_choose_cb(self, widget, event,*args):
+	if event.keyval == gtk.keysyms.Return:		
+		colvalue = self.colentry.get_text().strip()
+		if colvalue != '':			
+			try:
+				r=g=b=0
+            			r = atoi(colvalue[4:6], 16) 
+            			g = atoi(colvalue[7:9], 16) 
+            			b = atoi(colvalue[10:12], 16) 
+				rstr="%02x" % r
+				gstr="%02x" % g
+				bstr="%02x" % b			
+				self.colvalue = "rgb:"+rstr+"/"+gstr+"/"+bstr
+				self.colentry.set_text(self.colvalue)
+				self.colbutton.ok((r,g,b,))
+				self.update_desktop_color()
+			except:
+				pass
 
     def editWall(self, *args):  # added 5.10.2003, feature to launch Gimp for editing
 	if self.imvalue==None: return
@@ -496,6 +565,7 @@ class wallwin:
 	if not len(self.imvalue)>0: return
 	if self.checkbutton.get_active(): self.update_image(self.imvalue,0)
 	else: self.update_image(self.imvalue,1)
+	self.update_desktop_color()
 	
     def reloadImages(self, *args):
 	self.clist.freeze()
@@ -524,8 +594,16 @@ class wallwin:
 			inum=inum+1
 	except:
 		pass
-	self.clist.thaw()
-	self.clist.select_row(selrow,0)
+	self.selrow=selrow
+	self.clist.thaw()	
+	self.jumpInList()
+
+    def jumpInList(self, *args):
+	try:
+		self.clist.select_row(self.selrow,0)
+		self.clist.moveto(self.selrow,0,0,0)
+	except:
+		pass
 
     def update_image(self,image_file,tile=0):
 		for ii in self.gl.get_children():
@@ -537,13 +615,14 @@ class wallwin:
 				pass
 		try:			
 			stats=image_file[image_file.rfind(os.sep)+1:len(image_file)]
-			myim=GdkImlib.Image(str(image_file).strip())
-			myim.changed_image() # disabled cached regurgitation
-			myim.render()
-			pixtemp=myim.make_pixmap()
-			dims=pixtemp.size_request()
-			pixtemp.destroy()
-			pixtemp.unmap()
+
+			# Note, we could use a combination of loadImage and loadScaledImage here
+			# But, that would lead to the image file having to be read TWICE, a slow-down
+			# so we are by-passing the 'common' image loading methods
+
+			# create temporary pixmap to check its size
+			pixtemp=GDK.pixbuf_new_from_file(str(image_file).strip())
+			dims=[pixtemp.get_width(), pixtemp.get_height()]
 			cutoff1=self.cutoff1
 			cutoff2=self.cutoff2
 			aspect=float(dims[0])/float(dims[1])
@@ -557,10 +636,10 @@ class wallwin:
 			# Gtk reports
 
 			scale_aspect=float(cutoff1/1024.00000)
-			if dims[0]<screen_height(): sug_x=int( math.floor(float(dims[0]*scale_aspect ) ))
+			if dims[0]<GDK.screen_height(): sug_x=int( math.floor(float(dims[0]*scale_aspect ) ))
 			else:
 				if tile==1:
-					if dims[0]<screen_height(): sug_x=int( math.floor(sug_x*scale_aspect)  )
+					if dims[0]<GDK.screen_height(): sug_x=int( math.floor(sug_x*scale_aspect)  )
 					else:
 						stats=stats+"  ("+_("Too large to tile")+")" 
 			
@@ -581,14 +660,16 @@ class wallwin:
 				if xput>=xlim: 
 					xput=0
 					yput=yput+sug_y
-				myim_real=myim.clone_scaled_image(sug_x,sug_y)
-				myim_real.render()
-				pixreal=myim_real.make_pixmap()
+        			img2 = pixtemp.scale_simple( sug_x,sug_y,GDK.INTERP_BILINEAR)
+        			pix,mask = img2.render_pixmap_and_mask()
+       				pixreal = gtk.Image()
+        			pixreal.set_from_pixmap(pix, mask)
+        			pixreal.show()
 				TIPS.set_tip(pixreal,str(image_file).strip())
-				pixreal.show()
 				self.gl.put(pixreal,xput,yput)
 				if tile==0: break
 				xput=xput+sug_x
+			del pixtemp  # clear this obj. from memory just to be safe
 			stats=stats+"   ["+str(dims[0])+" x "+str(dims[1])+"]"
 			self.status.set_text(stats)
 		except:
@@ -610,11 +691,11 @@ class ColorButton(Button):
 		f=Frame()
 		f.set_shadow_type(SHADOW_ETCHED_OUT)
 		drawing_area = DrawingArea()
-		drawing_area.size(22, 18)
+		drawing_area.set_size_request(22, 18)
 		drawing_area.show() 
 		self.drawing_area=drawing_area
 		f.add(drawing_area)
-		self.drawwin=drawing_area.get_window()
+		self.drawwin=drawing_area.window
 		drawing_area.connect("expose_event", self.setColor)
 		drawing_area.set_events(GDK.EXPOSURE_MASK |
 		GDK.LEAVE_NOTIFY_MASK |
@@ -625,22 +706,24 @@ class ColorButton(Button):
 		self.show_all()
 
 	def setColor(self,*args):
-		if not self.drawwin: self.drawwin=self.drawing_area.get_window()
-		if not self.gc: self.gc=self.drawwin.new_gc()
-		self.gc.foreground=self.drawwin.colormap.alloc_color(self.color_i16[0]*65535,self.color_i16[1]*65535,self.color_i16[2]*65535)
-		draw_rectangle(self.drawwin,self.gc,TRUE,0,0,self.drawwin.width,self.drawwin.height)
+	  try:
+        	if not self.drawwin: self.drawwin=self.drawing_area.window
+       		if not self.gc: self.gc=self.drawwin.new_gc()
+       		self.gc.foreground=self.drawwin.get_colormap().alloc_color(self.color_i16[0] << 8,
+                                                                   self.color_i16[1] << 8,
+                                                                   self.color_i16[2] << 8)
+        	width, height = self.drawwin.get_size()
+        	self.drawwin.draw_rectangle(self.gc,gtk.TRUE,0,0,width,height)
+	  except:
+		pass
 	
 
 	def updateColorProperties(self, r, g, b): # new method,functionality separation, 5.16.2003
-		self.color_i16=[r,g,b]
-		color = [r, g, b]
-		for i in range(0,3):
-			color[i] = hex(int(color[i] * 255.0))[2:]
-			if len(color[i]) == 1:
-				color[i] = '0' + color[i]				
-		r,g,b = color[0], color[1], color[2]			
-		value = 'rgb:' + r + '/' + g + '/' + b
-		self.colentry.set_text(value)
+        	self.color_i16=[r,g,b]
+		rstr="%02x" % r
+		gstr="%02x" % g
+		bstr="%02x" % b		
+		self.colentry.set_text("rgb:"+rstr+"/"+gstr+"/"+bstr)
 		self.setColor()
 	
 	def ok(self, raw_values):
