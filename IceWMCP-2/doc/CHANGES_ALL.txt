@@ -16,7 +16,10 @@ SUMMARY OF CHANGES:
 All applications: 
 	Patched a number of bugs that could cause IceWMCP 
 	applications to not run properly (or at all) under 
-	Python 2.3; This version  has been tested against Python 2.3
+	Python 2.3 (including the 'True'/'False' strings showing 
+	up in configuration files and 'encoding' warnings).
+	All IceWMCP applications should now properly handle 
+	boolean values on both Python 2.3 and Python 2.2.
 
 
 PangoXLFD        (pangoxlfd.py):

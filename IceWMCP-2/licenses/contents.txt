@@ -1,5 +1,5 @@
 
-IceWM Control Panel, Ice Sound Manager, PySpool, PhrozenClock, IcePref2 Theme Designer, GtkPCCard, and tkPCCard are Copyright (c) 2002-2003 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
+IceWM Control Panel, Ice Sound Manager, PySpool, PhrozenClock, IcePref2 Theme Designer, GtkPCCard, and tkPCCard are Copyright (c) 2002-2004 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
 ______________________________________________
 IceWM ControlPanel consists of the following modules:
 
@@ -66,7 +66,7 @@ IceWMCP_GtkPCCard.py
 
 
 
-IcePref2 is copyright 2001 by David Mortensen (unknown email), with updates by Erica Andrews (PhrozenSmoke[at]yahoo.com), and copyright 2003 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
+IcePref2 is copyright 2001 by David Mortensen (unknown email), with updates by Erica Andrews (PhrozenSmoke[at]yahoo.com), and copyright 2003-2004 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
 ______________________________________________
 IcePref2 consists of the following modules:
 
@@ -75,7 +75,7 @@ icepref.py
 
 
 IceMe is copyright 2000-2003 by Dirk Moebius (dmoebius@gmx.net , http://iceme.sourceforge.net) and Mike Hostetler (thehaas@binary.net , http://iceme.sourceforge.net), IceMe IceWMCP 'Special Edition' is copyright 
-2003 by Erica Andrews (PhrozenSmoke['at']yahoo.com) 
+2003-2004 by Erica Andrews (PhrozenSmoke['at']yahoo.com) 
 ______________________________________________
 IceMe IceWMCP 'Special Edition' consists of the following modules:
 
