@@ -689,7 +689,7 @@ EXIT_MENU=_('/File/_Exit')
 UPDATE_MENU=_("Check for newer versions of this program...")
 CONTRIBUTORS=_("Credits")
 # added 4/25/2003 - for Help files
-APP_HELP_STRR=_("/_Help").replace("/_","").replace("/","").replace("(_H)","")  
+APP_HELP_STRR=_("/_Help").replace("/_","").replace("/","").replace("(_H)","").replace("_","")   
 # added 4/25/2003 - for Help files
 APP_HELP_STR=_("/_Help").replace("/_","").replace("/","").replace("(_H)","")+"..." 
 BUG_REPORT_MENU=_("Send A Bug Report")
