@@ -41,7 +41,7 @@ def _(somestr):
 class IceMenuTree(DndCTree):
 
     def __init__(self, app):
-        DndCTree.__init__(self, 2, 0, [_("Menu"), _("Command")])
+        DndCTree.__init__(self, 2, 0, [" "+_("Menu"), " "+_("Command")])
         self.app = app
         self.set_selection_mode(SELECTION_BROWSE)
 	self.set_spacing(5)  # added 4.3.2003, Erica Andrews 

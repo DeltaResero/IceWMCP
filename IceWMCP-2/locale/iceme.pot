@@ -351,4 +351,11 @@ msgstr ""
 msgid "Open IceWM Menu File"
 msgstr ""
 
+msgid "Create a new Gnome 1 menu"
+msgstr ""
+
+msgid "Create a new Gnome 2 menu"
+msgstr ""
+
+
 

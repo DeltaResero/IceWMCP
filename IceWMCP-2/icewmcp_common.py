@@ -1138,15 +1138,31 @@ def SELECT_A_FILE(file_sel_cb,title=FILE_SELECTOR_TITLE,wm_class="icewmcontrolpa
 			ICEWMCP_FILE_WIN.ok_button.set_data("cfg_path",widget.get_data("cfg_path"))
 			if value=='': value=widget.get_data("cfg_path").get_text()
 		if not ok_button_title==None:
-			ICEWMCP_FILE_WIN.ok_button.remove(ICEWMCP_FILE_WIN.ok_button.get_children()[0])
-			ICEWMCP_FILE_WIN.ok_button.add(Label(str(ok_button_title)))
+			ICEWMCP_FILE_WIN.ok_button.remove(
+				ICEWMCP_FILE_WIN.ok_button.get_children()[0])
+			ICEWMCP_FILE_WIN.ok_button.add(
+				getPixmapButton(None, STOCK_APPLY ,str(ok_button_title))
+																)
+			TIPS.set_tip(ICEWMCP_FILE_WIN.ok_button, str(ok_button_title))
 		if not cancel_button_title==None:
-			ICEWMCP_FILE_WIN.cancel_button.remove(ICEWMCP_FILE_WIN.cancel_button.get_children()[0])
-			ICEWMCP_FILE_WIN.cancel_button.add(Label(str(cancel_button_title)))
+			ICEWMCP_FILE_WIN.cancel_button.remove( 
+				ICEWMCP_FILE_WIN.cancel_button.get_children()[0])
+			ICEWMCP_FILE_WIN.cancel_button.add(
+				getPixmapButton(None, STOCK_CANCEL ,str(cancel_button_title))
+																	)
+			TIPS.set_tip(ICEWMCP_FILE_WIN.cancel_button,str(cancel_button_title) )
 		ICEWMCP_FILE_WIN.cancel_button.connect('clicked', CLOSE_FILE_SELECTOR)
 		ICEWMCP_FILE_WIN.connect("destroy",CLOSE_FILE_SELECTOR)
-		if value != '""':
-			ICEWMCP_FILE_WIN.set_filename(value)
+
+		#     Changed 12.21.2003 to use error-catching AND check for a None value
+		#     for 'ICEWMCP_LAST_FILE' to fix BUG NUMBER: 6441772, 
+		#     Reported by: Anonymous User, At: Tue Sep 30 20:40:01 2003
+		try:
+			if value:
+				if value != '""':
+					ICEWMCP_FILE_WIN.set_filename(value)
+		except:
+			pass
 		#print "Last File:  "+str(value)
 		ICEWMCP_FILE_WIN.set_data("ignore_return",1)
 		ICEWMCP_FILE_WIN.connect("key-press-event", keyPressClose)

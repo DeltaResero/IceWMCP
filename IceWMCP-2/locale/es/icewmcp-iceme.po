@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IceMe - IceWMCP Edition 2.3\n"
+"Project-Id-Version: IceMe - IceWMCP Edition 3.1\n"
 "POT-Creation-Date: 2003-02-22 11:35+0100\n"
-"PO-Revision-Date: 2003-06-19 15:51+0400\n"
+"PO-Revision-Date: 2003-12-20 15:51+0400\n"
 "Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
 "Language-Team: SPANISH\n"
 "MIME-Version: 1.0\n"
@@ -165,7 +165,7 @@ msgstr "Nuevo menú"
 
 #: IceMe.py:271
 msgid "Create a new submenu"
-msgstr "Crear un submenu nuevo"
+msgstr "Crear un submenú nuevo"
 
 #: IceMe.py:276
 msgid "Cut"
@@ -275,7 +275,7 @@ msgstr "Nuevo artículo"
 
 #: IceMe.py:730
 msgid "New submenu"
-msgstr "Nuevo submenu"
+msgstr "Nuevo submenú"
 
 #: IceMenuTree.py:37
 msgid "Command"
@@ -291,7 +291,7 @@ msgstr "Programas"
 
 #: IceMenuTree.py:75
 msgid "Toolbar"
-msgstr "Toolbar"
+msgstr "Barra de Herramientas"
 
 #: IceMenuTree.py:83
 msgid "Clipboard"
@@ -350,3 +350,9 @@ msgstr "Cargando los menús y los iconos...espera, por favor."
 
 msgid "Open IceWM Menu File"
 msgstr "Abrir Fichero de Menú IceWM"
+
+msgid "Create a new Gnome 1 menu"
+msgstr "Insertar un menú de Gnome 1"
+
+msgid "Create a new Gnome 2 menu"
+msgstr "Insertar un menú de Gnome 2"

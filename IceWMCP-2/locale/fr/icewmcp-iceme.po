@@ -347,3 +347,9 @@ msgstr "Chargement des menus et des icones... veuillez patienter."
 msgid "Open IceWM Menu File"
 msgstr "Ouvrir le fichier du menu de IceWM"
 
+msgid "Create a new Gnome 1 menu"
+msgstr ""
+
+msgid "Create a new Gnome 2 menu"
+msgstr ""
+

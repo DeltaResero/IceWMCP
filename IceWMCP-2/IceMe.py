@@ -38,11 +38,16 @@ import icewmcp_common
 # disable splash for internal IcePref stuff coming from IceWMCPKeyboard
 icewmcp_common.NOSPLASH=1
 
+import icepref  # added 12.20.2003 for menu behavior tab, Erica Andrews
+
 #set translation support
 from icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateME(somestr))
+
+def _CP(somestr): # added 12.20.2003 for menu behavior tab, Erica Andrews
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 from constants import *
 from Preferences import Preferences
@@ -66,9 +71,11 @@ class IceMe(Window):
     def __init__(self, preferences):
 	self.last_exec=''   # added 4.3.2003, Erica Andrews, file selection 'memory'
 	self.i_am_root=0  # added 6.22.2003 - are we running as root?
+	self.diable_file_overrides() # added 12.21.2003, Erica Andrews
 
         Window.__init__(self, WINDOW_TOPLEVEL)
 	self.set_title("IceMe - IceWMCP Edition")
+	self.set_position(WIN_POS_CENTER)
 	set_basic_window_icon(self)
 	self.set_wmclass("iceme","IceMe")  # added 4.4.2003, Erica Andrews
         self.set_default_size(GDK.screen_width()-140, GDK.screen_height()-175)
@@ -110,7 +117,7 @@ class IceMe(Window):
         self.command.connect("changed", self.on_command_changed)
         self.command.show()
 
-        cmd_icon =getImage(getPixDir()+"iceme_open.png",to_utf8(translateCP("Browse...")))
+        cmd_icon =getImage(getPixDir()+"iceme_open.png",_CP("Browse..."))
         cmd_icon.show()
         self.command_button = Button()
         self.command_button.add(cmd_icon)
@@ -177,6 +184,11 @@ class IceMe(Window):
 	self.table_box=VBox(0,0)
 	self.table_box.pack_start(table,0,0,0)
 	self.table_box.pack_start(Label(" "),1,1,0)
+	try:
+		self.table_box.pack_start(loadImage(getBaseDir()+"icewmcp_short.png"),0,0,2)
+		self.table_box.pack_start(Label(" "),1,1,0)
+	except:
+		pass
         self.rightframe.set_border_width(10)
         self.rightframe.add(self.table_box)
         self.rightframe.show_all()
@@ -184,7 +196,7 @@ class IceMe(Window):
         hpaned = HPaned()
         hpaned.pack1(scr, TRUE, TRUE)
         hpaned.pack2(self.rightframe, FALSE, FALSE)
-        hpaned.set_position(300)
+        hpaned.set_position(350)  # changed 12.20.2003, Erica Andrews, more space
         hpaned.show()
 
         self.statusbar = Statusbar()
@@ -199,19 +211,73 @@ class IceMe(Window):
 	self.run_root_button.connect("toggled",self.run_as_root)
 	self.leftmenu.show_all()
 
-        vbox = VBox()
-        vbox.pack_start(menu, expand=FALSE)
-        vbox.pack_start(tb, expand=FALSE)
-        vbox.pack_start(hpaned)
-        vbox.pack_start(self.statusbar, expand=FALSE)
-        vbox.show()
 
+	# Feature enhancement: 12.20.2003, Erica Andrews, added a notebook setup:
+	# on the first tab - the standard IceMe menu editor, on the second tab -
+	# Menu behavior management from IcePref2's embedded Menu tab
+	self.BSD_WARN=0
+        vbox_iceme = VBox(0,0)
+        vbox_iceme.pack_start(tb, FALSE)
+        vbox_iceme.pack_start(hpaned, 1,1, 0)
+        vbox_iceme.show()
+
+	ICE_TAB=icepref.PullTab("Menus")
+	self.ICE_TAB=ICE_TAB
+	icetab=ICE_TAB.get_tab()
+	icepan=VBox(0,0)
+	icepan.set_spacing(3)
+	icepan.pack_start(getImage(getBaseDir()+"icepref2.png","ICEPREF2"),0,0,1)
+	icepan.pack_start(Label(_("Menu")),0,0,3)
+	icepan.pack_start(icetab,1,1,0)
+	actstr=_CP('/File/_Apply Changes Now...')[_CP('/File/_Apply Changes Now...').rfind("/")+1:len(_CP('/File/_Apply Changes Now...'))].replace("_","").replace(".","").strip()
+	abutt=getPixmapButton(None, STOCK_APPLY ,actstr)
+	abutt.connect("clicked",self.apply_icepref_settings)
+	TIPS.set_tip(abutt,actstr)
+	hbox1=HBox(1,0)
+	hbox1.set_border_width(3)
+	hbox1.set_spacing(5)
+	hbox1.pack_start(Label(" "),1,1,0)
+	hbox1.pack_start(abutt,0,0,0)
+	hbox1.pack_start(Label(" "),1,1,0)
+	icepan.pack_start(hbox1,0,0,2)
+	icepan.show_all()
+
+	notebox=VBox(0,0)
+	notebook = Notebook()
+	self.notebook=notebook
+	notebook.set_tab_pos(POS_TOP)
+	notebook.set_scrollable(TRUE)
+	notebox.pack_start(notebook,1,1,2)
+	notebook.append_page(vbox_iceme, Label(_("Menu")))
+	notebook.append_page(icepan, Label(_CP("Behavior")))
+	notebook.show()
+	notebox.show()
+
+        vbox = VBox(0,0)
+        vbox.pack_start(menu, FALSE)
+        vbox.pack_start(notebox, 1,1, 0)
+        vbox.pack_start(self.statusbar, FALSE)
+        vbox.show()
         self.add(vbox)
 
 	# added 4/27/2003 - Erica Andrews, new prettier start-up process, more informative with Splash screen
 	# code comes from 'icewmcp_common.py'
 	setSplash(self.initAll, "IceMe:  "+_("Loading menus and icons...please wait."))
 	showSplash()
+
+    def apply_icepref_settings(self, *args) :
+	# added 12.20.2003 for menu behavior tab, Erica Andrews
+	if not self.BSD_WARN==1:
+		if not msg_confirm(DIALOG_TITLE,_CP("WARNING:\nThis feature doesn't work perfectly on all systems.\nBSD and some other systems may experience problems."))==1:
+			return
+	self.BSD_WARN=1
+	self.ICE_TAB.save_current_settings("nowarn")
+	#   changed 12.20.2003 - use common Bash shell probing
+	#   to fix BUG NUMBER: 1523884
+	#   Reported By: david ['-at-'] jetnet.co.uk
+	#   Reported At: Fri Oct 31 23:47:12 2003
+	os.popen(BASH_SHELL_EXEC+" -c \"killall -HUP -q icewm &\"")
+	os.popen(BASH_SHELL_EXEC+" -c \"killall -HUP -q icewm &\"")
 
 
     # added 6.18.2003, Erica Andews - allow loading of menu,program, and toolbar 
@@ -226,16 +292,20 @@ class IceMe(Window):
     def run_as_root(self,*args):
 	if self.run_root_button.get_active():
 		self.i_am_root=1
+		self.diable_file_overrides()
 		self.initCustomDir(getIceWMConfigPath() )  # set path
 		# reload everything
+		self.ICE_TAB.run_as_root(1)  # added 12.20.2003, Erica Andrews
 		setSplash(self.initAll, "IceMe [ROOT]: "+_("Loading menus and icons...please wait."))
 		showSplash()
 		self.setStatus("IceMe v" + VERSION+"    [ROOT]")
 		self.set_title("IceMe - IceWMCP Edition    [ROOT]")
 	else:  # turn 'root' OFF
 		self.i_am_root=0
+		self.diable_file_overrides()
 		self.initCustomDir(getIceWMPrivConfigPath() )  # set path
 		# reload everything
+		self.ICE_TAB.run_as_root(0) # added 12.20.2003, Erica Andrews
 		setSplash(self.initAll, "IceMe: "+_("Loading menus and icons...please wait."))
 		showSplash()
 		self.setStatus("IceMe v" + VERSION)
@@ -243,21 +313,72 @@ class IceMe(Window):
 	self.menubar.deactivate()
 
 
-    # added 6.19.2003 - Erica Andrews, allow loading of 'menu' files from arbitrary directories
-    def openCustomDirCB(self,*args):
-	sel_file=GET_SELECTED_FILE()
-	if not sel_file==None:
-		if sel_file.find(os.sep)>-1:
-			sel_dir=sel_file[0:sel_file.rfind(os.sep)+1]
-			self.initCustomDir(sel_dir)  # set path
-			# reload everything
-			setSplash(self.initAll, "IceMe : "+_("Loading menus and icons...please wait."))
-			showSplash()
-			self.setStatus("IceMe v" + VERSION+"    ["+sel_dir+"menu]")
+    def diable_file_overrides(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
+	self.override_menu_file=None
+	self.override_programs_file=None
+	self.override_toolbar_file=None
 
+    def menu_selection_dialog_ok(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
+	try:
+		entries=[args[0].get_data("menu-entry"), 
+			args[0].get_data("prog-entry"),
+			args[0].get_data("tool-entry")]
+		for ii in entries:
+			if ii.get_text().strip()=="": 
+				return
+			if ii.get_text().find(os.sep)==-1: 
+				return
+			if ii.get_text().strip().endswith(os.sep): 
+				return
+		self.override_menu_file=entries[0].get_text().strip()
+		self.override_programs_file=entries[1].get_text().strip()
+		self.override_toolbar_file=entries[2].get_text().strip()
+		sel_file=self.override_menu_file
+		sel_dir=sel_file[0:sel_file.rfind(os.sep)+1]
+		self.initCustomDir(sel_dir)  # set path
+		# reload everything
+		setSplash(self.initAll, "IceMe : "+_("Loading menus and icons...please wait."))
+		showSplash()
+		self.setStatus("IceMe v" + VERSION+"    ["+sel_file+"]")
+		self.set_title("IceMe - IceWMCP Edition")
+	except:
+		return
+	try:
+		args[0].get_data("selwin").hide()
+		args[0].get_data("selwin").destroy()
+		args[0].get_data("selwin").unmap()
+	except:
+		pass
 
-    # added 6.19.2003 - Erica Andrews, allow loading of 'menu' files from arbitrary directories
-    def openCustomDir(self,*args):
+    def menu_selection_dialog_close(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
+	try:
+		args[0].get_data("selwin").hide()
+		args[0].get_data("selwin").destroy()
+		args[0].get_data("selwin").unmap()
+	except:
+		pass
+
+    def menu_sel_file_box_cb(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
+	try:
+		ff=GET_SELECTED_FILE()
+		if not ff: return
+		if ff=="": return
+		if ff.endswith(os.sep): return
+		self.file_entry_to_update.set_text(ff)
+	except:
+		pass
+
+    def menu_sel_file_box(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
 	import icewmcp_common
 	need_menu=0
 	if icewmcp_common.ICEWMCP_LAST_FILE==getIceWMPrivConfigPath(): need_menu=1
@@ -265,7 +386,95 @@ class IceMe(Window):
 	if icewmcp_common.ICEWMCP_LAST_FILE=='': need_menu=1
 	if need_menu==1:
 		icewmcp_common.ICEWMCP_LAST_FILE=self.preferences.getIceWMFile("menu")
-	SELECT_A_FILE(self.openCustomDirCB)
+	try:
+		self.file_entry_to_update=args[0].get_data("myentry")
+		SELECT_A_FILE(self.menu_sel_file_box_cb,_CP("Select a file..."),"iceme","IceMe")
+	except:
+		pass
+
+    def open_menu_selection_dialog(self, *args):
+	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
+	#    menu, programs, and toolbar files for editing
+	selwin=Window( WINDOW_TOPLEVEL)
+	selwin.set_title(_("Open IceWM Menu File")+"...")
+	set_basic_window_icon(selwin)
+	selwin.set_position(WIN_POS_CENTER)
+	selwin.set_wmclass("iceme","IceMe")
+	selwin.set_data("selwin",selwin)
+        selwin.connect("delete_event", self.menu_selection_dialog_close)
+	selbox=VBox(0,0)
+	selbox.set_border_width(4)
+	selbox.set_spacing(3)
+	selbox.pack_start(Label(_("Open IceWM Menu File")),0,0,2)
+
+        table = Table(2, 3, FALSE)
+	entries=[]
+        table.attach(Label(_("Menu")+":"), 0, 1, 0, 1, 0)
+	menubox=HBox(0,0)
+	menubox.set_spacing(3)
+	menentry=Entry()
+	menentry.set_size_request(280,-1)
+	menentry.set_text(self.preferences.getIceWMFile("menu"))
+	entries.append(menentry)
+	menubox.pack_start(menentry, 1,1,0)
+        selbutton1 = Button()
+        selbutton1.add(getImage(getPixDir()+"iceme_open.png",_CP("Browse...")))
+        selbutton1.connect("clicked", self.menu_sel_file_box)
+	selbutton1.set_data("myentry",menentry)
+	menubox.pack_start(selbutton1, 0,0,0)
+        table.attach(menubox,  1, 2, 0, 1, (EXPAND+FILL))
+
+        table.attach(Label(_("Programs")+":"), 0, 1, 1, 2, 0)
+	menubox=HBox(0,0)
+	menubox.set_spacing(3)
+	menentry=Entry()
+	menentry.set_text(self.preferences.getIceWMFile("programs"))
+	entries.append(menentry)
+	menubox.pack_start(menentry, 1,1,0)
+        selbutton1 = Button()
+        selbutton1.add(getImage(getPixDir()+"iceme_open.png",_CP("Browse...")))
+        selbutton1.connect("clicked", self.menu_sel_file_box)
+	selbutton1.set_data("myentry",menentry)
+	menubox.pack_start(selbutton1, 0,0,0)
+        table.attach(menubox, 1, 2, 1, 2, (EXPAND+FILL))
+
+        table.attach(Label(_("Toolbar")+":"),  0, 1, 2, 3, 0)
+	menubox=HBox(0,0)
+	menubox.set_spacing(3)
+	menentry=Entry()
+	menentry.set_text(self.preferences.getIceWMFile("toolbar"))
+	entries.append(menentry)
+	menubox.pack_start(menentry, 1,1,0)
+        selbutton1 = Button()
+        selbutton1.add(getImage(getPixDir()+"iceme_open.png",_CP("Browse...")))
+        selbutton1.connect("clicked", self.menu_sel_file_box)
+	selbutton1.set_data("myentry",menentry)
+	menubox.pack_start(selbutton1, 0,0,0)
+        table.attach(menubox,  1, 2, 2, 3, (EXPAND+FILL))
+        table.set_row_spacings(3)
+        table.set_col_spacings(3)
+
+	selh=HBox(0,0)
+	okbutt=getPixmapButton(None, STOCK_APPLY ,DIALOG_OK)
+	canbutt=getPixmapButton(None, STOCK_CANCEL ,DIALOG_CANCEL)
+	TIPS.set_tip(canbutt,DIALOG_CANCEL)
+	TIPS.set_tip(okbutt,DIALOG_OK)
+	canbutt.set_data("selwin",selwin)
+	canbutt.connect("clicked", self.menu_selection_dialog_close)
+	okbutt.set_data("selwin",selwin)
+	okbutt.set_data("menu-entry",entries[0])
+	okbutt.set_data("prog-entry",entries[1])
+	okbutt.set_data("tool-entry",entries[2])
+	okbutt.connect("clicked", self.menu_selection_dialog_ok)
+	selh.pack_start(okbutt,0,0,0)
+	selh.pack_start(Label(""),1,1,0)
+	selh.pack_start(canbutt,0,0,0)
+	selbox.pack_start(table,0,0,0)
+	selbox.pack_start(Label(""),1,1,0)
+	selbox.pack_start(selh,0,0,0)
+	selwin.add(selbox)
+	selwin.set_modal(1)
+	selwin.show_all()
 
 
     def initAll(self,*args):
@@ -304,9 +513,20 @@ class IceMe(Window):
 
     def __initTree(self):
         self.do_update_widgets = 0
-        menu_file = self.preferences.getIceWMFile("menu")
-        programs_file = self.preferences.getIceWMFile("programs")
-        toolbar_file = self.preferences.getIceWMFile("toolbar")
+	#   changed 12.21.2003, Erica Andrews: allow overriding of file locations
+	#   to permit loading of arbitrary menu, programs, and toolbar files
+        if self.override_menu_file==None: 
+		menu_file = self.preferences.getIceWMFile("menu")
+	else: 
+		menu_file=self.override_menu_file
+	if self.override_programs_file==None:
+        	programs_file = self.preferences.getIceWMFile("programs")
+	else:
+		programs_file=self.override_programs_file
+	if self.override_toolbar_file==None:
+        	toolbar_file = self.preferences.getIceWMFile("toolbar")
+	else:
+		toolbar_file=self.override_toolbar_file
         rootnode = self.tree.init(menu_file, programs_file, toolbar_file)
 	#print "FILES:  "+menu_file+" "+programs_file+"  "+toolbar_file
         self.do_update_widgets = 1
@@ -323,7 +543,7 @@ class IceMe(Window):
             (_("/_File"),          None,         None,             0, "<Branch>"),  
 
 	    # added 6.19.2003 - Erica Andrews, support for opening random 'menu' files
-            (_("/_File")+"/"+_("Open IceWM Menu File")+"...",   "<control>O", self.openCustomDir,  112, ""),
+            (_("/_File")+"/"+_("Open IceWM Menu File")+"...",   "<control>O", self.open_menu_selection_dialog,  112, ""),
 
             (_("/_File/_Save"),    "<control>S", self.on_save,     1, ""),
             (_("/_File/_Revert"),  "<control>T", self.on_revert,   2, ""),
@@ -334,9 +554,9 @@ class IceMe(Window):
             (_("/_File/sep1"),     None,         None,             4, "<Separator>"),
             (_("/_File/_Exit"),    "<control>Q", mainquit,         5, ""),
             (_("/_Edit"),          None,         None,             6, "<Branch>"),
-            (_("/_Edit/_Cut"),     "<control>X", self.on_cut,      7, ""),
-            (_("/_Edit/C_opy"),    "<control>C", self.on_copy,     8, ""),
-            (_("/_Edit/_Paste"),   "<control>V", self.on_paste,    9, ""),
+            (_("/_Edit/_Cut"),     "<control><shift>X", self.on_cut,      7, ""),
+            (_("/_Edit/C_opy"),    "<control><shift>C", self.on_copy,     8, ""),
+            (_("/_Edit/_Paste"),   "<control><shift>V", self.on_paste,    9, ""),
             (_("/_Edit/sep2"),     None,         None,            10, "<Separator>"),
             (_("/_Edit/_Delete"),  "<control>D",         self.on_delete,  11, ""),  # changed 4.27.2003, added keyboard shortcut
             (_("/_Edit/sep3"),     None,         None,            12, "<Separator>"),
@@ -416,6 +636,17 @@ class IceMe(Window):
             _("New Menu"), "iceme_new_menu.png", self.on_new_submenu,
             _("Create a new submenu"))
 
+	#     added 12.20.2003, Erica Andrews, support for Gnome1/Gnome2 menus
+	#     Fixes Bug Report/Feature Request #488846
+	#     Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+
+        self.tb_new_gnome1 = self.__getTbButton(
+            "Gnome 1", "iceme_gnome1.png", self.on_new_gnome1,
+            _("Create a new Gnome 1 menu"))
+        self.tb_new_gnome2 = self.__getTbButton(
+            "Gnome 2", "iceme_gnome2.png", self.on_new_gnome2,
+            _("Create a new Gnome 2 menu"))
+
         self.tb.append_space()
 
         self.tb_cut = self.__getTbButton(
@@ -469,7 +700,12 @@ class IceMe(Window):
 		kc.wallwin.set_title(_("IceWM CP - Key Editor")+"   [ROOT]")
 
     def icewmcpIcePref2(self,*args):
-	os.popen("icepref &")
+	#   changed 12.20.2003 - use common Bash shell probing
+	#   to fix BUG NUMBER: 1523884
+	#   Reported By: david ['-at-'] jetnet.co.uk
+	#   Reported At: Fri Oct 31 23:47:12 2003
+	os.popen(BASH_SHELL_EXEC+" -c \"icepref &\"")
+	#  old way: os.popen("icepref &")
 
 
     def __initIcePref(self):
@@ -557,12 +793,24 @@ class IceMe(Window):
         is_normal   = not (is_menu or is_sep)
         is_inactive = self.tree.isInactive(self.cur_node)
 
+	# added 12.20.2003, Erica Andrews, disable the 
+	# 'start as new wm' and 'add shortcut' buttons if the menu item is 
+	# an embedded Gnome-1 or Gnome-2 menu
+	is_not_embedded=is_normal
+	try:
+		tcomm=self.tree.getNodeCommand(self.cur_node)
+		if tcomm.startswith("icewm-menu-gnome") and (tcomm.find("--list")>-1):
+			# It's an embedded Gnome menu, can't add shortcut keys or mark as new WM
+			is_not_embedded=0
+	except:
+		pass
+
         # enable/disable items on right frame:
         self.command_label.set_sensitive(is_normal)
         self.command.set_sensitive(is_normal)
         self.command_button.set_sensitive(is_normal)
-        self.is_restart.set_sensitive(is_normal)
-        self.add_shortcut.set_sensitive(is_normal)
+        self.is_restart.set_sensitive(is_not_embedded)  # changed 12.20.2003, Erica Andrews
+        self.add_shortcut.set_sensitive(is_not_embedded)  # changed 12.20.2003, Erica Andrews
         self.rightframe.set_sensitive(not (is_inactive or is_sep))
 
         # enable/disable toolbar/menu buttons:
@@ -588,6 +836,11 @@ class IceMe(Window):
         self.tb_new_entry.set_sensitive(can_insert)
         self.tb_new_sep.set_sensitive(can_insert)
         self.tb_new_menu.set_sensitive(can_insert)
+	#     added 12.20.2003, Erica Andrews, support for Gnome1/Gnome2 menus
+	#     Fixes Bug Report/Feature Request #488846
+	#     Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+	self.tb_new_gnome1.set_sensitive(can_insert)
+	self.tb_new_gnome2.set_sensitive(can_insert)
 
         # set data items on right frame:
         if not is_sep:
@@ -677,18 +930,28 @@ class IceMe(Window):
 
     def writeTree(self):
         errmsgs = []
-
-        menu = self.preferences.getIceWMFile("menu", FALSE)
+	#    changed 12.21.2003, Erica Andrews, allow handling of 
+	#    arbitrary menu, programs, and toolbar files
+	if self.override_menu_file==None:
+        	menu = self.preferences.getIceWMFile("menu", FALSE)
+	else: 
+		menu=self.override_menu_file
         fd = self.openMenufile("menu", menu, errmsgs)
         if fd: self.writeSubTree(fd, self.tree.getMainMenuNode())
         if fd: fd.close()
 
-        programs = self.preferences.getIceWMFile("programs", FALSE)
+	if self.override_programs_file==None:
+        	programs = self.preferences.getIceWMFile("programs", FALSE)
+	else:
+		programs = self.override_programs_file
         fd = self.openMenufile("programs", programs, errmsgs)
         if fd: self.writeSubTree(fd, self.tree.getProgramsNode())
         if fd: fd.close()
 
-        toolbar = self.preferences.getIceWMFile("toolbar", FALSE)
+	if self.override_toolbar_file==None:
+        	toolbar = self.preferences.getIceWMFile("toolbar", FALSE)
+	else: 
+		toolbar = self.override_toolbar_file
         fd = self.openMenufile("toolbar", toolbar, errmsgs)
         if fd: self.writeSubTree(fd, self.tree.getToolbarNode())
         if fd: fd.close()
@@ -748,7 +1011,18 @@ class IceMe(Window):
                 else:
                     command = self.tree.getNodeCommand(child)
                     if type == MENUTREE_PROG:
-                        fd.write('%sprog "%s" "%s" %s\n'
+				if command.startswith("icewm-menu-gnome") and (command.find("--list")>-1):
+	    				#added 12.20.2003, Erica Andrews, support for 'embedded' menus
+	    				#like those from the embedded Gnome1 and Gnome2 menus...to 
+	    				#handle menu lines like: 
+	    				#menuprog "Gnome Menu" gnome icewm-menu-gnome1 --list /usr/share/gnome/apps
+	    				#Fixes Bug Report/Feature Request #488846
+	    				#Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+
+					fd.write('%smenuprog "%s" "%s" %s\n' % (indent, name, icon, command))
+
+				else:  	# all others
+					fd.write('%sprog "%s" "%s" %s\n'
                                  % (indent, name, icon, command))
                     elif type == MENUTREE_RESTART:
                         fd.write('%srestart "%s" "%s" %s\n'
@@ -774,7 +1048,7 @@ class IceMe(Window):
     def on_command_button_clicked(self, *args): 
 		# re-written 4.3.2003, Erica Andrews, eliminated GtkExtra dep.
 		# re-written 6.20.2003 Erica Andrews, use common file selector functions (icewmcp_common)
-		SELECT_A_FILE(self.file_ok_close,translateCP("Select a file..."),"iceme","IceMe")
+		SELECT_A_FILE(self.file_ok_close,_CP("Select a file..."),"iceme","IceMe")
 		self.setStatus(_("Please select an executable."))
 		
 		
@@ -908,6 +1182,23 @@ class IceMe(Window):
     def on_new_sep(self, button):
         node = self.tree.insertNode(self.cur_node, MENUTREE_SEPARATOR,
                                     None, None, None)
+        self.tree.select(node)
+
+
+    def on_new_gnome1(self, button):
+	# added 12.20.2003, Erica Andrews, support for creating embedded Gnome1 menus
+	# Fixes Bug Report/Feature Request #488846
+	# Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+        node = self.tree.insertNode(self.cur_node, MENUTREE_PROG,
+            "Gnome 1", "gnome", "icewm-menu-gnome1 --list /usr/share/gnome/apps")
+        self.tree.select(node)
+
+    def on_new_gnome2(self, button):
+	# added 12.20.2003, Erica Andrews, support for creating embedded Gnome2 menus
+	# Fixes Bug Report/Feature Request #488846
+	# Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+        node = self.tree.insertNode(self.cur_node, MENUTREE_PROG,
+            "Gnome 2", "gnome", "icewm-menu-gnome2 --list /opt/gnome2/share/applications/")
         self.tree.select(node)
 
     def on_move_up(self, button):

@@ -22,10 +22,13 @@ from constants import *
 
 class MenuParser:
 
-    def __init__(self, filename):
-        file = open(filename)
-        self.lines = file.readlines()
-        file.close()
+    def __init__(self, filename):  # changed 12.20.2003, Erica Andrews - error catching
+	try:
+        	file = open(filename)
+        	self.lines = file.readlines()
+       		file.close()
+	except:
+		self.lines=""
 
     def __getNextLine(self):
         line = None
@@ -40,11 +43,22 @@ class MenuParser:
         line = self.__getNextLine()
         if line is None:
             return None
-        tag = string.split(line)[0]
+        tag = string.split(line)[0].strip()
         if tag == "separator":
             return [MENUTREE_SEPARATOR, None, None, None]
         elif tag == "prog":
             return [MENUTREE_PROG,] + self.__parseProg(line[5:])
+
+        elif tag == "menuprog":
+	    # added 12.20.2003, Erica Andrews, support for 'embedded' menus
+	    # like those from the embedded Gnome1 and Gnome2 menus...to 
+	    # handle menu lines like: 
+	    # menuprog "Gnome Menu" gnome icewm-menu-gnome1 --list /usr/share/gnome/apps
+	    # Fixes Bug Report/Feature Request #488846
+	    # Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
+
+            return [MENUTREE_PROG,] + self.__parseProg(line[9:])
+
         elif tag == "restart":
             return [MENUTREE_RESTART,] + self.__parseProg(line[8:])
         elif tag == "menu":

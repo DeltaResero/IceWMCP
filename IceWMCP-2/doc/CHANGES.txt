@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.1pre - 12/19/2003 - 12/20/2003
+VERSION 3.1pre - 12/19/2003 - 12/21/2003
 
 The focus of this release bug fixes and internationalization improvements.
 
@@ -19,7 +19,8 @@ SUMMARY OF CHANGES:
 	(yploglib ['at'] free.fr)].  A major installation bug has been fixed by 
 	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5. Major 
 	bugs in the PangoXLFD module which could lead to complete application 
-	crashes have been fixed.
+	crashes have been fixed.  Major features have been added to IceMe, and 
+	a serious bug has been fixed.
 
 
 PangoXLFD        (pangoxlfd.py):
@@ -35,7 +36,9 @@ IceWMCP-Common        (icewmcp_common.py):
 	for the software update checker; status: complete
 	- Added font and charset settings for the French language
 	- Bug Fix: Added common variable 'BASH_SHELL_EXEC' and Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and external applications failing to launch properly if the user was not using Bash as their default shell
+	- Bug Fix: Added error-catching and checking that 'ICEWMCP_LAST_FILE' != None in the method  'SELECT_A_FILE' to fix BUG NUMBER: 6441772, Reported by: Anonymous User, At: Tue Sep 30 20:40:01 2003, regarding the File Selection dialog not showing if the value of ICEWMCP_LAST_FILE==None; the bug had been spotted when the user tried to open a menu file in IceMe
 	- Code cleanup and Internationalization improvement: method 'getLocaleDir' has been rewritten to be cleaner and now probes environment variables 'LOCALE', 'LC_ALL' and 'LC_MESSAGES' for language settings.  This should aid some systems in the proper loading of locale-specific help files and control panel applets.   Environment variables are now probed in the following order: 'LANG', 'LANGUAGE', 'LC_ALL', 'LOCALE', 'LC_MESSAGES'
+	- Minor GUI improvements added to the 'SELECT_A_FILE' file selection dialog: tooltips and gtk stock icons added to the OK and Cancel buttons
 
 
 IceWMCP         (IceWMCP.py):
@@ -124,8 +127,23 @@ IceWMCP-Keyboard        (IceWMCPKeyboard.py):
 
 IceMe  (IceMe.py):
 	- Version is now 3.1pre
-	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
-	status: complete
+	- A French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: 98% complete  (2 new translation strings for Gnome menus needed)
+	- Major Feature Enhancement: Added support for Gnome-1 and Gnome-2 menus using the 'icewm-menu-gnome1' and 'icewm-menu-gnome2' menu embedding apps that come with IceWM. 	(Fixes Bug Report/Feature Request #488846, Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003, regarding IceMe mishandling embedded Gnome menus in the IceWM menu file)  Level of support: proper parsing of 'menuprog' menu items using embedded Gnome menus when menu files are loaded, proper saving of embedded Gnome menus, ability to insert new Gnome-1 and Gnome-2 menus; cutting, copying, pasting, and moving of embedded Gnome menus is also supported;  2 new Gnome icons added to the toolbar to support this features.  NOTE: You may edit the command line that triggers the embedded Gnome menu, but this does NOT mean IceMe gives you the ability to edit Gnome menus  (IceMe isn't a Gnome app!  Use gmenu or a similar app to edit the Gnome menu entries)
+	- Major Feature Enhancement:  IceMe can now handle editing the BEHAVIOR of the IceWM menu - an embedded IcePref2 'menu' tab has been added to the interface; the first tab is, of course, the menu editor for adding/changing/removing menu entries; the 2nd tab allows you to manage such menu behavior as fonts, colors, auto-reloading of menu files, and what stuff built-in to IceWM will be shown on your IceWM menu.  The new interface is a 'Notebook' with 2 tabs.  I should have done this a while back, since it only make sense to be able to edit both the menu and the menu's behavior in the same application.  (The ability to launch the full version of IcePref2 still remains on the menu of course.)
+	- Major Feature Enhancement: Total re-write and improvement of the "Open IceWM Menu File" logic and functionality; before, selecting a menu file would only open a file named 'menu' in the directory selected;  The old file selection dialog has been replaced with a new dialog that allows you to truly select any combination of 'menu', 'programs', and 'toolbar' files you have access to on your file system, allowing for endless possibilities in terms of creating sets of menu configuration files.  You can also even name non-existent files in the dialog for the purpose of creating new menu, programs, and toolbar files;  also  IceMe will try to open ANY non-directory file  (for example, you can now open as a menu file a file named 'my_menu-backup'); since IceMe will try to open any file you give it, you should be careful what you feed it (IceMe has great error-catching but dont get ridiculous and start trying to open binaries, etc.);  You should use this feature with care, and not use it at all if you don't know what you are doing.  The following new methods were added to make this new feature possible:  open_menu_selection_dialog, menu_sel_file_box, menu_sel_file_box_cb, menu_selection_dialog_close, menu_selection_dialog_ok, diable_file_overrides;  The ability to toggle 'Run As Root' and non-root is still available and remains the safest way for handling the main configurations.
+	- Major Bug Fix:  Fixed problems with cutting/copying/pasting text using ctrl+x/ctrl+c/ctrl+v in text entry fields like the "Icon:" and "Command:" fields.  (The problem was the shortcut keys for cutting/copying/pasting text were being shared with the shortcut keys for cutting/copying/pasting menu items.) ; Cutting/Copying/Pasting text in the text entry fields now works again using the shortcut keys ctrl+x/ctrl+c/ctrl+v, respectively; As a result, the shortcut keys for cutting/copying/pasting menu items have been changed (see below) 
+	- Shortcut key changes: The shortcut key for Cutting a menu item is now Shift+Ctrl+X; The shortcut key for Pasting a menu item is now Shift+Ctrl+V; The shortcut key for Copying a menu item is now Shift+Ctrl+C;  These changes were necessary to fix a bug that prevented cutting/copying/pasting of text in text entry fields. 
+	- Bug Fix: Change launching of "IceWM Preferences" (IcePref2) menu item  to use common variable 'BASH_SHELL_EXEC' and Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about external programs failing to launch properly if the user was not using Bash as their default shell; all external programs are now forced to be launched with the needed Bash/sh shell even if the user is using some other shell.
+	- Added new method 'apply_icepref_settings' to be used by the embedded IcePref-2 'menu behavior' tab; method uses common variable 'BASH_SHELL_EXEC' to restart IceWM to apply any changes made to the menu behavior
+	- Removed unnecessary methods openCustomDir, openCustomDirCB  (they have been replaced with better functionality)
+	- 2 new translatable strings added to the gettext translation catalog to support the new Gnome menu features  (Translators: Please update your language translations!) ; Spanish translations have already been added and taken care of.
+	- Improved error-catching when opening and reading menu files in the MenuParser.py module
+	- MenuParser.py module: 'menuprog' entries in menu files are now treated as 'prog' items appropriately
+	- A few corrections to the Spanish translation catalog
+	- Major GUI change: now using a 'notebook' interface (see above)
+	- Filling a void: The empty space that existed underneath the menu entry editor on the right side now has a small IceWMCP logo in it, so things don't look so barren
+	- Various GUI touch-ups
 
 
 IceWMCP System and Hardware        (IceWMCPSystem.py):
