@@ -27,14 +27,27 @@
 # Public License (open source).
 #######################################
 
-import os,GTK,gtk,sys,time
-from gtk import *
-from threading import Thread
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import time
 
 #set translation support
 import icewmcp_common
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
+
 icewmcp_common.NOSPLASH=1  # disable splash window from icepref_td,icepref
 
 import icepref
@@ -224,6 +237,7 @@ class keypanel:
 	global WMNAME
 	WMNAME="IceWMControlPanelKeyEdit"
 	wallwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(wallwin)
 	if self.NOCLOSE==1:
 		wallwin.set_data("ignore_return",1)
 		wallwin.connect("key-press-event",keyPressClose)
@@ -234,18 +248,18 @@ class keypanel:
 	self.wallwin=wallwin
 
 	menu_items = [
-				[_('/_File'), None, None, 0, '<Branch>'],
-				[_('/File/_Open...'), '<control>O', self.openKey, 0, ''],
-				[_('/File/_Save'), '<control>S', self.doSave, 0, ''],
-				[_('/File/sep2'), None, None, 2, '<Separator>'],
- 				[_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""],
- 				[_("/_File")+"/_"+_("Check for newer versions of this program..."), '<control>U', checkSoftUpdate,420,""],
-				[_('/File/sep1'), None, None, 1, '<Separator>'],
-				[_('/File/_Apply Changes Now...'), '<control>A', self.restart_ice, 0, ''],
-				[_('/File/sep2'), None, None, 2, '<Separator>'],
-				[_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''],
-				[_('/_Help'), None, None, 0, '<LastBranch>'],
-				[_('/Help/_About...'), "F2", self.do_about, 0, ''],
+				(_('/_File'), None, None, 0, '<Branch>'),
+				(_('/File/_Open...'), '<control>O', self.openKey, 0, ''),
+				(_('/File/_Save'), '<control>S', self.doSave, 0, ''),
+				(_('/File/sep2'), None, None, 2, '<Separator>'),
+ 				(_("/_File")+"/_"+FILE_RUN,'<control>R', rundlg,421,""),
+ 				(_("/_File")+"/_"+_("Check for newer versions of this program..."), '<control>U', checkSoftUpdate,420,""),
+				(_('/File/sep1'), None, None, 1, '<Separator>'),
+				(_('/File/_Apply Changes Now...'), '<control>A', self.restart_ice, 0, ''),
+				(_('/File/sep2'), None, None, 2, '<Separator>'),
+				(_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''),
+				(_('/_Help'), None, None, 0, '<LastBranch>'),
+				(_('/Help/_About...'), "F2", self.do_about, 0, ''),
   (_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5002, ""),
   (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
   (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5002, ""),
@@ -253,6 +267,8 @@ class keypanel:
 
 	ag = AccelGroup()
 	itemf = ItemFactory(MenuBar, '<main>', ag)
+	self.ag=ag
+	self.itemf=itemf
 	wallwin.add_accel_group(ag)
 	itemf.create_items(menu_items)
 	self.menubar = itemf.get_widget('<main>')
@@ -263,7 +279,7 @@ class keypanel:
 	mainvbox1.pack_start(self.createPanel(1),1,1,2)
 	wallwin.add(mainvbox1)
 	wallwin.connect("destroy",self.doQuit)
-	wallwin.set_default_size(-2,440)
+	wallwin.set_default_size(-1,440)
 	self.appbutt.connect("clicked",self.restart_ice)
 	wallwin.show_all()
 
@@ -273,6 +289,8 @@ class keypanel:
 	self.mykeys=self.get_keys()
 	self.display_keys(self.mykeys)
 	self.new_key()
+	if len(self.mykeys.keys())>0:
+		self.clist.select_row(0,0)
 	self.setStatus(_("Ready."))
 
     def doQuit(self,*args) :
@@ -304,6 +322,7 @@ class keypanel:
 	if not len(self.progentry.get_text().strip())>0:
 		msg_warn(DIALOG_TITLE,_("You must specify a program for this key combination"))	
 		return
+	self.clist.freeze()
 	self.mykeys[self.current_key]=self.progentry.get_text().strip()
 	self.display_keys(self.mykeys)
 	self.new_key(1)
@@ -312,9 +331,10 @@ class keypanel:
 		l=self.mykeys.keys()
 		l.sort()
 		self.clist.select_row(l.index(self.current_key),0)
-		self.clist.moveto(l.index(self.current_key),0)
+		self.clist.moveto(l.index(self.current_key),0,0,0)
 	except:
 		pass
+	self.clist.thaw()
 
     def add_key(self,*args):
 	s=self.build_key()
@@ -325,6 +345,7 @@ class keypanel:
 	if self.mykeys.has_key(s):
 		msg_warn(DIALOG_TITLE,_("The key '")+s+_("' already exists and\ntriggers the program: ")+self.mykeys[s]+"\n\n"+_("You must either delete the existing key,\nor change the existing key's action using 'Set'."))
 		return
+	self.clist.freeze()
 	self.mykeys[s]=self.progentry.get_text().strip()
 	self.display_keys(self.mykeys)
 	self.setStatus(_("Modified."))
@@ -332,12 +353,14 @@ class keypanel:
 		l=self.mykeys.keys()
 		l.sort()
 		self.clist.select_row(l.index(s),0)
-		self.clist.moveto(l.index(s),0)
+		self.clist.moveto(l.index(s),0,0,0)
 	except:
 		pass
+	self.clist.thaw()
 
     def del_key(self,*args):
 	if self.current_key==None: return
+	self.clist.thaw()
 	try:
 		if msg_confirm(DIALOG_TITLE,_("Are you sure you want to delete this key?")+"\n\n"+self.current_key+"\n"+self.mykeys[self.current_key])==1:
 
@@ -350,11 +373,14 @@ class keypanel:
 			self.new_key(0)
 			self.current_key=None
 			self.setStatus(_("Modified."))
-
-			self.clist.select_row(prev_row,0)
-			self.clist.moveto(prev_row,0)
+			try:
+				self.clist.select_row(prev_row,0)
+				self.clist.moveto(prev_row,0,0,0)
+			except:
+				pass
 	except:
 		pass
+	self.clist.freeze()
 
     def new_key1(self,*args):
 	self.new_key(0)
@@ -618,8 +644,8 @@ class keywintab:
 	self.clickcheck.set_active(1)
 	mainframe=Frame()
 	mainframe.set_label(_("Rate: "))
-	self.adj1=GtkAdjustment(20,1,150,1,1,1)
-	c=GtkHScale(self.adj1)
+	self.adj1=Adjustment(20,1,150,1,1,1)
+	c=HScale(self.adj1)
 	TIPS.set_tip(c,_("Rate: ").replace(":","").strip())
 	c.set_digits(0)
 	c.set_draw_value(1)
@@ -635,8 +661,8 @@ class keywintab:
 
 	mainframe2=Frame()
 	mainframe2.set_label(_("Delay: "))
-	self.adj2=GtkAdjustment(400,1,3000,1,1,1)
-	c2=GtkHScale(self.adj2)
+	self.adj2=Adjustment(400,1,3000,1,1,1)
+	c2=HScale(self.adj2)
 	TIPS.set_tip(c2,_("Delay: ").replace(":","").strip())
 	c2.set_digits(0)
 	c2.set_draw_value(1)
@@ -723,8 +749,8 @@ class keysoundtab:
 	chb=HBox(0,0)
 	chb.set_spacing(3)
 	chb.pack_start(Label(_("Volume")+" "),0,0,0)
-	self.adj1=GtkAdjustment(5,0,100,1,1,1)
-	c=GtkHScale(self.adj1)
+	self.adj1=Adjustment(5,0,100,1,1,1)
+	c=HScale(self.adj1)
 	TIPS.set_tip(c,_("Volume"))
 	c.set_digits(0)
 	c.set_draw_value(1)
@@ -748,8 +774,8 @@ class keysoundtab:
 	self.clickcheck1=CheckButton(" "+_("Allow keyboard beeps"))
 	TIPS.set_tip(self.clickcheck1,_("Allow keyboard beeps"))
 	self.clickcheck1.set_active(1)
-	self.adj2=GtkAdjustment(50,0,100,1,1,1)
-	c2=GtkHScale(self.adj2)
+	self.adj2=Adjustment(50,0,100,1,1,1)
+	c2=HScale(self.adj2)
 	chb1.pack_start(c2,1,1,0)
 	TIPS.set_tip(c2,_("Volume"))
 	c2.set_digits(0)
@@ -760,8 +786,8 @@ class keysoundtab:
 	chb2=HBox(0,0)
 	chb2.set_spacing(3)
 	chb2.pack_start(Label(_("Pitch")+" (hz) "),0,0,0)
-	self.adj3=GtkAdjustment(400,1,2000,1,1,1)
-	c3=GtkHScale(self.adj3)
+	self.adj3=Adjustment(400,1,2000,1,1,1)
+	c3=HScale(self.adj3)
 	chb2.pack_start(c3,1,1,0)
 	TIPS.set_tip(c3,_("Pitch")+" (hz)")
 	c3.set_digits(0)
@@ -772,8 +798,8 @@ class keysoundtab:
 	chb3=HBox(0,0)
 	chb3.set_spacing(3)
 	chb3.pack_start(Label(_("Duration")+" (ms) "),0,0,0)
-	self.adj4=GtkAdjustment(100,1,800,1,1,1)
-	c4=GtkHScale(self.adj4)
+	self.adj4=Adjustment(100,1,800,1,1,1)
+	c4=HScale(self.adj4)
 	chb3.pack_start(c4,1,1,0)
 	TIPS.set_tip(c4,_("Duration")+" (ms)")
 	c4.set_digits(0)
@@ -835,7 +861,7 @@ class keysoundtab:
 	mainvbox.show_all()
 
     def runTest(self,*args) :
-	gdk_beep()  # test the keyboard beep
+	GDK.beep()  # test the keyboard beep
 
     def doReset(self,*args) : # reset to a reasonable speed
 	global KB_SETTINGS
@@ -886,6 +912,7 @@ class keywin:
 	self.version=this_software_version
 	cwin=Window()
 	cwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(cwin)
 	cwin.set_wmclass("icewmcp-keyboard","icewmcp-Keyboard")
 	cwin.realize()
 	cwin.set_title(_("IceWM CP - Keyboard Settings")+" "+self.version)
@@ -895,16 +922,16 @@ class keywin:
 	self.vbox=VBox(0,0)
 
 	menu_items = [
-				[_('/_File'), None, None, 0, '<Branch>'],
-				[_('/_File')+"/_"+_("Open Shortcut Key Configuration")+"...", '<control>O', self.openKey, 0, ''],
-				[_('/File/_Apply Changes Now...'), "<control>A", restart_ice, 0, ''],
-				[_('/File/sep1'), None, None, 1, '<Separator>'],
- 				[_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
- 				[_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""],
-				[_('/File/sep1'), None, None, 1, '<Separator>'],
-				[_('/File/_Exit'), '<control>Q', reapplySettings, 0, ''],
-				[_('/_Help'), None, None, 0, '<LastBranch>'],
-				[_('/Help/_About...'), "F2", self.do_about, 0, ''],
+				(_('/_File'), None, None, 0, '<Branch>'),
+				(_('/_File')+"/_"+_("Open Shortcut Key Configuration")+"...", '<control>O', self.openKey, 0, ''),
+				(_('/File/_Apply Changes Now...'), "<control>A", restart_ice, 0, ''),
+				(_('/File/sep1'), None, None, 1, '<Separator>'),
+ 				(_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
+ 				(_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
+				(_('/File/sep1'), None, None, 1, '<Separator>'),
+				(_('/File/_Exit'), '<control>Q', reapplySettings, 0, ''),
+				(_('/_Help'), None, None, 0, '<LastBranch>'),
+				(_('/Help/_About...'), "F2", self.do_about, 0, ''),
   (_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5013, ""),
   (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
   (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5013, ""),
@@ -912,17 +939,17 @@ class keywin:
 
 	ag = AccelGroup()
 	itemf = ItemFactory(MenuBar, '<main>', ag)
+	self.ag=ag
+	self.itemf=itemf
 	cwin.add_accel_group(ag)
 	itemf.create_items(menu_items)
 	self.menubar = itemf.get_widget('<main>')	
 
 	# added 6.21.2003 - "run as root" menu selector
 	self.leftmenu=self.menubar.get_children()[0].get_submenu()
-	self.run_root_button=CheckButton(" "+RUN_AS_ROOT)
-	self.run_root_menu=MenuItem()
-	self.run_root_menu.add(self.run_root_button)
-	self.leftmenu.prepend(self.run_root_menu)
-	self.run_root_button.connect("clicked",self.run_as_root)
+	self.run_root_button=CheckMenuItem(" "+RUN_AS_ROOT)
+	self.leftmenu.prepend(self.run_root_button)
+	self.run_root_button.connect("toggled",self.run_as_root)
 
 	vbox1=VBox(0,0)
 	vbox=self.vbox
@@ -981,7 +1008,7 @@ class keywin:
 	cwin.show_all()
 
     def openKey(self,*args):
-	self.notebook.set_page(2)
+	self.notebook.set_current_page(2)
 	global SHORT_TAB
 	SHORT_TAB.openKey()
 

@@ -42,14 +42,15 @@ class runwindow:
     set_basic_window_icon(runwindow)
     runwindow.set_wmclass("icewmcontrolpanel","IceWMControlPanel")
     self._root = runwindow
-    tips=gtk.Tooltips()
+    tips=TIPS
     self.rcommands=[]
     self.cmd_file=".icewmcp_gtkruncmd"
     self.last_file="/usr/X11R6/bin/gedit"
-    runwindow.realize()
     runwindow.set_title (_("Run a program")+"...")
     runwindow.set_position (GTK.WIN_POS_CENTER)
-    runwindow.set_default_size(415,-1)
+    runwindow.set_size_request(470,-1)
+    runwindow.set_default_size(470,-1)
+    runwindow.realize()
     self.runwindow = runwindow
     vbox1 = gtk.VBox (0, 0)
     vbox1.set_border_width ( 5)
@@ -102,7 +103,7 @@ class runwindow:
     runwindow.set_data("ignore_return",1)  # don't close the window on 'Return' key press, just 'Esc'
     runwindow.connect("key-press-event", keyPressClose)
     runwindow.show_all()
-    runwindow.set_size_request(470,-1)
+
 
   def showFileSel(self,*args):
     # changed 6.20.2003, to use new common file selection functionality (icewmcp_common)

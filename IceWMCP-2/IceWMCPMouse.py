@@ -23,6 +23,18 @@
 # Public License (open source).
 #######################################
 
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
 #set translation support
 import icewmcp_common
 from icewmcp_common import *

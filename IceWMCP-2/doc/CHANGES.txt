@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.0pre - 10/15/2003 - 12/4/2003
+VERSION 3.0pre - 10/15/2003 - 12/6/2003
 
 The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications.
 
@@ -132,6 +132,9 @@ IceWMCP-Mouse        (IceWMCPMouse.py):
 
 IceWMCP-Keyboard        (IceWMCPKeyboard.py):
 	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 
 
 IceMe  (IceMe.py):
@@ -154,6 +157,8 @@ IceWMCPRun  (IceWMCPRun.py):
 	- Version is now 3.0
 	- The application has been ported to PyGtk-2/Gtk-2.
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The window's size is now set *before* it is shown, for smoother loading of the Run dialog and to make sure the window doesn't appear to be jumping around right after it has been opened
+	- The tooltips now rely on the common 'TIPS' object from icewmcp_common, instead of creating a new Tooltips() object
 
 
 IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
