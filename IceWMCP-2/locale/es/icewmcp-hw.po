@@ -1,14 +1,14 @@
-#DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# SPANISH translation of IceWMCP Hardware and System Information.
+# Copyright (C) 2003-2004 Erica Andrews
+# Erica Andrews <PhrozenSmoke [at] yahoo.com>, 2003-2004.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: IceWMCP Hardware and System Information 1.0-beta\n"
 "POT-Creation-Date: 2003-05-11 11:35+0100\n"
-"PO-Revision-Date: 2003-05-21 15:51+0400\n"
-"Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
-"Language-Team: SPANISH\n"
+"PO-Revision-Date: 2004-02-20 15:51+0400\n"
+"Last-Translator: Erica Andrews <PhrozenSmoke [at] yahoo.com>\n"
+"Language-Team: SPANISH <PhrozenSmoke [at] yahoo.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
