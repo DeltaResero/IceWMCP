@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.0pre - 10/15/2003 - 12/2/2003
+VERSION 3.0pre - 10/15/2003 - 12/4/2003
 
 The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications.
 
@@ -20,7 +20,9 @@ SUMMARY OF CHANGES:
 	code from version 2.5, but also includes code snippets and suggestions 
 	from David Moore's donated, experimental PyGtk-2 port for IceWMP 
 	version 2.3.  Tarball installation packages are now using the new version 
-	0.4 of PyInstallShield (recently ported to PyGtk-2).
+	0.4 of PyInstallShield (recently ported to PyGtk-2). The GdkImlib image 
+	loading module is no longer be used, and all image loading is being 
+	down through gtk.Image and gdkpixbuf.
 
 
 PangoXLFD        (pangoxlfd.py):
@@ -97,10 +99,28 @@ PhrozenClock  (phrozenclock.py):
 
 IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
 	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- Feature enhancement: Now your selected background color can be previewed underneath whatever wallpaper you've selected on the IceWMCP-Wallpaper's 'preview monitor'; this is especially helpful if the wallpaper you are using has transparency
+	- User interface improvements: The 'directory' field has been moved up to the right of the 'Color' field, resulting in alot of saved screen space.
+	- Keyboard support improvements: Typing a color in the 'Color' field and pressing Enter now updates the selected color; Typing a directory in the 'Directory' field and pressing Enter now updates the directory being browsed
+	- Improvements when switching between normal mode and 'Run as Root': appropriate wallpapers, colors, and directories are loaded
+	- The width of the image list has been increased to aid in easier reading of long file names
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- When the application starts up, your selected wallpaper is now correctly selected and scrolled to in the list  (not sure what took me so long to remember to fix this)	
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 
 
 IceWMCP-WinOptions          (IceWMCPWinOptions.py):
 	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- Improvements when switching between normal mode and 'Run as Root': appropriate 'winoptions' file is now actually loaded
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- Usability fix: Switching between normal mode and "Run as Root' or opening a new 'winoptions' file clears the settings for the last select window option and automatically scrolls to and selects the first window option in the newly opened file
 
 
 IceWMCP-Mouse        (IceWMCPMouse.py):
@@ -138,6 +158,9 @@ IceWMCPRun  (IceWMCPRun.py):
 
 IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
 	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
 
 
 IceWMCP-BugReport        (IceWMCP_BugReport.py):
