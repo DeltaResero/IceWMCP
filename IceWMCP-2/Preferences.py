@@ -11,16 +11,24 @@
 # This software is distributed under the GNU General Public License
 #################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), February-June 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 # Copyright (c) 2003 Erica Andrews
-##################
+########
 
-import sys
-import string
-import os
-import os.path
-import getopt
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import sys,string,os,getopt
 from constants import *
 
 

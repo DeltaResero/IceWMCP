@@ -14,17 +14,25 @@
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 ##################
 
-import sys
-import glob
-import os.path
-import string
-import gdkpixbuf
-from gtk import *
-from GDK import Escape, Return
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import glob, string
 
 #set translation support
 from icewmcp_common import *
-_=translateME   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateME(somestr))
 
 
 # BUG FIX:
@@ -41,6 +49,8 @@ class IconSelectionDialog(Window):
 
     def __init__(self, num_columns=10):
         Window.__init__(self, WINDOW_TOPLEVEL)
+	self.set_wmclass("iceme","IceMe")
+	set_basic_window_icon(self)
         self.num_columns = num_columns
         self.icons_loaded = 0
         self.buttons = []
@@ -91,7 +101,7 @@ class IconSelectionDialog(Window):
         #     Progressbar progressbar
         #
         self.set_title(_("Please select an icon."))
-        self.set_policy(FALSE, TRUE, FALSE)
+        #self.set_policy(FALSE, TRUE, FALSE)
         self.set_modal(TRUE)
         self.set_default_size(400, 390)
         #self.connect("delete_event", self.on_delete)  # disabled, 4/25/2003 - Erica Andrews
@@ -112,23 +122,26 @@ class IconSelectionDialog(Window):
         self.label_columns.set_text(_("Columns:"))
         self.label_columns.show()
 
-        self.columns = SpinButton(GtkAdjustment(self.num_columns, 1, 30, 1, 10, 10), 1, 0)
+        self.columns = SpinButton(Adjustment(self.num_columns, 1, 30, 1, 10, 10), 1, 0)
         self.columns.set_numeric(TRUE)
         self.columns.set_editable(FALSE)
         self.columns.connect("changed", self.on_columns_changed)
         self.columns.show()
 
         self.ok = Button(_("Ok"))
+	TIPS.set_tip(self.ok,_("Ok"))
         self.ok.set_flags(CAN_DEFAULT|CAN_FOCUS|HAS_FOCUS|HAS_DEFAULT)
         self.ok.connect("clicked", self.do_ok)
         self.ok.show()
 
         self.cancel = Button(_("Cancel"))
+	TIPS.set_tip(self.cancel,_("Cancel"))
         self.cancel.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.cancel.connect("clicked", self.do_close)
         self.cancel.show()
 
         self.reload = Button(_("Reload"))
+	TIPS.set_tip(self.reload,_("Reload"))
         self.reload.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.reload.connect("clicked", self.do_reload)
         self.reload.show()
@@ -143,8 +156,8 @@ class IconSelectionDialog(Window):
         self.hbox.show()
 
         self.progressbar = ProgressBar()
-        self.progressbar.set_format_string("")
-        self.progressbar.set_show_text(TRUE)
+        self.progressbar.set_text("")
+        #self.progressbar.set_show_text(TRUE)
         self.progressbar.show()
 
         self.vbox = VBox(FALSE, 0)
@@ -165,13 +178,14 @@ class IconSelectionDialog(Window):
         first_butt = None
         picturelist = self.getPictureList()
         size = len(picturelist)
-        self.progressbar.configure(0, 0, size - 1)
-        self.progressbar.set_format_string(_("Loading")+" "+str(size)+" "+_("images...please wait.") )
+        #self.progressbar.configure(0, 0, size - 1)
+        self.progressbar.set_fraction(0.0)
+        self.progressbar.set_text(_("Loading")+" "+str(size)+" "+_("images...please wait.") )
         buttongroup = self.__addButton(None, "-", "-", None, None)
         if picturelist:
             for name, val in picturelist:
                 i = i + 1
-                self.progressbar.set_value(i)
+                self.progressbar.set_fraction(float(i)/size)
                 while events_pending():
                     mainiteration()
                 if len(val) == 3:
@@ -187,7 +201,7 @@ class IconSelectionDialog(Window):
         self.icons_loaded = 1
         self.__fillTable()
         self.__setSelectedIcon(None)
-        self.progressbar.set_value(0)
+        self.progressbar.set_fraction(0.0)
         del picturelist
 	if len(self.err_msg)>0:
 		msg_warn("IceMe", _("There were some errors.")+"\n"+"\n".join(self.err_msg))
@@ -196,7 +210,7 @@ class IconSelectionDialog(Window):
 
     def __addButton(self, group, name, filename, pix, mask):
         butt = None
-	tips=Tooltips()
+	tips=TIPS
         try:
             if filename == "-":
                 butt = RadioButton(group, "None")
@@ -204,13 +218,12 @@ class IconSelectionDialog(Window):
                 if pix is None or mask is None:
 
                   newheight,newwidth = 28,28   # 2.21.2003 - added larger icons (PhrozenSmoke@yahoo.com)
-                  img = pixbuf_new_from_file(filename)
-                  img2 = img.scale_simple(newheight,newwidth,gdkpixbuf.INTERP_BILINEAR)
-
-                  pix,mask = img2.render_pixmap_and_mask()
-
-                  icon = Pixmap(pix, mask)
+                  img = GDK.pixbuf_new_from_file(filename)
+                  img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
+                  icon = Image()
+		  icon.set_from_pixbuf(img2)
                   icon.show()
+		  del img
                   butt = RadioButton(group)
                   butt.add(icon)
 		  tips.set_tip(butt,filename)
@@ -270,14 +283,14 @@ class IconSelectionDialog(Window):
             self.on_iconbutton_clicked(self.buttons[0])
 
     def getSelectedIcon(self, default_selected_icon_name = None):
-        grab_add(self)
+        #grab_add(self)
         self.show()
         self.__initIcons()
         self.__setSelectedIcon(default_selected_icon_name)
-        self.progressbar.set_value(0)
-        self.progressbar.set_format_string(_("Please select an icon."))
+        self.progressbar.set_fraction(0.0)
+        self.progressbar.set_text(_("Please select an icon."))
         mainloop()
-        grab_remove(self)
+        #grab_remove(self)
         self.hide()
         return self.selected
 
@@ -300,16 +313,18 @@ class IconSelectionDialog(Window):
         self.__initIcons()
 
     def on_columns_changed(self, x):
-        self.num_columns = string.atoi(self.columns.get_text())
-        self.__fillTable()
+	try:
+        	self.num_columns = int(str(self.columns.get_text()).strip())
+        	self.__fillTable()
+	except:
+		pass
 
     def on_iconbutton_clicked(self, button):
         if button.get_active():
             filename = button.get_data("filename")
-#            shortname = button.get_data("name")
             shortname = filename
             self.selected = (shortname, filename)
-            self.progressbar.set_format_string(os.path.basename(filename))
+            self.progressbar.set_text(os.path.basename(filename))
 
     def on_iconbutton_pressed(self, button, event):
         if event.type == GDK._2BUTTON_PRESS:
@@ -321,9 +336,9 @@ class IconSelectionDialog(Window):
         mainquit()
 
     def on_key(self, widget, keyevent):
-        if keyevent.keyval == Escape:
+        if keyevent.keyval == gtk.keysyms.Escape:
             self.do_close()
-        elif keyevent.keyval == Return:
+        elif keyevent.keyval == gtk.keysyms.Return:
             self.do_ok()
 
 
@@ -373,7 +388,7 @@ def show_dlg(x):
 def test():
     create_dlg()
     win = Window()
-    win.set_default_size(80,20)
+    win.set_default_size(200,100)
     win.connect("delete_event", mainquit)
     win.show()
     b = Button("Test")

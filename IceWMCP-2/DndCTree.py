@@ -12,20 +12,32 @@
 # This software is distributed under the GNU General Public License
 #################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), February-April 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 # Copyright (c) 2003 Erica Andrews
-##################
+########
 
-import sys
-from gtk import *
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+#call up common libraries
+from icewmcp_common import *
 
 class DndCTree(CTree):
 
     COLUMN_TITLES_HEIGHT = 24
 
     def __init__(self, cols=1, tree_col=0, titles=None, _obj=None):
-        CTree.__init__(self, cols, tree_col, titles, _obj)
+        CTree.__init__(self, cols, tree_col, titles)
         CTree.set_selection_mode(self, SELECTION_BROWSE)
         self.column_titles_height = self.COLUMN_TITLES_HEIGHT
         targets = [('application/x-CTreeNode',
@@ -66,11 +78,12 @@ class DndCTree(CTree):
             # move self.the_drag_node under target_node
             if target_node == self.the_drag_node:
                 # source = target: no move neccessary
-                self.drag_finish(context, FALSE, TRUE, time)
+                ###self.drag_finish(context, FALSE, TRUE, time)
                 return
             if self.find(self.the_drag_node, target_node):
                 # source is an ancestor of target: move not allowed
-                self.drag_finish(context, FALSE, TRUE, time)
+                ##self.drag_finish(context, FALSE, TRUE, time)
+		return
             if target_node.is_leaf:
                 new_parent = target_node.parent
                 new_sibling = target_node.sibling
@@ -82,18 +95,18 @@ class DndCTree(CTree):
                     new_sibling = None
             if new_sibling == self.the_drag_node:
                 # move under direct predecessor: no move neccessary
-                self.drag_finish(context, FALSE, TRUE, time)
+                ##self.drag_finish(context, FALSE, TRUE, time)
                 return
             if not self.move_is_permitted(self.the_drag_node,
                                           target_node,
                                           new_parent,
                                           new_sibling):
-                self.drag_finish(context, FALSE, TRUE, time)
+                ##self.drag_finish(context, FALSE, TRUE, time)
                 return
             self.move(self.the_drag_node, new_parent, new_sibling)
             if not target_node.is_leaf:
                 self.expand(target_node)
-            self.drag_finish(context, TRUE, TRUE, time)
+            ##self.drag_finish(context, TRUE, TRUE, time)
 
     def cb_drag_end(self, widget, context):
         self.the_drag_node = None

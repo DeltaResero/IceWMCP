@@ -10,62 +10,32 @@
 # program.
 #############################################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), Feb-June 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
-##################
+# Copyright (c) 2003 Erica Andrews
+########
 
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
 
-from gtk import *
 from DndCTree import DndCTree
 from MenuParser import *
 from constants import *
 
 #set translation support
 from icewmcp_common import *
-_=translateME   # from icewmcp_common.py
 
-try:
-	# added 6.8.2003 - load an appropriate font for Russian and other  locales
-	# This should help fix a bug reported by Vasya, where applets didn't 
-	# appear correctly on Russian locale on Mandrake, probably because 
-	# loading a Helvetica font with a 'wildcard' instead of 'cronyx' probably 
-	# loaded a regular english-latin language font, So, let's explicitly load 
-	# a Russian 'cronyx' font when running under Russian locale, and 
-	# create a dictionary for looking up 'special' fonts in the future...Finnish?
-
-	# NOTE: when adding font support for a new language, you should also 
-	# add support for the language in IceMenuTree.py if you have IceMe, and IceWMCPSystem
-
-	RC_STYLE=None
-
-	# These are 'default' fonts: seem to work well with English, Spanish
-
-	font1="-*-helvetica-medium-r-normal-*-14-*"
-	font2="-*-helvetica-medium-o-normal-*-14-*"
-
-	mylocale=getLocaleDir().replace(os.sep,"")
-	if font_lang_dict.has_key(mylocale):
-		if len(font_lang_dict[mylocale])==2: 
-			font1=font_lang_dict[mylocale][0]
-			font2=font_lang_dict[mylocale][1]
-			NORMAL_FONT = load_font(font1) # larger fonts added 2.21.2003
-			BOLD_FONT   = load_font(font2) # larger fonts added 2.21.2003
-		else: RC_STYLE=font_lang_dict[mylocale]	
-	else:
-			NORMAL_FONT = load_font(font1) # larger fonts added 2.21.2003
-			BOLD_FONT   = load_font(font2) # larger fonts added 2.21.2003
-except:
-	NORMAL_FONT = load_font("-*-helvetica-medium-r-normal-*-12-*")
-	BOLD_FONT   = load_font("-*-helvetica-medium-o-normal-*-12-*") 
-
-if not RC_STYLE==None:   # disable fonts if using RC_STYLE
-	NORMAL_FONT=None
-	BOLD_FONT=None
-	try:
-		rc_parse_string(RC_STYLE)
-	except:
-		pass
-
+def _(somestr):
+	return to_utf8(translateME(somestr))
 
 
 class IceMenuTree(DndCTree):
@@ -82,11 +52,9 @@ class IceMenuTree(DndCTree):
 
     def on_tree_expand(self, tree, node):
         for i in range(0,2):
-            wid = self.get_column_width(i)
             opt = self.optimal_column_width(i)
-	    if i==1: opt=wid+200  # changed 4.3.2003 - Erica Andrews, to make 2nd column slightly wider
-            if wid < opt:
-                self.set_column_width(i, opt)
+	    if i==1: opt=opt+200  # changed 4.3.2003 - Erica Andrews, to make 2nd column slightly wider
+            self.set_column_min_width(i, opt)
 
 
     def init(self, menufile = None, programsfile = None, toolbarfile = None):
@@ -168,14 +136,6 @@ class IceMenuTree(DndCTree):
         # store additional data: iconname, whether it's a restart button
         # and whether the entry is inactive:
         self.node_set_row_data(node, [iconname, type, inactive])
-        # it the node should be inactive, change its color to grey:
-	if RC_STYLE==None:
-        	style = self.get_style().copy()
-        	if inactive:
-            		style.font = BOLD_FONT
-        	else:
-            		style.font = NORMAL_FONT
-        	self.node_set_row_style(node, style)
         return node
 
 

@@ -765,12 +765,14 @@ def getRGBForHex(hexstr):
 
 
 # Colors and fonts needed for nicely displaying help text files, 4.25.2003
-SOME_BLANK_WIN=gtk.Window()
-COL_BLUE=SOME_BLANK_WIN.get_colormap().alloc_color('SkyBlue3')
-COL_PURPLE=SOME_BLANK_WIN.get_colormap().alloc_color('DarkOrchid4')
-COL_GRAY=SOME_BLANK_WIN.get_colormap().alloc_color('RoyalBlue3')
-COL_BLACK=SOME_BLANK_WIN.get_colormap().alloc_color('black')
-COL_RED=SOME_BLANK_WIN.get_colormap().alloc_color('IndianRed3')
+# Changed 12.6.2003, GDK provides us a colormap, no need for hidden window anymore
+SOME_BLANK_COLORMAP=GDK.rgb_get_colormap()
+COL_BLUE=SOME_BLANK_COLORMAP.alloc_color('SkyBlue3')
+COL_PURPLE=SOME_BLANK_COLORMAP.alloc_color('DarkOrchid4')
+COL_GRAY=SOME_BLANK_COLORMAP.alloc_color('RoyalBlue3')
+COL_BLACK=SOME_BLANK_COLORMAP.alloc_color('black')
+COL_RED=SOME_BLANK_COLORMAP.alloc_color('IndianRed3')
+COL_WHITE=SOME_BLANK_COLORMAP.alloc_color('white')
 
 
 # added 6.21.2003 - special fonts for help files in special locales
@@ -910,6 +912,10 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
     sctext=gtk.TextView()
     sctext.set_editable(editable)
     sctext.set_wrap_mode(gtk.WRAP_WORD)
+    # Force white background, make sure all colors are viewable
+    for gg in [STATE_NORMAL, STATE_ACTIVE, STATE_PRELIGHT,
+					STATE_SELECTED, STATE_INSENSITIVE]:
+					sctext.modify_base(gg,COL_WHITE)
     if is_help==1: 
         renderHelp(sctext,mesg)
     else: 

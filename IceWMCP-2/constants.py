@@ -11,13 +11,12 @@
 # This software is distributed under the GNU General Public License
 #################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), February-April 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 # Copyright (c) 2003 Erica Andrews
-##################
-import sys
-import os
-import string
+########
+
+import sys, os, string
 
 ## here are some things to tweak, if you want
 ### patterns for icons

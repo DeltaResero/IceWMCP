@@ -16,29 +16,29 @@
 global ADDITIONAL_INFO
 ADDITIONAL_INFO=[]
 
-import sys,os,random,string,copy
+import random,string,copy
 
 
 #sys.path.append("/Compile/IceWMCP")
 
-from icewmcphw import *
-import GTK,gtk,DndCTree,gdkpixbuf
-from gtk import *
-from constants import *
-
 #set translation support
 from icewmcp_common import *
-_=translateHW   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateHW(somestr))  # from icewmcp_common.py
+
+from icewmcphw import *
+import DndCTree
+from constants import *
+
 
 def getHwIconDir():
 	return getPixDir()+"hw-pixmaps"+os.sep
 
-NORM_FONT = load_font("-*-helvetica-medium-r-normal-*-14-*")
-
 
 class hardwaregui:
     def __init__(self):
-	self.version="1.2-beta"
+	self.version="1.3-beta"
 	hideSplash()
 
 	self.locales= {
@@ -95,32 +95,34 @@ class hardwaregui:
     def __initWidgets(self) :
 
 	hwwin=Window(WINDOW_TOPLEVEL)
+	set_basic_window_icon(hwwin)
+	hwwin.set_wmclass("icewmcp-hw","IceWMCP-HW")
 	self.hwwin=hwwin
 	hwwin.realize()
 	hwwin.set_title("IceWMCP: "+_("Hardware and System Information"))
-	hwwin.set_position(WIN_POS_NONE)
+	hwwin.set_position(WIN_POS_CENTER)
 	mainvbox=VBox(0,0)
 	mainvbox.set_border_width(4)
 	mainvbox1=VBox(0,0)
 
 	menu_items = [
-				[FILE_MENU, None, None, 0, '<Branch>'],
- 				[FILE_MENU+"/_"+FILE_RUN,'<control>R', rundlg,421,""],
- 				[FILE_MENU+"/_"+UPDATE_MENU, '<control>U', checkSoftUpdate,420,""],
-				[FILE_MENU+'/sep1', None, None, 1, '<Separator>'],
-				[EXIT_MENU, '<control>Q', self.doQuit, 0, ''],
+				(FILE_MENU, None, None, 0, '<Branch>'),
+ 				(FILE_MENU+"/_"+FILE_RUN,'<control>R', rundlg,421,""),
+ 				(FILE_MENU+"/_"+UPDATE_MENU, '<control>U', checkSoftUpdate,420,""),
+				(FILE_MENU+'/sep1', None, None, 1, '<Separator>'),
+				(EXIT_MENU, '<control>Q', self.doQuit, 0, ''),
 
-				['/_'+_('Tools'), None, None, 0, '<Branch>'],
- 				['/_'+_('Tools')+'/'+_('Configure Keyboard')+"...", '<control>K', self.menu_cb,530,""],
- 				['/_'+_('Tools')+'/'+_('Configure Mouse')+"...", '<control>M', self.menu_cb,531,""],
- 				['/_'+_('Tools')+'/'+_('Configure PC Cards')+"...", '<control>P', self.menu_cb,532,""],
- 				['/_'+_('Tools')+'/'+_('Eject')+"/"+_('CD-ROM'), None, self.menu_cb,533,""],
- 				['/_'+_('Tools')+'/'+_('Eject')+"/"+_('Floppy'), None, self.menu_cb,534,""],
- 				['/_'+_('Tools')+'/'+_('Eject')+"/"+_('SCSI'), None, self.menu_cb,535,""],
- 				['/_'+_('Tools')+'/'+_('Eject')+"/"+_('Tape'), None, self.menu_cb,536,""],
+				('/_'+_('Tools'), None, None, 0, '<Branch>'),
+ 				('/_'+_('Tools')+'/'+_('Configure Keyboard')+"...", '<control>K', self.menu_cb,530,""),
+ 				('/_'+_('Tools')+'/'+_('Configure Mouse')+"...", '<control>M', self.menu_cb,531,""),
+ 				('/_'+_('Tools')+'/'+_('Configure PC Cards')+"...", '<control>P', self.menu_cb,532,""),
+ 				('/_'+_('Tools')+'/'+_('Eject')+"/"+_('CD-ROM'), None, self.menu_cb,533,""),
+ 				('/_'+_('Tools')+'/'+_('Eject')+"/"+_('Floppy'), None, self.menu_cb,534,""),
+ 				('/_'+_('Tools')+'/'+_('Eject')+"/"+_('SCSI'), None, self.menu_cb,535,""),
+ 				('/_'+_('Tools')+'/'+_('Eject')+"/"+_('Tape'), None, self.menu_cb,536,""),
 
-				[HELP_MENU, None, None, 0, '<LastBranch>'],
-				[ABOUT_MENU, "F2", self.do_about, 0, ''],
+				(HELP_MENU, None, None, 0, '<LastBranch>'),
+				(ABOUT_MENU, "F2", self.do_about, 0, ''),
   (HELP_MENU+"/_"+APP_HELP_STR, "F4", displayHelp,5014, ""),
   (HELP_MENU+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
 
@@ -131,6 +133,8 @@ class hardwaregui:
 
 	ag = AccelGroup()
 	itemf = ItemFactory(MenuBar, '<main>', ag)
+	self.ag=ag
+	self.itemf=itemf
 	hwwin.add_accel_group(ag)
 	itemf.create_items(menu_items)
 	self.menubar = itemf.get_widget('<main>')
@@ -142,22 +146,18 @@ class hardwaregui:
 	mainvbox.pack_start(Label(_("Hardware and System Information")),0,0,4)
 
 	hpaned=HPaned()
-	hpaned.set_gutter_size(10)
 	hpaned.set_position(315)
 	self.hpaned=hpaned
 	scrolledleft=ScrolledWindow()
 	scrolledleft.set_policy(POLICY_ALWAYS,POLICY_ALWAYS)
 	self.scrolledleft=scrolledleft
 	treeleft=hwtree()
-	#treeleft.set_size_request(275,-2)
-	#treeleft.set_line_style(CTREE_LINES_NONE)
 	self.treeleft=treeleft
 	scrolledleft.add(treeleft)
 	hpaned.add(scrolledleft)
 	scrolledright=ScrolledWindow()
 	self.textfield=TextView()
-	self.textfield.set_wrap_mode(1)
-	self.textfield.set_wrap_mode(1)
+	self.textfield.set_wrap_mode(WRAP_WORD)
 	scrolledright.add(self.textfield)
 	hpaned.add(scrolledright)
 	mainvbox.pack_start(hpaned,1,1,2)
@@ -344,22 +344,27 @@ class hardwaregui:
 
 
     def setText(self, helpstuff):
-		#print str(helpstuff)
-		self.textfield.freeze()
 		try:
-			self.textfield.delete_text(0,self.textfield.get_length())
-			self.textfield.delete_text(0,self.textfield.get_length()+1)
+			self.textfield.get_buffer().set_text("")
 		except:
 			pass
-		try:		
+		try:					
 			if str(helpstuff).find(_("Hardware and System Information"))> -1:
-				self.textfield.insert(HELP_FONT1,COL_PURPLE,None,str(helpstuff))
+				text_buffer_insert(self.textfield.get_buffer(), 
+					   get_renderable_tab(self.textfield.get_buffer(),
+					   HELP_FONT3,COL_WHITE,LANGCODE),str(helpstuff))
+				colour=COL_PURPLE
 			else: 
-				self.textfield.insert(NORM_FONT,COL_BLACK,None,str(helpstuff))
-			#self.textfield.insert_defaults(""+str(helpstuff))
+				text_buffer_insert(self.textfield.get_buffer(), 
+					   get_renderable_tab(self.textfield.get_buffer(),
+					   HELP_FONT2,COL_BLACK,LANGCODE),str(helpstuff))
+				colour=COL_WHITE
+
+			for gg in [STATE_NORMAL, STATE_ACTIVE, STATE_PRELIGHT,
+					STATE_SELECTED, STATE_INSENSITIVE]:
+					self.textfield.modify_base(gg,colour)
 		except:
 			pass
-		self.textfield.thaw()
 
     def probeX(self,*args):  # the Suse HW library returns WRONG X Server info, work-around
 	global ADDITIONAL_INFO
@@ -493,7 +498,7 @@ class hardwaregui:
     def probeHw(self,*args):
 	global ADDITIONAL_INFO
 	done_init=0
-	#plist=['cdrom','keyboard']
+	#plist=['keyboard']
 	plist=['gtkall']
 	for ii in plist:
 		hwlist=list_hardware(ii)
@@ -564,7 +569,17 @@ class hardwaregui:
 				self.setText("\n "+string.join(self.info[hw_real],"").replace("\n","\n    "))
 
 		else:
-				self.setText("\n  "+string.join([_("Hardware and System Information")+" :\n\t "+nodename],""))
+				self.setText("\n  "+string.join([_("Hardware and System Information")+" :\n\t "+nodename],"")+"\n\n\t")
+				try:
+					pix,mask=self.treeleft.getNodeIcon(args[1])
+					secicon=Image()
+					secicon.set_from_pixmap(pix,mask)
+					secicon.show_all()
+					tbuff=self.textfield.get_buffer()
+					tanch=tbuff.create_child_anchor(tbuff.get_end_iter())
+					self.textfield.add_child_at_anchor(secicon, tanch)
+				except:
+					pass
 
     def getSpecialIcon(self,hw_list):
 	for ii in self.special_icons.keys():
@@ -665,41 +680,6 @@ class hwtree(DndCTree.DndCTree):
         self.column_titles_passive()
         self.connect("tree-expand", self.on_tree_expand)
 
-
-	# added 6.19.2003, support for loading correct fontsets for locales that need 
-	# special fonts
-	self.RC_STYLE=None
-	try:	
-		# These are 'default' fonts: seem to work well with English, Spanish
-
-		font1="-*-helvetica-medium-r-normal-*-14-*"
-		font2="-*-helvetica-medium-o-normal-*-14-*"
-
-		mylocale=getLocaleDir().replace(os.sep,"")
-		if font_lang_dict.has_key(mylocale):
-			if len(font_lang_dict[mylocale])==2: 
-				font1=font_lang_dict[mylocale][0]
-				font2=font_lang_dict[mylocale][1]
-				self.NORMAL_FONT = load_font(font1) # larger fonts added 2.21.2003
-				self.BOLD_FONT   = load_font(font2) # larger fonts added 2.21.2003
-			else: self.RC_STYLE=font_lang_dict[mylocale]	
-		else:
-				self.NORMAL_FONT = load_font(font1) # larger fonts added 2.21.2003
-				self.BOLD_FONT   = load_font(font2) # larger fonts added 2.21.2003
-		
-	except:
-		self.NORMAL_FONT = load_font("-*-helvetica-medium-r-normal-*-14-*")
-		self.BOLD_FONT   = load_font("-*-helvetica-medium-o-normal-*-14-*") 
-
-	if not self.RC_STYLE==None:   # disable fonts if using RC_STYLE
-		self.NORMAL_FONT=None
-		self.BOLD_FONT=None
-		try:
-			rc_parse_string(self.RC_STYLE)
-		except:
-			pass
-
-
     def on_tree_expand(self, tree, node):
         for i in range(0,2):
 	    opt=self.optimal_column_width(i)
@@ -739,13 +719,11 @@ class hwtree(DndCTree.DndCTree):
             pix = mask = iconname = None
         else:
 	    try:
-		img = pixbuf_new_from_file(iconname)
-		img2 = img.scale_simple(30,30,gdkpixbuf.INTERP_BILINEAR)
+		img = GDK.pixbuf_new_from_file(iconname)
+		img2 = img.scale_simple(30,30,GDK.INTERP_BILINEAR)
 		pix,mask = img2.render_pixmap_and_mask()
 	    except: 
 		pix = mask = None
-	    	#pass
-            	#if iconname: dummy, pix, mask = self.app.getCachedIcon(iconname)
         is_leaf = (type != MENUTREE_SUBMENU)
         # insert node:
         node = self.insert_node(parent, sibling, [text, command], 5,
@@ -753,15 +731,7 @@ class hwtree(DndCTree.DndCTree):
         # store additional data: iconname, whether it's a restart button
         # and whether the entry is inactive:
         self.node_set_row_data(node, [iconname, type, inactive])
-        # it the node should be inactive, change its color to grey:
-        style = self.get_style().copy()
-	if self.RC_STYLE==None:
-        	if inactive:
-            		style.font = self.BOLD_FONT
-        	else:
-           		 style.font = self.NORMAL_FONT
-        	self.node_set_row_style(node, style)
-        return node
+	return node
 
 
     def insertNode(self, node, type, text, iconname, command):

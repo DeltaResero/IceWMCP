@@ -1,9 +1,9 @@
 #! /usr/bin/env python
+
 #############################################
-#  PySpool 0.2.3
-#  Copyright 2003 by Erica Andrews
-#  PhrozenSmoke@yahoo.com
-#  All rights reserved.
+#  PySpool 0.3
+#  Copyright (c) 2002-2003 by Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
 #  
 #  PySpool is a simple Gtk-based spool monitor and 
 #  manager written in 100% Python. It is intended to 
@@ -21,17 +21,22 @@
 #  application. 
 #  Enjoy!
 #############################################
-import gtk,GTK,copy
-from gtk import *
+
+import copy
 from pyprintcommon import *
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
+
 
 class pyspoolwin :
     def __init__(self) :
 	pyspoolwin=Window(WINDOW_TOPLEVEL)
+	pyspoolwin.set_wmclass("pyspool","PySpool")
+	set_basic_window_icon(pyspoolwin)
 	self._root=pyspoolwin
 	pyspoolwin.realize()
 	pyspoolwin.set_title('PySpool: '+_("Printer Queue")+' version '+PYPRINT_VERSION)	
@@ -44,10 +49,12 @@ class pyspoolwin :
 
         ag = AccelGroup()
         itemf = ItemFactory(MenuBar, "<main>", ag)
+	self.ag=ag
+	self.itemf=itemf
         itemf.create_items([
             # path              key           callback    action#  type
   (_("/ _File"),  "<alt>F",  None,  0, "<Branch>"),
- 				[_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
+  (_("/ _File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
   (_("/ _File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
   (_("/ _File/_Quit"), "<control>Q", self.doQuit, 10, ""),
   (_("/_Help"),  "<alt>H",  None, 16, "<LastBranch>"), 
@@ -69,10 +76,10 @@ class pyspoolwin :
 	self.hbox1=hbox1
 	label8=Label(_('Select Printer:'))
 	self.label8=label8
-	pyspoolwin.set_size_request(680,-2)
+	pyspoolwin.set_size_request(680,-1)
 	hbox1.pack_start(label8,0,0,0)
 	printcombo=Combo()
-	printcombo.set_size_request(200,-2)
+	printcombo.set_size_request(200,-1)
 	self.printcombo=printcombo
 	combo_entry=printcombo.entry
 	combo_entry.set_editable(0)
@@ -134,12 +141,12 @@ class pyspoolwin :
 	hbox3.pack_start( mytable,1,1,0)
 	vbox3=VBox(1,7)
 	self.vbox3=vbox3
-	refreshbutt=getPixmapButton("pyprint_reload.xpm",_("Refresh Queue Details"),pyspoolwin)
+	refreshbutt=getPixmapButton(getPixDir()+"pyprint_reload.xpm",_("Refresh Queue Details"),pyspoolwin)
 	TIPS.set_tip(refreshbutt,_("Refresh Queue Details"))
 	refreshbutt.connect("clicked",self.loadDetailsR)
 	self.refreshbutt=refreshbutt
 	vbox3.pack_start( refreshbutt,0,0,0)
-	cancelbutt=getPixmapButton("pyprint_cancel.xpm",_("Cancel Selected Print Job"),pyspoolwin)
+	cancelbutt=getPixmapButton(getPixDir()+"pyprint_cancel.xpm",_("Cancel Selected Print Job"),pyspoolwin)
 	TIPS.set_tip(cancelbutt,_("Cancel Selected Print Job"))
 	cancelbutt.connect("clicked",self.cancelJob)
 	self.cancelbutt=cancelbutt
@@ -148,39 +155,39 @@ class pyspoolwin :
 	mainvbox.pack_start(hbox3,0,0,4)
 	scrollwin=ScrolledWindow()
 	scrollwin.set_border_width(3)
-	scrollwin.set_size_request(-2,170)
+	scrollwin.set_size_request(-1,170)
 	self.scrollwin=scrollwin
 	myclist=CList(7)
 	myclist.connect("unselect_row",self.startUpdates)
 	myclist.connect("select_row",self.makeSelection)
 	myclist.column_titles_show()
-	myclist.set_column_width(0,70)
-	myclist.set_column_width(1,53)
-	myclist.set_column_width(2,71)
-	myclist.set_column_width(3,110)
-	myclist.set_column_width(4,117)
-	myclist.set_column_width(5,78)
-	myclist.set_column_width(6,40)
+	myclist.set_column_width(0,80)
+	myclist.set_column_width(1,73)
+	myclist.set_column_width(2,91)
+	myclist.set_column_width(3,120)
+	myclist.set_column_width(4,127)
+	myclist.set_column_width(5,88)
+	myclist.set_column_width(6,320)
 	self.myclist=myclist
-	label1=Button(_('State'))
+	label1=Label(_('State'))
 	self.label1=label1
 	myclist.set_column_widget(0,label1)
-	label2=Button(_('Job ID'))
+	label2=Label(_('Job ID'))
 	self.label2=label2
 	myclist.set_column_widget(1,label2)
-	label3=Button(_('Size'))
+	label3=Label(_('Size'))
 	self.label3=label3
 	myclist.set_column_widget(2,label3)
-	label4=Button(_('Files'))
+	label4=Label(_('Files'))
 	self.label4=label4
 	myclist.set_column_widget(3,label4)
-	label5=Button(_('Owner/ID'))
+	label5=Label(_('Owner/ID'))
 	self.label5=label5
 	myclist.set_column_widget(4,label5)
-	label6=Button(_('Time'))
+	label6=Label(_('Time'))
 	self.label6=label6
 	myclist.set_column_widget(5,label6)
-	label7=Button(_('Class'))
+	label7=Label(_('Class'))
 	self.label7=label7
 	myclist.set_column_widget(6,label7)
 	scrollwin.add(myclist)
@@ -207,6 +214,7 @@ class pyspoolwin :
 	except:
 		pass
 	gtk.timeout_add(1500,self.autoLoad) # reload the details every 1.5 seconds
+
 
     def changeView(self,*args) :
 	if not self.combo_entry.get_text().strip()=="":

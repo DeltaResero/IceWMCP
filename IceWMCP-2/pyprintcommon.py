@@ -1,10 +1,7 @@
-import os,GTK,sys
-from gtk import *
 #############################################
-#  PySpool 0.2.3
-#  Copyright 2003 by Erica Andrews
-#  PhrozenSmoke@yahoo.com
-#  All rights reserved.
+#  PySpool 0.3
+#  Copyright (c) 2002-2003 by Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
 #  
 #  PySpool is a simple Gtk-based spool monitor and 
 #  manager written in 100% Python. It is intended to 
@@ -25,10 +22,12 @@ from gtk import *
 
 #set translation support
 from icewmcp_common import *
-_=translateCP   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 global PYPRINT_VERSION
-PYPRINT_VERSION="0.2.3"
+PYPRINT_VERSION="0.3"
 
 def launch(launch_command):
 	os.popen(str(launch_command))
@@ -43,7 +42,7 @@ def showConfirm(message_text,wintitle="PyPrint"):
 
 
 def showAbout(message_text,myappname="PyPrint"):
-	showHelp(str(myappname)+" "+PYPRINT_VERSION+"\n\nCopyright (c) 2003 by Erica Andrews\nPhrozenSmoke@yahoo.com\n"+_("All rights reserved.")+"\n\n" +str(message_text) +"\n\n"+str(myappname)+_(" is open source under the General Public License (GPL).\nNO technical support will be provided for this application.\nEnjoy!"),_("About ")+myappname)
+	showHelp(str(myappname)+" "+PYPRINT_VERSION+"\n\nCopyright (c) 2002-2003 by Erica Andrews\nPhrozenSmoke@yahoo.com\n"+_("All rights reserved.")+"\n\n" +str(message_text) +"\n\n"+str(myappname)+_(" is open source under the General Public License (GPL).\nNO technical support will be provided for this application.\nEnjoy!"),_("About ")+" "+myappname)
 
 def readOSLines(os_popen_cmd):
 	try:
@@ -78,13 +77,6 @@ def getPixmapButton (picon,btext,windowval) :
 	b.show_all()        
 	return b
 
-def loadImage(picon,windowval):
-	try:
-		p=Pixmap(windowval,getPixDir()+str(picon),None)
-		p.show_all()
-		return p
-	except:
-		return None
 
 def getPixmapVBox(picon,btext,windowval):
         try:

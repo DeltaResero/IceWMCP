@@ -14,17 +14,35 @@
 # This software is distributed under the GNU General Public License
 #################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), February-June 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 # Copyright (c) 2003 Erica Andrews
-##################
+########
 
-import glob,sys,gdkpixbuf,gtk
-import os
-import stat
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import glob,stat
 from popen2 import popen2
 
-from gtk import *
+import icewmcp_common
+# disable splash for internal IcePref stuff coming from IceWMCPKeyboard
+icewmcp_common.NOSPLASH=1
+
+#set translation support
+from icewmcp_common import *
+
+def _(somestr):
+	return to_utf8(translateME(somestr))
 
 from constants import *
 from Preferences import Preferences
@@ -34,11 +52,6 @@ from MenuParser import MenuParser
 import IconSelectionDialog     # import module, instead of class, 4/25/2003 - Erica Andrews
 from PreviewWindow import PreviewWindow
 from icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
-
-
-#set translation support
-from icewmcp_common import *
-_=translateME   # from icewmcp_common.py
 
 
 VERSION = this_software_version+"/IceWMCP Edition"
@@ -54,9 +67,11 @@ class IceMe(Window):
 	self.last_exec=''   # added 4.3.2003, Erica Andrews, file selection 'memory'
 	self.i_am_root=0  # added 6.22.2003 - are we running as root?
 
-        Window.__init__(self, WINDOW_TOPLEVEL, "IceMe - IceWMCP Edition")
+        Window.__init__(self, WINDOW_TOPLEVEL)
+	self.set_title("IceMe - IceWMCP Edition")
+	set_basic_window_icon(self)
 	self.set_wmclass("iceme","IceMe")  # added 4.4.2003, Erica Andrews
-        self.set_default_size(screen_width()-140, screen_height()-175)
+        self.set_default_size(GDK.screen_width()-140, GDK.screen_height()-175)
         self.connect("delete_event", mainquit)
 
         self.preferences       = preferences
@@ -83,9 +98,9 @@ class IceMe(Window):
         name_label.set_alignment(1.0, 0.5)
         name_label.show()
 
-        self.name = Entry()
-        self.name.connect("changed", self.on_name_changed)
-        self.name.show()
+        self.name_entry = Entry()
+        self.name_entry.connect("changed", self.on_name_changed)
+        self.name_entry.show()
 
         self.command_label = Label(_("Command:"))
         self.command_label.set_alignment(1.0, 0.5)
@@ -95,7 +110,7 @@ class IceMe(Window):
         self.command.connect("changed", self.on_command_changed)
         self.command.show()
 
-        cmd_icon =getImage(getPixDir()+"iceme_open.png",translateCP("Browse..."))
+        cmd_icon =getImage(getPixDir()+"iceme_open.png",to_utf8(translateCP("Browse...")))
         cmd_icon.show()
         self.command_button = Button()
         self.command_button.add(cmd_icon)
@@ -117,7 +132,8 @@ class IceMe(Window):
         self.icon_name.show()
 
         dummy, pix, mask = self.getCachedIcon("-")
-        self.icon = Pixmap(pix, mask)
+	self.icon=Image()
+        self.icon.set_from_pixmap(pix, mask)
         self.icon.show()
 
         self.icon_button = Button(None)
@@ -143,24 +159,27 @@ class IceMe(Window):
         self.add_shortcut.show()
 
         table = Table(2, 6, FALSE)
-        table.attach(name_label,         0, 1, 0, 1, yoptions=0)
-        table.attach(self.name,          1, 2, 0, 1, yoptions=0)
-        table.attach(self.command_label, 0, 1, 1, 2, yoptions=0)
-        table.attach(command_hbox,       1, 2, 1, 2, yoptions=0)
-        table.attach(icon_label,         0, 1, 2, 3, yoptions=0)
-        table.attach(icon_hbox,          1, 2, 2, 3, yoptions=0)
-        table.attach(sep,                0, 2, 3, 4, yoptions=0)
-        table.attach(self.is_restart,    1, 2, 4, 5, yoptions=0)
-        table.attach(self.add_shortcut,  1, 2, 5, 6, yoptions=0)
+        table.attach(name_label,         0, 1, 0, 1, 0)
+        table.attach(self.name_entry,          1, 2, 0, 1, (EXPAND+FILL))
+        table.attach(self.command_label, 0, 1, 1, 2, 0)
+        table.attach(command_hbox,       1, 2, 1, 2, (EXPAND+FILL))
+        table.attach(icon_label,         0, 1, 2, 3, 0)
+        table.attach(icon_hbox,          1, 2, 2, 3, (EXPAND+FILL))
+        table.attach(sep,                0, 2, 3, 4, (EXPAND+FILL))
+        table.attach(self.is_restart,    1, 2, 4, 5, (EXPAND+FILL))
+        table.attach(self.add_shortcut,  1, 2, 5, 6, (EXPAND+FILL))
         table.set_border_width(10)
         table.set_row_spacings(5)
         table.set_col_spacings(5)
         table.show()
 
         self.rightframe = Frame(_("Menu entry"))
+	self.table_box=VBox(0,0)
+	self.table_box.pack_start(table,0,0,0)
+	self.table_box.pack_start(Label(" "),1,1,0)
         self.rightframe.set_border_width(10)
-        self.rightframe.add(table)
-        self.rightframe.show()
+        self.rightframe.add(self.table_box)
+        self.rightframe.show_all()
 
         hpaned = HPaned()
         hpaned.pack1(scr, TRUE, TRUE)
@@ -175,11 +194,9 @@ class IceMe(Window):
 
 	# added 6.21.2003 - "run as root" menu selector
 	self.leftmenu=self.menubar.get_children()[0].get_submenu()
-	self.run_root_button=CheckButton(" "+RUN_AS_ROOT)
-	self.run_root_menu=MenuItem()
-	self.run_root_menu.add(self.run_root_button)
-	self.leftmenu.prepend(self.run_root_menu)
-	self.run_root_button.connect("clicked",self.run_as_root)
+	self.run_root_button=CheckMenuItem(" "+RUN_AS_ROOT)
+	self.leftmenu.prepend(self.run_root_button)
+	self.run_root_button.connect("toggled",self.run_as_root)
 	self.leftmenu.show_all()
 
         vbox = VBox()
@@ -268,9 +285,10 @@ class IceMe(Window):
 	except:
 		pass
         self.show()  # do not use "show_all"
+	hideSplash()
 	import IceWMCPKeyboard
 	self.IceWMCPKeyboard=IceWMCPKeyboard
-	timeout_add(15,hideSplash)  # close the Splash window, from icewmcp_common.py
+	hideSplash()  # just to be extra sure
 	return 0
 
 
@@ -298,6 +316,8 @@ class IceMe(Window):
     def __initMenu(self):
         ag = AccelGroup()
         itemf = ItemFactory(MenuBar, "<main>", ag)
+	self.ag=ag
+	self.itemf=itemf
         itemf.create_items([
             # path              key           callback    action#  type
             (_("/_File"),          None,         None,             0, "<Branch>"),  
@@ -309,7 +329,7 @@ class IceMe(Window):
             (_("/_File/_Revert"),  "<control>T", self.on_revert,   2, ""),
             (_("/_File/_Preview"), "<control>P", self.on_preview,  3, ""),
 	    (_('/_File/sep1'), None, None, 2, '<Separator>'),
- 				[_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""], # added 4.2.2003
+ 	    (_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""), # added 4.2.2003
  	    (_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
             (_("/_File/sep1"),     None,         None,             4, "<Separator>"),
             (_("/_File/_Exit"),    "<control>Q", mainquit,         5, ""),
@@ -340,7 +360,7 @@ class IceMe(Window):
         self.menu_delete  = itemf.get_widget_by_action(11)
         self.menu_icepref = itemf.get_widget_by_action(13)
 
-        hdlbox = GtkHandleBox()
+        hdlbox = HandleBox()
         hdlbox.add(menu)
         hdlbox.show()
         return hdlbox
@@ -358,24 +378,21 @@ class IceMe(Window):
 		# regardless of the the real image size is
 		# 5.6.2003 - Erica Andrews
 
-		# below is the old faulty image loading calls from the old IceMe
-        	"""return self.tb.append_item(name, tooltip, None,
-            Pixmap(self, os.path.join(getBaseDir(), "pixmaps", pic)),
-            callback)"""
-
-		# 5.6.2003 - Erica Andrews
-		return self.tb.append_item(name, tooltip, None,
-            loadScaledImage(getPixDir()+pic,23,23),
+		tb_obj=self.tb.append_item(name, tooltip, None,
+            loadScaledImage(getPixDir()+pic,24,24),
             callback)
-	except:
+	except:		
 		b=Button(name)
 		b.show_all()
 		return self.tb.append_widget(b,tooltip,name)
+	tb_obj.set_border_width(3)
+	return tb_obj
 
 
     def __initToolbar(self):
-        self.tb = Toolbar(ORIENTATION_HORIZONTAL, TOOLBAR_ICONS)
-        self.tb.set_space_size(13) # changed 5.7.2003, Erica Andrews...more space
+        self.tb = Toolbar()
+        self.tb.set_orientation(gtk.ORIENTATION_HORIZONTAL)
+        self.tb.set_style(gtk.TOOLBAR_ICONS)
 
         self.tb_save = self.__getTbButton(
             _("Save"), "iceme_save.png", self.on_save,
@@ -432,9 +449,9 @@ class IceMe(Window):
             _("Shortcuts"), "iceme_keys.png", self.icewmcpKeyEdit,
             _("Edit shortcuts")) ## changed to launch IceWMCP-KeyEdit, default editor crashed on startup, 2/21/2003
 
-	self.tb.set_button_relief(2) # added 5.7.2003, Erica Andrews
+	#self.tb.set_button_relief(2) # added 5.7.2003, Erica Andrews
         self.tb.show()
-        hdlbox = GtkHandleBox()
+        hdlbox = HandleBox()
         hdlbox.add(self.tb)
 	hdlbox.set_border_width(2)  # added 5.6.2003, Erica Andrews
         hdlbox.show()
@@ -574,14 +591,18 @@ class IceMe(Window):
 
         # set data items on right frame:
         if not is_sep:
-            self.name.set_text(self.tree.getNodeName(self.cur_node))
+            self.name_entry.set_text(self.tree.getNodeName(self.cur_node))
         else:
-            self.name.set_text("")
+            self.name_entry.set_text("")
         self.command.set_text(self.tree.getNodeCommand(self.cur_node))
         self.setIconButton(self.tree.getNodeIconName(self.cur_node))
         is_restart = self.tree.getNodeType(self.cur_node) == MENUTREE_RESTART
         self.is_restart.set_active(is_restart)
 
+    def grabPixbuf(self, filename):
+                  img = GDK.pixbuf_new_from_file(filename)
+                  pix,mask = img.render_pixmap_and_mask()
+		  return (pix,mask,)
 
     def getCachedIcon(self, shortname):
         "Returns (<filename>, <pixmap>, <mask>)"
@@ -613,31 +634,23 @@ class IceMe(Window):
         if val is None:
             # fall back to empty icon:
              val = self.icons["-"]  # This wasn't good - try to load the icon even if its not on IconPath
-	    # and add it to the self.icons dict
-	    #self.icons[shortname]=shortname
-	    #val=shortname
         if type(val) == type(""):
             try:
-		  #if val.find("sciences")>0: print val
-                  #pix, mask = create_pixmap_from_xpm(self, None, val)
                   newheight,newwidth = 22,22   # 2.21.2003 - added larger icons (PhrozenSmoke@yahoo.com)
 		  if val.endswith("iceme_icewm.png"): newheight,newwidth = 55,22
-                  img = pixbuf_new_from_file(val)
-                  img2 = img.scale_simple(newheight,newwidth,gdkpixbuf.INTERP_BILINEAR)
-
+                  img = GDK.pixbuf_new_from_file(val)
+                  img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
                   pix,mask = img2.render_pixmap_and_mask()
             except :
-                #sys.stderr.write("*** couldn't open icon: %s" % (val))
-                pix, mask = create_pixmap_from_xpm(self, None, self.icons["-"])
+		pix,mask=self.grabPixbuf( self.icons["-"])
 	    if mask==None:
 		try:
 			if (shortname.startswith(os.sep)) and (shortname.endswith(".xpm")):
-		 		pdp, mask = create_pixmap_from_xpm(self, None, shortname)
+				pdp,mask=self.grabPixbuf( shortname)
 		except:
-			pix, mask = create_pixmap_from_xpm(self, None, self.icons["-"])
+			pix,mask=self.grabPixbuf( self.icons["-"])
             newval = (val, pix, mask)
             self.icons[shortname] = newval
-	    #if shortname.find("realplay")>-1: print "New Val: "+str(newval)
             return newval
         else:
             return val
@@ -649,7 +662,8 @@ class IceMe(Window):
         if shortname is None or shortname == "-":
             shortname = ""
         filename, new_pix, new_mask = self.getCachedIcon(shortname)
-        self.icon = Pixmap(new_pix, new_mask)
+	self.icon=Image()
+        self.icon.set_from_pixmap(new_pix, new_mask)
         self.icon.show()
         self.icon_button.add(self.icon)
         self.icon_name.set_text(shortname)
@@ -879,7 +893,7 @@ class IceMe(Window):
         self.setStatus(_("Done."))
 
     def on_about(self, x=None, y=None):
-        commonAbout("About IceMe",    "IceMe v."+VERSION+"\n\n"+_("A menu editor for IceWM written in Python and ")+"\n\n"+ "Copyright (c) 2000-2002 by Dirk Moebius <dmoebius@gmx.net> and Mike Hostetler  <thehaas@binary.net>.  Copyright (c) 2003 by Erica Andrews <phrozensmoke@yahoo.com>.\n\n"+"See the file COPYING for license information (GPL).\n"+"Please visit the IceMe homepage at:\n"+"http://iceme.sourceforge.net\n\n"+_("This is a Special Edition of IceMe for IceWM Control Panel,\nwith modifications and optimizations by")+" Erica  Andrews.\n<PhrozenSmoke@yahoo.com>\nhttp://icesoundmanager.sourceforge.net",0 )
+        commonAbout("About IceMe",    "IceMe v."+VERSION+"\n\n"+_("A menu editor for IceWM written in Python and GTK.")+"\n\n"+ "Copyright (c) 2000-2002 by Dirk Moebius <dmoebius@gmx.net> and Mike Hostetler  <thehaas@binary.net>.  Copyright (c) 2003 by Erica Andrews <phrozensmoke@yahoo.com>.\n\n"+"See the file COPYING for license information (GPL).\n"+"Please visit the IceMe homepage at:\n"+"http://iceme.sourceforge.net\n\n"+_("This is a Special Edition of IceMe for IceWM Control Panel,\nwith modifications and optimizations by")+" Erica  Andrews.\n<PhrozenSmoke@yahoo.com>\nhttp://icesoundmanager.sourceforge.net",0 )
 
     def on_new_entry(self, button):
         node = self.tree.insertNode(self.cur_node, MENUTREE_PROG,

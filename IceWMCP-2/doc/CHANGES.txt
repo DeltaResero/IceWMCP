@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.0pre - 10/15/2003 - 12/6/2003
+VERSION 3.0pre - 10/15/2003 - 12/7/2003
 
 The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications.
 
@@ -18,11 +18,13 @@ SUMMARY OF CHANGES:
 	All applications in the control panel now use the PyGtk-2/Gtk-2 user
 	interface libraries.  The new PyGtk-2 port includes mostly restructured 
 	code from version 2.5, but also includes code snippets and suggestions 
-	from David Moore's donated, experimental PyGtk-2 port for IceWMP 
+	from David Moore's donated, experimental PyGtk-2 port for IceWMCP 
 	version 2.3.  Tarball installation packages are now using the new version 
 	0.4 of PyInstallShield (recently ported to PyGtk-2). The GdkImlib image 
 	loading module is no longer be used, and all image loading is being 
-	down through gtk.Image and gdkpixbuf.
+	down through gtk.Image and gdkpixbuf. Numerous code cleanups have
+	been made. All commonly used libraries such as gtk, os, and sys are now 
+	imported throught icewmcp_common for most modules.
 
 
 PangoXLFD        (pangoxlfd.py):
@@ -44,6 +46,9 @@ IceWMCP-Common        (icewmcp_common.py):
 	- On Vasya's [Vasiliy Leushin (basileus['at']newmail.ru) ] suggestion, the default fonts for Russian are now Arial, instead of Helvetica.  (If he says Arial was working on his system, I'll believe him.)
 	- The freely available CJKCodecs for Python will now be used for all unicode conversions for Japanese, Chinese, and Korean languages.  Currently this only affects Traditional Chinese (zh_tw).  Traditional Chinese users will need to download and install the CJKCodecs if they do not already have them: http://cjkpython.berlios.de/ , since Python does not appear to natively support charsets lil Big-5, etc.
 	- Added a built-in default pixmap 'icon_icewmcp' and methods 'set_basic_window_icon' and  'set_special_window_icon' used by all applications for setting default window icons, which IceWM of course allows you to change as you please
+	- The background color of all Help windows is now forced to white to ensure all help colors are viewable
+	- New shared color 'COL_WHITE" added
+	- No longer using a hidden window for shared color allocation (using GDK's builtin rgb colormap object)
 
 
 IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
@@ -71,6 +76,7 @@ IcePref2       (icepref.py):
 	- The IcePref2 logo is now slightly smaller
 	- Improved scaling of the sample wallpaper image in the Desktop section
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- TODO: Merge in IceWM changes up to IceWM 1.2.13 (1.2.14pre is not really stable)
 
 
 IcePref2-TD            (icepref_td.py):
@@ -139,10 +145,30 @@ IceWMCP-Keyboard        (IceWMCPKeyboard.py):
 
 IceMe  (IceMe.py):
 	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- The icon selection dialog and the menu preview window now have wm_class and wm_name values and offer a built-in window icons (which, of course, can be changed in IceWM)
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Fixed a possible extra splash window that could show up but had no business showing up
+	- Fixed the About box (an important translated string was not showing up)
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
+	- Icons in IceMe and IceMe itself appear to be loading slightly faster; probably due to improvements in the GdkPixbuf code-set: all icons are now being loaded through GdkPixbuf/gtk.Image()
 
 
 IceWMCP System and Hardware        (IceWMCPSystem.py):
-	- Version is now 1.2-beta
+	- Version is now 1.3-beta
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- GUI improvement: The window now opens centered on the screen
+	- GUI improvement: Clicking a 'section' instead of an actual hardware item now shows a nicely colored screen with the section's icon
+	- GUI improvement: Clicking a hardware item now forces the information window to a white background and black text to guarantee readability
+	- Fonts used for the 'information' window on the right come from the same fonts as the Help fonts in icewmcp_common
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+	- TODO: Fix a nasty malloc-related seg-fault resulting from probing hardware objects 'gtkall', 'all', and 'reallyall'
 
 
 IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
@@ -166,6 +192,8 @@ IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
 	- The application has been ported to PyGtk-2/Gtk-2.
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
 
 
 IceWMCP-BugReport        (IceWMCP_BugReport.py):
@@ -174,7 +202,13 @@ IceWMCP-BugReport        (IceWMCP_BugReport.py):
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 
 PySpool  (pyspool.py, pyprintcommon.py):
-	- Version is now 0.2.3
+	- Version is now 0.3
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- GUI improvement: The column widths in the list of print jobs have been readjusted for better usability
+	- GUI improvement: The column labels now use Label widgets instead of Buttons, creating better clicking and resizing abilities
+	- GUI improvement: 2 pixmaps that were not properly loading are now loading
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
 
 IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
 	- The application has been ported to PyGtk-2/Gtk-2.
@@ -193,7 +227,6 @@ icewmcp_dnd.py:
 
 TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
 	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
-	- PRIORITY: Speed up IceMe start-up (play with speed of icon loading)
 	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
 	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
 	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??

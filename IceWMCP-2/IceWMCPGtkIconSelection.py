@@ -146,21 +146,25 @@ class IconSelectionDialog(Window):
         self.columns.show()
 
         self.ok = Button(_("SELECT"))
+	TIPS.set_tip(self.ok,_("SELECT"))
         self.ok.set_flags(CAN_DEFAULT|CAN_FOCUS|HAS_FOCUS|HAS_DEFAULT)
         self.ok.connect("clicked", self.do_ok)
         self.ok.show()
 
         self.cancel = Button(_("Close"))
+	TIPS.set_tip(self.cancel,_("Close"))
         self.cancel.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.cancel.connect("clicked", self.do_close)
         self.cancel.show()
 
         self.reload = Button(_("Reload"))
+	TIPS.set_tip(self.reload,_("Reload"))
         self.reload.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.reload.connect("clicked", self.do_reload)
         self.reload.show() 
 
         self.ipath = Button(_("Icon Paths..."))
+	TIPS.set_tip(self.ipath,_("Icon Paths..."))
         self.ipath.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.ipath.connect("clicked", self.showIconsPath)
         self.ipath.show()  
@@ -314,8 +318,8 @@ class IconSelectionDialog(Window):
 		  if not CACHED.has_key(filename):
                   	img = GDK.pixbuf_new_from_file(filename)
                   	img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
-
                   	pix,mask = img2.render_pixmap_and_mask()
+			del img
 			CACHED[filename]=[pix,mask]
 		  else: # grab from cache
 			pix=CACHED[filename][0]
@@ -445,7 +449,6 @@ class IconSelectionDialog(Window):
     def on_iconbutton_clicked(self, button):
         if button.get_active():
             filename = button.get_data("filename")
-#            shortname = button.get_data("name")
             shortname = filename
             self.selected = (shortname, filename)
             self.progressbar.set_text(os.path.basename(filename))

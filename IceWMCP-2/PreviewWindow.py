@@ -11,23 +11,32 @@
 # This software is distributed under the GNU General Public License
 #################################################
 ########
-# With Modifications by Erica Andrews (PhrozenSmoke@yahoo.com), February-April 2003
+# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
 # This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
 # Copyright (c) 2003 Erica Andrews
-#
-#  Removed the dependency on the MessageBox.py module
-##################
+########
 
-import os
-import string
-import stat
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+import string, stat
 from popen2 import popen2
-from gtk import *
 from constants import *
 
 #set translation support
 from icewmcp_common import *
-_=translateME   # from icewmcp_common.py
+
+def _(somestr):
+	return to_utf8(translateME(somestr))
 
 class PicMenuItem(MenuItem):
 
@@ -35,7 +44,8 @@ class PicMenuItem(MenuItem):
         MenuItem.__init__(self)
         hbox = HBox(FALSE, 5)
         if (pix, mask) != (None, None):
-            icon = Pixmap(pix, mask)
+	    icon=Image()
+            icon.set_from_pixmap(pix, mask)
             icon.show()
             hbox.pack_start(icon, FALSE, FALSE)
         if text:
@@ -51,14 +61,17 @@ class PicMenuItem(MenuItem):
 class PreviewWindow(Window):
 
     def __init__(self, tree, empty_pix, empty_mask):
-        Window.__init__(self, WINDOW_DIALOG, "IceMe: "+_("Menu Preview"))
+        Window.__init__(self, WINDOW_TOPLEVEL)
+	self.set_wmclass("iceme","IceMe")
+	self.set_title( "IceMe: "+_("Menu Preview"))
+	set_basic_window_icon(self)
         self.set_default_size(400, -1)
         self.connect("delete_event", self.close)
         self.tree = tree
         self.empty_pix = empty_pix
         self.empty_mask = empty_mask
         menu = MenuBar()
-        menu.set_shadow_type(SHADOW_OUT)
+        #menu.set_shadow_type(SHADOW_OUT)
         nodes = tree.base_nodes()
         self.createMenu(menu, nodes[0])
         toolbar_menu = nodes[2]
