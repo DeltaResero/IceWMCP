@@ -9,10 +9,12 @@ mkdir /INSTALL-IceSoundManager/help/es/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/help/ru/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/es/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/fr/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/ru/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/zh_TW/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f icewmcp_common.py /INSTALL-IceSoundManager/
 cp -f icewmcp_short.png /INSTALL-IceSoundManager/
@@ -32,9 +34,11 @@ cp -f ./help/icesound.txt /INSTALL-IceSoundManager/help/
 cp -f ./help/es/icesound.txt /INSTALL-IceSoundManager/help/es/
 cp -f ./help/ru/icesound.txt /INSTALL-IceSoundManager/help/ru/
 cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/
 cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/
 cp -f ./locale/es/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/
 cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/
 cp -f ./PyInstallShield/icesound-install-config.txt /INSTALL-IceSoundManager/install-config.txt

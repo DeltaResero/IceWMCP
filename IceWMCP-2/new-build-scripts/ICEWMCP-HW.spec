@@ -26,6 +26,7 @@ The hardware and system information plugin for IceWM Control Panel.
 /usr/share/IceWMCP/applets/ru/sysinfo.cpl
 /usr/share/IceWMCP/applets/sysinfo.cpl
 /usr/share/IceWMCP/help/IceWMCPSystem.txt
+/usr/share/IceWMCP/locale/fr/LC_MESSAGES/icewmcp-hw.mo
 /usr/share/IceWMCP/locale/es/LC_MESSAGES/icewmcp-hw.mo
 /usr/share/IceWMCP/locale/ru/LC_MESSAGES/icewmcp-hw.mo
 /usr/share/IceWMCP/locale/zh_TW/LC_MESSAGES/icewmcp-hw.mo

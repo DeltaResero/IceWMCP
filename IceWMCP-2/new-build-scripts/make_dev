@@ -18,6 +18,9 @@ cp -f ./locale/icewmcp.pot ./icewmcp-developers-release/locale/
 cp -f ./locale/es/icewmcp.po ./icewmcp-developers-release/locale/es/
 cp -f ./locale/es/Makefile ./icewmcp-developers-release/locale/es/
 cp -f ./locale/es/LC_MESSAGES/icewmcp.mo ./icewmcp-developers-release/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/icewmcp.po ./icewmcp-developers-release/locale/fr/
+cp -f ./locale/fr/Makefile ./icewmcp-developers-release/locale/fr/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo ./icewmcp-developers-release/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/icewmcp.po ./icewmcp-developers-release/locale/ru/
 cp -f ./locale/ru/Makefile ./icewmcp-developers-release/locale/ru/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo ./icewmcp-developers-release/locale/ru/LC_MESSAGES/

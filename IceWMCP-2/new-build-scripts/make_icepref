@@ -8,10 +8,12 @@ mkdir /INSTALL-IcePref2/help/es/ &> /dev/null
 mkdir /INSTALL-IcePref2/help/ru/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/es/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/fr/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/ru/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/zh_TW/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/es/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/fr/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f icewmcp_common.py /INSTALL-IcePref2/
 cp -f icewmcp_short.png /INSTALL-IcePref2/
@@ -34,9 +36,11 @@ cp -f ./help/icepref.txt /INSTALL-IcePref2/help/
 cp -f ./help/es/icepref.txt /INSTALL-IcePref2/help/es/
 cp -f ./help/ru/icepref.txt /INSTALL-IcePref2/help/ru/
 cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/ru/LC_MESSAGES/
 cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/
 cp -f ./locale/es/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/ru/LC_MESSAGES/
 cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/
 cp -f ./PyInstallShield/icepref-install-config.txt /INSTALL-IcePref2/install-config.txt

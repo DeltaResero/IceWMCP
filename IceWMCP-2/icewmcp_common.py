@@ -64,6 +64,7 @@ DEFAULT_CHARSET="iso8859-1"
 INTL_CHARSETS={
 	"ru":"koi8-r",  # Russian
 	"es":"iso8859-1",  # Spanish
+	"fr":"iso8859-1",  # French
 	"en":"iso8859-1",  # English
 	"":"iso8859-1",  # for unknown locales
 	"fi":"iso8859-1",  # Finnish, only translation is for IceMe, which needs "iso8859-15"
@@ -691,7 +692,7 @@ def closeUpdateWin(*args):
 
 #######  VERSION  #######
 
-this_software_version="3.0"     # must match the same variable in IceWMCP_BugReport.py
+this_software_version="3.1pre"     # must match the same variable in IceWMCP_BugReport.py
 
 SOFTWARE_UPDATE_URL= "http://icesoundmanager.sourceforge.net/ICEWMCP_WEB_VERSION"
 
@@ -826,6 +827,9 @@ HELP_FONTS={
 				   "Arial 12" , 
 				  "Arial Bold 18", "koi8-r"  ]   ,
 		"es":  ["Helvetica 14" ,   # Spanish
+				   "Helvetica 12" , 
+				  "Helvetica Bold 18", "iso8859-1"  ]   ,
+		"fr":  ["Helvetica 14" ,   # French
 				   "Helvetica 12" , 
 				  "Helvetica Bold 18", "iso8859-1"  ]   ,
 		"fi":  ["Helvetica 14" ,   # Finnish
@@ -1033,7 +1037,7 @@ def displayHelp(appnum=7777,*args):
 # scour the web collecting email addresses
 
 def show_credits(*args):
-	commonAbout(CONTRIBUTORS,"PyGtk-2/Gtk-2 Port Started By:\n"+"David Moore <djm ['at'] e3.net.nz>"+"\n\n"+"PyGtk-2/Gtk-2 Port Completed By:\n"+"Erica Andrews <PhrozenSmoke ['at'] yahoo.com>"+"\n\n"+_("Translators")+"  (ordered by language):\n\nChinese (Traditional): Chao-Hsiung Liao <pesder.liao ['at'] msa.hinet.net>\n\nFinnish: Petteri Aimonen  <jpa ['at'] pyrmio.org> [IceMe only]\n\nRussian: Vasya Leushin <basileus ['at'] newmail.ru>  [Main translation, Several help files]\n\nRussian: Roman Shiryaev <mih_val ['at'] mail.ru> [Several help files]\n\nSeveral Spanish Corrections: 'Martintxo' <fundamento ['at'] sindominio.net>\n\nSpanish: Erica Andrews <PhrozenSmoke ['at'] yahoo.com>"+"\n\n_____________\n"+_("If you wish to help us with the translations, please visit the following site on the web")+":\n\nhttp://icesoundmanager.sourceforge.net/translator.php\n\nA big THANKS to all who have contributed."    ,0,"icewmcp_short.png","\n")
+	commonAbout(CONTRIBUTORS,"PyGtk-2/Gtk-2 Port Started By:\n"+"David Moore <djm ['at'] e3.net.nz>"+"\n\n"+"PyGtk-2/Gtk-2 Port Completed By:\n"+"Erica Andrews <PhrozenSmoke ['at'] yahoo.com>"+"\n\n"+_("Translators")+"  (ordered by language):\n\nChinese (Traditional): Chao-Hsiung Liao <pesder.liao ['at'] msa.hinet.net>\n\nFinnish: Petteri Aimonen  <jpa ['at'] pyrmio.org> [IceMe only]\n\nFrench: Yves Perraudin  <yploglib ['at'] free.fr> [60% complete]\n\nRussian: Vasya Leushin <basileus ['at'] newmail.ru>  [Main translation, Several help files]\n\nRussian: Roman Shiryaev <mih_val ['at'] mail.ru> [Several help files]\n\nSeveral Spanish Corrections: 'Martintxo' <fundamento ['at'] sindominio.net>\n\nSpanish: Erica Andrews <PhrozenSmoke ['at'] yahoo.com>"+"\n\n_____________\n"+_("If you wish to help us with the translations, please visit the following site on the web")+":\n\nhttp://icesoundmanager.sourceforge.net/translator.php\n\nA big THANKS to all who have contributed."    ,0,"icewmcp_short.png","\n")
 
 
 # SPLASH SCREEN CODE - added 4/27/2003 - common code for splash 

@@ -9,10 +9,12 @@ mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applets/zh_tw/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/help/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/LC_MESSAGES/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/LC_MESSAGES/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/ &> /dev/null
 mkdir /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/hw-pixmaps/ &> /dev/null
@@ -27,6 +29,7 @@ cp -f ./applets/ru/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/ru/
 cp -f ./applets/es/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/es/
 cp -f ./applets/zh_tw/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/zh_tw/
 cp -f ./locale/es/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/LC_MESSAGES/
 cp -f ./locale/ru/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/LC_MESSAGES/ &> /dev/null
 cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f ./pixmaps/hw-pixmaps/* /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/hw-pixmaps/
