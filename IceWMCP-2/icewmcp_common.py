@@ -832,6 +832,11 @@ HELP_FONTS={
 		"fi":  ["Helvetica 14" ,   # Finnish
 				   "Helvetica 12" , 
 				  "Helvetica Bold 18", "iso8859-15"  ]   ,
+
+		"zh_tw":  ["fixed 14" ,   # Traditional Chinese
+				   "fixed 12" , 
+				  "fixed 18", "big5"  ]   ,
+
 		"all":  ["Helvetica 14" ,   # any lang., english
 				   "Helvetica 12" , 
 				  "Helvetica Bold 18", "iso8859-1"  ]   ,
@@ -1187,6 +1192,7 @@ def get_pidof(someapp):
 # Special fonts for special languages, 12.1.2003, Erica Andrews
 special_fonts_map= {
 	"ru":["Arial 10","Arial 9"],
+	"zh_tw":["fixed 11","fixed 12"],
 }
 
 
