@@ -1,7 +1,17 @@
 #!/usr/bin/env python
 
+##########################################################
+#	This is an experimental IceWM Theme designer based on IcePref2 version 3.3
+#        IcePref2-TD 
+#
+#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - December 2003
+#	Copyright (c) 2003  Erica Andrews
+# 	This work comes with no warranty regarding its suitability for any purpose.
+# 	The author is not responsible for any damages caused by the use of this
+# 	program.
+##########################################################
 ###################################################
-#                                IcePref2 3.2
+#                                IcePref2 3.3
 #
 # This is (or will be) the best IceWM configuration utility
 # known to man.  It requires a recent version of python as well as Gtk ( >
@@ -18,16 +28,6 @@
 # The author is not responsible for any damages caused by the use of this
 # program.
 ####################################################
-##########################################################
-#	This is an experimental IceWM Theme designer based on IcePref2 version 3.2
-#        IcePref2-TD 
-#
-#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - December 2003
-#	Copyright (c) 2003  Erica Andrews
-# 	This work comes with no warranty regarding its suitability for any purpose.
-# 	The author is not responsible for any damages caused by the use of this
-# 	program.
-##########################################################
 
 #############################
 #  PyGtk-2 Port Started By: 
@@ -189,6 +189,7 @@ DEFAULTS = {
 'titleIT.xpm':[IMAGE_WIDGET,'','titleIT.xpm'],
 'titleIS.xpm':[IMAGE_WIDGET,'','titleIS.xpm'],
 'menubg.xpm':[IMAGE_WIDGET,'','menubg.xpm'],
+'menusel.xpm':[IMAGE_WIDGET,'','menusel.xpm'],
 'logoutbg.xpm':[IMAGE_WIDGET,'','logoutbg.xpm'],
 'dialogbg.xpm':[IMAGE_WIDGET,'','dialogbg.xpm'],
 'maximizeA.xpm':[IMAGE_WIDGET,'','maximizeA.xpm'],
@@ -218,6 +219,7 @@ DEFAULTS = {
 'taskbar/workspacebuttonactive.xpm':[IMAGE_WIDGET,'','workspacebuttonactive.xpm'],
 'taskbar/workspacebuttonbg.xpm':[IMAGE_WIDGET,'','workspacebuttonbg.xpm'],
 'taskbar/linux.xpm':[IMAGE_WIDGET,'','linux.xpm'],
+'taskbar/icewm.xpm':[IMAGE_WIDGET,'','icewm.xpm'],
 'taskbar/toolbuttonbg.xpm':[IMAGE_WIDGET,'','toolbuttonbg.xpm'],
 'taskbar/menubg.xpm':[IMAGE_WIDGET,'','menubg.xpm'],
 'mailbox/errmail.xpm':[IMAGE_WIDGET,'','errmail.xpm'],
@@ -336,7 +338,7 @@ DEFAULTS = {
 		'ThemeDescription': [ENTRY, '""', 'Theme description'],
 
 		# added 1.26.2003
-		'Gradients' : [FILE, '""', 'List of gradient images in the current theme'],
+		'Gradients' : [FILE, '"menubg.xpm menusel.xpm switchbg.xpm taskbarbg.xpm dialogbg.xpm taskbuttonbg.xpm tasbuttonactive.xpm taskbuttonminimized.xpm toolbuttonbg.xpm workspacebuttonbg.xpm workspacebuttonactive.xpm"', 'List of gradient images in the current theme'],
 
 		'TitleFontName': [FONT, '"-adobe-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*"', 'Title bar font'],
 		'MenuFontName': [FONT, '"-adobe-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*"', 'Menu font'],
@@ -431,7 +433,7 @@ DEFAULTS = {
 
 		# added 1.26.2003
 		'ColorNormalWorkspaceButtonText': [COLOR, '"rgb:00/00/00"', 'Color of normal workspace button text'],
-		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of inactive workspace button text'],
+		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of active workspace button text'],
 		'ColorNormalWorkspaceButton': [COLOR, '"rgb:C0/C0/C0"', 'Color of normal workspace button'],
 		'ColorActiveWorkspaceButton': [COLOR, '"rgb:A0/A0/A0"', 'Color of active workspace button'],
 	}
@@ -552,6 +554,7 @@ TABS = [
 			# NEW MENU Stuff - added 1.26.2003
 			'ColorDisabledMenuItemShadow',
 'menubg.xpm',
+'menusel.xpm',
 			]],
 		[_('Task Bar'),
 			[
@@ -574,6 +577,7 @@ TABS = [
 			'ColorToolButton',
 			'ColorToolButtonText',
 'taskbar/linux.xpm',
+'taskbar/icewm.xpm',
 'taskbar/taskbarbg.xpm',
 'taskbar/menubg.xpm',
 'taskbar/windows.xpm',
@@ -762,7 +766,7 @@ for ii in TABS:
 	TABS_NAMES.append(ii[0])
 
 # image ignore list
-IMAGE_IGNORE=['titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','logoutbg.xpm','maximizeI.xpm','menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm','minimizeA.xpm','switchbg.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm','titleIB.xpm','closeA.xpm','maximizeAb.xpm','maximizeIb.xpm','titleIT.xpm','titleIS.xpm','menubg.xpm','dialogbg.xpm','maximizeA.xpm','titleAL.xpm','ledclock/a.xpm','ledclock/colon.xpm','ledclock/dot.xpm','ledclock/m.xpm','ledclock/n0.xpm','ledclock/n1.xpm','ledclock/n2.xpm','ledclock/n3.xpm','ledclock/n4.xpm','ledclock/n5.xpm','ledclock/n6.xpm','ledclock/n7.xpm','ledclock/n8.xpm','ledclock/n9.xpm','ledclock/p.xpm','ledclock/slash.xpm','ledclock/space.xpm','taskbar/windows.xpm','taskbar/taskbuttonbg.xpm','taskbar/taskbuttonminimized.xpm','taskbar/taskbuttonactive.xpm','taskbar/taskbarbg.xpm','taskbar/workspacebuttonactive.xpm','taskbar/workspacebuttonbg.xpm','taskbar/linux.xpm','taskbar/toolbuttonbg.xpm','taskbar/menubg.xpm','mailbox/errmail.xpm','mailbox/mail.xpm','mailbox/newmail.xpm','mailbox/nomail.xpm','mailbox/unreadmail.xpm','cursors/left.xpm','cursors/move.xpm','cursors/right.xpm','cursors/sizeB.xpm','cursors/sizeBL.xpm','cursors/sizeBR.xpm','cursors/sizeL.xpm','cursors/sizeR.xpm','cursors/sizeT.xpm','cursors/sizeTL.xpm','cursors/sizeTR.xpm','icons/folder_32x32.xpm','icons/folder_16x16.xpm','icons/xterm_32x32.xpm','icons/xterm_16x16.xpm','icons/app_32x32.xpm','icons/app_16x16.xpm','icons/netscape_16x16.xpm','icons/netscape_32x32.xpm','icons/mozilla_16x16.xpm','icons/mozilla_32x32.xpm','icons/galeon_16x16.xpm','icons/galeon_32x32.xpm','icons/opera_16x16.xpm','icons/opera_32x32.xpm','icons/email_16x16.xpm','icons/email_32x32.xpm','icons/terminal_16x16.xpm','icons/terminal_32x32.xpm','icons/gimp_16x16.xpm','icons/gimp_32x32.xpm','icons/emacs_16x16.xpm','icons/emacs_32x32.xpm','icons/vim_16x16.xpm','icons/vim_32x32.xpm','Theme']
+IMAGE_IGNORE=['titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','logoutbg.xpm','maximizeI.xpm','menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm','minimizeA.xpm','switchbg.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm','titleIB.xpm','closeA.xpm','maximizeAb.xpm','maximizeIb.xpm','titleIT.xpm','titleIS.xpm','menubg.xpm','menusel.xpm','dialogbg.xpm','maximizeA.xpm','titleAL.xpm','ledclock/a.xpm','ledclock/colon.xpm','ledclock/dot.xpm','ledclock/m.xpm','ledclock/n0.xpm','ledclock/n1.xpm','ledclock/n2.xpm','ledclock/n3.xpm','ledclock/n4.xpm','ledclock/n5.xpm','ledclock/n6.xpm','ledclock/n7.xpm','ledclock/n8.xpm','ledclock/n9.xpm','ledclock/p.xpm','ledclock/slash.xpm','ledclock/space.xpm','taskbar/windows.xpm','taskbar/taskbuttonbg.xpm','taskbar/taskbuttonminimized.xpm','taskbar/taskbuttonactive.xpm','taskbar/taskbarbg.xpm','taskbar/workspacebuttonactive.xpm','taskbar/workspacebuttonbg.xpm','taskbar/linux.xpm','taskbar/icewm.xpm','taskbar/toolbuttonbg.xpm','taskbar/menubg.xpm','mailbox/errmail.xpm','mailbox/mail.xpm','mailbox/newmail.xpm','mailbox/nomail.xpm','mailbox/unreadmail.xpm','cursors/left.xpm','cursors/move.xpm','cursors/right.xpm','cursors/sizeB.xpm','cursors/sizeBL.xpm','cursors/sizeBR.xpm','cursors/sizeL.xpm','cursors/sizeR.xpm','cursors/sizeT.xpm','cursors/sizeTL.xpm','cursors/sizeTR.xpm','icons/folder_32x32.xpm','icons/folder_16x16.xpm','icons/xterm_32x32.xpm','icons/xterm_16x16.xpm','icons/app_32x32.xpm','icons/app_16x16.xpm','icons/netscape_16x16.xpm','icons/netscape_32x32.xpm','icons/mozilla_16x16.xpm','icons/mozilla_32x32.xpm','icons/galeon_16x16.xpm','icons/galeon_32x32.xpm','icons/opera_16x16.xpm','icons/opera_32x32.xpm','icons/email_16x16.xpm','icons/email_32x32.xpm','icons/terminal_16x16.xpm','icons/terminal_32x32.xpm','icons/gimp_16x16.xpm','icons/gimp_32x32.xpm','icons/emacs_16x16.xpm','icons/emacs_32x32.xpm','icons/vim_16x16.xpm','icons/vim_32x32.xpm','Theme']
 
 ## NEW MORE LOGICAL 'ORDER' mapping for preferences file - added 1.26.2003
 for ii in TABS:
@@ -1205,6 +1209,7 @@ class IceColor(ButtonEntry):
 		self.gc=None
 		self.color_i16=[0,0,0]
 		value = self.INITVALUE
+		#print str(self.INITVALUE)
         	if value != '':
            		r = atoi(value[4:6], 16)
             		g = atoi(value[7:9], 16)
@@ -1242,6 +1247,16 @@ class IceColor(ButtonEntry):
         	self.drawwin.draw_rectangle(self.gc,gtk.TRUE,0,0,width,height)
 	  except:
 		pass
+
+	def set_value(self, value):
+		value = value[1 : len(value) - 1]
+		self.entry.set_text(value)
+        	if value != '':
+           		r = atoi(value[4:6], 16)
+            		g = atoi(value[7:9], 16)
+            		b = atoi(value[10:12], 16)
+            		self.color_i16=[r,g,b]
+		self.setColor()
         
 	def updateColorProperties(self, r, g, b): # new method,functionality separation, 5.16.2003
         	self.color_i16=[r,g,b]
@@ -1323,9 +1338,15 @@ class IceFont(ButtonEntry):
 				val=pangoxlfd.XLFD2pango(val)
 			# try to create a GdkFont to see if our conversion is valid
 			# This catches those stupid pango 'fallback' warnings
-			if not GDK.font_from_description(pango.FontDescription(val)):
+
+			myfontdesc=pango.FontDescription(val)
+			if myfontdesc.get_size()> (101 * 1024):
+					# Avoid ridiculously huge fonts over 100pts, they can cause crashes
 					raise TypeError
-			#print "Font:  "+str(value)
+			if not GDK.font_from_description(myfontdesc):
+					# Avoid fonts that GDK can't even load
+					raise TypeError
+
 			text_buffer_insert(self.sample, get_renderable_tab(self.sample,val,COL_BLACK,"iso8859-1"),to_utf8(SAMPLE_TEXT))
 
 		except:
@@ -1343,7 +1364,7 @@ class IceFont(ButtonEntry):
 			if len(value.split("-"))>8:
 				self.win.fontsel.set_font_name(pangoxlfd.XLFD2pango(value))
 			else:
-				self.win.fontsel.set_font_name(value)
+				self.win.fontsel.set_font_name(pangoxlfd.get_valid_pango_font_desc(value))
 		self.win.set_modal(TRUE)
 		self.win.show()
 		
@@ -1715,7 +1736,6 @@ class Application(Window):
 		self.vbox.pack_start(self.stat_label,0,0,2)
 		self.set_default_size(GDK.screen_width()-150, GDK.screen_height()-280)
 		self.vbox1.pack_start(self.vbox,1,1,0)
-		self.show_all()
 		if len(argv)>1:		
 			if not argv[1].endswith(".py"): 
 				self.openThemeFile(argv[1])
@@ -1724,6 +1744,7 @@ class Application(Window):
 				if len(argv)>2: 
 					self.openThemeFile(argv[2])
 					SET_SELECTED_FILE(argv[2])
+		self.show_all()
 		
 	def mainloop(self):
 		mainloop()

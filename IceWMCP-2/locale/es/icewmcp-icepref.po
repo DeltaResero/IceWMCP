@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IcePref2 3.2\n"
+"Project-Id-Version: IcePref2 3.3\n"
 "POT-Creation-Date: 2003-02-18 11:35+0100\n"
-"PO-Revision-Date: 2003-12-11 15:51+0400\n"
+"PO-Revision-Date: 2003-12-19 15:51+0400\n"
 "Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
 "Language-Team: SPANISH\n"
 "MIME-Version: 1.0\n"
@@ -591,8 +591,8 @@ msgstr "Color del botón del espacio de trabajo activo"
 msgid "Color of disabled menu items"
 msgstr "Color de los artículos de menú inhabilitados"
 
-msgid "Color of inactive workspace button text"
-msgstr "Color del texto del botón del espacio de trabajo inactivo"
+msgid "Color of active workspace button text"
+msgstr "Color del texto del botón del espacio de trabajo activo"
 
 msgid "Color of normal workspace button"
 msgstr "Color del botón del espacio de trabajo normal"

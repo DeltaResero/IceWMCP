@@ -231,11 +231,8 @@ class icewindow :
 
 	mainvbox1.pack_start( menubar1, 0, 0, 0)
 	mainvbox1.pack_start(mainvbox,1,1,0)
-	headerpixmap=getImage(getPixDir()+"ism_header.png",_("Ice Sound Manager"))
-	self.headerpixmap = headerpixmap
-	mainvbox.pack_start( headerpixmap, 1, 1, 4)
+	mainvbox.pack_start( getImage(getPixDir()+"ism_header.png",_("Ice Sound Manager")), 0, 0, 4)
 	themehbox = HBox (0, 0)
-	themehbox.pack_start(  Label(" "), 1, 1, 3)
 	themehbox.pack_start( Label (_("Sound Theme")+":") , 0, 0, 8)
         themelist=Combo()
         self.themelist=themelist
@@ -250,7 +247,7 @@ class icewindow :
         themehbox.pack_start(themeselbutton,0,0,5)
         self.themeselbutton=themeselbutton
         tips.set_tip(themeselbutton,_("Switch to the selected theme"))
-	themehbox.pack_start(  Label(" "), 1, 1, 3)
+	themehbox.set_border_width(2)
 	mainvbox.pack_start( themehbox, 0, 0, 3)
 
 	themehbox2 = HBox (0, 0)
@@ -344,14 +341,9 @@ class icewindow :
 	eventtable.attach( playbox, 2, 3, 1, 2, (0), (0), 10, 2)
 
 	eventvbox.pack_start(eventtable, 1, 1, 0)
-	soundeventstat = Label ("  ")
-	self.soundeventstat = soundeventstat
-	eventvbox.pack_start(soundeventstat, 0, 0, 0)
-	hseparator1 =HSeparator ()
-	hseparator1.set_size_request ( -1, 4)
-	self.hseparator1 = hseparator1
-	eventvbox.pack_start(hseparator1, 1, 1, 3)
-	mainvbox.pack_start( eventvbox, 1, 1, 7)
+	mainvbox.pack_start( eventvbox, 0, 0, 7)
+	mainvbox.pack_start(Label ("  "), 1, 1, 0)
+	mainvbox.pack_start(HSeparator (), 0, 0, 3)
 	servervbox = VBox (0, 0)
 	self.servervbox = servervbox
 	cmdlinelab = Label (_("Suggested Sound Server Command Line:"))
@@ -383,6 +375,7 @@ class icewindow :
         stopserverbutt.connect("clicked",stopServer)
 	tips.set_tip (stopserverbutt, _("Stopping the IceSound server will disable IceWM sound events"))
 	self.stopserverbutt = stopserverbutt
+	servbuttonhbox.pack_start(  Label(""), 1, 1, 1)
 	servbuttonhbox.pack_start(stopserverbutt, 0, 0, 0)
 	servervbox.pack_start( servbuttonhbox, 0, 0, 2)
 
@@ -1705,7 +1698,7 @@ class icesetup :
         scrolledwindow1.set_size_request(430,250)
 	helptext =TextView ()
 	helptext.set_editable ( 0)
-        helptext.set_wrap_mode(1)
+        helptext.set_wrap_mode(WRAP_WORD)
 	self.helptext = helptext
 	scrolledwindow1.add ( helptext)
 	vbox1.pack_start ( scrolledwindow1, 1, 1, 0)

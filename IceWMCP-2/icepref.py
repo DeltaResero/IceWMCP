@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 ###################################################
-#                                IcePref 3.2
+#                                IcePref 3.3
 #
 # This is (or will be) the best IceWM configuration utility
 # known to man.  It requires a recent version of python as well as Gtk ( >
@@ -19,7 +19,7 @@
 # program.
 ####################################################
 ##########################################################
-#	This is IcePref2 version 3.2 - It is an updated, overhauled, improved, and perfected
+#	This is IcePref2 version 3.3 - It is an updated, overhauled, improved, and perfected
 #	version of the original IcePref (see credits above).  IcePref appears to have been 
 #	abandoned by the original author, as it had not been updated since 2000. This new 
 #	version, distributed under the same GNU GPL as the original IcePref, includes new 
@@ -83,7 +83,7 @@ if NOSPLASH==0:
 # Constants in a Changing World
 #############################
 
-VERSION = "3.2"
+VERSION = "3.3"
 ICE_VERSION = "1.2.13"
 
 # these define the types of configuration widgets
@@ -613,7 +613,7 @@ DEFAULTS = {
 
 		# added 1.26.2003
 		'ColorNormalWorkspaceButtonText': [COLOR, '"rgb:00/00/00"', 'Color of normal workspace button text'],
-		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of inactive workspace button text'],
+		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of active workspace button text'],
 		'ColorNormalWorkspaceButton': [COLOR, '"rgb:C0/C0/C0"', 'Color of normal workspace button'],
 		'ColorActiveWorkspaceButton': [COLOR, '"rgb:A0/A0/A0"', 'Color of active workspace button'],
 	}
@@ -1643,6 +1643,16 @@ class IceColor(ButtonEntry):
         	self.drawwin.draw_rectangle(self.gc,gtk.TRUE,0,0,width,height)
 	  except:
 		pass
+
+	def set_value(self, value):
+		value = value[1 : len(value) - 1]
+		self.entry.set_text(value)
+        	if value != '':
+           		r = atoi(value[4:6], 16)
+            		g = atoi(value[7:9], 16)
+            		b = atoi(value[10:12], 16)
+            		self.color_i16=[r,g,b]
+		self.setColor()
         
 	def updateColorProperties(self, r, g, b): # new method,functionality separation, 5.16.2003
         	self.color_i16=[r,g,b]
@@ -1724,9 +1734,15 @@ class IceFont(ButtonEntry):
 				val=pangoxlfd.XLFD2pango(val)
 			# try to create a GdkFont to see if our conversion is valid
 			# This catches those stupid pango 'fallback' warnings
-			if not GDK.font_from_description(pango.FontDescription(val)):
+
+			myfontdesc=pango.FontDescription(val)
+			if myfontdesc.get_size()> (101 * 1024):
+					# Avoid ridiculously huge fonts over 100pts, they can cause crashes
 					raise TypeError
-			#print "Font:  "+str(value)
+			if not GDK.font_from_description(myfontdesc):
+					# Avoid fonts that GDK can't even load
+					raise TypeError
+
 			text_buffer_insert(self.sample, get_renderable_tab(self.sample,val,COL_BLACK,"iso8859-1"),to_utf8(SAMPLE_TEXT))
 
 		except:
@@ -1744,7 +1760,7 @@ class IceFont(ButtonEntry):
 			if len(value.split("-"))>8:
 				self.win.fontsel.set_font_name(pangoxlfd.XLFD2pango(value))
 			else:
-				self.win.fontsel.set_font_name(value)
+				self.win.fontsel.set_font_name(pangoxlfd.get_valid_pango_font_desc(value))
 		self.win.set_modal(TRUE)
 		self.win.show()
 		

@@ -103,7 +103,7 @@ def sendEmail(msgtext,sserver,from_addie):
 def getSysInfo(*args): # gather useful system information for bug-reporting, info users always fail to send
         sys_info="DATE :  "+time.ctime()+"\n\nSTATIC BINARY :   "+str(IS_STATIC_BINARY)+"\n\n"
 
-        os_v=['USER','OSTYPE','MACHTYPE', 'LANG','LANGUAGE']
+        os_v=['USER','OSTYPE','MACHTYPE', 'CPU', 'LANG','LANGUAGE','LOCALE', 'SHELL', 'TERM']
         # explanation:  USER - username, some apps require 'root' access, 
         #  OSTYPE - Linux, BSD, etc. ,   LANG/LANGUAGE = language 'locale' for gettext/locale problems,
         # MACHTYPE -  machine type
@@ -113,6 +113,7 @@ def getSysInfo(*args): # gather useful system information for bug-reporting, inf
                         sys_info=sys_info+ii+" :  "+os.environ[ii]+"\n"
                 except:
                         pass
+        sys_info=sys_info+"CURRENT WORKING DIRECTORY : "+str(os.getcwd())+"\n"
         sys_info=sys_info+"UNAME : "+str(os.uname()).replace(",","  /  ")+"\n\n"
         # We need to know the versions of the various libraries IceWMCP relies upon, we don't want to try 
         # to make bug fixes if people are using unsupported/very old versions

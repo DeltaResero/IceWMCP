@@ -605,7 +605,7 @@ msgstr ""
 msgid "Color of disabled menu items"
 msgstr ""
 
-msgid "Color of inactive workspace button text"
+msgid "Color of active workspace button text"
 msgstr ""
 
 msgid "Color of normal workspace button"

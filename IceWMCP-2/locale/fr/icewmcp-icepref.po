@@ -1,9 +1,9 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: IcePref2  3.2\n"
+"Project-Id-Version: IcePref2 3.3\n"
 "POT-Creation-Date: 2003-02-18 11:35+0100\n"
-"PO-Revision-Date: 2003-12-06 10:47+0100\n"
+"PO-Revision-Date: 2003-12-19 10:47+0100\n"
 "Last-Translator: Yves Perraudin <yploglib@free.fr>\n"
 "Language-Team: FRENCH\n"
 "MIME-Version: 1.0\n"
@@ -560,8 +560,8 @@ msgstr "Couleur du bouton du bureau actif"
 msgid "Color of disabled menu items"
 msgstr "Couleur des éléments désactivés du menu"
 
-msgid "Color of inactive workspace button text"
-msgstr "Couleur du texte des boutons des bureaux inactifs"
+msgid "Color of active workspace button text"
+msgstr "Couleur du texte des boutons des bureaux actifs"
 
 msgid "Color of normal workspace button"
 msgstr ""
@@ -1730,3 +1730,4 @@ msgstr ""
 #: icepref.py, IceWM-1.2.13
 msgid "Use double buffering when redrawing the display"
 msgstr ""
+

@@ -9,25 +9,24 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.1pre - 12/19/2003 - 12/19/2003
+VERSION 3.1pre - 12/19/2003 - 12/20/2003
 
 The focus of this release bug fixes and internationalization improvements.
 
 
 SUMMARY OF CHANGES:
 	A partial French translation has been added. [Big thanks to Yves Perraudin 
-	(yploglib ['at'] free.fr)]
+	(yploglib ['at'] free.fr)].  A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5. Major 
+	bugs in the PangoXLFD module which could lead to complete application 
+	crashes have been fixed.
 
 
 PangoXLFD        (pangoxlfd.py):
-	- TODO: bug fix: Font fallback error can cause complete crash
-
-
-IceWMCP         (IceWMCP.py):
-	- Version is now 3.1pre
-	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
-	status: pretty complete
-
+	- Major bug fix: Fixed application crashes due to font 'fallback' errors when an invalid font was supplied by ensuring that all font sizes are greater 0 and less than 101; applications like IcePref2 and IcePref2-TD should no longer crash upon selecting a new font if the current font in the text entry is invalid
+	- Fixed possible crash or application freeze if a ridiculously large font was loaded by restricting the maximum font size to 100pts
+	- Improved font conversions between Pango descriptions and XLFD strings
+	- Added Pango font description validation method 'get_valid_pango_font_desc' which will return a default fallback font description string of "Arial 10" if the suggested Pango font description appears to be invalid; fixes several possible application crashes in IcePref2 and IcePref2-TD
 
 
 IceWMCP-Common        (icewmcp_common.py):
@@ -35,6 +34,15 @@ IceWMCP-Common        (icewmcp_common.py):
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr)
 	for the software update checker; status: complete
 	- Added font and charset settings for the French language
+	- Bug Fix: Added common variable 'BASH_SHELL_EXEC' and Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and external applications failing to launch properly if the user was not using Bash as their default shell
+	- Code cleanup and Internationalization improvement: method 'getLocaleDir' has been rewritten to be cleaner and now probes environment variables 'LOCALE', 'LC_ALL' and 'LC_MESSAGES' for language settings.  This should aid some systems in the proper loading of locale-specific help files and control panel applets.   Environment variables are now probed in the following order: 'LANG', 'LANGUAGE', 'LC_ALL', 'LOCALE', 'LC_MESSAGES'
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 3.1pre
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: pretty complete
+	- Bug Fix: Change launching of control panel applets to use common variable 'BASH_SHELL_EXEC' and Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets failing to launch properly if the user was not using Bash as their default shell; all applets are now forced to be launched with the needed Bash/sh shell even if the user is using some other shell.
 
 
 
@@ -46,24 +54,45 @@ IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
 
 IceSoundManager        (icesound.py):
 	- Version is now 3.1pre
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: about 75% complete
+	- GUI Fix: The textbox for the Installation/Setup window now uses set_wrap_mode(WRAP_WORD) to eliminate the ugly letter-by-letter line wraps
+	- More user interface improvements: improved spacing between the 'Start IceSound Server' and 'Stop IceSound Server' buttons when the window is resized or maximized, and improved general look of the window when it is resized. The sound theme selection window is now larger, to take advantage of the unused spaced that was available.
+	- Miscellaneous code cleanups
 
 
 IcePref2       (icepref.py):
-	- Version is now 3.3pre
+	- Version is now 3.3
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: about 50% complete
+	- Major font loading bug fix: Major bugs in the PangoXLFD module which could lead to complete application crashes have been fixed; Pango font description validation method 'get_valid_pango_font_desc' from module pangoxlfd.py is now called when selecting a font to ensure safer fallbacks if necessary instead of complete application crashes
+	- Bug fix: Fixed a bug where correct colors samples were not always shown when default values were reset, a new preferences file was loaded, or "Run As Root" was toggled unless the color selection dialog was opened for each color; added overridden method 'set_value' to the IceColor widget class.
+	- Bug Fix / Correction: Mis-labeled property 'ColorActiveWorkspaceButtonText' in the 'Workspace' category  has had its description changed from 'Color of inactive workspace button text' to 'Color of active workspace button text' .  (Translators: Please update your language catalogs!)  The Spanish and French translation catalogs have already been updated accordingly.
+	- Fixed: all 'icepref-*' shell startup scripts now force the use of the needed /bin/bash shell
 
 
 IcePref2-TD            (icepref_td.py):
-	- Version is now 3.1pre
+	- Version is now 3.1
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: about 50% complete
+	- Major font loading bug fix: Major bugs in the PangoXLFD module which could lead to complete application crashes have been fixed; Pango font description validation method 'get_valid_pango_font_desc' from module pangoxlfd.py is now called when selecting a font to ensure safer fallbacks if necessary instead of complete application crashes
+	- Added support for the 'menusel.xpm' image under the category "Menus"
+	- Added support for the 'icewm.xpm' image under the category "Taskbar"  (either icewm.xpm or linux.xpm can now be used as the taskbar's 'Start' button pixmap)
+	- Bug fix: Fixed a bug where correct colors samples were not shown when a new theme was opened unless the color selection dialog was opened for each color; added overridden method 'set_value' to the IceColor widget class.
+	- Bug Fix / Correction: Mis-labeled property 'ColorActiveWorkspaceButtonText' in the 'Workspace' category  has had its description changed from 'Color of inactive workspace button text' to 'Color of active workspace button text' .  (Translators: Please update your language catalogs!)  The Spanish and French translation catalogs have already been updated accordingly.
+	The default list of Gradients now includes the following pixmaps: "menubg.xpm menusel.xpm switchbg.xpm taskbarbg.xpm dialogbg.xpm taskbuttonbg.xpm tasbuttonactive.xpm taskbuttonminimized.xpm toolbuttonbg.xpm workspacebuttonbg.xpm workspacebuttonactive.xpm"  (since most people will need these pixmaps to 'stretch' gradiently rather than 'tile'); this should aid in the development of smoother looking themes for most people.
 
 
 PhrozenClock  (phrozenclock.py):
 	- Version is now 3.1pre
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: about 98% complete
 
@@ -101,12 +130,16 @@ IceMe  (IceMe.py):
 
 IceWMCP System and Hardware        (IceWMCPSystem.py):
 	- Version is now 1.4-beta
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: pretty complete
 
 
 IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
-	- Version is now 1.4
+	- Version is now 1.5
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: complete
 
@@ -128,6 +161,8 @@ IceWMCP-BugReport        (IceWMCP_BugReport.py):
 	- Version is now 3.1pre
 	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
 	status: complete
+	- The bug reporter now also collects info on the following environment variables useful for trouble shooting bug reports: 'LOCALE', 'SHELL', 'TERM', 'CPU'
+	The bug reporter now also collects info on the current working directory from which the application is being run, using os.getcwd()
 
 
 PySpool  (pyspool.py, pyprintcommon.py):
@@ -144,9 +179,30 @@ icepref_search.py:
 	status: not complete or really started
 
 
+The Installer (PyInstallShield):
+	- Upgraded the installer from PyInstallShield 0.4 to PyInstallShield 0.5, which includes the following changes:
+		- Version is now 0.5
+		- Added a 'coding' comment to the second line of the source to help 
+		fix deprecation 'no encoding specified' warnings  (This is needed now
+		that Spanish translations are stored internally)
+		- Removed unnecessary call to 'import GTK' which stopped the 
+		install process from starting on many systems; this is a MAJOR Bug Fix
+		- Set the wrap_mode for the event logger text area at the bottom of 
+		the screen to WRAP_WORD, instead of '1'
+		- Safety improvement: added a list of 'sacred directories' on Linux that 
+		will never be deleted during un-installation under any circumstances
+		- Improved un-installation by using os.removedirs() to help insure 
+		complete recursive deletion of directories; fixes a bug where empty 
+		directories were sometimes left on the system
+		- Important: Scripts INSTALL-ME.sh and UNINSTALL-ME.sh, and all startup scripts 
+		created on Linux for installed executables now force the use of Bash as 
+		the shell by referencing '#! /bin/bash' on the first line of all scripts.  
+		Developers using PyInstallShield should make an necessary adjustments 
+		if they rely on the presense of other shells.
+
+
 
 TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
-	- Update/fix PyInstallShield
 	- See if we can get help from other users to finish the French translation Yves Perraudin started; also, can we get somebody to do a set of French applets and Help files?
 	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
 	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)

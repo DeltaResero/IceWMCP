@@ -94,16 +94,40 @@ def get_pango_font_style(some_val):
 	if some_val==pango.STYLE_ITALIC: return "i"	
 	return "r"  #Normal
 
+def get_valid_pango_font_desc(mystr):
+	# added 12.13.2003, fixes the bug where the whole app crashed if an invalid font 
+	# was supplied to the FontSelection dialog...
+	# to prevent against invalid Pango font descriptions the user may type in like "Arial -2"
+	# We also want to avoid trying to load fonts like "Arial 1500", 1500pts=kinda dangerous
+	# so the maximum font size we'll allow is 100pts - which is HUGE, about half the screen's height
+	# Ridiculously large fonts can crash the FontSelection dialog (and the whole application) or 
+	# create a FontSelection window so big that it completely blocks the rest of the screen and 
+	# makes the Font dialog's 'close' button unreachable.
+	# all Pango font sizes are a multiple of 1024
+
+	try:
+		fontdesc=pango.FontDescription(mystr)
+		if fontdesc.get_size()>1023:  # should be at least a size of 1pt
+			if fontdesc.get_size()< (101 * 1024):  # should be 100pts or smaller
+				return mystr  # it's okay, leave as is
+		return "arial 10"   # a default
+	except:
+		return "arial 10"   # a default
+	
+
 def pango2XLFD(pango_str):
     try:
 	mystr=pango_str
-	fontdesc=pango.FontDescription(mystr)
-	face=fontdesc.get_family()
+	print "here1"
+	fontdesc=pango.FontDescription(get_valid_pango_font_desc(mystr))
+	print "here2"
+	face=fontdesc.get_family().strip()
 	weight=get_pango_font_weight(fontdesc.get_weight())
 	fsize=fontdesc.get_size()/1024
+	if fsize<1: fsize=1  # bug fix 12.19.2003, dont allow fonts sizes of '0' or less, EVER
 	fsize=str(fsize*10)
-	condense=get_pango_font_condense(fontdesc.get_stretch())
-	fstyle=get_pango_font_style(fontdesc.get_style())
+	condense=get_pango_font_condense(fontdesc.get_stretch()).strip()
+	fstyle=get_pango_font_style(fontdesc.get_style()).strip()
 	#now reconstruct an XLFD compatible string and hope for the best
 	fontval="-*-"+face+"-"+weight+"-"+fstyle+"-"+condense+"-*-*-"+fsize+"-*-*-p-*-"+str(ASSUME_CHARSET)
 	return fontval.lower().strip()
@@ -118,23 +142,43 @@ def XLFD2pango(xlfd_str):
 	# to something like "courier medium 14", it's imperfect but works for most fonts
 	valls=mystr.split("-")
 	if len(valls)<9: return mystr  # something odd or incomplete
-	face=valls[2]
+	face=valls[2].strip()
 	weight="medium"
-	if not valls[3]=="*": 
-		weight=valls[3]
-	fsize=valls[8][:2]  # shave off the trailing zero
+	if not valls[3].strip()=="*": 
+		weight=valls[3].strip()
+	fsize=valls[8].strip()
+
+	# bug fix 12.19.2003, make sure 'fsize' is a valid integer and is greater than 0
+	try:
+		if int(fsize)>1: 
+			if int(fsize)<21: 
+				# bug fix 12.19.2003, allow for mal-formed 
+				# font sizes like '13' instead of '130', '6' instead of '60' etc.
+				fsize=fsize+"0"     # add the necessary '0'
+
+		if int(fsize)<1: 
+			# bug fix 12.19.2003, make sure 'fsize' is greater than 0
+			fsize="100"
+	except:
+		fsize="100"  # VERY malformed, not even an integer, default to a 10 pt font
+
+	fsize=str(int(fsize.strip())/10)  # convert sizes like '130' to '13'
+
+	if int(fsize)<1: # bug fix 12.19.2003, make sure 'fsize' is greater than 0
+		fsize="10"  # cant allow a font of size less than 1, fall back to 10 pt
+
 	condense=""
 	fstyle=""
-	if valls[4]=="i": 
+	if valls[4].strip()=="i": 
 		fstyle=" italic "
-	if valls[4]=="o": 
+	if valls[4].strip()=="o": 
 		fstyle=" oblique "
-	if not valls[5]=="*": 
-		if not valls[5].lower()=="normal":  
-			if not valls[5].lower()=="regular":  
-				condense=valls[5]+" "
+	if not valls[5].strip()=="*": 
+		if not valls[5].lower().strip()=="normal":  
+			if not valls[5].lower().strip()=="regular":  
+				condense=valls[5].strip()+" "
 	fontval=face+", "+weight+fstyle+" "+condense+fsize
-	return fontval.lower().replace("*","").replace("  "," ").strip()
+	return get_valid_pango_font_desc(fontval.lower().replace("*","").replace("  "," ").strip())
     except:
-	return xlfd_str
+	return get_valid_pango_font_desc(xlfd_str)
 

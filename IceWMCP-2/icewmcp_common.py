@@ -376,23 +376,20 @@ def getLocaleDir():
 	#  i.e.  'zh_tw', instead of cutting it to 'zh'
 
 	EXCEPTIONS=['zh_tw','zh_sg','zh_hk','zh_cn','pt_br','pt_pt']
-	try:
-		mylang=os.environ['LANG']  # try $LANG variable first
-		for ii in EXCEPTIONS:
-			if mylang.strip().lower().startswith(ii): return ii+"/"
-		if mylang.find("_")>-1: mylang=mylang[0:mylang.find("_")]  #  es_MX  -> 'es'
-		mylang=mylang.strip().lower()+os.sep   # example:  "es/"
-		return mylang
-	except:
+	loc_vars=['LANG', 'LANGUAGE', 'LC_ALL', 'LOCALE', 'LC_MESSAGES']
+	# rewritten, 12.19.2003, to probe more than LANG and LANGUAGE, also code cleanup
+	for locvar in loc_vars:
 		try:
-			mylang=os.environ['LANGUAGE']  # try $LANGUAGE variable next
+			mylang=os.environ[locvar]  # try $LANG variable first
+			if mylang.strip()=='': continue
 			for ii in EXCEPTIONS:
 				if mylang.strip().lower().startswith(ii): return ii+"/"
 			if mylang.find("_")>-1: mylang=mylang[0:mylang.find("_")]  #  es_MX  -> 'es'
 			mylang=mylang.strip().lower()+os.sep   # example:  "es/"
 			return mylang
 		except:
-			return ""  # default to no sub-directory at all
+			pass
+	return ""  # default to no sub-directory at all
 
 
 # Set up locale for Pango, 12.1.2003 - Erica Andrews 
@@ -1170,12 +1167,48 @@ def get_pidof(someapp):
 	except:
 		return None
 
-import IceWMCPRun    # THis should always be the last function defined in this module
-def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
-	IceWMCPRun.runwindow()
 
 # Special fonts for special languages, 12.1.2003, Erica Andrews
 special_fonts_map= {
 	"ru":["Arial 10","Arial 9"],
 }
+
+
+# added 12.19.2003 - Bash shell probing
+# to fix BUG NUMBER: 1523884
+# Reported By: david ['-at-'] jetnet.co.uk
+# Reported At: Fri Oct 31 23:47:12 2003
+
+# we need to look for a bash shell since some 
+# users may not be using Bash as the default shell,
+# look for a shell named 'bash', usually at /bin/bash.
+# This will help ensure proper launching of applets
+# and extern applications
+
+BASH_SHELL_EXEC="bash"
+
+for ii in ['/bin/', '/usr/bin/', '/usr/local/bin/']:
+	try:
+		if os.path.exists(ii+"bash"): 
+				BASH_SHELL_EXEC=ii+"bash"
+				break
+	except:
+			pass
+
+# fallback to the Bourne ('sh') shell, if no 'bash' exec was found:
+# on most systems the 'sh' shell is now Bash
+
+if BASH_SHELL_EXEC=="bash":
+	for ii in ['/bin/', '/usr/bin/', '/usr/local/bin/']:
+		try:
+			if os.path.exists(ii+"sh"): 
+				BASH_SHELL_EXEC=ii+"sh"
+				break
+		except:
+			pass
+
+
+import IceWMCPRun    # THis should always be the last function defined in this module
+def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
+	IceWMCPRun.runwindow()
 

@@ -1,6 +1,9 @@
 #! /usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
+
+
 ######################################
-#  PyInstallShield 0.4.
+#  PyInstallShield 0.5.
 #  
 #  Copyright 2003 by Erica Andrews
 #  PhrozenSmoke@yahoo.com
@@ -173,7 +176,7 @@ except:
 
 class installwin:
     def __init__(self):
-	self.pversion="0.4"
+	self.pversion="0.5"
 	global install_pixmap 
 	global install_exe 
 	global bin_dir
@@ -238,7 +241,6 @@ class installwin:
 	vbox1.pack_start(HSeparator(),0,0,0)
 	quizwin.connect("destroy",self.doClose)
 	if installing==1:
-		import GTK
 		table1=Table(3,3,0)
 		table1.set_col_spacings(5)
 		table1.set_row_spacings(3)
@@ -308,8 +310,7 @@ class installwin:
 	sc=ScrolledWindow()
 	logger=TextView()
 	logger.set_editable(0)
-	logger.set_wrap_mode(1)
-	logger.set_wrap_mode(1)
+	logger.set_wrap_mode(WRAP_WORD)
 	self.logger=logger
 	sc.add(logger)
 	sc.set_size_request(-1,130)
@@ -753,6 +754,7 @@ class installwin:
 				except:
 					pass
 				f=open(bin_dir+mlink,"w")
+				f.write("#! /bin/bash\n\n")
 				f.write(linker)
 				f.flush()
 				f.close()
@@ -790,6 +792,7 @@ class installwin:
 		udict[install_dir+this_app_cp]="1"
 		try:
 			f=open(install_dir+"UNINSTALL-ME.sh","w")
+			f.write("#! /bin/bash\n\n")
 			f.write("python ."+os.sep+this_app_cp)
 			f.flush()
 			f.close()
@@ -866,9 +869,18 @@ class installwin:
 	b=0
 	mydirs.sort()
 	mydirs.reverse()
+	# added, version 0.5 - safety, some directories we NEVER want to delete
+	sacred_dirs=['/', '/bin', '/usr/bin','/etc', '/boot', '/var', '/usr', '/usr/X11R6/bin',
+		'/usr/X11R6', '/usr/lib', '/usr/share', '/usr/X11R6/lib', '/usr/X11R6/lib/X11',
+		'/usr/local', '/usr/local/bin', '/usr/local/lib', '/usr/local/share'
+				]
 	while b<15:
 		for ii in mydirs:
 			try:
+				# added, version 0.5 - safety, some directories we NEVER want to delete
+				if ii in sacred_dirs: continue
+				if ii+os.sep in sacred_dirs: continue
+				os.removedirs(ii)
 				os.rmdir(ii)
 				del mydirs[mydirs.index(ii)]
 			except:
