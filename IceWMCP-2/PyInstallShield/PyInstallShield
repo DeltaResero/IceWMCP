@@ -3,11 +3,12 @@
 
 
 ######################################
-#  PyInstallShield 0.5.
+#  PyInstallShield
 #  
-#  Copyright 2003 by Erica Andrews
-#  PhrozenSmoke@yahoo.com
-#  All rights reserved.
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://pythonol.sourceforge.net/
 #  
 #  A simple Gtk-based, cross-platform 
 #  installation program written in Python. It is 
@@ -17,12 +18,13 @@
 #  PyInstallShield is known to run on 
 #  Linux/Unix and Windows 95/98/ME.  
 #  
-#  Requires: Python 2.1 or better, Gtk 2.0.0 
+#  Requires: Python 2.2 or better, Gtk 2.0.0 
 #  or better, PyGtk-2 1.99/2.00 or better.  
 #  
 #  PyInstallShield is open source under the
 #  GPL (General Public License).
 ######################################
+
 import os,sys
 
 ## THIS IS THE ONLY LINE THAT NEEDS TO BE CHANGED, ALL CONFIGURATION IS FROM THIS FILE
@@ -176,7 +178,7 @@ except:
 
 class installwin:
     def __init__(self):
-	self.pversion="0.5"
+	self.pversion="0.5.1"
 	global install_pixmap 
 	global install_exe 
 	global bin_dir
@@ -214,10 +216,10 @@ class installwin:
         itemf.create_items([
         # path              key           callback    action#  type
  	(_("/ _File"), "<alt>F", None, 0,"<Branch>"),
- 	(_("/ _File/_Save this window..."),"<control>S",self.saveOutputWindow,14,""),
- 	(_("/ _File/_Exit PyInstallShield"),"<control>Q",self.doClose,10,""),
+ 	(_("/ _File/_Save this window..."),"<control>S",self.saveOutputWindow,14,"<StockItem>", STOCK_SAVE),
+ 	(_("/ _File/_Exit PyInstallShield"),"<control>Q",self.doClose,10,"<StockItem>", STOCK_QUIT),
  	(_("/_Help"), "<alt>H", None,16,"<LastBranch>"),
-	(_("/_Help/_About"),"F2",self.showAbout,20,""),
+	(_("/_Help/_About"),"F2",self.showAbout,20,"<StockItem>", STOCK_DIALOG_INFO),
         ])
 
         quizwin.add_accel_group(ag)
@@ -441,7 +443,7 @@ class installwin:
 		return defaultval
 
     def showAbout(self,*args):
-	self.showMessage("PyInstallShield "+self.pversion+"\n\nCopyright (c) 2003 by Erica Andrews\nPhrozenSmoke@yahoo.com\nhttp://pythonol.sourceforge.net\n"+"\n\n"+_("A simple Gtk-based, cross-platform installation program written in Python.")+"\n\nIt is tweaked for installing Python applications but should work for others as well.\n\nPyInstallShield is known to run on Linux/Unix and Windows 95/98/ME/2000. Requires: Python 2.1 or better, Gtk 2.0.0 or better, PyGtk-2 1.99/2.00 or better.\n\nPyInstallShield is open source under the GPL (General Public License).")
+	self.showMessage("PyInstallShield "+self.pversion+"\n\nCopyright (c) 2003-2004\nErica Andrews\nPhrozenSmoke@yahoo.com\nhttp://pythonol.sourceforge.net\n"+"\n\n"+_("A simple Gtk-based, cross-platform installation program written in Python.")+"\n\nIt is tweaked for installing Python applications but should work for others as well.\n\nPyInstallShield is known to run on Linux/Unix, Windows 95/98/ME/2000, and Mac OS X. Requires: Python 2.2 or better, Gtk 2.0.0 or better, PyGtk-2 1.99/2.00 or better.\n\nPyInstallShield is open source under the GPL (General Public License).")
 
     def doClose(self,*args):
 	if installing==1:
