@@ -48,7 +48,10 @@ BUG_REPORT_ADDRESS="PhrozenSmoke@yahoo.com"   # who to send bug reports to
 DEFAULT_SMTP_PORT="25"
 
 
-from icewmcp_common import  getImage,getBaseDir,msg_err,msg_info,checkSoftUpdate,msg_confirm,app_map,this_software_version,keyPressClose,TIPS,IS_STATIC_BINARY,GTK,GDK,translateCP, to_utf8,set_basic_window_icon
+from icewmcp_common import getImage, getBaseDir, msg_err, msg_info, checkSoftUpdate 
+from icewmcp_common import msg_confirm,app_map, this_software_version, keyPressClose
+from icewmcp_common import TIPS, IS_STATIC_BINARY, GTK, GDK, translateCP, getPixmapButton
+from icewmcp_common import to_utf8 , set_basic_window_icon , STOCK_GO_FORWARD
 
 from gtk import *
 
@@ -114,11 +117,12 @@ def getSysInfo(*args): # gather useful system information for bug-reporting, inf
         # We need to know the versions of the various libraries IceWMCP relies upon, we don't want to try 
         # to make bug fixes if people are using unsupported/very old versions
         sys_info=sys_info+"IceWM Control Panel Version :  "+this_software_version +"\n"
+        sys_info=sys_info+"SCREEN RESOLUTION : "+str(GDK.screen_width())+" x "+ str(GDK.screen_height())+"\n"
         sys_info=sys_info+"PYTHON VERSION : "+sys.version.replace("\n","  ")+"\n"
         sys_info=sys_info+"GTK VERSION : "+str(gtk_version).replace(",",".").replace(" ","")+"\n"
         sys_info=sys_info+"PYGTK VERSION : "+str(pygtk_version).replace(",",".").replace(" ","")+"\n"
         sys_info=sys_info+"IMLIB VERSION : "+str(os.popen("imlib-config --version").readline()) +"\n"
-        sys_info=sys_info+"gdkPIXBUF VERSION : "+str(os.popen("gdk-pixbuf-config --version").readline()) +"\n\n"
+        sys_info=sys_info+"Gdk-PIXBUF VERSION : "+str(os.popen("gdk-pixbuf-config --version").readline()) +"\n\n"
         
         # finally, we need to know the versions of IceWM and IceSound on this computer, so that we 
         # aren't trying to fix bugs in very old, unsupported versions of IceWM
@@ -212,7 +216,7 @@ def file_bug_report(app_num=5000,*args):
         sctext1.set_wrap_mode(WRAP_WORD)
         sc1.add(sctext1)
         mainvbox.pack_start(sc1,1,1,0)
-        sendbutt=Button(_("SEND NOW"))
+        sendbutt=getPixmapButton(None, STOCK_GO_FORWARD ,_("SEND NOW"))
         TIPS.set_tip(sendbutt,_("SEND NOW"))
         sendbutt.set_data("window",bugwin)
         sendbutt.set_data("from",sfrom)

@@ -120,15 +120,11 @@ class wallwin:
 	TIPS.set_tip(self.colentry,_(" Desktop Color ").strip())
 	self.colbutton=ColorButton(self.selectcol,self.colentry)
 	TIPS.set_tip(self.colbutton,_(" Change... ").strip())
-	self.colchooser=Button()
+	self.colchooser=getIconButton(None,STOCK_OPEN,_(" Change... ").strip())
 	addDragSupportColor(self.colchooser)
 	self.colchooser.set_data("colorbutton",self.colbutton)
 	addDragSupportColor(self.colentry)
 	self.colentry.set_data("colorbutton",self.colbutton)
-	try:
-			self.colchooser.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-	except:
-			self.colchooser.add(Label(_(" Change... ")))
 	self.colchooser.connect("clicked",self.selectcol)
 	TIPS.set_tip(self.colchooser,_(" Change... ").strip())
 	colbox.pack_start(self.colentry,1,1,0)	
@@ -157,7 +153,7 @@ class wallwin:
 	self.clist.set_size_request(215,-1)
 	self.sc.add(self.clist)
 	leftbox.pack_start(self.sc,1,1,0)
-	reloadbutt=Button(_(" Reload Images "))
+	reloadbutt=getPixmapButton(None, STOCK_REFRESH ,_(" Reload Images ").strip())
 	TIPS.set_tip(reloadbutt,_(" Reload Images ").strip())
 	reloadbutt.connect("clicked",self.reloadImages)
 	leftbox.pack_start(reloadbutt,0,0,0)
@@ -181,11 +177,7 @@ class wallwin:
 		self.preffile=getIceWMPrivConfigPath()+"preferences"
 	except:
 		pass
-	self.dirchooser=Button()
-	try:
-			self.dirchooser.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-	except:
-			self.dirchooser.add(Label(_(" Select... ")))
+	self.dirchooser=getIconButton(None,STOCK_OPEN,_(" Select... "))
 	TIPS.set_tip(self.dirchooser,_(" Select... ").strip())
 	self.dirchooser.connect("clicked",self.selectfile)
 	addDragSupport(self.dirchooser,self.setDrag) # drag-n-drop support, added 2.23.2003
@@ -201,22 +193,17 @@ class wallwin:
 	checkbox.set_border_width(2)
 	self.checkbutton=RadioButton(None,_(" Centered "))	
 	self.checkbutton2=RadioButton(self.checkbutton,_(" Tiled "))
+
+	self.checkbutton36=CheckButton(_(" Scaled "))
+	TIPS.set_tip(self.checkbutton36,_(" Scaled ").strip())
+
 	TIPS.set_tip(self.checkbutton,_(" Centered ").strip())
 	TIPS.set_tip(self.checkbutton2,_(" Tiled ").strip())
 	checkbox.pack_start(self.checkbutton,0,0,0)
 	checkbox.pack_start(self.checkbutton2,0,0,0)
+	checkbox.pack_start(self.checkbutton36,0,0,0)
 	checkbox.pack_start(Label(" "),1,1,0)
-	edbutton=Button()
-	edbox=HBox(0,0)
-	edbox.set_border_width(2)
-	edbox.set_spacing(3)
-	edlab=Label(" "+_("Edit")+" ")
-	try:
-		edbox.pack_start(loadScaledImage(getPixDir()+"ism_edit2.png",21,21),0,0,0)
-	except:
-		pass
-	edbox.pack_start(edlab,1,1,0)
-	edbutton.add(edbox)
+	edbutton=getPixmapButton(None, STOCK_SELECT_COLOR ,_("Edit"))
 	TIPS.set_tip(edbutton,_("Edit with Gimp"))
 	edbutton.connect("clicked",self.editWall)
 	checkbox.pack_start(edbutton,0,0,0)
@@ -286,9 +273,9 @@ class wallwin:
 	buttonbox=HBox(0,0)
 	buttonbox.set_homogeneous(1)
 	buttonbox.set_spacing(4)
-	okbutt=Button(_("Ok"))
-	applybutt=Button(_("Apply"))
-	cancelbutt=Button(_("Close"))
+	okbutt=getPixmapButton(None, STOCK_OK ,_("Ok"))
+	applybutt=getPixmapButton(None, STOCK_APPLY ,_("Apply"))
+	cancelbutt=getPixmapButton(None, STOCK_QUIT ,_("Close"))
 	TIPS.set_tip(okbutt,_("Ok"))
 	TIPS.set_tip(applybutt,_("Apply"))
 	TIPS.set_tip(cancelbutt,_("Close"))
@@ -309,6 +296,7 @@ class wallwin:
 	self.reloadImages()
 	self.displayImage()
 	self.checkbutton.connect("toggled",self.displayImage)
+	self.checkbutton36.connect("toggled",self.displayImage)
 	wallwin.show_all()
 
 
@@ -378,12 +366,14 @@ class wallwin:
 		b_write=0
 		bc_write=0
 		wc_write=0
+		ws_write=0
 		b="DesktopBackgroundImage=\""+self.imvalue+"\""
 		if (len(self.imvalue)==0) or (self.imvalue=="[NONE]"):
 			b="#"+b
 		bc="DesktopBackgroundColor=\""+self.colentry.get_text().strip()+"\""
 		if len(bc)==0: bc="DesktopBackgroundColor=\"rgb:FF/FF/FF\""
 		wc="DesktopBackgroundCenter="+str(self.checkbutton.get_active())
+		ws="DesktopBackgroundScaled="+str(self.checkbutton36.get_active())
 		f=open(self.preffile,"w")
 		for ii in g:
 			if ii.find("DesktopBackgroundImage=")>-1:
@@ -392,6 +382,9 @@ class wallwin:
 			elif ii.find("DesktopBackgroundColor=")>-1:
 				f.write(bc+"\n")
 				bc_write=1
+			elif ii.find("DesktopBackgroundScaled=")>-1:
+				f.write(ws+"\n")
+				ws_write=1
 			elif ii.find("DesktopBackgroundCenter=")>-1:
 				f.write(wc+"\n")
 				wc_write=1
@@ -400,6 +393,7 @@ class wallwin:
 		if b_write==0: f.write(b+"\n")
 		if bc_write==0: f.write(bc+"\n")
 		if wc_write==0: f.write(wc+"\n")
+		if ws_write==0: f.write(ws+"\n")
 		f.flush()
 		f.close()
 	except:
@@ -411,6 +405,7 @@ class wallwin:
     def set_prefs(self,*args) :
 	g=self.get_prefs()
 	cent="1"
+	cent2="0"
 	for ii in g:
 		if ii.find("DesktopBackgroundImage=")>-1:
 			while ii.strip().find("#")>5:
@@ -424,9 +419,14 @@ class wallwin:
 			while ii.strip().find("#")>5:
 				ii=ii[0:ii.rfind("#")].strip()
 			cent=ii.replace("#","").replace("DesktopBackgroundCenter=","").replace("\"","").strip()
+		if ii.find("DesktopBackgroundScaled=")>-1:
+			while ii.strip().find("#")>5:
+				ii=ii[0:ii.rfind("#")].strip()
+			cent2=ii.replace("#","").replace("DesktopBackgroundScaled=","").replace("\"","").strip()
 	#self.checkbutton.set_active(str(cent)=="1")
 	#print cent
 	self.checkbutton2.set_active(str(cent)=="0")
+	self.checkbutton36.set_active(str(cent2)=="1")
 	self.colentry.set_text(self.colvalue)
 	self.colbutton.set_value(self.colvalue)
 	if self.imvalue.find(os.sep)>-1:
@@ -649,6 +649,9 @@ class wallwin:
 			#print str(scale_aspect_y) 
 			sug_y= int( math.ceil(sug_y * scale_aspect_y)  )
 			#print str(sug_y)
+			if self.checkbutton36.get_active():
+				sug_x=cutoff1
+				sug_y=cutoff2
 			xput=0
 			yput=0
 			xlim=sug_x
@@ -656,6 +659,19 @@ class wallwin:
 			if tile==1:
 				xlim=cutoff1
 				ylim=cutoff2
+
+			if not tile:
+				if not self.checkbutton36.get_active():  # regular centered, non-scaled
+					xput=(cutoff1/2)-(sug_x/2)
+					yput=(cutoff2/2)-(sug_y/2)
+					#print "XPUTS: "+str(cutoff1)+"   "+str(sug_x)
+					#print "YPUTS: "+str(cutoff2)+"   "+str(sug_y)
+					#print "PUTS: "+str(xput)+"   "+str(yput)
+					if yput<0: yput=0
+					if xput<0: xput=0
+					xlim=cutoff1
+					ylim=cutoff2
+
 			while yput<ylim:
 				if xput>=xlim: 
 					xput=0

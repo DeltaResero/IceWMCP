@@ -69,10 +69,11 @@ class pyspoolwin :
         mymenu.show()
 
 	mainvbox.pack_start(mymenu,0,0,0)
+	mainvbox.set_border_width(3)
 	hbox1=HBox(0,12)
-	hbox1.set_border_width(10)
+	hbox1.set_border_width(5)
 	pic=loadImage(getPixDir()+"pyprint_printer_big.xpm",pyspoolwin)
-	if pic: 	hbox1.pack_start(pic,0,0,0)
+	if pic: 	mainvbox.pack_start(pic,0,0,0)
 	self.hbox1=hbox1
 	label8=Label(_('Select Printer:'))
 	self.label8=label8
@@ -85,7 +86,7 @@ class pyspoolwin :
 	combo_entry.set_editable(0)
 	self.combo_entry=combo_entry
 	hbox1.pack_start(printcombo,0,0,0)
-	viewbutt=Button(_('  View  '))
+	viewbutt=getPixmapButton(None, STOCK_ZOOM_100 ,_('  View  ').strip())
 	TIPS.set_tip(viewbutt,_('  View  '))
 	viewbutt.connect("clicked",self.changeView)
 	self.viewbutt=viewbutt
@@ -141,12 +142,12 @@ class pyspoolwin :
 	hbox3.pack_start( mytable,1,1,0)
 	vbox3=VBox(1,7)
 	self.vbox3=vbox3
-	refreshbutt=getPixmapButton(getPixDir()+"pyprint_reload.xpm",_("Refresh Queue Details"),pyspoolwin)
+	refreshbutt=getPixmapButton(None, STOCK_REFRESH ,_("Refresh Queue Details") )
 	TIPS.set_tip(refreshbutt,_("Refresh Queue Details"))
 	refreshbutt.connect("clicked",self.loadDetailsR)
 	self.refreshbutt=refreshbutt
 	vbox3.pack_start( refreshbutt,0,0,0)
-	cancelbutt=getPixmapButton(getPixDir()+"pyprint_cancel.xpm",_("Cancel Selected Print Job"),pyspoolwin)
+	cancelbutt=getPixmapButton(None, STOCK_DIALOG_ERROR ,_("Cancel Selected Print Job"))
 	TIPS.set_tip(cancelbutt,_("Cancel Selected Print Job"))
 	cancelbutt.connect("clicked",self.cancelJob)
 	self.cancelbutt=cancelbutt

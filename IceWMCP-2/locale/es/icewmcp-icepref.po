@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IcePref2  3.1\n"
+"Project-Id-Version: IcePref2 3.2\n"
 "POT-Creation-Date: 2003-02-18 11:35+0100\n"
-"PO-Revision-Date: 2003-08-25 15:51+0400\n"
+"PO-Revision-Date: 2003-12-11 15:51+0400\n"
 "Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
 "Language-Team: SPANISH\n"
 "MIME-Version: 1.0\n"
@@ -1692,4 +1692,19 @@ msgstr "Número de segundos la barra de tarea relampagueará al pedir el foco"
 msgid "Font for the window's move/resize status"
 msgstr "Fuente para el estado de mover y de volver a clasificar según el tamaño de la ventana"
 
+#: icepref.py, IceWM-1.2.13
+msgid "Desktop background scaled to full screen"
+msgstr "Fondo de escritorio escalado a la pantalla completa"
+
+#: icepref.py, IceWM-1.2.13
+msgid "Show the 'Show Desktop' button on taskbar"
+msgstr "Mostrar el botón 'Mostrar Escritorio' en barra de tarea"
+
+#: icepref.py, IceWM-1.2.13
+msgid "Place workspace buttons on the left, instead of the right"
+msgstr "Colocar los botones del espacio de trabajo a la izquierda, en vez de la derecha"
+
+#: icepref.py, IceWM-1.2.13
+msgid "Use double buffering when redrawing the display"
+msgstr "Utilizar el almacenador intermediario doble ('double buffer') al rediseñar la exhibición"
 

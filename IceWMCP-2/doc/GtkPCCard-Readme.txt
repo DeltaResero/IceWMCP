@@ -21,4 +21,5 @@
 The GtkPCCard program is a frontend for the popular 'cardctl' program for 
 controlling PCMCIA (PC CARDS). So, you will need the 'cardctl' program on your 
 $PATH.  The 'cardctl' program is from the 'pcmcia-cs' package.  Get it at: 
-http://pcmcia-cs.sourceforge.net or  http://speakeasy.rpmfind.net.   Also, this program requres Python, PyGtk, and Gtk.
+http://pcmcia-cs.sourceforge.net or  http://speakeasy.rpmfind.net.   
+Also, this program requres Python 2.2+, PyGtk-2 (1.99/2.00), and Gtk+ 2.

@@ -1474,11 +1474,16 @@ msgstr ""
 msgid "minutes"
 msgstr ""
 
-#: phrozenclock.py
+#: phrozenclock.py- new IceWM-1.2.13
 msgid "View the first half of the list of time zones"
 msgstr ""
 
-#: phrozenclock.py
+#: phrozenclock.py- new IceWM-1.2.13
 msgid "View the last half of the list of time zones"
 msgstr ""
+
+#: IceWMCPWallpaper.py- new IceWM-1.2.13
+msgid " Scaled "
+msgstr ""
+
 

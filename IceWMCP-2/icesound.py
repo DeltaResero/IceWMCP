@@ -1,33 +1,48 @@
 #! /usr/bin/env python
-############################################################################
+
+######################################
 # ICE SOUND MANAGER 
-# Copyright (c) 2002-2003 by Erica Andrews (PhrozenSmoke@yahoo.com).  All rights reserved.
 # 
-# Ice Sound Manager is freeware and open source. All legal, non-profit use, modification, 
-# and distribution of this software is permitted provided all these credits are left in-tact and 
-# unmodified.  This software is distributed as-is, without any warranty or guarantee of any 
-# kind. Use at your own risk!
-#
-# Ice Sound Manager was designed to ease the management 
-# of sound events, sound themes, and the sound server in the IceWM environment.  It is also 
-# intended to be an improvement upon the noble, but primitive icesndcfg. The project is still 
-# in its formative stages, so expect bugs.  (Report bugs to PhrozenSmoke@yahoo.com)
+# Copyright (c) 2002-2003 by Erica Andrews 
+# (PhrozenSmoke@yahoo.com)
+# http://icesoundmanager.sourceforge.net
 # 
-# Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, 
-# or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server. 
-#
-# Visit   http://icesoundmanager.sourceforge.net  for my other software projects.
-############################################################################
-import sys, os, types, string, signal, copy, time,gtk
-#from _gtk import *
-from GTK import *
-from gtk import *
-import GTK
+# Ice Sound Manager was designed to ease 
+# the management of sound events, sound themes, 
+# and the sound server in the IceWM environment.  It 
+# is also intended to be an improvement upon the 
+# noble, but primitive icesndcfg.
+# 
+# Ice Sound Manager is in no way 'officially' affiliated 
+# with IceWM, IceSound Server, or its creators.  Ice 
+# Sound Manager is a FRONTEND to the IceSound Server. 
+# 
+# This program is distributed under the GNU General
+# Public License (open source).
+#######################################
+
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+
+from icewmcp_common import *
+
+import types, string, signal, copy, time
 from threading import RLock, Thread
 
 #set translation support
-from icewmcp_common import *
-_=translateISM   # from icewmcp_common.py
+def _(somestr):
+	return to_utf8(translateISM(somestr))  # from icewmcp_common.py
+
 
 WHATS_THIS=_("What's this?")
 CLICK_HELP=_("Click for help")
@@ -98,7 +113,8 @@ current_theme=_("[NONE]")
 current_theme_file=getIceWMPrivConfigPath()+"sample_theme.stheme"
 server_exec="/usr/X11R6/bin/icesound"
 
-
+global sound_status_last
+sound_status_last=""
 
 def getServerExec(*args):
    global server_exec
@@ -157,10 +173,11 @@ class icewindow :
         global icey
         icey=self
         tips = TIPS   # icewmcp_common
-        icewindow.realize()
+	icewindow.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(icewindow)
 	icewindow.set_title (_("Ice Sound Manager")+" "+ism_version)
-	icewindow.set_policy (1, 1, 0)
 	icewindow.set_position (WIN_POS_CENTER)
+        icewindow.realize()
         self.tips=tips
 	self.icewindow = icewindow
 	mainvbox1 = VBox (0, 0)
@@ -171,13 +188,15 @@ class icewindow :
         # MENUS
         ag = AccelGroup()
         itemf = ItemFactory(MenuBar, "<main>", ag)
+	self.ag=ag
+	self.itemf=itemf
         itemf.create_items([
             # path              key           callback    action#  type
             (_("/_File"),          "<alt>F",         None,             0, "<Branch>"),
             (_("/_File/_Load Sound Theme..."),    "<control>O", showThemeLoad,     1, ""),
             (_("/_File/_Save Sound Theme..."),  "<control>S", showThemeWindow,   2, ""),
 	    (_('/_File/sep1'), None, None, 2, '<Separator>'),
- 				[_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""],
+ 	    (_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
  	    (_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
             (_("/_File/sep1"),     None,         None,             3, "<Separator>"),
             (_("/_File/_Quit"),    "<control>Q", quit,         4, ""),
@@ -195,35 +214,29 @@ class icewindow :
             (_("/_Help"),          "<alt>H",         None,            16, "<LastBranch>"), 
             (_("/_Help/_About..."), "F2",        showAbout,   17, ""),
   (_("/_Help/Ice Sound _Manager Help")+"...", "F4", displayHelp,5005, ""),  #added, 4/26/2003
-            #(_("/_Help/Ice Sound _Manager Help"), "F4",        showGenericHelp,   18, ""), #disabled, 4/26/2003
             (_("/_Help/IceSound _Server Help"), "F6",        showServerHelp,   19, ""),
             (_("/_Help/_Sample Server Script"), "F7",        showScriptHelp,   20, ""),
             (_("/_Help/_Bug Reports and Comments"), "F8",        showBugHelp,   22, ""),
-
-  (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
-  (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5005, ""),
+  	    (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
+  	    (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5005, ""),
         ])
         icewindow.add_accel_group(ag)
         menubar1 = itemf.get_widget("<main>")
 	self.menubar=menubar1
 
 	# added 6.21.2003 - "run as root" menu selector
-	self.leftmenu=menubar1.get_children()[0].get_submenu()
-	self.run_root_button=CheckButton(" "+RUN_AS_ROOT)
-	self.run_root_menu=MenuItem()
-	self.run_root_menu.add(self.run_root_button)
-	self.leftmenu.prepend(self.run_root_menu)
+	self.leftmenu=self.menubar.get_children()[0].get_submenu()
+	self.run_root_button=CheckMenuItem(" "+RUN_AS_ROOT)
+	self.leftmenu.prepend(self.run_root_button)
 
 	mainvbox1.pack_start( menubar1, 0, 0, 0)
 	mainvbox1.pack_start(mainvbox,1,1,0)
 	headerpixmap=getImage(getPixDir()+"ism_header.png",_("Ice Sound Manager"))
 	self.headerpixmap = headerpixmap
-	mainvbox.pack_start( headerpixmap, 1, 1, 6)
+	mainvbox.pack_start( headerpixmap, 1, 1, 4)
 	themehbox = HBox (0, 0)
-	self.themehbox = themehbox
-	themelab = Label (_("Sound Theme")+":")
-	self.themelab = themelab
-	themehbox.pack_start( themelab, 0, 0, 10)
+	themehbox.pack_start(  Label(" "), 1, 1, 3)
+	themehbox.pack_start( Label (_("Sound Theme")+":") , 0, 0, 8)
         themelist=Combo()
         self.themelist=themelist
 	themetext = themelist.entry
@@ -232,31 +245,33 @@ class icewindow :
 	tips.set_tip (themetext, _("The current sound theme, if any"))
 	self.themetext = themetext
 	themehbox.pack_start( themelist, 1, 1, 0)
-        themeselbutton=getIconButton(icewindow,getPixDir()+"ism_reload.png",_("Reload"))
+        themeselbutton=getIconButton(icewindow,STOCK_REFRESH,_("Reload"))
         themeselbutton.connect("clicked",selectTheme)
-        themehbox.pack_start(themeselbutton,0,0,2)
+        themehbox.pack_start(themeselbutton,0,0,5)
         self.themeselbutton=themeselbutton
-        spacer=Label("    ")
-        themehbox.pack_start(spacer,0,0,6)
         tips.set_tip(themeselbutton,_("Switch to the selected theme"))
-        savebutt=getPixmapButton(icewindow,getPixDir()+"ism_save.png",_("Save..."))
+	themehbox.pack_start(  Label(" "), 1, 1, 3)
+	mainvbox.pack_start( themehbox, 0, 0, 3)
+
+	themehbox2 = HBox (0, 0)
+	themehbox2.pack_start(  Label(" "), 1, 1, 3)
+        savebutt=getPixmapButton(icewindow,STOCK_SAVE,_("Save..."))
         tips.set_tip(savebutt,_("Click to SAVE this theme."))
         savebutt.connect("clicked",showThemeWindow)
 	self.savebutt = savebutt
-	themehbox.pack_start( savebutt, 0, 0, 4)
-        loadbutt=getPixmapButton(icewindow,getPixDir()+"ism_load.png",_("Load..."))
+	themehbox2.pack_start( savebutt, 0, 0, 4)
+        loadbutt=getPixmapButton(icewindow,STOCK_OPEN,_("Load..."))
         tips.set_tip(loadbutt,_("Click to LOAD a new theme."))
         loadbutt.connect("clicked",showThemeLoad)
 	self.loadbutt = loadbutt
-	themehbox.pack_start( loadbutt, 0, 0, 0)
-	frame1 = Label(" ")
-	self.frame1 = frame1
-	themehbox.pack_start( frame1, 1, 1, 10)
-	mainvbox.pack_start( themehbox, 1, 1, 3)
+	themehbox2.pack_start( loadbutt, 0, 0, 0)
+	themehbox2.pack_start(  Label(" "), 1, 1, 3)
+	mainvbox.pack_start( themehbox2, 0, 0, 3)
+	mainvbox.pack_start( HSeparator(), 0, 0, 3)
+
 	eventvbox = VBox (0, 0)
 	self.eventvbox = eventvbox
-
-	eventtable = Table (3, 5, 0)
+	eventtable = Table (3, 3, 0)
 	eventtable.set_row_spacing(2,6)
 	self.eventtable = eventtable
 	selsoundtext = Entry ()
@@ -275,8 +290,8 @@ class icewindow :
 	selsoundlab.set_alignment ( 0, 0.5)
 	self.selsoundlab = selsoundlab
 	eventtable.attach( selsoundlab, 1, 2, 0, 1, (FILL), (0), 0, 0)
-	eventtable.attach( Label(" "), 2, 3, 0, 1, (FILL), (FILL), 0, 0)
-	eventtable.attach( Label(" "), 4, 5, 0, 1, (FILL), (FILL), 0, 0)
+	#eventtable.attach( Label(" "), 2, 3, 0, 1, (FILL), (FILL), 0, 0)
+	#eventtable.attach( Label(" "), 4, 5, 0, 1, (FILL), (FILL), 0, 0)
 
 	eventcombo = Combo ()
         global event_desc
@@ -292,48 +307,48 @@ class icewindow :
 	last_to=None
 	eventtable.attach( eventcombo, 0, 1, 1, 2, (EXPAND+FILL), (0), 9, 0)
 	eventtable.attach( selsoundtext, 1, 2, 1, 2, (EXPAND+FILL), (0), 0, 0)
-	selsoundbutt = getPixmapButton(icewindow,getPixDir()+"ism_choosesnd.png",_("Change..."))
+	selsoundbutt = getPixmapButton(icewindow, STOCK_CDROM,_("Change..."))
         selsoundbutt.connect("clicked",changeSound)
 	tips.set_tip (selsoundbutt, _("Select a sound for this event"))
 	self.selsoundbutt = selsoundbutt
-	eventtable.attach( selsoundbutt, 2, 3, 1, 2, (FILL), (0), 13, 0)
-	nosoundbutt = getPixmapButton(icewindow,getPixDir()+"ism_nosound.png",_("No Sound"))
+	eventtable.attach( selsoundbutt, 0, 1, 2, 3, (FILL), (0), 13, 0)
+	nosoundbutt = getPixmapButton(icewindow, STOCK_DIALOG_ERROR ,_("No Sound"))
         nosoundbutt.connect("clicked",doNoSound)
 	tips.set_tip (nosoundbutt, _("Set the sound for this event to NO sound"))
 	self.nosoundbutt = nosoundbutt
-	eventtable.attach( nosoundbutt, 3, 4, 1, 2, (FILL), (0), 0, 0)
+	eventtable.attach( nosoundbutt, 1, 2, 2, 3, (FILL), (0), 0, 0)
 	enablebutt = CheckButton (_("Enabled"))
         enablebutt.connect("toggled",checkEnable)
 	enablebutt.set_border_width ( 2)
 	tips.set_tip (enablebutt, _("Enable/Disable the sound for the selected event"))
 	self.enablebutt = enablebutt
-	eventtable.attach( enablebutt, 4, 5, 1, 2, (FILL), (0), 6, 0)
+	eventtable.attach( enablebutt, 2, 3, 2, 3, (FILL), (0), 6, 0)
 
 	playbox=HBox(0,0)
-	playbox.set_spacing(3)
-	playbutt = getIconButton(icewindow,getPixDir()+"ism_play2.png", _("Play"))
+	playbox.set_spacing(2)
+	playbutt = getIconButton(icewindow, STOCK_GO_FORWARD , _("Play"))
         playbutt.connect("clicked",playSound)
 	tips.set_tip (playbutt, _("Play this sound with your chosen wav player"))
 	self.playbutt = playbutt
 	playbox.pack_start(playbutt,0,0,2)
-	stopbutt = getIconButton(icewindow,getPixDir()+"ism_stop2.png",_("Stop"))
+	stopbutt = getIconButton(icewindow, STOCK_STOP ,_("Stop"))
         stopbutt.connect("clicked",stopSound)
 	tips.set_tip (stopbutt, _("Stop playing this sound"))
 	self.stopbutt = stopbutt
 	playbox.pack_start(stopbutt,0,0,2)
-	editbutt = getIconButton(icewindow,getPixDir()+"ism_edit2.png",_("Edit"))
+	editbutt = getIconButton(icewindow, STOCK_SELECT_COLOR ,_("Edit"))
         editbutt.connect("clicked",editSound)
 	tips.set_tip (editbutt, _("Edit this sound with your chosen sound editor"))
 	self.editbutt = editbutt
 	playbox.pack_start(editbutt,0,0,2)
-	eventtable.attach( playbox, 4, 5, 2, 3, (EXPAND), (0), 10, 2)
+	eventtable.attach( playbox, 2, 3, 1, 2, (0), (0), 10, 2)
 
 	eventvbox.pack_start(eventtable, 1, 1, 0)
 	soundeventstat = Label ("  ")
 	self.soundeventstat = soundeventstat
 	eventvbox.pack_start(soundeventstat, 0, 0, 0)
 	hseparator1 =HSeparator ()
-	hseparator1.set_size_request ( -2, 4)
+	hseparator1.set_size_request ( -1, 4)
 	self.hseparator1 = hseparator1
 	eventvbox.pack_start(hseparator1, 1, 1, 3)
 	mainvbox.pack_start( eventvbox, 1, 1, 7)
@@ -345,37 +360,46 @@ class icewindow :
 	self.cmdlinelab = cmdlinelab
 	servervbox.pack_start ( cmdlinelab, 0, 0, 0)
 	cmdlinehbox = HBox (0, 0)
-	self.cmdlinehbox = cmdlinehbox
 	entry2 = Entry ()
 	self.entry2 = entry2
-	cmdlinehbox.pack_start( entry2, 1, 1, 11)
-	frame2 = Label(" ")
-	self.frame2 = frame2
-	cmdlinehbox.pack_start( frame2, 1, 1, 2)
-        serverwhat=getPixmapButton(icewindow,getPixDir()+"ism_help.png",WHATS_THIS)
+	cmdlinehbox.pack_start( entry2, 1, 1, 4)
+	cmdlinehbox.pack_start( Label(" "), 0, 0, 2)
+        serverwhat=getPixmapButton(icewindow, STOCK_DIALOG_INFO ,WHATS_THIS)
         serverwhat.connect("clicked",showCmdHelp)
 	tips.set_tip (serverwhat, _("Help on the Sound Server Command Line"))
 	self.serverwhat = serverwhat
 	cmdlinehbox.pack_start( serverwhat, 0, 0, 5)
-	servervbox.pack_start( cmdlinehbox, 1, 1, 0)
+	servervbox.pack_start( cmdlinehbox, 0, 0, 0)
+
 	servbuttonhbox = HBox (0, 0)
 	servbuttonhbox.set_border_width(4)
-	serverstartbutt = getPixmapButton(icewindow,getPixDir()+"ism_serveron.png",_("(Re)start IceSound Server"))
+	servbuttonhbox.set_spacing(5)
+	serverstartbutt = getPixmapButton(icewindow, STOCK_YES ,_("(Re)start IceSound Server"))
         serverstartbutt.connect("clicked",startServer)
 	tips.set_tip (serverstartbutt, _("(Re)start  the IceSound Server to enable IceWM sound events"))
 	self.serverstartbutt = serverstartbutt
-	servbuttonhbox.pack_start( serverstartbutt, 0, 0, 5)
-	stopserverbutt = getPixmapButton(icewindow,getPixDir()+"ism_serveroff.png",_("Stop IceSound Server"))
+	servbuttonhbox.pack_start( serverstartbutt, 0, 0, 0)
+	stopserverbutt = getPixmapButton(icewindow, STOCK_NO ,_("Stop IceSound Server"))
         stopserverbutt.connect("clicked",stopServer)
 	tips.set_tip (stopserverbutt, _("Stopping the IceSound server will disable IceWM sound events"))
 	self.stopserverbutt = stopserverbutt
 	servbuttonhbox.pack_start(stopserverbutt, 0, 0, 0)
-	servbuttonhbox.pack_start(  Label("     "), 1, 1, 1)
-	atbutt = getPixmapButton(icewindow,getPixDir()+"ism_choosesnd.png",_("Apply Sound Theme"))
+	servervbox.pack_start( servbuttonhbox, 0, 0, 2)
+
+	applybox = HBox (0, 0)
+	applybox.set_border_width(4)
+	applybox.set_spacing(5)
+	atbutt = getPixmapButton(icewindow, STOCK_CONVERT ,_("Apply Sound Theme"))
         atbutt.connect("clicked",applySoundTheme)
 	tips.set_tip (atbutt, _("Apply this sound theme and start using this set of sounds now."))
-	servbuttonhbox.pack_start(atbutt, 0, 0, 0)
-	servervbox.pack_start( servbuttonhbox, 1, 1, 0)
+	apphelp = getPixmapButton(icewindow, STOCK_DIALOG_QUESTION ,APP_HELP_STRR)
+        apphelp.connect("clicked",self.app_help_cb)
+	tips.set_tip (apphelp, APP_HELP_STRR)
+	applybox.pack_start(atbutt, 0, 0, 0)
+	applybox.pack_start(  Label(""), 1, 1, 1)
+	applybox.pack_start(apphelp, 0, 0, 0)
+	servervbox.pack_start(applybox, 0, 0,3)
+
 	mainvbox.pack_start( servervbox, 1, 1, 0)
         global statusbar
 	statusbar =Statusbar ()
@@ -397,45 +421,25 @@ class icewindow :
 	global wav_dir
 	if wav_dir==getIceWMConfigPath()+"sounds"+os.sep:
 		self.run_root_button.set_active(1)
-	self.run_root_button.connect("clicked",run_as_root)
+	self.run_root_button.connect("toggled",run_as_root)
 
         
         showStatus(_("Ice Sound Manager")+" "+ism_version+".  Copyright (c) 2002-2003 Erica Andrews.")
 	mainvbox.pack_start( statusbar, 0, 0, 0)
 	icewindow.add ( mainvbox1)	
 	icewindow.show_all()
-	gtk.timeout_add(10,updateStatusTimeout)
-	gtk.timeout_add(4,showSoundEventTO)
+	gtk.timeout_add(60,updateStatusTimeout)
+	gtk.timeout_add(8,showSoundEventTO)
         global need_setup
         if need_setup: runSetup()
         else:
           if serrors: showSoundSetError(serrors)
 
-def getPixmapButton (iwin,picon,btext) :  
-	  b=Button()
-          b.add(getPixmapVBox(iwin,picon,btext))
-          b.show_all()        
-          return b
+    def app_help_cb(self, *args) :
+	displayHelp(5005)
 
-def getPixmapVBox(iwin,picon,btext):
-        try:
-	  v=HBox(1,2)
-          v.set_homogeneous(0)
-          v.pack_start(loadScaledImage(str(picon),24,24),0,0,1)
-          v.pack_start(Label(str(btext)),0,0,1)
-          v.show_all()
-          return v
-        except:
-          v=HBox(1,1)
-          v.pack_start(Label(str(btext)),0,0,1)
-          v.show_all()
-          return v
 
-def getIconButton (iwin,picon,lab="?") :  
-	b=Button()
-	b.add(getImage(str(picon),str(lab) )) 
-	b.show_all()
-	return b
+
 
 def showStatus(statustext,*args):
 	global sound_status
@@ -446,7 +450,10 @@ def updateStatusTimeout(*args):
     global statmessid
     global statusbar
     global sound_status
+    global sound_status_last
+    if sound_status_last==sound_status: return 1
     statmessid=statusbar.push(statid," "+_(sound_status))
+    sound_status_last=sound_status
     return 1
 
 def hideit(*args):
@@ -461,13 +468,13 @@ class iceoptions:
 	iceoptions.set_data("ignore_return",1)
 	iceoptions.connect("key-press-event",keyPressClose)
 	self._root = iceoptions
-        tips = Tooltips()
-        iceoptions.realize()
+        tips = TIPS
+	iceoptions.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(iceoptions)
 	iceoptions.set_title (_("Ice Sound Manager Options"))
-	iceoptions.set_policy (1, 1, 0)
         iceoptions.connect("destroy", hideo)
 	iceoptions.set_position ( WIN_POS_CENTER)
-	tips.set_tip (iceoptions,_("Ice Sound Manager Options"))
+        iceoptions.realize()
 	self.iceoptions = iceoptions
 	vbox1 = VBox(0, 0)
 	self.vbox1 = vbox1
@@ -490,12 +497,12 @@ class iceoptions:
 	editorlab.set_alignment ( 0, 0.5)
 	self.editorlab = editorlab
 	table1.attach(editorlab, 0, 1, 1, 2, (FILL), (0), 4, 0)
-	what1 = getPixmapButton(iceoptions,getPixDir()+"ism_help.png",WHATS_THIS)
+	what1 = getPixmapButton(iceoptions, STOCK_DIALOG_INFO ,WHATS_THIS)
         what1.connect("clicked",showPlayHelp)
 	tips.set_tip (what1,CLICK_HELP)
 	self.what1 = what1
 	table1.attach(what1, 2, 3, 0, 1, (FILL), (0), 4, 0)
-	what2 = getPixmapButton(iceoptions,getPixDir()+"ism_help.png",WHATS_THIS)
+	what2 = getPixmapButton(iceoptions, STOCK_DIALOG_INFO ,WHATS_THIS)
         what2.connect("clicked",showEditHelp)
 	tips.set_tip (what2,CLICK_HELP)
 	self.what2 = what2
@@ -520,17 +527,17 @@ class iceoptions:
 	tips.set_tip (stdouttext,_("Launch the IceSound Server in a terminal window"))
 	self.stdouttext = stdouttext
 	table2.attach ( stdouttext, 0, 1, 2, 3, (EXPAND+FILL), (0), 4, 0)
-	what4 = getPixmapButton(iceoptions,getPixDir()+"ism_help.png",WHATS_THIS)
+	what4 = getPixmapButton(iceoptions,STOCK_DIALOG_INFO,WHATS_THIS)
 	tips.set_tip (what4,CLICK_HELP)
 	self.what4 = what4
         what4.connect("clicked",showCopyHelp)
 	table2.attach ( what4, 1, 2, 1, 2, (FILL), (0), 4, 0)
-	what5 = getPixmapButton(iceoptions,getPixDir()+"ism_help.png",WHATS_THIS)
+	what5 = getPixmapButton(iceoptions,STOCK_DIALOG_INFO,WHATS_THIS)
 	tips.set_tip (what5,CLICK_HELP)
 	self.what5 = what5
         what5.connect("clicked",showTerminalHelp)
 	table2.attach ( what5, 1, 2, 2, 3, (FILL), (0), 4, 0)
-	what3 = getPixmapButton(iceoptions,getPixDir()+"ism_help.png",WHATS_THIS)
+	what3 = getPixmapButton(iceoptions,STOCK_DIALOG_INFO,WHATS_THIS)
         what3.connect("clicked",showAutoHelp)
 	tips.set_tip (what3,CLICK_HELP)
 	self.what3 = what3
@@ -541,7 +548,7 @@ class iceoptions:
 	vbox1.pack_start( hseparator2, 1, 1, 12)
 	hbox1 = HBox (0, 0)
 	self.hbox1 = hbox1
-	cancelbutt = getPixmapButton(iceoptions,getPixDir()+"ism_cancel.png",_("Cancel"))
+	cancelbutt = getPixmapButton(iceoptions, STOCK_CANCEL ,_("Cancel"))
         cancelbutt.connect("clicked",hideo)
 	tips.set_tip (cancelbutt,_("Cancel without saving changes"))
 	self.cancelbutt = cancelbutt
@@ -549,7 +556,7 @@ class iceoptions:
 	frame1 =Label("            ")
 	self.frame1 = frame1
    	hbox1.pack_start( frame1, 1, 1, 0)
-	savebutt = getPixmapButton(iceoptions,getPixDir()+"ism_save.png",_("Save"))
+	savebutt = getPixmapButton(iceoptions, STOCK_SAVE ,_("Save"))
         savebutt.connect("clicked",hideOptions)
    	tips.set_tip (savebutt,_("Save changes and close this window"))
 	self.savebutt = savebutt
@@ -602,108 +609,42 @@ def hideOptions(*args):
     showStatus(_("WARNING: '%f' needed in Wav Editor Command Line for Ice Sound Manager to edit them."))
   loadTheme(current_theme_file,0,1)
 
-# HELP Section
-
-class icehelp :
-    def __init__ (self) :
-	icehelp = Window (WINDOW_TOPLEVEL)
-        icehelp.realize()
-	icehelp.set_title ( _("Ice Sound Manager Help"))
-	icehelp.connect("key-press-event",keyPressClose)
-	icehelp.set_policy ( 1, 1, 0)
-	icehelp.set_position ( WIN_POS_CENTER)
-        icehelp.set_size_request(375,375)
-        icehelp.connect("destroy",self.hideh)
-        tips = Tooltips()
-	tips.set_tip ( icehelp,_("Ice Sound Manager Help"))
-	self.icehelp = icehelp
-	vbox1 = VBox (0, 0)
-	vbox1.set_border_width ( 11)
-	self.vbox1 = vbox1
-	scrolledwindow1 = ScrolledWindow ()
-	self.scrolledwindow1 = scrolledwindow1
-	helptext =TextView ()
-	helptext.set_editable ( 0)
-        helptext.set_wrap_mode(1)
-        helptext.set_wrap_mode(1)
-	self.helptext = helptext
-	scrolledwindow1.add ( helptext)
-	vbox1.pack_start ( scrolledwindow1, 1, 1, 0)
-	closebutt = getPixmapButton(icehelp,getPixDir()+"ism_cancel.png",_("Close"))
-        closebutt.connect("clicked",self.hideh)
-	tips.set_tip (closebutt, _("Close this help window"))
-	self.closebutt = closebutt
-	vbox1.pack_start ( closebutt, 0, 0, 13)
-	icehelp.add (vbox1)
-        self.setHelpText("Generic Help File")
-
-    def setHelpText(self, helpstuff):
-      try:
-       self.helptext.delete_text(0,self.helptext.get_length())
-       self.helptext.delete_text(0,self.helptext.get_length()+1)
-      except:
-       pass
-      self.helptext.insert_defaults("\n"+str(helpstuff))
-
-    def appendHelpText(self, helpstuff):
-       self.helptext.insert_defaults("\n"+str(helpstuff))
-
-    def hideh(self,*args):      
-      self.icehelp.hide()
-      self.icehelp.destroy()
-      return TRUE
 
 
+############  HELP Section  ##############
 
 def showModalHelp(helpText="Help text here.",*args):
-   ih=icehelp()
-   ih.icehelp.set_modal(1)
-   ih.setHelpText(str(helpText))
-   ih.icehelp.show_all()
+	commonAbout(_("Ice Sound Manager Help")+" "+ism_version,  
+			str(helpText), 0, getPixDir()+"ism_header.png", "", 0,1)
 
-# 4/26/2003 - disabled, main help is now displayed through the centralized 'Help' system of icewmcp_common.py
-"""
-def showGenericHelp(*args):
-   global help_file
-   ih=icehelp()
-   ih.icehelp.set_modal(0)
-   ih.setHelpText(help_file)
-   ih.icehelp.show_all()
-"""
 
 def showCmdHelp(*args):
-  showModalHelp(_("This section of Ice Sound Manager deals with your IceSound Server itself.\n\nSUGGESTED SOUND SERVER COMMAND LINE:\nThis field shows you the auto-generated command line that is being used to launch your IceSound Server.  It is provided so YOU can see exactly what is being launched on your system and how, and may be useful for troubleshooting.  You can copy and paste the text in this field into a terminal window to aid in any troubleshooting you must do.  This field contains the EXACT same command that is executed when you click '(Re)Start IceSound Server' and is the command that will be executed if you have enabled automatic starting of your IceSound Server when Ice Sound Manager starts. NOTE: Editing the text in this field doeshas NOT effect command Ice Sound Manager launches to start your server. Anything you type here is ignored by Ice Sound Manager.  The 'Suggested Sound Server Command Line' is provided for informational purposes only.  You may also find this field useful for pasting into scripts, etc.\n\n(RE)START ICESOUND SERVER:\nThis will execute the UNEDITED version of the command line that appears in 'Suggested Sound Server Command Line'  to start/restart your IceSound Server.  Your IceWM sound events will NOT be enabled until the sound server has been started.  It is a good idea to restart the server whenever you have changed your sound theme, though Ice Sound Manager attempts to do this for you.\n\nSTOP ICESOUND SERVER:\nVery simply, this feature stops your IceSound Server, disabling all future sound events in IceWM.  NOTE:  Ice Sound Manager does not shutdown your sound server automatically when you exit Ice Sound Manager (it is assumed you want to keep your sound events enabled).  If you quit Ice Sound Manager, your IceSound Server will continue running, until you either click 'Stop IceSound Server' or issue a 'kill' command to your IceSound Server process. However, on most systems, the IceSound Server will shutdown automatically if you quit/restart your X Server."))
+	showModalHelp(_("This section of Ice Sound Manager deals with your IceSound Server itself.\n\nSUGGESTED SOUND SERVER COMMAND LINE:\nThis field shows you the auto-generated command line that is being used to launch your IceSound Server.  It is provided so YOU can see exactly what is being launched on your system and how, and may be useful for troubleshooting.  You can copy and paste the text in this field into a terminal window to aid in any troubleshooting you must do.  This field contains the EXACT same command that is executed when you click '(Re)Start IceSound Server' and is the command that will be executed if you have enabled automatic starting of your IceSound Server when Ice Sound Manager starts. NOTE: Editing the text in this field doeshas NOT effect command Ice Sound Manager launches to start your server. Anything you type here is ignored by Ice Sound Manager.  The 'Suggested Sound Server Command Line' is provided for informational purposes only.  You may also find this field useful for pasting into scripts, etc.\n\n(RE)START ICESOUND SERVER:\nThis will execute the UNEDITED version of the command line that appears in 'Suggested Sound Server Command Line'  to start/restart your IceSound Server.  Your IceWM sound events will NOT be enabled until the sound server has been started.  It is a good idea to restart the server whenever you have changed your sound theme, though Ice Sound Manager attempts to do this for you.\n\nSTOP ICESOUND SERVER:\nVery simply, this feature stops your IceSound Server, disabling all future sound events in IceWM.  NOTE:  Ice Sound Manager does not shutdown your sound server automatically when you exit Ice Sound Manager (it is assumed you want to keep your sound events enabled).  If you quit Ice Sound Manager, your IceSound Server will continue running, until you either click 'Stop IceSound Server' or issue a 'kill' command to your IceSound Server process. However, on most systems, the IceSound Server will shutdown automatically if you quit/restart your X Server."))
 
 def showTerminalHelp(*args):
-  showModalHelp(_("If CHECKED, your Ice Sound Server will be started in a terminal window.  The terminal application to be used is determined by the value of your $TERM environment variable (generally, xterm, gnome-terminal, kterm, or eterm).  You can determine the terminal application used to launch your Ice Sound Server, by setting the environment variable $TERM.  Type 'echo $TERM' to see what your default terminal application is.  NOTE: Your default terminal application in $TERM must accept the -e command line option and must understand it in a way similiar to xterm  for this option to work.  The only exception to this rule is gnome-terminal."))
+	showModalHelp(_("If CHECKED, your Ice Sound Server will be started in a terminal window.  The terminal application to be used is determined by the value of your $TERM environment variable (generally, xterm, gnome-terminal, kterm, or eterm).  You can determine the terminal application used to launch your Ice Sound Server, by setting the environment variable $TERM.  Type 'echo $TERM' to see what your default terminal application is.  NOTE: Your default terminal application in $TERM must accept the -e command line option and must understand it in a way similiar to xterm  for this option to work.  The only exception to this rule is gnome-terminal."))
 
 def showAutoHelp(*args):
-  showModalHelp(_("This option only applies to when ICE SOUND MANAGER is started, not when IceWM is started.  If CHECKED, Ice Sound Manager will start your Ice Sound Server (if it is not already running) whenever you start Ice Sound Manager.  Your Ice Sound Server will be started with the command shown in the field 'Suggested Sound Server Command Line'.  Leave this option unchecked if you do NOT want automatic starting of your Ice Sound Server when Ice Sound Manager is launched."))
+	showModalHelp(_("This option only applies to when ICE SOUND MANAGER is started, not when IceWM is started.  If CHECKED, Ice Sound Manager will start your Ice Sound Server (if it is not already running) whenever you start Ice Sound Manager.  Your Ice Sound Server will be started with the command shown in the field 'Suggested Sound Server Command Line'.  Leave this option unchecked if you do NOT want automatic starting of your Ice Sound Server when Ice Sound Manager is launched."))
 
 def showCopyHelp(*args):
-  showModalHelp(_("This option determines whether your .wav sounds will be LINKED or COPIED into your IceSound Server's Wav Storage Directory (as defined under the menu 'IceSound Server' -> 'Wav Directory'.  Leave this option UNCHECKED if you would rather your files be LINKED into your IceSound Server's Wav Storage Directory.  (This will save disk space, but your sound events will not play if you move/delete the original files.  Be sure to keep your sound themes current if you choose this method.)   CHECK this option if you would rather your .wav sounds be COPIED to your IceSound Server's Wav Storage Directory.  (This method uses more disk space, but ensures that your sound events will be unaffected should you move/delete the original .wav files.)  Which method you choose is up to you."))
+	showModalHelp(_("This option determines whether your .wav sounds will be LINKED or COPIED into your IceSound Server's Wav Storage Directory (as defined under the menu 'IceSound Server' -> 'Wav Directory'.  Leave this option UNCHECKED if you would rather your files be LINKED into your IceSound Server's Wav Storage Directory.  (This will save disk space, but your sound events will not play if you move/delete the original files.  Be sure to keep your sound themes current if you choose this method.)   CHECK this option if you would rather your .wav sounds be COPIED to your IceSound Server's Wav Storage Directory.  (This method uses more disk space, but ensures that your sound events will be unaffected should you move/delete the original .wav files.)  Which method you choose is up to you."))
 
 def showPlayHelp(*args):
-  showModalHelp(_("If you want to be able to PLAY your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound player on your system.  Most people should be able to use the default command.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav player.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to play your sounds.  I personally suggest you use a command line that opens a fast, console-based .wav player (like wavplay) for the sake of speed. "))
+	showModalHelp(_("If you want to be able to PLAY your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound player on your system.  Most people should be able to use the default command.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav player.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to play your sounds.  I personally suggest you use a command line that opens a fast, console-based .wav player (like wavplay) for the sake of speed. "))
 
 def showEditHelp(*args):
-  showModalHelp(_("If you want to be able to EDIT your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound editor on your system.  Most people should be able to use the default command, IF they have the Sweep sound editor installed.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav editor.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to edit your sounds."))
+	showModalHelp(_("If you want to be able to EDIT your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound editor on your system.  Most people should be able to use the default command, IF they have the Sweep sound editor installed.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav editor.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to edit your sounds."))
 
 def showBugHelp(*args):
-  showModalHelp(_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  The project is still in its formative stages.  Expect bugs. COURTEOUSLY report bugs in Ice Sound Manager to PhrozenSmoke@yahoo.com.  If you have any other comments or suggestions, those are welcomed as well.  Please do NOT report bugs in your IceSound Server, your IceWM environment, or ask me for help on getting your IceSound Server to run.  Also, please read 'Ice Sound Manager Help' under the 'Help' menu (or press F4) before reporting a 'bug'. You will find useful troubleshooting suggestions there. "))
+	showModalHelp(_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  The project is still in its formative stages.  Expect bugs. COURTEOUSLY report bugs in Ice Sound Manager to PhrozenSmoke@yahoo.com.  If you have any other comments or suggestions, those are welcomed as well.  Please do NOT report bugs in your IceSound Server, your IceWM environment, or ask me for help on getting your IceSound Server to run.  Also, please read 'Ice Sound Manager Help' under the 'Help' menu (or press F4) before reporting a 'bug'. You will find useful troubleshooting suggestions there. "))
 
 def showServerHelp(*args):
-   ih=icehelp()
-   global server_version
-   ih.setHelpText(_("ICESOUND SERVER HELP")+"\n"+_("You are running IceSound Server version")+": "+server_version+"\n\n"+_("The following is the output returned by running your IceSound Server executable")+" ("+str(getServerExec())+") "+_("with the --help switch.")+"  "+_("You may find it useful for trouble shooting problems with your sound server.  If you see nothing below or see an error message, try modifying your IceSound Server command line, by clicking 'IceSound Server' on the menu. Also, make sure you have the permissions necessary to run the server executable")+":\n\n\n"+string.join( os.popen(str(getServerExec())+" --help").readlines()," ") +"\n")
-   ih.icehelp.show_all()
+	showModalHelp(_("ICESOUND SERVER HELP")+"\n"+_("You are running IceSound Server version")+": "+server_version+"\n\n"+_("The following is the output returned by running your IceSound Server executable")+" ("+str(getServerExec())+") "+_("with the --help switch.")+"  "+_("You may find it useful for trouble shooting problems with your sound server.  If you see nothing below or see an error message, try modifying your IceSound Server command line, by clicking 'IceSound Server' on the menu. Also, make sure you have the permissions necessary to run the server executable")+":\n\n\n"+string.join( os.popen(str(getServerExec())+" --help").readlines()," ") +"\n")
 
 def showScriptHelp(*args):
-  ih=icehelp()
-  ih.helptext.set_editable ( 1)
-  global server_version
-  ih.setHelpText(_("SAMPLE SERVER SCRIPT\nHere is a simple bourne/bash shell script you can use to easily start and stop your IceSound server.  All you should have to do is copy and paste it to a file.  Save it as /usr/bin/icesoundsh.  Type 'chmod 755 /usr/bin/icesoundsh' at a terminal.  You can start the server by typing 'icesoundsh start', and shutdown the server by typing 'icesoundsh stop'.  Hopefully, this is useful.  Note: It's probably not a smart idea to save this script under /usr/bin/icesound, especially if the server executable itself is called 'icesound'.  Copy and paste the section below this line")+":\n\n---------------\n#! /bin/sh\n#\n# icesound          Start/Stop the icesound server.\n#\n# chkconfig: 2345 40 60\n# description: The IceWM sound events sound server\n# processname: icesound\n\n\n# Source function library.\n. /etc/rc.d/init.d/functions\n\nRETVAL=0\n\n# See how we were called.\ncase \"$1\" in\n  start)\n\techo -n \"Starting IceSound Server (version "+server_version+"): \"\n\texec "+str(getSuggestedCommandLine())+"  > /dev/null\n\tRETVAL=$?\n\techo\n\tRETVAL=$?\n\t;;\n  stop)\n\techo -n \"Stopping IceSound server: \"\n\tkillall -9 "+getServerExecShort()+"\n\tRETVAL=$?\n\techo\n\tRETVAL=$?\n\t;;\n  status)\n\tstatus icesound\n\tRETVAL=$?\n\t;;\n  restart)\n  \t$0 stop\n\t$0 start\n\tRETVAL=$?\n\t;;\n  reload)\n\tkillall -HUP "+getServerExecShort()+"\n\tRETVAL=$?\n\t;;\n  *)\n\techo \"Usage: icesound {start|stop|status|restart}\"\n\texit 1\nesac\n\nexit $RETVAL\n")
-  ih.icehelp.show_all()
+	showModalHelp(_("SAMPLE SERVER SCRIPT\nHere is a simple bourne/bash shell script you can use to easily start and stop your IceSound server.  All you should have to do is copy and paste it to a file.  Save it as /usr/bin/icesoundsh.  Type 'chmod 755 /usr/bin/icesoundsh' at a terminal.  You can start the server by typing 'icesoundsh start', and shutdown the server by typing 'icesoundsh stop'.  Hopefully, this is useful.  Note: It's probably not a smart idea to save this script under /usr/bin/icesound, especially if the server executable itself is called 'icesound'.  Copy and paste the section below this line")+":\n\n---------------\n#! /bin/sh\n#\n# icesound          Start/Stop the icesound server.\n#\n# chkconfig: 2345 40 60\n# description: The IceWM sound events sound server\n# processname: icesound\n\n\n# Source function library.\n. /etc/rc.d/init.d/functions\n\nRETVAL=0\n\n# See how we were called.\ncase \"$1\" in\n  start)\n\techo -n \"Starting IceSound Server (version "+server_version+"): \"\n\texec "+str(getSuggestedCommandLine())+"  > /dev/null\n\tRETVAL=$?\n\techo\n\tRETVAL=$?\n\t;;\n  stop)\n\techo -n \"Stopping IceSound server: \"\n\tkillall -9 "+getServerExecShort()+"\n\tRETVAL=$?\n\techo\n\tRETVAL=$?\n\t;;\n  status)\n\tstatus icesound\n\tRETVAL=$?\n\t;;\n  restart)\n  \t$0 stop\n\t$0 start\n\tRETVAL=$?\n\t;;\n  reload)\n\tkillall -HUP "+getServerExecShort()+"\n\tRETVAL=$?\n\t;;\n  *)\n\techo \"Usage: icesound {start|stop|status|restart}\"\n\texit 1\nesac\n\nexit $RETVAL\n")
+
 
 def showAbout(*args):
 	commonAbout(_("ABOUT ICE SOUND MANAGER")+" "+ism_version,_("ABOUT ICE SOUND MANAGER")+" "+ism_version+"\n\n"+_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  Ice Sound Manager is freeware and open source. In addition, Ice Sound Manager is now part of a larger project, called IceWM Control Panel.  As of version 0.2-beta-2, Ice Sound Manager is distributed under the General Public License (GPL). See the 'IceSoundManager-LICENSE' file for details.  All legal, non-profit use, modification, and distribution of this software is permitted provided all these credits are left in-tact and unmodified.  This software is distributed as-is, without any warranty or guarantee of any kind. Use at your own risk!\n\nIce Sound Manager was designed to ease the management of sound events, sound themes, and the sound server in the IceWM environment.  It is also intended to be an improvement upon the noble, but primitive icesndcfg. The project is still in its formative stages, so expect bugs.  (Report bugs to PhrozenSmoke@yahoo.com) \n\nVisit   http://members.aol.com/ButchWhipAppeal/  for my other software projects."),1,getPixDir()+"ism_header.png")	  
@@ -714,14 +655,15 @@ def showAbout(*args):
 class dirdialog :
     def __init__ (self) :
 	dirdialog = Window (WINDOW_TOPLEVEL)
+	dirdialog.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(dirdialog)
 	dirdialog.set_data("ignore_return",1)
 	dirdialog.connect("key-press-event",keyPressClose)
 	self._root = dirdialog
-	dirdialog.set_title ( _("Ice Sound Manager"))
-        tips =Tooltips()
 	dirdialog.set_position (WIN_POS_CENTER)
 	dirdialog.set_modal ( 1)
-	tips.set_tip (dirdialog,_("Ice Sound Manager"))
+	dirdialog.set_title ( _("Ice Sound Manager"))
+        tips =TIPS
 	self.dirdialog = dirdialog
 	vbox1 = VBox (0, 0)
 	vbox1.set_border_width ( 2)
@@ -729,10 +671,14 @@ class dirdialog :
 	self.vbox1 = vbox1
 	scrolledwindow1 =ScrolledWindow ()
 	self.scrolledwindow1 = scrolledwindow1
-	scrolledwindow1.set_size_request(-2,120)
+	scrolledwindow1.set_size_request(-1,120)
 	htext = TextView ()
 	htext.set_editable (0)
-        htext.set_wrap_mode(1)
+        htext.set_wrap_mode(WRAP_WORD)
+    	# Force white background, make sure all colors are viewable
+   	for gg in [STATE_NORMAL, STATE_ACTIVE, STATE_PRELIGHT,
+					STATE_SELECTED, STATE_INSENSITIVE]:
+					htext.modify_base(gg,COL_WHITE)
 	self.htext = htext
 	scrolledwindow1.add ( htext)
 	vbox1.pack_start ( scrolledwindow1, 1, 1, 6)
@@ -740,10 +686,10 @@ class dirdialog :
 	self.hbox1 = hbox1
 	ltext = Entry ()
         ltext.set_editable (0)
-	ltext.set_size_request (240, -2)
+	ltext.set_size_request (240, -1)
 	self.ltext = ltext
 	hbox1.pack_start ( ltext, 1, 1, 4)
-	lbutton =getPixmapButton(dirdialog,getPixDir()+"ism_load.png",_("Browse..."))
+	lbutton =getPixmapButton(dirdialog, STOCK_OPEN ,_("Browse..."))
 	TIPS.set_tip(lbutton,_("Browse..."))
 	self.lbutton = lbutton
 	hbox1.pack_start ( lbutton, 0, 0, 5)
@@ -753,7 +699,7 @@ class dirdialog :
 	label1 = Label ("  ")
 	self.label1 = label1
 	hbox2.pack_start ( label1, 1, 1, 0)
-	closebutton = getPixmapButton(dirdialog,getPixDir()+"ism_ok.png",_("OK"))
+	closebutton = getPixmapButton(dirdialog, STOCK_APPLY ,_("OK"))
         tips.set_tip(closebutton,_("Close and save changes"))
 	self.closebutton = closebutton
 	hbox2.pack_start ( closebutton, 1, 1, 0)
@@ -764,12 +710,10 @@ class dirdialog :
 	dirdialog.add ( vbox1)
 
     def setHelpText(self, helpstuff):
-      try:
-       self.htext.delete_text(0,self.htext.get_length())
-       self.htext.delete_text(0,self.htext.get_length()+1)
-      except:
-       pass
-      self.htext.insert_defaults(str(helpstuff))
+	hbuf=self.htext.get_buffer()
+	hbuf.set_text("")
+	text_buffer_insert(hbuf,  get_renderable_tab(hbuf, 
+		HELP_FONT2,COL_BLACK,LANGCODE), str(helpstuff) )	
 
 def hideDir(*args):
    global fdir
@@ -934,6 +878,8 @@ def createFileSel(winTitle,ok_method,cancel_method,*args):
         global fs
         global sel_file
         fs = FileSelection()
+	fs.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(fs)
 	fs.set_data("ignore_return",1)
 	fs.connect("key-press-event",keyPressClose)
         fs.set_title(str(winTitle))
@@ -942,11 +888,11 @@ def createFileSel(winTitle,ok_method,cancel_method,*args):
         if sel_file:
           fs.set_filename(sel_file)
         fs.ok_button.remove(fs.ok_button.get_children()[0])
-        fs.ok_button.add(getPixmapVBox(fs,getPixDir()+"ism_ok.png",_("OK")))
+        fs.ok_button.add(getPixmapVBox(fs, STOCK_APPLY ,_("OK")))
         fs.ok_button.connect('clicked', ok_method)
         fs.set_modal(1)
         fs.cancel_button.remove(fs.cancel_button.get_children()[0])
-        fs.cancel_button.add(getPixmapVBox(fs,getPixDir()+"ism_cancel.png",_("Cancel")))
+        fs.cancel_button.add(getPixmapVBox(fs, STOCK_CANCEL ,_("Cancel")))
         fs.cancel_button.connect('clicked', cancel_method)
         return fs
 
@@ -978,13 +924,14 @@ class themewindow  :
 	themewindow = Window (WINDOW_TOPLEVEL)
 	self._root = themewindow
         global themes
+	themewindow.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(themewindow)
 	themewindow.set_title (_("Save Theme..."))
 	themewindow.set_data("ignore_return",1)
 	themewindow.connect("key-press-event",keyPressClose)
 	themewindow.set_position (WIN_POS_CENTER)
         themewindow.set_modal(1)
-        tips=Tooltips()
-	tips.set_tip (themewindow, "Ice Sound Manager: Save Theme...")
+        tips=TIPS
 	self.themewindow = themewindow
 	vbox1 = VBox (0, 3)
 	vbox1.set_border_width ( 10)
@@ -1021,7 +968,7 @@ class themewindow  :
 	self.file_entry = file_entry
         file_entry.set_editable(0)
 	hbox1.pack_start( filecombo, 1, 1, 0)
-	filebutton = getPixmapButton(themewindow,getPixDir()+"ism_load.png",_("Browse..."))
+	filebutton = getPixmapButton(themewindow, STOCK_OPEN ,_("Browse..."))
         filebutton.connect("clicked",chooseThemeFile)
 	tips.set_tip (filebutton, _("Browse to select a file for saving"))
 	self.filebutton = filebutton
@@ -1032,7 +979,7 @@ class themewindow  :
 	vbox1.pack_start( label6, 0, 0, 0)
 	hbox2 = HBox (1, 0)
 	self.hbox2 = hbox2
-	cancelbutt = getPixmapButton(themewindow,getPixDir()+"ism_cancel.png",_("Cancel"))
+	cancelbutt = getPixmapButton(themewindow, STOCK_CANCEL ,_("Cancel"))
         cancelbutt.connect("clicked",hideThemeWindow)
         themewindow.connect("destroy",hideThemeWindow)
 	tips.set_tip (cancelbutt, _("Close this window and discard all changes"))
@@ -1041,7 +988,7 @@ class themewindow  :
 	label7 = Label( "  ")
 	self.label7 = label7
 	hbox2.pack_start( label7, 1, 1, 0)
-	savebutt = getPixmapButton(themewindow,getPixDir()+"ism_save.png",_("SAVE"))
+	savebutt = getPixmapButton(themewindow, STOCK_SAVE ,_("SAVE"))
         savebutt.connect("clicked",saveTheme)
 	tips.set_tip (savebutt, _("Save theme and close this window"))
 	self.savebutt = savebutt
@@ -1489,14 +1436,15 @@ class iceaudio :
     def __init__ (self) :
 	iceaudio = Window(WINDOW_TOPLEVEL)
 	self._root = iceaudio
-        iceaudio.realize()
+	iceaudio.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(iceaudio)
 	iceaudio.set_data("ignore_return",1)
 	iceaudio.connect("key-press-event",keyPressClose)
 	iceaudio.set_title (_("Ice Sound Manager: Audio Interface"))
 	iceaudio.set_position ( WIN_POS_CENTER)
 	iceaudio.set_modal ( 1)
-        tips=Tooltips()
-	tips.set_tip (iceaudio, "Ice Sound Manager: Audio Interface")
+        iceaudio.realize()
+        tips=TIPS
 	self.iceaudio = iceaudio
 	frame1 = VBox(0,0)
 	self.frame1 = frame1
@@ -1570,7 +1518,7 @@ class iceaudio :
 	tips.set_tip (autocheck, _("If checked  the YIFF server will attempt to automatically adjust to the correct audio mode"))
 	self.autocheck = autocheck
 	table1.attach(autocheck, 2, 3, 5, 6, (FILL), (0), 0, 0)
-	helpbutton = getPixmapButton(iceaudio,getPixDir()+"ism_help.png",_("Help"))
+	helpbutton = getPixmapButton(iceaudio,STOCK_DIALOG_INFO,_("Help"))
         helpbutton.connect("clicked",showAudioHelp)
 	tips.set_tip (helpbutton, _("Click for help on the audio interface options"))
 	self.helpbutton = helpbutton
@@ -1588,7 +1536,7 @@ class iceaudio :
 	self.label9 = label9
 	table1.attach(label9, 0, 1, 5, 6, (FILL), (0), 0, 0)
 
-	okbutton = getPixmapButton(iceaudio,getPixDir()+"ism_ok.png",_("OK"))
+	okbutton = getPixmapButton(iceaudio, STOCK_APPLY ,_("OK"))
         okbutton.connect("clicked",closeAudio)
 	tips.set_tip (okbutton, _("Save changes and close this window"))
 	self.okbutton = okbutton
@@ -1735,15 +1683,15 @@ class icesetup :
     def __init__ (self) :
 	icesetup = Window (WINDOW_TOPLEVEL)
 	self._root = icesetup
-        icesetup.realize()
+	icesetup.set_wmclass("icesoundmanager","IceSoundManager")
+	set_basic_window_icon(icesetup)
 	icesetup.set_data("ignore_return",1)
 	icesetup.connect("key-press-event",keyPressClose)
 	icesetup.set_title ( _("Ice Sound Manager Setup"))
-	icesetup.set_policy ( 1, 1, 0)
 	icesetup.set_position ( WIN_POS_CENTER)
         icesetup.set_size_request(450,400)
-        tips = Tooltips()
-	tips.set_tip ( icesetup,"Ice Sound Manager Setup")
+        icesetup.realize()
+        tips = TIPS
 	self.icesetup = icesetup
 	vbox1 = VBox (0, 0)
 	vbox1.set_border_width ( 11)
@@ -1761,7 +1709,7 @@ class icesetup :
 	self.helptext = helptext
 	scrolledwindow1.add ( helptext)
 	vbox1.pack_start ( scrolledwindow1, 1, 1, 0)
-	closebutt = getPixmapButton(icesetup,getPixDir()+"ism_next.png",_("Next"))
+	closebutt = getPixmapButton(icesetup, STOCK_GO_FORWARD ,_("Next"))
         closebutt.connect("clicked",returnSetup)
 	tips.set_tip (closebutt, _("Proceed with Setup"))
 	self.closebutt = closebutt
@@ -1770,12 +1718,11 @@ class icesetup :
         self.setHelpText(_("WELCOME TO ICE SOUND MANAGER SETUP\n\nSetup will guide you through setting up your IceSound Server (the sound server for IceWM) as well as help you easily customize your settings in 4 easy steps. You may run this setup program at anytime by clicking 'Options', then 'Setup' on the menu.  Note: You will also see this setup window if Ice Sound Manager was unable to load your preferences files in your home directory. \n\nSTEP ONE:  Select the executable for your IceSound Server.   Click the 'Next' button to proceed."))
 
     def setHelpText(self, helpstuff):
-      try:
-       self.helptext.delete_text(0,self.helptext.get_length())
-       self.helptext.delete_text(0,self.helptext.get_length()+1)
-      except:
-       pass
-      self.helptext.insert_defaults(str(helpstuff))
+	hbuf=self.helptext.get_buffer()
+	hbuf.set_text("")
+	text_buffer_insert(hbuf,  get_renderable_tab(hbuf, 
+		HELP_FONT2,COL_BLACK,LANGCODE), str(helpstuff) )	
+
 
 def runSetup(*args):
   global isetup

@@ -80,7 +80,7 @@ if NOSPLASH==0:
 #######################################
 
 VERSION = this_software_version
-ICE_VERSION = "1.2.11"
+ICE_VERSION = "1.2.13"
 
 
 # these define the types of configuration widgets
@@ -281,6 +281,8 @@ DEFAULTS = {
 		'ColorQuickSwitchActive': [COLOR, '"rgb:00/EE/FF"', 'Color of quick-swith highlight rectangle'],
 
 		'DesktopBackgroundCenter': [TOGGLE, '0', 'Display desktop wallpaper centered, instead of tiled.'],
+		# added 12.11.2003, IceWM 1.2.13
+		'DesktopBackgroundScaled':[TOGGLE, '0', 'Desktop background scaled to full screen'],
 
 
 
@@ -732,6 +734,7 @@ TABS = [
 		[_('Desktop'),
 			[
 			'DesktopBackgroundCenter',
+			'DesktopBackgroundScaled',
 			'DesktopBackgroundColor',
 			'DesktopBackgroundImage',
 			# NEW Stuff - added 1.26.2003 - desktop
@@ -1018,7 +1021,8 @@ class ImagePreviewer:
 		if warn_type==2:  # Theme previewer
 			self.scbox.set_spacing(7)
 			svert=VBox(0,0)
-			bgen=Button(_(" Create Theme Preview... "))
+			bgen=getPixmapButton(None, STOCK_NEW ,_(" Create Theme Preview... ").strip())
+			TIPS.set_tip(bgen, _(" Create Theme Preview... "))
 			svert.pack_start(bgen,0,0,0)
 			svert.pack_start(IceLabel("  "),1,1,0)
 			bgen.connect("clicked",self.generatePreview)
@@ -1131,11 +1135,7 @@ class ButtonEntry(VBox):
 		vbsmall.pack_start(self.entry, 0, 0, 0)
 
 		## added 2.23.2003 - try to load a prettier select button
-		button=Button()
-		try:
-			button.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-		except:
-			button.add(Label("..."))
+		button=getIconButton(None,STOCK_OPEN,_("Select"))
 		TIPS.set_tip(button,_("Select"))
 		self.button=button
 		button.connect('clicked', self.select)
@@ -1296,11 +1296,7 @@ class IceFont(ButtonEntry):
 		hbox.pack_start(self.entry, TRUE, TRUE, 0)
 		
 		## added 2.23.2003 - try to load a prettier select button
-		button=Button()
-		try:
-			button.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-		except:
-			button.add(Label("..."))
+		button=getIconButton(None,STOCK_BOLD,_("Select"))
 		TIPS.set_tip(button,_("Select"))
 		button.connect('clicked', self.select)
 		button.show()
@@ -1410,20 +1406,12 @@ class ImageWidget(IceFile):
 		self.button.set_data("run-conv",self.run_conv)
 		addDragSupport(self.entry,setDrag)
 		addDragSupport(self.button,setDrag)
-		delbut=Button()
-		try:
-			delbut.add(  loadScaledImage(getPixDir()+"ism_nosound.png",24,24)  )
-		except:
-			delbut.add(Label(_("Delete")))
+		delbut=getIconButton(None,STOCK_DIALOG_ERROR,_("Delete"))
 		delbut.set_data("widget",self)
 		TIPS.set_tip(delbut,_("Delete"))
 		delbut.connect("clicked",self.do_del)
 
-		ebut=Button()
-		try:
-			ebut.add(  loadScaledImage(getPixDir()+"ism_edit2.png",24,24)  )
-		except:
-			ebut.add(Label(_("Edit")))
+		ebut=getIconButton(None,STOCK_SELECT_COLOR,_("Edit with Gimp"))
 		ebut.set_data("widget",self)
 		TIPS.set_tip(ebut,_("Edit with Gimp"))
 		ebut.connect("clicked",self.do_edit)
@@ -2203,11 +2191,7 @@ class Application(Window):
 		etable.attach(entries[1], 1, 3, 1, 2, (FILL), (0), 2, 0)
 		etable.attach(entries[2], 1, 3, 2, 3, (FILL), (0), 2, 0)
 		etable.attach(entries[3], 1, 2, 3, 4, (FILL), (0), 2, 0)
-		dirbutton=Button()
-		try:
-			dirbutton.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-		except:
-			dirbutton.add(Label(" "+_("Select")+"... "))
+		dirbutton=getIconButton(None,STOCK_OPEN,_("Select")+"...")
 		TIPS.set_tip(dirbutton, _("Select"))
 		dirbutton.set_data("cfg_path",entries[3])
 		dirbutton.connect("clicked",self.newThemeFileSet)
@@ -2215,9 +2199,9 @@ class Application(Window):
 		entries[3].set_text(getIceWMConfigPath()+"themes/")  # for my own personal easy use 
 		v.pack_start(etable,1,1,3)
 		hb=HBox(1,0)
-		okbutt=Button(" "+_("OK")+" ")
+		okbutt=getPixmapButton(None, STOCK_YES ,_("OK"))
 		TIPS.set_tip(okbutt,_("OK"))
-		cbutt=Button(" "+_("CANCEL")+" ")
+		cbutt=getPixmapButton(None, STOCK_CANCEL ,_("CANCEL"))
 		TIPS.set_tip(cbutt,_("CANCEL"))
 		hb.pack_start(okbutt,0,0,0)
 		hb.pack_start(Label(" "),1,1,0)
@@ -2330,8 +2314,8 @@ class Application(Window):
 	def init_buttons(self):	
 
 		buttons = [
-					[_('Save'), self.save_current_settings,_('Save this theme')],
-					[_('Exit'), mainquit,_('Exit IcePref2 Theme Designer')]
+					[_('Save'), self.save_current_settings,_('Save this theme'), STOCK_SAVE],
+					[_('Exit'), mainquit,_('Exit IcePref2 Theme Designer'), STOCK_QUIT]
 				]
 				
 		bbox = HButtonBox()
@@ -2339,7 +2323,7 @@ class Application(Window):
 		bbox.show()
 		self.vbox.pack_start(bbox, FALSE, FALSE, 0)
 		for item in buttons:
-			button = Button(item[0])
+			button = getPixmapButton(None, item[3] , item[0])
 			button.connect('clicked', item[1])
 			TIPS.set_tip(button,item[2])
 			button.show()		    

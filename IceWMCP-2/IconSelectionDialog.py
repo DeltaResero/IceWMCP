@@ -128,19 +128,19 @@ class IconSelectionDialog(Window):
         self.columns.connect("changed", self.on_columns_changed)
         self.columns.show()
 
-        self.ok = Button(_("Ok"))
+        self.ok = getPixmapButton(None, STOCK_APPLY ,_("Ok"))
 	TIPS.set_tip(self.ok,_("Ok"))
         self.ok.set_flags(CAN_DEFAULT|CAN_FOCUS|HAS_FOCUS|HAS_DEFAULT)
         self.ok.connect("clicked", self.do_ok)
         self.ok.show()
 
-        self.cancel = Button(_("Cancel"))
+        self.cancel = getPixmapButton(None, STOCK_CANCEL ,_("Cancel"))
 	TIPS.set_tip(self.cancel,_("Cancel"))
         self.cancel.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.cancel.connect("clicked", self.do_close)
         self.cancel.show()
 
-        self.reload = Button(_("Reload"))
+        self.reload =  getPixmapButton(None, STOCK_REFRESH ,_("Reload"))
 	TIPS.set_tip(self.reload,_("Reload"))
         self.reload.set_flags(CAN_DEFAULT|CAN_FOCUS)
         self.reload.connect("clicked", self.do_reload)

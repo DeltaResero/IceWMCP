@@ -209,27 +209,27 @@ class clockwin:
 	hbox1=HBox(1,4)
 	hbox1.set_border_width(9)
 	self.hbox1=hbox1
-	aboutbutt=Button(_('About'))
+	aboutbutt=getPixmapButton(None, STOCK_DIALOG_INFO ,_('About'))
 	TIPS.set_tip(aboutbutt,_('About'))
 	aboutbutt.connect("clicked",self.doAbout)
 	self.aboutbutt=aboutbutt
 	hbox1.pack_start(aboutbutt,0,1,0)
-	rsetbutt=Button(_('Reset'))
+	rsetbutt=getPixmapButton(None, STOCK_UNDO ,_('Reset'))
 	TIPS.set_tip(rsetbutt,_('Reset'))
 	rsetbutt.connect("clicked",self.doReset)
 	self.rsetbutt=rsetbutt
 	hbox1.pack_start(rsetbutt,0,1,0)
-	okbutt=Button(_('OK'))
+	okbutt=getPixmapButton(None, STOCK_OK ,_('OK'))
 	TIPS.set_tip(okbutt,_('OK'))
 	okbutt.connect("clicked",self.applyQuit)
 	self.okbutt=okbutt
 	hbox1.pack_start(okbutt,0,1,0)
-	applybutt=Button(_('Apply'))
+	applybutt=getPixmapButton(None, STOCK_APPLY ,_('Apply'))
 	TIPS.set_tip(applybutt,_('Apply'))
 	applybutt.connect("clicked",self.applyDate)
 	self.applybutt=applybutt
 	hbox1.pack_start(applybutt,0,1,0)
-	closebutt=Button(_('Cancel'))
+	closebutt=getPixmapButton(None, STOCK_CANCEL ,_('Cancel'))
 	TIPS.set_tip(closebutt,_('Cancel'))
 	self.closebutt=closebutt
 	hbox1.pack_start(closebutt,0,1,0)
@@ -268,10 +268,10 @@ class clockwin:
 	zonebox.pack_start(timezonelist,1,1,0)
 
 	# added 12.1.2003, scroller for time-zone list
-        self.up_button=Button()
-        self.down_button=Button()
-        self.up_button.add(Arrow(ARROW_UP, SHADOW_ETCHED_OUT))
-        self.down_button.add(Arrow(ARROW_DOWN, SHADOW_ETCHED_OUT))
+        self.up_button=getIconButton(None,STOCK_GO_UP,"Up")
+        self.down_button=getIconButton(None,STOCK_GO_DOWN, "Down")
+        #self.up_button.add(Arrow(ARROW_UP, SHADOW_ETCHED_OUT))
+        #self.down_button.add(Arrow(ARROW_DOWN, SHADOW_ETCHED_OUT))
         self.up_button.connect("clicked",self.moveTabUp)
 	self.up_button.set_sensitive(0)
 	TIPS.set_tip(self.up_button,_("View the first half of the list of time zones"))
@@ -286,7 +286,7 @@ class clockwin:
         smallhb.show_all()
 	zonebox.pack_start(smallhb,0,0,0)
 
-	zonebutton=Button(_("Set Time Zone"))
+	zonebutton=getPixmapButton(None, STOCK_APPLY ,_("Set Time Zone"))
 	TIPS.set_tip(zonebutton,_("Set Time Zone"))
 	zonebutton.connect("clicked",self.applyZone)
 	self.zonebutton=zonebutton

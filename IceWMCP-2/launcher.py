@@ -13,7 +13,44 @@
 # Public License (open source).
 #######################################
 
-import icewmcp_common,gtk,ICEWMCP_BugReport
+#############################
+#  PyGtk-2 Port Started By: 
+#  	David Moore (djm6202@yahoo.co.nz)
+#	March 2003
+#############################
+#############################
+#  PyGtk-2 Port Continued By: 
+#	Erica Andrews
+#  	PhrozenSmoke ['at'] yahoo.com
+#	October/November 2003
+#############################
+
+# seems to help some Debian systems
+try:
+	import pygtk
+	pygtk.require("2.0")
+except:
+	pass
+
+# Some PyGtk2 path settings while we upgrade from PyGtk-1 to PyGtk2
+try:
+	import sys
+	sys.path=["/usr/lib/python2.2/site-packages/gtk-2.0"]+sys.path
+	sys.path=["/usr/lib/python2.3/site-packages/gtk-2.0"]+sys.path
+	import gtk
+	import gtk.gdk 
+	GDK=gtk.gdk
+	GTK=gtk
+	from gtk import *
+	import pango
+except:
+	print "You do not have PyGtk-2 or one of its libraries properly installed."
+	print "This application requires PyGtk-2 1.99/2.00 or better."
+	sys.exit(0)
+	pass
+
+
+import icewmcp_common,ICEWMCP_BugReport
 icewmcp_common.setSplash(icewmcp_common.getLocaleDir)
 icewmcp_common.showSplash(0)
 icewmcp_common.IS_STATIC_BINARY="yes"
@@ -61,6 +98,7 @@ if __name__== "__main__" :
 			else:
 				print "Sorry, the IceWMCPSystem.py plug-in module is not available or could not be loaded."
 				print "You may download the module from http://icesoundmanager.sourceforge.net/download.php"
+				sys.exit(0)
 		if ar not in mods:
 			print "\n\nAvailable IceWM Control Panel Modules:\n"
 			for ii in mods:

@@ -154,7 +154,7 @@ class IceMe(Window):
         self.is_restart.connect("toggled", self.on_is_restart_toggled)
         self.is_restart.show()
 
-        self.add_shortcut = Button(_("Add shortcut..."))
+        self.add_shortcut = getPixmapButton(None, STOCK_ADD ,_("Add shortcut..."))
         self.add_shortcut.connect("clicked", self.icewmcpKeyEdit) # changed 2.21.2003 - run IceWMCP-KeyEdit
         self.add_shortcut.show()
 

@@ -70,7 +70,7 @@ def showSearchWindow(pair_list):
 	mainvbox.pack_start(sc,1,1,2)	
 
 	mainvbox.pack_start(HSeparator(),0,0,2)
-	closebutt=Button("  "+DIALOG_CLOSE+"  ")
+	closebutt=getPixmapButton(None, STOCK_CANCEL ,DIALOG_CLOSE)
 	TIPS.set_tip(closebutt,DIALOG_CLOSE)
 	closebutt.set_data("window",swin)
 	closebutt.connect("clicked",hideSearch)
@@ -148,7 +148,7 @@ def runSearchDialog(*args):
 		mainvbox.pack_start(sentry,0,0,2)
 		TIPS.set_tip(sentry,_("Enter a search word"))
 		mainvbox.pack_start(HSeparator(),0,0,1)
-		closebutt=Button("  "+_("Search")+"  ")
+		closebutt=getPixmapButton(None, STOCK_ZOOM_100 ,_("Search"))
 		TIPS.set_tip(closebutt,_("Search"))
 		closebutt.set_data("entry",sentry)
 		closebutt.set_data("window",swin)

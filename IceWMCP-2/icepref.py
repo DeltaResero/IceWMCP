@@ -83,8 +83,8 @@ if NOSPLASH==0:
 # Constants in a Changing World
 #############################
 
-VERSION = "3.2pre-release"
-ICE_VERSION = "1.2.11"
+VERSION = "3.2"
+ICE_VERSION = "1.2.13"
 
 # these define the types of configuration widgets
 
@@ -304,6 +304,11 @@ DEFAULTS = {
 		'AutoReloadMenus':[TOGGLE, '1', 'Reload menu files automatically'],
 		'ShowMenuButtonIcon':[TOGGLE, '1', 'Show application icon over menu button'],
 
+		# NEW Stuff - added 12.11.2003, IceWM 1.2.13
+		'DesktopBackgroundScaled':[TOGGLE, '0', 'Desktop background scaled to full screen'],
+		'TaskBarShowShowDesktopButton':[TOGGLE, '1', "Show the 'Show Desktop' button on taskbar"],
+		'TaskBarWorkspacesLeft':[TOGGLE, '1', 'Place workspace buttons on the left, instead of the right'],
+		'DoubleBuffer':[TOGGLE, '1', 'Use double buffering when redrawing the display'],
 
 		# NEW Stuff - added 1.26.2003 - scrollbars
 		'ScrollBarX': [RANGE, '16', 'Horizontal scrollbar button size', 0, 100],
@@ -789,6 +794,7 @@ TABS = [
 
 			# added 1.25.2003
 			'TaskBarShowWindowIcons',
+			'TaskBarShowShowDesktopButton',
 			'TaskBarKeepBelow',
 			'TrayShowAllWindows',
 			'TaskBarShowTray',
@@ -948,6 +954,7 @@ TABS = [
 			'AutoDetectGNOME',
 			'DisableImlibCaches',
 			'XFreeType',
+			'DoubleBuffer',
 			'XineramaPrimaryScreen',
 			'ConfirmLogout',
 			'LockCommand',
@@ -991,6 +998,7 @@ TABS = [
 		[_('Desktop'),
 			[
 			'DesktopBackgroundCenter',
+			'DesktopBackgroundScaled',
 			'DesktopBackgroundColor',
 			'DesktopBackgroundImage',
 			# NEW Stuff - added 1.26.2003 - desktop
@@ -1081,6 +1089,7 @@ TABS = [
 		[_('Workspaces'),
 			[
 			'TaskBarShowWorkspaces',
+			'TaskBarWorkspacesLeft',
 			'WorkspaceNames',
 			# added 1.26.2003
 			'ColorNormalWorkspaceButtonText',
@@ -1412,11 +1421,11 @@ class ImagePreviewer:
 		if warn_type==2:  # Theme previewer
 			self.scbox.set_spacing(7)
 			svert=VBox(0,0)
-			bapply=Button(_(" Apply Theme Now! "))
+			bapply=getPixmapButton(None, STOCK_APPLY ,_(" Apply Theme Now! "))
 			TIPS.set_tip(bapply,_(" Apply Theme Now! "))
-			bgen=Button(_(" Create Theme Preview... "))
+			bgen=getPixmapButton(None, STOCK_NEW , _(" Create Theme Preview... "))
 			TIPS.set_tip(bgen,_(" Create Theme Preview... "))
-			babout=Button(_(" About Theme Previews... "))
+			babout=getPixmapButton(None, STOCK_DIALOG_INFO ,_(" About Theme Previews... "))
 			TIPS.set_tip(babout,_(" About Theme Previews... "))
 			svert.pack_start(bapply,0,0,0)
 			svert.pack_start(Label("  "),1,1,0)
@@ -1529,11 +1538,7 @@ class ButtonEntry(VBox):
 
 
 		## added 2.23.2003 - try to load a prettier select button
-		button=Button()
-		try:
-			button.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-		except:
-			button.add(Label("..."))
+		button=getIconButton(None, STOCK_OPEN ,_("Select"))
 		TIPS.set_tip(button,_("Select"))
 		self.button=button
 		button.connect('clicked', self.select)
@@ -1692,11 +1697,7 @@ class IceFont(ButtonEntry):
 		hbox.pack_start(self.entry, TRUE, TRUE, 0)
 		
 		## added 2.23.2003 - try to load a prettier select button
-		button=Button()
-		try:
-			button.add(  loadScaledImage(getPixDir()+"ism_load.png",24,24)  )
-		except:
-			button.add(Label("..."))
+		button=getIconButton(None, STOCK_BOLD ,_("Select"))
 		TIPS.set_tip(button,_("Select"))
 		button.connect('clicked', self.select)
 		button.show()
@@ -2732,11 +2733,11 @@ class Application(Window):
 	def init_buttons(self):	
 
 		buttons = [
-					[_('Save'), self.save_current_settings,_('Save settings to your IceWM preferences file')],
-					[_('Defaults'), self.set_default_settings,_('Reset default values')],
-					[_('Reload'), self.set_file_settings,_('Reload the preferences file')],
-					[_('Apply'), self.restart,_('Apply')+"\n"+_('Restart IceWM (does not work on all systems)')],
-					[_('Exit'), mainquit,_('Exit IcePref2')]
+					[_('Save'), self.save_current_settings,_('Save settings to your IceWM preferences file'), STOCK_SAVE],
+					[_('Defaults'), self.set_default_settings,_('Reset default values'), STOCK_UNDO],
+					[_('Reload'), self.set_file_settings,_('Reload the preferences file'), STOCK_REFRESH],
+					[_('Apply'), self.restart,_('Apply')+"\n"+_('Restart IceWM (does not work on all systems)'), STOCK_APPLY],
+					[_('Exit'), mainquit,_('Exit IcePref2'), STOCK_QUIT]
 				]
 				
 		bbox = HButtonBox()
@@ -2744,7 +2745,7 @@ class Application(Window):
 		bbox.show()
 		self.vbox.pack_start(bbox, FALSE, FALSE, 0)
 		for item in buttons:
-			button = Button(item[0])
+			button = getPixmapButton(None, item[3] , item[0])
 			button.connect('clicked', item[1])
 			TIPS.set_tip(button,item[2])
 			button.show()			    

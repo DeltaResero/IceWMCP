@@ -71,29 +71,6 @@ def isOnPath(binary):
         return 1
   return 0
 
-def getPixmapButton (picon,btext,windowval) :  
-	b=Button()
-	b.add(getPixmapVBox(picon,btext,windowval))
-	b.show_all()        
-	return b
-
-
-def getPixmapVBox(picon,btext,windowval):
-        try:
-	  p=loadImage(picon,windowval)
-          if not p: raise TypeError
-	  v=HBox(1,2)
-          v.set_homogeneous(0)
-	  v.set_spacing(3)
-          v.pack_start(p,0,1,1)
-          v.pack_start(Label(str(btext)),0,1,1)
-          v.show_all()
-          return v
-        except:
-          v=HBox(1,1)
-          v.pack_start(Label(str(btext)),1,1,1)
-          v.show_all()
-          return v
 
 def showHelp(helptext,wintitle="PyPrint"):
 	commonAbout(wintitle,helptext,0)

@@ -424,7 +424,10 @@ def getHelpDirLocale():
 def loadImage(picon,windowval=None):
     try:
         p=Image()
-	p.set_from_file(str(picon).strip())
+	if (picon.startswith("gtk-")) : # a stock icon
+		# hmmm, no way to really scale stock icons to a special size
+		p.set_from_stock(picon,ICON_SIZE_BUTTON)
+	else: p.set_from_file(str(picon).strip())
         p.show_all()
         return p
     except:
@@ -432,6 +435,9 @@ def loadImage(picon,windowval=None):
 
 def loadScaledImage(picon,newheight=40,newwidth=40):  # added in version 0.3, gdkpixbup support, load png, xpm, or gif, allow scaling of images
     try:
+	if (picon.startswith("gtk-")) : # a stock icon
+		# No way to scale stock icons, so just return the default size
+		return loadImage(picon)
         img = gtk.gdk.pixbuf_new_from_file(picon)
         img2 = img.scale_simple(newheight,newwidth,gtk.gdk.INTERP_BILINEAR)
         pix,mask = img2.render_pixmap_and_mask()
@@ -442,6 +448,38 @@ def loadScaledImage(picon,newheight=40,newwidth=40):  # added in version 0.3, gd
     except:
         return None
     
+
+# Some image/icon enhanced widgets
+
+def getPixmapVBox(iwin,picon,btext):
+	# return HBox with icon and label
+        try:
+	  v=HBox(1,2)
+          v.set_homogeneous(0)
+	  v.pack_start(loadScaledImage(str(picon),24,24),0,0,1)
+          v.pack_start(Label(str(btext)),0,0,1)
+          v.show_all()
+          return v
+        except:
+          v=HBox(1,1)
+          v.pack_start(Label(str(btext)),0,0,1)
+          v.show_all()
+          return v
+
+def getPixmapButton (iwin,picon,btext) :  
+	  # return a Button with icon and label
+	  b=Button()
+          b.add(getPixmapVBox(iwin,picon,btext))
+          b.show_all()        
+          return b
+
+def getIconButton (iwin,picon,lab="?") :  
+	# return a Button with just the icon
+	b=Button()
+	b.add(getImage(str(picon),str(lab) )) 
+	b.show_all()
+	return b
+
 
 
 global MY_ICEWM_PATH
@@ -610,8 +648,10 @@ RUN_AS_ROOT=_("Run As Root")  # added 6.18.2003
 
 def getImage(im_file,lab_err=DIALOG_TITLE) : # GdkImlib Image loading
     try:
-        myim= gtk.Image()
-       #print im_file
+	if (im_file.startswith("gtk-")) : # a stock icon
+		# No way to scale stock icons, so just return the default size
+		return loadImage(im_file)
+        myim= Image()
         myim.set_from_file(str(im_file).strip())
         return myim
     except:
@@ -622,17 +662,19 @@ def getImage(im_file,lab_err=DIALOG_TITLE) : # GdkImlib Image loading
 # added 4.2.2003 - common message dialogs with attractive icons, version 1.2
 import IceWMCP_Dialogs
 IceWMCP_Dialogs.icon_setter_method=set_special_window_icon
+IceWMCP_Dialogs.pix_button_setter=getPixmapButton
 def msg_info(wintitle,message):
-	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),2,1)
+	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),2,1, [STOCK_OK])
 
 def msg_warn(wintitle,message):
-	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),1,1)
+	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),1,1, [STOCK_OK])
 
 def msg_err(wintitle,message):
-	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),4,1)
+	IceWMCP_Dialogs.message(wintitle,message.split("\n"),(DIALOG_OK,),4,1, [STOCK_OK])
 
 def msg_confirm(wintitle,message,d_ok=DIALOG_OK,d_cancel=DIALOG_CANCEL):
-	ret=IceWMCP_Dialogs.message(wintitle,message.split("\n"),(d_ok,d_cancel,),3,1)
+	ret=IceWMCP_Dialogs.message(wintitle,message.split("\n"),(d_ok,d_cancel,),3,1, 
+		[STOCK_YES, STOCK_NO])
 	if str(ret)==d_ok: return 1
 	else: return 0
 
@@ -683,7 +725,8 @@ def checkSoftUpdate(*args):
         e=gtk.Entry()
         e.set_text(dl_url)
         v.pack_start(e,1,1,2)
-        b=gtk.Button(DIALOG_OK)
+        b=getPixmapButton(None, STOCK_YES ,DIALOG_OK)
+	TIPS.set_tip(b,DIALOG_OK)
         b.set_data("window",w)
         w.set_data("window",w)
         w.connect("destroy",closeUpdateWin)
@@ -863,7 +906,9 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
                 new_line=" ", editable=0, is_help=0) :
     if is_help==1:
         with_copy=0
-        logo="icewmcp_short.png"
+        if str(logo).find("ism_header.png")==-1: 
+		if str(logo).find("icepref2.png")==-1: 
+			logo="icewmcp_short.png"
         editable=0
         mesg=mesg.replace("\r\n","\n").replace("\r","")
         if mesg.find("[PHERROR]")==-1: 
@@ -903,8 +948,9 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
         helpbox=gtk.HBox(0,0)
         helpbox.set_spacing(4)
         helpbox.pack_start(gtk.Label(" "),1,1,0)
-        helpbox.pack_start(getImage(getBaseDir()+"icewmcp_help.png",""),0,0,0)
+        helpbox.pack_start(getImage(STOCK_DIALOG_INFO,""),0,0,0)
         helpbox.pack_start(gtk.Label(to_utf8(APP_HELP_STRR.upper())),0,0,0)
+        helpbox.pack_start(getImage(STOCK_DIALOG_INFO,""),0,0,0)
         helpbox.pack_start(gtk.Label(" "),1,1,0)
         mainvbox.pack_start(helpbox,0,0,2)
     mainvbox.pack_start(gtk.HSeparator(),0,0,4)
@@ -922,12 +968,24 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
         sctext.get_buffer().set_text(abouttext)
     sc.add(sctext)
     mainvbox.pack_start(sc,1,1,0)
+    b=Button()
+    clbox=HBox(0,0)
+    clbox.set_spacing(3)
+    clbox.set_border_width(2)
+    bimage=Image()
     if is_help==1: 
-        b=gtk.Button(DIALOG_CLOSE)
+        blab=Label(DIALOG_CLOSE)
         TIPS.set_tip(b,DIALOG_CLOSE)
+	bimage.set_from_stock(STOCK_CANCEL,ICON_SIZE_BUTTON)
     else: 
-        b=gtk.Button(DIALOG_OK)
+        blab=Label(DIALOG_OK)
         TIPS.set_tip(b,DIALOG_OK)
+	bimage.set_from_stock(STOCK_YES,ICON_SIZE_BUTTON)
+    clbox.pack_start(bimage,0,0,0)
+    clbox.pack_start(Label("  "),0,0,0)
+    clbox.pack_start(blab,0,0,0)
+    clbox.pack_start(Label(" "),1,1,0)
+    b.add(clbox)
     b.set_data("window",aboutwin)
     b.connect("clicked",closeUpdateWin)
     mainvbox.pack_start(b,0,0,4)    
@@ -936,7 +994,6 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
     aboutwin.connect("key-press-event",keyPressClose)
     if is_help==1: aboutwin.set_default_size(385,400)
     else: aboutwin.set_default_size(385,290)
-    #aboutwin.set_default_size(375,375)
     aboutwin.show_all()
 
 
@@ -963,7 +1020,10 @@ def displayHelp(appnum=7777,*args):
 	if fname=="icesound.txt": # special case for IceSoundManager
 		if mesg.find("[PHSECTION]")>-1:
 			mesg=mesg[0:mesg.find("[PHSECTION]")]+translateISM("SPANISH HELP IS AVAILABLE IN THE 'icesound-es-help.html'  FILE.")+" ("+"./doc/"+")\n\n"+mesg[mesg.find("[PHSECTION]"):len(mesg)]
-	return commonAbout(wtitle,mesg,0,"icewmcp_short.png","",0,1)
+	glogo="icewmcp_short.png"
+	if str(fname).find("icesound")>-1: glogo=getPixDir()+"ism_header.png"
+	if str(fname).find("icepref")>-1: glogo="icepref2.png"
+	return commonAbout(wtitle,mesg,0,glogo,"",0,1)
 	
     
 

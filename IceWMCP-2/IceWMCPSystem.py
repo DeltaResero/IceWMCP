@@ -442,7 +442,7 @@ class hardwaregui:
 
     def probeProc(self,*args):
 	global ADDITIONAL_INFO  # fb, mtrr
-	proc_files=['cmdline','cpuinfo','dma','e820info','execdomains','interrupts','iomem','ioports','irq','isapnp','meminfo','misc','modules','mounts','partitions','slabinfo','swaps','stat','version']
+	proc_files=['cmdline','cpuinfo','dma','e820info','execdomains','interrupts','iomem','ioports','irq','isapnp','meminfo','misc','modules','mounts','partitions','slabinfo','swaps','stat','version', 'filesystems', 'apm']
 	for yy in proc_files:
 	   try:
 		flist=open("/proc/"+yy).readlines()
@@ -498,8 +498,8 @@ class hardwaregui:
     def probeHw(self,*args):
 	global ADDITIONAL_INFO
 	done_init=0
-	#plist=['keyboard']
-	plist=['gtkall']
+	#plist=['mouse', 'display']
+	plist=['reallyall', 'arch']
 	for ii in plist:
 		hwlist=list_hardware(ii)
 		if done_init==0:
@@ -516,18 +516,26 @@ class hardwaregui:
 			for zz in hwsmall:
 				if zz.find("Created at")>-1:  hwinfo[3]=zz
 				if zz.find("Model:")>-1: 
-					HW_ID=zz.replace("Model:","").strip()
-					hwinfo[0]=HW_ID
-					break
-			for zz in hwsmall:
-				if zz.find("Device:")>-1: 					
-					if HW_ID==None: HW_ID=zz.replace("Device:","").strip()
-					hwinfo[1]=zz.replace("Device:","").strip()
-					break
+					if len(zz.replace("Model:","").replace("\"","").strip())>0: 
+						HW_ID=zz.replace("Model:","").replace("\"","").strip()
+						hwinfo[0]=HW_ID
+						break
 			for zz in hwsmall:
 				if (zz.find("Hardware Class:")>-1) and (zz.lower().find("unknown")==-1):		
-					if HW_ID==None: HW_ID=zz.replace("Hardware Class:","").strip()
+					if not HW_ID: 
+						if len(zz.replace("Hardware Class:","").replace("\"","").strip())>0: 
+							HW_ID=zz.replace("Hardware Class:","").replace("\"","").strip()
+					if str(HW_ID).lower().find("unknown")>-1: 
+						if len(zz.replace("Hardware Class:","").replace("\"","").strip())>0: 
+							HW_ID=zz.replace("Hardware Class:","").replace("\"","").strip()
 					hwinfo[2]=zz.replace("Hardware Class:","").strip()
+					break
+			for zz in hwsmall:
+				if zz.find("Device:")>-1: 			
+					if not HW_ID: 
+						if len(zz.replace("Device:","").replace("\"","").strip())>0: 
+							HW_ID=zz.replace("Device:","").replace("\"","").strip()
+					hwinfo[1]=zz.replace("Device:","").strip()
 					break
 			for zz in hwsmall:
 				if zz[0:5].find(":") > -1: 
@@ -536,9 +544,10 @@ class hardwaregui:
 			if HW_ID==None: HW_ID=_("Unknown")+"-"+str(random.randrange(9000))+str(random.randrange(9000))
 			if HW_ID_REAL==None: HW_ID_REAL=_("Unknown")+"-"+str(random.randrange(9000))+str(random.randrange(9000))
 
-			HW_ID=HW_ID.replace("\"","").strip()
+			HW_ID=HW_ID.replace("\"","").strip().title()
 			if HW_ID=='bios': HW_ID="Bios"
 			self.info[HW_ID_REAL]=yy
+			print "Hard:  "+str(HW_ID)+"  "+str(hwinfo)
 			HW_CLASS=self.getHwClass(hwsmall)
 			HW_ICON=self.getSpecialIcon(hwinfo)
 			if HW_ICON==None: HW_ICON=self.getIcon(self.treeleft.getNodeName(HW_CLASS))

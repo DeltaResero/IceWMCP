@@ -74,7 +74,7 @@ class runwindow:
     runentry = runcombo.entry
     self.runentry = runentry
     hbox2.pack_start ( runcombo, 1, 1, 9)
-    browsebutt = gtk.Button(" "+_("Browse...")+" ")
+    browsebutt = getPixmapButton(None, STOCK_OPEN ,_("Browse..."))
     tips.set_tip(browsebutt,_("Select A Program"))
     browsebutt.connect("clicked",self.showFileSel)
     self.browsebutt = browsebutt
@@ -83,7 +83,7 @@ class runwindow:
     hbox3 = gtk.HBox (1, 0)
     hbox3.set_border_width ( 4)
     self.hbox3 = hbox3
-    runbutt = gtk.Button(_("Run"))
+    runbutt = getPixmapButton(None, STOCK_EXECUTE ,_("Run"))
     tips.set_tip(runbutt,_("Run the selected command"))
     self.runbutt = runbutt
     self.runbutt.connect("clicked",self.runCommand)
@@ -91,7 +91,7 @@ class runwindow:
     spacer2 = gtk.Label ("  ")
     self.spacer2 = spacer2
     hbox3.pack_start ( spacer2, 0, 0, 0)
-    cancelbutt = gtk.Button(_("Close"))
+    cancelbutt = getPixmapButton(None, STOCK_CANCEL ,_("Close"))
     tips.set_tip(cancelbutt,_("Close and exit"))
     cancelbutt.connect("clicked",self.quitit)
     self.cancelbutt = cancelbutt
