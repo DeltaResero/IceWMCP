@@ -16,11 +16,11 @@
 #	updated since 2000. This new version, distributed under 
 #	the same GNU GPL as the original IcePref, includes new 
 #	features and bug fixes, optimized for IceWM 1.2.2 
-#	and better. It's been tested on IceWM 1.2.2 - 1.2.14.  
+#	and better. It's been tested on IceWM 1.2.2 - 1.2.15.  
 #
 #	Updates by: 
 #		Erica Andrews (PhrozenSmoke ['at'] yahoo.com) 
-#		February 2003 -February 2004
+#		February 2003 -August 2004
 #
 #	Copyright (c) 2003-2004, Erica Andrews
 #
@@ -119,7 +119,7 @@ if NOSPLASH==0:
 #######################################
 
 VERSION = this_software_version
-ICE_VERSION = "1.2.14"
+ICE_VERSION = "1.2.15"
 
 
 # these define the types of configuration widgets
@@ -250,6 +250,7 @@ DEFAULTS = {
 'ledclock/p.xpm':[IMAGE_WIDGET,'','p.xpm'],
 'ledclock/slash.xpm':[IMAGE_WIDGET,'','slash.xpm'],
 'ledclock/space.xpm':[IMAGE_WIDGET,'','space.xpm'],
+'taskbar/desktop.xpm':[IMAGE_WIDGET,'','desktop.xpm'],
 'taskbar/windows.xpm':[IMAGE_WIDGET,'','windows.xpm'],
 'taskbar/taskbuttonbg.xpm':[IMAGE_WIDGET,'','taskbuttonbg.xpm'],
 'taskbar/taskbuttonminimized.xpm':[IMAGE_WIDGET,'','taskbuttonminimized.xpm'],
@@ -475,6 +476,17 @@ DEFAULTS = {
 		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of active workspace button text'],
 		'ColorNormalWorkspaceButton': [COLOR, '"rgb:C0/C0/C0"', 'Color of normal workspace button'],
 		'ColorActiveWorkspaceButton': [COLOR, '"rgb:A0/A0/A0"', 'Color of active workspace button'],
+
+		# added 8.11.2004, icewm 1.2.15/1.2.14
+		'RolloverButtonsSupported': [TOGGLE, '0', 'Does the theme support the "O" title bar button images (for mouse rollover)'],
+		'ColorCPUStatusIoWait': [COLOR, '"rgb:60/00/60"', 'IO Wait on the CPU monitor'],
+		'ColorCPUStatusSoftIrq': [COLOR, '"rgb:00/FF/FF"', 'Soft Interrupts on the CPU monitor'],
+		'TaskBarNetSamples': [RANGE, '20', 'Width of Net Monitor', 2, 1000],
+		'MenuIconSize': [RANGE, '16', 'Menu icon size', 8, 128],
+		'SmallIconSize': [RANGE, '16', 'Dimension of the small icons', 8, 128],
+		'LargeIconSize': [RANGE, '32', 'Dimension of the large icons', 8, 128],
+		'HugeIconSize': [RANGE, '48', 'Dimension of the extra large icons', 8, 128],
+
 	}
 		
 
@@ -617,6 +629,7 @@ TABS = [
 			'ColorToolButtonText',
 'taskbar/linux.xpm',
 'taskbar/icewm.xpm',
+'taskbar/desktop.xpm',
 'taskbar/taskbarbg.xpm',
 'taskbar/menubg.xpm',
 'taskbar/windows.xpm',
@@ -655,9 +668,12 @@ TABS = [
 			'ColorCPUStatusSystem',
 			'ColorCPUStatusNice',
 			'ColorCPUStatusIdle',
+			'ColorCPUStatusIoWait',
+			'ColorCPUStatusSoftIrq',
 			'ColorNetSend',
 			'ColorNetReceive',
 			'ColorNetIdle',
+			'TaskBarNetSamples',
 			'ColorApm',
 			'ApmFontName',
 			'ColorApmText',
@@ -699,6 +715,10 @@ TABS = [
 
 		[_('Icons'),
 			[	
+		'MenuIconSize',
+		'SmallIconSize',
+		'LargeIconSize',
+		'HugeIconSize',
 'icons/folder_16x16.xpm',
 'icons/folder_32x32.xpm',
 'icons/xterm_16x16.xpm',
@@ -734,6 +754,7 @@ TABS = [
 			]],
 		[_('Title Bars'),
 			[
+			'RolloverButtonsSupported',
 			'TitleButtonsSupported',
 			'TitleButtonsLeft',
 			'TitleButtonsRight',	
@@ -805,7 +826,7 @@ for ii in TABS:
 	TABS_NAMES.append(ii[0])
 
 # image ignore list
-IMAGE_IGNORE=['titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','logoutbg.xpm','maximizeI.xpm','menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm','minimizeA.xpm','switchbg.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm','titleIB.xpm','closeA.xpm','maximizeAb.xpm','maximizeIb.xpm','titleIT.xpm','titleIS.xpm','menubg.xpm','menusel.xpm','dialogbg.xpm','maximizeA.xpm','titleAL.xpm','ledclock/a.xpm','ledclock/colon.xpm','ledclock/dot.xpm','ledclock/m.xpm','ledclock/n0.xpm','ledclock/n1.xpm','ledclock/n2.xpm','ledclock/n3.xpm','ledclock/n4.xpm','ledclock/n5.xpm','ledclock/n6.xpm','ledclock/n7.xpm','ledclock/n8.xpm','ledclock/n9.xpm','ledclock/p.xpm','ledclock/slash.xpm','ledclock/space.xpm','taskbar/windows.xpm','taskbar/taskbuttonbg.xpm','taskbar/taskbuttonminimized.xpm','taskbar/taskbuttonactive.xpm','taskbar/taskbarbg.xpm','taskbar/workspacebuttonactive.xpm','taskbar/workspacebuttonbg.xpm','taskbar/linux.xpm','taskbar/icewm.xpm','taskbar/toolbuttonbg.xpm','taskbar/menubg.xpm','mailbox/errmail.xpm','mailbox/mail.xpm','mailbox/newmail.xpm','mailbox/nomail.xpm','mailbox/unreadmail.xpm','cursors/left.xpm','cursors/move.xpm','cursors/right.xpm','cursors/sizeB.xpm','cursors/sizeBL.xpm','cursors/sizeBR.xpm','cursors/sizeL.xpm','cursors/sizeR.xpm','cursors/sizeT.xpm','cursors/sizeTL.xpm','cursors/sizeTR.xpm','icons/folder_32x32.xpm','icons/folder_16x16.xpm','icons/xterm_32x32.xpm','icons/xterm_16x16.xpm','icons/app_32x32.xpm','icons/app_16x16.xpm','icons/netscape_16x16.xpm','icons/netscape_32x32.xpm','icons/mozilla_16x16.xpm','icons/mozilla_32x32.xpm','icons/galeon_16x16.xpm','icons/galeon_32x32.xpm','icons/opera_16x16.xpm','icons/opera_32x32.xpm','icons/email_16x16.xpm','icons/email_32x32.xpm','icons/terminal_16x16.xpm','icons/terminal_32x32.xpm','icons/gimp_16x16.xpm','icons/gimp_32x32.xpm','icons/emacs_16x16.xpm','icons/emacs_32x32.xpm','icons/vim_16x16.xpm','icons/vim_32x32.xpm','Theme']
+IMAGE_IGNORE=['titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','logoutbg.xpm','maximizeI.xpm','menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm','minimizeA.xpm','switchbg.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm','titleIB.xpm','closeA.xpm','maximizeAb.xpm','maximizeIb.xpm','titleIT.xpm','titleIS.xpm','menubg.xpm','menusel.xpm','dialogbg.xpm','maximizeA.xpm','titleAL.xpm','ledclock/a.xpm','ledclock/colon.xpm','ledclock/dot.xpm','ledclock/m.xpm','ledclock/n0.xpm','ledclock/n1.xpm','ledclock/n2.xpm','ledclock/n3.xpm','ledclock/n4.xpm','ledclock/n5.xpm','ledclock/n6.xpm','ledclock/n7.xpm','ledclock/n8.xpm','ledclock/n9.xpm','ledclock/p.xpm','ledclock/slash.xpm','ledclock/space.xpm','taskbar/windows.xpm','taskbar/taskbuttonbg.xpm','taskbar/taskbuttonminimized.xpm','taskbar/taskbuttonactive.xpm','taskbar/taskbarbg.xpm','taskbar/workspacebuttonactive.xpm','taskbar/workspacebuttonbg.xpm','taskbar/linux.xpm','taskbar/icewm.xpm','taskbar/desktop.xpm','taskbar/toolbuttonbg.xpm','taskbar/menubg.xpm','mailbox/errmail.xpm','mailbox/mail.xpm','mailbox/newmail.xpm','mailbox/nomail.xpm','mailbox/unreadmail.xpm','cursors/left.xpm','cursors/move.xpm','cursors/right.xpm','cursors/sizeB.xpm','cursors/sizeBL.xpm','cursors/sizeBR.xpm','cursors/sizeL.xpm','cursors/sizeR.xpm','cursors/sizeT.xpm','cursors/sizeTL.xpm','cursors/sizeTR.xpm','icons/folder_32x32.xpm','icons/folder_16x16.xpm','icons/xterm_32x32.xpm','icons/xterm_16x16.xpm','icons/app_32x32.xpm','icons/app_16x16.xpm','icons/netscape_16x16.xpm','icons/netscape_32x32.xpm','icons/mozilla_16x16.xpm','icons/mozilla_32x32.xpm','icons/galeon_16x16.xpm','icons/galeon_32x32.xpm','icons/opera_16x16.xpm','icons/opera_32x32.xpm','icons/email_16x16.xpm','icons/email_32x32.xpm','icons/terminal_16x16.xpm','icons/terminal_32x32.xpm','icons/gimp_16x16.xpm','icons/gimp_32x32.xpm','icons/emacs_16x16.xpm','icons/emacs_32x32.xpm','icons/vim_16x16.xpm','icons/vim_32x32.xpm','Theme']
 
 ## NEW MORE LOGICAL 'ORDER' mapping for preferences file - added 1.26.2003
 for ii in TABS:
@@ -1912,8 +1933,9 @@ class Application(Window):
 			pass
 		# this stuff saves the actual info
 		try: 			
+			XLFD2Xft=pangoxlfd.XLFD2Xft
 			f = open(CONFIG_FILE, 'w')
-			f.write('# This theme file automatically generated by IcePref2 Theme Designer %s (updated by PhrozenSmoke, December 2003) --your friendly pythonated config util (http://icesoundmanager.sourceforge.net).\n\n' % VERSION)
+			f.write('# This theme file automatically generated by IcePref2 Theme Designer %s (updated by PhrozenSmoke, August 2004) --your friendly pythonated config util (http://icesoundmanager.sourceforge.net).\n\n' % VERSION)
 			for name in ORDER:
 				string =''
 				# this adds some descriptors depending upon the type of
@@ -1929,6 +1951,9 @@ class Application(Window):
 				comment = '# ' + self.settings[name][TITLE] + '\n'
 				if self.widget_dict.has_key(name):
 					line = name + '=' + self.widget_dict[name].get_value() + string + '\n'
+					if name.endswith("FontName"):
+						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
+
 					# comment out desktop backgrounds that dont exist
 					# When a theme file designates a background image that doesnt exist, it won't load!
 					# Even worse, the person USING the theme cant load any other background either: 
@@ -1942,6 +1967,8 @@ class Application(Window):
 				else:
 					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
 						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
+						if name.endswith("FontName"):
+							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
 				f.write(comment)
 				f.write(line)
 				f.write('\n')

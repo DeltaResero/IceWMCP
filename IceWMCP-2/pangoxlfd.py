@@ -204,3 +204,55 @@ def XLFD2pango(xlfd_str):
     except:
 	return get_valid_pango_font_desc(xlfd_str)
 
+
+
+def XLFD2Xft(xlfd_str):
+    try:
+	mystr=xlfd_str
+	# support legacy fonts like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*'
+	# This should convert '-adobe-courier-medium-r-*-*-*-140-*-*-'
+	# to something like "courier:size=14:bold", it's imperfect but works for most fonts
+	valls=str(mystr).replace("\"", "").split("-")
+	if len(valls)<9: return mystr  # something odd or incomplete
+	face=valls[2].strip()
+	weight=""
+	if not valls[3].strip()=="*": 
+		weight=":"+valls[3].strip()
+	fsize=valls[8].strip()
+
+	# bug fix 12.19.2003, make sure 'fsize' is a valid integer and is greater than 0
+	try:
+		if int(fsize)>1: 
+			if int(fsize)<21: 
+				# bug fix 12.19.2003, allow for mal-formed 
+				# font sizes like '13' instead of '130', '6' instead of '60' etc.
+				fsize=fsize+"0"     # add the necessary '0'
+
+		if int(fsize)<1: 
+			# bug fix 12.19.2003, make sure 'fsize' is greater than 0
+			fsize="100"
+	except:
+		fsize="100"  # VERY malformed, not even an integer, default to a 10 pt font
+
+	fsize=str(int(fsize.strip())/10)  # convert sizes like '130' to '13'
+
+	if int(fsize)<1: # bug fix 12.19.2003, make sure 'fsize' is greater than 0
+		fsize="12"  # cant allow a font of size less than 1, fall back to 10 pt
+
+	condense=""
+	fstyle=""
+	if valls[4].strip()=="i": 
+		fstyle=":italic"
+	if valls[4].strip()=="o": 
+		fstyle=":oblique"
+	if not valls[5].strip()=="*": 
+		if not valls[5].lower().strip()=="normal":  
+			if not valls[5].lower().strip()=="regular":  
+				condense=valls[5].strip()+" "
+	fontval=face+":size="+str(fsize)+str(weight)+str(fstyle)
+	return fontval
+    except:
+	return "sans-serif:size=12"
+
+
+

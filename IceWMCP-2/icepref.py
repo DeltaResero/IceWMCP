@@ -13,7 +13,7 @@
 #
 #	Updates by: 
 #		Erica Andrews (PhrozenSmoke ['at'] yahoo.com) 
-#		February 2003 -February 2004
+#		February 2003 -August 2004
 #
 #	Copyright (c) 2003-2004, Erica Andrews
 #
@@ -110,7 +110,7 @@ if NOSPLASH==0:
 #############################
 
 VERSION = "3.4"
-ICE_VERSION = "1.2.14"
+ICE_VERSION = "1.2.15"
 
 # these define the types of configuration widgets
 
@@ -176,6 +176,11 @@ CONFIG_FILE = getIceWMPrivConfigPath()+'preferences'
 # added 8.18.2003
 global THEME_SET_FILE
 THEME_SET_FILE= getIceWMPrivConfigPath()+'theme'
+
+
+# added 8.11.2004
+global OVERRIDE_SET_FILE
+OVERRIDE_SET_FILE= getIceWMPrivConfigPath()+'prefoverride'
 
 # and the paths to all your themes
 # (If the path to your themes is not here, simply add it.  Just follow the
@@ -658,6 +663,35 @@ DEFAULTS = {
 		'ColorActiveWorkspaceButtonText': [COLOR, '"rgb:00/00/EE"', 'Color of active workspace button text'],
 		'ColorNormalWorkspaceButton': [COLOR, '"rgb:C0/C0/C0"', 'Color of normal workspace button'],
 		'ColorActiveWorkspaceButton': [COLOR, '"rgb:A0/A0/A0"', 'Color of active workspace button'],
+
+		# added 8.11.2004, icewm 1.2.15/1.2.14
+		'RolloverButtonsSupported': [TOGGLE, '0', 'Does the theme support the "O" title bar button images (for mouse rollover)'],
+		# added 8.11.2004, icewm 1.2.15/1.2.14
+		'ColorCPUStatusIoWait': [COLOR, '"rgb:60/00/60"', 'IO Wait on the CPU monitor'],
+		'ColorCPUStatusSoftIrq': [COLOR, '"rgb:00/FF/FF"', 'Soft Interrupts on the CPU monitor'],
+		# added 8.11.2004, icewm 1.2.15/1.2.14
+		'NestedThemeMenuMinNumber': [RANGE, '15', 'Minimal number of themes after which the Themes menu becomes nested (0=disabled)', 0, 1234],
+		'TaskBarCPUDelay': [RANGE, '500', 'Delay between CPU Monitor samples in ms', 10, 3600000],
+		'TaskBarNetSamples': [RANGE, '20', 'Width of Net Monitor', 2, 1000],
+		'TaskBarNetDelay': [RANGE, '500', 'Delay between Net Monitor samples in ms', 10, 3600000],
+		'MenuIconSize': [RANGE, '16', 'Menu icon size', 8, 128],
+		'SmallIconSize': [RANGE, '16', 'Dimension of the small icons', 8, 128],
+		'LargeIconSize': [RANGE, '32', 'Dimension of the large icons', 8, 128],
+		'HugeIconSize': [RANGE, '48', 'Dimension of the extra large icons', 8, 128],
+
+		# added 8.11.2004, icewm 1.2.15/1.2.14
+		'KeyWinArrangeN': [KEYSTROKE, '"Ctrl+Alt+KP_8"', '"Arrange Windows-North" shortcut'],
+		'KeyWinArrangeNE': [KEYSTROKE, '"Ctrl+Alt+KP_9"', '"Arrange Windows-Northeast" shortcut'],
+		'KeyWinArrangeE': [KEYSTROKE, '"Ctrl+Alt+KP_6"', '"Arrange Windows-East" shortcut'],
+		'KeyWinArrangeSE': [KEYSTROKE, '"Ctrl+Alt+KP_3"', '"Arrange Windows-Southeast" shortcut'],
+		'KeyWinArrangeS': [KEYSTROKE, '"Ctrl+Alt+KP_2"', '"Arrange Windows-South" shortcut'],
+	'KeyWinArrangeSW': [KEYSTROKE, '"Ctrl+Alt+KP_1"', '"Arrange Windows-Southwest" shortcut'],
+		'KeyWinArrangeW': [KEYSTROKE, '"Ctrl+Alt+KP_4"', '"Arrange Windows-West" shortcut'],
+		'KeyWinArrangeNW': [KEYSTROKE, '"Ctrl+Alt+KP_7"', '"Arrange Windows-Northwest" shortcut'],
+		'KeyWinArrangeC': [KEYSTROKE, '"Ctrl+Alt+KP_5"', '"Arrange Windows-Center" shortcut'],
+		'KeySysShowDesktop': [KEYSTROKE, '"Alt+Ctrl+d"', '"Show Desktop" shortcut'],
+		'KeyWinMaximizeHoriz': [KEYSTROKE, '""', '"Maximize Window Horizontally" shortcut'],
+
 	}
 		
 
@@ -796,6 +830,8 @@ TABS = [
 			[
 			'AutoReloadMenus',
 			'ShowMenuButtonIcon',
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'MenuIconSize',
 			'MenuFontName',
 			'ColorNormalMenu',
 			'ColorActiveMenuItem',
@@ -803,7 +839,9 @@ TABS = [
 			'ColorNormalMenuItemText',
 			'ColorDisabledMenuItemText',
 
+			# added 8.11.2004, icewm 1.2.15/1.2.14
 			'ShowThemesMenu',
+			'NestedThemeMenuMinNumber',
 
 			# NEW MENU Stuff - added 1.26.2003
 			'ShowHelp',
@@ -898,6 +936,11 @@ TABS = [
 			'ColorCPUStatusIdle',
 			'CPUStatusCommand',
 			'CPUStatusClassHint',
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'ColorCPUStatusIoWait',
+			'ColorCPUStatusSoftIrq',
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'TaskBarCPUDelay',
 
 			'TaskBarShowNetStatus',
 			'NetworkStatusDevice',
@@ -906,6 +949,9 @@ TABS = [
 			'ColorNetIdle',
 			'NetStatusCommand',
 			'NetStatusClassHint',
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'TaskBarNetSamples',
+			'TaskBarNetDelay',
 
 			'TaskBarShowAPMTime',		
 			'TaskBarShowAPMStatus',	
@@ -992,6 +1038,10 @@ TABS = [
 		[_('Miscellaneous'),
 			[
 			'IconPath',
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'SmallIconSize',
+			'LargeIconSize',
+			'HugeIconSize',
 			'KDEDataDir',
 			'AutoDetectGNOME',
 			'DisableImlibCaches',
@@ -1018,7 +1068,8 @@ TABS = [
 			'Theme',
 			'ThemeAuthor',
 			'ThemeDescription',
-			'Gradients'
+			'Gradients',
+			'RolloverButtonsSupported'  # added 8.11.2004, icewm 1.2.15/1.2.14
 			]],
 
 		[_('Address Bar'),
@@ -1126,7 +1177,20 @@ TABS = [
 			'KeySysWorkspace9TakeWin',
 			'KeySysWorkspace10TakeWin',
 			'KeySysWorkspace11TakeWin',
-			'KeySysWorkspace12TakeWin'
+			'KeySysWorkspace12TakeWin',
+
+			# added 8.11.2004, icewm 1.2.15/1.2.14
+			'KeyWinArrangeN',
+			'KeyWinArrangeNE',
+			'KeyWinArrangeE',
+			'KeyWinArrangeSE',
+			'KeyWinArrangeS',
+			'KeyWinArrangeSW',
+			'KeyWinArrangeW',
+			'KeyWinArrangeNW',
+			'KeyWinArrangeC',
+			'KeySysShowDesktop',
+			'KeyWinMaximizeHoriz'
 			]],
 		[_('Workspaces'),
 			[
@@ -1146,6 +1210,88 @@ TABS = [
 			'EdgeSwitchDelay',
 			]]
 	]
+
+
+# added 8.11.2004, use ~/.icewm/prefoverride to stop themes 
+# from tampering with properties they shouldnt tamper with
+#  supported in Icewm 1.2.14+
+
+preferences_override=[
+		'MenuIconSize',
+		'SmallIconSize',
+		'LargeIconSize',
+		'HugeIconSize',
+		'NestedThemeMenuMinNumber' ,
+		'WorkspaceNames',
+		'TaskBarCPUDelay',
+		'TaskBarNetSamples',
+		'TaskBarNetDelay',
+		'NetStatusCommand',
+		'AddressBarCommand',
+		'NetworkStatusDevice',
+		'TimeFormat',
+		'DateFormat',
+		'MailCommand',
+		'NewMailCommand',
+		'LockCommand',
+		'ClockCommand',
+		'RunCommand',
+		'OpenCommand',
+		'TerminalCommand',
+		'LogoutCommand',
+		'LogoutCancelCommand',
+		'ShutdownCommand',
+		'RebootCommand',
+		'CPUStatusCommand' ,
+		'MailCheckDelay',
+		'TaskBarCPUSamples',
+		'TitleButtonsLeft',
+		'TitleButtonsRight',
+		'IconPath',
+		'MailBoxPath',
+		'ShowTaskBar',
+		'TaskBarAtTop',
+		'TaskBarAutoHide',
+		'TaskBarShowClock',
+		'TaskBarShowAPMStatus',
+		'TaskBarClockLeds',
+		'TaskBarShowMailboxStatus',
+		'TaskBarMailboxStatusBeepOnNewMail',
+		'TaskBarMailboxStatusCountMessages',
+		'TaskBarShowWorkspaces',
+		'TaskBarShowWindows',
+		'TaskBarShowAllWindows',
+		'TaskBarShowStartMenu',
+		'TaskBarShowWindowListMenu',
+		'TaskBarShowCPUStatus',
+		'TaskBarShowNetStatus',
+		'TaskBarDoubleHeight',
+		'DontRotateMenuPointer',
+		'ShowHelp',
+		'ShowLogoutMenu',
+		'DesktopTransparencyColor',
+		'DesktopTransparencyImage',
+		'TaskBarShowShowDesktopButton',
+		'TaskBarWorkspacesLeft',
+		'DoubleBuffer',
+		'AutoReloadMenus',
+		'ShowMenuButtonIcon',
+		'ShowProgramsMenu',
+		'ShowRun',
+		'ShowLogoutSubMenu',
+		'ShowWindowList',
+		'ShowAbout',
+		'TaskBarShowAPMTime',
+		'EnableAddressBar',
+		'ShowAddressBar',
+		'TaskBarShowWindowIcons',
+		'TaskBarKeepBelow',
+		'TrayShowAllWindows',
+		'TaskBarShowTray',
+		'TrayDrawBevel',
+		'TaskBarLaunchOnSingleClick',
+]
+
 
 ## added 1.27.2003 - a list of tab names
 TABS_NAMES=[]
@@ -2044,8 +2190,9 @@ class ThemeSel(VBox):
 				pass
 			
 	def get_value(self):
-	    if not self.fvalue=='': value = '"' + self.fvalue + '"'
-	    else: value = '"' + self.value + '"'
+	    # if not self.fvalue=='': value = '"' + self.fvalue + '"'
+	    # else: value = '"' + self.value + '"'
+	    value = '"' + self.value + '"'
 	    return value
 	
 	def init_widgets(self, title):
@@ -2070,7 +2217,7 @@ class ThemeSel(VBox):
 		for item in self.theme_list:
 			row = [item.name, item.full_path]
 			clist.append(row)
-			clist.set_row_data(row_count, [item.path,item.full_path])
+			clist.set_row_data(row_count, [item.path,item.full_path, item.name])
 			self.t_map[item.path]=item.full_path
 			self.a_map[item.path]=item.author
 			self.d_map[item.path]=item.description
@@ -2406,8 +2553,9 @@ class Application(Window):
 		if self.settings.has_key( option ):
 			self.settings[option][VALUE] = current[option]
 		else:
-		    xxerr='Corrupt preferences file:  %s=%s does not seem to be a valid option' % (option, current[option])
-		    open_errors=open_errors+xxerr+"\n\n"
+			if not self.settings.has_key( option.replace("FontNameXft","FontName") ):
+				xxerr='Corrupt preferences file:  %s=%s does not seem to be a valid option' % (option, current[option])
+				open_errors=open_errors+xxerr+"\n\n"
 	    if len(open_errors)>0:		
 				commonAbout("Errors", open_errors , 0, "icepref2.png","\n")
 
@@ -2440,8 +2588,9 @@ class Application(Window):
 			if str(data).find("nowarn")==-1: win = msg_warn(_('Warning'), _('There was no preferences file to backup!'))
 		# this stuff saves the actual info
 		try: 
+			XLFD2Xft=pangoxlfd.XLFD2Xft
 			f = open(CONFIG_FILE, 'w')
-			f.write('# This configuration file automatically generated by IcePref2 %s (updated by PhrozenSmoke, December 2003) -- a Python-based IceWM configuration tool.\n\n' % VERSION)
+			f.write('# This configuration file automatically generated by IcePref2 %s (updated by PhrozenSmoke, August 2004) -- a Python-based IceWM configuration tool.\n\n' % VERSION)
 			for name in ORDER:
 				string =''
 				# this adds some descriptors depending upon the type of
@@ -2456,10 +2605,14 @@ class Application(Window):
 				# as the label text.
 				comment = '# ' + self.settings[name][TITLE] + '\n'
 				if self.widget_dict.has_key(name):
-					line = name + '=' + self.widget_dict[name].get_value() + string + '\n'
+					line = name + '=' + str(self.widget_dict[name].get_value()) + string + '\n'
+					if name.endswith("FontName"):
+						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
 				else:
 					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
 						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
+						if name.endswith("FontName"):
+							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
 				f.write(comment)
 				f.write(line)
 				f.write('\n')
@@ -2467,7 +2620,68 @@ class Application(Window):
 			if str(data).find("nowarn")==-1: win = msg_info(_('Success'), _("IceWM Preferences successfully saved to: ")+CONFIG_FILE+"\n\nBack-up: "+CONFIG_FILE+".backup-file")
 		except:
 			win = msg_err(_('Warning'), _("There was an ERROR saving your IceWM 'preferences' file."))
+
+
+		try: 
+			# Save the preferences override file
+
+			XLFD2Xft=pangoxlfd.XLFD2Xft
+			f = open(OVERRIDE_SET_FILE, 'w')
+			f.write('# This configuration file automatically generated by IcePref2 %s (updated by PhrozenSmoke, August 2004) -- a Python-based IceWM configuration tool.\n\n' % VERSION)
+			for name in preferences_override:
+				string =''
+				# this adds some descriptors depending upon the type of
+				# option
+				if self.settings[name][TYPE] == TOGGLE:
+					string =' # 0 / 1'
+				elif self.settings[name][TYPE] == RANGE:
+					min = self.settings[name][MIN]
+					max = self.settings[name][MAX]
+					string = ' # ' + str(min) + '-' + str(max)
+				# this sets up the comment descriptor, which is the same
+				# as the label text.
+				comment = '# ' + self.settings[name][TITLE] + '\n'
+				if self.widget_dict.has_key(name):
+					line = name + '=' + str(self.widget_dict[name].get_value()) + string + '\n'
+					if name.endswith("FontName"):
+						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
+				else:
+					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
+						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
+						if name.endswith("FontName"):
+							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
+				f.write(comment)
+				f.write(line)
+				f.write('\n')
+			f.close()
+		except:
+			pass
+
 		self.save_current_theme_settings()
+
+
+	def parse_icewm_version(self,*args) :  # added 8.11.2004
+      		try:
+			iversion="IceWM 0.0.0,"
+			if get_pidof("icewm"): 
+				iversion=os.popen("icewm --version").read().replace("\n","").replace("\t","")
+			if get_pidof("icewm-gnome"): 
+				iversion=os.popen("icewm-gnome --version").read().replace("\n","").replace("\t","")
+			if iversion.find(",")>iversion.find("IceWM"):
+				iversion=iversion[iversion.find("IceWM")+len("IceWM"):iversion.find(",")].strip()
+				ivers=iversion.split(".")
+				vers=[]
+				for ii in ivers:
+					myint=""
+					for gg in ii:
+						if not gg.isdigit(): break
+						myint=myint+gg
+					vers.append(int(myint))
+				if len(vers)==3: return vers
+				else: return [0,0,0]
+			else: return [0,0,0]
+      		except:
+			pass
 
 	def restart(self, widget=None, data=None):
 	    
@@ -2481,18 +2695,23 @@ class Application(Window):
 		if self.os=="BSD":
 			win = msg_confirm(_('Warning'), _("Restarting IceWM from IcePref is buggy on BSD systems.  You should restart IceWM yourself."))
 			if not win==1: return
+
 		#    changed 12.24.2003 - use common Bash shell probing
 		#    to fix BUG NUMBER: 1523884
 		#    Reported By: david ['-at-'] jetnet.co.uk
 		#    Reported At: Fri Oct 31 23:47:12 2003
-		fork_process("killall -HUP -q icewm")
-		fork_process("killall -HUP -q icewm-gnome")
+		if get_pidof("icewm"): 
+			fork_process("killall -HUP -q icewm")
+		if get_pidof("icewm-gnome"): 
+			fork_process("killall -HUP -q icewm-gnome")
+
+		# The rest of this should have no effecton lower versions of IceWM
 		# added  8.14.2003, needed by IceWM 1.2.10 and above
-		# run icewmbg if it's not already running, restart it if it is
 		if not get_pidof("icewmbg"): 
 			fork_process("icewmbg")
 		else: 
-			fork_process("killall -HUP -q icewmbg")
+			fork_process("killall -HUP -q icewmbg") # slightly older versions, and newer versions
+			# os.system('icewmbg -r')  # newer versions, questionable, doesnt work consistently
 		if not get_pidof("icewmbg"): 
 			fork_process("icewmbg")
 	
