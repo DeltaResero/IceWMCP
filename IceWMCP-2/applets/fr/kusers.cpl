@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Utilisateurs
+Exec=kuser
+Icon=kusers.png
+Hint=Administrer les utilisateurs de ce système

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Anti-Virus
+Exec=tkantivir
+Icon=tkantivir.png
+Hint=Configurer l'anti-virus et lancer une détection

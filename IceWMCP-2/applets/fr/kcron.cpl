@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Tâches\nplanifiées
+Exec=kcron
+Icon=kcron.png
+Hint=Gèrer les travaux du cron et les tâches planifiées (KCron)

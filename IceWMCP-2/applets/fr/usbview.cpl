@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Périphériques USB
+Exec=usbview
+Icon=usbview.png
+Hint=Voir les périphériques USB présents sur ce système

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Propriétés\nAudio
+Exec=gtkaumix
+Icon=soundprop.png
+Hint=Ajuster le volume sonore et les réglages du mixer

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Clavier\nIceWM
+Exec=[PHROZEN-INTERNAL]IceWMCPKeyboard.py
+Icon=icewmcp-keyboard.png
+Hint=Configurer les paramètres du clavier et gèrer les raccourcis dans IceWM

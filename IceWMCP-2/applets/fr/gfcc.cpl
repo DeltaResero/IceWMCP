@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Pare-feu
+Exec=gfcc
+Icon=gfcc.png
+Hint=Configurer le pare-feu (GFCC)

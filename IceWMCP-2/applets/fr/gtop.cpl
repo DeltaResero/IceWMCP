@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Processus
+Exec=gtop
+Icon=gtop.png
+Hint=Gèrer les processus actifs

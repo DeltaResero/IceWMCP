@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Évènements\nsonores de IceWM
+Exec=[PHROZEN-INTERNAL]icesound.py
+Icon=icesound.png
+Hint=Activer, désactiver ou changer les sons associés aux évènements de IceWM

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Menus de\nIceWM
+Exec=[PHROZEN-INTERNAL]IceMe.py
+Icon=iceme.png
+Hint=Editer le menu IceWM de la barre des tâches

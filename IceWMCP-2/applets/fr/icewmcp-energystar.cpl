@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=EnergyStar
+Exec=[PHROZEN-INTERNAL]IceWMCPEnergyStar.py
+Icon=icewmcp-energystar.png
+Hint=Activer ou désactiver les options d'économie d'énergie EnergyStar (DPMS)

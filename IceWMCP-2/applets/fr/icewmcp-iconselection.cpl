@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Icones
+Exec=[PHROZEN-INTERNAL]IceWMCPGtkIconSelection.py
+Icon=icewmcp-iconselection.png
+Hint=Parcourir les icones du système
