@@ -366,6 +366,30 @@ class hardwaregui:
 		except:
 			pass
 
+
+    def probeGUI(self,*args):  # the Suse HW library returns WRONG X Server info, work-around
+	global ADDITIONAL_INFO
+	ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
+	ADDITIONAL_INFO.append("Model: GUI Configuration")
+	ADDITIONAL_INFO.append("Device: Graphical User Interface")
+	ADDITIONAL_INFO.append("Hardware Class: display")
+	ADDITIONAL_INFO.append("Exec-cmd: IceWMCPSystem\n")
+	sys_info=""
+        sys_info=sys_info+"\tIceWM Control Panel Version :  "+this_software_version +"\n"
+        sys_info=sys_info+"\tSCREEN RESOLUTION : "+str(GDK.screen_width())+" x "+ str(GDK.screen_height())+"\n"
+        sys_info=sys_info+"\tPYTHON VERSION : "+sys.version.replace("\n","  ")+"\n"
+        sys_info=sys_info+"\tGTK VERSION : "+str(gtk_version).replace(",",".").replace(" ","")+"\n"
+        sys_info=sys_info+"\tPYGTK VERSION : "+str(pygtk_version).replace(",",".").replace(" ","")+"\n"
+        sys_info=sys_info+"\tIMLIB VERSION : "+str(os.popen("imlib-config --version").readline()) +"\n"
+        sys_info=sys_info+"\tGdk-PIXBUF VERSION : "+str(os.popen("gdk-pixbuf-config --version").readline()) +"\n\n"      
+        sys_info=sys_info+"\tICEWM VERSION : "+str(os.popen("icewm --version").readline()) +"\n"
+        sys_info=sys_info+"\tICEWM-GNOME VERSION : "+str(os.popen("icewm-gnome --version").readline()) +"\n"
+        sys_info=sys_info+"\tICESOUND VERSION : "+str(os.popen("icesound --version").readline()) +"\n"
+        sys_info=sys_info+"\tICESOUND-GNOME VERSION : "+str(os.popen("icesound-gnome --version").readline()) +"\n"	
+	ADDITIONAL_INFO.append(sys_info)
+
+
+
     def probeX(self,*args):  # the Suse HW library returns WRONG X Server info, work-around
 	global ADDITIONAL_INFO
 	try:
@@ -464,34 +488,42 @@ class hardwaregui:
 	   except:
 		pass
 
-	proc_files=['fb','mtrr']  # check for fb,mtrr support, more reliable than SuSe's library
+	proc_files=['mtrr']  # check for fb,mtrr support, more reliable than SuSe's library
 	for yy in proc_files:
 	   try:
-		if os.path.getsize("/proc/"+yy)<1:  # file is empty, fb and mtrr should contain data
+		if os.path.getsize("/proc/"+yy)<1:  # file is empty, mtrr should contain data
 			raise TypeError   #throw except, treat like non-existent file
 		ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
 		ADDITIONAL_INFO.append("Model: "+yy.upper()+" Support")
 		ADDITIONAL_INFO.append("Device: "+yy.upper())
-		if yy=='fb':
-			ADDITIONAL_INFO.append("Hardware Class: framebuffer")
-			ADDITIONAL_INFO.append("Framebuffer Support:  Yes")
-		else:
-			ADDITIONAL_INFO.append("Hardware Class: "+yy)
-			ADDITIONAL_INFO.append(yy.upper()+" Support:  Yes")
+		ADDITIONAL_INFO.append("Hardware Class: "+yy)
+		ADDITIONAL_INFO.append(yy.upper()+" Support:  Yes")
 	   except:
 		ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
 		ADDITIONAL_INFO.append("Model: "+yy.upper()+" Support")
 		ADDITIONAL_INFO.append("Device: "+yy.upper())
-		if yy=='fb':
-			ADDITIONAL_INFO.append("Hardware Class: framebuffer")
-			ADDITIONAL_INFO.append("Framebuffer Support:  No")
-		else:
-			ADDITIONAL_INFO.append("Hardware Class: "+yy)
-			ADDITIONAL_INFO.append(yy.upper()+" Support:  No")
+		ADDITIONAL_INFO.append("Hardware Class: "+yy)
+		ADDITIONAL_INFO.append(yy.upper()+" Support:  No")
+	proc_files=['fb', 'fb0','fb1']
+	got_fb=0
+	for ii in proc_files:
+		try:
+			f=open("/dev/"+ii)  # can we open it for reading? 'dead' framebuffers fail to open
+			got_fb=1
+			f.close()
+		except:
+			pass
+	ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
+	ADDITIONAL_INFO.append("Model: Frambuffer Support")
+	ADDITIONAL_INFO.append("Device: Frambuffer")
+	ADDITIONAL_INFO.append("Hardware Class: display")
+	if got_fb: ADDITIONAL_INFO.append("Frambuffer Support:  Yes")
+	else: ADDITIONAL_INFO.append("Frambuffer Support:  No")
 	
     def probeOther(self,*args):
 	self.probeUptime()
 	self.probeX()
+	self.probeGUI()
 	self.probeProc()
 	return 0
 
@@ -547,7 +579,7 @@ class hardwaregui:
 			HW_ID=HW_ID.replace("\"","").strip().title()
 			if HW_ID=='bios': HW_ID="Bios"
 			self.info[HW_ID_REAL]=yy
-			print "Hard:  "+str(HW_ID)+"  "+str(hwinfo)
+			#print "Hard:  "+str(HW_ID)+"  "+str(hwinfo)
 			HW_CLASS=self.getHwClass(hwsmall)
 			HW_ICON=self.getSpecialIcon(hwinfo)
 			if HW_ICON==None: HW_ICON=self.getIcon(self.treeleft.getNodeName(HW_CLASS))
