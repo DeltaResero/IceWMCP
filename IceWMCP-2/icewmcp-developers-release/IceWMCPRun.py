@@ -124,7 +124,11 @@ class runwindow:
       self.addCommand(r)
       self.saveCommands()
       self.updateCombo()
-      os.popen(r.replace(" ","\\ ")+" &")
+      # changed 12.19.2003 - use common Bash shell probing
+      # to fix BUG NUMBER: 1523884
+      # Reported By: david ['-at-'] jetnet.co.uk
+      # Reported At: Fri Oct 31 23:47:12 2003
+      fork_process(r.replace(" ","\\ "))
 
   def addCommand(self,rcmd):
     if rcmd:

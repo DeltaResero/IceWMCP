@@ -376,23 +376,20 @@ def getLocaleDir():
 	#  i.e.  'zh_tw', instead of cutting it to 'zh'
 
 	EXCEPTIONS=['zh_tw','zh_sg','zh_hk','zh_cn','pt_br','pt_pt']
-	try:
-		mylang=os.environ['LANG']  # try $LANG variable first
-		for ii in EXCEPTIONS:
-			if mylang.strip().lower().startswith(ii): return ii+"/"
-		if mylang.find("_")>-1: mylang=mylang[0:mylang.find("_")]  #  es_MX  -> 'es'
-		mylang=mylang.strip().lower()+os.sep   # example:  "es/"
-		return mylang
-	except:
+	loc_vars=['LANG', 'LANGUAGE', 'LC_ALL', 'LOCALE', 'LC_MESSAGES']
+	# rewritten, 12.19.2003, to probe more than LANG and LANGUAGE, also code cleanup
+	for locvar in loc_vars:
 		try:
-			mylang=os.environ['LANGUAGE']  # try $LANGUAGE variable next
+			mylang=os.environ[locvar]  # try $LANG variable first
+			if mylang.strip()=='': continue
 			for ii in EXCEPTIONS:
 				if mylang.strip().lower().startswith(ii): return ii+"/"
 			if mylang.find("_")>-1: mylang=mylang[0:mylang.find("_")]  #  es_MX  -> 'es'
 			mylang=mylang.strip().lower()+os.sep   # example:  "es/"
 			return mylang
 		except:
-			return ""  # default to no sub-directory at all
+			pass
+	return ""  # default to no sub-directory at all
 
 
 # Set up locale for Pango, 12.1.2003 - Erica Andrews 
@@ -692,7 +689,7 @@ def closeUpdateWin(*args):
 
 #######  VERSION  #######
 
-this_software_version="3.1pre"     # must match the same variable in IceWMCP_BugReport.py
+this_software_version="3.1"     # must match the same variable in IceWMCP_BugReport.py
 
 SOFTWARE_UPDATE_URL= "http://icesoundmanager.sourceforge.net/ICEWMCP_WEB_VERSION"
 
@@ -1141,15 +1138,31 @@ def SELECT_A_FILE(file_sel_cb,title=FILE_SELECTOR_TITLE,wm_class="icewmcontrolpa
 			ICEWMCP_FILE_WIN.ok_button.set_data("cfg_path",widget.get_data("cfg_path"))
 			if value=='': value=widget.get_data("cfg_path").get_text()
 		if not ok_button_title==None:
-			ICEWMCP_FILE_WIN.ok_button.remove(ICEWMCP_FILE_WIN.ok_button.get_children()[0])
-			ICEWMCP_FILE_WIN.ok_button.add(Label(str(ok_button_title)))
+			ICEWMCP_FILE_WIN.ok_button.remove(
+				ICEWMCP_FILE_WIN.ok_button.get_children()[0])
+			ICEWMCP_FILE_WIN.ok_button.add(
+				getPixmapButton(None, STOCK_APPLY ,str(ok_button_title))
+																)
+			TIPS.set_tip(ICEWMCP_FILE_WIN.ok_button, str(ok_button_title))
 		if not cancel_button_title==None:
-			ICEWMCP_FILE_WIN.cancel_button.remove(ICEWMCP_FILE_WIN.cancel_button.get_children()[0])
-			ICEWMCP_FILE_WIN.cancel_button.add(Label(str(cancel_button_title)))
+			ICEWMCP_FILE_WIN.cancel_button.remove( 
+				ICEWMCP_FILE_WIN.cancel_button.get_children()[0])
+			ICEWMCP_FILE_WIN.cancel_button.add(
+				getPixmapButton(None, STOCK_CANCEL ,str(cancel_button_title))
+																	)
+			TIPS.set_tip(ICEWMCP_FILE_WIN.cancel_button,str(cancel_button_title) )
 		ICEWMCP_FILE_WIN.cancel_button.connect('clicked', CLOSE_FILE_SELECTOR)
 		ICEWMCP_FILE_WIN.connect("destroy",CLOSE_FILE_SELECTOR)
-		if value != '""':
-			ICEWMCP_FILE_WIN.set_filename(value)
+
+		#     Changed 12.21.2003 to use error-catching AND check for a None value
+		#     for 'ICEWMCP_LAST_FILE' to fix BUG NUMBER: 6441772, 
+		#     Reported by: Anonymous User, At: Tue Sep 30 20:40:01 2003
+		try:
+			if value:
+				if value != '""':
+					ICEWMCP_FILE_WIN.set_filename(value)
+		except:
+			pass
 		#print "Last File:  "+str(value)
 		ICEWMCP_FILE_WIN.set_data("ignore_return",1)
 		ICEWMCP_FILE_WIN.connect("key-press-event", keyPressClose)
@@ -1170,12 +1183,54 @@ def get_pidof(someapp):
 	except:
 		return None
 
-import IceWMCPRun    # THis should always be the last function defined in this module
-def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
-	IceWMCPRun.runwindow()
 
 # Special fonts for special languages, 12.1.2003, Erica Andrews
 special_fonts_map= {
 	"ru":["Arial 10","Arial 9"],
 }
+
+
+# added 12.19.2003 - Bash shell probing
+# to fix BUG NUMBER: 1523884
+# Reported By: david ['-at-'] jetnet.co.uk
+# Reported At: Fri Oct 31 23:47:12 2003
+
+# we need to look for a bash shell since some 
+# users may not be using Bash as the default shell,
+# look for a shell named 'bash', usually at /bin/bash.
+# This will help ensure proper launching of applets
+# and extern applications
+
+BASH_SHELL_EXEC="bash"
+
+for ii in ['/bin/', '/usr/bin/', '/usr/local/bin/']:
+	try:
+		if os.path.exists(ii+"bash"): 
+				BASH_SHELL_EXEC=ii+"bash"
+				break
+	except:
+			pass
+
+# fallback to the Bourne ('sh') shell, if no 'bash' exec was found:
+# on most systems the 'sh' shell is now Bash
+
+if BASH_SHELL_EXEC=="bash":
+	for ii in ['/bin/', '/usr/bin/', '/usr/local/bin/']:
+		try:
+			if os.path.exists(ii+"sh"): 
+				BASH_SHELL_EXEC=ii+"sh"
+				break
+		except:
+			pass
+
+# added 12.24.2003, common process forking using  BASH_SHELL_EXEC
+# To fix several bugs caused when users use the app under a non-Bash shell
+
+def fork_process(some_proc):
+	os.popen(BASH_SHELL_EXEC+" -c \""+str(some_proc).strip()+" &\"")
+
+
+import IceWMCPRun    # THis should always be the last function defined in this module
+def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
+	IceWMCPRun.runwindow()
 

@@ -465,7 +465,15 @@ class controlwin:
 				else:
 					msg_err(DIALOG_TITLE,_("The program this applet points to does not exist on your system.")+"\n\n"+to_run)
 				return  # program not available, return
-			os.popen(to_run+" &> /dev/null &")
+
+			# changed 12.19.2003 - use common Bash shell probing
+			# to fix BUG NUMBER: 1523884
+			# Reported By: david ['-at-'] jetnet.co.uk
+			# Reported At: Fri Oct 31 23:47:12 2003
+
+			# Old way:	os.popen(to_run+" &> /dev/null &")
+			# new way: BASH_SHELL_EXEC -c 'gyach &> /dev/null &'
+			fork_process(to_run+" &> /dev/null")
 	except:
 		pass
 
