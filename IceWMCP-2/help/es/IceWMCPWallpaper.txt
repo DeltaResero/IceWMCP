@@ -1,1 +1,26 @@
-dummy file
+[PHTITLE]IceWMCP - Configuración de Escritorio
+[PHSECTION]Descripción  
+La herramienta IceWMCP - Configuración de Escritorio permite que usted configure fácilmente el color del fondo y el papel pintado de su escritorio.  
+[PHSECTION]Fijar El Color Del Fondo
+Para fijar el color del fondo, haga clic en el [PH-HI]'botón de colores'[/PH-HI] o el botón con la [PH-HI]'carpeta'[/PH-HI] en el área nombrado [PH-HI]'Color del Fondo'[/PH-HI] en la tapa de la ventana principal.  Seleccione el color de su opción, después haga clic en [PH-HI]'Aceptar'[/PH-HI].  Usted debe ahora ver una [PH-HI]'vista preliminar'[/PH-HI] del color que usted ha seleccionado en el [PH-HI]'botón de colores'[/PH-HI].  Si usted desea cancelar cualesquiera cambios al color,  haga clic en [PH-HI]'Cancelar'[/PH-HI].
+[PHSECTION]Fijar La Imagen (El Papel Pintado)
+Para fijar la imagen (el papel pintado) de su escritorio, haga clic en el botón con la [PH-HI]'carpeta'[/PH-HI] en el área nombrado [PH-HI]'Directorio:'[/PH-HI] en el derecho de la ventana principal.  Seleccione el directorio que contiene la imagen que usted desea utilizar, después haga clic en [PH-HI]'Aceptar'[/PH-HI].  En el lado izquierdo de la ventana principal, seleccione la imagen que usted desea utilizar de la lista de imágenes  disponibles.  (si usted desea no utilizar [PH-HI]NINGUNA[/PH-HI] imagen en todos, seleccione [PH-HI][NONE][/PH-HI] en  la tapa de la lista de imágenes.)  Usted debe ahora ver una [PH-HI]'vista preliminar'[/PH-HI] de la imagen  en la [PH-HI]'ventana grande de vistas preliminares'[/PH-HI] en el derecho de la ventana principal.  Si usted quisiera que su imagen del papel pintado embaldosara a través de la pantalla, seleccione  [PH-HI]'Embaldosado'[/PH-HI],  sobre la [PH-HI]'ventana de vistas preliminares'[/PH-HI].  Si usted quisiera que la imagen fuera centrada en el escritorio, seleccione  [PH-HI]'Centrado'[/PH-HI], sobre la [PH-HI]'ventana de vistas preliminares'[/PH-HI].
+[PHSECTION]Redactar Imágenes  
+Para redactar una imagen,  haga clic en el botón [PH-HI]'Redactar'[/PH-HI] a la derecha de la pantalla.  (el botón [PH-HI]'Redactar'[/PH-HI] tiene una imagen de [PH-HI]'lápiz y papel'[/PH-HI].)  La imagen entonces será abierta para modificar con el ejecutable [PH-HI]'gimp-remote'[/PH-HI] si el programa esté disponible en su sistema.
+[PHSECTION]Recargar Imágenes
+Para ver una lista actualizada de imágenes disponibles del directorio que usted ha seleccionado en el área [PH-HI]'Directorio:'[/PH-HI], haga clic en el botón [PH-HI]'Recargar la lista'[/PH-HI], al izquierdo más bajo de la ventana principal.  La lista actualizada aparecerá en la lista de imágenes.  
+[PHSECTION]Aplicar Cambios
+Para aplicar cualquieres cambios que usted haya realizado al color del fondo o el papel pintado,  haga clic en el botón [PH-HI]'Aplicar'[/PH-HI] al fondo de la ventana principal, o presione [PH-HI]Ctrl+A[/PH-HI] en su teclado.  Si usted desea aplicar sus cambios [PH-HI]y salir[/PH-HI], haga clic en el botón [PH-HI]'Aceptar'[/PH-HI] al izquierdo más bajo de la ventana principal.  
+[PHSECTION]Cancelar Cambios
+Para cancelar cualquieres cambios que usted haya realizado al color del fondo o el papel pintado,  haga clic en el botón [PH-HI]'Cerrar'[/PH-HI] al derecho más bajo de la ventana principal.  
+[PHSECTION] Usar Como Root
+Si Usted sea el usuario 'root' y desee corregir la configuración del escritorio para el sistema entero, seleccione [PH-HI]Fichero -> Usar Como Root[/PH-HI]  en el menú.  Obviamente, se requiere los poderes de 'root'.
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 
+

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n選單
+Exec=[PHROZEN-INTERNAL]IceMe.py
+Icon=iceme.png
+Hint=編輯 IceWM 工作列選單

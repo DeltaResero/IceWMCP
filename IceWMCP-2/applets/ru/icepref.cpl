@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Настройки\nIceWM
+Exec=[PHROZEN-INTERNAL]icepref.py
+Icon=icepref.png
+Hint=Установки IceWM (IcePref)

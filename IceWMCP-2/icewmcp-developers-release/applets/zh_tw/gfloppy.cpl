@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=³nºÐ
+Exec=gfloppy
+Icon=gfloppy.png
+Hint=®æ¦¡¤Æ³nºÐ

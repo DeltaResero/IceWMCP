@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Меню\nIceWM
+Exec=[PHROZEN-INTERNAL]IceMe.py
+Icon=iceme.png
+Hint=Редактировать меню панели задач IceWM

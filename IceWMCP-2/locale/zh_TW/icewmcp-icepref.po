@@ -1,1 +1,1712 @@
-dummy file
+# traditional chinese translation of icewmcp-icepref.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Chao-Hsiung Liao <pesder.liao@msa.hinet.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IcePref2 3.0\n"
+"POT-Creation-Date: Thu May 05 18:23:04 2003\n"
+"PO-Revision-Date: 2003-06-19 17:09+0800\n"
+"Last-Translator: Chao-Hsiung Liao <pesder.liao@msa.hinet.net>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=Big5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.4\n"
+
+#: icepref.py
+msgid "Loading...please wait."
+msgstr "載入中...請稍候。"
+
+#: icepref.py
+msgid "Delete"
+msgstr "刪除"
+
+#: icepref.py
+msgid "Edit"
+msgstr "編輯"
+
+#: icepref.py
+msgid "Edit with Gimp"
+msgstr "以 Gimp 編輯"
+
+#: icepref.py
+msgid "Are you sure you want to delete"
+msgstr "您確定要刪除"
+
+#: icepref.py
+msgid "NO"
+msgstr "否"
+
+#: icepref.py
+msgid "YES"
+msgstr "是"
+
+#: icepref.py:1066 
+msgid "Ok"
+msgstr "確定"
+
+#: icepref.py:1071 
+msgid "Cancel"
+msgstr "取消"
+
+#: icepref.py:1270 
+msgid ""
+"WARNING:\n"
+"Newer IceWM themes often\n"
+"override this wallpaper setting."
+msgstr ""
+"警告：\n"
+"較新的 IceWM 主題時常會\n"
+"覆蓋此壁紙設定。"
+
+#: icepref.py:1274 
+msgid " Apply Theme Now! "
+msgstr " 立刻套用主題！"
+
+#: icepref.py:1275 
+msgid " About Theme Previews... "
+msgstr " 關於主題預覽... "
+
+#: icepref.py:1296 
+msgid "About Theme Previews"
+msgstr "關於主題預覽"
+
+#: icepref.py:1296 
+msgid ""
+"Theme previewing is a new feature of IcePref2 (an updated version of "
+"IcePref, improved by Erica Andrews [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"Theme previewing requires a JPEG image named $preview.jpg$ in each theme's "
+"directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then "
+"your preview JPEG should be at /usr/X11R6/lib/X11/icewm/themes/nice/preview."
+"jpg (the name MUST be $preview.jpg$). The image should be no larger in size "
+"than 200x200 pixels.\n"
+"\n"
+"There are three ways to get $preview$ images for your themes:\n"
+"[1] Download the package of (some) theme previews from icesoundmanager."
+"sourceforge.net\n"
+"[2] Use the theme thumbnails at  http://themes.freshmeat.net/browse/925/?"
+"topic_id=925\n"
+"[3] Make the preview images yourself with scaled screenshots.\n"
+"\n"
+"Theme authors are encouraged to add $preview.jpg$ preview files to their "
+"distributed theme packages."
+msgstr ""
+"主題預覽是 IcePref2 (IcePref 的更新版本，由 Erica Andrews "
+"[PhrozenSmoke@yahoo.com] 強化)的新功能。\n"
+"\n"
+"主題預覽需要在每個主題的目錄中有一個名為 $preview.jpg$ 的 JPEG 影像。如果您的"
+"主題位於 /usr/X11R6/lib/X11/icewm/themes/nice/ ，那麼您的預覽 JPEG 應該在 /"
+"usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg(其名稱 必須 是 $preview.jpg"
+"$)。這個影像的大小不能大於 200x200 像素。\n"
+"\n"
+"有三種方式可以取得您的主題的 $preview$ 影像：\n"
+"[1] 從 icesoundmanager.sourceforge.net 下載(部分)主題預覽的套件。\n"
+"[2] 使用在 http://themes.freshmeat.net/browse/925/?topic_id=925 的主題縮"
+"圖。\n"
+"[3] 以縮小的螢幕快照自行製作預覽影像。\n"
+"\n"
+"我們也鼓勵主題作者將 $preview.jpg$ 預覽檔案加入他們散佈的主題套件中。"
+
+#: icepref.py:1324 
+msgid ""
+" SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr ""
+" 抱歉：\n"
+" 無法預覽\n"
+" 影像。"
+
+#: icepref.py:1382 
+msgid "Select Color"
+msgstr "選擇顏色"
+
+#: icepref.py:1464 
+msgid "Select Font"
+msgstr "選擇字型"
+
+#: icepref.py:1490 
+msgid "Select a file..."
+msgstr "選擇檔案..."
+
+#: icepref.py:1694 
+msgid "File"
+msgstr "檔案"
+
+#: icepref.py:1694  icepref_td.py:1488 icepref_td.py:2048
+msgid "Theme Name"
+msgstr "主題名稱"
+
+#: icepref.py:2049 
+msgid "Unable to read local preferences file!"
+msgstr "無法讀取本地端 preferences 檔案！"
+
+#: icepref.py:2049  icepref.py:2088 icepref.py:2116 icepref.py:2126
+msgid "Warning"
+msgstr "警告"
+
+#: icepref.py:2088 
+msgid "There was no preferences file to backup!"
+msgstr "沒有要備份的 preferences  檔案！"
+
+#: icepref.py:2114 
+msgid "IceWM Preferences successfully saved to: "
+msgstr "IceWM Preferences 成功的儲存到： "
+
+#: icepref.py:2114 
+msgid "Success"
+msgstr "成功"
+
+#: icepref.py:2116 
+msgid "There was an ERROR saving your IceWM 'preferences' file."
+msgstr "儲存您的 IceWM “preferences”檔案時發生錯誤。"
+
+#: icepref.py:2126 
+msgid ""
+"Restarting IceWM from IcePref is buggy on BSD systems.  You should restart "
+"IceWM yourself."
+msgstr ""
+"在 BSD 系統上以 IcePref 重新啟動 IceWM 可能有問題。您應該自己來重新啟動 "
+"IceWM。"
+
+#: icepref.py:2142 
+msgid ""
+"IcePref %s : a Python-based configuration utility for IceWM.\n"
+"\n"
+"Original Author:  David Mortensen.\n"
+"Updated by: Erica Andrews\n"
+"Site: http://icesoundmananger.sourceforge.net\n"
+"\n"
+"IcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) "
+"was updated by Erica Andrews (PhrozenSmoke@yahoo.com) in January 2003.  I, "
+"Erica Andrews, have modified IcePref in accordance with the GNU GPL under "
+"which IcePref is distributed.  I cannot say I have \"taken over\" the "
+"IcePref project, but got tired of it being abandoned and decided to make it "
+"more usable with newer versions of IceWM.  The new IcePref includes the new "
+"options available in the IceWM preferences file as of IceWM  %s.  The old "
+"IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but "
+"it appears that David Mortensen has abandoned his project, as he had not "
+"updated IcePref since the summer of 2000, and his site no longer exists.\n"
+"\n"
+"You can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  "
+"http://icesoundmananger.sourceforge.net.  This updated version of IcePref by "
+"Erica Andrews is distributed under the GNU GPL without ANY warranty "
+"whatsoever. Use at your own risk! "
+msgstr ""
+"IcePref %s ：基於 Python 的 IceWM 組態公用程式。\n"
+"\n"
+"原作者： David Mortensen。\n"
+"由 Erica Andrews 更新\n"
+"網站： http://icesoundmananger.sourceforge.net\n"
+"\n"
+"IcePref %s 是配合 IceWM %s 進行最佳化的。這個版本的 IcePref (%s) 是由 Erica "
+"Andrews (PhrozenSmoke@yahoo.com) 於 2003 一月更新的。  我， Erica Andrews，是"
+"在 IcePref 所依據散佈的 GNU GPL 之下來修改它。我不能說我已經“接管”了 "
+"IcePref 計畫，只是不希望它被放棄，而且想讓它能在新版的 IceWM 中更加有用。新"
+"的 IcePref 包含了 IceWM %s 的 preferences 檔案中可用的新選項。舊的 IcePref 網"
+"站在：  http://members.xoom.com/SaintChoj/icepref.html - 但是 David "
+"Mortensen 似乎已經放棄了他的計畫，因為自從 2000 年的夏天以後他就沒有再更新 "
+"IcePref ，而且他的網站也不存在了。\n"
+"\n"
+"您可以在 http://icesoundmananger.sourceforge.net.找到 IcePref 的更新版本(適用"
+"於 IceWM 1.2 以上)。這個由 Erica Andrews 更新的 IcePref 是依據 GNU GPL 散佈並"
+"且不做任何的擔保。使用它必須自負風險！"
+
+#: icepref.py:2170 
+msgid "/_File"
+msgstr "/檔案(_F)"
+
+#: icepref.py:2171 
+msgid "/File/tearoff1"
+msgstr "/檔案(_F)/tearoff1"
+
+#: icepref.py:2172 
+msgid "/File/_Reload Preferences File"
+msgstr "/檔案(_F)/重新載入 Preferences 檔案(_R)"
+
+#: icepref.py:2173 
+msgid "/File/Reset _Defaults"
+msgstr "/檔案(_F)/重設預設值(_D)"
+
+#: icepref.py:2174 
+msgid "/File/_Save Preferences"
+msgstr "/檔案(_F)/儲存 Preferences(_S)"
+
+#: icepref.py:2175 
+msgid "/File/sep1"
+msgstr "檔案(_F)/sep1"
+
+#: icepref.py:2176 
+msgid "/File/_Restart IceWM"
+msgstr "/檔案(_F)/重新啟動 IceWM(_R)"
+
+msgid "Apply"
+msgstr "套用"
+
+msgid "/File/_Apply Changes Now..."
+msgstr "/檔案(_F)/立刻套用變更(_A)..."
+
+#: icepref.py:2177 
+msgid "/File/sep2"
+msgstr "/檔案(_F)/sep2"
+
+#: icepref.py:2178 
+msgid "/File/_Exit IcePref"
+msgstr "/檔案(_F)/離開 IcePref(_E)"
+
+#: icepref.py:2179 
+msgid "/_Category"
+msgstr "/分類(_C)"
+
+#: icepref.py:2180 
+msgid "/_Category/tearoff2"
+msgstr "/分類(_C)/tearoff2"
+
+#: icepref.py:2181 
+msgid "/_Tools"
+msgstr "/工具(_T)"
+
+#: icepref.py:2182 
+msgid "/_Tools/Edit task bar menus (requires IceMe)..."
+msgstr "/工具(_T)/編輯工作列選單(需要 IceMe)..."
+
+#: icepref.py:2183 
+msgid "/_Tools/Manage sound events (requires IceSoundManager)..."
+msgstr "/工具(_T)/管理聲音事件(需要 IceSoundManager)..."
+
+#: icepref.py:2184 
+msgid "/_Tools/Open Control Panel (requires IceControlPanel)..."
+msgstr "/工具(_T)/開啟控制台(需要 IceControlPanel)..."
+
+#: icepref.py:2185 
+msgid "/_Help"
+msgstr "/說明(_H)"
+
+#: icepref.py:2186  icepref.py:2372
+msgid "/Help/_About IcePref2..."
+msgstr "/說明(_H)/關於 IcePref2(_A)..."
+
+#: icepref.py:2192 
+msgid "/_Category/"
+msgstr "/分類(_C)/"
+
+#: icepref.py:2375 
+msgid "Save"
+msgstr "儲存"
+
+#: icepref.py:2375 
+msgid "Save settings to your IceWM preferences file"
+msgstr "將設定值儲存到您的 IceWM preferences 檔案"
+
+#: icepref.py:2376 
+msgid "Defaults"
+msgstr "預設值"
+
+#: icepref.py:2376 
+msgid "Reset default values"
+msgstr "重設為預設的數值"
+
+#: icepref.py:2377 
+msgid "Reload"
+msgstr "重新載入"
+
+#: icepref.py:2377 
+msgid "Reload the preferences file"
+msgstr "重新載入 preferences 檔案"
+
+#: icepref.py:2378 
+msgid "Restart"
+msgstr "重新啟動"
+
+#: icepref.py:2378 
+msgid "Restart IceWM (does not work on all systems)"
+msgstr "重新啟動 IceWM (並非所有系統都能正常運作)"
+
+#: icepref.py:2379 
+msgid "Exit"
+msgstr "離開"
+
+#: icepref.py:2379  icepref.py:2575
+msgid "Exit IcePref2"
+msgstr "離開 IcePref2"
+
+# IcePref2 Options - appended
+msgid "\"Address bar\" shortcut"
+msgstr "“位址列”捷徑"
+
+msgid "\"Arrange icons\" shortcut"
+msgstr "“排列圖示”捷徑"
+
+msgid "\"Arrange windows\" shortcut"
+msgstr "“排列視窗”捷徑"
+
+msgid "\"Cascade windows\" shortcut"
+msgstr "“階梯排列視窗”捷徑"
+
+msgid "\"Close window\" shortcut"
+msgstr "“關閉視窗”捷徑"
+
+msgid "\"Go to last workspace\" shortcut"
+msgstr "“移至最後的工作區”捷徑"
+
+msgid "\"Hide all windows\" shortcut"
+msgstr "“隱藏所有視窗”捷徑"
+
+msgid "\"Hide window\" shortcut"
+msgstr "“隱藏視窗”捷徑"
+
+msgid "\"Last item\" shortcut"
+msgstr "“最後項目”捷徑"
+
+msgid "\"Logout / screenlock dialog\" shortcut"
+msgstr "“登出/螢幕鎖定對話盒”捷徑"
+
+msgid "\"Lower window\" shortcut"
+msgstr "“降低視窗”捷徑"
+
+msgid "\"Maximize window vertically\" shortcut"
+msgstr "“垂直最大化視窗”捷徑"
+
+msgid "\"Maximize window\" shortcut"
+msgstr "“最大化視窗”捷徑"
+
+msgid "\"Minimize all windows\" shortcut"
+msgstr "“最小化所有視窗”捷徑"
+
+msgid "\"Minimize window\" shortcut"
+msgstr "“最小化視窗”捷徑"
+
+msgid "\"Move window\" shortcut"
+msgstr "“移動視窗”捷徑"
+
+msgid "\"Next item\" shortcut"
+msgstr "“下一個項目”捷徑"
+
+msgid "\"Next sys window\" shortcut"
+msgstr "“下一個系統視窗”捷徑"
+
+msgid "\"Next window\" shortcut"
+msgstr "“下一個視窗”捷徑"
+
+msgid "\"Next workspace\" shortcut"
+msgstr "“下一個工作區”捷徑"
+
+msgid "\"Occupy all\" shortcut"
+msgstr "“佔據全部”捷徑"
+
+msgid "\"Previous sys window\" shortcut"
+msgstr "“上一個系統視窗”捷徑"
+
+msgid "\"Previous window\" shortcut"
+msgstr "“上一個視窗”捷徑"
+
+msgid "\"Previous workspace\" shortcut"
+msgstr "“上一個工作區”捷徑"
+
+msgid "\"Program menu\" shortcut"
+msgstr "“程式選單”捷徑"
+
+msgid "\"Raise window\" shortcut"
+msgstr "“提升視窗”捷徑"
+
+msgid "\"Restore window\" shortcut"
+msgstr "“回復視窗”捷徑"
+
+msgid "\"Rollup window\" shortcut"
+msgstr "“收起視窗”捷徑"
+
+msgid "\"Run\" shortcut"
+msgstr "“執行”捷徑"
+
+msgid "\"Size window\" shortcut"
+msgstr "“改變視窗大小”捷徑"
+
+msgid "\"Take window to next workspace\" shortcut"
+msgstr "“移動視窗到下一個工作區”捷徑"
+
+msgid "\"Take window to previous workspace\" shortcut"
+msgstr "“移動視窗到上一個工作區”捷徑"
+
+msgid "\"Take window to workspace 1\" shortcut"
+msgstr "“移動視窗到工作區 1”捷徑"
+
+msgid "\"Take window to workspace 10\" shortcut"
+msgstr "“移動視窗到工作區 10”捷徑"
+
+msgid "\"Take window to workspace 2\" shortcut"
+msgstr "“移動視窗到工作區 2”捷徑"
+
+msgid "\"Take window to workspace 3\" shortcut"
+msgstr "“移動視窗到工作區 3”捷徑"
+
+msgid "\"Take window to workspace 4\" shortcut"
+msgstr "“移動視窗到工作區 4”捷徑"
+
+msgid "\"Take window to workspace 5\" shortcut"
+msgstr "“移動視窗到工作區 5”捷徑"
+
+msgid "\"Take window to workspace 6\" shortcut"
+msgstr "“移動視窗到工作區 6”捷徑"
+
+msgid "\"Take window to workspace 7\" shortcut"
+msgstr "“移動視窗到工作區 7”捷徑"
+
+msgid "\"Take window to workspace 8\" shortcut"
+msgstr "“移動視窗到工作區 8”捷徑"
+
+msgid "\"Take window to workspace 9\" shortcut"
+msgstr "“移動視窗到工作區 9”捷徑"
+
+msgid "\"Tile windows horizontally\" shortcut"
+msgstr "“水平並排顯示視窗”捷徑"
+
+msgid "\"Tile windows vertically\" shortcut"
+msgstr "“垂直並排顯示視窗”捷徑"
+
+msgid "\"Undo arrange\" shortcut"
+msgstr "“復原排列”捷徑"
+
+msgid "\"Window full-screen\" shortcut"
+msgstr "“視窗全螢幕”捷徑"
+
+msgid "\"Window list\" shortcut"
+msgstr "“視窗清單”捷徑"
+
+msgid "\"Window menu\" shortcut"
+msgstr "“視窗選單”捷徑"
+
+msgid "\"Workspace 1\" shortcut"
+msgstr "“工作區 1”捷徑"
+
+msgid "\"Workspace 10\" shortcut"
+msgstr "“工作區 10”捷徑"
+
+msgid "\"Workspace 2\" shortcut"
+msgstr "“工作區 2”捷徑"
+
+msgid "\"Workspace 3\" shortcut"
+msgstr "“工作區 3”捷徑"
+
+msgid "\"Workspace 4\" shortcut"
+msgstr "“工作區 4”捷徑"
+
+msgid "\"Workspace 5\" shortcut"
+msgstr "“工作區 5”捷徑"
+
+msgid "\"Workspace 6\" shortcut"
+msgstr "“工作區 6”捷徑"
+
+msgid "\"Workspace 7\" shortcut"
+msgstr "“工作區 7”捷徑"
+
+msgid "\"Workspace 8\" shortcut"
+msgstr "“工作區 8”捷徑"
+
+msgid "\"Workspace 9\" shortcut"
+msgstr "“工作區 9”捷徑"
+
+msgid "\"Workspace take last window\" shortcut"
+msgstr "“工作區取得最後視窗”捷徑"
+
+msgid "APM color"
+msgstr "APM 顏色"
+
+msgid "APM font"
+msgstr "APM 字型"
+
+msgid "APM text color"
+msgstr "APM 文字顏色"
+
+msgid "Active border color"
+msgstr "作用中框線顏色"
+
+msgid "Active button color"
+msgstr "作用中按鈕顏色"
+
+msgid "Active button font"
+msgstr "作用中按鈕字型"
+
+msgid "Active button text color"
+msgstr "作用中按鈕文字顏色"
+
+msgid "Active menu item color"
+msgstr "作用中選單項目顏色"
+
+msgid "Active menu item text color"
+msgstr "作用中選單項目文字顏色"
+
+msgid "Active minimized window color"
+msgstr "作用中最小化視窗顏色"
+
+msgid "Active minimized window text color"
+msgstr "作用中最小化視窗文字顏色"
+
+msgid "Active taskbar app color"
+msgstr "作用中工作列程式顏色"
+
+msgid "Active taskbar app text color"
+msgstr "作用中工作列程式文字顏色"
+
+msgid "Active taskbar font"
+msgstr "作用中工作列字型"
+
+msgid "Active title bar color"
+msgstr "作用中標題列顏色"
+
+msgid "Active title bar shadow"
+msgstr "作用中標題列陰影"
+
+msgid "Active title bar text color"
+msgstr "作用中標題列文字顏色"
+
+msgid "Active workspace  font"
+msgstr "作用中工作區字型"
+
+msgid "Address bar font"
+msgstr "位址列字型"
+
+msgid "Allow mouse actions on client windows (buggy with some programs)"
+msgstr "允許客戶端視窗的滑鼠動作(在某些程式上可能有問題)"
+
+msgid ""
+"Alternate clock time format (for \"flashing\" effects - strftime format "
+"string - see man page \"strftime\" for more info)  Note: Leaving this blank "
+"may result in NO clock showing at all."
+msgstr ""
+"替換的時鐘時刻格式(用於“閃動”效果 - strftime 格式字串 - 查閱手冊"
+"頁“strftime”可獲得更多資訊)  注意：在這裡保持空白可能會造成無法顯示時鐘。"
+
+msgid ""
+"Always maintain focus under mouse window (makes some keyboard support non-"
+"functional)"
+msgstr "永遠將焦點維持在滑鼠下方的視窗(會使某些鍵盤支援失去功能)"
+
+msgid "Ask for confirmation on logout"
+msgstr "登出時尋求確認"
+
+msgid "Auto hide task bar after delay"
+msgstr "延遲後自動隱藏工作列"
+
+msgid "Auto raise windows after delay"
+msgstr "延遲後自動提升視窗"
+
+msgid "Auto scroll delay"
+msgstr "自動收起延遲"
+
+msgid "Automatically disable some functions when running under GNOME"
+msgstr "在 GNOME 下執行時自動停用部分功能"
+
+msgid "Autoscroll start delay"
+msgstr "自動收起開始延遲"
+
+msgid "Beep when new mail arrives"
+msgstr "當收到新郵件時發出嗶聲"
+
+msgid "Bitmask of buttons that raise the window when pressed"
+msgstr "按下後會提升該視窗的按鈕的點陣遮罩"
+
+msgid "Bitmask of root window button click to use in window manager"
+msgstr "在視窗管理程式中使用的根視窗按鈕的點陣遮罩"
+
+msgid "Border size of quick-switch icons"
+msgstr "快速切換圖示的邊框大小"
+
+msgid "CPU Idle color"
+msgstr "CPU 閒置顏色"
+
+msgid "CPU status WM_CLASS hint"
+msgstr "CPU 狀態 WM_CLASS 提示"
+
+msgid "Center dialogs on owner window"
+msgstr "在所有者視窗置中對話盒"
+
+msgid "Center maximixed windows"
+msgstr "置中最大化的視窗"
+
+msgid "Change workspaces when focusing on a window on another workspace"
+msgstr "當焦點移至另一工作區的視窗時改變工作區"
+
+msgid "Clock color"
+msgstr "時鐘顏色"
+
+msgid ""
+"Clock date format for tooltip (strftime format string - see man page "
+"\"strftime\" for more info)"
+msgstr ""
+"工具提示的時鐘日期格式(strftime 格式字串 - 查閱手冊頁“strftime”可獲得更多資"
+"訊)"
+
+msgid "Clock font"
+msgstr "時鐘字型"
+
+msgid "Clock status WM_CLASS hint"
+msgstr "時鐘狀態 WM_CLASS 提示"
+
+msgid "Clock text color"
+msgstr "時鐘文字顏色"
+
+msgid ""
+"Clock time format (strftime format string - see man page \"strftime\" for "
+"more info)"
+msgstr "時鐘日期格式(strftime 格式字串 - 查閱手冊頁“strftime”可獲得更多資訊)"
+
+msgid "Color of active workspace button"
+msgstr "作用中工作區按鈕的顏色"
+
+msgid "Color of disabled menu items"
+msgstr "停用的選單項目的顏色"
+
+msgid "Color of inactive workspace button text"
+msgstr "非作用中工作區的按鈕文字顏色"
+
+msgid "Color of normal workspace button"
+msgstr "一般工作區按鈕的顏色"
+
+msgid "Color of normal workspace button text"
+msgstr "一般工作區按鈕文字的顏色"
+
+msgid "Color of quick-switch highlight rectangle"
+msgstr "快速切換時反白方塊的顏色"
+
+msgid "Color of received data on net monitor"
+msgstr "網路監視器中已接收資料的顏色"
+
+msgid "Color of sent data on net monitor"
+msgstr "網路監視器中已送出資料的顏色"
+
+msgid "Color representing idle on net monitor"
+msgstr "網路監視器中代表閒置的顏色"
+
+msgid "Color to use for transparent applications"
+msgstr "用於透明應用程式的顏色"
+
+msgid "Colormap follows pointer"
+msgstr "依據指標的色彩圖"
+
+msgid "Command to cancel logout"
+msgstr "取消登出的指令"
+
+msgid "Command to lock display or show screensaver"
+msgstr "鎖定螢幕或顯示螢幕保護程式的指令"
+
+msgid "Command to reboot the system"
+msgstr "重新啟動系統的指令"
+
+msgid ""
+"Command to run for address bar entries when [Enter] is pressed on the "
+"address bar"
+msgstr "在位址列按下[Enter]時用來執行位址列項目的指令"
+
+msgid "Command to run when CPU status monitor is clicked"
+msgstr "當按下 CPU 狀態監視器時要執行的指令"
+
+msgid "Command to run when mailbox icon is clicked"
+msgstr "當按下信件箱圖示時要執行的指令"
+
+msgid "Command to run when net status monitor is clicked"
+msgstr "當按下網路狀態監視器時要執行的指令"
+
+msgid "Command to run when new mail arrives"
+msgstr "收到新郵件時要執行的指令"
+
+msgid "Command to run when the taskbar clock is clicked"
+msgstr "當按下工作列時鐘時要執行的指令"
+
+msgid ""
+"Command to select and run a program (The \"Run...\" command on the taskbar "
+"menu)"
+msgstr "用來選擇並執行程式的指令(即工作列選單上的“執行...”指令)"
+
+msgid "Command to shut down the system"
+msgstr "關閉系統的指令"
+
+msgid "Command to start logout"
+msgstr "開始登出的指令"
+
+msgid "Count messages in mailbox"
+msgstr "計算信件箱中的郵件數"
+
+msgid "Default IceWM dialog action (0 for \"Cancel\", 1 for \"OK\")"
+msgstr "預設 IceWM 對話盒動作(0 是“取消”，1 是“確定”)"
+
+msgid "Default taskbar color"
+msgstr "預設工作列顏色"
+
+msgid "Delay before activating menu items"
+msgstr "喚起選單項目前延遲"
+
+msgid "Delay before activating menu submenus"
+msgstr "喚起選單的子選單前延遲"
+
+msgid "Delay before click gets interpreted as drag"
+msgstr "按下的動作中斷(例如拖曳)前延遲"
+
+msgid "Delay before task bar is automatically hidden"
+msgstr "工作列自動隱藏前延遲"
+
+msgid "Delay before tooltip window is displayed"
+msgstr "工具提示視窗顯示前延遲"
+
+msgid "Delay before windows are auto raised"
+msgstr "視窗自動提升前延遲"
+
+msgid "Delay between new-mail checks in seconds"
+msgstr "檢查新郵件之間延遲(以秒為單位)"
+
+msgid "Delay for pointer focus switching"
+msgstr "指標焦點切換的延遲"
+
+msgid "Delay pointer focusing when mouse moves"
+msgstr "當滑鼠移動時延遲指標焦點"
+
+msgid "Desktop background color"
+msgstr "桌面背景顏色"
+
+msgid "Desktop wallpaper image"
+msgstr "桌面壁紙影像"
+
+msgid "Dialog Label color"
+msgstr "對話盒標籤顏色"
+
+msgid "Dialog Label font"
+msgstr "對話盒標籤字型"
+
+msgid "Dialog Label text color"
+msgstr "對話盒標籤文字顏色"
+
+msgid "Dialog box color"
+msgstr "對話盒方塊顏色"
+
+msgid "Disable Gdk-Imlib image cache use"
+msgstr "停止使用 Gdk-Imlib 影像快取"
+
+msgid "Disabled menu item text color"
+msgstr "停用選單項目文字顏色"
+
+msgid "Display desktop wallpaper centered, instead of tiled."
+msgstr "置中顯示桌面壁紙，取代並排顯示。"
+
+msgid "Display mini-icons on desktop for minimized windows"
+msgstr "最小化的視窗在桌面顯示迷你圖示"
+
+msgid "Distance in pixels before windows snap together"
+msgstr "視窗緊連時的距離(以像素為單位)"
+
+msgid "Do not rotate the mouse cursor when displaying a menu"
+msgstr "顯示選單時不要旋轉滑鼠游標"
+
+msgid "Enable Alt+Tab to minimized windows"
+msgstr "啟用 Alt+Tab 最小化視窗"
+
+msgid "Enable Alt+Tab to windows on other workspaces"
+msgstr "啟用 Alt+Tab 移至其他工作區的視窗"
+
+msgid "Enable Alt-Tab to hidden windows"
+msgstr "啟用 Alt+Tab 隱藏視窗"
+
+msgid "Enable Quick-switch (Alt+Tab) window switching"
+msgstr "啟用快速切換 (Alt+Tab) 視窗切換功能"
+
+msgid "Enable XFreeType extension (buggy, may result in font-loading errors)"
+msgstr "啟用 XFreeType 擴充功能(尚有問題，可能會造成字型載入的錯誤)"
+
+msgid "Enable horizontal edge switch for the desktop"
+msgstr "啟用桌面的水平邊緣切換"
+
+msgid "Enable vertical edge switch for the desktop"
+msgstr "啟用桌面的垂直邊緣切換"
+
+msgid "FX Font font"
+msgstr "FX Font 字型"
+
+msgid "Fill highlight rectangle"
+msgstr "填滿反白方塊"
+
+msgid "Focus dialog window when initally mapped"
+msgstr "在初始化對映時將焦點移至對話盒視窗"
+
+msgid "Focus dialog window when initially mapped only if parent frame focused"
+msgstr "只有當焦點在父框架時才在初始化對映時將焦點移至對話盒視窗"
+
+msgid "Focus normal window when initially mapped"
+msgstr "在初始化對映時將焦點移至一般視窗"
+
+msgid "Focus window when application window is raised"
+msgstr "當應用程式視窗提升將焦點移至該視窗"
+
+msgid "Focus window when client area clicked"
+msgstr "當單擊用戶端工作區時將焦點移至該視窗"
+
+msgid "Focus windows by clicking"
+msgstr "依單擊來將焦點移至視窗"
+
+msgid "Horizontal dialog window border"
+msgstr "水平對話盒視窗邊框"
+
+msgid "Horizontal margin of quick-switch window"
+msgstr "快速切換視窗的水平邊緣"
+
+msgid "Horizontal scrollbar button size"
+msgstr "水平捲動軸按鈕大小"
+
+msgid "Horizontal window border"
+msgstr "水平視窗邊框"
+
+msgid "IceWM Themes"
+msgstr " IceWM 主題"
+
+msgid "IceWM manages the root window"
+msgstr "以 IceWM 管理根視窗"
+
+msgid "Icon search path (colon separated)"
+msgstr "圖示搜尋路徑(以冒號分隔)"
+
+msgid "Image to use for transparent applications"
+msgstr "透明應用程式要使用的影像"
+
+msgid "Inactive scrollbar button arrow color"
+msgstr "非作用中捲動軸按鈕箭頭顏色"
+
+msgid "Inactive title bar shadow"
+msgstr "非作用中標題列陰影"
+
+msgid "Initial scrollbar autoscroll delay"
+msgstr "初始化捲動軸自動捲動延遲"
+
+msgid "Input color (Address bar)"
+msgstr "輸入區顏色(位址列)"
+
+msgid "Input selection color (Address bar)"
+msgstr "輸入區選取時的顏色(位址列)"
+
+msgid "Input selection text color (Address bar)"
+msgstr "輸入區選取文字的顏色(位址列)"
+
+msgid "Input text color (Address bar)"
+msgstr "輸入區文字顏色(位址列)"
+
+msgid "Invisible taskbar app color"
+msgstr "隱形工作列應用程式顏色"
+
+msgid "Invisible taskbar app text"
+msgstr "隱形工作列應用程式文字"
+
+msgid "KDE menu data directory"
+msgstr "KDE 選單資料目錄"
+
+msgid "Keep tasbar below all other windows"
+msgstr "工作列保持在所有其他視窗之下"
+
+msgid "Launch task bar programs (clock, etc.) on a single click"
+msgstr "單擊執行工作列程式(如時鐘等)"
+
+msgid "Limit by dock layer"
+msgstr "依停靠區層次來限制"
+
+msgid "Limit initial position of windows to screen"
+msgstr "限制視窗在螢幕上的初始位置"
+
+msgid "Limit initial size of windows to screen"
+msgstr "限制視窗在螢幕上的初始大小"
+
+msgid "List box color (Window list)"
+msgstr "清單方塊顏色(視窗清單)"
+
+msgid "List box font (Window list box)"
+msgstr "清單方塊字型(視窗清單方塊)"
+
+msgid "List box selection color (Window list)"
+msgstr "清單方塊選擇區顏色(視窗清單)"
+
+msgid "List box selection text color (Window list)"
+msgstr "清單方塊選取文字的顏色(視窗清單)"
+
+msgid "List box text color (Window list)"
+msgstr "清單方塊文字顏色(視窗清單)"
+
+msgid ""
+"List of battery names (directories) in /proc/acpi/battery to ignore for APM"
+msgstr "在 /proc/acpi/battery 中用以忽略 APM 的電池名稱(目錄)清單"
+
+msgid "List of gradient images in the current theme"
+msgstr "目前主題中漸層影像的清單"
+
+msgid "Lower a raised window if clicked a second time"
+msgstr "點選已提升的視窗時將該視窗降低"
+
+msgid "Mail status WM_CLASS hint"
+msgstr "郵件狀態 WM_CLASS 提示"
+
+msgid ""
+"Mailbox path ($MAIL is used if no value is specified).  Example: file:///var/"
+"spool/mail/my_username       Example: pop3://my_username:my_password@my.mail-"
+"host.com/      Example: imap://my_username@my.mail-host.com/INBOX.mail.icewm-"
+"user"
+msgstr ""
+"信件箱路徑 (如果沒有指定數值則使用 $MAIL)。範例：file:///var/spool/mail/"
+"my_username       範例：pop3://my_username:my_password@my.mail-host."
+"com/      範例：imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+
+msgid "Maximum menu width (0 to let IceWM decide)"
+msgstr "最大選單寬度(0 表示讓 IceWM 決定)"
+
+msgid "Menu font"
+msgstr "選單字型"
+
+msgid "Menus track mouse even with no mouse buttons held"
+msgstr "即使沒有按滑鼠按鈕也讓選單追蹤滑鼠"
+
+msgid "Minimized taskbar app color"
+msgstr "最小化工作列應用程式顏色"
+
+msgid "Minimized taskbar app text"
+msgstr "最小化工作列應用程式文字"
+
+msgid "Minimized window font"
+msgstr "最小化視窗字型"
+
+msgid "Mouse-button clicked on desktop to show menu"
+msgstr "在桌面按滑鼠按鈕時顯示選單"
+
+msgid "Mouse-button clicked on desktop to show window list"
+msgstr "在桌面按滑鼠按鈕時顯示視窗清單"
+
+msgid "Mouse-button clicked on desktop to show window list menu"
+msgstr "在桌面按滑鼠按鈕時顯示視窗清單選單"
+
+msgid "Mouse-button clicked on titlebar to maximize window"
+msgstr "在標題列按滑鼠按鈕時將視窗最大化"
+
+msgid "Mouse-button clicked on titlebar to roll up window"
+msgstr "在標題列按滑鼠按鈕時收起視窗"
+
+msgid "Move mouse when doing focusing in pointer focus mode"
+msgstr "在指標焦點模式中進行焦點移動時移動滑鼠"
+
+msgid "Move/size status color"
+msgstr "移動/大小狀態顏色"
+
+msgid "Move/size status text color"
+msgstr "移動/大小狀態文字顏色"
+
+msgid "Multibyte internationalization support"
+msgstr "多位元國際化支援"
+
+msgid "Mouse double-click speed"
+msgstr "滑鼠雙擊速度"
+
+msgid "Names of the Workspaces"
+msgstr "工作區的名稱"
+
+msgid "Net status WM_CLASS hint"
+msgstr "網路狀態 WM_CLASS 提示"
+
+msgid ""
+"Network device for which to show network status (examples:  ppp0, lo, eth0)"
+msgstr ""
+"顯示網路狀態的網路裝置(例如：ppp0、 lo、 eth0)"
+
+msgid "Nice CPU usage color"
+msgstr "良好 CPU 使用率顏色"
+
+msgid "Normal border color"
+msgstr "一般框線顏色"
+
+msgid "Normal button color"
+msgstr "一般按鈕顏色"
+
+msgid "Normal button font"
+msgstr "一般按鈕字型"
+
+msgid "Normal button text color"
+msgstr "一般按鈕文字顏色"
+
+msgid "Normal menu color"
+msgstr "一般選單顏色"
+
+msgid "Normal menu item text color"
+msgstr "一般選單項目文字顏色"
+
+msgid "Normal minimized window color"
+msgstr "一般最小化視窗顏色"
+
+msgid "Normal minimized window text color"
+msgstr "一般最小化視窗文字顏色"
+
+msgid "Normal taskbar app text color"
+msgstr "一般工作列應用程式文字顏色"
+
+msgid "Normal taskbar color"
+msgstr "一般工作列顏色"
+
+msgid "Normal taskbar font"
+msgstr "一般工作列字型"
+
+msgid "Normal title bar color"
+msgstr "一般標題列顏色"
+
+msgid "Normal title bar text color"
+msgstr "一般標題列文字顏色"
+
+msgid "Normal title button color"
+msgstr "一般標題按鈕顏色"
+
+msgid "Normal title button text color"
+msgstr "一般標題按鈕文字顏色"
+
+msgid "Normal workspace  font"
+msgstr "一般工作區字型"
+
+msgid ""
+"Number of milliseconds to display the workspace tooltip when changing "
+"workspaces"
+msgstr "變換工作區時顯示工作區工具提示的時間(毫秒)"
+
+msgid "Opaque window move"
+msgstr "視窗移動時使用不透明效果"
+
+msgid "Opaque window resize"
+msgstr "改變視窗大小時使用不透明效果"
+
+msgid "Open command"
+msgstr "開啟指令"
+
+msgid "Pass focusing click on client area to client"
+msgstr "從用戶端工作區按至另一用戶端工作區時傳送焦點"
+
+msgid "Pointer motion distance before click gets interpreted as drag"
+msgstr "單擊動作中斷(如拖曳)前指標移動距離"
+
+msgid "Quick switch text color"
+msgstr "快速切換文字顏色"
+
+msgid "Quick switch window color"
+msgstr "快速切換視窗顏色"
+
+msgid "Quick switch window font"
+msgstr "快速切換視窗字型"
+
+msgid "Raise when frame border is clicked"
+msgstr "按下框架邊框時提升"
+
+msgid "Raise when frame button is clicked"
+msgstr "按下框架按鈕時提升"
+
+msgid "Raise window when client area clicked"
+msgstr "按下用戶端工作區時提升視窗"
+
+msgid "Raise window when title bar is clicked"
+msgstr "按下標題列時提升視窗"
+
+msgid "Raise windows when focused"
+msgstr "獲得焦點時提升視窗"
+
+msgid "Reload menu files automatically"
+msgstr "自動重新載入選單檔案"
+
+msgid "Resistance in pixels when trying to move windows off the screen"
+msgstr "防止將視窗移出螢幕範圍外"
+
+msgid "Resize corner height"
+msgstr "改變大小區高度"
+
+msgid "Resize corner width"
+msgstr "改變大小區寬度"
+
+msgid "Screen edge workspace switching delay"
+msgstr "以螢幕邊緣切換工作區的延遲時間"
+
+msgid "Scroll bar arrow color"
+msgstr "捲動軸箭頭顏色"
+
+msgid "Scroll bar color"
+msgstr "捲動軸顏色"
+
+msgid "Scroll bar delay"
+msgstr "捲動軸延遲"
+
+msgid "Scroll bar slider color"
+msgstr "捲動軸滑鈕顏色"
+
+msgid "Scrollbar button arrow color"
+msgstr "捲動軸按鈕箭頭顏色"
+
+msgid "Scrollbar button color"
+msgstr "捲動軸按鈕顏色"
+
+msgid "Send the clicks outside menus to target window"
+msgstr "將選單外的點選傳送至目標視窗"
+
+msgid "Show \"Start\" menu on task bar"
+msgstr "在工作列上顯示“開始”選單"
+
+msgid "Show \"window list\" menu on task bar"
+msgstr "在工作列上顯示“視窗清單”選單"
+
+msgid "Show Advanced Power Management (APM) status on task bar"
+msgstr "在工作列上顯示進階電源管理(APM)狀態"
+
+msgid "Show Advanced Power Management time"
+msgstr "顯示進階電源管理時間"
+
+msgid "Show CPU status on task bar"
+msgstr "在工作列上顯示 CPU 狀態"
+
+msgid "Show a small window"
+msgstr "顯示小視窗"
+
+msgid "Show address bar on the task bar"
+msgstr "在工作列上顯示位址列"
+
+msgid "Show all icons"
+msgstr "顯示所有圖示"
+
+msgid "Show all windows on the taskbar"
+msgstr "顯示所有工作列上的視窗"
+
+msgid "Show application icon over menu button"
+msgstr "在選單按鈕上顯示應用程式圖示"
+
+msgid "Show clock on task bar"
+msgstr "在工作列上顯示時鐘"
+
+msgid "Show mailbox status on the task bar"
+msgstr "在工作列上顯示信件箱狀態"
+
+msgid "Show network status on task bar"
+msgstr "在工作列上顯示網路狀態"
+
+msgid "Show popup menus above mouse pointer"
+msgstr "在滑鼠指標上顯示彈出式選單"
+
+msgid "Show position status window during move/resize"
+msgstr "在移動/改變大小時顯示位置狀態視窗"
+
+msgid "Show task bar"
+msgstr "顯示工作列"
+
+msgid "Show task tray on task bar"
+msgstr "在工作列上顯示工作匣"
+
+msgid "Show text above icons"
+msgstr "在圖示上顯示文字"
+
+msgid "Show the \"logout\" menu on the task bar menu"
+msgstr "在工作列選單上顯示“登出”選單"
+
+msgid "Show the IceWM \"help\" item on the task bar menu"
+msgstr "在工作列選單上顯示 IcwWM “說明”項目"
+
+msgid "Show the submenu for selecting themes"
+msgstr "顯示所選主題的子選單"
+
+msgid "Show window icons on the task bar"
+msgstr "在工作列上顯示視窗圖示"
+
+msgid "Show windows from all workspaces on task bar"
+msgstr "在工作列上顯示所有工作區的視窗"
+
+msgid "Show windows on the task bar"
+msgstr "在工作列上顯示視窗"
+
+msgid "Show workspace switching buttons on task bar"
+msgstr "在工作列上顯示工作區切換按鈕"
+
+msgid "Show workspace tooltip when changing workspaces"
+msgstr "改變工作區時顯示工作區工具提示"
+
+msgid "Size of icon margins of quick-switch icons"
+msgstr "快速切換的圖示之邊界大小"
+
+msgid "Size of the quick-switch window separator"
+msgstr "快速切換的視窗分隔線大小"
+
+msgid "Smart window placement (minimize overlap)"
+msgstr "智慧式放置視窗(儘量不重疊)"
+
+msgid "Snap to nearest screen edge/window when moving windows"
+msgstr "移動視窗時貼緊最近的螢幕邊緣/視窗"
+
+msgid "Status font"
+msgstr "狀態字型"
+
+msgid "Support Windows95/98-style keyboard keys"
+msgstr "支援 Windows95/98 式的鍵盤按鍵"
+
+msgid "Support mouse wheel"
+msgstr "支援滑鼠滾輪"
+
+msgid "Support semi-transparent applications like gnome-terminal"
+msgstr "支援半透明應用程式，如 gnome-terminal"
+
+msgid "System CPU usage color"
+msgstr "系統 CPU 使用率顏色"
+
+msgid ""
+"Taking the mouse pointer to the edge of the screen moves to the next "
+"workspace"
+msgstr "將滑鼠指標移至螢幕的邊緣則移動至下一個工作區"
+
+msgid "Task bar at top of the screen"
+msgstr "工作列置於螢幕頂端"
+
+msgid "Task bar clock uses nice pixmapped LCD display"
+msgstr "工作列時鐘使用較佳的點陣式 LCD 顯示"
+
+msgid "Task tray has a bevel around it (Like the Windows system tray)"
+msgstr "工作匣週圍以斜面圍繞(如同 Windows 系統匣)"
+
+msgid "Terminal emulator (must accept -e option)"
+msgstr "終端機模擬器(必須能接受 -e 選項)"
+
+msgid "Theme author"
+msgstr "主題作者"
+
+msgid "Theme description"
+msgstr "主題描述"
+
+msgid "Time before tooltip is hidden"
+msgstr "工具提示隱藏前的時間"
+
+msgid "Title bar font"
+msgstr "標題列字型"
+
+msgid "Title bar height"
+msgstr "標題列高度"
+
+msgid "Title bar join left"
+msgstr "標題列連接左方"
+
+msgid "Title bar join right"
+msgstr "標題列連接右方"
+
+msgid "Title bar text horizontal offset"
+msgstr "標題列文字水平補償"
+
+msgid "Title bar text position"
+msgstr "標題列文字位置"
+
+msgid "Title bar text vertical offset"
+msgstr "標題列文字垂直補償"
+
+msgid ""
+"Titlebar buttons from left to right (x=close, m=max, i=min, h=hide, "
+"r=rollup, s=sysmenu)"
+msgstr ""
+"標題列按鈕由左至右 (x=關閉，m=最大化，i=最小化，h=隱藏，r=收起，s=系統選單)"
+
+msgid ""
+"Titlebar buttons from right to left (x=close, m=max, i=min, h=hide, "
+"r=rollup, s=sysmenu)"
+msgstr ""
+"標題列按鈕由右至左 (x=關閉，m=最大化，i=最小化，h=隱藏，r=收起，s=系統選單)"
+
+msgid "Titlebar buttons supported by theme (x, m, i, r, h, s, d)"
+msgstr "主題所支援的標題列按鈕(x, m, i, r, h, s, d)"
+
+msgid "Tool Button font"
+msgstr "工具按鈕字型"
+
+msgid "Toolbar button color"
+msgstr "工具列按鈕顏色"
+
+msgid "Toolbar button text color"
+msgstr "工具列按鈕文字顏色"
+
+msgid "Tooltip color"
+msgstr "工具提示顏色"
+
+msgid "Tooltip font"
+msgstr "工具提示字型"
+
+msgid "Tooltip text color"
+msgstr "工具提示文字顏色"
+
+msgid "Treat Penguin/Meta_L/Meta_R/Windows keys as Ctrl+Alt"
+msgstr "將 Penguin/Meta_L/Meta_R/Windows 按鍵當作 Ctrl+Alt"
+
+msgid "Use double height task bar (highly recommended)"
+msgstr "使用雙倍高度工作列(高度建議)"
+
+msgid "Use large (48x48) icons in quick switch window"
+msgstr "在快速切換視窗中使用大 (48x48) 圖示"
+
+msgid "User CPU usage color"
+msgstr "使用者 CPU 使用率顏色"
+
+msgid "Veritical window border"
+msgstr "垂直視窗邊框"
+
+msgid "Vertical dialog window border"
+msgstr "垂直對話盒視窗邊框"
+
+msgid "Vertical margin of quick-switch window"
+msgstr "快速切換視窗的垂直邊界"
+
+msgid "Vertical scrollbar button size"
+msgstr "垂直捲動軸按鈕大小"
+
+msgid "Width of CPU Monitor"
+msgstr "CPU 監視器寬度"
+
+msgid "Windows initially placed manually by user"
+msgstr "使用者手動決定視窗初始位置"
+
+msgid "Workspace switches by moving mouse to left/right screen edge"
+msgstr "移動滑鼠至左/右螢幕邊緣時切換工作區"
+
+msgid "Xinerama primary screen"
+msgstr "Xinerama 主螢幕"
+
+msgid "Windows"
+msgstr "視窗"
+
+msgid "Quick Switch"
+msgstr "快速切換"
+
+msgid "Dialogs"
+msgstr "對話盒"
+
+msgid "Menus"
+msgstr "選單"
+
+msgid "Task Bar"
+msgstr "工作列"
+
+msgid "Task Bar Applets"
+msgstr "工作列小程式"
+
+msgid "Scroll Bars"
+msgstr "捲動軸"
+
+msgid "Tool Tips"
+msgstr "工具提示"
+
+msgid "Mouse"
+msgstr "滑鼠"
+
+msgid "Title Bars"
+msgstr "標題列"
+
+msgid "Miscellaneous"
+msgstr "雜項"
+
+msgid "Themes"
+msgstr "主題"
+
+msgid "Address Bar"
+msgstr "位址列"
+
+msgid "Desktop"
+msgstr "桌面"
+
+msgid "Key Bindings"
+msgstr "組合鍵"
+
+msgid "Workspaces"
+msgstr "工作區"
+
+#: icepref.py:2363 
+msgid "/File/_Exit IcePref2"
+msgstr "/檔案(_F)/離開 IcePref2(_E)"
+
+#: icepref.py:2367 
+msgid "/_Tools/Theme Designer (requires IcePref2-TD)..."
+msgstr "/工具(_T)/主題設計師(需要 IcePref2-TD)..."
+
+#: icepref.py:2323 
+msgid "About IcePref2"
+msgstr "關於 IcePref2"
+
+#: icepref.py:1387 
+msgid ""
+"The theme has been applied,\n"
+"and IceWM is quickly restarting.\n"
+"When it has restarted, click 'OK'.\n"
+"This may take a moment."
+msgstr ""
+"這個主題已經被套用了，\n"
+"而 IceWM 很快就會重新啟動。\n"
+"當重新啟動後，請按“確定”。\n"
+"這會花一點時間。"
+
+# /Compile/IceWMCP/icepref_td.py:963,  /Compile/IceWMCP/icepref.py:1359
+#: icepref_td.py:963
+msgid " Create Theme Preview... "
+msgstr "建立主題預覽..."
+
+#: icepref_td.py:979 
+msgid "Do you wish to replace it?"
+msgstr "您希望取代它嗎？"
+
+#: icepref_td.py:979 
+msgid "The image"
+msgstr "影像"
+
+#: icepref_td.py:979 
+msgid "already exists."
+msgstr "已經存在。"
+
+#: icepref_td.py:982 
+msgid ""
+"Apply your theme by selecting it\n"
+"from the IceWM 'Themes' menu.\n"
+"When you are ready, click 'OK'."
+msgstr ""
+"從 IceWM “主題”選單選擇\n"
+"可以套用您的主題。\n"
+"當您準備好時，請按“確定”。"
+
+#: icepref_td.py:982 icepref_td.py:2064 
+msgid "OK"
+msgstr "確定"
+
+# /Compile/IceWMCP/icepref_td.py:994, /Compile/IceWMCP/icepref.py:1397
+#: icepref_td.py:994
+msgid ""
+"A theme preview image could not be created. This features requires the "
+"'import' binary from ImageMagick to be on your path."
+msgstr ""
+"無法建立主題預覽影像。這個功能需要您的路徑中有 ImageMagick 的“import”二元"
+"檔。"
+
+#: icepref_td.py:1028 
+msgid "None"
+msgstr "無"
+
+#: icepref_td.py:1042 icepref_td.py:1361 
+msgid "NO IMAGE"
+msgstr "沒有影像"
+
+#: icepref_td.py:1572 icepref_td.py:1604  icepref_td.py:1608
+#: icepref_td.py:1791
+msgid "Theme Designer"
+msgstr "主題設計師"
+
+#: icepref_td.py:1771 
+msgid "IceWM Theme successfully saved to: "
+msgstr "IceWM 主題成功的儲存到："
+
+#: icepref_td.py:1773 
+msgid "There was an ERROR saving your IceWM 'theme' file."
+msgstr "儲存您的 IceWM “主題”檔案時發生錯誤。"
+
+#: icepref_td.py:1791 
+msgid "About IcePref2 Theme Designer"
+msgstr "關於 IcePref2 主題設計師"
+
+#: icepref_td.py:1791 
+msgid "An IceWM Theme Designer based on IcePref2"
+msgstr "基於 IcePref2 的 IceWM 主題設計師"
+
+#: icepref_td.py:1791 
+msgid "This software is distributed under the GNU General Public License."
+msgstr "這個軟體是在 GNU 通用公眾授權下散佈的。"
+
+#: icepref_td.py:1823 
+msgid "/File/_New Theme..."
+msgstr "/檔案(_F)/新增主題(_N)..."
+
+#: icepref_td.py:1824 
+msgid "/File/_Open Theme..."
+msgstr "/檔案(_F)/開啟主題(_O)..."
+
+#: icepref_td.py:1826 
+msgid "/File/_Save Theme"
+msgstr "/檔案(_F)/儲存主題(_S)"
+
+#: icepref_td.py:1830 
+msgid "Check for newer versions of this program..."
+msgstr "檢查這個程式的新版本..."
+
+#: icepref_td.py:1832 
+msgid "/File/_Exit IcePref2 Theme Designer"
+msgstr "/檔案(_F)/離開 IcePref2 主題設計師(_E)"
+
+#: icepref_td.py:1836 
+msgid "/_Tools/Configure IceWM (requires IcePref2)..."
+msgstr "/工具(_T)/設定 IceWM (需要 IcePref2)..."
+
+#: icepref_td.py:1841 
+msgid "/Help/_About IcePref2 Theme Designer..."
+msgstr "/說明(_H)/關於 IcePref2 主題設計師(_A)..."
+
+#: icepref_td.py:2046 
+msgid "Create A New IceWM Theme"
+msgstr "建立新的 IceWM 主題"
+
+#: icepref_td.py:2049 
+msgid "Theme Author"
+msgstr "主題作者"
+
+#: icepref_td.py:2050 
+msgid "Theme Description"
+msgstr "主題描述"
+
+#: icepref_td.py:2051 
+msgid "Directory"
+msgstr "目錄"
+
+#: icepref_td.py:2057 
+msgid "Select"
+msgstr "選擇"
+
+#: icepref_td.py:2065 
+msgid "CANCEL"
+msgstr "取消"
+
+#: icepref_td.py:2083 
+msgid "Select a directory"
+msgstr "選擇一個目錄"
+
+#: icepref_td.py:2104 
+msgid "You must complete all the fields first."
+msgstr "您必須先完成所有的欄位。"
+
+#: icepref_td.py:2132 
+msgid "The file does not appear to be an IceWM theme file."
+msgstr "此檔案似乎不是 IceWM 主題檔案。"
+
+#: icepref_td.py:2156 
+msgid "Save this theme"
+msgstr "儲存這個主題"
+
+#: icepref_td.py:2157 
+msgid "Exit IcePref2 Theme Designer"
+msgstr "離開 IcePref2 主題設計師"
+
+# /Compile/IceWMCP/icepref_td.py
+msgid "Theme Info"
+msgstr "主題資訊"
+
+# /Compile/IceWMCP/icepref_td.py
+msgid "Icons"
+msgstr "圖示"
+
+# /Compile/IceWMCP/icepref_td.py
+msgid "Cursors"
+msgstr "游標"
+
+msgid "Show \"Programs\" menu"
+msgstr "顯示“程式”選單"
+
+msgid "Show \"Run...\" on the menu"
+msgstr "在選單上顯示“執行...”"
+
+msgid "Show logout sub-menu"
+msgstr "顯示“登出”子選單"
+
+msgid "Show window list on the menu"
+msgstr "在選單上顯示視窗清單"
+
+msgid "Show \"About\" on the menu"
+msgstr "在選單上顯示“關於”"
+
+msgid "Shaped pixmaps protect client window"
+msgstr "緊貼像素保護客戶端視窗"
+
+msgid "Enable full-screen mode for windows"
+msgstr "啟動視窗的全螢幕模式"
+
+msgid "Quick-Switch groups windows on current workspace"
+msgstr "目前工作區的快速切換群組視窗"
+
+msgid "\"Window list\" menu shortcut"
+msgstr "“視窗清單”選單捷徑"
+
+msgid "\"Workspace 11\" shortcut"
+msgstr "“工作區 11”捷徑"
+
+msgid "\"Workspace 12\" shortcut"
+msgstr "“工作區 12”捷徑"
+
+msgid "\"Take window to workspace 12\" shortcut"
+msgstr "“將視窗送到工作區 12”捷徑"
+
+msgid "\"Take window to workspace 11\" shortcut"
+msgstr "“將視窗送到工作區 11”捷徑"
+
+#: icepref.py:1967 
+msgid "No mouse buttons"
+msgstr "沒有滑鼠按鈕"
+
+#: icepref.py:1968 
+msgid "First button only"
+msgstr "只有第一個按鈕"
+
+#: icepref.py:1969 
+msgid "Second button only"
+msgstr "只有第二個按鈕"
+
+#: icepref.py:1970 
+msgid "Third button only"
+msgstr "只有第三個按鈕"
+
+#: icepref.py:1971 
+msgid "First and second buttons"
+msgstr "第一與第二按鈕"
+
+#: icepref.py:1972 
+msgid "First and third buttons"
+msgstr "第一與第三按鈕"
+
+#: icepref.py:1973 
+msgid "Second and third buttons"
+msgstr "第二與第三按鈕"
+
+#: icepref.py:1974 
+msgid "All three buttons"
+msgstr "全部三個按鈕"
+
+#: icepref.py:1981 
+msgid "No mouse button"
+msgstr "沒有滑鼠按鈕"
+
+#: icepref.py:1982 
+msgid "First mouse button"
+msgstr "第一個滑鼠按鈕"
+
+#: icepref.py:1983 
+msgid "Second mouse button"
+msgstr "第二個滑鼠按鈕"
+
+#: icepref.py:1984 
+msgid "Third mouse button"
+msgstr "第三個滑鼠按鈕"
+
+#: icepref.py:1985 
+msgid "Fourth mouse button"
+msgstr "第四個滑鼠按鈕"
+
+#: icepref.py:1986 
+msgid "Fifth mouse button"
+msgstr "第五個滑鼠按鈕"
+
+#: icepref_search.py
+msgid "Search"
+msgstr "搜尋"
+
+#: icepref_search.py
+msgid "Search Results"
+msgstr "搜尋結果"
+
+#: icepref_search.py
+msgid "Section"
+msgstr "區"
+
+#: icepref_search.py
+msgid "Property"
+msgstr "內容"
+
+#: icepref_search.py
+msgid "No matches found."
+msgstr "找不到相符者。"
+
+#: icepref_search.py
+msgid "Enter a search word"
+msgstr "輸入搜尋文字"
+
+#~ msgid "Multiple click time"
+#~ msgstr "雙擊間隔時間"

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Anti-\nVirus
+Exec=tkantivir
+Icon=tkantivir.png
+Hint=Configurar el anti-virus y buscar viruses

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Системная\nИнформация
+Exec=[PHROZEN-INTERNAL]IceWMCPSystem.py
+Icon=sysinfo.png
+Hint=Просмотр полезной системной информации

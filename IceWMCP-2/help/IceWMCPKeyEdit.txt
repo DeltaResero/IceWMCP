@@ -1,1 +1,28 @@
-dummy file
+[PHTITLE] IceWMCP KeyEdit
+[PHSECTION] Overview
+The IceWMCP KeyEdit tool allows you to easily configure customized key combinations to launch  applications of your choice.    For example, you can configure the program  [PH-HI]Gimp[/PH-HI] to be launched when the key combination  [PH-HI]'Ctrl+Alt+g' [/PH-HI] is pressed.
+[PHSECTION] Key List
+The  [PH-HI]'key list'[/PH-HI] is the scrollable window toward the top of the KeyEdit window.  The  [PH-HI]'key list'[/PH-HI] shows you which combination of keys trigger each program.  The key combination appears on the left side of the window, while the program appears on the right.
+[PHSECTION] Creating Keys
+To create a new key combination, click  [PH-HI]'New Key' [/PH-HI].  Insert the key combination you wish to use.  For example, if you wish to use the key combination  [PH-HI]'Ctrl+Alt+g' [/PH-HI], do the following: Select the  [PH-HI]'Ctrl'[/PH-HI] box.  Select the  [PH-HI]'Alt'[/PH-HI] box. Type  [PH-HI]'g'[/PH-HI] in the  [PH-HI]key box [/PH-HI] (to the right of 'Alt', 'Ctrl', 'Shift').  Next, type in the name of program you want  [PH-HI]'Ctrl+Alt+g' [/PH-HI] to trigger in the  [PH-HI]Program: [/PH-HI] box, or click the  [PH-HI]'folder' [/PH-HI] button to select a program from your system.  Click the  [PH-HI]'Add'[/PH-HI] button.  You should also click the  [PH-HI]'Save'[/PH-HI] button.
+[PHSECTION] Editing Keys
+To edit an existing key combination, select the key you wish to edit from the  [PH-HI]'key list' [/PH-HI].  You may not change the key combination itself, such as  [PH-HI]'Ctrl+Alt+g' [/PH-HI].  However, you may change the  [PH-HI]program [/PH-HI] that the key combination triggers.  Type in the name of the new program you want the key combination to trigger in the  [PH-HI]Program: [/PH-HI] box, or click the  [PH-HI]'folder' [/PH-HI] button to select a new program from your system.  Click the  [PH-HI]'Set'[/PH-HI] button.  You should also click the [PH-HI]'Save' [/PH-HI] button.
+[PHSECTION] Testing Keys
+The  [PH-HI]'Test'[/PH-HI] feature attempts to launch the program you have configured for a key combination.  To test an existing key combination, select the key you wish to test from the  [PH-HI]'key list' [/PH-HI].  Click the  [PH-HI]'Test' [/PH-HI] button.  If the  [PH-HI]'Test' [/PH-HI] feature does not launch the program you have configured for this key combination, you should check the correctness of the  [PH-HI]Program: [/PH-HI] field.
+[PHSECTION] Deleting Keys
+To  [PH-HI]delete [/PH-HI] an existing key combination, select the key you wish to delete from the  [PH-HI]'key list' [/PH-HI].  Click the  [PH-HI]'Delete' [/PH-HI] button.  You should also click the  [PH-HI]'Save'[/PH-HI] button.
+[PHSECTION] Saving The Key Configuration
+Before exiting the program, you should  [PH-HI]save[/PH-HI] any changes you have made to your key configuration.  To do so, click the  [PH-HI]'Save' [/PH-HI] button, or press [PH-HI] Ctrl+S [/PH-HI] on your keyboard.
+[PHSECTION] Applying The Key Configuration
+If you want your new key configuration to  [PH-HI]take effect immediately [/PH-HI], click the  [PH-HI]'Apply Changes Now' [/PH-HI] button, or press [PH-HI] Ctrl+A [/PH-HI] on your keyboard.  Your key configuration will be automatically saved, IceWM will be quickly restarted, and your new key configuration will take effect immediately.
+[PHSECTION] Opening A Key Configuration
+To open an existing key configuration file (generally an IceWM 'keys' file), click [PH-HI] File -> Open... [/PH-HI] on the menu, or press [PH-HI] Ctrl+O [/PH-HI] on your keyboard.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.
+

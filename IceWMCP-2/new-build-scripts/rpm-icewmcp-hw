@@ -1,1 +1,4 @@
-dummy file
+rm -f /Compile/distro/icewmcp/IceWMCP-Hardware*.rpm
+rpmbuild  -bb -bl --buildroot=/usr/src/BUILDROOT --target i586-linux ICEWMCP-HW.spec
+cp -f  /usr/src/RPM/RPMS/i586/IceWMCP-Hardware*.rpm /Compile/distro/icewmcp/
+rm -f /usr/src/RPM/RPMS/i586/IceWMCP-Hardware*.rpm

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n®à­±
+Exec=[PHROZEN-INTERNAL]IceWMCPWallpaper.py
+Icon=icewmcp-wallpaper.png
+Hint=IceWM ¾À¯È³]©w

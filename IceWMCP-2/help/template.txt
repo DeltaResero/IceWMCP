@@ -1,1 +1,6 @@
-dummy file
+[PHTITLE] Some Help File
+
+[PHSECTION] Some Help Section
+Some help text here [PH-HI] hilight this [/PH-HI] if there is something I need to do
+
+

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Java\nПлагины
+Exec=ControlPanel
+Icon=java.png
+Hint=Управление конфигурацией плагинов Java

@@ -1,1 +1,75 @@
-dummy file
+[PHTITLE] IceWMCP Keyboard: Repetition
+[PHSECTION] Overview
+The IceWMCP Keyboard: Repetition tool allows you to easily configure your keyboard's repeat rate and repeat delay.  First, click the [PH-HI]'Repetition'[/PH-HI] tab.
+[PHSECTION] Enabling/Disabling Keyboard Auto-Repeat
+To [PH-HI]enable[/PH-HI] keyboard auto-repeat, make sure that [PH-HI]'Allow keyboard auto-repeat'[/PH-HI] is [PH-HI]CHECKED[/PH-HI].  To [PH-HI]disable[/PH-HI] keyboard auto-repeat, make sure that [PH-HI]'Allow keyboard auto-repeat'[/PH-HI] is [PH-HI]NOT CHECKED[/PH-HI].
+[PHSECTION] Setting the Keyboard Delay
+To set the keyboard's repeat delay, select your desired repeat delay from the slider named [PH-HI] Delay: [/PH-HI].  Choose lower numbers for a shorter delay.  Choose higher numbers for a longer delay.
+[PHSECTION] Setting the Keyboard Rate
+To set the keyboard's repeat rate, select your desired repeat rate from the slider named [PH-HI] Rate: [/PH-HI].  Choose lower numbers for a slower a repeat rate. Choose higher numbers to make your keyboard repeat faster. 
+[PHSECTION] Applying Changes
+To apply changes to your keyboard repeat delay or repeat speed, click the [PH-HI] Apply [/PH-HI] button. 
+[PHSECTION] Testing the Keyboard Repeat Rate and Delay
+To test your keyboard's repeat rate and repeat delay, place your mouse cursor in the field named [PH-HI] To test the repetition, hold a key for a few seconds: [/PH-HI].  Then, hold one key on your keyboard (such as [PH-HI]'m'[/PH-HI]) for a few seconds. If you are not happy with the repeat rate or repeat delay of your keyboard, select new values for [PH-HI] Delay: [/PH-HI] and [PH-HI] Rate: [/PH-HI], click the [PH-HI] Apply [/PH-HI] button, then test your keyboard again in the [PH-HI] To test the repetition, hold a key for a few seconds: [/PH-HI] field.  
+[PHSECTION] Resetting the Keyboard's Repetition
+To reset your keyboard's repeat delay and repeat speed to reasonable settings, click the [PH-HI] Reset [/PH-HI] button. 
+
+______________________________
+[PHTITLE] IceWMCP Keyboard: Sound
+[PHSECTION] Overview
+The IceWMCP Keyboard: Sound tool allows you to easily configure your keyboard's beep and key-click sounds.  First, click the [PH-HI]'Sound'[/PH-HI] tab.
+[PHSECTION] Enabling/Disabling Keyboard Clicks
+To [PH-HI]enable[/PH-HI] keyboard clicks, make sure that [PH-HI]'Allow keyboard clicks'[/PH-HI] is [PH-HI]CHECKED[/PH-HI].  [PH-HI]disable[/PH-HI] keyboard clicks, make sure that [PH-HI]'Allow keyboard clicks'[/PH-HI] is [PH-HI]NOT CHECKED[/PH-HI].
+[PHSECTION] Setting the Click Volume
+To set the keyboard's click volume, select your desired volume from the slider named [PH-HI] Volume: [/PH-HI] in the section [PH-HI]'Keyboard Click'[/PH-HI].  Choose lower numbers for a lower volume.  Choose higher numbers for a higher volume. 
+[PHSECTION] Enabling/Disabling Keyboard Beeps
+To [PH-HI]enable[/PH-HI] keyboard beeps, make sure that [PH-HI]'Allow keyboard beeps'[/PH-HI] is [PH-HI]CHECKED[/PH-HI].  [PH-HI]disable[/PH-HI] keyboard beeps, make sure that [PH-HI]'Allow keyboard beeps'[/PH-HI] is [PH-HI]NOT CHECKED[/PH-HI].
+[PHSECTION] Setting the Beep Volume
+To set the keyboard's beep volume, select your desired volume from the slider named [PH-HI] Volume: [/PH-HI] in the section [PH-HI]'Keyboard Beep'[/PH-HI].  Choose lower numbers for a lower volume.  Choose higher numbers for a higher volume. 
+[PHSECTION] Setting the Beep Pitch
+To set the keyboard's beep pitch, select your desired pitch from the slider named [PH-HI] Pitch: [/PH-HI] in the section [PH-HI]'Keyboard Beep'[/PH-HI].  Choose lower numbers for a lower pitch.  Choose higher numbers for a higher pitch. 
+[PHSECTION] Setting the Beep Duration
+To set the keyboard's beep duration, select your desired duration from the slider named [PH-HI] Duration: [/PH-HI] in the section [PH-HI]'Keyboard Beep'[/PH-HI].  Choose lower numbers for a shorter beep.  Choose higher numbers for a longer beep. 
+[PHSECTION] Testing the Keyboard Beep
+To test the sound of your keyboard's beep, click the [PH-HI]'Test'[/PH-HI] button.
+[PHSECTION] Resetting the Keyboard's Sounds
+To reset your keyboard's beep and key-click sounds to reasonable settings, click the [PH-HI] Reset [/PH-HI] button. 
+
+______________________________
+[PHTITLE] IceWMCP Keyboard: Shortcut Keys (KeyEdit)
+[PHSECTION] Overview
+The IceWMCP KeyEdit tool allows you to easily configure customized key combinations to launch  applications of your choice.    For example, you can configure the program  [PH-HI]Gimp[/PH-HI] to be launched when the key combination  [PH-HI]'Ctrl+Alt+g' [/PH-HI] is pressed. First, click the [PH-HI]'Shortcut Keys'[/PH-HI] tab.
+[PHSECTION] Key List
+The  [PH-HI]'key list'[/PH-HI] is the scrollable window toward the top of the KeyEdit window.  The  [PH-HI]'key list'[/PH-HI] shows you which combination of keys trigger each program.  The key combination appears on the left side of the window, while the program appears on the right.
+[PHSECTION] Creating Keys
+To create a new key combination, click  [PH-HI]'New Key' [/PH-HI].  Insert the key combination you wish to use.  For example, if you wish to use the key combination  [PH-HI]'Ctrl+Alt+g' [/PH-HI], do the following: Select the  [PH-HI]'Ctrl'[/PH-HI] box.  Select the  [PH-HI]'Alt'[/PH-HI] box. Type  [PH-HI]'g'[/PH-HI] in the  [PH-HI]key box [/PH-HI] (to the right of 'Alt', 'Ctrl', 'Shift').  Next, type in the name of program you want  [PH-HI]'Ctrl+Alt+g' [/PH-HI] to trigger in the  [PH-HI]Program: [/PH-HI] box, or click the  [PH-HI]'folder' [/PH-HI] button to select a program from your system.  Click the  [PH-HI]'Add'[/PH-HI] button.  You should also click the  [PH-HI]'Save'[/PH-HI] button.
+[PHSECTION] Editing Keys
+To edit an existing key combination, select the key you wish to edit from the  [PH-HI]'key list' [/PH-HI].  You may not change the key combination itself, such as  [PH-HI]'Ctrl+Alt+g' [/PH-HI].  However, you may change the  [PH-HI]program [/PH-HI] that the key combination triggers.  Type in the name of the new program you want the key combination to trigger in the  [PH-HI]Program: [/PH-HI] box, or click the  [PH-HI]'folder' [/PH-HI] button to select a new program from your system.  Click the  [PH-HI]'Set'[/PH-HI] button.  You should also click the [PH-HI]'Save' [/PH-HI] button.
+[PHSECTION] Testing Keys
+The  [PH-HI]'Test'[/PH-HI] feature attempts to launch the program you have configured for a key combination.  To test an existing key combination, select the key you wish to test from the  [PH-HI]'key list' [/PH-HI].  Click the  [PH-HI]'Test' [/PH-HI] button.  If the  [PH-HI]'Test' [/PH-HI] feature does not launch the program you have configured for this key combination, you should check the correctness of the  [PH-HI]Program: [/PH-HI] field.
+[PHSECTION] Deleting Keys
+To  [PH-HI]delete [/PH-HI] an existing key combination, select the key you wish to delete from the  [PH-HI]'key list' [/PH-HI].  Click the  [PH-HI]'Delete' [/PH-HI] button.  You should also click the  [PH-HI]'Save'[/PH-HI] button.
+[PHSECTION] Saving The Key Configuration
+Before exiting the program, you should  [PH-HI]save[/PH-HI] any changes you have made to your key configuration.  To do so, click the  [PH-HI]'Save' [/PH-HI] button, or press [PH-HI] Ctrl+S [/PH-HI] on your keyboard.
+[PHSECTION] Applying The Key Configuration
+If you want your new key configuration to  [PH-HI]take effect immediately [/PH-HI], click the  [PH-HI]'Apply Changes Now' [/PH-HI] button, or press [PH-HI] Ctrl+A [/PH-HI] on your keyboard.  Your key configuration will be automatically saved, IceWM will be quickly restarted, and your new key configuration will take effect immediately.
+[PHSECTION] Opening A Key Configuration
+To open an existing key configuration file (generally an IceWM 'keys' file), click [PH-HI] File -> Open Shortcut Key Configuration... [/PH-HI] on the menu, or press [PH-HI] Ctrl+O [/PH-HI] on your keyboard.
+
+
+______________________________
+[PHTITLE] IceWMCP Keyboard: IceWM Keys
+[PHSECTION] Overview
+The IceWMCP IceWM Keys tool allows you to configure additional shortcut keys for use under IceWM.  Click the [PH-HI]'IceWM Keys'[/PH-HI] tab for advanced configuration of IceWM keyboard shortcuts.  
+
+[PHSECTION] Run As Root
+If you are the 'root' user and wish to edit the system-wide keyboard configuration, select [PH-HI] File -> Run As Root [/PH-HI] on the menu.
+
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard. You may also exit the program by simply clicking the [PH-HI] Close [/PH-HI] button.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

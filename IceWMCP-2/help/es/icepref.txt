@@ -1,1 +1,27 @@
-dummy file
+[PHTITLE]IceWMCP - IcePref2 
+[PHSECTION]Descripción  
+La herramienta de IceWMCP IcePref2 permite que usted configure fácilmente la mirada y el comportamiento de IceWM.  Este texto de ayuda contiene solamente la información más básica necesitada para utilizar IcePref2.  
+[PHSECTION]IcePref2  
+La ventana principal de IcePref2 divide todas las características disponibles en IceWM en [PH-HI]categorías que se explica por sí mismo[/PH-HI], tales como 'Barra de Dirección', 'Menús', y 'Barra de Tarea'.  Para saltar rápidamente de categoría a otra, seleccione  [PH-HI]Categoría[/PH-HI] en el menú de IcePref2. 
+[PHSECTION]Reajustar Defectos  
+Para reajustar su configuración de IceWM a ajustes razonables, haga clic en el botón [PH-HI]'Defectos'[/PH-HI] al lado izquierdo inferior de la pantalla IcePref2.  
+[PHSECTION]Recargar Preferencias  
+Para recargar su configuración de IceWM, haga clic en el botón [PH-HI]'Recargar'[/PH-HI] al fondo de la pantalla IcePref2.  Esta característica recarga el fichero nombrado [PH-HI]'preferences'[/PH-HI].  
+[PHSECTION]Guardar Preferencias
+Antes de salir del programa, usted debe ser seguro [PH-HI]guardar[/PH-HI] cualquier cambio que usted haya realizado a su configuración de IceWM seleccionando [PH-HI]Fichero -> Guardar las Preferencias[/PH-HI] en el menú, o presione [PH-HI]Ctrl+S[/PH-HI] en su teclado.  Usted puede también guardar su configuración haciendo clic en el botón [PH-HI]'Guardar'[/PH-HI] al lado izquierdo inferior de la pantalla IcePref2.  
+[PHSECTION]Aplicar Preferencias
+Si usted quisiera que cambios a su configuración de IceWM tomaran efecto [PH-HI]inmediatamente[/PH-HI],  haga clic en el botón  [PH-HI]'Aplicar'[/PH-HI] al derecho inferior de la pantalla IcePref2, o presione [PH-HI]Ctrl+A[/PH-HI] en su teclado.  IceWM será recomenzado rápidamente, y su nueva configuración tomará efecto inmediatamente.  
+[PHSECTION]Herramientas 
+Usted puede usar varias otras herramientas para configurar IceWM haciendo clic en  [PH-HI]'Herramientas'[/PH-HI] en el menú de IcePref2.  Seleccione la herramienta que usted desea lanzar.
+[PHSECTION] Usar Como Root
+Si Usted sea el usuario 'root' y desee corregir la configuración de IceWM para el sistema entero, seleccione [PH-HI]Fichero -> Usar Como Root[/PH-HI]  en el menú.  Obviamente, se requiere los poderes de 'root'.
+[PHSECTION] Abrir Fichero de Preferencias IceWM
+Abrir un fichero de preferencias IceWM situado en cualquier directorio de su sistema seleccionado [PH-HI]Fichero -> Abrir Fichero de Preferencias IceWM[/PH-HI]  en el menú de IcePref2 o presionado [PH-HI]Ctrl+O[/PH-HI] en su teclado.  Obviamente, se requiere los poderes de 'root' para corregir ciertos ficheros. 
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir de IcePref2[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  También, usted puede salir haciendo clic en el botón [PH-HI]'Salir'[/PH-HI] al fondo de la pantalla.
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 

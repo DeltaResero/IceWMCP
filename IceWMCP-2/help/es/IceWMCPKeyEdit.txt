@@ -1,1 +1,27 @@
-dummy file
+[PHTITLE]IceWMCP - Teclas Rápidas
+[PHSECTION]Descripción  
+La herramienta IceWMCP - Teclas Rápidas permite que usted configure fácilmente combinaciones de teclas para el lanzamiento de programas de su opción.  Por ejemplo, usted puede configurar el  programa [PH-HI]Gimp[/PH-HI] que se lanzará cuando se presiona la combinación de teclas [PH-HI]'Ctrl+Alt+g'[/PH-HI].  
+[PHSECTION]Lista De Teclas  
+La [PH-HI]'lista de teclas'[/PH-HI] es la ventana hacia la tapa de la ventana de Teclas Rápidas.  La [PH-HI]'lista de teclas'[/PH-HI] le demuestra qué combinación de teclas acciona cada programa.  La combinación de teclas aparece en el lado izquierdo de la ventana, mientras que el programa aparece a la derecha.  
+[PHSECTION]Crear Teclas  
+Para crear una nueva combinación de teclas, haga clic en [PH-HI]'Crear Tecla'[/PH-HI].  Inserte la combinación de teclas que usted desea utilizar.  Por ejemplo, si usted desea utilizar la combinación de teclas [PH-HI]'Ctrl+Alt+g'[/PH-HI], haga el siguiente:  Seleccione la caja [PH-HI]'Ctrl'[/PH-HI].  Seleccione la caja  [PH-HI]'Alt'[/PH-HI].  Escriba [PH-HI]'g'[/PH-HI] en la caja de teclas (a la derecha de 'Alt', 'Ctrl', y 'Shift').  Después, escriba el nombre del programa que usted quisiera que [PH-HI]'Ctrl+Alt+g'[/PH-HI] accionara en la caja nombrada [PH-HI]Programa:[/PH-HI], o haga clic en la [PH-HI]'carpeta'[/PH-HI] para seleccionar un programa de su sistema.  Haga clic en el botón [PH-HI]'Añadir'[/PH-HI].  Usted debe también hacer clic en el botón [PH-HI]'Guardar'[/PH-HI].  
+[PHSECTION]Modificar Teclas  
+Para corregir una combinación de teclas existente, seleccione la combinación que usted desea corregir de la [PH-HI]'lista de teclas'[/PH-HI].  Usted [PH-HI]NO puede[/PH-HI] cambiar la combinación de teclas sí mismo, tal como [PH-HI]'Ctrl+Alt+g'[/PH-HI].  Sin embargo, usted puede cambiar el programa que usted  quisiera que la combinación accionara.  Escriba el nombre del nuevo programa que usted quisiera que la combinación de teclas accionara en el la caja [PH-HI]Programa:[/PH-HI], o haga clic en la [PH-HI]'carpeta'[/PH-HI] para seleccionar un programa de su sistema.  Haga clic en el botón [PH-HI]'Fijar'[/PH-HI].   Usted debe también hacer clic en el botón [PH-HI]'Guardar'[/PH-HI].  
+[PHSECTION]Probar Teclas 
+La característica [PH-HI]'Probar'[/PH-HI] trata de lanzar el programa que usted ha configurado para una combinación de teclas.  Para probar una combinación de teclas existente, seleccione la combinación que usted desea probar de la [PH-HI]'lista de teclas'[/PH-HI].  Haga clic en el botón [PH-HI]'Probar'[/PH-HI].  Si la característica  [PH-HI]'Probar'[/PH-HI] no lanza el programa que usted ha configurado para esta combinación de teclas, usted debe comprobar la corrección del valor escrito en [PH-HI]Programa:[/PH-HI].  
+[PHSECTION]Borrar Teclas
+Para borrar una combinación de teclas existente, seleccione la combinación que usted desea borrar de la 'lista de teclas'.  Haga clic en el botón [PH-HI]'Borrar'[/PH-HI].   Usted debe también hacer clic en el botón [PH-HI]'Guardar'[/PH-HI].  
+[PHSECTION]Guardar La Configuración De Teclas  
+Antes de salir del programa, usted debe guardar cualquier cambio que usted haya realizado a su configuración de teclas.  Para hacer así pues, haga clic en el botón [PH-HI]'Guardar'[/PH-HI], o presione [PH-HI]Ctrl+S[/PH-HI] en su teclado.  
+[PHSECTION]Aplicar La Configuración De Teclas
+Si usted quisiera que su nueva configuración de teclas tomara efecto inmediatamente, haga clic en el botón [PH-HI]'Aplicar los cambios'[/PH-HI], o presione [PH-HI]Ctrl+A[/PH-HI] en su teclado.  Su configuración de teclas será guardada automáticamente, IceWM será recomenzado rápidamente, y su nueva configuración de teclas tomará efecto inmediatamente.  
+[PHSECTION]Abrir Una Configuración De Teclas  
+Para abrir un fichero de teclas existente (generalmente, un fichero nombrado [PH-HI]'keys'[/PH-HI]), seleccione [PH-HI]'Fichero -> Abrir...'[/PH-HI]  en el menú, o presione [PH-HI]Ctrl+O[/PH-HI] en su teclado.
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 

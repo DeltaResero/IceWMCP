@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n主題\n設計師
+Exec=[PHROZEN-INTERNAL]icepref_td.py
+Icon=icewmcp-td.png
+Hint=IceWM 主題設計師 - IcePref2 TD

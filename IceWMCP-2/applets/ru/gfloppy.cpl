@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Дискета
+Exec=gfloppy
+Icon=gfloppy.png
+Hint=Форматировать дискету

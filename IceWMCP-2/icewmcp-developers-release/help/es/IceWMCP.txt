@@ -1,1 +1,23 @@
-dummy file
+[PHTITLE]IceWMCP
+[PHSECTION]Lanzar 'Applets' Del Panel De Control
+Los [PH-HI]'applets'[/PH-HI] del panel de control son la colección de iconos vistos en la ventana principal de IceWMCP.  Usted puede lanzar  cualquier applet del panel de control haciendo [PH-HI]un solo clic[/PH-HI] en cualesquiera de los iconos disponibles.  (un doble-clic no es necesario)  NOTA: Algunos iconos pueden señalar a los programas de tercera persona que no se incluyen con IceWMCP y no estén  disponibles en su sistema.  
+[PHSECTION]Ver Como Iconos
+Para ver los 'applets' del panel de control como [PH-HI]iconos grandes[/PH-HI], haga clic en [PH-HI] Vista -> Iconos[/PH-HI]  en el menú.  Ésta es la configuración normal para IceWMCP.  
+[PHSECTION]Ver Como Lista
+Para ver los 'applets' del panel de control como [PH-HI] una lista[/PH-HI]  que contiene iconos más pequeños, haga clic en [PH-HI] Vista -> Lista[/PH-HI]  en el menú.  
+[PHSECTION]Ver Como Columnas
+Para ver los 'applets' del panel de control como [PH-HI] dos listas [/PH-HI]  que contiene iconos más pequeños, haga clic en [PH-HI] Vista -> Columnas[/PH-HI]  en el menú.  
+[PHSECTION]Configuración de IceWMCP
+Para configurar IceWMCP, seleccione [PH-HI] Fichero -> Configuración...[/PH-HI]  en el menú.  Usted verá una ventana nueva que permita que usted muestre o que oculte cualquier applet del panel de control.  Para [PH-HI]ocultar[/PH-HI] un applet, sea seguro de que la opción nombrada [PH-HI] 'Ocultar'[/PH-HI] al lado del applet  [PH-HI] está seleccionada[/PH-HI].  Para [PH-HI]mostrar[/PH-HI] un applet, sea seguro de que la opción nombrada [PH-HI] 'Ocultar'[/PH-HI]  al lado del applet [PH-HI] NO está seleccionada[/PH-HI].  Entonces, haga clic en [PH-HI] 'Guardar'[/PH-HI]  para guardar su nueva configuración.  De lo contrario, haga clic en [PH-HI] 'CANCELAR'[/PH-HI]  si usted desea cancelar sus cambios.  
+[PHSECTION]Recargar los 'Applets' 
+Para recargar todos los 'applets' de IceWMCP, seleccione [PH-HI] Fichero -> Recargar los iconos[/PH-HI]  en el menú.  Todos los 'applets' disponibles para IceWMCP serán recargados y redesplegados.  Esta característica es útil si usted ha añadido o ha borrado un applet del panel de control y desea ver sus cambios sin tener que recomenzar IceWMCP.  
+[PHSECTION]Añadir, Borrar, o Modificar 'Applets' Del Panel De Control
+Para más información sobre como se añade, como se borra, o como se modifica los 'applets' del panel de control, lea por favor el archivo nombrado [PH-HI] 'ControlPanel-APPLETS.html'[/PH-HI]  en el directorio [PH-HI] './doc/'[/PH-HI] de IceWMCP, o visite [PH-HI] http://icesoundmanager.sourceforge.net/applets.php[/PH-HI]  para  información más detallada.  
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 

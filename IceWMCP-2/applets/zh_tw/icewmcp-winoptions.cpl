@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n視窗
+Exec=[PHROZEN-INTERNAL]IceWMCPWinOptions.py
+Icon=icewmcp-winoptions.png
+Hint=IceWM 視窗選項

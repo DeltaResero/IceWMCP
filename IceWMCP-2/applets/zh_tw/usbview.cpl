@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=USB\n裝置
+Exec=usbview
+Icon=usbview.png
+Hint=系統上的 USB 裝置

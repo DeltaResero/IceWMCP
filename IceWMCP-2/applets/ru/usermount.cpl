@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Примонтированные\nустройства
+Exec=usermount
+Icon=usermount.png
+Hint=Просмотр примонтированных дисков и устройств 

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=本更\n杆竚
+Exec=usermount
+Icon=usermount.png
+Hint=浪跌本更合盒籔杆竚

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Trabajos\nPeriodicos
+Exec=kcron
+Icon=kcron.png
+Hint=Administrar los trabajos de Cron (Trabajos periodicos - KCron)

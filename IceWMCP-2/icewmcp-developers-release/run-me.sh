@@ -1,1 +1,1 @@
-dummy file
+python ./IceWMCP.py

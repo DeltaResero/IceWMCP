@@ -1,1 +1,152 @@
-dummy file
+#DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceWMCP Hardware and System Information 1.0-beta\n"
+"POT-Creation-Date: 2003-05-11 11:35+0100\n"
+"PO-Revision-Date: 2003-05-21 15:51+0400\n"
+"Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
+"Language-Team: SPANISH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: IceWMCPSystem.py:91
+msgid "Collecting system hardware information...please wait."
+msgstr "Consiguiendo la información sobre su hardware... espere por favor."
+
+#: IceWMCPSystem.py:91 IceWMCPSystem.py:100 IceWMCPSystem.py:142
+#: IceWMCPSystem.py:355 IceWMCPSystem.py:552 IceWMCPSystem.py:567
+msgid "Hardware and System Information"
+msgstr "Información de Hardware y de Sistema"
+
+#: IceWMCPSystem.py:113 IceWMCPSystem.py:114 IceWMCPSystem.py:115
+#: IceWMCPSystem.py:116 IceWMCPSystem.py:117 IceWMCPSystem.py:118
+#: IceWMCPSystem.py:119 IceWMCPSystem.py:120
+msgid "Tools"
+msgstr "Herramientas"
+
+#: IceWMCPSystem.py:114
+msgid "Configure Keyboard"
+msgstr "Configurar Teclado"
+
+#: IceWMCPSystem.py:115
+msgid "Configure Mouse"
+msgstr "Configurar Ratón"
+
+#: IceWMCPSystem.py:116
+msgid "Configure PC Cards"
+msgstr "Configurar Tarjetas PC"
+
+#: IceWMCPSystem.py:117
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: IceWMCPSystem.py:117 IceWMCPSystem.py:118 IceWMCPSystem.py:119
+#: IceWMCPSystem.py:120
+msgid "Eject"
+msgstr "Expulsar"
+
+#: IceWMCPSystem.py:118
+msgid "Floppy"
+msgstr "Disquete Flexible"
+
+#: IceWMCPSystem.py:119 IceWMCPSystem.py:185
+msgid "SCSI"
+msgstr "SCSI"
+
+#: IceWMCPSystem.py:120
+msgid "Tape"
+msgstr "Cinta"
+
+#: IceWMCPSystem.py:169
+msgid "Mouse and Joystick"
+msgstr "Ratón y Palanca de Mando"
+
+#: IceWMCPSystem.py:170
+msgid "USB"
+msgstr "USB"
+
+#: IceWMCPSystem.py:171
+msgid "Display"
+msgstr "Exhibición"
+
+#: IceWMCPSystem.py:172
+msgid "Network"
+msgstr "Red"
+
+#: IceWMCPSystem.py:173
+msgid "Miscellaneous"
+msgstr "Misceláneo"
+
+#: IceWMCPSystem.py:174
+msgid "Keyboard"
+msgstr "Teclado"
+
+#: IceWMCPSystem.py:175
+msgid "Modem"
+msgstr "Módem"
+
+#: IceWMCPSystem.py:176
+msgid "Storage"
+msgstr "Almacenamiento"
+
+#: IceWMCPSystem.py:177
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: IceWMCPSystem.py:178
+msgid "Braille"
+msgstr "Braille"
+
+#: IceWMCPSystem.py:179
+msgid "System"
+msgstr "Sistema"
+
+#: IceWMCPSystem.py:180
+msgid "Printer"
+msgstr "Impresora"
+
+#: IceWMCPSystem.py:181
+msgid "Cameras, Scanners, and TV"
+msgstr "Cámara, Escáner, y Televisión"
+
+#: IceWMCPSystem.py:182
+msgid "PCI"
+msgstr "PCI"
+
+#: IceWMCPSystem.py:183
+msgid "Plug-N-Play"
+msgstr "Plug-N-Play (ISAPNP)"
+
+#: IceWMCPSystem.py:184
+msgid "PCMCIA"
+msgstr "PCMCIA"
+
+#: IceWMCPSystem.py:186
+msgid "Firewire"
+msgstr "Firewire"
+
+#: IceWMCPSystem.py:187
+msgid "Hotplug"
+msgstr "Hotplug"
+
+#: IceWMCPSystem.py:531 IceWMCPSystem.py:532
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: IceWMCPSystem.py:552
+msgid "No technical support is provided for this plug-in."
+msgstr "No se proporciona ninguna ayuda técnica para este plug-in."
+
+#: IceWMCPSystem.py:552
+msgid "This is an unsupported plug-in for IceWMCP."
+msgstr "Esto es un plug-in sin apoyo para IceWMCP."
+
+#: IceWMCPSystem.py:552
+msgid "This software uses a modified version of the 'libhd' and 'hwinfo' software library from SuSe."
+msgstr "Este software utiliza una versión modificada del software de 'libhd' / 'hwinfo' de SuSe."
+

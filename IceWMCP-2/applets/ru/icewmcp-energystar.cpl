@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Energy\nStar
+Exec=[PHROZEN-INTERNAL]IceWMCPEnergyStar.py
+Icon=icewmcp-energystar.png
+Hint=Manage EnergyStar energy-saving features (DPMS)

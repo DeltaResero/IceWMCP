@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Floppy
+Exec=gfloppy
+Icon=gfloppy.png
+Hint=Format a floppy disk

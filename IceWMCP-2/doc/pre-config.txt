@@ -1,1 +1,47 @@
-dummy file
+The basic distribution if IceWM Control Panel comes pre-configured to use the following applications:
+
+
+ICEWM CONTROL INTERNAL APPLICATIONS:
+
+IceWMCPWallpaper.py
+icepref.py
+icepref.py module=Themes
+icepref_td.py
+IceWMCPWinOptions.py
+IceWMCP_GtkPCCard.py  (IceWMCP version 2.0 and later)
+phrozenclock.py
+IceMe.py
+icesound.py
+pyspool.py
+IceWMCPMouse.py
+IceWMCPKeyboard.py
+IceWMCPGtkIconSelection.py
+IceWMCPEnergyStar.py (IceWMCP version 2.5 and later)
+IceWMCPSystem.py  (add-in, IceWMCP version 2.3 and later)
+
+tkPCCard.py  (obselete, IceWMCP version 1.1 and before)
+IceWMCPCursors.py   (obselete, IceWMCP version 2.2 and before)
+IceWMCPKeyEdit.py  (obselete, IceWMCP version 2.2 and before)
+
+___________________________________________________________________
+THIRD-PARTY APPLICATIONS (not supplied by IceWM Control Panel):
+
+userinfo
+usbview
+guname
+xscreensaver-demo
+userpasswd
+usermount
+gnorpm
+gODBCConfig
+kuser
+kcron
+tkantivir
+gtop
+aumix
+gfloppy
+gfcc
+ControlPanel (java)
+
+
+** Note: The vast majority of the third-party applications are standard with most Linux systems, but are also readily available at places like  http://speakeasy.rpmfind.net.  You are responsible for getting these third-party applications if you wish to use them through the IceWM Control Panel, as they are not supplied by IceWM Control Panel.  In addition, you can reconfigure the applets to you other applications in place of these by editing the appropriate .cpl file in the "applets" sub-directory.  Also, you can configure IceWM Control Panel to hide icons you do not wish to have displayed in the control panel.

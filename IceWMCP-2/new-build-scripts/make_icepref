@@ -1,1 +1,53 @@
-dummy file
+cd ../
+thisdir=`pwd`
+rm -fr /INSTALL-IcePref2/*
+mkdir /INSTALL-IcePref2/ &> /dev/null
+mkdir /INSTALL-IcePref2/help/ &> /dev/null
+mkdir /INSTALL-IcePref2/doc/ &> /dev/null
+mkdir /INSTALL-IcePref2/help/es/ &> /dev/null
+mkdir /INSTALL-IcePref2/help/ru/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/es/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/ru/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/zh_TW/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/es/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+cp -f icewmcp_common.py /INSTALL-IcePref2/
+cp -f icewmcp_short.png /INSTALL-IcePref2/
+cp -f icewmcp.png /INSTALL-IcePref2/
+cp -f icewmcp_help.png /INSTALL-IcePref2/
+cp -f icepref2.png /INSTALL-IcePref2/
+cp -f pangoxlfd.py /INSTALL-IcePref2/
+cp -f icepref_search.py /INSTALL-IcePref2/
+cp -f icewmcp_dnd.py /INSTALL-IcePref2/
+cp -f icepref.py /INSTALL-IcePref2/
+cp -f IceWMCPRun.py /INSTALL-IcePref2/
+cp -f ICEWMCP_BugReport.py /INSTALL-IcePref2/
+cp -f ICEWMCP_URLRead.py /INSTALL-IcePref2/
+cp -f IceWMCP_Dialogs.py /INSTALL-IcePref2/
+cp -f ./icons/icewmcp-icepref.png /INSTALL-IcePref2/
+cp -f ./licenses/GPL /INSTALL-IcePref2/IcePref2-LICENSE
+cp -f ./doc/IcePref-doc.html /INSTALL-IcePref2/doc/
+cp -f ./doc/theme_preview.html /INSTALL-IcePref2/doc/
+cp -f ./licenses/GPL /INSTALL-IcePref2/doc/IcePref2-LICENSE
+cp -f ./help/icepref.txt /INSTALL-IcePref2/help/
+cp -f ./help/es/icepref.txt /INSTALL-IcePref2/help/es/
+cp -f ./help/ru/icepref.txt /INSTALL-IcePref2/help/ru/
+cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/es/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/ru/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/
+cp -f ./locale/es/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/es/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/ru/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-icepref.mo /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/
+cp -f ./PyInstallShield/icepref-install-config.txt /INSTALL-IcePref2/install-config.txt
+cp -f ./PyInstallShield/PyInstallShield /INSTALL-IcePref2/
+cp -f ./PyInstallShield/INSTALL-ME.sh /INSTALL-IcePref2/
+cp -f ./new-build-scripts/make_file_list /INSTALL-IcePref2/
+convert ./icons/icewmcp-icepref.png  /INSTALL-IcePref2/install-icon.xpm
+cd /INSTALL-IcePref2/
+./make_file_list
+rm -f make_file_list
+cd $thisdir
+cd ./new-build-scripts/
+./update_install_icepref

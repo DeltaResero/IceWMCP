@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Scheduled\nTasks
+Exec=kcron
+Icon=kcron.png
+Hint=Manage cron jobs and scheduled tasks (KCron)

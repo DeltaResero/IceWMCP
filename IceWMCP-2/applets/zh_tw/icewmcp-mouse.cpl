@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n滑鼠
+Exec=[PHROZEN-INTERNAL]IceWMCPMouse.py
+Icon=icewmcp-mouse.png
+Hint=設定滑鼠的行為、游標與速度

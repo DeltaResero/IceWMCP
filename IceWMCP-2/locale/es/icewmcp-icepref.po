@@ -1,1 +1,1695 @@
-dummy file
+#DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IcePref2  3.1\n"
+"POT-Creation-Date: 2003-02-18 11:35+0100\n"
+"PO-Revision-Date: 2003-08-25 15:51+0400\n"
+"Last-Translator: Erica Andrews <PhrozenSmoke@yahoo.com>\n"
+"Language-Team: SPANISH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: icepref.py
+msgid "Loading...please wait."
+msgstr "Cargando...espera, por favor."
+
+#: icepref.py:1066
+msgid "Ok"
+msgstr "Aceptar"
+
+#: icepref.py:1071
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: icepref.py:1270
+msgid ""
+"WARNING:\n"
+"Newer IceWM themes often\n"
+"override this wallpaper setting."
+msgstr "NOTA:\nAlgunos temas de IceWM\nignoran esta configuración."
+
+#: icepref.py:1274
+msgid " Apply Theme Now! "
+msgstr " ¡Aplicar Tema Ahora! "
+
+#: icepref.py:1275
+msgid " About Theme Previews... "
+msgstr " Acerca de vistas previas de temas... "
+
+#: icepref.py:1296
+msgid "About Theme Previews"
+msgstr "Acerca de vistas previas de temas "
+
+#: icepref.py:1296
+msgid ""
+"Theme previewing is a new feature of IcePref2 (an updated version of IcePref, improved by Erica Andrews [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"Theme previewing requires a JPEG image named $preview.jpg$ in each theme's directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then your preview JPEG should be at /usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (the name MUST be $preview.jpg$). The image should be no larger in size than 200x200 pixels.\n"
+"\n"
+"There are three ways to get $preview$ images for your themes:\n"
+"[1] Download the package of (some) theme previews from icesoundmanager.sourceforge.net\n"
+"[2] Use the theme thumbnails at  http://themes.freshmeat.net/browse/925/?topic_id=925\n"
+"[3] Make the preview images yourself with scaled screenshots.\n"
+"\n"
+"Theme authors are encouraged to add $preview.jpg$ preview files to their distributed theme packages."
+msgstr ""
+"La vista previa de los temas IceWM es una nueva característica de IcePref2 (una versión actualizada de IcePref, mejorada por Erica Andrews [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"La vista previa de los temas IceWM requiere una imagen JPEG nombrada $preview.jpg$ en el directorio de cada tema.  Si su tema está adentro  /usr/X11R6/lib/X11/icewm/themes/nice/, su JPEG debe estar en  /usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (la imagen DEBE ser nombrada $preview.jpg$). La imagen debe ser no más grande de tamaño que los pixeles 200x200.\n"
+"\n"
+"Hay tres maneras de conseguir vistas previas para sus temas:\n"
+"[1] Descargue el paquete de (algunas) vistas previas de icesoundmanager.sourceforge.net\n"
+"[2] Utilice los thumbnails de temas encontrados en  http://themes.freshmeat.net/browse/925/?topic_id=925\n"
+"[3] Haga las previas vistas usted mismo con screenshots escalados.\n"
+"\n"
+"Los autores de temas IceWM deben incluir un archivo $preview.jpg$ con cualquier tema que distribuyan."
+
+#: icepref.py:1324
+msgid ""
+" SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr "ERROR:\nLa imagen no\npodía ser cargada."
+
+#: icepref.py:1382
+msgid "Select Color"
+msgstr "Seleccionar Color"
+
+#: icepref.py:1464
+msgid "Select Font"
+msgstr "Seleccionar Fuente"
+
+#: icepref.py:1490
+msgid "Select a file..."
+msgstr "Seleccione un fichero..."
+
+#: icepref.py:1694
+msgid "File"
+msgstr "Fichero"
+
+#: icepref.py:1694
+msgid "Theme Name"
+msgstr "Nombre del Tema"
+
+#: icepref.py:2049
+msgid "Unable to read local preferences file!"
+msgstr "¡No podía leer el fichero local de preferencias!"
+
+#: icepref.py:2049
+#: icepref.py:2088
+#: icepref.py:2116
+#: icepref.py:2126
+msgid "Warning"
+msgstr "Advertencia"
+
+#: icepref.py:2088
+msgid "There was no preferences file to backup!"
+msgstr "¡No había fichero de preferencias para copiar!"
+
+#: icepref.py:2114
+msgid "IceWM Preferences successfully saved to: "
+msgstr "Preferencias de IceWM guardadas con éxito como: "
+
+#: icepref.py:2114
+msgid "Success"
+msgstr "Éxito"
+
+#: icepref.py:2116
+msgid "There was an ERROR saving your IceWM 'preferences' file."
+msgstr "Había un ERROR mientras que ahorraba el archivo de sus preferencias de IceWM ."
+
+#: icepref.py:2126
+msgid "Restarting IceWM from IcePref is buggy on BSD systems.  You should restart IceWM yourself."
+msgstr "Reiniciar IceWM de IcePref es problemático en sistemas del tipo BSD.  Usted debe reiniciar IceWM usted mismo."
+
+
+#: icepref.py:2142
+msgid ""
+"IcePref %s : a Python-based configuration utility for IceWM.\n"
+"\n"
+"Original Author:  David Mortensen.\n"
+"Updated by: Erica Andrews\n"
+"Site: http://icesoundmananger.sourceforge.net\n"
+"\n"
+"IcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) was updated by Erica Andrews (PhrozenSmoke@yahoo.com) in January 2003.  I, Erica Andrews, have modified IcePref in accordance with the GNU GPL under which IcePref is distributed.  I cannot say I have \"taken over\" the IcePref project, but got tired of it being abandoned and decided to make it more usable with newer versions of IceWM.  The new IcePref includes the new options available in the IceWM preferences file as of IceWM  %s.  The old IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but it appears that David Mortensen has abandoned his project, as he had not updated IcePref since the summer of 2000, and his site no longer exists.\n"
+"\n"
+"You can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  http://icesoundmananger.sourceforge.net.  This updated version of IcePref by Erica Andrews is distributed under the GNU GPL without ANY warranty whatsoever. Use at your own risk! "
+msgstr "IcePref2  %s :  Una utilidad Python-basada para configurar a IceWM.  \nAutor Original:  David Mortensen.  \nPuesto al día por:   Erica Andrews.  \nSitio:  http://icesoundmananger.sourceforge.net \n\nIcePref  %s se optimiza para el uso con IceWM %s.  Esta versión de IcePref (%s) fue puesta al día por Erica Andrews (PhrozenSmoke@yahoo.com) en febrero de 2003.  Yo he modificado IcePref de acuerdo con el GNU GPL debajo del cual se distribuye IcePref.  No puedo decir que \"he asumido el control\" el proyecto de IcePref, pero que he conseguido cansado de que era abandonado y decidido para hacerlo más usable con más nuevas versiones de IceWM.  El IcePref nuevo incluye las nuevas opciones disponibles en las preferencias de IceWM  %s.  El viejo sitio de IcePref estaba en:  http://members.xoom.com/SaintChoj/icepref.html - pero aparece que David Mortensen ha abandonado su proyecto, pues él no había  modificado IcePref desde el verano de 2000, y el suyo sitio Web existe no más.  Usted puede encontrar versiones de IcePref2  (para IceWM 1,2 y más alto) en http://icesoundmananger.sourceforge.net.  \n\nEsta versión de IcePref modificado por Erica Andrews se distribuye debajo del GNU GPL (General Public License) sin NINGUNA garantía cualesquiera.  ¡Uso en su propio riesgo!"
+
+#: icepref.py:2170
+msgid "/_File"
+msgstr "/_Fichero"
+
+#: icepref.py:2171
+msgid "/File/tearoff1"
+msgstr "/_Fichero/tearoff1"
+
+# icepref.py
+# open an IceWM 'preferences' file in ANY directory
+msgid "Open IceWM Preferences File"
+msgstr "Abrir Fichero de Preferencias IceWM"
+
+#: icepref.py:2172
+msgid "/File/_Reload Preferences File"
+msgstr "/_Fichero/_Recargar Fichero de Preferencias"
+
+#: icepref.py:2173
+msgid "/File/Reset _Defaults"
+msgstr "/_Fichero/R_eajustar Defectos"
+
+#: icepref.py:2174
+msgid "/File/_Save Preferences"
+msgstr "/_Fichero/_Guardar Preferencias"
+
+#: icepref.py:2175
+msgid "/File/sep1"
+msgstr "/_Fichero/sep1"
+
+#: icepref.py:2176
+msgid "/File/_Restart IceWM"
+msgstr "/_Fichero/Reiniciar a IceWM"
+
+msgid "Apply"
+msgstr "Aplicar"
+
+msgid "/File/_Apply Changes Now..."
+msgstr "/_Fichero/A_plicar los cambios..."
+
+#: icepref.py:2177
+msgid "/File/sep2"
+msgstr "/_Fichero/sep2"
+
+#: icepref.py:2179
+msgid "/_Category"
+msgstr "/_Categoría"
+
+#: icepref.py:2180
+msgid "/_Category/tearoff2"
+msgstr "/_Categoría/tearoff2"
+
+#: icepref.py:2181
+msgid "/_Tools"
+msgstr "/_Herramientas"
+
+#: icepref.py:2182
+msgid "/_Tools/Edit task bar menus (requires IceMe)..."
+msgstr "/_Herramientas/Corregir menús de IceWM (se requiere IceMe)..."
+
+#: icepref.py:2183
+msgid "/_Tools/Manage sound events (requires IceSoundManager)..."
+msgstr "/_Herramientas/Manejar eventos sonidos (se requiere IceSoundManager)..."
+
+#: icepref.py:2184
+msgid "/_Tools/Open Control Panel (requires IceControlPanel)..."
+msgstr "/_Herramientas/Abrir el Panel de Control (se requiere IceWMControlPanel)..."
+
+#: icepref.py:2185
+msgid "/_Help"
+msgstr "/_Ayuda"
+
+#: icepref.py:2186
+msgid "/Help/_About IcePref2..."
+msgstr "/_Ayuda/Acerca de IcePref2..."
+
+#: icepref.py:2192
+msgid "/_Category/"
+msgstr "/_Categoría/"
+
+#: icepref.py:2375
+msgid "Save"
+msgstr "Guardar"
+
+#: icepref.py:2375
+msgid "Save settings to your IceWM preferences file"
+msgstr "Guardar ajustes a sus preferencias de IceWM"
+
+#: icepref.py:2376
+msgid "Defaults"
+msgstr "Defectos"
+
+#: icepref.py:2376
+msgid "Reset default values"
+msgstr "Reajustar valores defectos"
+
+#: icepref.py:2377
+msgid "Reload"
+msgstr "Recargar"
+
+#: icepref.py:2377
+msgid "Reload the preferences file"
+msgstr "Recargar el fichero de preferencias"
+
+#: icepref.py:2378
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: icepref.py:2378
+msgid "Restart IceWM (does not work on all systems)"
+msgstr "Reiniciar a IceWM (no trabaja en todos los sistemas)"
+
+#: icepref.py:2379
+msgid "Exit"
+msgstr "Salir"
+
+
+# IcePref2 Options - appended
+
+
+msgid "\"Address bar\" shortcut"
+msgstr "Atajo para la barra de tarea"
+
+msgid "\"Arrange icons\" shortcut"
+msgstr "Atajo para arreglar los iconos"
+
+msgid "\"Arrange windows\" shortcut"
+msgstr "Atajo para arreglar las ventanas"
+
+msgid "\"Cascade windows\" shortcut"
+msgstr "Atajo para 'crear ventanas cascadas'"
+
+msgid "\"Close window\" shortcut"
+msgstr "Atajo para cerrar la ventana"
+
+msgid "\"Go to last workspace\" shortcut"
+msgstr "Atajo para ir al espacio de trabajo último"
+
+
+
+
+
+msgid "\"Hide all windows\" shortcut"
+msgstr "Atajo para ocultar todas las ventanas"
+
+msgid "\"Hide window\" shortcut"
+msgstr "Atajo para ocultar la ventana"
+
+msgid "\"Last item\" shortcut"
+msgstr "Atajo para \"artículo pasado\""
+
+msgid "\"Logout / screenlock dialog\" shortcut"
+msgstr "Atajo para 'Salir de IceWM'"
+
+msgid "\"Lower window\" shortcut"
+msgstr "Atajo para bajar la ventana"
+
+msgid "\"Maximize window vertically\" shortcut"
+msgstr "Atajo para maximizar verticalmente la ventana"
+
+msgid "\"Maximize window\" shortcut"
+msgstr "Atajo para maximizar la ventana"
+
+msgid "\"Minimize all windows\" shortcut"
+msgstr "Atajo para minimizar todas las ventanas"
+
+msgid "\"Minimize window\" shortcut"
+msgstr "Atajo para minimizar la ventana"
+
+msgid "\"Move window\" shortcut"
+msgstr "Atajo para mover la ventana"
+
+msgid "\"Next item\" shortcut"
+msgstr "Atajo para \"artículo siguiente\""
+
+
+
+
+
+
+msgid "\"Next sys window\" shortcut"
+msgstr "Atajo para \"ventana siguiente del sistema\""
+
+msgid "\"Next window\" shortcut"
+msgstr "Atajo para \"ventana siguiente\""
+
+msgid "\"Next workspace\" shortcut"
+msgstr "Atajo para \"espacio de trabajo siguiente\""
+
+msgid "\"Occupy all\" shortcut"
+msgstr "Atajo para 'ocupar todo'"
+
+msgid "\"Previous sys window\" shortcut"
+msgstr "Atajo para \"ventana anterior del sistema\""
+
+msgid "\"Previous window\" shortcut"
+msgstr "Atajo para \"ventana anterior\""
+
+msgid "\"Previous workspace\" shortcut"
+msgstr "Atajo para \"espacio de trabajo anterior\""
+
+msgid "\"Program menu\" shortcut"
+msgstr "Atajo para el menú de programas"
+
+msgid "\"Raise window\" shortcut"
+msgstr "Atajo para leventar la ventana"
+
+msgid "\"Restore window\" shortcut"
+msgstr "Atajo para restaurar la ventana"
+
+msgid "\"Rollup window\" shortcut"
+msgstr "Atajo para rodar para arriba la ventana"
+
+msgid "\"Run\" shortcut"
+msgstr "Atajo para 'Usar...' en el menú en la barra de tarea"
+
+msgid "\"Size window\" shortcut"
+msgstr "Atajo para reajustar el tamaño de la ventana"
+
+
+
+msgid "\"Take window to next workspace\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo siguiente'"
+
+msgid "\"Take window to previous workspace\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo anterior'"
+
+msgid "\"Take window to workspace 1\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 1'"
+
+msgid "\"Take window to workspace 10\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 10'"
+
+msgid "\"Take window to workspace 2\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 2'"
+
+msgid "\"Take window to workspace 3\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 3'"
+
+msgid "\"Take window to workspace 4\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 4'"
+
+msgid "\"Take window to workspace 5\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 5'"
+
+msgid "\"Take window to workspace 6\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 6'"
+
+msgid "\"Take window to workspace 7\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 7'"
+
+msgid "\"Take window to workspace 8\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 8'"
+
+msgid "\"Take window to workspace 9\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 9'"
+
+
+
+
+msgid "\"Tile windows horizontally\" shortcut"
+msgstr "Atajo para embaldosar las ventanas horizontalmente"
+
+msgid "\"Tile windows vertically\" shortcut"
+msgstr "Atajo para embaldosar las ventanas verticalmente"
+
+msgid "\"Undo arrange\" shortcut"
+msgstr "Atajo para deshacer 'arreglar'"
+
+msgid "\"Window full-screen\" shortcut"
+msgstr "Atajo para llenar la pantalla con la ventana"
+
+
+
+
+
+msgid "\"Window list\" shortcut"
+msgstr "Atajo para la 'Lista de Ventanas'"
+
+msgid "\"Window menu\" shortcut"
+msgstr "Atajo para el \"menú de ventanas\""
+
+msgid "\"Workspace 1\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 1\""
+
+msgid "\"Workspace 10\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 10\""
+
+msgid "\"Workspace 2\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 2\""
+
+msgid "\"Workspace 3\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 3\""
+
+msgid "\"Workspace 4\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 4\""
+
+msgid "\"Workspace 5\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 5\""
+
+msgid "\"Workspace 6\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 6\""
+
+msgid "\"Workspace 7\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 7\""
+
+msgid "\"Workspace 8\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 8\""
+
+msgid "\"Workspace 9\" shortcut"
+msgstr "Atajo para \"Espacio de trabajo 9\""
+
+msgid "\"Workspace take last window\" shortcut"
+msgstr "Atajo para 'Espacio de trabajo toma la ventana última'"
+
+msgid "APM color"
+msgstr "Color de APM"
+
+msgid "APM font"
+msgstr "Fuente de APM"
+
+msgid "APM text color"
+msgstr "Color del texto de APM"
+
+msgid "Active border color"
+msgstr "Color de la frontera activa"
+
+msgid "Active button color"
+msgstr "Color del botón activo"
+
+msgid "Active button font"
+msgstr "Fuente del botón activo"
+
+msgid "Active button text color"
+msgstr "Color del texto del botón activo"
+
+msgid "Active menu item color"
+msgstr "Color del artículo de menú activo"
+
+msgid "Active menu item text color"
+msgstr "Color del texto del artículo activo de menú"
+
+msgid "Active minimized window color"
+msgstr "Color de la ventana minimizada activa"
+
+msgid "Active minimized window text color"
+msgstr "Color del texto de la ventana minimizada activa"
+
+msgid "Active taskbar app color"
+msgstr "Color de un programa activo en la barra de tarea"
+
+msgid "Active taskbar app text color"
+msgstr "Color del texto de un programa activo en la barra de tarea"
+
+msgid "Active taskbar font"
+msgstr "Fuente de la barra de tarea activa"
+
+msgid "Active title bar color"
+msgstr "Color de la barra de título activa"
+
+msgid "Active title bar shadow"
+msgstr "Sombra de la barra de título activa"
+
+msgid "Active title bar text color"
+msgstr "Color del texto de la barra de título activa"
+
+msgid "Active workspace  font"
+msgstr "Fuente del espacio de trabajo activo"
+
+msgid "Address bar font"
+msgstr "Fuente de barra de dirección"
+
+msgid "Allow mouse actions on client windows (buggy with some programs)"
+msgstr "Permitir las acciones del ratón en las ventanas del cliente (hay problemas con algunos programas)"
+
+msgid "Alternate clock time format (for \"flashing\" effects - strftime format string - see man page \"strftime\" for more info)  Note: Leaving this blank may result in NO clock showing at all."
+msgstr "Formato alternativo del tiempo del reloj (para los efectos \"que destellan\" - el formato del strftime - vea  \" man strftime\" para más información):  Dejar este espacio en blanco puede dar lugar a NINGÚN reloj que demuestra en todos."
+
+
+msgid "Always maintain focus under mouse window (makes some keyboard support non-functional)"
+msgstr "Mantener siempre el foco debajo de la ventana del ratón (una cierta ayuda del teclado  se inhabilitare)"
+
+msgid "Ask for confirmation on logout"
+msgstr "Pedir confirmación antes de 'Salir de IceWM'"
+
+msgid "Auto hide task bar after delay"
+msgstr "Ocultar la barra de tarea automáticamente después de retraso"
+
+msgid "Auto raise windows after delay"
+msgstr "Ventanas se levantan automáticamente después de retraso"
+
+msgid "Auto scroll delay"
+msgstr "Retraso al enrollar automáticamente"
+
+msgid "Automatically disable some functions when running under GNOME"
+msgstr "Inhabilitar automáticamente algunas funciones al funcionar debajo de GNOME"
+
+msgid "Autoscroll start delay"
+msgstr "Retraso antes de enrollar automáticamente"
+
+msgid "Beep when new mail arrives"
+msgstr "Señalar cuando llega el nuevo correo-e  (con Bip)"
+
+msgid "Bitmask of buttons that raise the window when pressed"
+msgstr "Combinación de botones que levantan la ventana cuando están presionados"
+
+msgid "Bitmask of root window button click to use in window manager"
+msgstr "Botón de la ventana 'raiz' a utilizar en el gestor de ventanas"
+
+msgid "Border size of quick-switch icons"
+msgstr "Tamaño de la frontera de los iconos en la ventana Quick-Switch"
+
+msgid "CPU Idle color"
+msgstr "Color ocioso de la CPU"
+
+msgid "CPU status WM_CLASS hint"
+msgstr "Indirecta para 'WM_CLASS' en el estado de la CPU"
+
+msgid "Center dialogs on owner window"
+msgstr "Centrar diálogos en ventana del dueño"
+
+msgid "Center maximixed windows"
+msgstr "Centrar ventanas maximizadas"
+
+msgid "Change workspaces when focusing on a window on another workspace"
+msgstr "Cambiar el espacio de trabajo al centrarse en una ventana en otro espacio de trabajo"
+
+msgid "Clock color"
+msgstr "Color del reloj"
+
+msgid "Clock date format for tooltip (strftime format string - see man page \"strftime\" for more info)"
+msgstr "Formato de fecha del reloj para la indirecta (en el formato 'strftime' - vea  \"man strftime\" para más información)"
+
+msgid "Clock font"
+msgstr "Fuente del reloj"
+
+msgid "Clock status WM_CLASS hint"
+msgstr "Indirecta para 'WM_CLASS' en el estado del reloj"
+
+msgid "Clock text color"
+msgstr "Color del texto del reloj"
+
+msgid "Clock time format (strftime format string - see man page \"strftime\" for more info)"
+msgstr "Formato del tiempo del reloj (en el formato 'strftime' - vea  \"man strftime\" para más información)"
+
+msgid "Color of active workspace button"
+msgstr "Color del botón del espacio de trabajo activo"
+
+msgid "Color of disabled menu items"
+msgstr "Color de los artículos de menú inhabilitados"
+
+msgid "Color of inactive workspace button text"
+msgstr "Color del texto del botón del espacio de trabajo inactivo"
+
+msgid "Color of normal workspace button"
+msgstr "Color del botón del espacio de trabajo normal"
+
+msgid "Color of normal workspace button text"
+msgstr "Color del texto del botón del espacio de trabajo normal"
+
+msgid "Color of quick-switch highlight rectangle"
+msgstr "Color del rectángulo resaltado en la ventana Quick-Switch"
+
+msgid "Color of received data on net monitor"
+msgstr "Color de datos recibidos para el monitor de la Red"
+
+msgid "Color of sent data on net monitor"
+msgstr "Color de datos enviados para el monitor de la Red"
+
+msgid "Color representing idle on net monitor"
+msgstr "Color a utilizar en el monitor de la Red cuando está ociosa"
+
+msgid "Color to use for transparent applications"
+msgstr "Color a utilizar para los programas transparentes"
+
+msgid "Colormap follows pointer"
+msgstr "Mapa de colores sigue el puntero del ratón"
+
+msgid "Command to cancel logout"
+msgstr "Mando de cancelar 'Salir de IceWM'"
+
+msgid "Command to lock display or show screensaver"
+msgstr "Mando de encerrar con contraseña el sistema o ejecutar la salvapantalla (el screensaver)"
+
+msgid "Command to reboot the system"
+msgstr "Mando de reiniciar el sistema"
+
+msgid "Command to run for address bar entries when [Enter] is pressed on the address bar"
+msgstr "Mando de ejecutar para las entradas de la barra de dirección cuando se presiona 'Enter' en la barra de dirección"
+
+msgid "Command to run when CPU status monitor is clicked"
+msgstr "Mando de ejecutar cuando se hace clic en el monitor del estado de CPU"
+
+msgid "Command to run when mailbox icon is clicked"
+msgstr "Mando de ejecutar cuando se hace clic en el icono de correo-e"
+
+msgid "Command to run when net status monitor is clicked"
+msgstr "Mando de ejecutar cuando se hace clic en el monitor de la Red"
+
+msgid "Command to run when new mail arrives"
+msgstr "Mando de ejecutar cuando llega el nuevo correo-e"
+
+msgid "Command to run when the taskbar clock is clicked"
+msgstr "Mando de ejecutar cuando se hace clic en el reloj en la barra de tarea"
+
+msgid "Command to select and run a program (The \"Run...\" command on the taskbar menu)"
+msgstr "Mando de seleccionar y ejecutar un programa ('Usar...' en el menú de la barra de tarea)"
+
+
+msgid "Command to shut down the system"
+msgstr "Mando de parar el sistema"
+
+msgid "Command to start logout"
+msgstr "Mando de comenzar a salir de IceWM"
+
+msgid "Count messages in mailbox"
+msgstr "Contar mensajes en la cuenta de correo-e"
+
+msgid "Default IceWM dialog action (0 for \"Cancel\", 1 for \"OK\")"
+msgstr "Acción defecto para los diálogos de IceWM  (0 para  \"Cancelar\", 1 para \"Aceptar\")"
+
+msgid "Default taskbar color"
+msgstr "Color defecto de la barra de tarea"
+
+msgid "Delay before activating menu items"
+msgstr "Retraso antes de activar artículos de menú"
+
+msgid "Delay before activating menu submenus"
+msgstr "Retraso antes de activar submenus del menú"
+
+msgid "Delay before click gets interpreted as drag"
+msgstr "Retraso antes de que un clic del ratón consiga interpretado como 'drag'"
+
+msgid "Delay before task bar is automatically hidden"
+msgstr "Retraso antes de que la barra de tarea se oculte automáticamente"
+
+msgid "Delay before tooltip window is displayed"
+msgstr "Retraso antes de que se exhiba la indirecta (tooltip)"
+
+msgid "Delay before windows are auto raised"
+msgstr "Retraso antes de que ventanas sean levantado automáticamente"
+
+msgid "Delay between new-mail checks in seconds"
+msgstr "Retraso entre las actualizaciones de correo-e en segundos"
+
+msgid "Delay for pointer focus switching"
+msgstr "Retraso antes de cambiar el foco del puntero de ratón"
+
+msgid "Delay pointer focusing when mouse moves"
+msgstr "Retrasa el enfocar del puntero de ratón cuando el ratón se mueve"
+
+
+msgid "Desktop background color"
+msgstr "Color del fondo de escritorio"
+
+msgid "Desktop wallpaper image"
+msgstr "Imagen para el fondo de escritorio"
+
+msgid "Dialog Label color"
+msgstr "Color de la etiqueta del diálogo"
+
+msgid "Dialog Label font"
+msgstr "Fuente de la etiqueta del diálogo"
+
+msgid "Dialog Label text color"
+msgstr "Color del texto de la etiqueta del diálogo"
+
+msgid "Dialog box color"
+msgstr "Color de la caja de diálogo"
+
+msgid "Disable Gdk-Imlib image cache use"
+msgstr "Inhabilitar el uso del escondrijo de imágenes de Gdk-Imlib"
+
+msgid "Disabled menu item text color"
+msgstr "Color del texto de artículos de menú inhabilitados"
+
+msgid "Display desktop wallpaper centered, instead of tiled."
+msgstr "Papel pintado de escritorio centrado, en vez de embaldosado."
+
+msgid "Display mini-icons on desktop for minimized windows"
+msgstr "Mostrar iconos pequeños en el escritorio para ventanas minimizadas"
+
+msgid "Distance in pixels before windows snap together"
+msgstr "La distancia en pixeles antes de que una ventana se conecta con la otra"
+
+msgid "Do not rotate the mouse cursor when displaying a menu"
+msgstr "No rote el puntero de ratón al exhibir un menú"
+
+msgid "Enable Alt+Tab to minimized windows"
+msgstr "Permitir 'Alt-Tab' a ventanas minimizadas"
+
+msgid "Enable Alt+Tab to windows on other workspaces"
+msgstr "Permitir 'Alt-Tab' a ventanas en otros espacios de trabajo"
+
+msgid "Enable Alt-Tab to hidden windows"
+msgstr "Permitir 'Alt-Tab' a ventanas ocultadas"
+
+msgid "Enable Quick-switch (Alt+Tab) window switching"
+msgstr "Permitir el uso de Quick-Switch (Alt+Tab)"
+
+msgid "Enable XFreeType extension (buggy, may result in font-loading errors)"
+msgstr "Permitir extensión de XFreeType (hay problemas, puede dar lugar a errores al cargar las fuentes)"
+
+
+
+msgid "Enable horizontal edge switch for the desktop"
+msgstr "Permitir el cambio del borde horizontal  para el escritorio"
+
+msgid "Enable vertical edge switch for the desktop"
+msgstr "Permitir el cambio del borde vertical para el escritorio"
+
+msgid "FX Font font"
+msgstr "Fuente de FX"
+
+msgid "Fill highlight rectangle"
+msgstr "Llenar el rectángulo resaltado"
+
+msgid "Focus dialog window when initally mapped"
+msgstr "La ventana del diálogo se enfoca cuando creada inicialmente"
+
+msgid "Focus dialog window when initially mapped only if parent frame focused"
+msgstr "La ventana del diálogo se enfoca cuando creada inicialmente solamente si el marco del padre se enfocó"
+
+msgid "Focus normal window when initially mapped"
+msgstr "La ventana normal se enfoca cuando creada inicialmente"
+
+msgid "Focus window when application window is raised"
+msgstr "La ventana se enfoca cuando se levanta la ventana del programa"
+
+msgid "Focus window when client area clicked"
+msgstr "La ventana se enfoca cuando se hace clic en el área del cliente"
+
+msgid "Focus windows by clicking"
+msgstr "Las ventanas se enfocan cuando se hacen clic"
+
+msgid "Horizontal dialog window border"
+msgstr "Frontera horizontal de la ventana del diálogo"
+
+msgid "Horizontal margin of quick-switch window"
+msgstr "Margen horizontal de la ventana Quick-Switch"
+
+msgid "Horizontal scrollbar button size"
+msgstr "Tamaño horizontal del botón de la barra de enrollar"
+
+msgid "Horizontal window border"
+msgstr "Frontera horizontal de la ventana"
+
+msgid "IceWM Themes"
+msgstr "Temas de IceWM"
+
+msgid "IceWM manages the root window"
+msgstr "IceWM maneja la ventana 'raíz'"
+
+msgid "Icon search path (colon separated)"
+msgstr "Los directorios donde se encuentran los iconos (dos puntos separados)"
+
+msgid "Image to use for transparent applications"
+msgstr "Imagen a utilizar para los programas transparentes"
+
+msgid "Inactive scrollbar button arrow color"
+msgstr "Color de la flecha del botón de la barra de enrollar inactiva"
+
+msgid "Inactive title bar shadow"
+msgstr "Sombra de la barra del título inactiva"
+
+msgid "Initial scrollbar autoscroll delay"
+msgstr "Retraso inicial para las barras de enrollar cuando se enrollan automáticamente"
+
+msgid "Input color (Address bar)"
+msgstr "Color de la entrada (barra de dirección)"
+
+msgid "Input selection color (Address bar)"
+msgstr "Color de la selección de la entrada (barra de dirección)"
+
+msgid "Input selection text color (Address bar)"
+msgstr "Color del texto seleccionado de la entrada (barra de dirección)"
+
+msgid "Input text color (Address bar)"
+msgstr "Color del texto de entrada (barra de dirección)"
+
+msgid "Invisible taskbar app color"
+msgstr "Color de los programas invisibles en la barra de tarea"
+
+msgid "Invisible taskbar app text"
+msgstr "Texto de los programas invisibles en la barra de tarea"
+
+msgid "KDE menu data directory"
+msgstr "Directorio de datos del menú de KDE"
+
+msgid "Keep tasbar below all other windows"
+msgstr "Mantener la barra de tarea debajo del resto de las ventanas"
+
+msgid "Launch task bar programs (clock, etc.) on a single click"
+msgstr "Lanzar programas de la barra de tarea  (reloj, etc.)  haciendo un solo clic"
+
+msgid "Limit by dock layer"
+msgstr "Límitar por capa de muelle"
+
+msgid "Limit initial position of windows to screen"
+msgstr "Guardar la posición inicial de ventanas dentro de la pantalla"
+
+msgid "Limit initial size of windows to screen"
+msgstr "Guardar el tamaño inicial de ventanas dentro de la pantalla"
+
+msgid "List box color (Window list)"
+msgstr "Color de la caja de lista (lista de ventanas)"
+
+msgid "List box font (Window list box)"
+msgstr "Fuente de la caja de lista (lista de ventanas)"
+
+msgid "List box selection color (Window list)"
+msgstr "Color de la selección de la caja de lista (lista de ventanas)"
+
+msgid "List box selection text color (Window list)"
+msgstr "Color del texto de la selección de la caja de lista (lista de ventanas)"
+
+msgid "List box text color (Window list)"
+msgstr "Color del texto de la caja de lista (lista de ventanas)"
+
+msgid "List of battery names (directories) in /proc/acpi/battery to ignore for APM"
+msgstr "Lista de los nombres de baterías (directorios)  en /proc/acpi/battery a no hacer caso para APM"
+
+
+
+
+msgid "List of gradient images in the current theme"
+msgstr "Lista de las imágenes gradientes en el tema actual"
+
+msgid "Lower a raised window if clicked a second time"
+msgstr "Bajar una ventana levantada al hacer clic una segunda vez"
+
+msgid "Mail status WM_CLASS hint"
+msgstr "Indirecta para 'WM_CLASS' del estado de correo-e"
+
+msgid "Mailbox path ($MAIL is used if no value is specified).  Example: file:///var/spool/mail/my_username       Example: pop3://my_username:my_password@my.mail-host.com/      Example: imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+msgstr "URL de la cuenta de correo-e ($MAIL se utiliza si no se especifica ningún valor).  Ejemplo:   file:///var/spool/mail/my_username  Ejemplo:  pop3://my_username:my_password@my.mail-host.com/     ejemplo:  imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+
+msgid "Maximum menu width (0 to let IceWM decide)"
+msgstr "Anchura máxima del menú (0 para permitir que IceWM decida)"
+
+msgid "Menu font"
+msgstr "Fuente del menú"
+
+msgid "Menus track mouse even with no mouse buttons held"
+msgstr "Los menús siguen el ratón incluso cuando no se presiona ningunos botones de ratón"
+
+msgid "Minimized taskbar app color"
+msgstr "Color usar en la barra de tarea para programas minimizados"
+
+msgid "Minimized taskbar app text"
+msgstr "Texto usar en la barra de tarea para programas minimizados"
+
+msgid "Minimized window font"
+msgstr "Fuente de la ventana minimizada"
+
+msgid "Mouse-button clicked on desktop to show menu"
+msgstr "Botón de ratón se hace clic en el escritorio para demostrar el menú"
+
+msgid "Mouse-button clicked on desktop to show window list"
+msgstr "Botón de ratón se hace clic en el escritorio para mostrar la lista de ventanas"
+
+msgid "Mouse-button clicked on desktop to show window list menu"
+msgstr "Botón de ratón se hace clic en el escritorio para mostrar el menú de la Lista de Ventanas"
+
+msgid "Mouse-button clicked on titlebar to maximize window"
+msgstr "Botón de ratón se hace clic en el barra de título para maximizar la ventana"
+
+msgid "Mouse-button clicked on titlebar to roll up window"
+msgstr "Botón de ratón se hace clic en el barra de título para rodar para arriba la ventana"
+
+msgid "Move mouse when doing focusing in pointer focus mode"
+msgstr "Mover el ratón al hacer enfocarse en modo del foco del puntero"
+
+msgid "Move/size status color"
+msgstr "Color del estado usado para Mover/Reajustar el tamaño"
+
+msgid "Move/size status text color"
+msgstr "Color del texto del estado usado para Mover/Reajustar el tamaño"
+
+msgid "Multibyte internationalization support"
+msgstr "Apoyar 'Multibyte' para la internacionalización"
+
+msgid "Mouse double-click speed"
+msgstr "Velocidad de doble clic del ratón"
+
+msgid "Names of the Workspaces"
+msgstr "Nombres de los espacios de trabajo"
+
+msgid "Net status WM_CLASS hint"
+msgstr "Indirecta 'WM_CLASS' del estado de red"
+
+msgid "Network device for which to show network status (examples:  ppp0, lo, eth0)"
+msgstr "Unidades de Red para que mostrar el estado de la red  (ejemplos:  ppp0, lo, eth0)"
+
+msgid "Nice CPU usage color"
+msgstr "Color del uso 'bueno' de CPU"
+
+msgid "Normal border color"
+msgstr "Color normal de la frontera"
+
+msgid "Normal button color"
+msgstr "Color normal del botón"
+
+msgid "Normal button font"
+msgstr "Fuente normal del botón"
+
+msgid "Normal button text color"
+msgstr "Color normal del texto del botón"
+
+msgid "Normal menu color"
+msgstr "Color normal del menú"
+
+msgid "Normal menu item text color"
+msgstr "Color normal del texto de los artículos del menú"
+
+msgid "Normal minimized window color"
+msgstr "Color normal de la ventana minimizada"
+
+msgid "Normal minimized window text color"
+msgstr "Color normal del texto de la ventana minimizada"
+
+
+msgid "Normal taskbar app text color"
+msgstr "Color normal de los programas en la barra de tarea"
+
+msgid "Normal taskbar color"
+msgstr "Color normal de la barra de tarea"
+
+msgid "Normal taskbar font"
+msgstr "Fuente normal de la barra de tarea"
+
+msgid "Normal title bar color"
+msgstr "Color normal de la barra del título"
+
+msgid "Normal title bar text color"
+msgstr "Color normal del texto de la barra del título"
+
+msgid "Normal title button color"
+msgstr "Color normal del botón del título"
+
+msgid "Normal title button text color"
+msgstr "Color normal del texto del botón del título"
+
+msgid "Normal workspace  font"
+msgstr "Fuente normal del espacio de trabajo"
+
+msgid "Number of milliseconds to display the workspace tooltip when changing workspaces"
+msgstr "Número de milisegundos para demostrar la indirecta (tooltip) del espacio de trabajo al cambiar espacios de trabajo"
+
+msgid "Opaque window move"
+msgstr "Las ventanas son opacas cuando se mueven"
+
+msgid "Opaque window resize"
+msgstr "Las ventanas son opacas cuando se vuelven a clasificar según el tamaño"
+
+msgid "Open command"
+msgstr "Mando de 'Abrir'"
+
+msgid "Pass focusing click on client area to client"
+msgstr "Los tecleos al foco en el área del cliente se pasan al cliente"
+
+msgid "Pointer motion distance before click gets interpreted as drag"
+msgstr "Distancia del movimiento del puntero antes de que el tecleo consiga interpretado como 'drag'"
+
+msgid "Quick switch text color"
+msgstr "Color del texto del Quick-Switch"
+
+msgid "Quick switch window color"
+msgstr "Color de la ventana Quick-Switch"
+
+msgid "Quick switch window font"
+msgstr "Fuente de la ventana Quick-Switch"
+
+msgid "Raise when frame border is clicked"
+msgstr "Ventana se levanta cuando se hace clic en la frontera del marco"
+
+msgid "Raise when frame button is clicked"
+msgstr "Ventana se levanta cuando se hace clic en el botón del marco"
+
+msgid "Raise window when client area clicked"
+msgstr "Ventana se levanta cuando se hace clic en el área del cliente"
+
+msgid "Raise window when title bar is clicked"
+msgstr "Ventana se levanta cuando se hace clic en la barra del título"
+
+msgid "Raise windows when focused"
+msgstr "Ventanas se levantan cuando se están enfocados"
+
+msgid "Reload menu files automatically"
+msgstr "Recargar los ficheros del menú automáticamente"
+
+msgid "Resistance in pixels when trying to move windows off the screen"
+msgstr "Resistencia en pixeles al intentar mover ventanas de la pantalla"
+
+msgid "Resize corner height"
+msgstr "La altura de la esquina para volver a clasificar según el tamaño"
+
+msgid "Resize corner width"
+msgstr "La anchura de la esquina para volver a clasificar según el tamaño"
+
+msgid "Screen edge workspace switching delay"
+msgstr "Retraso de cambio de espacios de trabajo al mover al borde de la pantalla"
+
+msgid "Scroll bar arrow color"
+msgstr "Color de la flecha de la barra de enrollar (Scrollbar)"
+
+msgid "Scroll bar color"
+msgstr "Color de la barra de enrollar (Scrollbar)"
+
+msgid "Scroll bar delay"
+msgstr "Retraso de la barra de enrollar (Scrollbar)"
+
+msgid "Scroll bar slider color"
+msgstr "Color del resbalador en la barra de enrollar (Scrollbar)"
+
+msgid "Scrollbar button arrow color"
+msgstr "Color de la flecha del botón en la barra de enrollar (Scrollbar)"
+
+msgid "Scrollbar button color"
+msgstr "Color del botón en la barra de enrollar  (Scrollbar)"
+
+msgid "Send the clicks outside menus to target window"
+msgstr "Enviar los tecleos fuera de menús a la ventana de la blanco"
+
+msgid "Show \"Start\" menu on task bar"
+msgstr "Mostrar el menú de \"Comenzar\" en el menú de la barra de tarea"
+
+msgid "Show \"window list\" menu on task bar"
+msgstr "Mostrar \"lista de ventanas\" en el menú de la barra de tarea"
+
+msgid "Show Advanced Power Management (APM) status on task bar"
+msgstr "Mostrar el estado de la gerencia avanzada de energía (APM) en barra de tarea"
+
+msgid "Show Advanced Power Management time"
+msgstr "Mostrar el tiempo de la gerencia avanzada de energía (APM)"
+
+msgid "Show CPU status on task bar"
+msgstr "Mostrar el estado de la CPU en barra de tarea"
+
+msgid "Show a small window"
+msgstr "Mostrar una ventana pequeña"
+
+msgid "Show address bar on the task bar"
+msgstr "Mostrar la barra de dirección en la barra de tarea"
+
+msgid "Show all icons"
+msgstr "Mostrar todos los iconos"
+
+msgid "Show all windows on the taskbar"
+msgstr "Mostrar todas las ventanas en la barra de tarea"
+
+msgid "Show application icon over menu button"
+msgstr "Mostrar el icono sobre el botón del menú"
+
+msgid "Show clock on task bar"
+msgstr "Mostrar el reloj en la barra de tarea"
+
+msgid "Show mailbox status on the task bar"
+msgstr "Mostrar el estado de correo-e en la barra de tarea"
+
+msgid "Show network status on task bar"
+msgstr "Mostrar el estado de Red en barra de tarea"
+
+msgid "Show popup menus above mouse pointer"
+msgstr "Mostrar los menús popup sobre el puntero de ratón"
+
+msgid "Show position status window during move/resize"
+msgstr "Mostrar la indirecta para el estado de la posición al mover y al volver a clasificar según el tamaño"
+
+msgid "Show task bar"
+msgstr "Mostrar la barra de tarea"
+
+msgid "Show task tray on task bar"
+msgstr "Mostrar la bandeja de tarea en la barra de tarea"
+
+msgid "Show text above icons"
+msgstr "Mostrar el texto sobre iconos"
+
+msgid "Show the \"logout\" menu on the task bar menu"
+msgstr "Mostrar el menú para  \"Salir\" en el menú de la barra de tarea"
+
+msgid "Show the IceWM \"help\" item on the task bar menu"
+msgstr "Mostrar el artículo de \"Ayuda\" en el menú de la barra de tarea"
+
+msgid "Show the submenu for selecting themes"
+msgstr "Mostrar el menú para seleccionar temas de IceWM"
+
+msgid "Show window icons on the task bar"
+msgstr "Mostrar iconos para las ventanas en la barra de tarea"
+
+msgid "Show windows from all workspaces on task bar"
+msgstr "Mostrar ventanas de todos los espacios de trabajo en la barra de tarea"
+
+msgid "Show windows on the task bar"
+msgstr "Mostrar ventanas en la barra de tarea"
+
+msgid "Show workspace switching buttons on task bar"
+msgstr "Mostrar los botones de los espacios de trabajo en la barra de tarea"
+
+msgid "Show workspace tooltip when changing workspaces"
+msgstr "Mostrar la indirecta (tooltip) del espacio de trabajo al cambiar espacios de trabajo"
+
+msgid "Size of icon margins of quick-switch icons"
+msgstr "Tamaño de los márgenes de los iconos del Quick-Switch"
+
+
+msgid "Size of the quick-switch window separator"
+msgstr "Tamaño del separador de la ventana Quick-Switch"
+
+msgid "Smart window placement (minimize overlap)"
+msgstr "Colocación elegante de ventanas (reducir al mínimo el traslapo)"
+
+msgid "Snap to nearest screen edge/window when moving windows"
+msgstr "Mover al border más cerca al mover ventanas"
+
+msgid "Status font"
+msgstr "Fuente del estado"
+
+msgid "Support Windows95/98-style keyboard keys"
+msgstr "Apoyar Windows95/98-como teclas"
+
+msgid "Support mouse wheel"
+msgstr "Apoyar rueda del ratón"
+
+msgid "Support semi-transparent applications like gnome-terminal"
+msgstr "Apoyar terminales con transparencia, como gnome-terminal"
+
+msgid "System CPU usage color"
+msgstr "Color del uso del sistema CPU"
+
+msgid "Taking the mouse pointer to the edge of the screen moves to the next workspace"
+msgstr "Llevar el puntero de ratón al borde de la pantalla se mueve al espacio de trabajo siguiente"
+
+msgid "Task bar at top of the screen"
+msgstr "Barra de tarea en la parte superior de la pantalla"
+
+msgid "Task bar clock uses nice pixmapped LCD display"
+msgstr "El reloj de la barra de tarea tiene una exhibición LCD con pixmaps"
+
+msgid "Task tray has a bevel around it (Like the Windows system tray)"
+msgstr "La bandeja de tarea tiene un cartabón alrededor de ella (como la bandeja del sistema en  Windows)"
+
+msgid "Terminal emulator (must accept -e option)"
+msgstr "Terminal emulator (debe aceptar la opción '-e')"
+
+msgid "Theme author"
+msgstr "Autor del tema"
+
+msgid "Theme Author"
+msgstr "Autor del Tema"
+
+msgid "Theme description"
+msgstr "Descripción del tema"
+
+msgid "Theme Description"
+msgstr "Descripción del Tema"
+
+msgid "Time before tooltip is hidden"
+msgstr "El tiempo antes de la indirecta (tooltip) se oculta"
+
+msgid "Title bar font"
+msgstr "Fuente de la barra del título"
+
+msgid "Title bar height"
+msgstr "Altura de la barra del título"
+
+msgid "Title bar join left"
+msgstr "La barra del título se conecta con la izquierda"
+
+msgid "Title bar join right"
+msgstr "La barra del título se conecta con la derecha"
+
+msgid "Title bar text horizontal offset"
+msgstr "Compensación horizontal del texto en la barra del título"
+
+msgid "Title bar text position"
+msgstr "Posición del texto de la barra del título"
+
+msgid "Title bar text vertical offset"
+msgstr "Compensación vertical del texto en la barra del título"
+
+msgid "Titlebar buttons from left to right (x=close, m=max, i=min, h=hide, r=rollup, s=sysmenu)"
+msgstr "Botones en la barra del título de izquierda a derecha (x=cerrar, m=maximizar, i=minimizar, h=ocultar, r=rodar para arriba, s=menú del sistema)"
+
+msgid "Titlebar buttons from right to left (x=close, m=max, i=min, h=hide, r=rollup, s=sysmenu)"
+msgstr "Botones en la barra del título de derecho a la izquierda (x=cerrar, m=maximizar, i=minimizar, h=ocultar, r=rodar para arriba, s=menú del sistema)"
+
+msgid "Titlebar buttons supported by theme (x, m, i, r, h, s, d)"
+msgstr "Botones de la barra del título apoyados por el tema (x, m, i, r, h, s, d)"
+
+msgid "Tool Button font"
+msgstr "Fuente del botón 'herramienta'"
+
+msgid "Toolbar button color"
+msgstr "Color del botón en la barra de herramientas (Toolbar)"
+
+msgid "Toolbar button text color"
+msgstr "Color del texto del botón en la barra de herramientas (Toolbar)"
+
+msgid "Tooltip color"
+msgstr "Color de la indirecta (Tooltip)"
+
+msgid "Tooltip font"
+msgstr "Fuente de la indirecta (Tooltip)"
+
+msgid "Tooltip text color"
+msgstr "Color del texto de la indirecta (Tooltip)"
+
+msgid "Treat Penguin/Meta_L/Meta_R/Windows keys as Ctrl+Alt"
+msgstr "Teclas Penguin/Meta_L/Meta_R/Windows son iguales que Ctrl+Alt"
+
+msgid "Use double height task bar (highly recommended)"
+msgstr "Utilizar una altura doble para la barra de tarea (recomendada altamente)"
+
+msgid "Use large (48x48) icons in quick switch window"
+msgstr "Utilizar iconos grandes (48x48) en la ventana Quick-Switch"
+
+msgid "User CPU usage color"
+msgstr "Color del uso de usuario de CPU"
+
+msgid "Veritical window border"
+msgstr "Frontera vertical de la ventana"
+
+msgid "Vertical dialog window border"
+msgstr "Frontera vertical de la ventana del diálogo"
+
+msgid "Vertical margin of quick-switch window"
+msgstr "Margen vertical de la ventana Quick-Switch"
+
+msgid "Vertical scrollbar button size"
+msgstr "Tamaño del botón la barra de enrollar vertical"
+
+msgid "Width of CPU Monitor"
+msgstr "Anchura del monitor de CPU"
+
+msgid "Windows initially placed manually by user"
+msgstr "Ventanas puestas inicialmente manualmente por el usuario"
+
+msgid "Workspace switches by moving mouse to left/right screen edge"
+msgstr "El espacio de trabajo cambia moviendo el ratón al borde izquierdo/derecho de la pantalla"
+
+msgid "Xinerama primary screen"
+msgstr "Pantalla primaria para Xinerama"
+
+
+msgid "Windows"
+msgstr "Ventanas"
+
+msgid "Quick Switch"
+msgstr "Cambio-Rápido"
+
+msgid "Dialogs"
+msgstr "Diálogos"
+
+msgid "Menus"
+msgstr "Menús"
+
+msgid "Task Bar"
+msgstr "Barra de Tarea"
+
+msgid "Task Bar Applets"
+msgstr "Applets de la Barra de Tarea"
+
+msgid "Scroll Bars"
+msgstr "Barras de Enrollar"
+
+msgid "Tool Tips"
+msgstr "ToolTips (Indirectas)"
+
+msgid "Mouse"
+msgstr "Ratón"
+
+msgid "Title Bars"
+msgstr "Barras de Título"
+
+msgid "Miscellaneous"
+msgstr "Misceláneo"
+
+msgid "Themes"
+msgstr "Temas"
+
+msgid "Address Bar"
+msgstr "Barra de Dirección"
+
+msgid "Desktop"
+msgstr "Escritorio"
+
+msgid "Key Bindings"
+msgstr "Teclas"
+
+msgid "Workspaces"
+msgstr "Espacios de Trabajo"
+
+
+
+#: icepref.py:2363
+msgid "/File/_Exit IcePref2"
+msgstr "/Fichero/_Salir de IcePref2"
+
+#: icepref.py:2367
+msgid "/_Tools/Theme Designer (requires IcePref2-TD)..."
+msgstr "/_Herramientas/Diseñador de Temas (se requiere IcePref2-TD)..."
+
+#: icepref.py:2323
+msgid "About IcePref2"
+msgstr "Acerca de IcePref2"
+
+#: icepref.py:1387
+msgid ""
+"The theme has been applied,\n"
+"and IceWM is quickly restarting.\n"
+"When it has restarted, click 'OK'.\n"
+"This may take a moment."
+msgstr "El tema ha sido aplicado,\ny IceWM se está recomiendo rapidamente.\nCuando IceWM se ha recomenzado,\nHaga clic en 'ACEPTAR'.\nEspera un minuto y sea paciente."
+
+#: icepref_td.py:963,  icepref.py:1359
+msgid " Create Theme Preview... "
+msgstr "Crear Vista Previa..."
+
+#: icepref_td.py:979
+msgid "Do you wish to replace it?"
+msgstr "¿Desea reemplazarla?"
+
+#: icepref_td.py:979
+msgid "NO"
+msgstr "NO"
+
+#: icepref_td.py:979
+msgid "The image"
+msgstr "La imagen"
+
+#: icepref_td.py:979
+msgid "YES"
+msgstr "Sí"
+
+#: icepref_td.py:979
+msgid "already exists."
+msgstr "ya existe."
+
+#: icepref_td.py:982
+msgid ""
+"Apply your theme by selecting it\n"
+"from the IceWM 'Themes' menu.\n"
+"When you are ready, click 'OK'."
+msgstr "Aplica su tema por seleccionarlo\ndel menú de temas en IceWM.\nHaga clic en 'ACEPTAR'\ncuando Usted está listo."
+
+#: icepref_td.py:982 icepref_td.py:2064
+msgid "OK"
+msgstr "ACEPTAR"
+
+#: icepref_td.py:994, icepref.py:1397
+msgid "A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."
+msgstr "No podia crear una imagen para la vista previa. NOTA:  Se requiere el binario 'import' de ImageMagick en su $PATH."
+
+#: icepref_td.py:1028
+msgid "None"
+msgstr "Ninguno"
+
+#: icepref_td.py:1042 icepref_td.py:1361
+msgid "NO IMAGE"
+msgstr "NINGUNA IMAGEN"
+
+#: icepref_td.py:1572 icepref_td.py:1604
+#: icepref_td.py:1608 icepref_td.py:1791
+msgid "Theme Designer"
+msgstr "Diseñador de Temas"
+
+#: icepref_td.py:1771
+msgid "IceWM Theme successfully saved to: "
+msgstr "Tema de IceWM guardado con éxito como: "
+
+#: icepref_td.py:1773
+msgid "There was an ERROR saving your IceWM 'theme' file."
+msgstr "Había un ERROR meintras que ahorraba su tema de IceWM."
+
+#: icepref_td.py:1791
+msgid "About IcePref2 Theme Designer"
+msgstr "Acerca del Diseñador de Temas de IcePref2"
+
+#: icepref_td.py:1791
+msgid "An IceWM Theme Designer based on IcePref2"
+msgstr "Un diseñador de temas (un 'niño' de IcePref2) para IceWM"
+
+#: icepref_td.py:1791
+msgid "This software is distributed under the GNU General Public License."
+msgstr "Este programa se distribuye debajo del GNU General Public License."
+
+#: icepref_td.py:1823
+msgid "/File/_New Theme..."
+msgstr "/Fichero/_Nuevo Tema..."
+
+#: icepref_td.py:1824
+msgid "/File/_Open Theme..."
+msgstr "/Fichero/Abrir Tema..."
+
+#: icepref_td.py:1826
+msgid "/File/_Save Theme"
+msgstr "/Fichero/_Guardar Tema"
+
+#: icepref_td.py:1830
+msgid "Check for newer versions of this program..."
+msgstr "Saber si hay más nuevas versiones de este programa..."
+
+#: icepref_td.py:1832
+msgid "/File/_Exit IcePref2 Theme Designer"
+msgstr "/Fichero/_Salir del Diseñador de Temas"
+
+#: icepref_td.py:1836
+msgid "/_Tools/Configure IceWM (requires IcePref2)..."
+msgstr "/_Herramientas/Configurar a IceWM (se requiere IcePref2)..."
+
+
+#: icepref_td.py:1841
+msgid "/Help/_About IcePref2 Theme Designer..."
+msgstr "/Ayuda/_Acerca de Diseñador de Temas"
+
+#: icepref_td.py:2046
+msgid "Create A New IceWM Theme"
+msgstr "Crear Un Nuevo Tema de IceWM"
+
+#: icepref_td.py:2051
+msgid "Directory"
+msgstr "Directorio"
+
+#: icepref_td.py:2057
+msgid "Select"
+msgstr "Seleccionar"
+
+#: icepref_td.py:2065
+msgid "CANCEL"
+msgstr "CANCELAR"
+
+#: icepref_td.py:2083
+msgid "Select a directory"
+msgstr "Seleccionar un directorio"
+
+#: icepref_td.py:2104
+msgid "You must complete all the fields first."
+msgstr "Hay que llenar todas las opciónes."
+
+#: icepref_td.py:2132
+msgid "The file does not appear to be an IceWM theme file."
+msgstr "El fichero no se parece un tema normal de IceWM."
+
+
+#: icepref_td.py:2156
+msgid "Save this theme"
+msgstr "Guardar este tema"
+
+
+#: icepref_td.py:2157
+msgid "Exit IcePref2 Theme Designer"
+msgstr "Salir del Diseñador de Temas"
+
+#: icepref.py:2575
+msgid "Exit IcePref2"
+msgstr "Salir de IcePref2"
+
+
+# icepref_td.py
+msgid "Theme Info"
+msgstr "Info de Tema"
+
+# icepref_td.py
+msgid "Icons"
+msgstr "Iconos"
+
+# icepref_td.py
+msgid "Cursors"
+msgstr "Punteros"
+
+
+
+msgid "Show \"Programs\" menu"
+msgstr "Mostrar 'Programas' en el menú"
+
+msgid "Show \"Run...\" on the menu"
+msgstr "Mostrar \"Usar...\" en el menú"
+
+msgid "Show logout sub-menu"
+msgstr "Mostrar el menú nombrado 'Salir de IceWM'"
+
+msgid "Show window list on the menu"
+msgstr "Mostrar 'Lista de Ventanas' en el menú"
+
+msgid "Show \"About\" on the menu"
+msgstr "Mostrar 'Acerca de' en el menú"
+
+msgid "Shaped pixmaps protect client window"
+msgstr "Pixmaps formados protegen la ventana cliente"
+
+msgid "Enable full-screen mode for windows"
+msgstr "Las ventanas pueden funcionar como 'plena pantalla'"
+
+msgid "Quick-Switch groups windows on current workspace"
+msgstr "Quick-Switch agrupa las ventanas en el espacio de trabajo actual"
+
+msgid "\"Window list\" menu shortcut"
+msgstr "Atajo para el menú de 'Lista de Ventanas'"
+
+msgid "\"Workspace 11\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 11\""
+
+msgid "\"Workspace 12\" shortcut"
+msgstr "Atajo para  \"Espacio de trabajo 12\""
+
+msgid "\"Take window to workspace 12\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 12'"
+
+msgid "\"Take window to workspace 11\" shortcut"
+msgstr "Atajo para 'llevar la ventana al espacio de trabajo número 11'"
+
+
+#: icepref.py
+msgid "Delete"
+msgstr "Borrar"
+
+#: icepref.py
+msgid "Edit"
+msgstr "Redactar"
+
+#: icepref.py
+msgid "Edit with Gimp"
+msgstr "Redactar con Gimp"
+
+#: icepref.py
+msgid "Are you sure you want to delete"
+msgstr "Desea borrar"
+
+#: icepref.py:1967
+msgid "No mouse buttons"
+msgstr "Ningunos botones de ratón"
+
+#: icepref.py:1968
+msgid "First button only"
+msgstr "Primer botón solamente"
+
+#: icepref.py:1969
+msgid "Second button only"
+msgstr "Segundo botón solamente"
+
+#: icepref.py:1970
+msgid "Third button only"
+msgstr "Tercer botón solamente"
+
+#: icepref.py:1971
+msgid "First and second buttons"
+msgstr "Primero y segundos botones"
+
+#: icepref.py:1972
+msgid "First and third buttons"
+msgstr "Primero y terceros botones"
+
+#: icepref.py:1973
+msgid "Second and third buttons"
+msgstr "Segundo y terceros botones"
+
+#: icepref.py:1974
+msgid "All three buttons"
+msgstr "Los tres botones"
+
+#: icepref.py:1981
+msgid "No mouse button"
+msgstr "Ningún botón de ratón"
+
+#: icepref.py:1982
+msgid "First mouse button"
+msgstr "Primer botón de ratón"
+
+#: icepref.py:1983
+msgid "Second mouse button"
+msgstr "Segundo botón de ratón"
+
+#: icepref.py:1984
+msgid "Third mouse button"
+msgstr "Tercer botón de ratón"
+
+#: icepref.py:1985
+msgid "Fourth mouse button"
+msgstr "Cuarto botón de ratón"
+
+#: icepref.py:1986
+msgid "Fifth mouse button"
+msgstr "Quinto botón de ratón"
+
+#: icepref_search.py
+msgid "Search"
+msgstr "Buscar"
+
+#: icepref_search.py
+msgid "Search Results"
+msgstr "Resultados de Búsqueda"
+
+#: icepref_search.py
+msgid "Section"
+msgstr "Sección"
+
+#: icepref_search.py
+msgid "Property"
+msgstr "Propiedad"
+
+#: icepref_search.py
+msgid "No matches found."
+msgstr "Ningunas propiedades que emparejan encontradas."
+
+#: icepref_search.py
+msgid "Enter a search word"
+msgstr "Escriba una palabra de búsqueda"
+
+#: icepref.py
+msgid "Enable address bar on the task bar"
+msgstr "Permitir la barra de dirección en la barra de tarea"
+
+#: icepref.py
+msgid "support the \"Windows\" key"
+msgstr "Apoyar la tecla 'Windows'"
+
+
+###########
+# added 8.25.2003, IceWM 1.2.10/1.2.11
+###########
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for inner decorations"
+msgstr "Bitmask para decoraciónes interiores"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension lines"
+msgstr "Bitmask para lineas de dimensión"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for gauge lines"
+msgstr "Bitmask para lineas de medida"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension labels"
+msgstr "Bitmask para etiquetas de dimensión"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for geometry labels"
+msgstr "Bitmask para etiquetas geométricas"
+
+#: icepref.py, new in IceWM 1.2.10
+# number of seconds the taskbar flashes before finally focusing
+msgid "Number of seconds the taskbar application will blink when requesting focus"
+msgstr "Número de segundos la barra de tarea relampagueará al pedir el foco"
+
+#: icepref.py
+# The font to be used for the 'hint' that IceWM shows when moving or resizing a window
+msgid "Font for the window's move/resize status"
+msgstr "Fuente para el estado de mover y de volver a clasificar según el tamaño de la ventana"
+
+

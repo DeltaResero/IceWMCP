@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Configuración\nde Audio
+Exec=gtkaumix
+Icon=soundprop.png
+Hint=Configuración de volumen

@@ -1,1 +1,50 @@
-dummy file
+[PHTITLE]IceWMCP - Ratón: Velocidad  
+[PHSECTION]Descripción  
+La herramienta IceWMCP - Ratón: Velocidad permite que usted configure fácilmente la velocidad de su cursor de ratón.  Seleccione el marbete nombrado [PH-HI]'Velocidad'[/PH-HI].
+[PHSECTION]Ajustar La Velocidad Del Ratón
+Para ajustar la velocidad del puntero de ratón, seleccione un valor del resbalador nombrada [PH-HI]Seleccione la velocidad del puntero de ratón:[/PH-HI] .  Seleccione un valor más bajo si usted quisiera que el puntero del ratón se moviera más lentamente.  Seleccione un valor más alto si usted quisiera que el puntero del ratón se moviera más rápidamente.  Después de que usted haya seleccionado su velocidad deseada, haga clic en el botón [PH-HI]'Aplicar'[/PH-HI].  Si usted es feliz con la nueva velocidad del ratón, haga clic en el botón [PH-HI]'GUARDAR la nueva velocidad del ratón'[/PH-HI].  Si usted no es feliz con la nueva velocidad del ratón, espere 7 segundos o haga clic en el botón [PH-HI]'CANCELAR el cambio y REAJUSTAR la velocidad del ratón'[/PH-HI] (si es posible).  
+[PHSECTION]Reajustar La Velocidad Del Ratón
+Para reajustar la velocidad del ratón a un valor razonable, haga clic en el botón del [PH-HI]'Reajustar'[/PH-HI]. 
+
+_______________________________
+[PHTITLE]IceWMCP - Ratón: Punteros
+[PHSECTION]Descripción  
+La herramienta IceWMCP - Ratón: Punteros permite que usted configure cursores, o punteros,  personalizados para el uso con IceWM.  Seleccione el marbete nombrado [PH-HI]'Punteros'[/PH-HI].
+[PHSECTION]Configuración De Punteros  
+Para configurar un cursor, voluta al cursor que usted desea configurar.  Entonces, arrastre la imagen que usted desea utilizar como el cursor sobre la ventana del cursor.  Usted puede también configurar un cursor haciendo clic en el botón con la [PH-HI]'carpeta'[/PH-HI] para seleccionar una  imagen de su sistema.  Vea por favor el sitio de IceWM ([PH-HI]http://www.icewm.org[/PH-HI]) para  información sobre formatos de imagen aceptables para el uso como punteros.  
+[PHSECTION]Redactar Punteros  
+Para redactar un cursor, voluta al cursor que usted desea modificar.  Entonces,  haga clic en el botón [PH-HI]'Redactar'[/PH-HI] al lado del cursor.  (el botón [PH-HI]'Redactar'[/PH-HI] tiene una imagen de [PH-HI]'lápiz y papel'[/PH-HI].)  La imagen del cursor entonces será abierta para modificar con el ejecutable [PH-HI]'gimp-remote'[/PH-HI] si el programa esté disponible en su sistema.  Vea por favor el sitio de IceWM ([PH-HI]http://www.icewm.org[/PH-HI]) para  información sobre formatos de imagen aceptables para el uso como punteros.
+[PHSECTION]Remover Punteros  
+Para remover un cursor, voluta al cursor que usted desea remover.  Entonces,  haga clic en el botón [PH-HI]'Borrar'[/PH-HI] al lado del cursor. (el botón [PH-HI]'Borrar'[/PH-HI] tiene una  imagen de un [PH-HI]'X'[/PH-HI].)  
+[PHSECTION]Activar Una Nueva Configuración De Punteros 
+Si usted ha añadido, modificado, o borrado algunos cursores, usted puede activar sus cambios inmediatamente haciendo clic en [PH-HI]'Fichero' -> 'Aplicar los cambios... '[/PH-HI] en el menú, o presione [PH-HI]Ctrl+A[/PH-HI] en su teclado. También, Usted puede activar los cambios haciendo clic en el botón [PH-HI]'Aplicar los cambios'[/PH-HI].  IceWM será recomenzado rápidamente, y su nueva configuración de punteros será activada.  
+[PHSECTION]Cursores Disponibles
+	[PH-HI]	left.xpm:[/PH-HI]  Flecha izquierda
+	[PH-HI]	move.xpm:[/PH-HI]  Mover  
+	[PH-HI]	right.xpm:[/PH-HI]  Flecha derecha  
+	[PH-HI]	sizeB.xpm:[/PH-HI]  Clasificar según el tamaño del lado inferior
+	[PH-HI]	sizeBL.xpm:[/PH-HI]  Clasificar según el tamaño del izquierdo inferior
+	[PH-HI]	sizeBR.xpm:[/PH-HI]  Clasificar según el tamaño del derecho inferior
+	[PH-HI]	sizeL.xpm:[/PH-HI]  Clasificar según el tamaño del izquierdo
+	[PH-HI]	sizeR.xpm:[/PH-HI]  Clasificar según el tamaño del derecho
+	[PH-HI]	sizeT.xpm:[/PH-HI]  Clasificar según el tamaño del parte superior
+	[PH-HI]	sizeTL.xpm:[/PH-HI]  Clasificar según el tamaño del izquierdo superior 
+	[PH-HI]	sizeTR.xpm:[/PH-HI]  Clasificar según el tamaño del derecho inferior
+
+_______________________________
+[PHTITLE]IceWMCP - Ratón: Comportamiento
+[PHSECTION]Descripción  
+La herramienta IceWMCP - Ratón: Comportamiento permite que usted configure el comportamiento de su ratón por dentro IceWM.  Seleccione el marbete nombrado [PH-HI]'Comportamiento'[/PH-HI] para ajustar las características avanzadas de su ratón.  El uso de esta sección se sugiere [PH-HI]solamente para usuarios experimentados[/PH-HI]
+
+[PHSECTION] Usar Como Root
+Si Usted sea el usuario 'root' y desee corregir la configuración del ratón para el sistema entero, seleccione [PH-HI]Fichero -> Usar Como Root[/PH-HI]  en el menú.  Obviamente, se requiere los poderes de 'root'.
+
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 
+

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Escritorio\nde IceWM
+Exec=[PHROZEN-INTERNAL]IceWMCPWallpaper.py
+Icon=icewmcp-wallpaper.png
+Hint=Configuración del fondo de escritorio de IceWM

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Мышь\n(IceWM)
+Exec=[PHROZEN-INTERNAL]IceWMCPMouse.py
+Icon=icewmcp-mouse.png
+Hint=Настройка мыши - Конфигурация курсора мыши в IceWM

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Cola de\nImpresión
+Exec=[PHROZEN-INTERNAL]pyspool.py
+Icon=pyspool.png
+Hint=Ver la cola de impresión de LPRNG

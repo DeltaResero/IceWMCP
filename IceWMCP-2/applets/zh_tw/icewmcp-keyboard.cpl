@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=IceWM\n鍵盤
+Exec=[PHROZEN-INTERNAL]IceWMCPKeyboard.py
+Icon=icewmcp-keyboard.png
+Hint=設定鍵盤設定值與管理 IceWM 捷徑按鍵

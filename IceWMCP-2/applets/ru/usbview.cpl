@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Устройства USB
+Exec=usbview
+Icon=usbview.png
+Hint=Устройства USB в данной системе

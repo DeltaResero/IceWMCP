@@ -1,1 +1,329 @@
-dummy file
+##  PYINSTALLSHIELD CONFIGURATION FILE - USE ONE FILE FOR BOTH INSTALL AND UNINSTALL
+
+# installation type:  either 1 for Linux/Posix/Unix, or 2 for Windows - This isnt necessary but CAN be uncomment if 
+#  PyInstallShield should be first to install as a certain OS
+install_type=1
+
+# The directory to install your program in - the user can still select another from within PyInstallShield
+# Include ths trailing slash.  A copy of PyUnInstallShield will automatically be placed in install_dir, for later 
+# uninstallation, and an 'uninstall' script or Start Menu link will automatically be created. The direction of the 
+#  slashes no longer matters - PyInstallShield will auto-detect the right 'slash' for the operating system
+
+install_dir=/usr/share/IceWMCP/
+#install_dir=C:/Program Files/PyBabelPhish/
+
+# Choose a place to put executables (Unix/Linux only)
+bin_dir=/usr/X11R6/bin/
+
+# Choose a place to put icons (Unix/Linux only)
+icon_dir=/usr/share/icons/
+
+# The name of your program - will be showed to the users in PyInstallShield - do NOT include the version number in the name
+install_app_name=IceWM Control Panel
+
+# The version number of your application - put the version HERE, not in the name above
+install_app_version=2.5
+
+# The XPM to show at the top of the setup program - best to put it in the same directory as PyInstallShield.py
+# However, it can be in a subdirectory, as shown below. This directory is relative to the location of 
+#  PyInstallShield.py
+install_pixmap=install-pix.xpm
+
+#  Would you like to show a license to the user when PyInstallShield starts? PyInstallShield will exit if the user doesn't 
+#  'agree' to the license, set show_license to 0  if you don't want to show any license at all.  The license is NOT shown 
+#  during UN-installation, only during installation.
+show_license=1
+
+# Enter the file name of the license, this should be a plain text file
+# If you you have show_license set to '1' but still see no license, make sure you have the path and filename of the 
+# license file name correct
+license=licenses/IceWMControlPanel-LICENSE
+
+# a license in the 'doc' subdirectory of your distribution (on linux)...
+#license=doc/PyBabelPhish-LICENSE
+# a license in the 'doc' subdirectory of your distribution (on windows)...
+#license=doc/PyBabelPhish-LICENSE
+
+
+# A list of as many Python scripts (.py,.pyc,.pyo) or .exe files to make executable (an put on the Start Menu in windows)
+#  All 'exe' values MUST be declared in the 'file' section at the bottom of this configuration file.  You only need to 
+#  create this section if you are going to be making system 'links'  (Linux or Windows) - NOTE: For this to work, 
+#  you must also have 'install_links' set to 1  down below.
+#exe=pybabelfish.py
+#exe=my_second_program.py
+#exe=my_third_program.exe
+
+# an application in a subdirectory called 'bin' - for Linux/Unix:
+#exe=bin/my_program.exe
+# an application in a subdirectory called 'bin' - for Windows:
+#exe=bin/my_program.exe
+
+#  NOTE: You can specify a specific name for the link to be created from the EXE...on Windows, this is the name
+#  that appears in the Start Menu....on Linux/Unix, this is the name of the startup shell script to be placed in 
+#  either /usr/X11R6/bin or /usr/bin....to do this: use   [script],[link name]  - see below
+
+exe=IceWMCP.py,IceWMCP
+exe=IceWMCPKeyboard.py,IceWMCP-Keyboard
+exe=IceWMCPMouse.py,IceWMCP-Mouse
+exe=IceWMCPWallpaper.py,IceWMCP-Wallpaper
+exe=IceWMCPWinOptions.py,IceWMCP-WinOptions
+exe=phrozenclock.py,PhrozenClock
+exe=icesound.py,IceSoundManager
+exe=IceWMCP_GtkPCCard.py,GtkPCCard
+exe=IceMe.py,iceme
+exe=icepref.py,icepref
+exe=icepref_td.py,icepref-td
+exe=IceWMCPGtkIconSelection.py,IceWMCP-Icons
+exe=pyspool.py,IceWMCP-PySpool
+exe=IceWMCPEnergyStar.py,IceWMCP-EnergyStar
+
+
+# For Windows, this might be better since the 'link' will be on the Start Menu and should be human-readable...
+#exe=pybabelfish.py,PyBabelPhish v.0.1a
+
+#Do you want to remove all the installation files after a successful installation?   0=No,1=Yes
+install_clean=0
+
+#  Do you want to install useful links?  
+#  On Linux/Unix, this will create an easy to use shell script from the name of each 'exe' value above:
+#  For example, /usr/X11R6/bin/pybabelfish   will be created to launch the pybabelfish.py script
+#  The user could then just type 'pybabelfish' to launch the program, this also eases adding the application to the menu
+#  For the user.   All script names will converted to lower case.  You can add icons to the system icon folder (see below)
+#
+#  On Windows, creating links on the 'Start Menu' is not yet supported
+install_links=1
+
+#  This is for Linux/Unix systems ONLY:  Do you want to install icons in the system icon folder?
+#  Any 'icon' values specified below will be copied to the /usr/share/icons/  
+#  and /usr/share/pixmaps/ folders, the standard icon folders on most Unix/Linux systems.
+# NOTE: The icons will only be copied to these folders if the folders already exist on the system
+#    The user can then easily add your application to their Window Managers menu.
+#  If you are creating an installation for Windows, or you don't want to install icons, comment out all 'icon' values below.
+#  The default behavior is to install no icons.  You should give your icon name a name that is unlikely to already exist 
+#  in the system icon folders.  It is not necessary to declare 'icon' files in the 'file' section below, unless you just want 
+#  to keep an extra copy of the icon in the installation directory
+
+
+icon=icons/icewmcp-iceme.png
+icon=icons/icewmcp-icepref.png
+icon=icons/icewmcp-mouse.png
+icon=icons/icewmcp-wallpaper.png
+icon=icons/icewmcp-winoptions.png
+icon=icons/icewmcp-keyboard.png
+icon=icons/icewmcp-ism.png
+icon=icons/icewmcp-phrozenclock.png
+icon=icons/icewmcp.png
+icon=icons/icewmcp-pyspool.png
+icon=icons/icewmcp-gtkpccard.png
+icon=icons/icewmcp-icepref-td.png
+icon=icons/icewmcp-iconselection.png
+icon=icons/icewmcp-energystar.png
+
+
+# Application files:  Here you specify ALL other supporting files for you application. All files will be either in the 'install_dir'
+#  or a sub-directory of 'install_dir'.  Installing to directories outside of 'install_dir' is not supported at this time. Do NOT 
+#  include folders or directories, only actual files.  Bascially, this just copies your application 'tree' to the user's preferred 
+#  installation directory.   For example, if you have  a file called  'pixmaps/mytitle.xpm' in a subdirectory called 'pixmaps', 
+#  mytitle.xpm will be copied to  install_dir/pixmaps/mytitle.xpm,  will be in install_dir. Remeber to list all of you, 'exe'
+#  values here.  Only list your 'icon' values here if you want to store an additional copy of the icon in install_dir
+
+
+
+file=sample_theme.stheme
+file=icesound.py
+file=icepref_td.py
+file=IceWMCPWinOptions.py
+file=IceWMCPWallpaper.py
+file=IceWMCPRun.py
+file=IceWMCPMouse.py
+file=IceWMCPKeyboard.py
+file=IceWMCPKeyEdit.py
+file=IceWMCPGtkIconSelection.py
+file=IceWMCPCursors.py
+file=IceMe.py
+file=ICEWMCP_URLRead.py
+file=IceWMCP.py
+file=ICEWMCP_BugReport.py
+file=icewmcp_common.py
+file=IceWMCP_Dialogs.py
+file=IceWMCP_GtkPCCard.py
+file=launcher.py
+file=pyspool.py
+file=phrozenclock.py
+file=icepref.py
+file=icepref2.png
+file=IceMenuTree.py
+file=constants.py
+file=IconSelectionDialog.py
+file=MenuParser.py
+file=Preferences.py
+file=DndCTree.py
+file=PreviewWindow.py
+file=pyprintcommon.py
+file=icewmcp.png
+file=icewmcp_short.png
+file=install-pix.xpm
+file=locale/es/LC_MESSAGES/icewmcp.mo
+file=locale/es/LC_MESSAGES/icewmcp-icepref.mo
+file=locale/es/LC_MESSAGES/icewmcp-ism.mo
+file=locale/es/LC_MESSAGES/icewmcp-iceme.mo
+file=icons/icewmcp-iceme.png
+file=icons/icewmcp-icepref.png
+file=icons/icewmcp-ism.png
+file=icons/icewmcp-phrozenclock.png
+file=icons/icewmcp.png
+file=icons/icewmcp-pyspool.png
+file=icons/icewmcp-gtkpccard.png
+file=icons/icewmcp-iconselection.png
+file=icons/icewmcp-icepref-td.png
+file=doc/CHANGES.txt
+file=doc/ControlPanel-APPLETS.html
+file=doc/IcePref-doc.html
+file=doc/IceSoundManager_Help.txt
+file=doc/pre-config.txt
+file=doc/theme_preview.html
+file=doc/icesound-es-help.html
+file=doc/IceMe_Readme.txt
+file=doc/GtkPCCard-Readme.txt
+file=applet-icons/icewmcp-td.png
+file=applet-icons/default.xpm
+file=applet-icons/icewmcp-cursors.png
+file=applet-icons/icewmcp-gtkpccard.png
+file=applet-icons/gfcc.png
+file=applet-icons/gfloppy.png
+file=applet-icons/gnorpm.png
+file=applet-icons/godbc.png
+file=applet-icons/gpassword.png
+file=applet-icons/gtop.png
+file=applet-icons/iceme.png
+file=applet-icons/icepref-theme.png
+file=applet-icons/icepref.png
+file=applet-icons/icewmcp-keyboard.png
+file=applet-icons/icesound.png
+file=applet-icons/icewmcp-mouse.png
+file=applet-icons/icewmcp-keyedit.png
+file=applet-icons/icewmcp-wallpaper.png
+file=applet-icons/icewmcp-winoptions.png
+file=applet-icons/kcron.png
+file=applet-icons/kusers.png
+file=applet-icons/phrozenclock.png
+file=applet-icons/pyspool.png
+file=applet-icons/screensaver.png
+file=applet-icons/soundprop.png
+file=applet-icons/sysinfo.png
+file=applet-icons/usbview.png
+file=applet-icons/tkantivir.png
+file=applet-icons/userinfo.png
+file=applet-icons/usermount.png
+file=applet-icons/java.png
+file=applet-icons/icewmcp-iconselection.png
+file=applets/gfcc.cpl
+file=applets/gfloppy.cpl
+file=applets/gnorpm.cpl
+file=applets/godbc.cpl
+file=applets/gpassword.cpl
+file=applets/gtop.cpl
+file=applets/iceme.cpl
+file=applets/icepref-themes.cpl
+file=applets/icepref.cpl
+file=applets/icesound.cpl
+file=applets/icewmcp-keyboard.cpl
+file=applets/icewmcp-keyedit.cpl
+file=applets/icewmcp-mouse.cpl
+file=applets/icewmcp-wallpaper.cpl
+file=applets/icewmcp-winoptions.cpl
+file=applets/kcron.cpl
+file=applets/kusers.cpl
+file=applets/phrozenclock.cpl
+file=applets/pyspool.cpl
+file=applets/soundprop.cpl
+file=applets/sysinfo.cpl
+file=applets/tkantivir.cpl
+file=applets/usbview.cpl
+file=applets/userinfo.cpl
+file=applets/usermount.cpl
+file=applets/xscreensaver.cpl
+file=applets/java.cpl
+file=applets/icewmcp-iconselection.cpl
+file=applets/icewmcp-cursors.cpl
+file=applets/icewmcp-td.cpl
+file=applets/icewmcp-gtkpccard.cpl
+file=applets/es/gfcc.cpl
+file=applets/es/icewmcp-wallpaper.cpl
+file=applets/es/icewmcp-keyedit.cpl
+file=applets/es/icewmcp-winoptions.cpl
+file=applets/es/icepref.cpl
+file=applets/es/icesound.cpl
+file=applets/es/soundprop.cpl
+file=applets/es/iceme.cpl
+file=applets/es/pyspool.cpl
+file=applets/es/icepref-themes.cpl
+file=applets/es/phrozenclock.cpl
+file=applets/es/gfloppy.cpl
+file=applets/es/icewmcp-mouse.cpl
+file=applets/es/icewmcp-keyboard.cpl
+file=applets/es/gtop.cpl
+file=applets/es/tkantivir.cpl
+file=applets/es/kcron.cpl
+file=applets/es/gnorpm.cpl
+file=applets/es/kusers.cpl
+file=applets/es/godbc.cpl
+file=applets/es/userinfo.cpl
+file=applets/es/sysinfo.cpl
+file=applets/es/gpassword.cpl
+file=applets/es/usbview.cpl
+file=applets/es/usermount.cpl
+file=applets/es/xscreensaver.cpl
+file=applets/es/java.cpl
+file=applets/es/icewmcp-iconselection.cpl
+file=applets/es/icewmcp-cursors.cpl
+file=applets/es/icewmcp-td.cpl
+file=applets/es/icewmcp-gtkpccard.cpl
+file=licenses/GPL
+file=licenses/IceMe-License
+file=licenses/contents.txt
+file=licenses/IcePref2-LICENSE
+file=licenses/IceSoundManager-LICENSE
+file=licenses/PySpool-LICENSE
+file=licenses/phrozenclock-LICENSE
+file=licenses/GtkPCCard-LICENSE
+file=licenses/IceWMControlPanel-LICENSE
+file=pixmaps/ism_header.png
+file=pixmaps/down.xpm
+file=pixmaps/edit_copy.xpm
+file=pixmaps/edit_cut.xpm
+file=pixmaps/edit_delete.xpm
+file=pixmaps/edit_paste.xpm
+file=pixmaps/empty.xpm
+file=pixmaps/ice_me_clipboard.xpm
+file=pixmaps/ice_me_icewm.xpm
+file=pixmaps/icepref.xpm
+file=pixmaps/ism_cancel.png
+file=pixmaps/keys.xpm
+file=pixmaps/left.xpm
+file=pixmaps/new_entry.xpm
+file=pixmaps/new_menu.xpm
+file=pixmaps/new_sep.xpm
+file=pixmaps/open.xpm
+file=pixmaps/preview.xpm
+file=pixmaps/pyprint_cancel.xpm
+file=pixmaps/pyprint_printer_big.xpm
+file=pixmaps/pyprint_reload.xpm
+file=pixmaps/revert.xpm
+file=pixmaps/right.xpm
+file=pixmaps/save.xpm
+file=pixmaps/up.xpm
+file=pixmaps/ism_choosesnd.png
+file=pixmaps/ism_help.png
+file=pixmaps/ism_edit2.png
+file=pixmaps/ism_load.png
+file=pixmaps/ism_next.png
+file=pixmaps/ism_nosound.png
+file=pixmaps/ism_ok.png
+file=pixmaps/ism_play2.png
+file=pixmaps/ism_reload.png
+file=pixmaps/ism_save.png
+file=pixmaps/ism_serveroff.png
+file=pixmaps/ism_serveron.png
+file=pixmaps/ism_setup.png
+file=pixmaps/ism_stop2.png

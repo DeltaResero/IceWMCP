@@ -1,1 +1,152 @@
-dummy file
+CHANGE LOG:  IceWM Control Panel
+
+NOTE:  This is a partial ChangeLog containing the 
+latest changes in this release only.  For a FULL  history 
+of changes through all versions, visit:
+
+http://icesoundmanager.sourceforge.net/changelog.php
+______________________________________________
+______________________________________________
+
+
+VERSION 3.0pre - 10/15/2003 - 12/2/2003
+
+The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications.
+
+
+SUMMARY OF CHANGES:
+	All applications in the control panel now use the PyGtk-2/Gtk-2 user
+	interface libraries.  The new PyGtk-2 port includes mostly restructured 
+	code from version 2.5, but also includes code snippets and suggestions 
+	from David Moore's donated, experimental PyGtk-2 port for IceWMP 
+	version 2.3.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- New internal, non-GUI module added to handle the new Gtk-2 Font Selection Dialog's 'font description' format. 	Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs.  This module serves as a bridge between XLFD font descriptions and Pango's rebellion against an established standard.
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- All applications now import module 'pygtk' and call 'pygtk.require("2.0")
+	- David Moore (djm6202['at']yahoo.co.nz) has been officially added to the credits for his work creating the first prototype of a PyGtk-2 port for IceWMCP, from which many of the code snippets and ideas for the official PyGtk-2 port originate.
+	- Several methods have been added, removed, and redesigned to accommodate PyGtk-2.
+	- On Vasya's [Vasiliy Leushin (basileus['at']newmail.ru) ] suggestion, the default fonts for Russian are now Arial, instead of Helvetica.  (If he says Arial was working on his system, I'll believe him.)
+	- The freely available CJKCodecs for Python will now be used for all unicode conversions for Japanese, Chinese, and Korean languages.  Currently this only affects Traditional Chinese (zh_tw).  Traditional Chinese users will need to download and install the CJKCodecs if they do not already have them: http://cjkpython.berlios.de/ , since Python does not appear to natively support charsets lil Big-5, etc.
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 3.0
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.2
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Tearoff menus have been disabled due to a seg-fault I kept experiencing in PyGtk 2.0.0.  All of my apps were seg-faulting when Tearoff menus were clicked.  I don't know if this is a bug in PyGtk-2, or what, but I refuse to leave a feature in that's causing a known seg-fault.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The 'sample' text now has line breaks
+	- Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs: The Font selection widgets now rely on the new module 'pangoxlfd'
+	- Since Gtk-2 font selection dialogs are no longer returning and accepting XLFD-style font strings like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*', and Gtk-2 leaves you with NO way of getting such strings from a font dialog, all we can do is hope the home-spun conversion library 'pangoxlfd' does its job; however, this may create some bugs in font selection for some users. Sorry.  I tried putting Pango-style 'font descriptions' like "Arial 12" in the IceWM preferences file: It does not work!  So, we have to use XLFD font descriptions.
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.0
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The use of Gtk 'timeouts' is now more memory friendly, updating only things that need to be updated.
+	- The time zone list now only shows half of the list of available time zones at a time: Up/Down scroll arrows now appear next to the drop-down list of time zones allowing you to show the first half or the last half. Since many systems have upwards of 2,000 time zones available on the system, we don't want to overwhelm the GtkCombo widget by trying to display all at once.  Users should notice a smoother scrolling, faster drop-down list of time zones
+	- Two new translatable strings added; 2 new Spanish translations added.
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 3.0
+
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 3.0
+
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 3.0
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.0
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.2-beta
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.3
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 3.0
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.2.3
+
+
+IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Turned down David Moore's suggestion to use stock icons (I hate 'em!)
+
+icepref_search.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+
+icewmcp_dnd.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
+	- PRIORITY: Speed up IceMe start-up (play with speed of icon loading)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+	- Decided to leave the IceSoundManager file selection dialog as-is, instead of forcing it into the 'icewmcp_common' file dialog format...working fine for now, now reason to tamper with it - may be ported to the 'common' format in the future, only if the need arises
+	- Is there a better way to handle the drag-n-drop support for the 'color buttons' in IcePref2 and Theme Designer?  Currently unable to handle the 'native unicode' junk returned the 'application/x-color' GtkSelectionData.data object - so letting it get handled by a hidden GtkColorSelectionDialog (global COLOR_HOLDER):
+			# I tried this:
+			#    import codecs
+			#    uni=codecs.utf_16_decode(drago[4].data)
+			# creates a tuple with a useless 'unicode' string that Python can do nothing with
+			# In fact, it can't even be turned into a string with str() - You can print the 
+			# tuple to stdout, but not the 'unicode' string at element '0' in the tuple
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Audio\nProperties
+Exec=gtkaumix
+Icon=soundprop.png
+Hint=Sound volume and mixer properties

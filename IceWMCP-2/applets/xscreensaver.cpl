@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Screen\nSaver
+Exec=xscreensaver-demo
+Icon=screensaver.png
+Hint=XScreensaver properties

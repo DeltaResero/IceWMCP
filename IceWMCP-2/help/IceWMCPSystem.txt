@@ -1,1 +1,4 @@
-dummy file
+[PHTITLE] IceWMCP Hardware and System Information
+
+No help is available for this plug-in.  This is an UNSUPPORTED (but not 'unmaintained') plug-in for IceWMCP.  No technical support is provided for this plug-in, and I am not currently accepting 'bug reports' for this plug-in.  This is an experimental, new addition to the IceWMCP collection of tools, and a full 'Help' file will only be written when (and if) this program is deemed to be 'stable'.  For now, you are on your own.
+

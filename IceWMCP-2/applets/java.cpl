@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Java\nPlugin
+Exec=ControlPanel
+Icon=java.png
+Hint=Manage Java plugin configuration

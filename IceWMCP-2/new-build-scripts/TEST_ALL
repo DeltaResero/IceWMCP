@@ -1,1 +1,26 @@
-dummy file
+echo "Running tests..."
+echo "Testing gtkpccard..."
+cd /INSTALL-gtkpccard/
+./IceWMCP_GtkPCCard.py
+echo "Testing gtkpccard INSTALL..."
+./PyInstallShield
+rm -f *.pyc
+rm -f *.pyo
+
+echo "Testing phrozenclock..."
+cd /INSTALL-phrozenclock/
+./phrozenclock.py
+echo "Testing phrozenclock INSTALL..."
+./PyInstallShield
+rm -f *.pyc
+rm -f *.pyo
+
+echo "Testing IceWMCP..."
+cd /INSTALL-IceWMCP/
+./launcher.py IceWMCP.py
+echo "Testing IceWMCP INSTALL...if you are creating an RPM - be sure to truly INSTALL"
+./PyInstallShield
+rm -f *.pyc
+rm -f *.pyo
+
+echo "Tests complete."

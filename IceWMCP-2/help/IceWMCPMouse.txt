@@ -1,1 +1,51 @@
-dummy file
+[PHTITLE] IceWMCP Mouse: Speed
+[PHSECTION] Overview
+The IceWMCP Mouse Speed tool allows you to easily configure the speed of your mouse cursor.   First, click the [PH-HI]'Speed'[/PH-HI] tab.
+[PHSECTION] Adjusting the Mouse Speed
+To adjust the speed of your mouse cursor, select a number from the slider named [PH-HI]Select your desired mouse speed:[/PH-HI].  Select a lower value if you want the mouse cursor to move more slowly.  Select a higher value if you want the mouse cursor to move more quickly.  After you have selected your desired speed, click the [PH-HI] Apply [/PH-HI] button. If you are happy with the new mouse speed, click the [PH-HI] KEEP the new mouse speed [/PH-HI] button.  If you are not happy with the new mouse speed, either wait 7 seconds or click the [PH-HI] CANCEL change and RESET the mouse [/PH-HI] button (if possible). 
+[PHSECTION] Resetting the Mouse Speed 
+To reset the mouse speed to a reasonable value, click the [PH-HI] Reset [/PH-HI] button.
+
+_______________________________
+[PHTITLE] IceWMCP Mouse: Cursors
+[PHSECTION] Overview
+The IceWMCP Mouse Cursor tool allows you to configure personalized mouse cursors for use with IceWM.  First, click the [PH-HI]'Cursors'[/PH-HI] tab.
+[PHSECTION] Configuring Cursors
+To configure a cursor, scroll to the cursor you wish to configure. Then, drag the image you wish to use as the cursor onto the cursor's window. You may also configure a cursor by clicking the [PH-HI]'folder'[/PH-HI] button to select an image file from a file selection dialog window.  Please see the IceWM home page ([PH-HI]http://www.icewm.org[/PH-HI]) for information on acceptable cursor image formats.
+[PHSECTION] Editing Cursors
+To edit a cursor, scroll to the cursor you wish to edit. Then, click the  [PH-HI]'Edit'[/PH-HI] button next to the cursor.  (The [PH-HI]'Edit'[/PH-HI] button has a picture of  [PH-HI]'pencil and paper'[/PH-HI].)  The cursor image will then be opened for editing with the executable [PH-HI]'gimp-remote'[/PH-HI] if  [PH-HI]'gimp-remote'[/PH-HI] is available on your system's $PATH.  Please see the IceWM home page ([PH-HI]http://www.icewm.org[/PH-HI]) for information on acceptable cursor image formats.
+[PHSECTION] Deleting Cursors
+To delete a cursor, scroll to the cursor you wish to delete. Then, click the  [PH-HI]'Delete'[/PH-HI] button next to the cursor.  (The [PH-HI]'Delete'[/PH-HI] button has a picture of an [PH-HI]'X'[/PH-HI].)  
+[PHSECTION] Activating A New Cursor Configuration
+If you have added, modified, or deleted any cursors, you can activate your changes immediately by clicking [PH-HI] 'File' -> 'Apply Changes Now...'[/PH-HI] on the menu.  You may also activate the new changes by pressing the [PH-HI]'Apply Changes Now'[/PH-HI] button, or by pressing [PH-HI]Ctrl+A[/PH-HI] on your keyboard. IceWM will be quickly restarted, and your new cursor configuration will be activated.
+
+[PHSECTION] Available Cursors
+	[PH-HI]  left.xpm [/PH-HI]:  Left arrow
+	[PH-HI]  move.xpm [/PH-HI]:  Move cursor
+	[PH-HI]  right.xpm [/PH-HI]:  Right arrow
+	[PH-HI]  sizeB.xpm [/PH-HI]:  Bottom resize cursor
+	[PH-HI]  sizeBL.xpm [/PH-HI]:  Bottom Left resize cursor
+	[PH-HI]  sizeBR.xpm [/PH-HI]:  Bottom Right resize cursor
+	[PH-HI]  sizeL.xpm [/PH-HI]:  Left resize cursor
+	[PH-HI]  sizeR.xpm [/PH-HI]:  Right resize cursor
+	[PH-HI]  sizeT.xpm [/PH-HI]:  Top resize cursor
+	[PH-HI]  sizeTL.xpm [/PH-HI]:  Top Left resize cursor
+	[PH-HI]  sizeTR.xpm [/PH-HI]:  Top Right resize cursor
+
+_______________________________
+[PHTITLE] IceWMCP Mouse: Behavior
+[PHSECTION] Overview
+The IceWMCP Mouse Behavior tool allows you to configure how the mouse behaves under IceWM.  Click the [PH-HI]'Behavior'[/PH-HI] tab for advanced configuration of your mouse's behavior.  The use of this section is [PH-HI]recommended only for experienced users[/PH-HI].
+
+[PHSECTION] Run As Root
+If you are the 'root' user and wish to edit the system-wide mouse configuration, select [PH-HI] File -> Run As Root [/PH-HI] on the menu.
+
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.
+

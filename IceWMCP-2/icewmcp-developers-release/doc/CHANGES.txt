@@ -1,1 +1,118 @@
-dummy file
+CHANGE LOG:  IceWM Control Panel
+
+NOTE:  This is a partial ChangeLog containing the 
+latest changes in this release only.  For a FULL  history 
+of changes through all versions, visit:
+
+http://icesoundmanager.sourceforge.net/changelog.php
+______________________________________________
+______________________________________________
+
+
+VERSION 2.5 - 8/15/2003 - 9/2/2003
+
+The focus of this release IceWM 1.2.10 and 1.2.11 compatibility and bug fixes.
+
+
+SUMMARY OF CHANGES:
+	A major GUI bug has been fixed in IceSoundManager.
+	IceSoundManager now produces command lines for executing 'icesound' which are compatible with the command line format of IceWM 1.2.10/1.2.11.
+	IcePref2 is now compatible with IceWM 1.2.10/1.2.11 and set themes and background images in a manner compatible with IceWM 1.2.10/1.2.11.
+	IceWMCP-Wallpaper now sets background images in a manner compatible with IceWM 1.2.10/1.2.11
+	Window options support has been updated to accomodate IceWM 1.2.11.
+	A new control panel applet has been added for managing EnergyStar features.
+	GUI bugs involving the 'Run As Root' option on the menu have been fixed.
+
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- New control panel applet added: Small applet which serves as a frontend to 'xset' for managing EnergyStar/DPMS energy-saving features (this had been on the 'TODO' list for a while)
+	- Several gettext translation strings added to support the new applet; Spanish translations additions to support the new applet.
+	- Russian translation additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 2.5
+	- Spanish language translation catalog cleanups: a couple of duplicates removed
+	- Russian translation updates and additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.5
+	- Added new method 'get_pidof' for checking for the existence of a process ID for a given executable: used by IceSoundManger, IceWMCP-Wallpaper, and IcePref2
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.5
+	- Major user interface bug fix: All blocking/unblocking of signals on the text entry in the sound event selection combo has been removed, as this created a bug where the user interface would go 'blank' after a few selections.  Signals had been used to update the .wav sound associated with the selected sound event.  However, the signals have now been replaced with calls to gtk.timeout, which provides the exact functionality without the user interface appearing to go 'blank' or freeze after a few selections from the sound events list.
+	- Code cleanup: Removed the following methods and variables: 'blockSignals', 'unblockSignals', 'event_sig'  (for the purpose of getting rid of the buggy signal functionality)
+	- Added the following methods and variables: 'last_to' and 'showSoundEventTO'  (for the purpose of implementing the new gtk.timeout functionality for updating the .wav associated with the selected sound event)
+	- IceSoundManager now produces command lines that use the '--' option format which now seems to be required of 'icesound' as of IceWM 1.2.10, instead of the old singl '-' format.  The new command lines using the '--' format are still compatible with 'icesound' from IceWM 1.2.9 and below, but makes IceSoundManager also compatible with the new IceWM 1.2.10.
+	- Code cleanup/consolidation: The method 'serverIsRunning' has been changed to use the more efficient, common method 'get_pidof' from 'icewmcp_common.py' for checking for an existing process id for icesound.
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.1
+	- IcePref2 is now compatible with IceWM 1.2.10/1.2.11
+	- Clicking the 'Apply' button now also launches 'icewmbg' (if it's not already running)  in addition to 'killall -HUP icewm' to ensure that any new background images/colors are set (this appears to be needed by the new IceWM 1.2.10/1.2.11)  This should not create any incompatibilities with earlier versions of IceWM 1.2.x,  This affects the 'Desktop' tab of IcePref2 where the background image and color are selected.
+	- IceWM 1.2.10/1.2.11 theme compatibility added:  IcePref2 now writes the selected theme in the file ~/.icewm/theme in the format 'Theme=/some/dir/someTheme/default.theme' now required by IceWM 1.2.10/1.2.11 for saving theme preferences.  This affects the 'Theme' tab of IcePref2 where themes are selected. This should not create any incompatibilities with earlier versions of IceWM 1.2.x.
+	- Added support for the following new IceWM preference options: 'MoveSizeInterior', 'MoveSizeDimensionLines', 'MoveSizeGaugeLines', 'MoveSizeDimensionLabels', 'MoveSizeGeometryLabels', 'FocusRequestFlashTime', 'moveSizeFontName'
+	- Fix: The 'XineramaPrimaryScreen' property now supports a range of 1-63 instead of 1-36
+	- Usability and Error-reporting improvement: Warnings about invalid properties in 'corrupt preferences' files are now shown in a scrollable popup window instead of on the console; all messages are now shown at once instead of each message being shown one at a time, this should speed up initial startup time in cases where the default preferences file in ~/.icewm/preferences contains lots of corrupt or 'invalid'/unknown IceWM options
+	- 7 Gettext translation string additions; Spanish language translation additions and a couple corrections
+	- Spanish language translation catalog cleanups: a couple of duplicates removed
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+	- Russian translation updates and additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.5
+	- IceWMCP-Wallpaper is now compatible with IceWM 1.2.10/1.2.11
+	- Clicking the 'Apply' button now also launches 'icewmbg'  (if it's not already running) in addition to 'killall -HUP icewm' to ensure that any new background images/colors are set (this appears to be needed by the new IceWM 1.2.10/1.2.11)  This should not create any incompatibilities with earlier versions of IceWM 1.2.x
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.5
+	- Now compatible with IceWM 1.2.10/1.2.11
+	- Added support for new IceWM 1.2.11 window option 'forcedClose' to disable displaying of a confirmation dialog when closing certain special windows
+	- Usability improvement: Tooltips for the window options now show the real IceWM property name for the option in parenthesis, for those that wish to keep track of exactly which IceWM window option they are tinkering with
+	- One gettext translation string added for 'forcedClose'; Spanish language translation addition.
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+IceMe  (IceMe.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- Start the offical Gtk-2/PyGtk-2 port based on the generously donated, unofficial port written against version 2.3...target release date of the first official Gtk-2 port is about  2 months (less if possible); the port will be largely based on code donated by David, brining it up-to-date with version 2.5 and adding bug fixes, etc. as necessary
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest?
+	- PRIORITY: Speed up IceMe start-up (play with speed of icon loading)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+	- Decided to leave the IceSoundManager file selection dialog as-is, instead of forcing it into the 'icewmcp_common' file dialog format...working fine for now, now reason to tamper with it - may be ported to the 'common' format in the future, only if the need arises
+	- Is there a better way to handle the drag-n-drop support for the 'color buttons' in IcePref2 and Theme Designer?  Currently unable to handle the 'native unicode' junk returned the 'application/x-color' GtkSelectionData.data object - so letting it get handled by a hidden GtkColorSelectionDialog (global COLOR_HOLDER):
+			# I tried this:
+			#    import codecs
+			#    uni=codecs.utf_16_decode(drago[4].data)
+			# creates a tuple with a useless 'unicode' string that Python can do nothing with
+			# In fact, it can't even be turned into a string with str() - You can print the 
+			# tuple to stdout, but not the 'unicode' string at element '0' in the tuple
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+

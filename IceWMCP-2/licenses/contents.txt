@@ -1,1 +1,87 @@
-dummy file
+
+IceWM Control Panel, Ice Sound Manager, PySpool, PhrozenClock, IcePref2 Theme Designer, GtkPCCard, and tkPCCard are Copyright (c) 2002-2003 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
+______________________________________________
+IceWM ControlPanel consists of the following modules:
+
+
+IceWMCPWallpaper.py
+icepref.py
+IceWMCPRun.py
+icepref.py module=Themes
+IceWMCPWinOptions.py
+phrozenclock.py
+icesound.py
+pyspool.py
+IceWMCPMouse.py
+IceWMCPKeyboard.py
+IceWMCPGtkIconSelection.py
+icepref_td.py
+launcher.py
+icewmcp_common.py
+IceWMCP_Dialogs.py
+ICEWMCP_BugReport.py
+IceWMCP_GtkPCCard.py
+ICEWMCP_URLRead.py
+IceWMCPEnergyStar.py (IceWMCP version 2.5 and later)
+IceWMCPSystem.py  (add-in, IceWMCP version 2.3 and later)
+pyicewmcphw.py  (add-in, IceWMCP version 2.3 and later)
+_pyicewmcphw.so  (add-in, IceWMCP version 2.3 and later)
+libicewmcphw.so  (add-in, IceWMCP version 2.3 and later)
+
+IceWMCPKeyEdit.py   (obselete, IceWMCP version 2.2 and before)
+IceWMCPCursors.py   (obselete, IceWMCP version 2.2 and before)
+tkPCCard.py  (obselete, IceWMCP version 1.1 and before)
+______________________________________________
+IcePref2 Theme Designer consists of the following modules:
+
+icepref_td.py
+
+______________________________________________
+IceSoundManager consists of the following modules:
+
+icesound.py
+
+______________________________________________
+PySpool consists of the following modules:
+
+pyprintcommon.py
+pyspool.py
+
+______________________________________________
+PhrozenClock consists of the following modules:
+
+phrozenclock.py
+
+______________________________________________
+tkPCCard consists of the following modules:
+
+tkPCCard.py
+
+
+
+______________________________________________
+GtkPCCard consists of the following modules:
+
+IceWMCP_GtkPCCard.py
+
+
+
+IcePref2 is copyright 2001 by David Mortensen (unknown email), with updates by Erica Andrews (PhrozenSmoke[at]yahoo.com), and copyright 2003 by Erica Andrews (PhrozenSmoke[at]yahoo.com).
+______________________________________________
+IcePref2 consists of the following modules:
+
+icepref.py
+
+
+
+IceMe is copyright 2000-2003 by Dirk Moebius (dmoebius@gmx.net , http://iceme.sourceforge.net) and Mike Hostetler (thehaas@binary.net , http://iceme.sourceforge.net), IceMe IceWMCP 'Special Edition' is copyright 
+2003 by Erica Andrews (PhrozenSmoke['at']yahoo.com) 
+______________________________________________
+IceMe IceWMCP 'Special Edition' consists of the following modules:
+
+constants.py
+DndCTree.py
+IceMenuTree.py
+IceMe.py
+Preferences.py
+PreviewWindow.py

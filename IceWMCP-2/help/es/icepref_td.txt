@@ -1,1 +1,22 @@
-dummy file
+[PHTITLE]IceWMCP - Diseñador De Temas IcePref2  
+[PHSECTION]Descripción  
+La herramienta Diseñador De Temas IcePref2 permite que usted cree y que modifique fácilmente  temas para IceWM.  Este texto de ayuda contiene solamente la información más básica necesitada para utilizar a Diseñador De Temas IcePref2.  
+[PHSECTION]Diseñador De Temas IcePref2  
+La ventana principal del Diseñador del Temas IcePref2 divide todas las características disponibles en un tema de IceWM en [PH-HI]categorías que se explica por sí mismo[/PH-HI], tales como 'Barra de  Dirección', 'Menús', y 'Barra de Tarea'.  Para saltar rápidamente de categoría a otra, seleccione [PH-HI]Categoría[/PH-HI] en el menú del Diseñador De Temas.  [PH-HI]Antes de que usted pueda hacer cualquier cosa útil con el Diseñador De Temas, usted debe abrir un tema existente o crear un nuevo tema.[/PH-HI]  
+[PHSECTION]Abrir Ficheros De Tema  
+Para abrir un tema de IceWM existente para corregir, seleccione [PH-HI]Fichero -> Abrir Tema... [/PH-HI]  en el menú, o presione  [PH-HI]Ctrl+O[/PH-HI] en su teclado.  Seleccione el fichero  que usted desea abrir, entonces haga clic en [PH-HI]'ACEPTAR'[/PH-HI].  
+[PHSECTION]Crear Un Nuevo Tema  
+Para crear un nuevo tema de IceWM, seleccione [PH-HI]Fichero -> Nuevo Tema[/PH-HI] en el menú, o presione  [PH-HI]Ctrl+N[/PH-HI] en su teclado.   Una ventana nueva se abrirá.  Escriba un nombre para el tema en el área [PH-HI]Nombre del Tema:[/PH-HI].   Escriba su propio nombre (o alias) en el área  [PH-HI]Autor del Tema:[/PH-HI].   Si usted desea, usted puede también escribir su dirección de  correo-e en el área [PH-HI]Autor del Tema:[/PH-HI].  Escriba una descripción corta del tema en el área   [PH-HI]Descripción del Tema:[/PH-HI] .  Usted debe ahora seleccionar [PH-HI]el directorio[/PH-HI] donde el fichero del tema será guardado haciendo clic en el botón con la [PH-HI]'carpeta'[/PH-HI] en el área [PH-HI]Directorio:[/PH-HI].  Sea seguro que usted tiene permiso de guardar archivos en el directorio que usted ha seleccionado.  Haga clic en el botón [PH-HI]ACEPTAR[/PH-HI].  Su nuevo tema será creado.  
+[PHSECTION]Guardar El Tema  
+Antes de salir del programa, usted debe ser seguro guardar cualquier cambio que usted haya realizado a su tema de IceWM seleccionando [PH-HI]Fichero -> Guardar Tema[/PH-HI]  en el menú, o presione  [PH-HI]Ctrl+S[/PH-HI] en su teclado.   Usted puede también guardar su tema haciendo clic en el botón [PH-HI]'Guardar'[/PH-HI] al lado izquierdo inferior de la pantalla del Diseñador de Temas.  
+[PHSECTION]Herramientas 
+Usted puede usar varias otras herramientas para configurar IceWM haciendo clic en  [PH-HI]'Herramientas'[/PH-HI] en el menú de IcePref2 - Diseñador de Temas.  Seleccione la herramienta que usted desea lanzar.
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir del Diseñador de Temas[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  También, usted puede salir haciendo clic en el botón [PH-HI]'Salir'[/PH-HI] al fondo de la pantalla.
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 
+

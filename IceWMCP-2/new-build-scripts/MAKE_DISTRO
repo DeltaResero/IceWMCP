@@ -1,1 +1,33 @@
-dummy file
+echo "MAKING ALL"
+./MAKE_ALL
+echo "TESTING ALL"
+gmessage "BE SURE TO INSTALL THE ICEWMCP PROGRAM FROM PyInstallShield! ITS NEEDED TO BUILD THE RPM!"
+./TEST_ALL
+echo "BUILDING IceWMCP RPM"
+./build_rpm
+echo "INSTALLING IceWMCP RPM"
+rpm -e IceWMControlPanel-2.4-1
+rm -fr /usr/share/IceWMCP/*
+rpm -Uvh --force --nodeps /Compile/distro/icewmcp/IceWMControlPanel*.rpm
+echo "CREATING CODE BACKUPS"
+rm -f /Compile/distro/icewmcp/Ice*static*.tar.bz2
+./backup_code
+echo "BUILDING STATIC"
+./build_static
+
+echo "making hardware plugin packages"
+./prep_hw_plugin
+
+echo "Testing IceWMCP HARDWARE PLUGIN..."
+cd /INSTALL-ICEWMCP-HW/
+gmessage "BE SURE TO INSTALL THE ICEWMCP *HARDWARE PLUGIN* PROGRAM FROM PyInstallShield! ITS NEEDED TO BUILD THE RPM!"
+echo "Testing IceWMCP-HW INSTALL...if you are creating an RPM - be sure to truly INSTALL"
+./PyInstallShield
+rm -f *.pyc
+rm -f *.pyo
+echo "Completed hardware plugin test."
+echo "Creating RPM for hardware plugin."
+cd /Compile/IceWMCP/build-scripts/
+./rpm-icewmcp-hw
+
+echo "DISTRIBUTION BUILD COMPLETE!"

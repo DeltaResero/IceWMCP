@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=印表機\nSpool
+Exec=[PHROZEN-INTERNAL]pyspool.py
+Icon=pyspool.png
+Hint=檢視 LPRng 印表機 spool

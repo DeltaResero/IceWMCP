@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=使用者
+Exec=kuser
+Icon=kusers.png
+Hint=管理系統上的使用者

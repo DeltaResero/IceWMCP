@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Firewall
+Exec=gfcc
+Icon=gfcc.png
+Hint=Firewall configuration (GFCC)

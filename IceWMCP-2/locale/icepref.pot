@@ -1,1 +1,1656 @@
-dummy file
+#DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IcePref2 3.1\n"
+"POT-Creation-Date: Thu May 05 18:23:04 2003\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.4\n"
+
+#: icepref.py
+msgid "Loading...please wait."
+msgstr ""
+
+#: icepref.py
+msgid "Delete"
+msgstr ""
+
+#: icepref.py
+msgid "Edit"
+msgstr ""
+
+#: icepref.py
+msgid "Edit with Gimp"
+msgstr ""
+
+#: icepref.py
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: icepref.py
+msgid "NO"
+msgstr ""
+
+#: icepref.py
+msgid "YES"
+msgstr ""
+
+#: icepref.py:1066
+msgid "Ok"
+msgstr ""
+
+#: icepref.py:1071
+msgid "Cancel"
+msgstr ""
+
+#: icepref.py:1270
+msgid ""
+"WARNING:\n"
+"Newer IceWM themes often\n"
+"override this wallpaper setting."
+msgstr ""
+
+#: icepref.py:1274
+msgid " Apply Theme Now! "
+msgstr ""
+
+#: icepref.py:1275
+msgid " About Theme Previews... "
+msgstr ""
+
+#: icepref.py:1296
+msgid "About Theme Previews"
+msgstr ""
+
+#: icepref.py:1296
+msgid ""
+"Theme previewing is a new feature of IcePref2 (an updated version of IcePref, improved by Erica Andrews [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"Theme previewing requires a JPEG image named $preview.jpg$ in each theme's directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then your preview JPEG should be at /usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (the name MUST be $preview.jpg$). The image should be no larger in size than 200x200 pixels.\n"
+"\n"
+"There are three ways to get $preview$ images for your themes:\n"
+"[1] Download the package of (some) theme previews from icesoundmanager.sourceforge.net\n"
+"[2] Use the theme thumbnails at  http://themes.freshmeat.net/browse/925/?topic_id=925\n"
+"[3] Make the preview images yourself with scaled screenshots.\n"
+"\n"
+"Theme authors are encouraged to add $preview.jpg$ preview files to their distributed theme packages."
+msgstr ""
+
+#: icepref.py:1324
+msgid ""
+" SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr ""
+
+#: icepref.py:1382
+msgid "Select Color"
+msgstr ""
+
+#: icepref.py:1464
+msgid "Select Font"
+msgstr ""
+
+#: icepref.py:1490
+msgid "Select a file..."
+msgstr ""
+
+#: icepref.py:1694
+msgid "File"
+msgstr ""
+
+#: icepref_td.py:1488 icepref_td.py:2048
+msgid "Theme Name"
+msgstr ""
+
+#: icepref.py:2049
+msgid "Unable to read local preferences file!"
+msgstr ""
+
+#: icepref.py:2049
+#: icepref.py:2088
+#: icepref.py:2116
+#: icepref.py:2126
+msgid "Warning"
+msgstr ""
+
+#: icepref.py:2088
+msgid "There was no preferences file to backup!"
+msgstr ""
+
+#: icepref.py:2114
+msgid "IceWM Preferences successfully saved to: "
+msgstr ""
+
+#: icepref.py:2114
+msgid "Success"
+msgstr ""
+
+#: icepref.py:2116
+msgid "There was an ERROR saving your IceWM 'preferences' file."
+msgstr ""
+
+#: icepref.py:2126
+msgid "Restarting IceWM from IcePref is buggy on BSD systems.  You should restart IceWM yourself."
+msgstr ""
+
+
+#: icepref.py:2142
+msgid ""
+"IcePref %s : a Python-based configuration utility for IceWM.\n"
+"\n"
+"Original Author:  David Mortensen.\n"
+"Updated by: Erica Andrews\n"
+"Site: http://icesoundmananger.sourceforge.net\n"
+"\n"
+"IcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) was updated by Erica Andrews (PhrozenSmoke@yahoo.com) in January 2003.  I, Erica Andrews, have modified IcePref in accordance with the GNU GPL under which IcePref is distributed.  I cannot say I have \"taken over\" the IcePref project, but got tired of it being abandoned and decided to make it more usable with newer versions of IceWM.  The new IcePref includes the new options available in the IceWM preferences file as of IceWM  %s.  The old IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but it appears that David Mortensen has abandoned his project, as he had not updated IcePref since the summer of 2000, and his site no longer exists.\n"
+"\n"
+"You can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  http://icesoundmananger.sourceforge.net.  This updated version of IcePref by Erica Andrews is distributed under the GNU GPL without ANY warranty whatsoever. Use at your own risk! "
+msgstr ""
+
+#: icepref.py:2170
+msgid "/_File"
+msgstr ""
+
+#: icepref.py:2171
+msgid "/File/tearoff1"
+msgstr ""
+
+# icepref.py
+msgid "Open IceWM Preferences File"
+msgstr ""
+
+#: icepref.py:2172
+msgid "/File/_Reload Preferences File"
+msgstr ""
+
+#: icepref.py:2173
+msgid "/File/Reset _Defaults"
+msgstr ""
+
+#: icepref.py:2174
+msgid "/File/_Save Preferences"
+msgstr ""
+
+#: icepref.py:2175
+msgid "/File/sep1"
+msgstr ""
+
+#: icepref.py:2176
+msgid "/File/_Restart IceWM"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "/File/_Apply Changes Now..."
+msgstr ""
+
+#: icepref.py:2177
+msgid "/File/sep2"
+msgstr ""
+
+#: icepref.py:2178
+msgid "/File/_Exit IcePref2"
+msgstr ""
+
+#: icepref.py:2179
+msgid "/_Category"
+msgstr ""
+
+#: icepref.py:2180
+msgid "/_Category/tearoff2"
+msgstr ""
+
+#: icepref.py:2181
+msgid "/_Tools"
+msgstr ""
+
+#: icepref.py:2182
+msgid "/_Tools/Edit task bar menus (requires IceMe)..."
+msgstr ""
+
+#: icepref.py:2183
+msgid "/_Tools/Manage sound events (requires IceSoundManager)..."
+msgstr ""
+
+#: icepref.py:2184
+msgid "/_Tools/Open Control Panel (requires IceControlPanel)..."
+msgstr ""
+
+#: icepref.py:2185
+msgid "/_Help"
+msgstr ""
+
+#: icepref.py:2186
+#: icepref.py:2372
+msgid "/Help/_About IcePref2..."
+msgstr ""
+
+#: icepref.py:2192
+msgid "/_Category/"
+msgstr ""
+
+#: icepref.py:2375
+msgid "Save"
+msgstr ""
+
+#: icepref.py:2375
+msgid "Save settings to your IceWM preferences file"
+msgstr ""
+
+#: icepref.py:2376
+msgid "Defaults"
+msgstr ""
+
+#: icepref.py:2376
+msgid "Reset default values"
+msgstr ""
+
+#: icepref.py:2377
+msgid "Reload"
+msgstr ""
+
+#: icepref.py:2377
+msgid "Reload the preferences file"
+msgstr ""
+
+#: icepref.py:2378
+msgid "Restart"
+msgstr ""
+
+#: icepref.py:2378
+msgid "Restart IceWM (does not work on all systems)"
+msgstr ""
+
+#: icepref.py:2379
+msgid "Exit"
+msgstr ""
+
+#: icepref.py:2575   icepref.py:2379
+msgid "Exit IcePref2"
+msgstr ""
+
+# IcePref2 Options - appended
+
+
+msgid "\"Address bar\" shortcut"
+msgstr ""
+
+msgid "\"Arrange icons\" shortcut"
+msgstr ""
+
+msgid "\"Arrange windows\" shortcut"
+msgstr ""
+
+msgid "\"Cascade windows\" shortcut"
+msgstr ""
+
+msgid "\"Close window\" shortcut"
+msgstr ""
+
+msgid "\"Go to last workspace\" shortcut"
+msgstr ""
+
+msgid "\"Hide all windows\" shortcut"
+msgstr ""
+
+msgid "\"Hide window\" shortcut"
+msgstr ""
+
+msgid "\"Last item\" shortcut"
+msgstr ""
+
+msgid "\"Logout / screenlock dialog\" shortcut"
+msgstr ""
+
+msgid "\"Lower window\" shortcut"
+msgstr ""
+
+msgid "\"Maximize window vertically\" shortcut"
+msgstr ""
+
+msgid "\"Maximize window\" shortcut"
+msgstr ""
+
+msgid "\"Minimize all windows\" shortcut"
+msgstr ""
+
+msgid "\"Minimize window\" shortcut"
+msgstr ""
+
+msgid "\"Move window\" shortcut"
+msgstr ""
+
+msgid "\"Next item\" shortcut"
+msgstr ""
+
+msgid "\"Next sys window\" shortcut"
+msgstr ""
+
+msgid "\"Next window\" shortcut"
+msgstr ""
+
+msgid "\"Next workspace\" shortcut"
+msgstr ""
+
+msgid "\"Occupy all\" shortcut"
+msgstr ""
+
+msgid "\"Previous sys window\" shortcut"
+msgstr ""
+
+msgid "\"Previous window\" shortcut"
+msgstr ""
+
+msgid "\"Previous workspace\" shortcut"
+msgstr ""
+
+msgid "\"Program menu\" shortcut"
+msgstr ""
+
+msgid "\"Raise window\" shortcut"
+msgstr ""
+
+msgid "\"Restore window\" shortcut"
+msgstr ""
+
+msgid "\"Rollup window\" shortcut"
+msgstr ""
+
+msgid "\"Run\" shortcut"
+msgstr ""
+
+msgid "\"Size window\" shortcut"
+msgstr ""
+
+msgid "\"Take window to next workspace\" shortcut"
+msgstr ""
+
+msgid "\"Take window to previous workspace\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 1\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 10\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 11\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 12\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 2\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 3\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 4\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 5\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 6\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 7\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 8\" shortcut"
+msgstr ""
+
+msgid "\"Take window to workspace 9\" shortcut"
+msgstr ""
+
+msgid "\"Tile windows horizontally\" shortcut"
+msgstr ""
+
+msgid "\"Tile windows vertically\" shortcut"
+msgstr ""
+
+msgid "\"Undo arrange\" shortcut"
+msgstr ""
+
+msgid "\"Window full-screen\" shortcut"
+msgstr ""
+
+msgid "\"Window list\" shortcut"
+msgstr ""
+
+msgid "\"Window menu\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 1\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 10\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 11\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 12\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 2\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 3\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 4\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 5\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 6\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 7\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 8\" shortcut"
+msgstr ""
+
+msgid "\"Workspace 9\" shortcut"
+msgstr ""
+
+msgid "\"Workspace take last window\" shortcut"
+msgstr ""
+
+msgid "APM color"
+msgstr ""
+
+msgid "APM font"
+msgstr ""
+
+msgid "APM text color"
+msgstr ""
+
+msgid "Active border color"
+msgstr ""
+
+msgid "Active button color"
+msgstr ""
+
+msgid "Active button font"
+msgstr ""
+
+msgid "Active button text color"
+msgstr ""
+
+msgid "Active menu item color"
+msgstr ""
+
+msgid "Active menu item text color"
+msgstr ""
+
+msgid "Active minimized window color"
+msgstr ""
+
+msgid "Active minimized window text color"
+msgstr ""
+
+msgid "Active taskbar app color"
+msgstr ""
+
+msgid "Active taskbar app text color"
+msgstr ""
+
+msgid "Active taskbar font"
+msgstr ""
+
+msgid "Active title bar color"
+msgstr ""
+
+msgid "Active title bar shadow"
+msgstr ""
+
+msgid "Active title bar text color"
+msgstr ""
+
+msgid "Active workspace  font"
+msgstr ""
+
+msgid "Address bar font"
+msgstr ""
+
+msgid "Allow mouse actions on client windows (buggy with some programs)"
+msgstr ""
+
+msgid "Alternate clock time format (for \"flashing\" effects - strftime format string - see man page \"strftime\" for more info)  Note: Leaving this blank may result in NO clock showing at all."
+msgstr ""
+
+msgid "Always maintain focus under mouse window (makes some keyboard support non-functional)"
+msgstr ""
+
+msgid "Ask for confirmation on logout"
+msgstr ""
+
+msgid "Auto hide task bar after delay"
+msgstr ""
+
+msgid "Auto raise windows after delay"
+msgstr ""
+
+msgid "Auto scroll delay"
+msgstr ""
+
+msgid "Automatically disable some functions when running under GNOME"
+msgstr ""
+
+msgid "Autoscroll start delay"
+msgstr ""
+
+msgid "Beep when new mail arrives"
+msgstr ""
+
+msgid "Bitmask of buttons that raise the window when pressed"
+msgstr ""
+
+msgid "Bitmask of root window button click to use in window manager"
+msgstr ""
+
+msgid "Border size of quick-switch icons"
+msgstr ""
+
+msgid "CPU Idle color"
+msgstr ""
+
+msgid "CPU status WM_CLASS hint"
+msgstr ""
+
+msgid "Center dialogs on owner window"
+msgstr ""
+
+msgid "Center maximixed windows"
+msgstr ""
+
+msgid "Change workspaces when focusing on a window on another workspace"
+msgstr ""
+
+msgid "Clock color"
+msgstr ""
+
+msgid "Clock date format for tooltip (strftime format string - see man page \"strftime\" for more info)"
+msgstr ""
+
+msgid "Clock font"
+msgstr ""
+
+msgid "Clock status WM_CLASS hint"
+msgstr ""
+
+msgid "Clock text color"
+msgstr ""
+
+msgid "Clock time format (strftime format string - see man page \"strftime\" for more info)"
+msgstr ""
+
+msgid "Color of active workspace button"
+msgstr ""
+
+msgid "Color of disabled menu items"
+msgstr ""
+
+msgid "Color of inactive workspace button text"
+msgstr ""
+
+msgid "Color of normal workspace button"
+msgstr ""
+
+msgid "Color of normal workspace button text"
+msgstr ""
+
+msgid "Color of quick-switch highlight rectangle"
+msgstr ""
+
+msgid "Color of received data on net monitor"
+msgstr ""
+
+msgid "Color of sent data on net monitor"
+msgstr ""
+
+msgid "Color representing idle on net monitor"
+msgstr ""
+
+msgid "Color to use for transparent applications"
+msgstr ""
+
+msgid "Colormap follows pointer"
+msgstr ""
+
+msgid "Command to cancel logout"
+msgstr ""
+
+msgid "Command to lock display or show screensaver"
+msgstr ""
+
+msgid "Command to reboot the system"
+msgstr ""
+
+msgid "Command to run for address bar entries when [Enter] is pressed on the address bar"
+msgstr ""
+
+msgid "Command to run when CPU status monitor is clicked"
+msgstr ""
+
+msgid "Command to run when mailbox icon is clicked"
+msgstr ""
+
+msgid "Command to run when net status monitor is clicked"
+msgstr ""
+
+msgid "Command to run when new mail arrives"
+msgstr ""
+
+msgid "Command to run when the taskbar clock is clicked"
+msgstr ""
+
+msgid "Command to select and run a program (The \"Run...\" command on the taskbar menu)"
+msgstr ""
+
+msgid "Command to shut down the system"
+msgstr ""
+
+msgid "Command to start logout"
+msgstr ""
+
+msgid "Count messages in mailbox"
+msgstr ""
+
+msgid "Default IceWM dialog action (0 for \"Cancel\", 1 for \"OK\")"
+msgstr ""
+
+msgid "Default taskbar color"
+msgstr ""
+
+msgid "Delay before activating menu items"
+msgstr ""
+
+msgid "Delay before activating menu submenus"
+msgstr ""
+
+msgid "Delay before click gets interpreted as drag"
+msgstr ""
+
+msgid "Delay before task bar is automatically hidden"
+msgstr ""
+
+msgid "Delay before tooltip window is displayed"
+msgstr ""
+
+msgid "Delay before windows are auto raised"
+msgstr ""
+
+msgid "Delay between new-mail checks in seconds"
+msgstr ""
+
+msgid "Delay for pointer focus switching"
+msgstr ""
+
+msgid "Delay pointer focusing when mouse moves"
+msgstr ""
+
+msgid "Desktop background color"
+msgstr ""
+
+msgid "Desktop wallpaper image"
+msgstr ""
+
+msgid "Dialog Label color"
+msgstr ""
+
+msgid "Dialog Label font"
+msgstr ""
+
+msgid "Dialog Label text color"
+msgstr ""
+
+msgid "Dialog box color"
+msgstr ""
+
+msgid "Disable Gdk-Imlib image cache use"
+msgstr ""
+
+msgid "Disabled menu item text color"
+msgstr ""
+
+msgid "Display desktop wallpaper centered, instead of tiled."
+msgstr ""
+
+msgid "Display mini-icons on desktop for minimized windows"
+msgstr ""
+
+msgid "Distance in pixels before windows snap together"
+msgstr ""
+
+msgid "Do not rotate the mouse cursor when displaying a menu"
+msgstr ""
+
+msgid "Enable Alt+Tab to minimized windows"
+msgstr ""
+
+msgid "Enable Alt+Tab to windows on other workspaces"
+msgstr ""
+
+msgid "Enable Alt-Tab to hidden windows"
+msgstr ""
+
+msgid "Enable Quick-switch (Alt+Tab) window switching"
+msgstr ""
+
+msgid "Enable XFreeType extension (buggy, may result in font-loading errors)"
+msgstr ""
+
+msgid "Enable horizontal edge switch for the desktop"
+msgstr ""
+
+msgid "Enable vertical edge switch for the desktop"
+msgstr ""
+
+msgid "FX Font font"
+msgstr ""
+
+msgid "Fill highlight rectangle"
+msgstr ""
+
+msgid "Focus dialog window when initally mapped"
+msgstr ""
+
+msgid "Focus dialog window when initially mapped only if parent frame focused"
+msgstr ""
+
+msgid "Focus normal window when initially mapped"
+msgstr ""
+
+msgid "Focus window when application window is raised"
+msgstr ""
+
+msgid "Focus window when client area clicked"
+msgstr ""
+
+msgid "Focus windows by clicking"
+msgstr ""
+
+msgid "Horizontal dialog window border"
+msgstr ""
+
+msgid "Horizontal margin of quick-switch window"
+msgstr ""
+
+msgid "Horizontal scrollbar button size"
+msgstr ""
+
+msgid "Horizontal window border"
+msgstr ""
+
+msgid "IceWM Themes"
+msgstr ""
+
+msgid "IceWM manages the root window"
+msgstr ""
+
+msgid "Icon search path (colon separated)"
+msgstr ""
+
+msgid "Image to use for transparent applications"
+msgstr ""
+
+msgid "Inactive scrollbar button arrow color"
+msgstr ""
+
+msgid "Inactive title bar shadow"
+msgstr ""
+
+msgid "Initial scrollbar autoscroll delay"
+msgstr ""
+
+msgid "Input color (Address bar)"
+msgstr ""
+
+msgid "Input selection color (Address bar)"
+msgstr ""
+
+msgid "Input selection text color (Address bar)"
+msgstr ""
+
+msgid "Input text color (Address bar)"
+msgstr ""
+
+msgid "Invisible taskbar app color"
+msgstr ""
+
+msgid "Invisible taskbar app text"
+msgstr ""
+
+msgid "KDE menu data directory"
+msgstr ""
+
+msgid "Keep tasbar below all other windows"
+msgstr ""
+
+msgid "Launch task bar programs (clock, etc.) on a single click"
+msgstr ""
+
+msgid "Limit by dock layer"
+msgstr ""
+
+msgid "Limit initial position of windows to screen"
+msgstr ""
+
+msgid "Limit initial size of windows to screen"
+msgstr ""
+
+msgid "List box color (Window list)"
+msgstr ""
+
+msgid "List box font (Window list box)"
+msgstr ""
+
+msgid "List box selection color (Window list)"
+msgstr ""
+
+msgid "List box selection text color (Window list)"
+msgstr ""
+
+msgid "List box text color (Window list)"
+msgstr ""
+
+msgid "List of battery names (directories) in /proc/acpi/battery to ignore for APM"
+msgstr ""
+
+msgid "List of gradient images in the current theme"
+msgstr ""
+
+msgid "Lower a raised window if clicked a second time"
+msgstr ""
+
+msgid "Mail status WM_CLASS hint"
+msgstr ""
+
+msgid "Mailbox path ($MAIL is used if no value is specified).  Example: file:///var/spool/mail/my_username       Example: pop3://my_username:my_password@my.mail-host.com/      Example: imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+msgstr ""
+
+msgid "Maximum menu width (0 to let IceWM decide)"
+msgstr ""
+
+msgid "Menu font"
+msgstr ""
+
+msgid "Menus track mouse even with no mouse buttons held"
+msgstr ""
+
+msgid "Minimized taskbar app color"
+msgstr ""
+
+msgid "Minimized taskbar app text"
+msgstr ""
+
+msgid "Minimized window font"
+msgstr ""
+
+msgid "Mouse-button clicked on desktop to show menu"
+msgstr ""
+
+msgid "Mouse-button clicked on desktop to show window list"
+msgstr ""
+
+msgid "Mouse-button clicked on desktop to show window list menu"
+msgstr ""
+
+msgid "Mouse-button clicked on titlebar to maximize window"
+msgstr ""
+
+msgid "Mouse-button clicked on titlebar to roll up window"
+msgstr ""
+
+msgid "Move mouse when doing focusing in pointer focus mode"
+msgstr ""
+
+msgid "Move/size status color"
+msgstr ""
+
+msgid "Move/size status text color"
+msgstr ""
+
+msgid "Multibyte internationalization support"
+msgstr ""
+
+msgid "Mouse double-click speed"
+msgstr ""
+
+msgid "Names of the Workspaces"
+msgstr ""
+
+msgid "Net status WM_CLASS hint"
+msgstr ""
+
+msgid "Network device for which to show network status (examples:  ppp0, lo, eth0)"
+msgstr ""
+
+msgid "Nice CPU usage color"
+msgstr ""
+
+msgid "Normal border color"
+msgstr ""
+
+msgid "Normal button color"
+msgstr ""
+
+msgid "Normal button font"
+msgstr ""
+
+msgid "Normal button text color"
+msgstr ""
+
+msgid "Normal menu color"
+msgstr ""
+
+msgid "Normal menu item text color"
+msgstr ""
+
+msgid "Normal minimized window color"
+msgstr ""
+
+msgid "Normal minimized window text color"
+msgstr ""
+
+msgid "Normal taskbar app text color"
+msgstr ""
+
+msgid "Normal taskbar color"
+msgstr ""
+
+msgid "Normal taskbar font"
+msgstr ""
+
+msgid "Normal title bar color"
+msgstr ""
+
+msgid "Normal title bar text color"
+msgstr ""
+
+msgid "Normal title button color"
+msgstr ""
+
+msgid "Normal title button text color"
+msgstr ""
+
+msgid "Normal workspace  font"
+msgstr ""
+
+msgid "Number of milliseconds to display the workspace tooltip when changing workspaces"
+msgstr ""
+
+msgid "Opaque window move"
+msgstr ""
+
+msgid "Opaque window resize"
+msgstr ""
+
+msgid "Open command"
+msgstr ""
+
+msgid "Pass focusing click on client area to client"
+msgstr ""
+
+msgid "Pointer motion distance before click gets interpreted as drag"
+msgstr ""
+
+msgid "Quick switch text color"
+msgstr ""
+
+msgid "Quick switch window color"
+msgstr ""
+
+msgid "Quick switch window font"
+msgstr ""
+
+msgid "Raise when frame border is clicked"
+msgstr ""
+
+msgid "Raise when frame button is clicked"
+msgstr ""
+
+msgid "Raise window when client area clicked"
+msgstr ""
+
+msgid "Raise window when title bar is clicked"
+msgstr ""
+
+msgid "Raise windows when focused"
+msgstr ""
+
+msgid "Reload menu files automatically"
+msgstr ""
+
+msgid "Resistance in pixels when trying to move windows off the screen"
+msgstr ""
+
+msgid "Resize corner height"
+msgstr ""
+
+msgid "Resize corner width"
+msgstr ""
+
+msgid "Screen edge workspace switching delay"
+msgstr ""
+
+msgid "Scroll bar arrow color"
+msgstr ""
+
+msgid "Scroll bar color"
+msgstr ""
+
+msgid "Scroll bar delay"
+msgstr ""
+
+msgid "Scroll bar slider color"
+msgstr ""
+
+msgid "Scrollbar button arrow color"
+msgstr ""
+
+msgid "Scrollbar button color"
+msgstr ""
+
+msgid "Send the clicks outside menus to target window"
+msgstr ""
+
+msgid "Show \"Start\" menu on task bar"
+msgstr ""
+
+msgid "Show \"window list\" menu on task bar"
+msgstr ""
+
+msgid "Show Advanced Power Management (APM) status on task bar"
+msgstr ""
+
+msgid "Show Advanced Power Management time"
+msgstr ""
+
+msgid "Show CPU status on task bar"
+msgstr ""
+
+msgid "Show a small window"
+msgstr ""
+
+msgid "Show address bar on the task bar"
+msgstr ""
+
+msgid "Show all icons"
+msgstr ""
+
+msgid "Show all windows on the taskbar"
+msgstr ""
+
+msgid "Show application icon over menu button"
+msgstr ""
+
+msgid "Show clock on task bar"
+msgstr ""
+
+msgid "Show mailbox status on the task bar"
+msgstr ""
+
+msgid "Show network status on task bar"
+msgstr ""
+
+msgid "Show popup menus above mouse pointer"
+msgstr ""
+
+msgid "Show position status window during move/resize"
+msgstr ""
+
+msgid "Show task bar"
+msgstr ""
+
+msgid "Show task tray on task bar"
+msgstr ""
+
+msgid "Show text above icons"
+msgstr ""
+
+msgid "Show the \"logout\" menu on the task bar menu"
+msgstr ""
+
+msgid "Show the IceWM \"help\" item on the task bar menu"
+msgstr ""
+
+msgid "Show the submenu for selecting themes"
+msgstr ""
+
+msgid "Show window icons on the task bar"
+msgstr ""
+
+msgid "Show windows from all workspaces on task bar"
+msgstr ""
+
+msgid "Show windows on the task bar"
+msgstr ""
+
+msgid "Show workspace switching buttons on task bar"
+msgstr ""
+
+msgid "Show workspace tooltip when changing workspaces"
+msgstr ""
+
+msgid "Size of icon margins of quick-switch icons"
+msgstr ""
+
+msgid "Size of the quick-switch window separator"
+msgstr ""
+
+msgid "Smart window placement (minimize overlap)"
+msgstr ""
+
+msgid "Snap to nearest screen edge/window when moving windows"
+msgstr ""
+
+msgid "Status font"
+msgstr ""
+
+msgid "Support Windows95/98-style keyboard keys"
+msgstr ""
+
+msgid "Support mouse wheel"
+msgstr ""
+
+msgid "Support semi-transparent applications like gnome-terminal"
+msgstr ""
+
+msgid "System CPU usage color"
+msgstr ""
+
+msgid "Taking the mouse pointer to the edge of the screen moves to the next workspace"
+msgstr ""
+
+msgid "Task bar at top of the screen"
+msgstr ""
+
+msgid "Task bar clock uses nice pixmapped LCD display"
+msgstr ""
+
+msgid "Task tray has a bevel around it (Like the Windows system tray)"
+msgstr ""
+
+msgid "Terminal emulator (must accept -e option)"
+msgstr ""
+
+msgid "Theme author"
+msgstr ""
+
+msgid "Theme description"
+msgstr ""
+
+msgid "Time before tooltip is hidden"
+msgstr ""
+
+msgid "Title bar font"
+msgstr ""
+
+msgid "Title bar height"
+msgstr ""
+
+msgid "Title bar join left"
+msgstr ""
+
+msgid "Title bar join right"
+msgstr ""
+
+msgid "Title bar text horizontal offset"
+msgstr ""
+
+msgid "Title bar text position"
+msgstr ""
+
+msgid "Title bar text vertical offset"
+msgstr ""
+
+msgid "Titlebar buttons from left to right (x=close, m=max, i=min, h=hide, r=rollup, s=sysmenu)"
+msgstr ""
+
+msgid "Titlebar buttons from right to left (x=close, m=max, i=min, h=hide, r=rollup, s=sysmenu)"
+msgstr ""
+
+msgid "Titlebar buttons supported by theme (x, m, i, r, h, s, d)"
+msgstr ""
+
+msgid "Tool Button font"
+msgstr ""
+
+msgid "Toolbar button color"
+msgstr ""
+
+msgid "Toolbar button text color"
+msgstr ""
+
+msgid "Tooltip color"
+msgstr ""
+
+msgid "Tooltip font"
+msgstr ""
+
+msgid "Tooltip text color"
+msgstr ""
+
+msgid "Treat Penguin/Meta_L/Meta_R/Windows keys as Ctrl+Alt"
+msgstr ""
+
+msgid "Use double height task bar (highly recommended)"
+msgstr ""
+
+msgid "Use large (48x48) icons in quick switch window"
+msgstr ""
+
+msgid "User CPU usage color"
+msgstr ""
+
+msgid "Veritical window border"
+msgstr ""
+
+msgid "Vertical dialog window border"
+msgstr ""
+
+msgid "Vertical margin of quick-switch window"
+msgstr ""
+
+msgid "Vertical scrollbar button size"
+msgstr ""
+
+msgid "Width of CPU Monitor"
+msgstr ""
+
+msgid "Windows initially placed manually by user"
+msgstr ""
+
+msgid "Workspace switches by moving mouse to left/right screen edge"
+msgstr ""
+
+msgid "Xinerama primary screen"
+msgstr ""
+
+
+msgid "Windows"
+msgstr ""
+
+msgid "Quick Switch"
+msgstr ""
+
+msgid "Dialogs"
+msgstr ""
+
+msgid "Menus"
+msgstr ""
+
+msgid "Task Bar"
+msgstr ""
+
+msgid "Task Bar Applets"
+msgstr ""
+
+msgid "Scroll Bars"
+msgstr ""
+
+msgid "Tool Tips"
+msgstr ""
+
+msgid "Mouse"
+msgstr ""
+
+msgid "Title Bars"
+msgstr ""
+
+msgid "Miscellaneous"
+msgstr ""
+
+msgid "Themes"
+msgstr ""
+
+msgid "Address Bar"
+msgstr ""
+
+msgid "Desktop"
+msgstr ""
+
+msgid "Key Bindings"
+msgstr ""
+
+msgid "Workspaces"
+msgstr ""
+
+
+#: icepref.py:2367
+msgid "/_Tools/Theme Designer (requires IcePref2-TD)..."
+msgstr ""
+
+#: icepref.py:2323
+msgid "About IcePref2"
+msgstr ""
+
+#: icepref.py:1387
+msgid ""
+"The theme has been applied,\n"
+"and IceWM is quickly restarting.\n"
+"When it has restarted, click 'OK'.\n"
+"This may take a moment."
+msgstr ""
+
+#: icepref_td.py:963,  icepref.py:1359
+msgid " Create Theme Preview... "
+msgstr ""
+
+#: icepref_td.py:979
+msgid "Do you wish to replace it?"
+msgstr ""
+
+#: icepref_td.py:979
+msgid "The image"
+msgstr ""
+
+#: icepref_td.py:979
+msgid "already exists."
+msgstr ""
+
+#: icepref_td.py:982
+msgid ""
+"Apply your theme by selecting it\n"
+"from the IceWM 'Themes' menu.\n"
+"When you are ready, click 'OK'."
+msgstr ""
+
+#: icepref_td.py:982 icepref_td.py:2064
+msgid "OK"
+msgstr ""
+
+#: icepref_td.py:994, icepref.py:1397
+msgid "A theme preview image could not be created. This features requires the 'import' binary from ImageMagick to be on your path."
+msgstr ""
+
+#: icepref_td.py:1028
+msgid "None"
+msgstr ""
+
+#: icepref_td.py:1042 icepref_td.py:1361
+msgid "NO IMAGE"
+msgstr ""
+
+#: icepref_td.py:1572 icepref_td.py:1604
+#: icepref_td.py:1608 icepref_td.py:1791
+msgid "Theme Designer"
+msgstr ""
+
+#: icepref_td.py:1771
+msgid "IceWM Theme successfully saved to: "
+msgstr ""
+
+#: icepref_td.py:1773
+msgid "There was an ERROR saving your IceWM 'theme' file."
+msgstr ""
+
+#: icepref_td.py:1791
+msgid "About IcePref2 Theme Designer"
+msgstr ""
+
+#: icepref_td.py:1791
+msgid "An IceWM Theme Designer based on IcePref2"
+msgstr ""
+
+#: icepref_td.py:1791
+msgid "This software is distributed under the GNU General Public License."
+msgstr ""
+
+#: icepref_td.py:1823
+msgid "/File/_New Theme..."
+msgstr ""
+
+#: icepref_td.py:1824
+msgid "/File/_Open Theme..."
+msgstr ""
+
+#: icepref_td.py:1826
+msgid "/File/_Save Theme"
+msgstr ""
+
+#: icepref_td.py:1830
+msgid "Check for newer versions of this program..."
+msgstr ""
+
+#: icepref_td.py:1832
+msgid "/File/_Exit IcePref2 Theme Designer"
+msgstr ""
+
+#: icepref_td.py:1836
+msgid "/_Tools/Configure IceWM (requires IcePref2)..."
+msgstr ""
+
+
+#: icepref_td.py:1841
+msgid "/Help/_About IcePref2 Theme Designer..."
+msgstr ""
+
+#: icepref_td.py:2046
+msgid "Create A New IceWM Theme"
+msgstr ""
+
+#: icepref_td.py:2049
+msgid "Theme Author"
+msgstr ""
+
+#: icepref_td.py:2050
+msgid "Theme Description"
+msgstr ""
+
+#: icepref_td.py:2051
+msgid "Directory"
+msgstr ""
+
+#: icepref_td.py:2057
+msgid "Select"
+msgstr ""
+
+#: icepref_td.py:2065
+msgid "CANCEL"
+msgstr ""
+
+#: icepref_td.py:2083
+msgid "Select a directory"
+msgstr ""
+
+#: icepref_td.py:2104
+msgid "You must complete all the fields first."
+msgstr ""
+
+#: icepref_td.py:2132
+msgid "The file does not appear to be an IceWM theme file."
+msgstr ""
+
+
+#: icepref_td.py:2156
+msgid "Save this theme"
+msgstr ""
+
+
+#: icepref_td.py:2157
+msgid "Exit IcePref2 Theme Designer"
+msgstr ""
+
+# icepref_td.py
+msgid "Theme Info"
+msgstr ""
+
+# icepref_td.py
+msgid "Icons"
+msgstr ""
+
+# icepref_td.py
+msgid "Cursors"
+msgstr ""
+
+
+msgid "Show \"Programs\" menu"
+msgstr ""
+
+msgid "Show \"Run...\" on the menu"
+msgstr ""
+
+msgid "Show logout sub-menu"
+msgstr ""
+
+msgid "Show window list on the menu"
+msgstr ""
+
+msgid "Show \"About\" on the menu"
+msgstr ""
+
+msgid "Shaped pixmaps protect client window"
+msgstr ""
+
+msgid "Enable full-screen mode for windows"
+msgstr ""
+
+msgid "Quick-Switch groups windows on current workspace"
+msgstr ""
+
+msgid "\"Window list\" menu shortcut"
+msgstr ""
+
+#: icepref.py:1967
+msgid "No mouse buttons"
+msgstr ""
+
+#: icepref.py:1968
+msgid "First button only"
+msgstr ""
+
+#: icepref.py:1969
+msgid "Second button only"
+msgstr ""
+
+#: icepref.py:1970
+msgid "Third button only"
+msgstr ""
+
+#: icepref.py:1971
+msgid "First and second buttons"
+msgstr ""
+
+#: icepref.py:1972
+msgid "First and third buttons"
+msgstr ""
+
+#: icepref.py:1973
+msgid "Second and third buttons"
+msgstr ""
+
+#: icepref.py:1974
+msgid "All three buttons"
+msgstr ""
+
+#: icepref.py:1981
+msgid "No mouse button"
+msgstr ""
+
+#: icepref.py:1982
+msgid "First mouse button"
+msgstr ""
+
+#: icepref.py:1983
+msgid "Second mouse button"
+msgstr ""
+
+#: icepref.py:1984
+msgid "Third mouse button"
+msgstr ""
+
+#: icepref.py:1985
+msgid "Fourth mouse button"
+msgstr ""
+
+#: icepref.py:1986
+msgid "Fifth mouse button"
+msgstr ""
+
+#: icepref_search.py
+msgid "Search"
+msgstr ""
+
+#: icepref_search.py
+msgid "Search Results"
+msgstr ""
+
+#: icepref_search.py
+msgid "Section"
+msgstr ""
+
+#: icepref_search.py
+msgid "Property"
+msgstr ""
+
+#: icepref_search.py
+msgid "No matches found."
+msgstr ""
+
+#: icepref_search.py
+msgid "Enter a search word"
+msgstr ""
+
+#: icepref.py
+msgid "Enable address bar on the task bar"
+msgstr ""
+
+#: icepref.py
+msgid "support the \"Windows\" key"
+msgstr ""
+
+
+
+###########
+# added 8.25.2003, IceWM 1.2.10/1.2.11
+###########
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for inner decorations"
+msgstr ""
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension lines"
+msgstr ""
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for gauge lines"
+msgstr ""
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension labels"
+msgstr ""
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for geometry labels"
+msgstr ""
+
+#: icepref.py, new in IceWM 1.2.10
+# number of seconds the taskbar flashes before finally focusing
+msgid "Number of seconds the taskbar application will blink when requesting focus"
+msgstr ""
+
+#: icepref.py
+# The font to be used for the 'hint' that IceWM shows when moving or resizing a window
+msgid "Font for the window's move/resize status"
+msgstr ""
+
+
+

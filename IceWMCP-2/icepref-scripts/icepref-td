@@ -1,1 +1,2 @@
-dummy file
+cd /usr/share/IceWMCP/
+python ./icepref_td.py "$*"

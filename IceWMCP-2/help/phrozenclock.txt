@@ -1,1 +1,23 @@
-dummy file
+[PHTITLE] PhrozenClock
+[PHSECTION] Overview
+The IceWMCP PhrozenClock tool allows you to easily manage the time, date, and time zone on your system.   Generally, you have to be [PH-HI]'root'[/PH-HI] in order to use this tool, since Linux and Unix systems generally do not allow regular users to change the system's time.  PhrozenClock does not support .ics format zoneinfo files commonly found in Gnome Ximian Evolution-style applications, since most Glibc versions currently only support standard zoneinfo file formats.  PhrozenClock makes every possible effort to correctly distinguish between standard system zoneinfo data and .ics format zoneinfo data in order to protect your system.
+[PHSECTION] Environment Variables
+The following environment variables are supported to control where PhrozenClock looks for data: [PH-HI]TZ[/PH-HI], [PH-HI]TZDIR[/PH-HI].  (Examples: [PH-HI]TZDIR=/usr/share/zoneinfo/[/PH-HI], [PH-HI]TZ=/etc/localtime[/PH-HI])  You should set these environment variables if PhrozenClock shows you any messages indicating that it had trouble locating your 'zoneinfo' directory or finding your time zone's name. 
+[PHSECTION] Setting The Date And Time
+To set the [PH-HI]Date and Time[/PH-HI], click the [PH-HI]'Date & Time'[/PH-HI] tab.  Select the current [PH-HI]date[/PH-HI] from the [PH-HI]calendar[/PH-HI] on the left.  Select the correct [PH-HI]hour, minute, and seconds[/PH-HI] from the [PH-HI]clock[/PH-HI] on your right.  In addition, since PhrozenClock uses a 12-hour clock, you should select either [PH-HI]'AM'[/PH-HI] or [PH-HI]'PM'[/PH-HI].  24-hour clocks (military time)  are not supported by this program.
+[PHSECTION] Setting The Time Zone
+To set the [PH-HI]Time Zone[/PH-HI], click the [PH-HI]'Time Zone'[/PH-HI] tab.  Select your time zone from the list of available time zones at the bottom of the PhrozenClock window.  Click the [PH-HI]'Set Time Zone'[/PH-HI] button.
+[PHSECTION] Applying Changes
+If you wish to apply any changes you have made to the time, date, or time zone [PH-HI]without exiting[/PH-HI] PhrozenClock, click the [PH-HI]'Date & Time'[/PH-HI] tab, then click the [PH-HI]'Apply'[/PH-HI] button.  If you wish to apply your changes and [PH-HI]exit[/PH-HI] PhrozenClock, click the [PH-HI]'Date & Time'[/PH-HI] tab, then click the [PH-HI]'OK'[/PH-HI] button.
+[PHSECTION] Cancelling Changes
+If you wish to [PH-HI]cancel[/PH-HI] any changes you have made to the time, date, or time zone, click the [PH-HI]'Date & Time'[/PH-HI] tab, then click the [PH-HI]'Cancel'[/PH-HI] button.  [PH-HI]The PhrozenClock program will exit[/PH-HI].
+[PHSECTION] Resetting The Clock
+If you have made an error while setting the time, date, or time zone, and wish to [PH-HI]revert[/PH-HI] back to the current system time, click the [PH-HI]'Date & Time'[/PH-HI] tab, then click the [PH-HI]'Reset'[/PH-HI] button.  NOTE: This feature is only useful if you have [PH-HI]not[/PH-HI] already [PH-HI]'applied'[/PH-HI] your changes by clicking either [PH-HI]'OK'[/PH-HI] or [PH-HI]'Apply'[/PH-HI].  This feature is similiar to the [PH-HI]'Cancel'[/PH-HI] feature, but [PH-HI]does not[/PH-HI] cause the PhrozenClock program to exit.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

@@ -1,1 +1,5 @@
-dummy file
+cd /Compile/IceWMCP/
+chmod 755 ./icepref-scripts/icepref*
+cp -f ./icepref-scripts/* /usr/X11R6/bin/
+cd ./build-scripts/
+./rpm-icewmcp

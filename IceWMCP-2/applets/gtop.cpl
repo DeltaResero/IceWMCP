@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Processes
+Exec=gtop
+Icon=gtop.png
+Hint=Manage running processes

@@ -1,1 +1,1474 @@
-dummy file
+# traditional chinese translation of icewmcp-icepref.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Chao-Hsiung Liao <pesder.liao@msa.hinet.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceWMCP 2.4\n"
+"POT-Creation-Date: Mon Apr 26 20:47:48 2003\n"
+"PO-Revision-Date: 2003-06-19 17:09+0800\n"
+"Last-Translator: Chao-Hsiung Liao <pesder.liao@msa.hinet.net>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=Big5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.4\n"
+
+#: IceWMCPRun.py:28 
+msgid "Run a program"
+msgstr "執行程式"
+
+#: IceWMCPRun.py:37 
+msgid "Command to run"
+msgstr "要執行的指令"
+
+#: IceWMCPRun.py:62 
+msgid "Run"
+msgstr "執行"
+
+#: IceWMCPRun.py:63 
+msgid "Run the selected command"
+msgstr "執行選擇的指令"
+
+#: IceWMCPRun.py:71 
+msgid "Close and exit"
+msgstr "關閉並離開"
+
+#: IceWMCPRun.py:83 
+msgid "Select A Program"
+msgstr "選擇一個程式"
+
+#: IceWMCPRun.py:87 
+msgid "Select"
+msgstr "選擇"
+
+#: IceWMCPCursors.py:36  IceWMCPCursors.py:126
+msgid "IceWM CP - Cursor Editor"
+msgstr "IceWM CP - 游標編輯器"
+
+#: IceWMCPCursors.py:68 
+msgid "Cursor Editor"
+msgstr "游標編輯器"
+
+#: IceWMCPCursors.py:126 
+msgid "A Gtk-based mouse configuration utility"
+msgstr "基於 Gtk 的滑鼠組態公用程式"
+
+#: IceWMCPCursors.py:126 
+msgid "for IceWM (written in 100% Python)."
+msgstr "用於 IceWM (100% 以 Python 寫成)。"
+
+# IceWMCP - menu
+msgid "/_View"
+msgstr "/檢視(_V)"
+
+msgid "/_View/_Icon View"
+msgstr "/檢視(_V)/圖示檢視(_I)"
+
+msgid "/_View/_List View"
+msgstr "/檢視(_V)/清單檢視(_L)"
+
+msgid "Column View"
+msgstr "欄檢視"
+
+msgid ""
+"You do not have the extra IceWMCPSystem program installed.  You must first "
+"download it from"
+msgstr "您沒有安裝額外的 IceWMCPSystem 程式。  您必須先在這裡下載："
+
+msgid "The program this applet points to does not exist on your system."
+msgstr "這個小程式指向的程式不在您的系統中。"
+
+#: IceWMCPGtkIconSelection.py:106 IceWMCPGtkIconSelection.py:215 
+msgid "IceWMCP Icon Browser"
+msgstr "IceWMCP 圖示瀏覽器"
+
+#: IceWMCPGtkIconSelection.py:128 
+msgid "Columns:"
+msgstr "欄:"
+
+#: IceWMCPGtkIconSelection.py:137 
+msgid "SELECT"
+msgstr "選擇"
+
+#: IceWMCPGtkIconSelection.py:142  IceWMCPKeyboard.py:70 IceWMCPMouse.py:53
+#: IceWMCPWallpaper.py:161
+msgid "Close"
+msgstr "關閉"
+
+#: IceWMCPGtkIconSelection.py:147 
+msgid "Reload"
+msgstr "重新載入"
+
+#: IceWMCPGtkIconSelection.py:152 
+msgid "Icon Paths..."
+msgstr "圖示路徑..."
+
+#: IceWMCPGtkIconSelection.py:177 
+msgid "You can drag-and-drop icons where needed."
+msgstr "您可以將圖示拖放到需要的地方。"
+
+#: IceWMCPGtkIconSelection.py:221 
+msgid "Enter a list of icon paths, separated by colons"
+msgstr "輸入圖示路徑的清單，可用冒號分隔"
+
+#: IceWMCPGtkIconSelection.py:249  icewmcp_common.py
+msgid "Loading"
+msgstr "載入中"
+
+#: IceWMCPGtkIconSelection.py:249 
+msgid "images...please wait."
+msgstr "影像...請稍候。"
+
+#: IceWMCPGtkIconSelection.py:375 
+msgid "Icons loaded.  Ready."
+msgstr "已載入圖示。  準備完成。"
+
+# Software update checker
+msgid "Check for newer versions of this program..."
+msgstr "檢查此程式的新版本..."
+
+msgid "You are currently using version"
+msgstr "您目前使用的版本是"
+
+msgid "The newest version available is"
+msgstr "現有最新的版本是"
+
+msgid "You can download the newest version from"
+msgstr "您可以從這理下載最新版本："
+
+msgid "Could not check for software update."
+msgstr "無法檢查軟體更新情形。"
+
+msgid "This feature requires an internet connection."
+msgstr "這個功能需要連線到網際網路。"
+
+#: IceWMCP.py:41  IceWMCP.py:98 IceWMCP.py:201 icewmcp_common.py:107
+msgid "IceWM Control Panel"
+msgstr "IceWM 控制台"
+
+#: IceWMCP.py:53  pyspool.py:49
+msgid "/ _File"
+msgstr "/檔案(_F)"
+
+#: IceWMCP.py:54 
+msgid "/ _File/_Refresh View"
+msgstr "/檔案(_F)/更新檢視(_R)"
+
+#: IceWMCP.py:55 
+msgid "/ _File/_Configuration..."
+msgstr "/檔案(_F)/組態(_C)..."
+
+#: IceWMCP.py:56 
+msgid "/ _File/sep4"
+msgstr "/檔案(_F)/seq4"
+
+#: IceWMCP.py:57  pyspool.py:50
+msgid "/ _File/_Quit"
+msgstr "/檔案(_F)/離開(_Q)"
+
+#: IceWMCP.py:58  IceWMCPKeyEdit.py:56 IceWMCPWallpaper.py:54
+#: IceWMCPWinOptions.py:67 pyspool.py:51
+msgid "/_Help"
+msgstr "/說明(_H)"
+
+#: IceWMCP.py:59 
+msgid "/_Help/_About IceWM Control Panel..."
+msgstr "/說明(_H)/關於 IceWM 控制台(_A)..."
+
+#: IceWMCP.py:84 
+msgid ""
+"HINT: Use SINGLE clicks instead of double-clicks.\n"
+"You will not see this message again."
+msgstr ""
+"提示：使用單擊代替雙擊。\n"
+"您將不會再看到此訊息。"
+
+#: IceWMCP.py:84 
+msgid "Ice Control Panel"
+msgstr "Ice 控制台"
+
+#: IceWMCP.py:84  icewmcp_common.py:108 phrozenclock.py:143
+#: pyprintcommon.py:17
+msgid "OK"
+msgstr "確定"
+
+#: IceWMCP.py:102 
+msgid "  Choose which icons to hide or show:  "
+msgstr "  選擇要隱藏或顯示的圖示：  "
+
+#: IceWMCP.py:112 
+msgid "Hide"
+msgstr "隱藏"
+
+#: IceWMCP.py:132 
+msgid "Save"
+msgstr "儲存"
+
+#: IceWMCP.py:201 
+msgid ""
+"A simple Gtk-based control panel for IceWM - for people that prefer Gtk over "
+"the Qt-based 'IceCC'. It is modular, easy to use, with a Windows Control "
+"Panel like look. Although created for IceWM, it can be easily used as a "
+"control panel for any other window manager. It is highly configurable, and "
+"control panel applets can be created easily (simple text files).\n"
+"\n"
+"This program is distributed under the GNU General Public License (open "
+"source)."
+msgstr ""
+"基於 Gtk 的簡易 IceWM 控制台 - 這是給喜歡 Gtk 勝過 Qt 版的“IceCC”的人。它具"
+"有模組化、容易使用和看起來像 Windows 控制台的特點。雖然這是為 IceWM 所設計"
+"的，它還是可以很容易的在任何其他視窗管理程式當做控制台使用。它是高度可設定"
+"的，而建立控制台小程式也很容易(簡單的文字檔)。\n"
+"\n"
+"這個程式是在 GNU 通用公眾授權下散佈的(開放原始碼)。"
+
+#: IceWMCP.py:207  IceWMCP.py:212 IceWMCP.py:213
+msgid "About IceWM Control Panel"
+msgstr "關於 IceWM 控制台"
+
+#: IceWMCP.py:224 
+msgid " Close "
+msgstr " 關閉 "
+
+#: IceWMCPKeyEdit.py:44  IceWMCPKeyEdit.py:401
+msgid "IceWM CP - Key Editor"
+msgstr "IceWM CP - 按鍵編輯器"
+
+#: IceWMCPKeyEdit.py:49  IceWMCPWallpaper.py:52 IceWMCPWinOptions.py:60
+msgid "/_File"
+msgstr "/檔案(_F)"
+
+#: IceWMCPKeyEdit.py:50  IceWMCPWinOptions.py:61
+msgid "/File/_Open..."
+msgstr "/檔案(_F)/開啟(_O)..."
+
+#: IceWMCPKeyEdit.py:51  IceWMCPWinOptions.py:62
+msgid "/File/_Save"
+msgstr "/檔案(_F)/儲存(_S)"
+
+#: IceWMCPKeyEdit.py:52  IceWMCPWinOptions.py:63
+msgid "/File/sep1"
+msgstr "/檔案(_F)/sep1"
+
+#: IceWMCPKeyEdit.py:53  IceWMCPWinOptions.py:64
+msgid "/File/_Apply Changes Now..."
+msgstr "/檔案(_F)/立刻套用變更(_A)..."
+
+#: IceWMCPKeyEdit.py:54  IceWMCPWinOptions.py:65
+msgid "/File/sep2"
+msgstr "/檔案(_F)/sep2"
+
+#: IceWMCPKeyEdit.py:55  IceWMCPWallpaper.py:53 IceWMCPWinOptions.py:66
+msgid "/File/_Exit"
+msgstr "/檔案(_F)/離開(_E)"
+
+#: IceWMCPKeyEdit.py:57  IceWMCPWallpaper.py:55 IceWMCPWinOptions.py:68
+msgid "/Help/_About..."
+msgstr "/說明(_H)/關於(_A)..."
+
+#: IceWMCPKeyEdit.py:71 
+msgid "Key Editor"
+msgstr "按鍵編輯器"
+
+#: IceWMCPKeyEdit.py:73 
+msgid "Command"
+msgstr "指令"
+
+#: IceWMCPKeyEdit.py:73 
+msgid "Keys"
+msgstr "按鍵"
+
+#: IceWMCPKeyEdit.py:82 
+msgid "Key:  "
+msgstr "按鍵:  "
+
+#: IceWMCPKeyEdit.py:94 
+msgid "Program:  "
+msgstr "程式:  "
+
+#: IceWMCPKeyEdit.py:97 
+msgid "Browse..."
+msgstr "瀏覽..."
+
+#: IceWMCPKeyEdit.py:102 
+msgid " New Key "
+msgstr " 新增按鍵 "
+
+#: IceWMCPKeyEdit.py:103 
+msgid " Set "
+msgstr " 設定 "
+
+#: IceWMCPKeyEdit.py:104 
+msgid " Add "
+msgstr " 新增 "
+
+#: IceWMCPKeyEdit.py:105 
+msgid " Delete "
+msgstr " 刪除 "
+
+#: IceWMCPKeyEdit.py:121 
+msgid " Test Key "
+msgstr " 測試按鍵 "
+
+#: IceWMCPKeyEdit.py:453 
+msgid "The executable is not on your PATH"
+msgstr "該可執行檔不在您的路徑中"
+
+#: IceWMCPKeyEdit.py:455 
+msgid "The executable file does not exist"
+msgstr "該可執行檔不存在"
+
+#: IceWMCPKeyEdit.py:121  IceWMCPKeyEdit.py:137 IceWMCPWinOptions.py:204
+#: IceWMCPWinOptions.py:569
+msgid "Ready."
+msgstr "準備就緒。"
+
+#: IceWMCPKeyEdit.py:159 
+msgid ""
+"This key does not exist.\n"
+"Please create it by clicking the 'New Key' button."
+msgstr ""
+"這個按鍵不存在。\n"
+"請按“新增按鍵”按鈕來建立它。"
+
+#: IceWMCPKeyEdit.py:162  IceWMCPKeyEdit.py:180
+msgid "You must specify a program for this key combination"
+msgstr "您必須為這個組合鍵指定一個程式"
+
+#: IceWMCPKeyEdit.py:167  IceWMCPKeyEdit.py:187 IceWMCPKeyEdit.py:204
+#: IceWMCPWinOptions.py:496 IceWMCPWinOptions.py:520 IceWMCPWinOptions.py:539
+msgid "Modified."
+msgstr "已修改。"
+
+#: IceWMCPKeyEdit.py:183 
+msgid ""
+"' already exists and\n"
+"triggers the program: "
+msgstr ""
+"”已經存在，並且\n"
+"用來觸發此程式："
+
+#: IceWMCPKeyEdit.py:183 
+msgid "The key '"
+msgstr "按鍵“"
+
+#: IceWMCPKeyEdit.py:183 
+msgid ""
+"You must either delete the existing key,\n"
+"or change the existing key's action using 'Set'."
+msgstr ""
+"您必須刪除這個既存的按鍵，\n"
+"或是使用“設定”來改變此既存按鍵的動作。"
+
+#: IceWMCPKeyEdit.py:199 
+msgid "Are you sure you want to delete this key?"
+msgstr "您確定要刪除這個按鍵嗎？"
+
+#: IceWMCPKeyEdit.py:327  IceWMCPWallpaper.py:320 IceWMCPWinOptions.py:546
+msgid "Select a file..."
+msgstr "選擇檔案..."
+
+#: IceWMCPKeyEdit.py:349  IceWMCPWinOptions.py:571
+msgid "No such file or directory:\n"
+msgstr "沒有這樣的檔案或目錄：\n"
+
+#: IceWMCPKeyEdit.py:374 
+msgid "ERROR saving key configuration file:\n"
+msgstr "儲存按鍵組態檔案時發生錯誤：\n"
+
+#: IceWMCPKeyEdit.py:375 
+msgid "Error saving."
+msgstr "儲存發生錯誤。"
+
+#: IceWMCPKeyEdit.py:379  IceWMCPWinOptions.py:254
+msgid ""
+"WARNING:\n"
+"This feature doesn't work perfectly on all systems.\n"
+"BSD and some other systems may experience problems."
+msgstr ""
+"警告：\n"
+"這個功能並非在所有系統都能正常運作。\n"
+"BSD 和其他部分系統可能會遇到問題。"
+
+#: IceWMCPKeyEdit.py:401 
+msgid ""
+"A simple Gtk-based key configuration utility\n"
+"for IceWM (written in 100% Python).\n"
+"\n"
+"This program is distributed free\n"
+"of charge (open source) under the GNU\n"
+"General Public License."
+msgstr ""
+"基於 Gtk 的 IceWM 簡易按鍵組態\n"
+"公用程式(100% 以 Python 寫成)。\n"
+"\n"
+"這個程式是在 GNU\n"
+"通用公眾授權下\n"
+"免費散佈(開放原始碼)。"
+
+#: IceWMCPKeyEdit.py:401 
+msgid "About IceWM CP - Key Editor"
+msgstr "關於 IceWM CP - 按鍵編輯器"
+
+#: IceWMCPKeyboard.py:33 
+msgid "IceWM CP - Keyboard Settings"
+msgstr "IceWM CP - 鍵盤設定"
+
+#: IceWMCPKeyboard.py:39 
+msgid "IceWM Control Panel: Keyboard"
+msgstr "IceWM 控制台：鍵盤"
+
+#: IceWMCPKeyboard.py:40 
+msgid " Select your desired keyboard repeat rate: "
+msgstr " 選擇您想要的鍵盤重複率："
+
+#: IceWMCPKeyboard.py:53 
+msgid "Delay: "
+msgstr "延遲: "
+
+#: IceWMCPKeyboard.py:59 
+msgid "Rate: "
+msgstr "頻率: "
+
+#: IceWMCPKeyboard.py:64 
+msgid "Test: "
+msgstr "測試: "
+
+#: IceWMCPKeyboard.py:68  IceWMCPMouse.py:51 IceWMCPWallpaper.py:160
+#: phrozenclock.py:147
+msgid "Apply"
+msgstr "套用"
+
+#: IceWMCPKeyboard.py:69  IceWMCPMouse.py:52 phrozenclock.py:139
+#: tkPCCard.py:64
+msgid "Reset"
+msgstr "重設"
+
+#: IceWMCPMouse.py:33 
+msgid "IceWM CP - Mouse Settings"
+msgstr "IceWM CP - 滑鼠設定"
+
+#: IceWMCPMouse.py:39 
+msgid "IceWM Control Panel: Mouse"
+msgstr "IceWM 控制台：滑鼠"
+
+#: IceWMCPMouse.py:40 
+msgid " Select your desired mouse speed: "
+msgstr " 選擇您想要的滑鼠速度："
+
+#: IceWMCPMouse.py:90 
+msgid ""
+"'.\n"
+"If you are not happy with this mouse speed,\n"
+"wait 7 seconds and the mouse speed will be\n"
+"reset to a reasonable speed.\n"
+msgstr ""
+"”。\n"
+"如果您不喜歡這個滑鼠速度，\n"
+"等待 7 秒鐘，滑鼠速度將會\n"
+"重設為正常的速度。\n"
+
+#: IceWMCPMouse.py:90 
+msgid "Your mouse speed has been set to '"
+msgstr "您的滑鼠速度已經設為“"
+
+#: IceWMCPMouse.py:93 
+msgid "CANCEL change and RESET the mouse"
+msgstr "取消變更並重設滑鼠"
+
+#: IceWMCPMouse.py:94 
+msgid "KEEP the new mouse speed"
+msgstr "保持新的滑鼠速度"
+
+#: IceWMCPMouse.py
+msgid "Behavior"
+msgstr "行為"
+
+#: IceWMCPMouse.py
+msgid "Mouse Behavior"
+msgstr "滑鼠行為"
+
+#: IceWMCPMouse.py
+msgid "Speed"
+msgstr "速度"
+
+#: IceWMCPWallpaper.py:47  IceWMCPWallpaper.py:69 IceWMCPWallpaper.py:182
+msgid "Wallpaper Settings"
+msgstr "壁紙設定"
+
+#: IceWMCPWallpaper.py:76 
+msgid " Desktop Color "
+msgstr " 桌面顏色 "
+
+#: IceWMCPWallpaper.py:78 
+msgid " Change... "
+msgstr " 改變... "
+
+#: IceWMCPWallpaper.py:92 
+msgid " Image "
+msgstr " 影像 "
+
+#: IceWMCPWallpaper.py:102 
+msgid " Reload Images "
+msgstr " 重新載入影像 "
+
+#: IceWMCPWallpaper.py:115 
+msgid " Directory "
+msgstr " 目錄 "
+
+#: IceWMCPWallpaper.py:122 
+msgid " Select... "
+msgstr "選擇... "
+
+#: IceWMCPWallpaper.py:133 
+msgid " Centered "
+msgstr " 置中 "
+
+#: IceWMCPWallpaper.py:134 
+msgid " Tiled "
+msgstr " 並排顯示 "
+
+#: IceWMCPWallpaper.py:159 
+msgid "Ok"
+msgstr "確定"
+
+#: IceWMCPWallpaper.py:182 
+msgid ""
+"A simple Gtk-based utility for setting the background color\n"
+"and wallpaper settings in IceWM (written in 100% Python).\n"
+"This program is distributed under the GNU General\n"
+"Public License (open source).\n"
+"\n"
+"WARNING: Some newer IceWM themes override the wallpaper and\n"
+"background colors set here. If you see no changes, it may be that your\n"
+"theme controls the background colors and images."
+msgstr ""
+"基於 Gtk 的簡易 IceWM 背景顏色與壁紙設定\n"
+"公用程式(100% 以 Python 寫成)。\n"
+"這個程式是在 GNU 通用公眾授權\n"
+"下散佈的(開放源始碼)。\n"
+"\n"
+"警告：一些較新的 IceWM 主題會蓋過這理的\n"
+"壁紙與背景顏色設定。如果您看不到任何變化，\n"
+"可能是您的主題控制了背景顏色與影像。"
+
+#: IceWMCPWallpaper.py:199 
+msgid "Error backing up IceWM preferences to:\n"
+msgstr "備份 IceWM preferences 到此處時發生錯誤:\n"
+
+#: IceWMCPWallpaper.py:231 
+msgid "Error while saving IceWM preferences to:\n"
+msgstr "儲存 IceWM preferences 到此處時發生錯誤:\n"
+
+#: IceWMCPWallpaper.py:283 
+msgid "Select Color"
+msgstr "選擇顏色"
+
+#: IceWMCPWallpaper.py:424 
+msgid ""
+"SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr ""
+"抱歉：\n"
+" 無法預覽\n"
+" 影像。"
+
+# # WIndow Options
+msgid "Has HIDE button (if applicable)"
+msgstr "有“隱藏”按鈕(如果適合)"
+
+msgid "Has ROLLUP button (if applicable)"
+msgstr "有“收起”按鈕(如果適合)"
+
+msgid "Has LAYER button (if applicable)"
+msgstr "有“層次”按鈕(如果適合)"
+
+msgid "Ignore pre-set window positions"
+msgstr "忽略預先設定的視窗位置"
+
+msgid "Do not focus"
+msgstr "不要焦點"
+
+msgid "Start full-screen"
+msgstr "以全螢幕啟動"
+
+msgid "Start vertically maximized"
+msgstr "以垂直方向最大化啟動"
+
+msgid "Start horizontally maximized"
+msgstr "以水平方向最大化啟動"
+
+msgid "Has title bar"
+msgstr "有標題列"
+
+msgid "Start maximized"
+msgstr "以最大化啟動"
+
+msgid "Visible on all workspaces"
+msgstr "在所有工作區都是可見的"
+
+msgid "Has border"
+msgstr "有邊框"
+
+msgid "Do not show in Quick-switch window"
+msgstr "不要在“快速切換”視窗中顯示"
+
+msgid "App is non-ICCCM compliant"
+msgstr "應用程式不相容 ICCCM"
+
+msgid "Has MINIMIZE button"
+msgstr "有“最小化”按鈕"
+
+msgid "Maximizeable"
+msgstr "可最大化"
+
+msgid "Do not focus when app is raised"
+msgstr "當應用程式提升時不讓它取得焦點"
+
+msgid "Has resize border"
+msgstr "有改變大小邊框"
+
+msgid "Can be rolled up"
+msgstr "可以收起"
+
+msgid "Moveable"
+msgstr "可移動"
+
+msgid "Has MAXIMIZE button"
+msgstr "有“最大化”按鈕"
+
+msgid "Resizeable"
+msgstr "可以改變大小"
+
+msgid "Has CLOSE button"
+msgstr "有“關閉”按鈕"
+
+msgid "Force focusing"
+msgstr "強制取得焦點"
+
+msgid "Closeable"
+msgstr "可關閉"
+
+msgid "Do not show on taskbar"
+msgstr "不要在工作列上顯示"
+
+msgid "Has system menu"
+msgstr "有系統選單"
+
+msgid "Hideable"
+msgstr "可隱藏"
+
+msgid "Do not cover"
+msgstr "不能覆蓋"
+
+msgid "Start minimized"
+msgstr "以最小化啟動"
+
+msgid "Reserve extra 'F[num]' keys"
+msgstr "保留額外的“F[num]”按鍵"
+
+msgid "Do not show in Window List"
+msgstr "不要在視窗清單中顯示"
+
+msgid "Minimizeable"
+msgstr "可最小化"
+
+#: IceWMCPWinOptions.py:37  IceWMCPWinOptions.py:87 IceWMCPWinOptions.py:625
+msgid "Window Options"
+msgstr "視窗選項"
+
+#: IceWMCPWinOptions.py:42 
+msgid "Normal"
+msgstr "一般"
+
+#: IceWMCPWinOptions.py:43 
+msgid "AboveDock"
+msgstr "在停靠區之上"
+
+#: IceWMCPWinOptions.py:44 
+msgid "Dock"
+msgstr "停靠區"
+
+#: IceWMCPWinOptions.py:45 
+msgid "Below"
+msgstr "下面"
+
+#: IceWMCPWinOptions.py:46 
+msgid "Desktop"
+msgstr "桌面"
+
+#: IceWMCPWinOptions.py:47 
+msgid "OnTop"
+msgstr "置於頂端"
+
+#: IceWMCPWinOptions.py:48 
+msgid "Menu"
+msgstr "選單"
+
+#: IceWMCPWinOptions.py:99 
+msgid "Add..."
+msgstr "新增..."
+
+#: IceWMCPWinOptions.py:101 
+msgid "Delete"
+msgstr "刪除"
+
+#: IceWMCPWinOptions.py:112 
+msgid "Icon: "
+msgstr "圖示: "
+
+#: IceWMCPWinOptions.py:115 
+msgid " Browse... "
+msgstr " 瀏覽... "
+
+#: IceWMCPWinOptions.py:131 
+msgid "WorkSpace: "
+msgstr "工作區: "
+
+#: IceWMCPWinOptions.py:138 
+msgid "Layer: "
+msgstr "層次: "
+
+#: IceWMCPWinOptions.py:147 
+msgid "Geometry: "
+msgstr "大小位置: "
+
+#: IceWMCPWinOptions.py:154 
+msgid "Tray Icon: "
+msgstr "匣圖示: "
+
+#: IceWMCPWinOptions.py:197 
+msgid "Set"
+msgstr "設定"
+
+#: IceWMCPWinOptions.py:413 
+msgid "Step 1: Open the program you wish to set properties for."
+msgstr "步驟 1：開啟您想要設定內容的程式。"
+
+#: IceWMCPWinOptions.py:413 
+msgid "Step 2: Click the 'Grab...' button below."
+msgstr "步驟 2：按下方的“抓取...”按鈕。"
+
+#: IceWMCPWinOptions.py:413 
+msgid "Step 3: Click the crosshairs on the program you opened."
+msgstr "步驟 3：按下您所開啟程式的十字準線。"
+
+#: IceWMCPWinOptions.py:432 
+msgid "ADD"
+msgstr "新增"
+
+#: IceWMCPWinOptions.py:436  phrozenclock.py:151
+msgid "Cancel"
+msgstr "取消"
+
+#: IceWMCPWinOptions.py:438 
+msgid "Grab..."
+msgstr "抓取..."
+
+#: IceWMCPWinOptions.py:477 
+msgid "You must complete at least the 'wm_class' field."
+msgstr "您至少必須完成“wm_class”欄位。"
+
+#: IceWMCPWinOptions.py:483 
+msgid ""
+"' already exists.\n"
+"Either edit or delete the existing '"
+msgstr ""
+"”已經存在。\n"
+"您可以編輯或刪除既存的“"
+
+#: IceWMCPWinOptions.py:483 
+msgid "' window settings."
+msgstr "”視窗設定。"
+
+#: IceWMCPWinOptions.py:483 
+msgid "The wm_class/wm_name '"
+msgstr "這個 wm_class/wm_name “"
+
+#: IceWMCPWinOptions.py:532 
+msgid ""
+"Are you sure you want to delete\n"
+"the window options associated with:\n"
+msgstr ""
+"您確定要刪除\n"
+"與此關聯的視窗選項：\n"
+
+#: IceWMCPWinOptions.py:617 
+msgid "Saved."
+msgstr "已儲存。"
+
+#: IceWMCPWinOptions.py:620 
+msgid "There was an ERROR saving your window options to the file:\n"
+msgstr "將您的視窗選項儲存到此檔案時發生錯誤：\n"
+
+#: IceWMCPWinOptions.py:625 
+msgid ""
+"A simple Gtk-based window options configuration utility\n"
+"for IceWM (written in 100% Python).\n"
+"Optimized for IceWM version 1.2.7.\n"
+"\n"
+"This program is distributed free\n"
+"of charge (open source) under the GNU\n"
+"General Public License."
+msgstr ""
+"基於 Gtk 的簡易 IceWM 視窗選項組態\n"
+"公用程式(100% 以 Python 寫成)。\n"
+"針對 IceWM version 1.2.7 最佳化。\n"
+"\n"
+"這個程式是在 GNU\n"
+"通用公眾授權下\n"
+"免費散佈(開放源始碼)。"
+
+#: IceWMCPWinOptions.py:625 
+msgid "Window Options Editor"
+msgstr "視窗選項編輯器"
+
+#: IceWMCPWinOptions.py:625  phrozenclock.py:135
+msgid "About"
+msgstr "關於"
+
+#: icewmcp_common.py:109 
+msgid "CANCEL"
+msgstr "取消"
+
+#: phrozenclock.py:156 
+msgid "Date & Time"
+msgstr "日期 & 時間"
+
+#: phrozenclock.py:164 
+msgid "Current Time Zone:"
+msgstr "目前時區:"
+
+#: phrozenclock.py:173 
+msgid "To change the timezone,select your area from the list below:"
+msgstr "要改變時區，請從下面的清單中選擇您的區域:"
+
+#: phrozenclock.py:186 
+msgid "Set Time Zone"
+msgstr "設定時區"
+
+#: phrozenclock.py:191 
+msgid "Time Zone"
+msgstr "時區"
+
+#: phrozenclock.py:217 
+msgid ""
+"CRITICAL ERROR\n"
+"\n"
+"PhrozenClock was unable to determine the location\n"
+"of your 'zoneinfo' time zone files, normally located in\n"
+" /usr/share/zoneinfo/.  You may have to edit the phrozenclock.py script and "
+"set\n"
+"the ZONEINFO_DIR variable manually (sorry!).\n"
+"Also, make sure that your /etc/localtime file is properly LINKED.\n"
+"\n"
+"Critical Error: Quitting."
+msgstr ""
+"嚴重的錯誤\n"
+"\n"
+"PhrozenClock 無法確定您的\n"
+"“zoneinfo”時區檔案的位置\n"
+"(通常位於 /usr/share/zoneinfo/)。您可能需要編輯 phrozenclock.py 命令稿並\n"
+"手動設定 ZONEINFO_DIR 變數(抱歉！)。\n"
+"同時，請確定您的 /etc/localtime 檔案已正確連結。\n"
+"\n"
+"嚴重的錯誤：正在離開。"
+
+#: phrozenclock.py:230 
+msgid ""
+"Could not determine your timezone's 'nickname'.\n"
+"You may have to set this yourself."
+msgstr ""
+"無法確定您時區的“暱稱”。\n"
+"您可能需要自行設定它。"
+
+#: phrozenclock.py:303 
+msgid "'....Quitting."
+msgstr "”....正在離開。"
+
+#: phrozenclock.py:303 
+msgid "ERROR: Could not load available time zones from '"
+msgstr "錯誤：無法於此載入可用的時區：“"
+
+#: phrozenclock.py:350  phrozenclock.py:357
+msgid ""
+"Unknown error setting your timezone.\n"
+"You may have to do this manually or edit the source for the phrozenclock.py "
+"script"
+msgstr ""
+"設定您的時區時發生未知錯誤。\n"
+"您可能需要手動完成它或是編輯 phrozenclock.py 命令稿的原始碼"
+
+#: phrozenclock.py:367 
+msgid ""
+"Unknown error writing your timezone.\n"
+"You may have to do this manually or edit the source for the phrozenclock.py "
+"script"
+msgstr ""
+"寫入您的時區時發生未知錯誤。\n"
+"您可能需要手動完成它或是編輯 phrozenclock.py 命令稿的原始碼"
+
+#: phrozenclock.py:370 
+msgid ""
+"Phrozen Clock will now be quickly RESTARTED.\n"
+"This is absolutely necessary.\n"
+"\n"
+"You may see a quick flicker on your display,\n"
+"or may see the screen 'black' for a moment.\n"
+"Do not be alarmed, as this is normal."
+msgstr ""
+"Phrozen Clock 即將重新啟動。\n"
+"這是絕對必要的。\n"
+"\n"
+"您可會看到您的顯示器快速閃動，\n"
+"或者可能看到螢幕“空白”一會兒。\n"
+"請不用著急，因為這是正常現象。"
+
+#: phrozenclock.py:384 
+msgid ""
+"WARNING: Changes in timezones do NOT\n"
+"take affect in ALL applications immediately.\n"
+"\n"
+"You may have to restart X or your window manager to\n"
+"see the timezone change in clocks on your taskbar or system tray.\n"
+"\n"
+"For IceWM users, you can just click 'Start' menu,\n"
+"then select 'Logout',\n"
+"then'Restart IceWM',\n"
+"or re-apply your current IceWM theme.\n"
+"\n"
+"For best results, you really should reboot your computer, or at\n"
+"least re-start X. Some applications may appear to be 'stuck'\n"
+"in the old timezone until the system is rebooted.\n"
+"Running 'xrefresh' will NOT be enough. If you are running\n"
+"mission critical or time-sensitive applications,\n"
+"you should reboot immediately. You have been warned."
+msgstr ""
+"警告：在時區中的變更不會\n"
+"立刻在所有應用程式中生效。\n"
+"\n"
+"您可能需要重新啟動 X 或您的視窗管理程式\n"
+"才能看到時區對您工作列或系統匣上的時鐘的影響。\n"
+"\n"
+"對於 IceWM 使用者，您可以按下“開始”選單，\n"
+"接著選擇“登出”，\n"
+"然後選“重新啟動 IceWM”，\n"
+"或者重新套用您目前的 IceWM 主題。\n"
+"\n"
+"為求最好的效果，您應該確實重新啟動電腦，或者\n"
+"最少也重新啟動 X。有的應用程式可能會像是被“釘”\n"
+"在舊的時區，一直到系統重新啟動為止。\n"
+"執行“xrefresh”可能還不夠。如果您正在執行\n"
+"重要的作業或是對時間很敏感的應用程式，\n"
+"您應該立即重新開機。您已經被警告過了。"
+
+#: phrozenclock.py:395 
+msgid ""
+"A simple Windows-like or KDE-like clock management application\n"
+"suitable for managing the clock in most window managers' system trays.\n"
+"PhrozenClock was orginally created for use with the system tray clock in "
+"IceWM,\n"
+"and was designed to be lightweight and less memory intensive than the KDE "
+"clock.\n"
+"\n"
+"PhrozenClock GTK is open source under the General Public License (GPL)."
+msgstr ""
+"一個簡單的類 Windows 或類 KDE 的時鐘管理應用程式，\n"
+"適用於管理大部分視窗管理程式中系統匣的時鐘。\n"
+"PhrozenClock 原本是為了用在 IceWM 的系統匣時鐘而建立的，\n"
+"所以它的設計是輕量級的，並且使用的記憶體也比 KDE 時鐘少。\n"
+"\n"
+"PhrozenClock GTK 是依據通用公眾授權(GPL)的開放原始碼軟體。"
+
+#: pyprintcommon.py:21 
+msgid "No"
+msgstr "否"
+
+#: pyprintcommon.py:21 
+msgid "Yes"
+msgstr "是"
+
+#: pyprintcommon.py:26 
+msgid ""
+" is open source under the General Public License (GPL).\n"
+"NO technical support will be provided for this application.\n"
+"Enjoy!"
+msgstr ""
+" 是依據通用公眾授權(GPL)的開放原始碼軟體。\n"
+"我們不對這個應用程式提供技術支援。\n"
+"請儘情享受！"
+
+#: pyprintcommon.py:26 
+msgid "About "
+msgstr "關於 "
+
+#: pyprintcommon.py:26 
+msgid "All rights reserved."
+msgstr "保留所有權利。"
+
+#: pyspool.py:37 
+msgid "Printer Queue"
+msgstr "印表機佇列"
+
+#: pyspool.py:52 
+msgid "/_Help/_About"
+msgstr "/說明(_H)/關於(_A)"
+
+#: pyspool.py:66 
+msgid "Select Printer:"
+msgstr "選擇印表機:"
+
+#: pyspool.py:77 
+msgid "  View  "
+msgstr "  檢視  "
+
+#: pyspool.py:89 
+msgid "Description:"
+msgstr "描敘:"
+
+#: pyspool.py:93 
+msgid "Queue:"
+msgstr "佇列:"
+
+#: pyspool.py:97 
+msgid "Server:"
+msgstr "伺服器:"
+
+#: pyspool.py:101 
+msgid "Status:"
+msgstr "狀態:"
+
+#: pyspool.py:105 
+msgid "Info:"
+msgstr "資訊:"
+
+#: pyspool.py:132 
+msgid "Refresh Queue Details"
+msgstr "重新整理佇列詳細資訊"
+
+#: pyspool.py:136 
+msgid "Cancel Selected Print Job"
+msgstr "取消選擇的列印工作"
+
+#: pyspool.py:158 
+msgid "State"
+msgstr "狀態"
+
+#: pyspool.py:161 
+msgid "Job ID"
+msgstr "工作 ID"
+
+#: pyspool.py:164 
+msgid "Size"
+msgstr "大小"
+
+#: pyspool.py:167 
+msgid "Files"
+msgstr "檔案"
+
+#: pyspool.py:170 
+msgid "Owner/ID"
+msgstr "所有人/ID"
+
+#: pyspool.py:173 
+msgid "Time"
+msgstr "時間"
+
+#: pyspool.py:176 
+msgid "Class"
+msgstr "類別"
+
+#: pyspool.py:235  pyspool.py:318 pyspool.py:319 pyspool.py:330
+#: pyspool.py:331 pyspool.py:338
+msgid "NONE FOUND"
+msgstr "找不到"
+
+#: pyspool.py:238 
+msgid " on printer '"
+msgstr " 於印表機“"
+
+#: pyspool.py:238 
+msgid "Are you SURE you want to cancel print job "
+msgstr "您確定要取消列印工作 "
+
+#: pyspool.py:240 
+msgid "Cancel Print Job "
+msgstr "取消列印工作 "
+
+#: pyspool.py:240 
+msgid "Result"
+msgstr "結果"
+
+#: pyspool.py:266 
+msgid "        Current printer: "
+msgstr "        目前的印表機:"
+
+#: pyspool.py:266 
+msgid " Available printers: "
+msgstr " 可用的印表機: "
+
+#: pyspool.py:269 
+msgid "description unavailable"
+msgstr "無法取得描述"
+
+#: pyspool.py:270 
+msgid "queue status unavailable"
+msgstr "無法取得佇列狀態"
+
+#: pyspool.py:271 
+msgid "server status unavailable"
+msgstr "無法取得伺服器狀態"
+
+#: pyspool.py:272 
+msgid "status unavailable"
+msgstr "無法取得狀態"
+
+#: pyspool.py:273 
+msgid "info unavailable"
+msgstr "無法取得資訊"
+
+#: pyspool.py:355 
+msgid "Error"
+msgstr "錯誤"
+
+#: pyspool.py:366 
+msgid ""
+"PySpool is a simple Gtk-based spool monitor and manager written\n"
+"in 100% Python. It is intended to monitor LPRng and LPR-based\n"
+"printer spools. This is BETA code. PySpool has only been\n"
+"tested with LPRng 3.8.12 on local printers.\n"
+"PySpool requires the following executables on your PATH:\n"
+"lpstat, cancel, checkpc"
+msgstr ""
+"PySpool 是基於 Gtk 的簡易 spool 監視器與管理程式，\n"
+"並且是 100% 以 Python 寫成。它用來監控 LPRng 和基於 LPR 的\n"
+"印表機 spool。這是測試中的程式。PySpool 只對\n"
+"本機印表機的 LPRng 3.8.12 做過測試。\n"
+"PySpool 需要您的路徑包含下列可執行檔：\n"
+"lpstat, cancel, checkpc"
+
+#: pyspool.py:377 
+msgid "' into your PATH first."
+msgstr "”先加到您的路徑。"
+
+#: pyspool.py:377 
+msgid ""
+"The following executable does not appear to be on your PATH:\n"
+"\n"
+msgstr ""
+"下列可執行檔似乎不在您的路徑中：\n"
+"\n"
+
+#: pyspool.py:377 
+msgid ""
+"You may experience problems running PySpool properly.\n"
+"Please install '"
+msgstr ""
+"您在執行 PySpool 時可能會遇到問題。\n"
+"請安裝“"
+
+#: tkPCCard.py:40 
+msgid "Slot "
+msgstr "插槽 "
+
+#: tkPCCard.py:48  tkPCCard.py:81
+msgid "Slot  "
+msgstr "插槽  "
+
+#: tkPCCard.py:58 
+msgid "Eject"
+msgstr "退出"
+
+#: tkPCCard.py:61 
+msgid "Insert"
+msgstr "插入"
+
+#: tkPCCard.py:67 
+msgid "Suspend"
+msgstr "暫停"
+
+#: tkPCCard.py:70 
+msgid "Resume"
+msgstr "繼續"
+
+#: tkPCCard.py:105 
+msgid "Empty"
+msgstr "空的"
+
+#: tkPCCard.py:123 
+msgid "Error loading card data"
+msgstr "載入擴充卡資料時發生錯誤"
+
+#: tkPCCard.py:130 
+msgid ""
+"This card has been ejected.\n"
+"You may safely remove this device."
+msgstr ""
+"這個擴充卡已退出。\n"
+"您可以安全的移除這項裝置。"
+
+#: tkPCCard.py:141 
+msgid "This card's activity has been suspended"
+msgstr "這個擴充卡的活動已經被暫停了"
+
+#: tkPCCard.py:144 
+msgid "An error occurred while suspending this card."
+msgstr "在暫停這個擴充卡時發生錯誤"
+
+#: tkPCCard.py:151 
+msgid "This card's activity has been resumed."
+msgstr "這個擴充卡的活動已恢復。"
+
+#: tkPCCard.py:154 
+msgid "An error occurred while resuming this card."
+msgstr "在恢復這個擴充卡時發生問題。"
+
+#: tkPCCard.py:161 
+msgid "This card has been inserted."
+msgstr "這個擴充卡已經插入。"
+
+#: tkPCCard.py:164 
+msgid "An error occurred while inserting this card."
+msgstr "在插入這個擴充卡時發生錯誤。"
+
+#: tkPCCard.py:175 
+msgid "This card has been reset."
+msgstr "這個擴充卡已重設。"
+
+#: tkPCCard.py:178 
+msgid "An error occurred while resetting this card."
+msgstr "在重設這個擴充卡時發生錯誤。"
+
+#: tkPCCard.py:212 
+msgid "No PCMCIA slots detected on this computer."
+msgstr "在這臺電腦上偵測不到 PCMCIA 插槽。"
+
+#: tkPCCard.py:231 
+msgid "   EXIT   "
+msgstr "   離開  "
+
+#: tkPCCard.py:234 
+msgid "   About   "
+msgstr "   關於  "
+
+#: icewmcp_common.py:161 
+msgid "Credits"
+msgstr "工作人員"
+
+#: icewmcp_common.py:318 
+msgid "Translators"
+msgstr "翻譯者"
+
+#: icewmcp_common.py:318 
+msgid ""
+"If you wish to help us with the translations, please visit the following "
+"site on the web"
+msgstr "如果您希望幫助我們翻譯，請參訪下列網址"
+
+#: icewmcp_common.py:162 
+msgid "Send A Bug Report"
+msgstr "送出錯誤回報"
+
+#: ICEWMCP_BugReport.py:47 
+msgid "You did not specify a valid SMTP host."
+msgstr "您沒有指定有效的 SMTP 主機。"
+
+#: ICEWMCP_BugReport.py:47 ICEWMCP_BugReport.py:57 ICEWMCP_BugReport.py:64 
+#: ICEWMCP_BugReport.py:79 ICEWMCP_BugReport.py:81 ICEWMCP_BugReport.py:123
+#: ICEWMCP_BugReport.py:158 ICEWMCP_BugReport.py:163 ICEWMCP_BugReport.py:169
+#: ICEWMCP_BugReport.py:177
+msgid "Bug Report"
+msgstr "錯誤回報"
+
+#: ICEWMCP_BugReport.py:57 
+msgid "The FROM e-mail address you provided is invalid."
+msgstr "您所提供的寄件人電子郵件位址是無效的。"
+
+#: ICEWMCP_BugReport.py:64 
+msgid "Unable to connect to SMTP server"
+msgstr "無法連線到 SMTP 伺服器"
+
+#: ICEWMCP_BugReport.py:79 
+msgid "Be sure that you are connected to the internet."
+msgstr "請確定您已連線到網際網路。"
+
+#: ICEWMCP_BugReport.py:79 
+msgid "Unable to send your bug report message"
+msgstr "無法送出您的錯誤報告訊息"
+
+#: ICEWMCP_BugReport.py:79 
+msgid ""
+"Your SMTP server may require a password or may require you to check your "
+"POP3 mail first."
+msgstr "您的 SMTP 伺服器可能需要密碼或需要您先檢查 POP3 郵件。"
+
+#: ICEWMCP_BugReport.py:81 
+msgid "Your bug report message was successfully sent to"
+msgstr "您的錯誤報告訊息已成功傳送到"
+
+#: ICEWMCP_BugReport.py:123 
+msgid "There is not enough information to send a bug report."
+msgstr "沒有足夠的資訊可以送出錯誤報告。"
+
+#: ICEWMCP_BugReport.py:123 
+msgid ""
+"You did not describe the bug or problem IN DETAIL in the 'bug report' area."
+msgstr "您在“錯誤報告”區並沒有詳細描述錯誤或問題。"
+
+#: ICEWMCP_BugReport.py:158 
+msgid "Unknown application"
+msgstr "未知的應用程式"
+
+#: ICEWMCP_BugReport.py:163 
+msgid "A check for the NEWEST version of this software will now be conducted."
+msgstr "現在會檢查這個軟體的最新版。"
+
+#: ICEWMCP_BugReport.py:163 
+msgid ""
+"Before reporting a bug, please make sure you have the NEWEST version of this "
+"software."
+msgstr "在報告錯誤之前，請確定您的軟體已經是最新的版本。"
+
+#: ICEWMCP_BugReport.py:163 
+msgid "Do you wish to continue?"
+msgstr "您希望繼續嗎？"
+
+#: ICEWMCP_BugReport.py:163 
+msgid ""
+"If you are using an older version of this software, first upgrade to the "
+"NEWEST version."
+msgstr "如果您在使用此軟體的較舊版本，首先請升級至最新版本。"
+
+#: ICEWMCP_BugReport.py:163 
+msgid ""
+"Please do not submit bug reports if you are using an older version of this "
+"software."
+msgstr "如果您在使用此軟體的較舊版本，請不要傳送錯誤報告。"
+
+#: ICEWMCP_BugReport.py:163 
+msgid ""
+"Send your bug report ONLY if you continue to have the same problem with the "
+"NEWEST version of this software."
+msgstr "只有當您在最新版軟體中持續發生相樣問題時才需要送出錯誤報告。"
+
+#: ICEWMCP_BugReport.py:183 
+msgid "To"
+msgstr "收件人"
+
+#: ICEWMCP_BugReport.py:184 
+msgid "From"
+msgstr "寄件人"
+
+#: ICEWMCP_BugReport.py:185 
+msgid "SMTP Server"
+msgstr "SMTP 伺服器"
+
+#: ICEWMCP_BugReport.py:196 
+msgid "Please describe the bug or problem in detail"
+msgstr "請詳細描述錯誤或問題"
+
+#: ICEWMCP_BugReport.py:205 
+msgid "The following system information will be sent with your bug report"
+msgstr "下列的系統資訊會隨著您的錯誤報告送出"
+
+#: ICEWMCP_BugReport.py:214 
+msgid "SEND NOW"
+msgstr "立即送出"
+
+#: IceWMCP_GtkPCCard.py
+msgid "PC Card Manager"
+msgstr "PC Card 管理程式"
+
+#: icewmcp_common.py
+msgid "Could not open Help file"
+msgstr "無法開啟說明檔案"
+
+#: icewmcp_common.py
+msgid "No such help topic"
+msgstr "沒有這個說明主題"
+
+# IceWMCPKeyboard.py
+msgid "Repetition"
+msgstr "重複"
+
+# IceWMCPKeyboard.py
+msgid "Shortcut Keys"
+msgstr "快捷鍵"
+
+# IceWMCPKeyboard.py
+msgid "IceWM Keys"
+msgstr "IceWM 按鍵"
+
+# IceWMCPKeyboard.py
+msgid "Open Shortcut Key Configuration"
+msgstr "開啟快捷鍵組態"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard"
+msgstr "鍵盤"
+
+# IceWMCPKeyboard.py
+msgid "Additional IceWM Shortcut Keys"
+msgstr "額外的 IceWM 快捷鍵"
+
+# IceWMCPKeyboard.py
+msgid "To test the repetition, hold a key for a few seconds"
+msgstr "要測試重複速度，請按住按鍵幾秒鐘"
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard auto-repeat"
+msgstr "允許鍵盤自動重複"
+
+# IceWMCPKeyboard.py
+msgid "Sound"
+msgstr "聲音"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Sounds"
+msgstr "鍵盤聲音"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Click"
+msgstr "鍵盤敲擊聲"
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard clicks"
+msgstr "允許鍵盤敲擊聲"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Beep"
+msgstr "鍵盤嗶聲"
+
+# IceWMCPKeyboard.py
+msgid "Volume"
+msgstr "音量"
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard beeps"
+msgstr "允許鍵盤嗶聲"
+
+# IceWMCPKeyboard.py
+msgid "Pitch"
+msgstr "音高"
+
+# IceWMCPKeyboard.py
+msgid "Duration"
+msgstr "持續時間"
+
+# IceWMCPKeyboard.py
+msgid "Test"
+msgstr "測試"
+
+#: IceWMCPWallpaper.py
+msgid "Edit"
+msgstr "編輯"
+
+#: IceWMCPWallpaper.py
+msgid "Edit with Gimp"
+msgstr "以 Gimp 編輯"
+
+#: IceWMCPWallpaper.py
+msgid "Too large to tile"
+msgstr "太大而無法並排顯示"

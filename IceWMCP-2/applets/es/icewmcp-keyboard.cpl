@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Teclado\nde IceWM
+Exec=[PHROZEN-INTERNAL]IceWMCPKeyboard.py
+Icon=icewmcp-keyboard.png
+Hint=Configurar el teclado y las teclas rápidas de IceWM

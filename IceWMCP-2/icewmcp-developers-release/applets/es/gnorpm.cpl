@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=Programas\nInstalados
+Exec=gnorpm
+Icon=gnorpm.png
+Hint=Administrar sus RPMs instalados

@@ -1,1 +1,5 @@
-dummy file
+# Ice Control Panel Applet
+Name=系統
+Exec=[PHROZEN-INTERNAL]IceWMCPSystem.py
+Icon=sysinfo.png
+Hint=檢視有用的系統與硬體資訊
