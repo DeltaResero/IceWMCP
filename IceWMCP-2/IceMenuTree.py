@@ -1,20 +1,51 @@
-#############################################################################
-# IceMe
+# -*- coding: ISO-8859-1 -*-
+
+################################################
+## IceMe
 # =====
 #
 # Copyright 2000-2002, Dirk Moebius <dmoebius@gmx.net> 
-# and Mike Hostetler <thehaas@binary.net
+# and Mike Hostetler <thehaas@binary.net>
 #
 # This work comes with no warranty regarding its suitability for any purpose.
 # The author is not responsible for any damages caused by the use of this
 # program.
-#############################################################################
-########
-# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
-# This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
-# Copyright (c) 2003 Erica Andrews
-########
-
+#
+# This software is distributed under the GNU General Public License
+#################################################
+#################################
+#  With Modifications by Erica Andrews 
+#  (PhrozenSmoke ['at'] yahoo.com)
+#  February 2003-February 2004
+#  
+#  This is a modified version of IceMe 
+#  1.0.0 ("IceWMCP Edition"), optimized for 
+#  IceWM ControlPanel.
+#  
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
+#################################
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -46,6 +77,7 @@ class IceMenuTree(DndCTree):
         self.set_selection_mode(SELECTION_BROWSE)
 	self.set_spacing(5)  # added 4.3.2003, Erica Andrews 
 	self.set_row_height(23)  # added 4.3.2003, Erica Andrews 
+	self.convert_to_utf8=0  # added 2.20.2004, Erica Andrews
         self.column_titles_passive()
         self.connect("tree-expand", self.on_tree_expand)
 
@@ -67,7 +99,10 @@ class IceMenuTree(DndCTree):
         # insert main menu:
         if menufile:
             m = MenuParser(menufile)
+            self.convert_to_utf8=1  # added 2.20.2004, Erica Andrews
+            #      allow proper conversion of foreign characters to utf-8
             self.__insertMenu(root, m)
+            self.convert_to_utf8=0  # added 2.20.2004, Erica Andrews
         # insert separator:
         self.__insertSep(root, None, TRUE)
         # insert programs menu:
@@ -75,7 +110,10 @@ class IceMenuTree(DndCTree):
                                  _("Programs"), "folder", None, TRUE)
         if programsfile:
             m = MenuParser(programsfile)
+            self.convert_to_utf8=1  # added 2.20.2004, Erica Andrews
+            #      allow proper conversion of foreign characters to utf-8
             self.__insertMenu(node, m)
+            self.convert_to_utf8=0  # added 2.20.2004, Erica Andrews
         # insert separator:
         self.__insertSep(None, None, TRUE)
         # insert toolbar menu:
@@ -83,7 +121,10 @@ class IceMenuTree(DndCTree):
                                  _("Toolbar"), "folder", None, TRUE)
         if toolbarfile:
             m = MenuParser(toolbarfile)
+            self.convert_to_utf8=1  # added 2.20.2004, Erica Andrews
+            #      allow proper conversion of foreign characters to utf-8
             self.__insertMenu(node, m)
+            self.convert_to_utf8=0  # added 2.20.2004, Erica Andrews
         # insert separator:
         self.__insertSep(None, None, TRUE)
         # insert special clipboard menu:
@@ -131,11 +172,18 @@ class IceMenuTree(DndCTree):
             dummy, pix, mask = self.app.getCachedIcon(iconname)
         is_leaf = (type != MENUTREE_SUBMENU)
         # insert node:
-        node = self.insert_node(parent, sibling, [text, command], 5,
+        if self.convert_to_utf8==1:
+        	node = self.insert_node(parent, sibling, [to_utf8(text), to_utf8(command)], 5,
+                                pix, mask, pix, mask, is_leaf)
+        else:
+        	node = self.insert_node(parent, sibling, [text, command], 5,
                                 pix, mask, pix, mask, is_leaf)
         # store additional data: iconname, whether it's a restart button
         # and whether the entry is inactive:
-        self.node_set_row_data(node, [iconname, type, inactive])
+        if self.convert_to_utf8==1:
+        	self.node_set_row_data(node, [to_utf8(iconname), type, inactive])
+        else:
+        	self.node_set_row_data(node, [iconname, type, inactive])
         return node
 
 

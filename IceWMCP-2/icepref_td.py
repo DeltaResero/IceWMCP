@@ -1,17 +1,38 @@
 #!/usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
-##########################################################
-#	This is an experimental IceWM Theme designer based on IcePref2 version 3.3
-#        IcePref2-TD 
+#####################################
+#	IcePref2-TD: This is an IceWM Theme 
+#	designer based on IcePref2 
 #
-#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - December 2003
-#	Copyright (c) 2003  Erica Andrews
-# 	This work comes with no warranty regarding its suitability for any purpose.
-# 	The author is not responsible for any damages caused by the use of this
-# 	program.
-##########################################################
+#	Copyright (c) 2003-2004  Erica Andrews
+#	(PhrozenSmoke ['at'] yahoo.com)
+#####################################
 ###################################################
-#                                IcePref2 3.3
+#	This is IcePref2:  It is an updated, overhauled, 
+#	improved, and perfected version of the original IcePref 
+#	(see credits above).  IcePref appears to have been 
+#	abandoned by the original author, as it had not been 
+#	updated since 2000. This new version, distributed under 
+#	the same GNU GPL as the original IcePref, includes new 
+#	features and bug fixes, optimized for IceWM 1.2.2 
+#	and better. It's been tested on IceWM 1.2.2 - 1.2.14.  
+#
+#	Updates by: 
+#		Erica Andrews (PhrozenSmoke ['at'] yahoo.com) 
+#		February 2003 -February 2004
+#
+#	Copyright (c) 2003-2004, Erica Andrews
+#
+#	License: GNU General Public License
+#
+#	This work comes with no warranty regarding its 
+#	suitability for any purpose. The author is not 
+#	responsible for any damages caused by the 
+#	use of this program.
+###################################################
+###################################################
+#                                IcePref
 #
 # This is (or will be) the best IceWM configuration utility
 # known to man.  It requires a recent version of python as well as Gtk ( >
@@ -28,7 +49,6 @@
 # The author is not responsible for any damages caused by the use of this
 # program.
 ####################################################
-
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -40,6 +60,25 @@
 #  	PhrozenSmoke ['at'] yahoo.com
 #	October/November 2003
 #############################
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 
 from string import *
 import re,commands,math,icepref_search
@@ -80,7 +119,7 @@ if NOSPLASH==0:
 #######################################
 
 VERSION = this_software_version
-ICE_VERSION = "1.2.13"
+ICE_VERSION = "1.2.14"
 
 
 # these define the types of configuration widgets
@@ -891,12 +930,12 @@ class IceEntry(VBox):
 		
 	def set_value(self, value):
 		#value = value[1 : len(value) - 1]  # changed 1.27.2003 - was buggy and could cause bad parsing
-		value=value.replace("\"","")
+		value=to_utf8(value.replace("\"",""))
 		self.entry.set_text(value)
 		
 	def get_value(self):
 		value = self.entry.get_text()
-		value = '"' + value + '"'
+		value = '"' +remove_utf8( value) + '"'
 		return value
 		
 # The Toggled class describes the check buttons (for boolean options).
@@ -930,7 +969,7 @@ class IceToggled(VBox):
 		self.button.set_active(eval(value))
 		
 	def get_value(self):
-		value = self.button.get_active()
+		value = int(self.button.get_active())
 		return str(value)
 
 # The Range class describes the range widget.
@@ -1151,12 +1190,12 @@ class ButtonEntry(VBox):
 		
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
-		self.entry.set_text(value)
+		self.entry.set_text(to_utf8(value))
 		if not self.iprev==None: self.iprev.update_image(value)
 		
 	def get_value(self):
 		value = '"' + self.entry.get_text() + '"'
-		return value
+		return remove_utf8(value)
 		
 	def cancel(self, data=None):
 		self.win.hide()
@@ -1250,7 +1289,7 @@ class IceColor(ButtonEntry):
 
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
-		self.entry.set_text(value)
+		self.entry.set_text(to_utf8(value))
         	if value != '':
            		r = atoi(value[4:6], 16)
             		g = atoi(value[7:9], 16)
@@ -1320,9 +1359,9 @@ class IceFont(ButtonEntry):
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
 		if len(value.split("-"))<9:
-			self.entry.set_text(pangoxlfd.pango2XLFD(value))
+			self.entry.set_text(to_utf8(pangoxlfd.pango2XLFD(value)))
 		else: 
-			self.entry.set_text(value)
+			self.entry.set_text(to_utf8(value))
 		self.set_sample(value)
 		
 	def set_sample(self, value):
@@ -2298,10 +2337,12 @@ class Application(Window):
 			pass
 
 	def newTheme(self,*args):
-		tname=args[0].get_data("theme_name").get_text().strip().replace("\"","").replace("'","")
+		tname=remove_utf8(
+			args[0].get_data("theme_name").get_text().strip().replace("\"","").replace("'",""))
 		tauth=args[0].get_data("theme_author").get_text().strip().replace("\"","").replace("'","")
 		tdesc=args[0].get_data("theme_desc").get_text().strip().replace("\"","").replace("'","")
-		cfgpath=args[0].get_data("cfg_path").get_text().strip().replace("\"","").replace("'","")
+		cfgpath=remove_utf8( 
+			args[0].get_data("cfg_path").get_text().strip().replace("\"","").replace("'","") )
 		if (tname=="") or (tauth=="") or (tdesc=="") or (cfgpath==""): 
 			msg_warn("IcePref2",_("You must complete all the fields first."))
 			return

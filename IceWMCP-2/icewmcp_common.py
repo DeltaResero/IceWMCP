@@ -1,15 +1,36 @@
+# -*- coding: ISO-8859-1 -*-
+
 #############################
 #  IceWM Control Panel - Common
 #  
-#  Copyright 2003 by Erica Andrews
+#  Copyright (c) 2003-2004
+#  Erica Andrews
 #  PhrozenSmoke ['at'] yahoo.com
 #  http://icesoundmanager.sourceforge.net
 #  
 #  This program is distributed free
-#  of charge (open source) under the GNU
-#  General Public License
+#  of charge (open source) under the 
+#  GNU General Public License
 #############################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -21,7 +42,6 @@
 #  	PhrozenSmoke ['at'] yahoo.com
 #	October/November 2003
 #############################
-
 
 
 # added 4/28/2003, python-based vs. static binary, for bug reporter
@@ -97,6 +117,37 @@ def to_utf8(somestr):
 		print "You can also simply run this application in English or another supported language."
 		print " "
 		sys.exit(0)
+
+# Added 2.20.2004, a way to convert UTF-8 strings back to locale strings:
+# needed to support saving strings with foreign characters in their 
+# normal appearance instead of in garbled Utf-8 fashion, fixes bugs
+# in IceMe, IcePref2/IcePref2-TD, and other places as-needed
+
+# Possible problem though: What if the user is trying to save strings 
+# with foreign characters from a language/charset from a locale other
+# than the one IceWMCP is running under??  Example: A person running
+# IceWMCP in French trying to saving strings containing Chinese text?
+# We have no way of knowing about cases such as these can only assume
+# that all strings should be converted from Utf-8 back to the 
+# 'DEFAULT_CHARSET' value we determine at startup time.
+
+def remove_utf8(some_string):
+	try:
+		mychars=some_string.decode("utf-8")
+		if LANGUAGE_CODEC==None:
+			return str(mychars.encode(DEFAULT_CHARSET))
+		else: 
+			return str(LANGUAGE_CODEC.encode(str(mychars))[0])
+	except:  # catch possible unicode error
+		try:
+			mychars2=to_utf8(some_string)
+			mychars=mychars2.decode("utf-8")
+			if LANGUAGE_CODEC==None:
+				return str(mychars.encode(DEFAULT_CHARSET))
+			else: 
+				return str(LANGUAGE_CODEC.encode(str(mychars))[0])
+		except:
+			return some_string
 
 
 import gtk
@@ -689,7 +740,7 @@ def closeUpdateWin(*args):
 
 #######  VERSION  #######
 
-this_software_version="3.1"     # must match the same variable in IceWMCP_BugReport.py
+this_software_version="3.2"     # must match the same variable in IceWMCP_BugReport.py
 
 SOFTWARE_UPDATE_URL= "http://icesoundmanager.sourceforge.net/ICEWMCP_WEB_VERSION"
 
@@ -923,10 +974,10 @@ def commonAbout(wintitle, mesg, with_copy=1, logo="icewmcp_short.png",
         mesg=mesg.split("\n")
 
     if with_copy==1: 
-        abouttext = "Copyright (c) 2003 by Erica Andrews\n"+\
-                    "PhrozenSmoke@yahoo.com\n"+\
+        abouttext = "Copyright (c) 2003-2004\nErica Andrews\n"+\
+                    "PhrozenSmoke ['at'] yahoo.com\n"+\
                     "http://icesoundmanager.sourceforge.net\n"+\
-                    "License: GNU General Public License (GPL)\n\n"
+                    "License: GNU General Public License\n\n"
     else: 
         abouttext=""
 

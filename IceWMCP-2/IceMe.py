@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
-##################################################
-# IceMe
+################################################
+## IceMe
 # =====
 #
 # Copyright 2000-2002, Dirk Moebius <dmoebius@gmx.net> 
@@ -13,12 +14,39 @@
 #
 # This software is distributed under the GNU General Public License
 #################################################
-########
-# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
-# This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
-# Copyright (c) 2003 Erica Andrews
-########
-
+#################################
+#  With Modifications by Erica Andrews 
+#  (PhrozenSmoke ['at'] yahoo.com)
+#  February 2003-February 2004
+#  
+#  This is a modified version of IceMe 
+#  1.0.0 ("IceWMCP Edition"), optimized for 
+#  IceWM ControlPanel.
+#  
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
+#################################
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -897,7 +925,7 @@ class IceMe(Window):
              val = self.icons["-"]  # This wasn't good - try to load the icon even if its not on IconPath
         if type(val) == type(""):
             try:
-                  newheight,newwidth = 22,22   # 2.21.2003 - added larger icons (PhrozenSmoke@yahoo.com)
+                  newheight,newwidth = 22,22   # 2.21.2003 - added larger icons (PhrozenSmoke [at] yahoo.com)
 		  if val.endswith("iceme_icewm.png"): newheight,newwidth = 55,22
                   img = GDK.pixbuf_new_from_file(val)
                   img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
@@ -1013,7 +1041,7 @@ class IceMe(Window):
                 icon = self.tree.getNodeIconName(child)
                 if not icon: icon = "-"
                 if type == MENUTREE_SUBMENU:
-                    fd.write('%smenu "%s" "%s" {\n' % (indent, name, icon))
+                    fd.write('%smenu "%s" "%s" {\n' % (indent, remove_utf8(name), remove_utf8(icon)))
                     self.writeSubTree(fd, child, level+1)
                     fd.write("%s}\n" % indent)
                 else:
@@ -1027,14 +1055,14 @@ class IceMe(Window):
 	    				#Fixes Bug Report/Feature Request #488846
 	    				#Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003
 
-					fd.write('%smenuprog "%s" "%s" %s\n' % (indent, name, icon, command))
+					fd.write('%smenuprog "%s" "%s" %s\n' % (indent, remove_utf8(name), remove_utf8(icon), remove_utf8(command)))
 
 				else:  	# all others
 					fd.write('%sprog "%s" "%s" %s\n'
-                                 % (indent, name, icon, command))
+                                 % (indent, remove_utf8(name), remove_utf8(icon), remove_utf8(command)))
                     elif type == MENUTREE_RESTART:
                         fd.write('%srestart "%s" "%s" %s\n'
-                                 % (indent, name, icon, command))
+                                 % (indent, remove_utf8(name), remove_utf8(icon), remove_utf8(command)))
 
 
     ########################################################################
@@ -1186,7 +1214,7 @@ class IceMe(Window):
         self.setStatus(_("Done."))
 
     def on_about(self, x=None, y=None):
-        commonAbout("About IceMe",    "IceMe v."+VERSION+"\n\n"+_("A menu editor for IceWM written in Python and GTK.")+"\n\n"+ "Copyright (c) 2000-2002 by Dirk Moebius <dmoebius@gmx.net> and Mike Hostetler  <thehaas@binary.net>.  Copyright (c) 2003 by Erica Andrews <phrozensmoke@yahoo.com>.\n\n"+"See the file COPYING for license information (GPL).\n"+"Please visit the IceMe homepage at:\n"+"http://iceme.sourceforge.net\n\n"+_("This is a Special Edition of IceMe for IceWM Control Panel,\nwith modifications and optimizations by")+" Erica  Andrews.\n<PhrozenSmoke@yahoo.com>\nhttp://icesoundmanager.sourceforge.net",0 )
+        commonAbout("About IceMe",    "IceMe v."+VERSION+"\n\n"+_("A menu editor for IceWM written in Python and GTK.")+"\n\n"+ "Copyright (c) 2000-2002 by Dirk Moebius <dmoebius@gmx.net> and Mike Hostetler  <thehaas@binary.net>.  Copyright (c) 2003-2004  Erica Andrews <phrozensmoke [at] yahoo.com>.\n\n"+"See the file COPYING for license information (GPL).\n"+"Please visit the IceMe homepage at:\n"+"http://iceme.sourceforge.net\n\n"+_("This is a Special Edition of IceMe for IceWM Control Panel,\nwith modifications and optimizations by")+" Erica  Andrews.\n<PhrozenSmoke [at] yahoo.com>\nhttp://icesoundmanager.sourceforge.net",0 )
 
     def on_new_entry(self, button):
         node = self.tree.insertNode(self.cur_node, MENUTREE_PROG,

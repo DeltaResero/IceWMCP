@@ -1,11 +1,13 @@
 #! /usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
 ######################################
 # ICE SOUND MANAGER 
 # 
-# Copyright (c) 2002-2003 by Erica Andrews 
-# (PhrozenSmoke@yahoo.com)
-# http://icesoundmanager.sourceforge.net
+#  Copyright (c) 2002-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
 # 
 # Ice Sound Manager was designed to ease 
 # the management of sound events, sound themes, 
@@ -20,7 +22,25 @@
 # This program is distributed under the GNU General
 # Public License (open source).
 #######################################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -32,7 +52,6 @@
 #  	PhrozenSmoke ['at'] yahoo.com
 #	October/November 2003
 #############################
-
 
 from icewmcp_common import *
 
@@ -104,7 +123,7 @@ need_setup=0
 global audio_defaults
 global server_version
 global help_file
-audio_defaults={"oss_dev":"/dev/dsp","yiff_host":"localhost","yiff_port":"9433","yiff_auto":"1","esd_host":"localhost","esd_port":"16001","interface":"esd","esd_local":1}
+audio_defaults={"oss_dev":"/dev/dsp","yiff_host":"localhost","yiff_port":"9433","yiff_auto":"1","esd_host":"localhost","esd_port":"16001","interface":"esd","esd_local":"1"}
 sound_events={"startup":"[NONE]","shutdown":"","restart":"[NONE]","closeAll":"[NONE]","launchApp":"[NONE]","workspaceChange":"[NONE]","windowOpen":"[NONE]","windowClose":"[NONE]","dialogOpen":"[NONE]","dialogClose":"[NONE]","windowMin":"[NONE]","windowMax":"[NONE]","windowRestore":"[NONE]","windowHide":"[NONE]","windowLower":"[NONE]","windowRollup":"[NONE]","windowSized":"[NONE]","windowMoved":"[NONE]","startMenu":"[NONE]"}
 event_desc={_("IceWM Startup"):"startup",_("IceWM Shutdown"):"shutdown",_("IceWM Restart"):"restart",_("Close All"):"closeAll",_("Launch Application"):"launchApp",_("Work Space Changed"):"workspaceChange",_("Window Opened"):"windowOpen",_("Window Closed"):"windowClose",_("Dialog Opened"):"dialogOpen",_("Dialog Closed"):"dialogClose",_("Window Minimized"):"windowMin",_("Window Maximized"):"windowMax",_("Window Restored"):"windowRestore",_("Window Hidden"):"windowHide",_("Window Lowered"):"windowLower",_("Window Rolled Up"):"windowRollup",_("Window Sized"):"windowSized",_("Window Moved"):"windowMoved",_("Start Menu Clicked"):"startMenu"}
 global current_theme_file
@@ -414,11 +433,13 @@ class icewindow :
 	global wav_dir
 	if wav_dir==getIceWMConfigPath()+"sounds"+os.sep:
 		self.run_root_button.set_active(1)
-	self.run_root_button.connect("toggled",run_as_root)
-
-        
-        showStatus(_("Ice Sound Manager")+" "+ism_version+".  Copyright (c) 2002-2003 Erica Andrews.")
+	self.run_root_button.connect("toggled",run_as_root)      
+        showStatus(_("Ice Sound Manager")+" "+ism_version+".")
 	mainvbox.pack_start( statusbar, 0, 0, 0)
+	statusbarcopy =Statusbar ()
+	mainvbox.pack_start( statusbarcopy, 0, 0, 0)
+	statusbarcopy.push(statusbarcopy.get_context_id("icesoundCopyRight")," Ice Sound Manager Copyright (c) 2002-2004 Erica Andrews.")
+	self.statusbarcopy=statusbarcopy
 	icewindow.add ( mainvbox1)	
 	icewindow.show_all()
 	gtk.timeout_add(60,updateStatusTimeout)
@@ -588,9 +609,9 @@ def hideOptions(*args):
   global copy_wavs
   global start_server
   global current_theme_file
-  use_terminal=(iceo.stdouttext.get_active()==1)
-  start_server=(iceo.autocheck.get_active()==1)
-  copy_wavs=(iceo.copycheck.get_active()==1)  
+  use_terminal=(int(iceo.stdouttext.get_active())==1)
+  start_server=(int(iceo.autocheck.get_active())==1)
+  copy_wavs=(int(iceo.copycheck.get_active())==1)  
   wav_cmd=iceo.playtext.get_text().strip()
   wav_edit=iceo.edittext.get_text().strip()
   iceo.iceoptions.hide()
@@ -630,7 +651,7 @@ def showEditHelp(*args):
 	showModalHelp(_("If you want to be able to EDIT your sounds in Ice Sound Manager, you must enter the command to launch a .wav sound editor on your system.  Most people should be able to use the default command, IF they have the Sweep sound editor installed.  However, you may want or need to change this command.   NOTE:  Any command line you enter MUST contain the string '%f' somewhere in the command line  (this signifies where the .wav's filename should go in the command line.)  It is YOUR job to know or find out what command line to use to launch your .wav editor.  If you fail to include '%f' in your command line, you will see an error message on the status bar when you attempt to edit your sounds."))
 
 def showBugHelp(*args):
-	showModalHelp(_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  The project is still in its formative stages.  Expect bugs. COURTEOUSLY report bugs in Ice Sound Manager to PhrozenSmoke@yahoo.com.  If you have any other comments or suggestions, those are welcomed as well.  Please do NOT report bugs in your IceSound Server, your IceWM environment, or ask me for help on getting your IceSound Server to run.  Also, please read 'Ice Sound Manager Help' under the 'Help' menu (or press F4) before reporting a 'bug'. You will find useful troubleshooting suggestions there. "))
+	showModalHelp(_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  The project is still in its formative stages.  Expect bugs. COURTEOUSLY report bugs in Ice Sound Manager to PhrozenSmoke [at] yahoo.com.  If you have any other comments or suggestions, those are welcomed as well.  Please do NOT report bugs in your IceSound Server, your IceWM environment, or ask me for help on getting your IceSound Server to run.  Also, please read 'Ice Sound Manager Help' under the 'Help' menu (or press F4) before reporting a 'bug'. You will find useful troubleshooting suggestions there. ".replace(" [at] ","@") ))
 
 def showServerHelp(*args):
 	showModalHelp(_("ICESOUND SERVER HELP")+"\n"+_("You are running IceSound Server version")+": "+server_version+"\n\n"+_("The following is the output returned by running your IceSound Server executable")+" ("+str(getServerExec())+") "+_("with the --help switch.")+"  "+_("You may find it useful for trouble shooting problems with your sound server.  If you see nothing below or see an error message, try modifying your IceSound Server command line, by clicking 'IceSound Server' on the menu. Also, make sure you have the permissions necessary to run the server executable")+":\n\n\n"+string.join( os.popen(str(getServerExec())+" --help").readlines()," ") +"\n")
@@ -640,7 +661,7 @@ def showScriptHelp(*args):
 
 
 def showAbout(*args):
-	commonAbout(_("ABOUT ICE SOUND MANAGER")+" "+ism_version,_("ABOUT ICE SOUND MANAGER")+" "+ism_version+"\n\n"+_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  Ice Sound Manager is freeware and open source. In addition, Ice Sound Manager is now part of a larger project, called IceWM Control Panel.  As of version 0.2-beta-2, Ice Sound Manager is distributed under the General Public License (GPL). See the 'IceSoundManager-LICENSE' file for details.  All legal, non-profit use, modification, and distribution of this software is permitted provided all these credits are left in-tact and unmodified.  This software is distributed as-is, without any warranty or guarantee of any kind. Use at your own risk!\n\nIce Sound Manager was designed to ease the management of sound events, sound themes, and the sound server in the IceWM environment.  It is also intended to be an improvement upon the noble, but primitive icesndcfg. The project is still in its formative stages, so expect bugs.  (Report bugs to PhrozenSmoke@yahoo.com) \n\nVisit   http://members.aol.com/ButchWhipAppeal/  for my other software projects."),1,getPixDir()+"ism_header.png")	  
+	commonAbout(_("ABOUT ICE SOUND MANAGER")+" "+ism_version,_("ABOUT ICE SOUND MANAGER")+" "+ism_version+"\n\n"+"Copyright (c) 2002-2004\nErica Andrews\nPhrozenSmoke ['at'] yahoo.com\n                http://icesoundmanager.sourceforge.net\nLicense: GNU General Public License\n\n"+_("Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  Ice Sound Manager is freeware and open source. In addition, Ice Sound Manager is now part of a larger project, called IceWM Control Panel.  As of version 0.2-beta-2, Ice Sound Manager is distributed under the General Public License (GPL). See the 'IceSoundManager-LICENSE' file for details.  This software is distributed as-is, without any warranty or guarantee of any kind. Use at your own risk!\n\nIce Sound Manager was designed to ease the management of sound events, sound themes, and the sound server in the IceWM environment.  It is also intended to be an improvement upon the noble, but primitive icesndcfg."),0 ,getPixDir()+"ism_header.png")	  
 
 
 # Directory Browsing
@@ -1054,8 +1075,8 @@ def saveThemeFile(*args):
     if current_theme:
       filelock.acquire(1)
       try:
-        f=open(str(current_theme_file),"w")
-        f.write("# Ice Sound Manager "+ism_version+" Sound Theme\n# The line below is necessary for Ice Sound Manager to identify this as a legitimate theme.\n# Include NO spaces at the end of the next 2 lines. Comments must be on their OWN line.\nTYPE=PhrozenSoundTheme\nThemeName="+current_theme+"\nstartup="+getSoundForEvent("startup",3)+"\nshutdown="+getSoundForEvent("shutdown",3)+"\nrestart="+getSoundForEvent("restart",3)+"\ncloseAll="+getSoundForEvent("closeAll",3)+"\nlaunchApp="+getSoundForEvent("launchApp",3)+"\nworkspaceChange="+getSoundForEvent("workspaceChange",3)+"\nwindowOpen="+getSoundForEvent("windowOpen",3)+"\nwindowClose="+getSoundForEvent("windowClose",3)+"\ndialogOpen="+getSoundForEvent("dialogOpen",3)+"\ndialogClose="+getSoundForEvent("dialogClose",3)+"\nwindowMin="+getSoundForEvent("windowMin",3)+"\nwindowMax="+getSoundForEvent("windowMax",3)+"\nwindowRestore="+getSoundForEvent("windowRestore",3)+"\nwindowHide="+getSoundForEvent("windowHide",3)+"\nwindowLower="+getSoundForEvent("windowLower",3)+"\nwindowRollup="+getSoundForEvent("windowRollup",3)+"\nwindowSized="+getSoundForEvent("windowSized",3)+"\nwindowMoved="+getSoundForEvent("windowMoved",3)+"\nstartMenu="+getSoundForEvent("startMenu",3)+"\n")
+        f=open(remove_utf8(str(current_theme_file)),"w")
+        f.write("# Ice Sound Manager "+ism_version+" Sound Theme\n# The line below is necessary for Ice Sound Manager to identify this as a legitimate theme.\n# Include NO spaces at the end of the next 2 lines. Comments must be on their OWN line.\nTYPE=PhrozenSoundTheme\nThemeName="+remove_utf8(current_theme)+"\nstartup="+getSoundForEvent("startup",3)+"\nshutdown="+getSoundForEvent("shutdown",3)+"\nrestart="+getSoundForEvent("restart",3)+"\ncloseAll="+getSoundForEvent("closeAll",3)+"\nlaunchApp="+getSoundForEvent("launchApp",3)+"\nworkspaceChange="+getSoundForEvent("workspaceChange",3)+"\nwindowOpen="+getSoundForEvent("windowOpen",3)+"\nwindowClose="+getSoundForEvent("windowClose",3)+"\ndialogOpen="+getSoundForEvent("dialogOpen",3)+"\ndialogClose="+getSoundForEvent("dialogClose",3)+"\nwindowMin="+getSoundForEvent("windowMin",3)+"\nwindowMax="+getSoundForEvent("windowMax",3)+"\nwindowRestore="+getSoundForEvent("windowRestore",3)+"\nwindowHide="+getSoundForEvent("windowHide",3)+"\nwindowLower="+getSoundForEvent("windowLower",3)+"\nwindowRollup="+getSoundForEvent("windowRollup",3)+"\nwindowSized="+getSoundForEvent("windowSized",3)+"\nwindowMoved="+getSoundForEvent("windowMoved",3)+"\nstartMenu="+getSoundForEvent("startMenu",3)+"\n")
         for y in disabled_sounds.keys():
           f.write(str(y)+"=[DISABLED]\n")
         f.flush()
@@ -1355,7 +1376,7 @@ def loadTheme(fname,quiet=0,refresh=1,*args):
                propname=parts[0].strip()
                propval=parts[1].strip()
                if propname=="ThemeName":
-                 current_theme=propval
+                 current_theme=to_utf8(propval)
                  icey.themetext.set_text(current_theme)
                  showStatus(_("Loading theme")+" '"+current_theme+"'...")
                else: 
@@ -1574,8 +1595,8 @@ def closeAudio(*args):
     setAudioProp("esd_port",icea.port1text.get_text())
     setAudioProp("esd_host",icea.host1text.get_text())
     setAudioProp("oss_dev",icea.devtext.get_text())
-    setAudioProp("esd_local",icea.localcheck.get_active())
-    setAudioProp("yiff_auto",str(icea.autocheck.get_active()))
+    setAudioProp("esd_local",str(int(icea.localcheck.get_active())))
+    setAudioProp("yiff_auto",str(int(icea.autocheck.get_active())))
     if icea.esd.get_active():
       setAudioProp("interface","esd")
     if icea.oss.get_active():

@@ -1,11 +1,13 @@
 #! /usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
 ######################################
 # IceWM Control Panel Wallpaper Settings
 # 
-# Copyright 2003 by Erica Andrews 
-# (PhrozenSmoke@yahoo.com)
-# http://icesoundmanager.sourceforge.net
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
 # 
 # A simple Gtk-based utility for setting the background 
 # color and wallpaper settings in IceWM (written in 100% 
@@ -19,7 +21,25 @@
 # may be that your theme controls the background colors 
 # and images.
 #######################################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -418,8 +438,8 @@ class wallwin:
 			b="#"+b
 		bc="DesktopBackgroundColor=\""+self.colentry.get_text().strip()+"\""
 		if len(bc)==0: bc="DesktopBackgroundColor=\"rgb:FF/FF/FF\""
-		wc="DesktopBackgroundCenter="+str(self.checkbutton.get_active())
-		ws="DesktopBackgroundScaled="+str(self.checkbutton36.get_active())
+		wc="DesktopBackgroundCenter="+str(int(self.checkbutton.get_active()))
+		ws="DesktopBackgroundScaled="+str(int(self.checkbutton36.get_active()))
 		f=open(self.preffile,"w")
 		for ii in g:
 			if ii.find("DesktopBackgroundImage=")>-1:

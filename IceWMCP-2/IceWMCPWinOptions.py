@@ -1,20 +1,41 @@
 #! /usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
 #############################
-#  IceWM Control Panel - Window Options 
+#  IceWM Control Panel 
+#  Window Options 
 #  
-#  Copyright 2003 by Erica Andrews
-#  PhrozenSmoke@yahoo.com
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
 #  http://icesoundmanager.sourceforge.net
 #  
-#  A simple Gtk-based window optiosn editor
+#  A simple Gtk-based window options editor
 #  for IceWM (written in 100% Python).
 #  
 #  This program is distributed free
-#  of charge (open source) under the GNU
-#  General Public License
+#  of charge (open source) under the 
+#  GNU General Public License
 #############################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -375,8 +396,8 @@ class wallwin:
 				#  ->  phrozenclock.py.PhrozenClock.py now dont get chopped off, 2/18/2003
 				mnum=1
 				snum=len(wlist)-2
-				myprop=wlist[snum]
-				myval=wlist[len(wlist)-1]
+				myprop=to_utf8(wlist[snum])
+				myval=to_utf8(wlist[len(wlist)-1])
 				mywmclass=wlist[0]
 				while mnum<(snum):
 					mywmclass=mywmclass+"."+wlist[mnum]
@@ -614,7 +635,7 @@ class wallwin:
 			d["geometry"]=self.geoentry.get_text().strip()
 			d["layer"]=self.rlayer_conv[self.layentry.get_text().strip()]
 			for ii in self.winwidgets.keys():
-				d[ii]=self.winwidgets[ii].get_active()
+				d[ii]=int(self.winwidgets[ii].get_active())
 			self.setStatus(_("Modified."))
 			if len(self.iconentry.get_text().strip())>0: 
 				self.update_image(self.iconentry.get_text().strip())
@@ -691,11 +712,11 @@ class wallwin:
 					f.write(str(ii)+"."+str(jj)+": "+str(kdict[jj])+"\n")
 				elif jj=="geometry":
 					if len(str(kdict[jj]).strip())==0: continue
-					f.write(str(ii)+"."+str(jj)+": "+str(kdict[jj])+"\n")
+					f.write(str(ii)+"."+str(jj)+": "+remove_utf8( str(kdict[jj]) )+"\n")
 				elif jj=="workspace":
 					if len(str(kdict[jj]).strip())==0: continue
 					if str(kdict[jj]).strip()=="[DEFAULT]": continue
-					f.write(str(ii)+"."+str(jj)+": "+str(kdict[jj])+"\n")
+					f.write(str(ii)+"."+str(jj)+": "+remove_utf8(str(kdict[jj]))+"\n")
 				elif jj=="tray":
 					iprop=str(kdict[jj]).strip()
 					ival="Ignore"

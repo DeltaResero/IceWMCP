@@ -1,7 +1,31 @@
 #!/usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 
 ###################################################
-#                                IcePref 3.3
+#	This is IcePref2:  It is an updated, overhauled, 
+#	improved, and perfected version of the original IcePref 
+#	(see credits above).  IcePref appears to have been 
+#	abandoned by the original author, as it had not been 
+#	updated since 2000. This new version, distributed under 
+#	the same GNU GPL as the original IcePref, includes new 
+#	features and bug fixes, optimized for IceWM 1.2.2 
+#	and better. It's been tested on IceWM 1.2.2 - 1.2.14.  
+#
+#	Updates by: 
+#		Erica Andrews (PhrozenSmoke ['at'] yahoo.com) 
+#		February 2003 -February 2004
+#
+#	Copyright (c) 2003-2004, Erica Andrews
+#
+#	License: GNU General Public License
+#
+#	This work comes with no warranty regarding its 
+#	suitability for any purpose. The author is not 
+#	responsible for any damages caused by the 
+#	use of this program.
+###################################################
+###################################################
+#                                IcePref
 #
 # This is (or will be) the best IceWM configuration utility
 # known to man.  It requires a recent version of python as well as Gtk ( >
@@ -18,23 +42,6 @@
 # The author is not responsible for any damages caused by the use of this
 # program.
 ####################################################
-##########################################################
-#	This is IcePref2 version 3.3 - It is an updated, overhauled, improved, and perfected
-#	version of the original IcePref (see credits above).  IcePref appears to have been 
-#	abandoned by the original author, as it had not been updated since 2000. This new 
-#	version, distributed under the same GNU GPL as the original IcePref, includes new 
-#	features and bug fixes, optimized for IceWM 1.2.2 and better. It's been tested on 
-#	IceWM 1.2.2 - 1.2.11.  
-#
-#	Updates by: Erica Andrews (PhrozenSmoke@yahoo.com) - February-August 2003
-#
-#	Copyright (c) 2003, Erica Andrews
-#
-# 	This work comes with no warranty regarding its suitability for any purpose.
-# 	The author is not responsible for any damages caused by the use of this
-# 	program.
-##########################################################
-
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -46,6 +53,25 @@
 #  	PhrozenSmoke ['at'] yahoo.com
 #	October/November 2003
 #############################
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 
 from string import *
 import re,commands,math,icepref_search
@@ -83,8 +109,8 @@ if NOSPLASH==0:
 # Constants in a Changing World
 #############################
 
-VERSION = "3.3"
-ICE_VERSION = "1.2.13"
+VERSION = "3.4"
+ICE_VERSION = "1.2.14"
 
 # these define the types of configuration widgets
 
@@ -1228,12 +1254,12 @@ class IceEntry(VBox):
 		
 	def set_value(self, value):
 		#value = value[1 : len(value) - 1]  # changed 1.27.2003 - was buggy and could cause bad parsing
-		value=value.replace("\"","")
+		value=to_utf8(value.replace("\"",""))
 		self.entry.set_text(value)
 		
 	def get_value(self):
 		value = self.entry.get_text()
-		value = '"' + value + '"'
+		value = '"' +remove_utf8( value) + '"'
 		return value
 		
 # The Toggled class describes the check buttons (for boolean options).
@@ -1267,7 +1293,7 @@ class IceToggled(VBox):
 		self.button.set_active(eval(value))
 		
 	def get_value(self):
-		value = self.button.get_active()
+		value = int(self.button.get_active())
 		return str(value)
 
 # The Range class describes the range widget.
@@ -1364,7 +1390,7 @@ class Keystroke(VBox):
 				self.mod_buttons[i].set_active(FALSE)
 				value = replace(value, self.mods[i][1], '')
 				
-		self.entry.set_text(value)
+		self.entry.set_text(to_utf8(value))
 		
 	def get_value(self):
 		value = ''
@@ -1376,7 +1402,7 @@ class Keystroke(VBox):
 		entry_text = self.entry.get_text()
 		value = '"' + value + entry_text + '"'
 		
-		return value
+		return remove_utf8(value)
 
 
 def setDrag(*args): # drag-n-drop support, added 2.23.2003
@@ -1475,7 +1501,7 @@ class ImagePreviewer:
 		self.restartc()
 
 	def aboutThemes(self,*args):
-		win = commonAbout(_('About Theme Previews'), _("Theme previewing is a new feature of IcePref2 (an updated version of IcePref, improved by Erica Andrews [PhrozenSmoke@yahoo.com]).\n\nTheme previewing requires a JPEG image named $preview.jpg$ in each theme's directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then your preview JPEG should be at /usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (the name MUST be $preview.jpg$). The image should be no larger in size than 200x200 pixels.\n\nThere are three ways to get $preview$ images for your themes:\n[1] Download the package of (some) theme previews from icesoundmanager.sourceforge.net\n[2] Use the theme thumbnails at  http://themes.freshmeat.net/browse/925/?topic_id=925\n[3] Make the preview images yourself with scaled screenshots.\n\nTheme authors are encouraged to add $preview.jpg$ preview files to their distributed theme packages.").replace("$","\"")   , 0  , "icepref2.png","\n")
+		win = commonAbout(_('About Theme Previews'), _("Theme previewing is a new feature of IcePref2 (an updated version of IcePref, improved by Erica Andrews [PhrozenSmoke [at] yahoo.com]).\n\nTheme previewing requires a JPEG image named $preview.jpg$ in each theme's directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then your preview JPEG should be at /usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (the name MUST be $preview.jpg$). The image should be no larger in size than 200x200 pixels.\n\nThere are three ways to get $preview$ images for your themes:\n[1] Download the package of (some) theme previews from icesoundmanager.sourceforge.net\n[2] Use the theme thumbnails at  http://themes.freshmeat.net/browse/925/?topic_id=925\n[3] Make the preview images yourself with scaled screenshots.\n\nTheme authors are encouraged to add $preview.jpg$ preview files to their distributed theme packages.".replace(" [at] ","@") ).replace("$","\"")   , 0  , "icepref2.png","\n")
 
 	def update_image(self,image_file):
 		for ii in self.gl.get_children():
@@ -1548,12 +1574,12 @@ class ButtonEntry(VBox):
 		
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
-		self.entry.set_text(value)
+		self.entry.set_text(to_utf8(value))
 		if not self.iprev==None: self.iprev.update_image(value)
 		
 	def get_value(self):
 		value = '"' + self.entry.get_text() + '"'
-		return value
+		return remove_utf8(value)
 		
 	def cancel(self, data=None):
 		self.win.hide()
@@ -1646,7 +1672,7 @@ class IceColor(ButtonEntry):
 
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
-		self.entry.set_text(value)
+		self.entry.set_text(to_utf8(value))
         	if value != '':
            		r = atoi(value[4:6], 16)
             		g = atoi(value[7:9], 16)
@@ -1716,9 +1742,9 @@ class IceFont(ButtonEntry):
 	def set_value(self, value):
 		value = value[1 : len(value) - 1]
 		if len(value.split("-"))<9:
-			self.entry.set_text(pangoxlfd.pango2XLFD(value))
+			self.entry.set_text(to_utf8(pangoxlfd.pango2XLFD(value)))
 		else: 
-			self.entry.set_text(value)
+			self.entry.set_text(to_utf8(value))
 		self.set_sample(value)
 		
 	def set_sample(self, value):
@@ -1869,7 +1895,7 @@ class IceMulti(VBox):
 		if len(values) > self.num: values = values[:self.num]
 		for i in range(0, len(values)):
 			trimmed = values[i][1 : len(values[i]) - 1]
-			self.entries[i].set_text(trimmed)
+			self.entries[i].set_text(to_utf8(trimmed))
 		
 	def get_value(self):
 		values = []
@@ -1881,7 +1907,7 @@ class IceMulti(VBox):
 		for item in values:
 			value = value + '"' + item + '"' + ','		
 		value = value[:len(value) - 1]
-		return value
+		return remove_utf8(value)
 
 # The ThemeData class, when passed the whole path of a theme, sets its members
 # to the values required by the ThemeSel class.
@@ -2462,8 +2488,8 @@ class Application(Window):
 	# callback for the `about' menu option
 		
 	def about_cb(self, *data):
-		aboutt=_('IcePref %s : a Python-based configuration utility for IceWM.\n\nOriginal Author:  David Mortensen.\nUpdated by: Erica Andrews\nSite: http://icesoundmananger.sourceforge.net\n\nIcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) was updated by Erica Andrews (PhrozenSmoke@yahoo.com) in January 2003.  I, Erica Andrews, have modified IcePref in accordance with the GNU GPL under which IcePref is distributed.  I cannot say I have "taken over" the IcePref project, but got tired of it being abandoned and decided to make it more usable with newer versions of IceWM.  The new IcePref includes the new options available in the IceWM preferences file as of IceWM  %s.  The old IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but it appears that David Mortensen has abandoned his project, as he had not updated IcePref since the summer of 2000, and his site no longer exists.\n\nYou can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  http://icesoundmananger.sourceforge.net.  This updated version of IcePref by Erica Andrews is distributed under the GNU GPL without ANY warranty whatsoever. Use at your own risk! ') % (VERSION,VERSION,  ICE_VERSION,VERSION,ICE_VERSION) 
-		commonAbout(_('About IcePref2'), aboutt , 0, "icepref2.png","\n")
+		aboutt=_('IcePref %s : a Python-based configuration utility for IceWM.\n\nOriginal Author:  David Mortensen.\nUpdated by: Erica Andrews\nSite: http://icesoundmananger.sourceforge.net\n\nIcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) was updated by Erica Andrews (PhrozenSmoke [at] yahoo.com) in January 2003.  I, Erica Andrews, have modified IcePref in accordance with the GNU GPL under which IcePref is distributed.  I cannot say I have "taken over" the IcePref project, but got tired of it being abandoned and decided to make it more usable with newer versions of IceWM.  The new IcePref includes the new options available in the IceWM preferences file as of IceWM  %s.  The old IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but it appears that David Mortensen has abandoned his project, as he had not updated IcePref since the summer of 2000, and his site no longer exists.\n\nYou can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  http://icesoundmananger.sourceforge.net.  This updated version of IcePref by Erica Andrews is distributed under the GNU GPL without ANY warranty whatsoever. Use at your own risk! '.replace(' [at] ','@') ) % (VERSION,VERSION,  ICE_VERSION,VERSION,ICE_VERSION) 
+		commonAbout(_('About IcePref2'), aboutt , 1, "icepref2.png","\n")
 	
 	# reloads the preferences file and sets all of the config widgets to
 	# corresponding values.
@@ -2792,7 +2818,7 @@ class Application(Window):
 
 	# added 6.21.2003, Erica Andrews, "Run as Root" functionality
 	def run_as_root_cb(self,*args):  # callback for the menu
-		self.run_as_root(self.run_root_button.get_active())
+		self.run_as_root(int(self.run_root_button.get_active()))
 		if self.run_root_button.get_active(): self.set_title('IcePref2   [ROOT]')
 		else: self.set_title('IcePref2')
 		self.menubar.deactivate()

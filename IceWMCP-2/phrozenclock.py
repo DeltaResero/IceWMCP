@@ -1,8 +1,13 @@
 #! /usr/bin/python
+# -*- coding: ISO-8859-1 -*-
+
 #####################################
 #  PhrozenClock GTK
-#  Copyright 2002-2003 by Erica Andrews
-#  (PhrozenSmoke@yahoo.com)
+#
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
 #
 #  PhrozenClock GTK is distributed as open source 
 #  under the GPL (General Public License).
@@ -17,7 +22,25 @@
 #  this application. However, bug reports and 
 #  suggestions are welcome.
 #####################################
-
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -29,7 +52,6 @@
 #  	PhrozenSmoke ['at'] yahoo.com
 #	October/November 2003
 #############################
-
 
 import time
 

@@ -1,4 +1,7 @@
-# IceMe
+# -*- coding: ISO-8859-1 -*-
+
+################################################
+## IceMe
 # =====
 #
 # Copyright 2000-2002, Dirk Moebius <dmoebius@gmx.net> 
@@ -10,12 +13,39 @@
 #
 # This software is distributed under the GNU General Public License
 #################################################
-########
-# With Modifications by Erica Andrews (PhrozenSmoke ['at'] yahoo.com), February-December 2003
-# This is a modified version of IceMe 1.0.0 ("IceWMCP Edition"), optimized for IceWM ControlPanel.
-# Copyright (c) 2003 Erica Andrews
-########
-
+#################################
+#  With Modifications by Erica Andrews 
+#  (PhrozenSmoke ['at'] yahoo.com)
+#  February 2003-February 2004
+#  
+#  This is a modified version of IceMe 
+#  1.0.0 ("IceWMCP Edition"), optimized for 
+#  IceWM ControlPanel.
+#  
+#  Copyright (c) 2003-2004
+#  Erica Andrews
+#  PhrozenSmoke ['at'] yahoo.com
+#  http://icesoundmanager.sourceforge.net
+#################################
+#############################################
+#	This program is free software; you can redistribute
+#	it and/or modify it under the terms of the GNU 
+#	General Public License as published by the 
+#	Free Software Foundation; either version 2 of the
+#	License, or (at your option) any later version.
+#
+#	This program is distributed in the hope that it will 
+#	be useful, but WITHOUT ANY WARRANTY; 
+#	without even the implied warranty of 
+#	MERCHANTABILITY or FITNESS FOR A 
+#	PARTICULAR PURPOSE.
+#
+#	You should have received a copy of the GNU 
+#	General Public License along with this program; 
+#	if not, write to the Free Software Foundation, Inc., 
+#	59 Temple Place - Suite 330, Boston, MA 
+#	02111-1307, USA.
+#############################################
 #############################
 #  PyGtk-2 Port Started By: 
 #  	David Moore (djm6202@yahoo.co.nz)
@@ -78,7 +108,7 @@ class Preferences:
 
         # set the global icewm directory, if not set already:
 
-	#  PhrozenSmoke@yahoo.com - edition, Erica Andrews: 
+	#  PhrozenSmoke [at] yahoo.com - edition, Erica Andrews: 
 	# 4.21.2003 - fixed a bug here that could leave a null (None) value for self.GLOBAL_ICEWM_DIR
 	#  fixes bug reported by Francesco <fr4nk ['at'] email.it> on  April 16, 2003
 

@@ -475,11 +475,18 @@ msgstr ""
 
 #: icesound.py:700
 msgid ""
-"Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound Server.  Ice Sound Manager is freeware and open source. In addition, Ice Sound Manager is now part of a larger project, called IceWM Control Panel.  As of version 0.2-beta-2, Ice Sound Manager is distributed under the General Public License (GPL). See the 'IceSoundManager-LICENSE' file for details.  All legal, non-profit use, modification, and distribution of this software is permitted provided all these credits are left in-tact and unmodified.  This software is distributed as-is, without any warranty or guarantee of any kind. Use at your own risk!\n"
+"Ice Sound Manager is in no way 'officially' affiliated with IceWM, IceSound "
+"Server, or its creators.  Ice Sound Manager is a FRONTEND to the IceSound "
+"Server.  Ice Sound Manager is freeware and open source. In addition, Ice "
+"Sound Manager is now part of a larger project, called IceWM Control Panel.  "
+"As of version 0.2-beta-2, Ice Sound Manager is distributed under the General "
+"Public License (GPL). See the 'IceSoundManager-LICENSE' file for details.  "
+"This software is distributed as-is, without any warranty or guarantee of any kind. "
+"Use at your own risk!\n"
 "\n"
-"Ice Sound Manager was designed to ease the management of sound events, sound themes, and the sound server in the IceWM environment.  It is also intended to be an improvement upon the noble, but primitive icesndcfg. The project is still in its formative stages, so expect bugs.  (Report bugs to PhrozenSmoke@yahoo.com) \n"
-"\n"
-"Visit   http://members.aol.com/ButchWhipAppeal/  for my other software projects."
+"Ice Sound Manager was designed to ease the management of sound events, sound "
+"themes, and the sound server in the IceWM environment.  It is also intended "
+"to be an improvement upon the noble, but primitive icesndcfg."
 msgstr ""
 
 #: icesound.py:733
