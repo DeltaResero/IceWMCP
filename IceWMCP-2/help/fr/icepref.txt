@@ -1,0 +1,27 @@
+[PHTITLE] IceWMCP IcePref2 
+[PHSECTION] Présentation
+L'outil IceWMCP IcePref2 vous permet de configurer facilement l'apparence et le comportement d'IceWM. L'outil offre une manière simple de modifier le fichier de [PH-HI]préférences[/PH-HI] d'IceWM. Ce texte d'aide contient seulement les informations de base requises pour utiliser IcePref2.
+[PHSECTION] IcePref2
+La fenêtre principale d'IcePref2 répartit tous les paramètres configurables de IceWM en [PH-HI]catégories[/PH-HI] dont les intitulés parlent d'eux-même, comme par exemple "Barre d'adresse" ; "Menus" ; ou "Souris". Pour passer rapidement d'une catégorie à l'autre, choisissez [PH-HI]Fichier -> Catégorie[/PH-HI] dans le menu d'IcePref2. 
+[PHSECTION] Retrouver les paramètres par défaut
+Pour réinitaliser tous les paramètres à leurs valeurs par défaut, cliquez sur le bouton [PH-HI]'Valeurs par défaut'[/PH-HI] en bas à gauche de la fenêtre IcePref2. 
+[PHSECTION] Rechargement des préférences
+Pour recharger votre configuration d'IceWM, cliquez sur le bouton [PH-HI]'Recharger'[/PH-HI] dans la partie inférieure de la fenêtre IcePref2. Cette action recharge votre fichier de [PH-HI]'préférences'[/PH-HI]. 
+[PHSECTION] Sauvegarder vos préférences
+Avant de sortir du programme, veillez à bien [PH-HI]sauvegarder[/PH-HI] tous les changements que vous avez fait à votre configuration d'IceWM, en choisissant [PH-HI]Fichier -> Sauvegarder les préférences[/PH-HI] dans le menu, ou en appuyant sur les touches [PH-HI]Ctrl+S[/PH-HI] de votre clavier. Vous pouvez également sauvegarder votre configuration en cliquant sur le bouton [PH-HI]Sauvegarder[/PH-HI] en bas à gauche de la fenêtre IcePref2. 
+[PHSECTION] Application les préférences
+Si vous voulez que les changements de votre configuration prennent effet immédiatement, cliquez sur le bouton [PH-HI]Appliquer[/PH-HI] en bas à droite de la fenêtre d'IcePref2, ou appuyez sur les touches [PH-HI]Ctrl+A[/PH-HI] de votre clavier. IceWM sera rapidement redémarré, et votre nouvelle configuration prendra effet immédiatement. 
+[PHSECTION] Outils
+Vous pouvez exécuter plusieurs autres outils pour configurer IceWM en sélectionannt [PH-HI]Outils[/PH-HI] dans le menu d'IcePref2. Sélectionnez l'outil que vous souhaitez exécuter.
+[PHSECTION] Exécuter en tant que super-utilisateur
+Si vous êtes super-utilisateur ('root'), et que vous souhaitez apporter des modifications au menu d'IceWM au niveau système, choisissez [PH-HI]Fichier -> Exécuter en tant que root[/PH-HI] dans le menu. 
+[PHSECTION] Ouvrir un fichier de préférences d'IceWM
+Pour ouvrir un fichier de préférences qui se trouve dans N'IMPORTE QUEL répertoire du système, choisissez [PH-HI]Fichier -> Ouvrir un fichier de préférences de IceWM[/PH-HI] dans le menu d'IcePref2, ou appuyez sur les touches [PH-HI]Ctrl+O[/PH-HI] de votre clavier. Vous devez être 'super-utilisateur' pour ouvrir et éditer certains fichiers de préférences.
+[PHSECTION] Quitter le programme 
+Pour quitter le programme, choisissez [PH-HI]Fichier -> Quitter[/PH-HI] dans le menu, ou tapez [PH-HI]Ctrl+Q[/PH-HI] sur votre clavier.
+[PHSECTION] Contrôler l'existence d'une nouvelle version du logiciel
+Pour vérifier si une version plus récente du programme est disponible, sélectionnez [PH-HI]Fichier - Contrôler l'existence d'une version plus récente de ce programme... [/PH-HI] dans le menu, ou tapez [PH-HI]Ctrl+U[/PH-HI] sur votre clavier. Vous devez être connecté à l'Internet pour permettre ce contrôle.
+[PHSECTION] Exécuter un programme quelconque
+Vous pouvez exécuter un programme quelconque sur votre système en sélectionnant [PH-HI]Fichier - Exécuter...[/PH-HI] dans le menu, ou en tapant [PH-HI]Ctrl+R[/PH-HI] sur votre clavier.
+[PHSECTION] Signaler un problème
+Vous pouvez signaler les problèmes que vous rencontrez en utilisant ce logiciel en choisissant [PH-HI]Aide - Envoyer un rapport de bogue...[/PH-HI] dans le menu, ou en tapant sur la touche [PH-HI]F5[/PH-HI] de votre clavier. Des instructions détaillées vous guideront. Envoyer un rapport de bogue ne prend que quelques instants.

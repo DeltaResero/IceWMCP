@@ -1,0 +1,19 @@
+[PHTITLE] Le concepteur de thèmes d'IceWMCP IcePref2 
+[PHSECTION] Présentation
+L'outil de conception de thèmes d'IceWMCP IcePref2 vous permet facilement de créer ou de modifier des thèmes pour IceWM. Ce texte d'aide contient seulement les informations de base permettant d'utiliser le concepteur de thèmes IcePref2. 
+[PHSECTION] Le concepteur de thèmes IcePref2
+La fenêtre principale du concepteur de thèmes IcePref2 répartit tous les paramètres configurables d'un thème d'IceWM en [PH-HI]catégories[/PH-HI] dont les intitulés parlent d'eux-même, comme par exemple : "Barre d'adresse" ; "Menus" ; ou encore "Gestionnaire de Tâches". Pour passer rapidement d'une catégorie à l'autre, choisissez [PH-HI]Fichier -> Catégorie[/PH-HI] dans le menu du concepteur de thèmes. [PH-HI]Avant que vous ne puissiez faire quoi que ce soit d'utile avec le concepteur de thème, vous devez ouvrir un thème existant ou bien créer un nouveau thème[/PH-HI]. 
+[PHSECTION] Ouvrir un thème 
+Pour [PH-HI]ouvrir un thème d'IceWM existant[/PH-HI] afin de l'éditer, choisissez [PH-HI]Fichier -> Ouvrir un thème...[/PH-HI] dans le menu, ou pressez [PH-HI]Ctrl+O[/PH-HI] sur votre clavier. Choisissez le fichier du thème que vous souhaitez ouvrir, puis confirmez par [PH-HI]'Valider'[/PH-HI]. 
+[PHSECTION] Créer un nouveau thème
+Pour [PH-HI]créer un nouveau thème d'IceWM[/PH-HI], choisissez [PH-HI]Fichier -> Nouveau thème... [/PH-HI] dans le menu, ou pressez [PH-HI]Ctrl+N[/PH-HI] sur votre clavier. Une nouvelle fenêtre s'ouvre. Entrez un [PH-HI]nom[/PH-HI] pour le thème dans le champ [PH-HI]Nom du thème[/PH-HI]. Indiquez [PH-HI]votre nom[/PH-HI] (ou un pseudonyme) dans le champ [PH-HI]Auteur du thème[/PH-HI]. Si le vous souhaitez, vous pouvez également y indiquer votre adresse électronique. Entrez une [PH-HI]description brève[/PH-HI] du thème dans le champ [PH-HI]Description du thème[/PH-HI]. Vous devez ensuite choisir le [PH-HI]répertoire[/PH-HI] où le dossier du thème sera stocké en cliquant sur le bouton [PH-HI]'Sélectionner'[/PH-HI] du champ [PH-HI]Répertoire[/PH-HI]. Veuillez être sûr que vous avez la permission de sauvegarder des dossiers dans le répertoire que vous avez choisi. Cliquez sur le bouton [PH-HI]'OK'[/PH-HI]. Votre nouveau thème va être créé. 
+[PHSECTION] Sauvegarder le thème 
+Avant de quitter le programme, veillez à bien [PH-HI]enregister[/PH-HI] tous les changements que vous avez faits à votre thème d'IceWM en choisissant [PH-HI]Fichier -> Sauvegarder le thème[/PH-HI] dans le menu ou en pressant [PH-HI]Ctrl+S[/PH-HI] sur votre clavier. Vous pouvez également sauvegarder votre thème en cliquant sur le bouton [PH-HI]Sauvegarder[/PH-HI] qui se trouve en bas à gauche de l'écran du concepteur de thèmes IcePref2.
+[PHSECTION] Outils
+Vous pouvez exécuter plusieurs autres outils pour configurer IceWM en choisissant [PH-HI]Outils[/PH-HI] dans le menu du concepteur de thèmes IcePref2. Sélectionnez l'outil que vous souhaitez exécuter.
+[PHSECTION] Quitter le programme
+Pour quitter le programme, choisissez [PH-HI] Fichier -> Quitter[/PH-HI] du menu du concepteur de thèmes IcePref2, ou pressez [PH-HI]Ctrl+Q[/PH-HI] sur votre clavier. Vous pouvez également sortir du programme en cliquant sur le bouton [PH-HI]Quitter[/PH-HI], qui se trouve en bas à droite de l'écran du concepteur de thèmes IcePref2. 
+[PHSECTION] Exécuter un programme quelconque
+Vous pouvez exécuter un programme quelconque sur votre système en sélectionnant [PH-HI]Fichier - Exécuter...[/PH-HI] dans le menu, ou en tapant [PH-HI]Ctrl+R[/PH-HI] sur votre clavier. 
+[PHSECTION] Signaler un problème
+Vous pouvez signaler les problèmes que vous rencontrez en utilisant ce logiciel en choisissant [PH-HI]Aide - Envoyer un rapport de bogue...[/PH-HI] dans le menu, ou en tapant sur la touche [PH-HI]F5[/PH-HI] de votre clavier. Des instructions détaillées vous guideront. Envoyer un rapport de bogue ne prend que quelques instants.

@@ -1,0 +1,173 @@
+# Russian translation of PACKAGE.
+# Copyright (C) 2004 ORGANIZATION
+# Vasya Leushin <basileus@newmail.ru>, 2004.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: (null)\n"
+"PO-Revision-Date: 2004-05-30 16:00+0400\n"
+"Last-Translator: Vasya Leushin <basileus@newmail.ru>\n"
+"Language-Team: Russian <RU@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: ENCODING"
+
+#: trayicon.c:485
+msgid "IceWM Theme Designer"
+msgstr "Дизайнер Тем IceWM"
+
+#: trayicon.c:404
+msgid "About"
+msgstr "О программе"
+
+#: trayicon.c:598
+msgid "Dialogs"
+msgstr "Диалоги"
+
+#: trayicon.c:605
+msgid "Key Bindings"
+msgstr "Привязка клавиш"
+
+#: trayicon.c:447
+msgid "IceWMCP Tray Icon"
+msgstr ""
+
+#: trayicon.c:682
+msgid "Windows"
+msgstr "Окна"
+
+#: trayicon.c:738
+msgid "IceWM Control Panel"
+msgstr "Панель Управления IceWM"
+
+#: trayicon.c:591 trayicon.c:698
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#: trayicon.c:612 trayicon.c:704
+msgid "Menus"
+msgstr "Меню"
+
+#: trayicon.c:661
+msgid "Theme"
+msgstr "Тема"
+
+#: trayicon.c:466
+msgid "Close IceWMCP Tray Icon"
+msgstr "Закрыть IceWMCP Tray Icon"
+
+#: trayicon.c:561
+msgid "IceWM Preferences"
+msgstr "Настройки IceWM"
+
+#: trayicon.c:534
+msgid "PC Cards"
+msgstr "PC-карты"
+
+#: trayicon.c:647
+msgid "Task Bar"
+msgstr "Панель задач"
+
+#: trayicon.c:540
+msgid "Printer Queue"
+msgstr "Очередь принтера"
+
+#: trayicon.c:668
+msgid "Title Bars"
+msgstr "Заголовки"
+
+#: trayicon.c:491
+msgid "Icon Browser"
+msgstr "Браузер пиктограмм"
+
+#: trayicon.c:518
+msgid "System Configuration"
+msgstr "Системная конфигурация"
+
+#: trayicon.c:504
+msgid "Find Files"
+msgstr "Поиск файлов"
+
+#: trayicon.c:626 trayicon.c:710
+msgid "Mouse"
+msgstr "Мышь"
+
+#: trayicon.c:417
+msgid "OK"
+msgstr "OK"
+
+#: trayicon.c:675
+msgid "Tool Tips"
+msgstr "Подсказки"
+
+#: trayicon.c:633
+msgid "Quick Switch"
+msgstr "Быстрый Переключатель"
+
+#: trayicon.c:722
+msgid "Sound Events"
+msgstr "Звуковые события"
+
+#: trayicon.c:476
+msgid "Tools"
+msgstr "Инструменты"
+
+#: trayicon.c:728
+msgid "Window Options"
+msgstr "Опции окна"
+
+#: trayicon.c:619
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: trayicon.c:528
+msgid "EnergyStar"
+msgstr "EnergyStar"
+
+#: trayicon.c:654
+msgid "Task Bar Applets"
+msgstr "Апплеты панели задач"
+
+#: trayicon.c:689
+msgid "Workspaces"
+msgstr "Раб. пространства"
+
+#: trayicon.c:522
+msgid "Date & Time"
+msgstr "Дата и время"
+
+#: trayicon.c:456
+msgid "About IceWMCP Tray Icon"
+msgstr "О IceWMCP Tray Icon"
+
+#: trayicon.c:640
+msgid "Scroll Bars"
+msgstr "Полосы прокрутки"
+
+#: trayicon.c:716
+msgid "Keyboard"
+msgstr "Клавиатура"
+
+#: trayicon.c:748
+msgid "IceWMCP Tray"
+msgstr "Лоток IceWMCP"
+
+#: trayicon.c:550
+msgid "System & Hardware"
+msgstr "Система и оборудование"
+
+#: trayicon.c:565
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: trayicon.c:584
+msgid "Address Bar"
+msgstr "Панель адреса"
+
+#: trayicon.c:413
+msgid "A simple tray icon for icewmtray and other FreeDesktop.org-compliant system trays."
+msgstr "Простая иконка для системного лотка IceWM и других лотков совместимых с FreeDesktop.org"
+

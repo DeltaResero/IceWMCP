@@ -1,0 +1,43 @@
+[PHTITLE] IceWMCP IceMe
+[PHSECTION] Introduction
+L'outil IceWMCP IceMe vous permet d'éditer facilement le menu d'IceWM et la barre d'outils ; et de configurer l'apparence et le comportement de vos menus. Ce texte d'aide fournit seulement des informations rudimentaires. Tous les boutons dans le programme IceMe offrent une bulle d'aide [PH-HI]'astuce'[/PH-HI], que vous pouvez voir en plaçant votre curseur quelques instants au-dessus du bouton. Ces [PH-HI]'astuces'[/PH-HI] fournissent toutes les informations dont vous aurez besoin pour une utilisation plus avançée. En particulier, il vous est recommandé de consulter les bulles d'aide des boutons situés dans la partie supérieure de la fenêtre d'IceMe.
+
+
+[PHTITLE] IceMe : Menu
+Cliquez sur l'onglet [PH-HI]Menu[/PH-HI]. La fenêtre principale du module [PH-HI]IceMe : Menu[/PH-HI] est divisée en deux sections. À gauche, vous trouvez l'[PH-HI]arborescence du menu[/PH-HI] d'IceWM. À droite, se trouve la zone [PH-HI]'entrée du menu'[/PH-HI] qui permet d'éditer les entrées du menu.
+[PHSECTION] Ajouter une entrée dans le menu
+Une [PH-HI]'entrée'[/PH-HI] dans l'arborescence du menu correspond à un programme. Pour ajouter une nouvelle entrée dans le menu, ouvrez le [PH-HI]dossier[/PH-HI] de l'arborescence où vous souhaitez ajouter le nouveau programme, en double-cliquant sur le dossier, ou bien en développant l'arborescence. Cliquez ensuite sur le bouton [PH-HI]'Créer une nouvelle entrée normale'[/PH-HI] qui se trouve dans la partie supérieure de la fenêtre d'IceMe (le bouton contient un icône représentant une feuille vierge). Dans la section [PH-HI]'Entrée du menu'[/PH-HI] dans la partie droite de la fenêtre d'IceMe, complétez les informations demandées sur votre nouvelle 'entrée'. Fournissez un nom pour le programme dans le champ [PH-HI]Nom[/PH-HI]. Indiquez le fichier exécutable à lancer dans le champ [PH-HI]Commande[/PH-HI], ou cliquez sur le bouton [PH-HI]'Parcourir'[/PH-HI]. Finalement, choisissez un icône pour cette 'entrée' dans le champ [PH-HI]Icone[/PH-HI], ou cliquez sur le bouton [PH-HI]'Parcourir'[/PH-HI]. 
+[PHSECTION] Ajouter un dossier
+Un [PH-HI]'dossier du menu'[/PH-HI] contient une ou plusieurs [PH-HI]entrées du menu[/PH-HI]. Pour ajouter un nouveau dossier dans le menu, cliquez sur le bouton [PH-HI]'Créer un nouveau sous-menu'[/PH-HI] de la partie supérieure de la fenêtre d'IceMe (le bouton contient un icône représentant un 'menu'). Dans la zone [PH-HI]'entrée du menu'[/PH-HI] dans la partie droite de la fenêtre fenêtre d'IceMe, donnez un nom à ce nouveau dossier dans le champ [PH-HI]Nom[/PH-HI].
+[PHSECTION] Ajouter un séparateur
+Un [PH-HI]'séparateur de menu'[/PH-HI] est un trait droit et horizontal dans le menu, généralement employé pour améliorer l'organisation du menu. Pour ajouter un nouveau séparateur de menu, ouvrez le dossier dans lequel vous souhaitez ajouter le nouveau séparateur, en double-cliquant sur le dossier, ou bien en développant l'arborescence. Cliquez ensuite sur le bouton [PH-HI]'Créer un nouveau séparateur'[/PH-HI] qui se trouve dans la partie supérieure de la fenêtre d'IceMe (le bouton contient un icône représentant une ligne mince et droite).
+[PHSECTION] Supprimer une entrée ou un dossier du menu
+Pour [PH-HI]supprimer[/PH-HI] une entrée ou un dossier du menu, sélectionnez l'entrée ou le dossier concerné puis cliquez sur le bouton [PH-HI]'Supprimer l'entrée sélectionnée'[/PH-HI] (le bouton contient un icône représentant une croix 'X'). Vous pouvez également supprimer une entrée ou un dossier en choisissant [PH-HI]Édition -> Effacer[/PH-HI] dans la barre de menu d'IceMe.
+[PHSECTION] Copier une entrée ou un dossier du menu
+Pour [PH-HI]copier[/PH-HI] une entrée ou un dossier du menu, choisissez l'entrée ou le dossier que vous souhaitez copier. Tapez [PH-HI]Shift+Ctrl+C[/PH-HI] sur votre clavier, ou choisissez [PH-HI]Édition -> Copier[/PH-HI] dans la barre de menu  d'IceMe. 
+[PHSECTION] Couper un entrée ou un dossier du menu 
+Pour [PH-HI]couper[/PH-HI] une entrée ou un dossier du menu, choisissez l'entrée ou le dossier que vous souhaitez couper. Tapez [PH-HI]Shift+Ctrl+X[/PH-HI] sur votre clavier, ou choisissez [PH-HI]Édition -> Couper [/PH-HI] dans la barre de menu d'IceMe.
+[PHSECTION] Coller une entrée ou un dossier du menu
+Pour [PH-HI]coller[/PH-HI] une entrée ou un dossier du menu précédemment coupé ou copié, choisissez l'entrée ou le dossier en dessous duquel vous souhaitez le coller. Tapez [PH-HI]Shift+Ctrl+V[/PH-HI] sur votre clavier, ou choisissez [PH-HI]Édition -> Coller[/PH-HI] dans la barre de menu d'IceMe. 
+[PHSECTION] Barre d'outils
+À la fin de l'arbre du menu d'IceMe, vous verrez un dossier appelée [PH-HI]'Barre d'outils'[/PH-HI]. Ce dossier permet la configuration de votre barre d'outils IceWM (qui se trouve sur la barre des tâches) et peut être éditée comme toutes les autres parties du menu d'IceMe.
+[PHSECTION] Aperçu du menu 
+Pour avoir un [PH-HI]aperçu[PH-HI] du menu avec les modifications que vous lui avez apportées, tapez [PH-HI]Ctrl+P[/PH-HI] sur votre clavier, ou choisissez [PH-HI]Dossier - Aperçu[/PH-HI] dans le menu.
+[PHSECTION] Sauvegarder le menu
+Avant de quitter le programme, veillez à bien sauvegarder votre menu pour conserver les modifications. Pour sauvegarder votre menu d'IceWM, tapez [PH-HI]Ctrl+S[/PH-HI] sur votre clavier, ou choisissez [PH-HI]Fichier -> Sauvegarder[/PH-HI] dans la barre de menu d'IceMe.
+[PHSECTION] Exécuter en tant que super-utilisateur
+Si vous êtes super-utilisateur ('root'), et que vous souhaitez apporter des modifications au menu d'IceWM au niveau système, choisissez [PH-HI]Fichier -> Exécuter comme root[/PH-HI] dans la barre de menu d'IceMe. 
+[PHSECTION] Ouvrir un fichier de menu 
+Pour ouvrir un menu d'IceWM depuis n'importe quel répertoire, choisissez [PH-HI]Fichier -> Ouvrir le fichier du menu de IceWM[/PH-HI], ou tapez [PH-HI]Ctrl+O[/PH-HI] sur votre clavier. Notez que vous devrez sans doute être 'root' pour ouvrir et éditer certains fichiers de menu.
+
+
+[PHTITLE] IceMe : Comportement
+Cliquez sur l'onglet [PH-HI]Comportement[/PH-HI]. Le module [PH-HI]IceMe : Comportement[/PH-HI] vous permet de configurer facilement l'apparence et le comportement de vos menus IceWM  grâce à l'outil de configuration IcePref2. Ce module vous permet également de commander quelles entrées spéciales du menu sont affichées. Changez les propriétés comme vous le souhaitez. Quand vous avez terminé, cliquez sur le bouton [PH-HI]'Appliquer les changements maintenant'[/PH-HI] situé dans le bas de la fenêtre. 
+[PHSECTION] Quitter le programme 
+Pour quitter le programme, choisissez [PH-HI]Fichier -> Quitter[/PH-HI] dans le menu, ou tapez [PH-HI]Ctrl+Q[/PH-HI] sur votre clavier. 
+[PHSECTION] Contrôler l'existence d'une nouvelle version du logiciel
+Pour vérifier si une version plus récente du programme est disponible, sélectionnez [PH-HI]Fichier - Contrôler l'existence d'une version plus récente de ce programme... [/PH-HI] dans la barre de menu d'IceMe, ou tapez [PH-HI]Ctrl+U[/PH-HI] sur votre clavier. Vous devez être connecté à l'Internet pour permettre ce contrôle.
+[PHSECTION] Exécuter un programme quelconque
+Vous pouvez exécuter un programme quelconque sur votre système en sélectionnant [PH-HI]Fichier - Exécuter...[/PH-HI] dans la barre de menu d'IceMe, ou en tapant [PH-HI]Ctrl+R[/PH-HI] sur votre clavier.
+[PHSECTION] Signaler un problème
+Vous pouvez signaler les problèmes que vous rencontrez en utilisant ce logiciel en choisissant [PH-HI]Aide - Envoyer un rapport de bogue...[/PH-HI] dans la barre de menu d'IceMe, ou en tapant sur la touche [PH-HI]F5[/PH-HI] de votre clavier. Des instructions détaillées vous guideront. Envoyer un rapport de bogue ne prend que quelques instants.
