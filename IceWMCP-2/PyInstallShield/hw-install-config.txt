@@ -1,12 +1,12 @@
 ##  PYINSTALLSHIELD CONFIGURATION FILE - USE ONE FILE FOR BOTH INSTALL AND UNINSTALL
 
-# installation type:  either 1 for Linux/Posix/Unix, or 2 for Windows - This isnt necessary but CAN be uncomment if 
+# installation type:  either 1 for Linux/Posix/Unix, or 2 for Windows - This isnt necessary but CAN be uncomment if
 #  PyInstallShield should be first to install as a certain OS
 install_type=1
 
 # The directory to install your program in - the user can still select another from within PyInstallShield
-# Include ths trailing slash.  A copy of PyUnInstallShield will automatically be placed in install_dir, for later 
-# uninstallation, and an 'uninstall' script or Start Menu link will automatically be created. The direction of the 
+# Include ths trailing slash.  A copy of PyUnInstallShield will automatically be placed in install_dir, for later
+# uninstallation, and an 'uninstall' script or Start Menu link will automatically be created. The direction of the
 #  slashes no longer matters - PyInstallShield will auto-detect the right 'slash' for the operating system
 
 install_dir=/usr/share/IceWMCP/
@@ -22,20 +22,20 @@ icon_dir=/usr/share/icons/
 install_app_name=IceWMCP-Hardware-plugin
 
 # The version number of your application - put the version HERE, not in the name above
-install_app_version=1.0beta
+install_app_version=1.3-beta
 
 # The XPM to show at the top of the setup program - best to put it in the same directory as PyInstallShield.py
-# However, it can be in a subdirectory, as shown below. This directory is relative to the location of 
+# However, it can be in a subdirectory, as shown below. This directory is relative to the location of
 #  PyInstallShield.py
 install_pixmap=install-pix.xpm
 
-#  Would you like to show a license to the user when PyInstallShield starts? PyInstallShield will exit if the user doesn't 
-#  'agree' to the license, set show_license to 0  if you don't want to show any license at all.  The license is NOT shown 
+#  Would you like to show a license to the user when PyInstallShield starts? PyInstallShield will exit if the user doesn't
+#  'agree' to the license, set show_license to 0  if you don't want to show any license at all.  The license is NOT shown
 #  during UN-installation, only during installation.
 show_license=1
 
 # Enter the file name of the license, this should be a plain text file
-# If you you have show_license set to '1' but still see no license, make sure you have the path and filename of the 
+# If you you have show_license set to '1' but still see no license, make sure you have the path and filename of the
 # license file name correct
 license=LICENSE
 
@@ -46,8 +46,8 @@ license=LICENSE
 
 
 # A list of as many Python scripts (.py,.pyc,.pyo) or .exe files to make executable (an put on the Start Menu in windows)
-#  All 'exe' values MUST be declared in the 'file' section at the bottom of this configuration file.  You only need to 
-#  create this section if you are going to be making system 'links'  (Linux or Windows) - NOTE: For this to work, 
+#  All 'exe' values MUST be declared in the 'file' section at the bottom of this configuration file.  You only need to
+#  create this section if you are going to be making system 'links'  (Linux or Windows) - NOTE: For this to work,
 #  you must also have 'install_links' set to 1  down below.
 #exe=pybabelfish.py
 #exe=my_second_program.py
@@ -59,7 +59,7 @@ license=LICENSE
 #exe=bin/my_program.exe
 
 #  NOTE: You can specify a specific name for the link to be created from the EXE...on Windows, this is the name
-#  that appears in the Start Menu....on Linux/Unix, this is the name of the startup shell script to be placed in 
+#  that appears in the Start Menu....on Linux/Unix, this is the name of the startup shell script to be placed in
 #  either /usr/X11R6/bin or /usr/bin....to do this: use   [script],[link name]  - see below
 
 exe=IceWMCPSystem.py,IceWMCP-System
@@ -72,7 +72,7 @@ exe=IceWMCPSystem.py,IceWMCP-System
 #Do you want to remove all the installation files after a successful installation?   0=No,1=Yes
 install_clean=0
 
-#  Do you want to install useful links?  
+#  Do you want to install useful links?
 #  On Linux/Unix, this will create an easy to use shell script from the name of each 'exe' value above:
 #  For example, /usr/X11R6/bin/pybabelfish   will be created to launch the pybabelfish.py script
 #  The user could then just type 'pybabelfish' to launch the program, this also eases adding the application to the menu
@@ -82,37 +82,44 @@ install_clean=0
 install_links=1
 
 #  This is for Linux/Unix systems ONLY:  Do you want to install icons in the system icon folder?
-#  Any 'icon' values specified below will be copied to the /usr/share/icons/  
+#  Any 'icon' values specified below will be copied to the /usr/share/icons/
 #  and /usr/share/pixmaps/ folders, the standard icon folders on most Unix/Linux systems.
 # NOTE: The icons will only be copied to these folders if the folders already exist on the system
 #    The user can then easily add your application to their Window Managers menu.
 #  If you are creating an installation for Windows, or you don't want to install icons, comment out all 'icon' values below.
-#  The default behavior is to install no icons.  You should give your icon name a name that is unlikely to already exist 
-#  in the system icon folders.  It is not necessary to declare 'icon' files in the 'file' section below, unless you just want 
+#  The default behavior is to install no icons.  You should give your icon name a name that is unlikely to already exist
+#  in the system icon folders.  It is not necessary to declare 'icon' files in the 'file' section below, unless you just want
 #  to keep an extra copy of the icon in the installation directory
 
 
 icon=icewmcp-system.png
 
 # Application files:  Here you specify ALL other supporting files for you application. All files will be either in the 'install_dir'
-#  or a sub-directory of 'install_dir'.  Installing to directories outside of 'install_dir' is not supported at this time. Do NOT 
-#  include folders or directories, only actual files.  Bascially, this just copies your application 'tree' to the user's preferred 
-#  installation directory.   For example, if you have  a file called  'pixmaps/mytitle.xpm' in a subdirectory called 'pixmaps', 
+#  or a sub-directory of 'install_dir'.  Installing to directories outside of 'install_dir' is not supported at this time. Do NOT
+#  include folders or directories, only actual files.  Bascially, this just copies your application 'tree' to the user's preferred
+#  installation directory.   For example, if you have  a file called  'pixmaps/mytitle.xpm' in a subdirectory called 'pixmaps',
 #  mytitle.xpm will be copied to  install_dir/pixmaps/mytitle.xpm,  will be in install_dir. Remeber to list all of you, 'exe'
 #  values here.  Only list your 'icon' values here if you want to store an additional copy of the icon in install_dir
 
+
+
 file=IceWMCPSystem.py
 file=LICENSE
-file=_pyicewmcphw.so
+file=icewmcp-system.png
 file=icewmcphw.py
 file=install-pix.xpm
 file=libicewmcphw.so
 file=pyicewmcphw.py
+file=pyicewmcphwc.so
 file=applet-icons/sysinfo.png
 file=applets/sysinfo.cpl
 file=applets/es/sysinfo.cpl
 file=applets/ru/sysinfo.cpl
+file=applets/zh_tw/sysinfo.cpl
 file=help/IceWMCPSystem.txt
+file=locale/es/LC_MESSAGES/icewmcp-hw.mo
+file=locale/ru/LC_MESSAGES/icewmcp-hw.mo
+file=locale/zh_TW/LC_MESSAGES/icewmcp-hw.mo
 file=pixmaps/hw-pixmaps/hwbluetooth.png
 file=pixmaps/hw-pixmaps/hwbraille.png
 file=pixmaps/hw-pixmaps/hwcamera.png

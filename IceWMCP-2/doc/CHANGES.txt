@@ -9,7 +9,7 @@ ______________________________________________
 ______________________________________________
 
 
-VERSION 3.0pre - 10/15/2003 - 12/11/2003
+VERSION 3.0 - 10/15/2003 - 12/11/2003
 
 The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications
 and to bring IceWMCP up-to-date with IceWM version 1.2.13.
@@ -61,6 +61,8 @@ IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
 	- The application has been ported to PyGtk-2/Gtk-2.
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added 'File' -> 'Help' to the menu
+	- An English language help file has been added
 
 
 IceSoundManager        (icesound.py):
@@ -93,8 +95,8 @@ IcePref2       (icepref.py):
 	- The IcePref2 logo is now slightly smaller
 	- Improved scaling of the sample wallpaper image in the Desktop section
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
-	- TODO: Merge in IceWM changes up to IceWM 1.2.13 (1.2.14pre is not really stable)
 	- GUI improvement: Gtk stock icons have been added to any buttons
+	- 4 new translatable strings has been added to the gettext catalog; 4 new Spanish translations added
 
 
 IcePref2-TD            (icepref_td.py):
@@ -142,6 +144,9 @@ IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
 	- When the application starts up, your selected wallpaper is now correctly selected and scrolled to in the list  (not sure what took me so long to remember to fix this)	
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added method 'parse_icewm_version': We can now set the background without restarting IceWM for   versions of IceWM of 1.2.11 and above
+	- 1 new translatable string has been added to the gettext catalog; 1 new Spanish translation added
+	- The English and Spanish language help files have been updated to include information about scaled images
 
 
 IceWMCP-WinOptions          (IceWMCPWinOptions.py):
@@ -203,8 +208,6 @@ IceWMCP System and Hardware        (IceWMCPSystem.py):
 	- Fonts used for the 'information' window on the right come from the same fonts as the Help fonts in icewmcp_common
 	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
 	- Application has now been assigned WM_CLASS and WM_NAME values
-	- TODO: fix probing of /dev/fb and /dev/fb0
-	- TODO: probe GUI stuff like IceWM, Gtk, etc. (grab from bug reporter)
 
 
 IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):

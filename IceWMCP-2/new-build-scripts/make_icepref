@@ -16,7 +16,6 @@ mkdir /INSTALL-IcePref2/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f icewmcp_common.py /INSTALL-IcePref2/
 cp -f icewmcp_short.png /INSTALL-IcePref2/
 cp -f icewmcp.png /INSTALL-IcePref2/
-cp -f icewmcp_help.png /INSTALL-IcePref2/
 cp -f icepref2.png /INSTALL-IcePref2/
 cp -f pangoxlfd.py /INSTALL-IcePref2/
 cp -f icepref_search.py /INSTALL-IcePref2/

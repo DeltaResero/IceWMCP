@@ -14,7 +14,6 @@ mkdir /INSTALL-phrozenclock/locale/ru/LC_MESSAGES/ &> /dev/null
 mkdir /INSTALL-phrozenclock/locale/zh_TW/LC_MESSAGES/ &> /dev/null
 cp -f icewmcp_common.py /INSTALL-phrozenclock/
 cp -f icewmcp_short.png /INSTALL-phrozenclock/
-cp -f icewmcp_help.png /INSTALL-phrozenclock/
 cp -f icewmcp.png /INSTALL-phrozenclock/
 cp -f phrozenclock.py /INSTALL-phrozenclock/
 cp -f IceWMCPRun.py /INSTALL-phrozenclock/

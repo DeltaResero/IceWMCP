@@ -1,8 +1,10 @@
 #! /usr/bin/env python
 import os
 
-TO_DIR="/Compile/cvs/IceWMCP-HW/INSTALL/"
-VERSION="1.3-beta"
+TO_DIR="/INSTALL-IceSoundManager/"
+DISTRO_DIR="/Compile/distro/icewmcp/"
+PACKAGE="IceSoundManager"
+VERSION="3.0"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")
@@ -23,6 +25,14 @@ def updateinstall():
 	f.flush()
 	f.close()
 	ff=os.popen("rm -f "+TO_DIR+"file_list.txt")
+	ff.readlines()
+	print "building tar-ball:  "+PACKAGE+"-"+VERSION+".tar.bz2  "
+	ff=os.popen("tar -cjf "+PACKAGE+"-"+VERSION+".tar.bz2  "+TO_DIR)
+	ff.readlines()
+	print "moving tar-ball "+PACKAGE+"-"+VERSION+".tar.bz2   to  "+DISTRO_DIR
+	ff=os.popen("mv -f "+PACKAGE+"-"+VERSION+".tar.bz2  "+DISTRO_DIR)
+	ff.readlines()
+	
 
 
 if __name__ == "__main__":

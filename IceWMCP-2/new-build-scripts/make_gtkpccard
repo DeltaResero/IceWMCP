@@ -18,7 +18,6 @@ cp -f IceWMCP_GtkPCCard.py /INSTALL-gtkpccard/
 cp -f IceWMCPRun.py /INSTALL-gtkpccard/
 cp -f icewmcp.png /INSTALL-gtkpccard/
 cp -f icewmcp_short.png /INSTALL-gtkpccard/
-cp -f icewmcp_help.png /INSTALL-gtkpccard/
 cp -f ICEWMCP_BugReport.py /INSTALL-gtkpccard/
 cp -f ICEWMCP_URLRead.py /INSTALL-gtkpccard/
 cp -f IceWMCP_Dialogs.py /INSTALL-gtkpccard/

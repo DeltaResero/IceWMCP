@@ -1,4 +1,4 @@
-cd /Compile/IceWMCP/
+cd /Compile/cvs/IceWMCP-2/
 cp -f ./icewmcp-developers-release/README_DEVELOPERS_RELEASE.txt /var/www/html/ism/
 cp -f ./doc/CHANGES_ALL.txt /var/www/html/ism/CHANGES.txt
 cp -f ICEWMCP_WEB_VERSION /var/www/html/ism/

@@ -103,6 +103,8 @@ icon=icewmcp-phrozenclock.png
 
 
 
+
+
 file=ICEWMCP_BugReport.py
 file=ICEWMCP_URLRead.py
 file=IceWMCPRun.py
@@ -110,7 +112,6 @@ file=IceWMCP_Dialogs.py
 file=icewmcp-phrozenclock.png
 file=icewmcp.png
 file=icewmcp_common.py
-file=icewmcp_help.png
 file=icewmcp_short.png
 file=install-icon.xpm
 file=phrozenclock-LICENSE

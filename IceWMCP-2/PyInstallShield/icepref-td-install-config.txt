@@ -22,7 +22,7 @@ icon_dir=/usr/share/icons/
 install_app_name=IcePref2-ThemeDesigner
 
 # The version number of your application - put the version HERE, not in the name above
-install_app_version=3.0pre-release
+install_app_version=3.0
 
 # The XPM to show at the top of the setup program - best to put it in the same directory as PyInstallShield.py
 # However, it can be in a subdirectory, as shown below. This directory is relative to the location of
@@ -106,6 +106,8 @@ icon=icewmcp-icepref-td.png
 
 
 
+
+
 file=ICEWMCP_BugReport.py
 file=ICEWMCP_URLRead.py
 file=IcePref2-ThemeDesigner-LICENSE
@@ -118,7 +120,6 @@ file=icewmcp-icepref-td.png
 file=icewmcp.png
 file=icewmcp_common.py
 file=icewmcp_dnd.py
-file=icewmcp_help.png
 file=icewmcp_short.png
 file=install-icon.xpm
 file=pangoxlfd.py

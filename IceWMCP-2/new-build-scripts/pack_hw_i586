@@ -4,11 +4,11 @@ import os
 TO_DIR="/INSTALL-ICEWMCP-HW/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IceWMCP-Hardware-plugin"
-VERSION="1.2beta"
+VERSION="1.3beta"
 
 def updateinstall():
 	print "building tar-ball:  "+PACKAGE+"-"+VERSION+"-i586.tar.bz2  "
-	ff=os.popen("tar -cIf "+PACKAGE+"-"+VERSION+"-i586.tar.bz2  "+TO_DIR+" /var/lib/hardware/hd.ids")
+	ff=os.popen("tar -cjf "+PACKAGE+"-"+VERSION+"-i586.tar.bz2  "+TO_DIR+" /var/lib/hardware/hd.ids")
 	ff.readlines()
 	print "moving tar-ball "+PACKAGE+"-"+VERSION+"-i586.tar.bz2   to  "+DISTRO_DIR
 	ff=os.popen("mv -f "+PACKAGE+"-"+VERSION+"-i586.tar.bz2  "+DISTRO_DIR)

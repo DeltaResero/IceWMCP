@@ -1,4 +1,280 @@
 
+VERSION 3.0 - 10/15/2003 - 12/12/2003
+
+The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications
+and to bring IceWMCP up-to-date with IceWM version 1.2.13.
+
+
+SUMMARY OF CHANGES:
+	All applications in the control panel now use the PyGtk-2/Gtk-2 user
+	interface libraries.  The new PyGtk-2 port includes mostly restructured 
+	code from version 2.5, but also includes code snippets and suggestions 
+	from David Moore's donated, experimental PyGtk-2 port for IceWMCP 
+	version 2.3.  Tarball installation packages are now using the new version 
+	0.4 of PyInstallShield (recently ported to PyGtk-2). The GdkImlib image 
+	loading module is no longer be used, and all image loading is being 
+	down through gtk.Image and gdkpixbuf. Numerous code cleanups have
+	been made. All commonly used libraries such as gtk, os, and sys are now 
+	imported throught icewmcp_common for most modules. IceWMCP is now 
+	compatibile with IceWM version 1.2.13.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- New internal, non-GUI module added to handle the new Gtk-2 Font Selection Dialog's 'font description' format. 	Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs.  This module serves as a bridge between XLFD font descriptions and Pango's rebellion against an established standard.
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- All applications now import module 'pygtk' and call 'pygtk.require("2.0")
+	- David Moore (djm6202['at']yahoo.co.nz) has been officially added to the credits for his work creating the first prototype of a PyGtk-2 port for IceWMCP, from which many of the code snippets and ideas for the official PyGtk-2 port originate.
+	- Several methods have been added, removed, and redesigned to accommodate PyGtk-2.
+	- On Vasya's [Vasiliy Leushin (basileus['at']newmail.ru) ] suggestion, the default fonts for Russian are now Arial, instead of Helvetica.  (If he says Arial was working on his system, I'll believe him.)
+	- The freely available CJKCodecs for Python will now be used for all unicode conversions for Japanese, Chinese, and Korean languages.  Currently this only affects Traditional Chinese (zh_tw).  Traditional Chinese users will need to download and install the CJKCodecs if they do not already have them: http://cjkpython.berlios.de/ , since Python does not appear to natively support charsets lil Big-5, etc.
+	- Added a built-in default pixmap 'icon_icewmcp' and methods 'set_basic_window_icon' and  'set_special_window_icon' used by all applications for setting default window icons, which IceWM of course allows you to change as you please
+	- The background color of all Help windows is now forced to white to ensure all help colors are viewable
+	- New shared color 'COL_WHITE" added
+	- No longer using a hidden window for shared color allocation (using GDK's builtin rgb colormap object)
+	- Methods 'getIconButton', 'getPixmapVBox', and 'getPixmapButton' have been added and transferred from Ice Sound Manager for shared created of icon buttons and icon+text buttons (used by almost all of the applications now)
+	- The common Help interface now uses stock pixmaps for the help 'icon' instead of the old external pixmap
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added 'File' -> 'Help' to the menu
+	- An English language help file has been added
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The GUI has been completely redesigned to save maximum screen space (a HUGE screen space saver)
+	- GUI improvement: Gtk stock icons have been added to any buttons, any existing button icons have been replaced with stock icons
+	- Code consolidation: All help windows how use the common Help interface from icewmcp_common
+	- The help window now uses the Ice Sound Manager logo instead of the generic IceWMCP logo
+	- Code cleanup: The class 'icehelp' has been removed (replaced with common help interface)
+	- A button providing access to the main help file is now on the main GUI interface
+	- Methods 'getIconButton', 'getPixmapVBox', and 'getPixmapButton' have been moved to icewmcp_common.py from Ice Sound Manager for shared created of icon buttons and icon+text buttons (used by almost all of the applications now)
+	- The application is now only using 2 external pixmaps
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.2
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- IcePref2 is now compatible with IceWM 1.2.13, with support for the following new options added: DesktopBackgroundScaled, TaskBarShowShowDesktopButton, TaskBarWorkspacesLeft, DoubleBuffer
+	- Tearoff menus have been disabled due to a seg-fault I kept experiencing in PyGtk 2.0.0.  All of my apps were seg-faulting when Tearoff menus were clicked.  I don't know if this is a bug in PyGtk-2, or what, but I refuse to leave a feature in that's causing a known seg-fault.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The 'sample' text now has line breaks
+	- Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs: The Font selection widgets now rely on the new module 'pangoxlfd'
+	- Since Gtk-2 font selection dialogs are no longer returning and accepting XLFD-style font strings like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*', and Gtk-2 leaves you with NO way of getting such strings from a font dialog, all we can do is hope the home-spun conversion library 'pangoxlfd' does its job; however, this may create some bugs in font selection for some users. Sorry.  I tried putting Pango-style 'font descriptions' like "Arial 12" in the IceWM preferences file: It does not work!  So, we have to use XLFD font descriptions.
+	- Feature enhancement: When IcePref2 starts or a new preferences file is opened, the currently configured IceWM theme is now actually selected and scrolled to in the Themes section.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- The text entry in the Font selection widgets now only updates the sample text for the font after the Enter/Return key is pressed, instead of updating the font everytime a keystroke was made in the text entry field.
+	- The IcePref2 logo is now slightly smaller
+	- Improved scaling of the sample wallpaper image in the Desktop section
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- TODO: Merge in IceWM changes up to IceWM 1.2.13 (1.2.14pre is not really stable)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- 4 new translatable strings has been added to the gettext catalog; 4 new Spanish translations added
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- IcePref2-ThemeDesigner is now compatible with IceWM 1.2.13, with support for the following new option added: DesktopBackgroundScaled
+	- Tearoff menus have been disabled due to a seg-fault I kept experiencing in PyGtk 2.0.0.  All of my apps were seg-faulting when Tearoff menus were clicked.  I don't know if this is a bug in PyGtk-2, or what, but I refuse to leave a feature in that's causing a known seg-fault.
+	- The 'sample' text now has line breaks
+	- Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs: The Font selection widgets now rely on the new module 'pangoxlfd'
+	- Since Gtk-2 font selection dialogs are no longer returning and accepting XLFD-style font strings like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*', and Gtk-2 leaves you with NO way of getting such strings from a font dialog, all we can do is hope the home-spun conversion library 'pangoxlfd' does its job; however, this may create some bugs in font selection for some users. Sorry.  I tried putting Pango-style 'font descriptions' like "Arial 12" in the IceWM preferences file: It does not work!  So, we have to use XLFD font descriptions.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- The IcePref2 logo is now slightly smaller
+	- The text entry in the Font selection widgets now only updates the sample text for the font after the Enter/Return key is pressed, instead of updating the font everytime a keystroke was made in the text entry field.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The use of Gtk 'timeouts' is now more memory friendly, updating only things that need to be updated.
+	- The time zone list now only shows half of the list of available time zones at a time: Up/Down scroll arrows now appear next to the drop-down list of time zones allowing you to show the first half or the last half. Since many systems have upwards of 2,000 time zones available on the system, we don't want to overwhelm the GtkCombo widget by trying to display all at once.  Users should notice a smoother scrolling, faster drop-down list of time zones
+	- Two new translatable strings added; 2 new Spanish translations added.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application is now compatible with IceWM 1.2.13, with support for the following new option added: DesktopBackgroundScaled
+	- Image designated as 'centered' are now actually centered in the preview window
+	- Support for 'scaled' images has been added, and such images are now shown as 'scaled' in the preview window
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- Feature enhancement: Now your selected background color can be previewed underneath whatever wallpaper you've selected on the IceWMCP-Wallpaper's 'preview monitor'; this is especially helpful if the wallpaper you are using has transparency
+	- User interface improvements: The 'directory' field has been moved up to the right of the 'Color' field, resulting in alot of saved screen space.
+	- Keyboard support improvements: Typing a color in the 'Color' field and pressing Enter now updates the selected color; Typing a directory in the 'Directory' field and pressing Enter now updates the directory being browsed
+	- Improvements when switching between normal mode and 'Run as Root': appropriate wallpapers, colors, and directories are loaded
+	- The width of the image list has been increased to aid in easier reading of long file names
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- When the application starts up, your selected wallpaper is now correctly selected and scrolled to in the list  (not sure what took me so long to remember to fix this)	
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added method 'parse_icewm_version': We can now set the background without restarting IceWM for   versions of IceWM of 1.2.11 and above
+	- 1 new translatable string has been added to the gettext catalog; 1 new Spanish translation added
+	- The English and Spanish language help files have been updated to include information about scaled images
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- Improvements when switching between normal mode and 'Run as Root': appropriate 'winoptions' file is now actually loaded
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- Usability fix: Switching between normal mode and "Run as Root' or opening a new 'winoptions' file clears the settings for the last select window option and automatically scrolls to and selects the first window option in the newly opened file
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- The icon selection dialog and the menu preview window now have wm_class and wm_name values and offer a built-in window icons (which, of course, can be changed in IceWM)
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Fixed a possible extra splash window that could show up but had no business showing up
+	- Fixed the About box (an important translated string was not showing up)
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
+	- Icons in IceMe and IceMe itself appear to be loading slightly faster; probably due to improvements in the GdkPixbuf code-set: all icons are now being loaded through GdkPixbuf/gtk.Image()
+	- GUI improvement: Gtk stock icons have been added to any buttons on the Icon Selection box
+	- The Up/Down arrows have been changed to something a little more normal looking
+	- Stock icons not added to the main GUI, I like the look/layout of IceMe as-is
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.3-beta
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Major bug fix: Several possible buffer overflows have been patched in the libicewmcphw.so library, eliminating possible seg-faults
+	- Major bug fix: Probing of PS/2 mice have been rewritten to avoid reading/writing to the /dev/psaux device in the libicewmcphw.so library - This should eliminate problems where a hardware probe resulted in the mouse behaving strangely or not being usable at all; however, the result is less information is collected about PS/2 mouse devices
+	- Several 'device categorization' improvements have been made
+	- /proc/filesystems and /proc/apm are now probed
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- GUI improvement: The window now opens centered on the screen
+	- GUI improvement: Clicking a 'section' instead of an actual hardware item now shows a nicely colored screen with the section's icon
+	- GUI improvement: Clicking a hardware item now forces the information window to a white background and black text to guarantee readability
+	- Fonts used for the 'information' window on the right come from the same fonts as the Help fonts in icewmcp_common
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.4
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Startup speed improvement: No longer attempting to load PCMCIA card facts if no cards are detected on the computer
+	- If no PC Cards are detected on the computer, a warning is also displayed in the first card slot tab as well as in a message dialog
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The window's size is now set *before* it is shown, for smoother loading of the Run dialog and to make sure the window doesn't appear to be jumping around right after it has been opened
+	- The tooltips now rely on the common 'TIPS' object from icewmcp_common, instead of creating a new Tooltips() object
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.3
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- GUI improvement: The column widths in the list of print jobs have been readjusted for better usability
+	- GUI improvement: The column labels now use Label widgets instead of Buttons, creating better clicking and resizing abilities
+	- GUI improvement: 2 pixmaps that were not properly loading are now loading
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+	- GUI improvement: Gtk stock icons have been added to any buttons, any existing button icons have been changed to stock icons
+	- The application is now only using 1 external pixmap
+
+IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Okay, so I caved: The dialogs are now using Gtk-2 stock icons.  I didn't like the idea of using stock icons at first because I remembered those gross looking icons from Gtk-1, but after looking at the Gtk-2 stock icons, they are so bad.  So, this will help reduce the package sizes by a hair and save me the trouble of maintaining XPM structs in the code.
+	- The windows now offer built-in window icons (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+icepref_search.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+icewmcp_dnd.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+
+
+
+
+_________________________________________________
+
 VERSION 2.5 - 8/15/2003 - 9/2/2003
 
 The focus of this release IceWM 1.2.10 and 1.2.11 compatibility and bug fixes.

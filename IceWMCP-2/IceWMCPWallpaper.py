@@ -344,14 +344,52 @@ class wallwin:
 	self.restart_ice()
 	self.doQuit()
 
+    def parse_icewm_version(self,*args) :  # added 12.11.2003
+      try:
+	iversion="IceWM 0.0.0,"
+	if get_pidof("icewm"): 
+		iversion=os.popen("icewm --version").read().replace("\n","").replace("\t","")
+	if get_pidof("icewm-gnome"): 
+		iversion=os.popen("icewm-gnome --version").read().replace("\n","").replace("\t","")
+	if iversion.find(",")>iversion.find("IceWM"):
+		iversion=iversion[iversion.find("IceWM")+len("IceWM"):iversion.find(",")].strip()
+		ivers=iversion.split(".")
+		vers=[]
+		for ii in ivers:
+			myint=""
+			for gg in ii:
+				if not gg.isdigit(): break
+				myint=myint+gg
+			vers.append(int(myint))
+		if len(vers)==3: return vers
+		else: return [0,0,0]
+	else: return [0,0,0]
+      except:
+	pass
+
+
     def restart_ice(self,*args) :
 	i=self.save_prefs()
 	if i==1:
-		os.system('killall -HUP -q icewm &')
-		os.system('killall -HUP -q icewm-gnome &')
+		# changed, 12.11.2003, we can set the background without restarting IceWM for 
+		# versions of IceWM of 1.2.11 and above
+		old_restart=1
+		icewm_vers=self.parse_icewm_version()
+		if not len(icewm_vers)==3: icewm_vers=[0,0,0]
+		if icewm_vers[0] >= 1:
+			if icewm_vers[1] >= 2:
+				if icewm_vers[2] >= 11:
+					old_restart=0
+		if old_restart==1: # IceWM 1.2.10 and below, also unknown versions
+			if get_pidof("icewm"): os.system('killall -HUP -q icewm &')
+			if get_pidof("icewm-gnome"): os.system('killall -HUP -q icewm-gnome &')
+
+		# The rest of this should have no effecton lower versions of IceWM
 		# added  8.14.2003, needed by IceWM 1.2.10 and above
 		if not get_pidof("icewmbg"): os.system("icewmbg &")
-		else: os.system('killall -HUP -q icewmbg &')
+		else: 
+			os.system('killall -HUP -q icewmbg &')  # slightly older versions, and newer versions
+			# os.system('icewmbg -r')  # newer versions
 		if not get_pidof("icewmbg"): os.system("icewmbg &")
 	
     def save_prefs(self,*args) :

@@ -4,7 +4,7 @@ import os
 TO_DIR="/INSTALL-IcePref2-TD/"
 DISTRO_DIR="/Compile/distro/icewmcp/"
 PACKAGE="IcePref2-Theme-Designer"
-VERSION="3.0pre-release"
+VERSION="3.0"
 
 def updateinstall():
 	f=open(TO_DIR+"install-config.txt")

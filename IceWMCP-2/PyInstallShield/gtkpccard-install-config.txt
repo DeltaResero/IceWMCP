@@ -103,6 +103,8 @@ icon=icewmcp-gtkpccard.png
 
 
 
+
+
 file=GtkPCCard-LICENSE
 file=ICEWMCP_BugReport.py
 file=ICEWMCP_URLRead.py
@@ -112,7 +114,6 @@ file=IceWMCP_GtkPCCard.py
 file=icewmcp-gtkpccard.png
 file=icewmcp.png
 file=icewmcp_common.py
-file=icewmcp_help.png
 file=icewmcp_short.png
 file=install-icon.xpm
 file=doc/GtkPCCard-Readme.txt

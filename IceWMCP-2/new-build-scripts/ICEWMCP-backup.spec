@@ -1,13 +1,13 @@
 Summary: A full-featured, Gtk-based control panel for the IceWM desktop environment
 Name: IceWMControlPanel
-Version: 2.4
+Version: 3.0
 Release: 1
 Copyright: Erica Andrews (PhrozenSmoke@yahoo.com)
 Group: Desktop/IceWM
 Vendor: Phrozen Smoke
 Url: http://icesoundmanager.sourceforge.net
 Provides: IceWMControlPanel,IceControlPanel,IceWMCP,IceSoundManager,icesoundmanager,GtkPCCard,PhrozenClock,icepref,IcePref,IcePref2,icepref2,IceMe,iceme
-Requires: python >= 2.2,pygtk >= 0.6.9,icewm >= 1.2.0,/bin/sh
+Requires: python >= 2.2,pygtk >= 1.9.9,icewm >= 1.2.6,/bin/sh
 Excludeos: noarch
 
 %description
@@ -28,6 +28,7 @@ A full-featured, Gtk-based control panel for the IceWM desktop environment, writ
 /usr/X11R6/bin/icepref
 /usr/X11R6/bin/icepref-td
 /usr/X11R6/bin/IceWMCP-Icons
+/usr/X11R6/bin/IceWMCP-EnergyStar
 /usr/X11R6/bin/uninstall-icewm-control-panel
 /usr/X11R6/bin/icepref-ScrollBars 
 /usr/X11R6/bin/icepref-AddressBar 
@@ -59,4 +60,6 @@ A full-featured, Gtk-based control panel for the IceWM desktop environment, writ
 /usr/share/icons/icewmcp-gtkpccard.png
 /usr/share/icons/icewmcp-icepref-td.png
 /usr/share/icons/icewmcp-iconselection.png
+/usr/share/icons/icewmcp-energystar.png
+
 

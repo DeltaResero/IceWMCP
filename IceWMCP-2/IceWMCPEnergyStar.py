@@ -46,8 +46,9 @@ class energywin:
 				(_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''),
 				(_('/_Help'), None, None, 0, '<LastBranch>'),
 				(_('/Help/_About...'), "F2", self.do_about, 0, ''),
-  (_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
-  (_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5015, ""),
+				(_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5015, ""),
+  				(_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
+  				(_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5015, ""),
 					]
 
 	ag = AccelGroup()
