@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Mounted\nDevices
+Exec=usermount
+Icon=usermount.png
+Hint=View mounted disks and devices

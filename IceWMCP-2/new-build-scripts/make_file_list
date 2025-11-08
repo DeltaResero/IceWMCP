@@ -1,0 +1,35 @@
+#! /usr/bin/env python
+import os
+
+myfiles=[]
+IGNORED=['Makefile','CreatePot','Root','Entries','Repository','CVS','PyInstallShield','icepref-scripts','build-scripts','icewmcp-developers-release','theme_previews.tar.gz','ICEWMCP_WEB_VERSION','icewmcp.po','icewmcp-icepref.po','icewmcp-iceme.po','icewmcp-ism.po','template.txt','make_dev','make_file_list','make_file_list2','file_list.txt','icewmcp.pot','icepref.pot','iceme.pot','icesound.pot','es.mo','INSTALL-ME.sh','dir.xpm','next.xpm','close.xpm','make_ice_real','install-config.txt']
+
+
+def makefilelist(*args):
+	print "Listing files"
+	os.path.walk("./",doit,None)
+	print "Writing file list..."
+	f=open("file_list.txt","w")
+	for yy in myfiles:
+		f.write("file="+yy+"\n")
+	f.flush()
+	f.close()
+	print "Done."
+	
+
+def doit(arg,dirname,fnames):
+	for ii in IGNORED:
+		if dirname.find(ii)>-1: return
+	fnames.sort()
+	for ii in fnames:
+		if ii in IGNORED: continue
+		if ii.endswith(".pyc"): continue
+		if ii.endswith(".pyo"): continue
+		filename=dirname+"/"+ii
+		if os.path.isdir(filename): continue
+		filename=filename.replace(".//","").replace("./","").replace("//","/")
+		myfiles.append(filename)
+	 
+
+if __name__ == "__main__":
+	makefilelist()

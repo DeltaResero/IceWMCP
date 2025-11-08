@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Mi Info
+Exec=userinfo
+Icon=userinfo.png
+Hint=Ver y fijar su información personal

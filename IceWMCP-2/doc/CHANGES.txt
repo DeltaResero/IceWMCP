@@ -1,0 +1,119 @@
+CHANGE LOG:  IceWM Control Panel
+
+NOTE:  This is a partial ChangeLog containing the 
+latest changes in this release only.  For a FULL  history 
+of changes through all versions, visit:
+
+http://icesoundmanager.sourceforge.net/changelog.php
+______________________________________________
+______________________________________________
+
+
+VERSION 3.2 - 3/05/2004 - 8/17/2004
+
+The focus of this release is Python 2.3 compatibility and support 
+for IceWM 1.2.14/1.2.15 features.
+
+
+SUMMARY OF CHANGES:
+	This release patches bugs that many users of Python 2.3 experienced 
+	while attempting to run the applications.  In addition, this release adds 
+	support for the latest changes and features of IceWM versions 
+	1.2.14 and 1.2.15.  This release also features Russian translation updates 
+	and French Help file additions.
+
+
+All applications: 
+	Patched a number of bugs that could cause IceWMCP 
+	applications to not run properly (or at all) under 
+	Python 2.3 (including the 'True'/'False' strings showing 
+	up in configuration files and 'encoding' warnings).
+	All IceWMCP applications should now properly handle 
+	boolean values on both Python 2.3 and Python 2.2.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- Added support for conversion to the newly support Xft font string formats, this is now supported by IceWM 1.2.14/1.2.15; This is used to save font is the IceWM 'preferences' file in the Xft font format needed when IceWM is compiled and run with Xft support
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.2
+	- Patched a bug that could cause unwanted "_" characters to show up in 
+	the Help window's 'Banner' when running under a non-English locale
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.2
+	- Russian Help file has been added; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.4
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+	- Russian translation updated; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- The following options are now saved in ~/.prefoverride:
+	TitleFontNameXft, MenuFontNameXft, StatusFontNameXft, 
+	QuickSwitchFontNameXft, NormalButtonFontNameXft,ActiveButtonFontNameXft,
+	NormalTaskBarFontNameXft, ActiveTaskBarFontNameXft, ToolButtonFontNameXft,
+	NormalWorkspaceFontNameXft, ActiveWorkspaceFontNameXft,
+	MinimizedWindowFontNameXft,  ListBoxFontNameXft, ToolTipFontNameXft,
+	ClockFontNameXft, ApmFontNameXft, InputFontNameXft, LabelFontNameXft
+	(This means that themes cannot tamper with these important settings; This is 
+	supported in IceWM version 1.2.14/1.2.15;  This effectively stops themes from 
+	changing things like your fonts and workspace names)
+	- Added support for the following new configurable IceWM options:
+	'RolloverButtonsSupported', 'ColorCPUStatusIoWait','ColorCPUStatusSoftIrq',
+	'NestedThemeMenuMinNumber','TaskBarCPUDelay','TaskBarNetSamples',
+	'TaskBarNetDelay','MenuIconSize', 'SmallIconSize','LargeIconSize','HugeIconSize',
+	'KeyWinArrangeN','KeyWinArrangeNE','KeyWinArrangeE',	
+	'KeyWinArrangeSE', 'KeyWinArrangeS','KeyWinArrangeSW','KeyWinArrangeW',
+	'KeyWinArrangeNW','KeyWinArrangeC','KeySysShowDesktop','KeyWinMaximizeHoriz'
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.2
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)]
+	- Russian translation updated; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- Added support for the following configurable options (including 'rollover' images):
+	'titleIJ.xpm','titleIQ.xpm','titleAJ.xpm','titleAQ.xpm','hideA.xpm','hideI.xpm',
+	'hideO.xpm','rollupA.xpm', 'rollupI.xpm','rollupO.xpm','rolldownA.xpm','rolldownI.xpm',
+	'rolldownO.xpm','closeO.xpm','maximizeO.xpm','menuButtonO.xpm',
+	'restoreO.xpm','minimizeO.xpm','frameAT.xpm','frameATL.xpm',
+	'frameATR.xpm','frameAL.xpm','frameAR.xpm','frameAB.xpm',
+	'frameABR.xpm','frameABL.xpm','frameIT.xpm','frameITL.xpm',
+	'frameITR.xpm','frameIL.xpm','frameIR.xpm','frameIB.xpm',
+	'frameIBR.xpm','frameIBL.xpm','dframeAT.xpm','dframeATL.xpm',
+	'dframeATR.xpm','dframeAL.xpm','dframeAR.xpm','dframeAB.xpm',
+	'dframeABR.xpm','dframeABL.xpm','dframeIT.xpm','dframeITL.xpm',
+	'dframeITR.xpm','dframeIL.xpm','dframeIR.xpm','dframeIB.xpm',
+	'dframeIBR.xpm','dframeIBL.xpm','RolloverButtonsSupported',
+	'ColorCPUStatusIoWait', 'ColorCPUStatusSoftIrq','TaskBarNetSamples',
+	'MenuIconSize',	'SmallIconSize','LargeIconSize','HugeIconSize',
+	'taskbar/desktop.xpm'
+	- Removed the following configurable options:
+	TaskBarDoubleHeight, MenuMaximalWidth, maximizeIB.xpm, maximizeAB.xpm
+	( It's really not nice for themes to change the size of somebody's taskbar!)
+	- Moved the following configurable options from the 'Windows' section 
+	to the 'Title Bar' section:
+	'titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','maximizeI.xpm',
+	'menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm',
+	'minimizeA.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm',
+	'titleIB.xpm','closeA.xpm','titleIT.xpm','titleIS.xpm'
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.2
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+
+
+IceWMCP-TrayIcon:
+	- Fixed a compile-time warning about a 'gdk_pixbuf_new_from_xpm_data' call
+	- Russian translation added; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+
+
+

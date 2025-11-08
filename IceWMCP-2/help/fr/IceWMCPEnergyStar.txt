@@ -1,0 +1,21 @@
+[PHTITLE] IceWMCP EnergyStar
+[PHSECTION] Présentation
+L'outil d'IceWMCP EnergyStar vous permet de configurer facilement les fonctionnalités DPMS (Display Power Management System), conçues pour économiser l'énergie sur les ordinateurs compatibles EnergyStar.
+[PHSECTION] Activer/désactiver les fonctionnalités EnergyStar
+Pour activer les fonctionnalités EnergyStar, assurez-vous que la case [PH-HI]Activer les fonctionnalités EnergyStar[/PH-HI] est [PH-HI]cochée[/PH-HI]. Pour désactiver les fonctionnalités EnergyStar, assurez-vous qu'elle [PH-HI]n'est pas cochée[/PH-HI].
+[PHSECTION] Le mode 'mise en veille'
+Si vous voulez que l'ordinateur entre dans le mode de [PH-HI]'mise en veille'[/PH-HI] après une certaine période d'inactivité, choisissez la durée souhaitée dans le menu déroulant [PH-HI]'Mis en veille après une inactivité de :'[/PH-HI]. Si vous souhaitez que l'ordinateur n'entre jamais dans le mode [PH-HI]'mise en veille'[/PH-HI], choisissez [PH-HI]'JAMAIS'[/PH-HI]. 
+[PHSECTION] Le mode 'suspendu'
+Si vous voulez que l'ordinateur entre dans le mode [PH-HI]'Suspendu'[/PH-HI] après une certaine période d'inactivité, choisissez la durée souhaitée dans le menu déroulant  [PH-HI]'Suspendre l'ordinateur après :'[/PH-HI]. Si vous souhaitez que l'ordinateur n'entre jamais dans le mode [PH-HI]'suspendu'[/PH-HI], choisissez [PH-HI]'JAMAIS'[/PH-HI]. 
+[PHSECTION] Le mode 'Eteint'
+Si vous voulez que l'ordinateur [PH-HI]s'éteigne automatiquement[/PH-HI] après une certaine période d'inactivité, choisissez la durée souhaitée dans le menu déroulant [PH-HI]'Eteindre l'ordinateur après :'[/PH-HI]. Si vous souhaitez que l'ordinateur [PH-HI]ne s'éteigne jamais automatiquement[/PH-HI], choisissez [PH-HI]'JAMAIS'[PH-HI]. 
+[PHSECTION] Appliquer les changements
+Vous pouvez appliquer tous les changements que vous avez fait en cliquant sur le bouton [PH-HI]'Appliquer'[/PH-HI] en bas à gauche de la fenêtre.
+[PHSECTION] Quitter le programme
+Pour quitter le programme, choisissez [PH-HI]Quitter[/PH-HI] dans le menu, ou appuyez sur les touches [PH-HI]Ctrl+Q[/PH-HI] de votre clavier. Vous pouvez également sortir du programme en cliquant sur le bouton [PH-HI]'Fermer'[/PH-HI] en bas à droite de la fenêtre.
+[PHSECTION] Contrôler l'existence d'une nouvelle version du logiciel
+Pour vérifier si une version plus récente du programme est disponible, sélectionnez [PH-HI]Fichier - Contrôler l'existence d'une version plus récente de ce programme... [/PH-HI] dans le menu , ou tapez [PH-HI]Ctrl+U[/PH-HI] sur votre clavier. Vous devez être connecté à l'Internet pour permettre ce contrôle.
+[PHSECTION] Exécuter un programme quelconque
+Vous pouvez exécuter un programme quelconque sur votre système en sélectionnant [PH-HI]Fichier - Exécuter...[/PH-HI] dans le menu, ou en tapant [PH-HI]Ctrl+R[/PH-HI] sur votre clavier.
+[PHSECTION] Signaler un problème
+Vous pouvez signaler les problèmes que vous rencontrez en utilisant ce logiciel en choisissant [PH-HI]Aide - Envoyer un rapport de bogue...[/PH-HI] dans le menu, ou en tapant sur la touche [PH-HI]F5[/PH-HI] de votre clavier. Des instructions détaillées vous guideront. Envoyer un rapport de bogue ne prend que quelques instants.

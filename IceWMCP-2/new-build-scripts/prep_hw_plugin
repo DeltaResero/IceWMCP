@@ -1,0 +1,90 @@
+cd /Compile/cvs/IceWMCP-2/
+#rm -fr /Compile/cvs/IceWMCP-HW/INSTALL/*
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applet-icons/&> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applets/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applets/es/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applets/ru/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/applets/zh_tw/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/help/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/LC_MESSAGES/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/LC_MESSAGES/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/ &> /dev/null
+mkdir /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/hw-pixmaps/ &> /dev/null
+cp -f  IceWMCPSystem.py /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f  pyicewmcphwc.so /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f  libicewmcphw.so /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f  pyicewmcphw.py /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f  icewmcphw.py /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f ./applet-icons/sysinfo.png /Compile/cvs/IceWMCP-HW/INSTALL/applet-icons/
+cp -f ./applets/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/
+cp -f ./applets/ru/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/ru/
+cp -f ./applets/es/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/es/
+cp -f ./applets/zh_tw/sysinfo.cpl /Compile/cvs/IceWMCP-HW/INSTALL/applets/zh_tw/
+cp -f ./locale/es/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/fr/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/ru/LC_MESSAGES/ &> /dev/null
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-hw.mo /Compile/cvs/IceWMCP-HW/INSTALL/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+cp -f ./pixmaps/hw-pixmaps/* /Compile/cvs/IceWMCP-HW/INSTALL/pixmaps/hw-pixmaps/
+convert ./applet-icons/sysinfo.png /Compile/cvs/IceWMCP-HW/INSTALL/install-pix.xpm
+cp -f ./applet-icons/sysinfo.png /Compile/cvs/IceWMCP-HW/INSTALL/icewmcp-system.png
+cp -f ./licenses/GPL /Compile/cvs/IceWMCP-HW/INSTALL/LICENSE
+cp -f ./help/IceWMCPSystem.txt /Compile/cvs/IceWMCP-HW/INSTALL/help/
+cp -f ./help/es/IceWMCPSystem.txt /Compile/cvs/IceWMCP-HW/INSTALL/help/es/ &> /dev/null
+cp -f /var/lib/hardware/hd.ids /Compile/cvs/IceWMCP-HW/hardware-ids/
+cp -f ./PyInstallShield/hw-install-config.txt  /Compile/cvs/IceWMCP-HW/INSTALL/install-config.txt
+cp -f ./PyInstallShield/PyInstallShield /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f ./PyInstallShield/INSTALL-ME.sh /Compile/cvs/IceWMCP-HW/INSTALL/
+cp -f ./new-build-scripts/make_file_list /Compile/cvs/IceWMCP-HW/INSTALL/
+cd /Compile/cvs/IceWMCP-HW/INSTALL/
+./make_file_list
+rm -f make_file_list
+cd /Compile/cvs/IceWMCP-2/new-build-scripts/
+./update_install_hw
+rm -fr /INSTALL-ICEWMCP-HW/* &> /dev/null
+mkdir /INSTALL-ICEWMCP-HW/ &> /dev/null
+cp -fr /Compile/cvs/IceWMCP-HW/INSTALL/* /INSTALL-ICEWMCP-HW/
+./pack_hw_i586
+cd /Compile/cvs/IceWMCP-HW/
+echo "Cleaning up directory /Compile/cvs/IceWMCP-HW/"
+
+rm -f /Compile/cvs/IceWMCP-HW/INSTALL/libicewmcphw.so
+rm -f /Compile/cvs/IceWMCP-HW/INSTALL/_pyicewmcphw.so
+rm -f ./*.so*
+rm -f ./*.a
+rm -f ./*.o
+rm -f ./core
+rm -f ./src/*.so*
+rm -f ./src/*.a
+rm -f ./src/*.o
+rm -f ./src/core
+rm -f ./src/hd/*.o
+rm -f ./src/hd/core
+rm -f ./src/ids/*.o
+rm -f ./src/ids/core
+rm -f ./src/ids/id/*.o
+rm -f ./src/ids/id/core
+rm -f ./src/ids/src/*.o
+rm -f ./src/ids/src/core
+rm -f ./src/int10/*.o
+rm -f ./src/int10/core
+rm -f ./src/smp/*.o
+rm -f ./src/smp/core
+rm -f ./src/isdn/*.o
+rm -f ./src/isdn/core
+rm -f ./src/isdn/db/*.o
+rm -f ./src/isdn/db/core
+rm -f hwinfo2
+rm -f hwscan
+cd /Compile/cvs
+echo "Building hardware-plugin source package"
+tar -cjf IceWMCP-Hardware-plugin-1.4beta.source.tar.bz2  ./IceWMCP-HW/
+echo "moving tar ball to /Compile/distro/icewmcp/..."
+mv -f IceWMCP-Hardware-plugin*.tar.bz2 /Compile/distro/icewmcp/

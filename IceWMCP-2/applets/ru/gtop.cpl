@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Процессы
+Exec=gtop
+Icon=gtop.png
+Hint=Управление запущенными процессами

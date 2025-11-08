@@ -1,0 +1,30 @@
+thisdir=`pwd`
+cd ../../IceWMCP-TrayIcon/
+
+echo "Building IceWMCP-TrayIcon Binary Tarball"
+
+make install
+
+tar -cjf IceWMCP-TrayIcon-plugin-0.2-i586.tar.bz2 /usr/X11R6/bin/IceWMCP-TrayIcon /usr/share/IceWMCP/locale/es/LC_MESSAGES/icewmcp-trayicon.mo /usr/share/IceWMCP/locale/ru/LC_MESSAGES/icewmcp-trayicon.mo  /usr/share/IceWMCP/doc/IceWMCP-TrayIcon-LICENSE  /usr/share/IceWMCP/doc/IceWMCP-TrayIcon-README.txt
+
+cp -f IceWMCP-TrayIcon-plugin-*-i586.tar.bz2 /Compile/distro/icewmcp/
+rm -f IceWMCP-TrayIcon-plugin-*-i586.tar.bz2
+
+cd ../
+
+echo "Building IceWMCP-TrayIcon Source Tarball"
+
+tar -cjf IceWMCP-TrayIcon-plugin-0.2-source.tar.bz2 ./IceWMCP-TrayIcon/*.c  ./IceWMCP-TrayIcon/*.h  ./IceWMCP-TrayIcon/Makefile  ./IceWMCP-TrayIcon/*.po  ./IceWMCP-TrayIcon/*.pot  ./IceWMCP-TrayIcon/configure  ./IceWMCP-TrayIcon/*README*  ./IceWMCP-TrayIcon/*LICENSE*  ./IceWMCP-TrayIcon/make_pot
+
+cp -f IceWMCP-TrayIcon-plugin-*-source.tar.bz2 /Compile/distro/icewmcp/
+rm -f IceWMCP-TrayIcon-plugin-*-source.tar.bz2
+
+
+echo "Building IceWMCP-TrayIcon Binary RPM"
+cd $thisdir
+
+rm -f /Compile/distro/icewmcp/IceWMCP-TrayIcon*.rpm
+rpm  -bb  --target i586 ICEWMCP-Tray.spec 
+cp -f  /usr/src/packages/RPMS/i586/IceWMCP-TrayIcon*.rpm /Compile/distro/icewmcp/
+rm -f /usr/src/packages/RPMS/i586/IceWMCP-TrayIcon*.rpm
+

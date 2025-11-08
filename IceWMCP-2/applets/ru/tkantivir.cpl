@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Антивирус
+Exec=tkantivir
+Icon=tkantivir.png
+Hint=Настройка антивируса и сканирование

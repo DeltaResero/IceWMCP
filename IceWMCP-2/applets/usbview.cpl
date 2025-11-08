@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=USB\nDevices
+Exec=usbview
+Icon=usbview.png
+Hint=USB devices on this system

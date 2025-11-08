@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Préférences\nde IceWM
+Exec=[PHROZEN-INTERNAL]icepref.py
+Icon=icepref.png
+Hint=Définir les préférences de IceWM (IcePref)

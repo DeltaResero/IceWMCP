@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Tema\nde IceWM
+Exec=[PHROZEN-INTERNAL]icepref.py module[EQUAL]Themes
+Icon=icepref-theme.png
+Hint=Configurar el tema de IceWM (IcePref2)

@@ -1,0 +1,23 @@
+[PHTITLE] IceWMCP GtkPCCard
+[PHSECTION] Overview
+The IceWMCP GtkPCCard tool helps you manage PCMCIA cards.  PCMCIA cards, or PC Cards, are generally found on laptop computers, but exist on many other computers as well. To use GtkPCCard, you MUST have the [PH-HI] 'cardctl' [/PH-HI] program on your system's $PATH. The [PH-HI] 'cardctl' [/PH-HI] program is part of the [PH-HI]'pcmcia-cs'[/PH-HI] package, which can be found on [PH-HI]http://pcmcia-cs.sourceforge.net[/PH-HI] and  [PH-HI]http://speakeasy.rpmfind.net[/PH-HI].  GtkPCCard will not be able to do anything useful without [PH-HI] 'cardctl' [/PH-HI].  In fact, GtkPCCard will not be able to display any of your PC Cards without [PH-HI] 'cardctl' [/PH-HI]. In addition, you generally have to be [PH-HI]'root'[/PH-HI] to do anything with GtkPCCard beyond simply displaying available PC Cards.
+[PHSECTION] Slots
+Each PC Card installed on your system is called a [PH-HI]'slot'[/PH-HI], denoted by numbered, individual tabs in the GtkPCCard main window.
+[PHSECTION] Eject
+To eject a PC Card, select the [PH-HI]'slot' tab[/PH-HI], containing the PC Card you wish to eject. Then, click the [PH-HI]Eject[/PH-HI] button.
+[PHSECTION] Insert
+To insert a PC Card, select the [PH-HI]'slot' tab[/PH-HI], containing the PC Card you wish to insert. Then, click the [PH-HI]Insert[/PH-HI] button.
+[PHSECTION] Reset
+To reset a PC Card, select the [PH-HI]'slot' tab[/PH-HI], containing the PC Card you wish to reset. Then, click the [PH-HI]Reset[/PH-HI] button.
+[PHSECTION] Suspend
+To suspend a PC Card, select the [PH-HI]'slot' tab[/PH-HI], containing the PC Card you wish to suspend. Then, click the [PH-HI]Suspend[/PH-HI] button.
+[PHSECTION] Resume
+To resume a PC Card, select the [PH-HI]'slot' tab[/PH-HI], containing the PC Card you wish to resume. Then, click the [PH-HI]Resume[/PH-HI] button.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Quit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

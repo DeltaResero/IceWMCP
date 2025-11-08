@@ -1,0 +1,46 @@
+cd ../
+thisdir=`pwd`
+rm -fr /INSTALL-gtkpccard/*
+mkdir /INSTALL-gtkpccard/ &> /dev/null
+mkdir /INSTALL-gtkpccard/doc/ &> /dev/null
+mkdir /INSTALL-gtkpccard/help/ &> /dev/null
+mkdir /INSTALL-gtkpccard/help/es/ &> /dev/null
+mkdir /INSTALL-gtkpccard/help/ru/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/es/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/zh_TW/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/ru/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/fr/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/es/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/fr/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-gtkpccard/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+cp -f icewmcp_common.py /INSTALL-gtkpccard/
+cp -f IceWMCP_GtkPCCard.py /INSTALL-gtkpccard/
+cp -f IceWMCPRun.py /INSTALL-gtkpccard/
+cp -f icewmcp.png /INSTALL-gtkpccard/
+cp -f icewmcp_short.png /INSTALL-gtkpccard/
+cp -f ICEWMCP_BugReport.py /INSTALL-gtkpccard/
+cp -f ICEWMCP_URLRead.py /INSTALL-gtkpccard/
+cp -f IceWMCP_Dialogs.py /INSTALL-gtkpccard/
+cp -f ./icons/icewmcp-gtkpccard.png /INSTALL-gtkpccard/
+cp -f ./licenses/GPL /INSTALL-gtkpccard/GtkPCCard-LICENSE
+cp -f ./doc/GtkPCCard-Readme.txt /INSTALL-gtkpccard/doc/
+cp -f ./help/IceWMCP_GtkPCCard.txt /INSTALL-gtkpccard/help/
+cp -f ./help/es/IceWMCP_GtkPCCard.txt /INSTALL-gtkpccard/help/es/
+cp -f ./help/ru/IceWMCP_GtkPCCard.txt /INSTALL-gtkpccard/help/ru/
+cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-gtkpccard/locale/es/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-gtkpccard/locale/ru/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-gtkpccard/locale/fr/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-gtkpccard/locale/zh_TW/LC_MESSAGES/
+cp -f ./PyInstallShield/gtkpccard-install-config.txt /INSTALL-gtkpccard/install-config.txt
+cp -f ./PyInstallShield/PyInstallShield /INSTALL-gtkpccard/
+cp -f ./PyInstallShield/INSTALL-ME.sh /INSTALL-gtkpccard/
+cp -f ./new-build-scripts/make_file_list /INSTALL-gtkpccard/
+convert ./icons/icewmcp-gtkpccard.png  /INSTALL-gtkpccard/install-icon.xpm
+cd /INSTALL-gtkpccard/
+./make_file_list
+rm -f make_file_list
+cd $thisdir
+cd ./new-build-scripts/
+./update_install_gtkpccard

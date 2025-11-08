@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=我的資訊
+Exec=userinfo
+Icon=userinfo.png
+Hint=檢視並編輯您的使用者資訊

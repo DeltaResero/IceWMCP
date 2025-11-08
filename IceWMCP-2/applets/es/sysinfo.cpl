@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Sistema
+Exec=[PHROZEN-INTERNAL]IceWMCPSystem.py
+Icon=sysinfo.png
+Hint=Ver información útil sobre su sistema y sus unidades

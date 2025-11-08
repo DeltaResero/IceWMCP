@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=ODBC
+Exec=gODBCConfig
+Icon=godbc.png
+Hint=Управление источниками данных ODBC (gODBCConfig)

@@ -1,0 +1,13 @@
+cd /Compile/cvs/IceWMCP-2/
+cp -f ./icewmcp-developers-release/README_DEVELOPERS_RELEASE.txt /var/www/html/ism/
+cp -f ./doc/CHANGES_ALL.txt /var/www/html/ism/CHANGES.txt
+cp -f ICEWMCP_WEB_VERSION /var/www/html/ism/
+cp -f ./licenses/contents.txt /var/www/html/ism/license/COPYRIGHT
+cp -f theme_previews.tar.gz /var/www/html/ism/IcePref2/
+cp -f ./help/icesound.txt /var/www/html/ism/ism/icesound.txt
+cp -f ./help/es/icesound.txt /var/www/html/ism/ism/icesound_es.txt
+cp -f ./help/icepref.txt /var/www/html/ism/IcePref2/
+cp -f ./help/*.txt /var/www/html/ism/modules/
+rm -f /var/www/html/ism/modules/icesound.txt
+rm -f /var/www/html/ism/modules/icepref.txt
+rm -f /var/www/html/ism/modules/template.txt

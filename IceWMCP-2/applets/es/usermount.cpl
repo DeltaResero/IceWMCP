@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Unidades\nMontadas
+Exec=usermount
+Icon=usermount.png
+Hint=Ver discos y unidades montados

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Спул\nпринтера
+Exec=[PHROZEN-INTERNAL]pyspool.py
+Icon=pyspool.png
+Hint=Просмотр LPRng спула принтера 

@@ -1,0 +1,50 @@
+[PHTITLE] IceWMCP Window Options
+[PHSECTION] Overview
+The IceWMCP Window Options tool allows you to easily configure the look and behavior of program windows.
+[PHSECTION] Program Windows
+[PH-HI]Program windows[/PH-HI] appear in the left window of the IceWMCP Window Options main window.  Each program window contains a [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] value.  Almost all X programs have [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values, which are used by IceWM to configure individual program windows.
+[PHSECTION] Adding Program Windows
+To add a program window click the [PH-HI] Add.. [/PH-HI] button. You will be asked for the window's [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values.  Almost all X programs have [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values.  If you already know these values for the program window you wish to configure, you may type them in here.  If you do not know or are not sure what the program's [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values are, then you should do the following:  Start the program you wish to configure.  Click the [PH-HI]Grab...[/PH-HI] button. You should see your mouse cursor turn into [PH-HI]'crosshairs'[/PH-HI].  Click the [PH-HI]'crosshairs'[/PH-HI] on any part of the program window you just opened. You should see the [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values automatically filled in.  If you do not see new [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values, the program window you are attempting to configure is non-standard, and most likely cannot be individually configured using IceWMCP Window Options.  If the [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] values have been properly filled in, and you wish to add the program window for configuration, click the  [PH-HI]ADD[/PH-HI] button.  Otherwise, click the [PH-HI]CANCEL[/PH-HI]  button or press [PH-HI]Esc[/PH-HI]. If you chose to [PH-HI]ADD[/PH-HI] the new program window, your new program window will be automatically selected in the list of program windows on your left.
+[PHSECTION] Configuring Program Windows
+To configure a program window select the program you wish to configure from the list of [PH-HI]program windows[/PH-HI] based on its [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] value. Click [PH-HI]once[/PH-HI] on your selected program and be sure that the program is [PH-HI]highlighted[/PH-HI]. You may then configure the program's [PH-HI]window options[/PH-HI], found on the right side of the IceWMCP Window Options main window.. A program window's [PH-HI]window options[/PH-HI] consist of the following: [PH-HI]Icon, WorkSpace, Layer, Geometry, Tray Icon, Window features[/PH-HI]. When you are done configuring the program's [PH-HI]window options[/PH-HI], be sure to click the [PH-HI]Set[/PH-HI] button toward the bottom right of the IceWMCP Window Options main window.
+[PHSECTION] Window Options - Icon
+The [PH-HI]Icon:[/PH-HI] feature allows you to control which icon image is displayed in the upper left corner of your program's window.  You may select an icon image by clicking the [PH-HI]'folder'[/PH-HI] button in the [PH-HI]Icon:[/PH-HI] section.  You may then select an image from the file selection dialog window.  You may also set the program's icon by [PH-HI]dragging and dropping[/PH-HI] an icon image file onto the [PH-HI]'folder'[/PH-HI]  or the small [PH-HI]'icon window'[/PH-HI].  After you have set the icon, you should see a [PH-HI]'preview'[/PH-HI]  in the small [PH-HI]'icon window'[/PH-HI]. When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] Window Options - WorkSpace
+The [PH-HI]WorkSpace:[/PH-HI] feature allows you to control which IceWM WorkSpace the program will appear on when the program is started.  If you leave this value set to [PH-HI][DEFAULT][/PH-HI]  (or [PH-HI]blank[/PH-HI]), the program will appear on whatever IceWM WorkSpace you are using at the time. If you want the program to appear on a particular IceWM WorkSpace, type the workspace's name in the [PH-HI]WorkSpace:[/PH-HI] field.  For example, if your IceWM WorkSpaces are named "1", "2", "3", and "4", and you want the program to appear on workspace "4", type "4" in the [PH-HI]WorkSpace:[/PH-HI] field. When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] Window Options - Layer
+The [PH-HI]Layer:[/PH-HI] feature allows you to control which IceWM Layer the program will appear on when the program is started. Normally, you can leave this value set to [PH-HI]Normal[/PH-HI] if you want the program to behave much the same as any normal program. If you want your program to be started on a different IceWM Layer, select the value from the [PH-HI]Layer:[/PH-HI] list. When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] IceWM Layers
+The IceWM layers available in the [PH-HI]Layer:[/PH-HI] section have the following meanings:
+	[PH-HI]	OnTop:[/PH-HI]  the highest possible layer
+	[PH-HI]	Menu:[/PH-HI]  the same layer as the IceWM taskbar menu
+	[PH-HI]	AboveDock:[/PH-HI]  one layer above the IceWM taskbar
+	[PH-HI]	Dock:[/PH-HI]  the same layer as the IceWM taskbar
+	[PH-HI]	Normal:[/PH-HI]  the normal, default layer for most programs
+	[PH-HI]	Below:[/PH-HI]  one layer below 'Normal'
+	[PH-HI]	Desktop:[/PH-HI]  layer of the desktop wallpaper
+
+[PHSECTION] Window Options - Geometry
+The [PH-HI]Geometry:[/PH-HI] feature allows you to control the size and position of the program when the program is started. You should leave this field blank if you have no true need to control the size and position of your program's window.  Here is an example of a valid [PH-HI]Geometry:[/PH-HI] value:  [PH-HI]700x80+0+0[/PH-HI] . Using this example, the program window will be placed in the upper left corner of your screen, at coordinates (0,0). The program window will have a width of 700 pixels, and a height of 80 pixels.  When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] Window Options - Tray Icon
+The [PH-HI]Tray Icon:[/PH-HI] feature allows you to control whether or not your program will have an icon in the IceWM taskbar system tray (just below the taskbar clock). If you do not want your program to have a tray icon, select [PH-HI]No Tray Icon[/PH-HI]. If you want a tray icon to be created only when your program is minimized, select [PH-HI]When minimized[/PH-HI]. If you want your program to have a tray icon only, and not appear as a normal application on the IceWM taskbar, select [PH-HI]Tray icon only[/PH-HI].  When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] Window Options - Window features
+The [PH-HI]Window features[/PH-HI] section allows you to control which features your program's window will have when the program is started. The [PH-HI]Window features[/PH-HI] section appears just below the [PH-HI]Tray Icon:[/PH-HI] section, and consists of a series of [PH-HI]'checkmark'[/PH-HI] boxes. Here, you can have great control over the behavior of your program's window.  For example, if you want your program to run in full-screen mode when the program is started, you can check the [PH-HI]Start full-screen[/PH-HI] box. Use of the [PH-HI]Window features[/PH-HI] section is only suggested for advanced users, as misconfiguration in this section can lead to programs behaving abnormally. Most users can leave the 'default' values as they are. When you are finished, be sure to click the [PH-HI]Set[/PH-HI] button.
+[PHSECTION] Setting Program Window Options
+When you are done configuring program's [PH-HI]window options[/PH-HI], be sure to click the [PH-HI]Set[/PH-HI] button toward the bottom right of the IceWMCP Window Options main window.  You should ALWAYS click the [PH-HI]Set[/PH-HI] button BEFORE selecting a new program from the list of [PH-HI]program windows[/PH-HI].
+[PHSECTION] Deleting Program Windows
+To delete a program window (and all of its window options) select the program you wish to configure from the list of [PH-HI]program windows[/PH-HI] based on its [PH-HI]wm_class[/PH-HI] and [PH-HI]wm_name[/PH-HI] value. Click [PH-HI]once[/PH-HI] on your selected program and be sure that the program is [PH-HI]highlighted[/PH-HI]. Then, click the [PH-HI]Delete[/PH-HI] button. 
+[PHSECTION] Saving Window Options
+Before exiting the IceWMCP Window Options tool, you should be sure to save all changes by clicking either the [PH-HI]Save[/PH-HI] button.  You may also save your changes by pressing [PH-HI]Ctrl+S[/PH-HI] on your keyboard.
+[PHSECTION] Activating Window Options
+To activate your changes immediately, press the [PH-HI]Apply Changes Now[/PH-HI] button, or press [PH-HI]Ctrl+A[/PH-HI] on your keyboard. Your changes will be saved, IceWM will be quickly restarted, and your new window options will take effect immediately.
+[PHSECTION] Run As Root
+If you are the 'root' user and wish to edit the system-wide window options configuration, select [PH-HI] File -> Run As Root [/PH-HI] on the menu.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI]Ctrl+U[/PH-HI] on your keyboard. This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu or by pressing [PH-HI]Ctrl+R[/PH-HI] on your keyboard.
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu or by pressing [PH-HI]F5[/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.
+

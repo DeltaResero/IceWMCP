@@ -1,0 +1,2153 @@
+
+VERSION 3.2 - 3/05/2004 - 8/17/2004
+
+The focus of this release is Python 2.3 compatibility and support 
+for IceWM 1.2.14/1.2.15 features.
+
+
+SUMMARY OF CHANGES:
+	This release patches bugs that many users of Python 2.3 experienced 
+	while attempting to run the applications.  In addition, this release adds 
+	support for the latest changes and features of IceWM versions 
+	1.2.14 and 1.2.15.  This release also features Russian translation updates 
+	and French Help file additions.
+
+
+All applications: 
+	Patched a number of bugs that could cause IceWMCP 
+	applications to not run properly (or at all) under 
+	Python 2.3 (including the 'True'/'False' strings showing 
+	up in configuration files and 'encoding' warnings).
+	All IceWMCP applications should now properly handle 
+	boolean values on both Python 2.3 and Python 2.2.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- Added support for conversion to the newly support Xft font string formats, this is now supported by IceWM 1.2.14/1.2.15; This is used to save font is the IceWM 'preferences' file in the Xft font format needed when IceWM is compiled and run with Xft support
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.2
+	- Patched a bug that could cause unwanted "_" characters to show up in 
+	the Help window's 'Banner' when running under a non-English locale
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.2
+	- Russian Help file has been added; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.4
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+	- Russian translation updated; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- The following options are now saved in ~/.prefoverride:
+	TitleFontNameXft, MenuFontNameXft, StatusFontNameXft, 
+	QuickSwitchFontNameXft, NormalButtonFontNameXft,ActiveButtonFontNameXft,
+	NormalTaskBarFontNameXft, ActiveTaskBarFontNameXft, ToolButtonFontNameXft,
+	NormalWorkspaceFontNameXft, ActiveWorkspaceFontNameXft,
+	MinimizedWindowFontNameXft,  ListBoxFontNameXft, ToolTipFontNameXft,
+	ClockFontNameXft, ApmFontNameXft, InputFontNameXft, LabelFontNameXft
+	(This means that themes cannot tamper with these important settings; This is 
+	supported in IceWM version 1.2.14/1.2.15;  This effectively stops themes from 
+	changing things like your fonts and workspace names)
+	- Added support for the following new configurable IceWM options:
+	'RolloverButtonsSupported', 'ColorCPUStatusIoWait','ColorCPUStatusSoftIrq',
+	'NestedThemeMenuMinNumber','TaskBarCPUDelay','TaskBarNetSamples',
+	'TaskBarNetDelay','MenuIconSize', 'SmallIconSize','LargeIconSize','HugeIconSize',
+	'KeyWinArrangeN','KeyWinArrangeNE','KeyWinArrangeE',	
+	'KeyWinArrangeSE', 'KeyWinArrangeS','KeyWinArrangeSW','KeyWinArrangeW',
+	'KeyWinArrangeNW','KeyWinArrangeC','KeySysShowDesktop','KeyWinMaximizeHoriz'
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.2
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)]
+	- Russian translation updated; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+	- Added support for the following configurable options (including 'rollover' images):
+	'titleIJ.xpm','titleIQ.xpm','titleAJ.xpm','titleAQ.xpm','hideA.xpm','hideI.xpm',
+	'hideO.xpm','rollupA.xpm', 'rollupI.xpm','rollupO.xpm','rolldownA.xpm','rolldownI.xpm',
+	'rolldownO.xpm','closeO.xpm','maximizeO.xpm','menuButtonO.xpm',
+	'restoreO.xpm','minimizeO.xpm','frameAT.xpm','frameATL.xpm',
+	'frameATR.xpm','frameAL.xpm','frameAR.xpm','frameAB.xpm',
+	'frameABR.xpm','frameABL.xpm','frameIT.xpm','frameITL.xpm',
+	'frameITR.xpm','frameIL.xpm','frameIR.xpm','frameIB.xpm',
+	'frameIBR.xpm','frameIBL.xpm','dframeAT.xpm','dframeATL.xpm',
+	'dframeATR.xpm','dframeAL.xpm','dframeAR.xpm','dframeAB.xpm',
+	'dframeABR.xpm','dframeABL.xpm','dframeIT.xpm','dframeITL.xpm',
+	'dframeITR.xpm','dframeIL.xpm','dframeIR.xpm','dframeIB.xpm',
+	'dframeIBR.xpm','dframeIBL.xpm','RolloverButtonsSupported',
+	'ColorCPUStatusIoWait', 'ColorCPUStatusSoftIrq','TaskBarNetSamples',
+	'MenuIconSize',	'SmallIconSize','LargeIconSize','HugeIconSize',
+	'taskbar/desktop.xpm'
+	- Removed the following configurable options:
+	TaskBarDoubleHeight, MenuMaximalWidth, maximizeIB.xpm, maximizeAB.xpm
+	( It's really not nice for themes to change the size of somebody's taskbar!)
+	- Moved the following configurable options from the 'Windows' section 
+	to the 'Title Bar' section:
+	'titleIR.xpm','closeI.xpm','titleAR.xpm','titleIL.xpm','maximizeI.xpm',
+	'menuButtonA.xpm','menuButtonI.xpm','restoreI.xpm','minimizeI.xpm',
+	'minimizeA.xpm','titleAB.xpm','restoreA.xpm','titleAT.xpm','titleAS.xpm',
+	'titleIB.xpm','closeA.xpm','titleIT.xpm','titleIS.xpm'
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.2
+	- French Help file has been added; Thanks to Régis Décamps 
+	(decamps ['at'] users.sf.net) and Yves Perraudin (yploglib ['at'] free.fr)
+
+
+IceWMCP-TrayIcon:
+	- Fixed a compile-time warning about a 'gdk_pixbuf_new_from_xpm_data' call
+	- Russian translation added; Thanks to Vasya Leushin (basileus ['at'] newmail.ru)
+
+
+
+
+
+
+_________________________________________________
+
+VERSION 3.1 - 12/19/2003 - 12/24/2003
+
+The focus of this release is bug fixes, installation improvements, and 
+internationalization improvements.
+
+
+SUMMARY OF CHANGES:
+	A partial French translation has been added. [Big thanks to Yves Perraudin 
+	(yploglib ['at'] free.fr)].  A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5. Major 
+	bugs in the PangoXLFD module which could lead to complete application 
+	crashes have been fixed.  Major features have been added to IceMe, and 
+	a serious bug has been fixed.  Several bugs have been fixed within other 
+	applications, including a bug associated with the launching of external 
+	processes.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- Major bug fix: Fixed application crashes due to font 'fallback' errors when an invalid font was supplied by ensuring that all font sizes are greater 0 and less than 101; applications like IcePref2 and IcePref2-TD should no longer crash upon selecting a new font if the current font in the text entry is invalid
+	- Fixed possible crash or application freeze if a ridiculously large font was loaded by restricting the maximum font size to 100pts
+	- Improved font conversions between Pango descriptions and XLFD strings
+	- Added Pango font description validation method 'get_valid_pango_font_desc' which will return a default fallback font description string of "Arial 10" if the suggested Pango font description appears to be invalid; fixes several possible application crashes in IcePref2 and IcePref2-TD
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr)
+	for the software update checker; status: complete
+	- Added font and charset settings for the French language
+	- Bug Fix: Added common variable 'BASH_SHELL_EXEC' and Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and external applications failing to launch properly if the user was not using Bash as their default shell; added common method 'fork_process' to use common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003; this method is now used by most applications when they need to fork a process to help ensure that the process is launched properly using a Bash shell
+	- Bug Fix: Added error-catching and checking that 'ICEWMCP_LAST_FILE' != None in the method  'SELECT_A_FILE' to fix BUG NUMBER: 6441772, Reported by: Anonymous User, At: Tue Sep 30 20:40:01 2003, regarding the File Selection dialog not showing if the value of ICEWMCP_LAST_FILE==None; the bug had been spotted when the user tried to open a menu file in IceMe
+	- Code cleanup and Internationalization improvement: method 'getLocaleDir' has been rewritten to be cleaner and now probes environment variables 'LOCALE', 'LC_ALL' and 'LC_MESSAGES' for language settings.  This should aid some systems in the proper loading of locale-specific help files and control panel applets.   Environment variables are now probed in the following order: 'LANG', 'LANGUAGE', 'LC_ALL', 'LOCALE', 'LC_MESSAGES'
+	- Minor GUI improvements added to the 'SELECT_A_FILE' file selection dialog: tooltips and gtk stock icons added to the OK and Cancel buttons
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: pretty complete
+	- Bug Fix: Changed launching of control panel applets to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets failing to launch properly if the user was not using Bash as their default shell; all applets are now forced to be launched with the needed Bash/sh shell even if the user is using some other shell.
+
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: complete
+	- A Help file in Spanish is now available (English version already exists)
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 3.1
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: about 75% complete
+	- GUI Fix: The textbox for the Installation/Setup window now uses set_wrap_mode(WRAP_WORD) to eliminate the ugly letter-by-letter line wraps
+	- More user interface improvements: improved spacing between the 'Start IceSound Server' and 'Stop IceSound Server' buttons when the window is resized or maximized, and improved general look of the window when it is resized. The sound theme selection window is now larger, to take advantage of the unused spaced that was available.
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves starting/stopping of the IceSound server when applying sound themes or simply enabling/disabling the server; This also improves server 'refreshing' when changing sounds in the theme and improves launching of external .wav sound editors. This also improves stopping of sounds currently playing when played from within IceSoundManager using the external .wav sound player.
+	- Miscellaneous code cleanups
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.3
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: about 50% complete
+	- Major font loading bug fix: Major bugs in the PangoXLFD module which could lead to complete application crashes have been fixed; Pango font description validation method 'get_valid_pango_font_desc' from module pangoxlfd.py is now called when selecting a font to ensure safer fallbacks if necessary instead of complete application crashes
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves the launching of external applications such as IceMe, IcePref2, IceWMCP, and IceSoundManager; also, it improves the restarting of IceWM and icewmbg
+	- Bug fix: Fixed a bug where correct colors samples were not always shown when default values were reset, a new preferences file was loaded, or "Run As Root" was toggled unless the color selection dialog was opened for each color; added overridden method 'set_value' to the IceColor widget class.
+	- Bug Fix / Correction: Mis-labeled property 'ColorActiveWorkspaceButtonText' in the 'Workspace' category  has had its description changed from 'Color of inactive workspace button text' to 'Color of active workspace button text' .  (Translators: Please update your language catalogs!)  The Spanish and French translation catalogs have already been updated accordingly.
+	- Fixed: all 'icepref-*' shell startup scripts now force the use of the needed /bin/bash shell
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.1
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: about 50% complete
+	- Major font loading bug fix: Major bugs in the PangoXLFD module which could lead to complete application crashes have been fixed; Pango font description validation method 'get_valid_pango_font_desc' from module pangoxlfd.py is now called when selecting a font to ensure safer fallbacks if necessary instead of complete application crashes
+	- Added support for the 'menusel.xpm' image under the category "Menus"
+	- Added support for the 'icewm.xpm' image under the category "Taskbar"  (either icewm.xpm or linux.xpm can now be used as the taskbar's 'Start' button pixmap)
+	- Bug fix: Fixed a bug where correct colors samples were not shown when a new theme was opened unless the color selection dialog was opened for each color; added overridden method 'set_value' to the IceColor widget class.
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves the launching of external applications such as IceMe, IcePref2, IceWMCP, IceSoundManager, and Gimp (for editing images); also, it improves the restarting of IceWM
+	- Bug Fix / Correction: Mis-labeled property 'ColorActiveWorkspaceButtonText' in the 'Workspace' category  has had its description changed from 'Color of inactive workspace button text' to 'Color of active workspace button text' .  (Translators: Please update your language catalogs!)  The Spanish and French translation catalogs have already been updated accordingly.
+	The default list of Gradients now includes the following pixmaps: "menubg.xpm menusel.xpm switchbg.xpm taskbarbg.xpm dialogbg.xpm taskbuttonbg.xpm tasbuttonactive.xpm taskbuttonminimized.xpm toolbuttonbg.xpm workspacebuttonbg.xpm workspacebuttonactive.xpm"  (since most people will need these pixmaps to 'stretch' gradiently rather than 'tile'); this should aid in the development of smoother looking themes for most people.
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 3.1
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: about 98% complete
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves setting the clock and time zone using forked 'date' processes and improves restarting IceWM when necessary to apply time zone changes.
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: about 99% complete
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves the launching of Gimp for editing images and improves the restarting of icewmbg (and IceWM if necessary) for setting the changed background.
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: complete
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves the restarting of IceWM for updating window options.
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: partially complete (IcePref2 translations needed)
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves setting of the mouse cursor speed using forked 'xset' processes, and improves restarting of IceWM when necessary to apply mouse cursor changes and mouse behavior setting changes.
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: partially complete (IcePref2 translations needed)
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves setting of the keyboard beep and repetition using forked 'xset' processes, and improves restarting of IceWM when necessary to apply shortcut key settings.
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.1
+	- A French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: 98% complete  (2 new translation strings for Gnome menus needed)
+	- Major Feature Enhancement: Added support for Gnome-1 and Gnome-2 menus using the 'icewm-menu-gnome1' and 'icewm-menu-gnome2' menu embedding apps that come with IceWM. 	(Fixes Bug Report/Feature Request #488846, Received from: klaumikli ['at'] gmx.de, at: Fri Oct 17 14:46:01 2003, regarding IceMe mishandling embedded Gnome menus in the IceWM menu file)  Level of support: proper parsing of 'menuprog' menu items using embedded Gnome menus when menu files are loaded, proper saving of embedded Gnome menus, ability to insert new Gnome-1 and Gnome-2 menus; cutting, copying, pasting, and moving of embedded Gnome menus is also supported;  2 new Gnome icons added to the toolbar to support this features.  NOTE: You may edit the command line that triggers the embedded Gnome menu, but this does NOT mean IceMe gives you the ability to edit Gnome menus  (IceMe isn't a Gnome app!  Use gmenu or a similar app to edit the Gnome menu entries)
+	- Major Feature Enhancement:  IceMe can now handle editing the BEHAVIOR of the IceWM menu - an embedded IcePref2 'menu' tab has been added to the interface; the first tab is, of course, the menu editor for adding/changing/removing menu entries; the 2nd tab allows you to manage such menu behavior as fonts, colors, auto-reloading of menu files, and what stuff built-in to IceWM will be shown on your IceWM menu.  The new interface is a 'Notebook' with 2 tabs.  I should have done this a while back, since it only make sense to be able to edit both the menu and the menu's behavior in the same application.  (The ability to launch the full version of IcePref2 still remains on the menu of course.)
+	- Major Feature Enhancement: Total re-write and improvement of the "Open IceWM Menu File" logic and functionality; before, selecting a menu file would only open a file named 'menu' in the directory selected;  The old file selection dialog has been replaced with a new dialog that allows you to truly select any combination of 'menu', 'programs', and 'toolbar' files you have access to on your file system, allowing for endless possibilities in terms of creating sets of menu configuration files.  You can also even name non-existent files in the dialog for the purpose of creating new menu, programs, and toolbar files;  also  IceMe will try to open ANY non-directory file  (for example, you can now open as a menu file a file named 'my_menu-backup'); since IceMe will try to open any file you give it, you should be careful what you feed it (IceMe has great error-catching but dont get ridiculous and start trying to open binaries, etc.);  You should use this feature with care, and not use it at all if you don't know what you are doing.  The following new methods were added to make this new feature possible:  open_menu_selection_dialog, menu_sel_file_box, menu_sel_file_box_cb, menu_selection_dialog_close, menu_selection_dialog_ok, diable_file_overrides;  The ability to toggle 'Run As Root' and non-root is still available and remains the safest way for handling the main configurations.
+	- Major Bug Fix:  Fixed problems with cutting/copying/pasting text using ctrl+x/ctrl+c/ctrl+v in text entry fields like the "Icon:" and "Command:" fields.  (The problem was the shortcut keys for cutting/copying/pasting text were being shared with the shortcut keys for cutting/copying/pasting menu items.) ; Cutting/Copying/Pasting text in the text entry fields now works again using the shortcut keys ctrl+x/ctrl+c/ctrl+v, respectively; As a result, the shortcut keys for cutting/copying/pasting menu items have been changed (see below) 
+	- Shortcut key changes: The shortcut key for Cutting a menu item is now Shift+Ctrl+X; The shortcut key for Pasting a menu item is now Shift+Ctrl+V; The shortcut key for Copying a menu item is now Shift+Ctrl+C;  These changes were necessary to fix a bug that prevented cutting/copying/pasting of text in text entry fields. 
+	- Bug Fix: Changed launching of "IceWM Preferences" (IcePref2) menu item to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.
+	- Added new method 'apply_icepref_settings' to be used by the embedded IcePref-2 'menu behavior' tab; method uses common method 'fork_process' to restart IceWM to apply any changes made to the menu behavior
+	- Feature Enhancement: Added drag-and-drop support for commands:  Files can now be dragged and dropped onto the "Command:" entry or its icon button to set the command (useful for dragging from file managers)
+	- Drag-and-drop bug fixes: eliminated the 'g-warnings' that sometimes showed up on the console when dragging and dropping an icon onto the Icon field or button; dragging-and-dropping is now properly disabled for 'insensitive' menu items such as the menu tree's root and menu separators  ( no dragging of icons or commands onto these, no dragging of commands onto folders, etc.);  this is a safety improvement that prevents the possible creation of a corrupt menu when the user inadvertently drags an icon or command where it doesn't belong.
+	- The English and Spanish versions of the Help files have been updated to accommodate the latest changes to the software.
+	- Removed unnecessary methods openCustomDir, openCustomDirCB  (they have been replaced with better functionality)
+	- 2 new translatable strings added to the gettext translation catalog to support the new Gnome menu features  (Translators: Please update your language translations!) ; Spanish translations have already been added and taken care of.
+	- Improved error-catching when opening and reading menu files in the MenuParser.py module
+	- MenuParser.py module: 'menuprog' entries in menu files are now treated as 'prog' items appropriately
+	- A few corrections to the Spanish translation catalog
+	- Major GUI change: now using a 'notebook' interface (see above)
+	- Filling a void: The empty space that existed underneath the menu entry editor on the right side now has a small IceWMCP logo in it, so things don't look so barren
+	- Various GUI touch-ups
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.4-beta
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: pretty complete
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.  This improves ejecting of floppy, CD-ROM, SCSI, and tape devices using forked 'eject' processes.
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.5
+	- Major bug fix for stand-alone installation packages: A major installation bug has been fixed by 
+	upgrading the installer from PyInstallShield 0.4 to PyInstallShield 0.5.
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: complete
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: complete
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: pretty complete
+
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Version is now 3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: complete
+	- The bug reporter now also collects info on the following environment variables useful for trouble shooting bug reports: 'LOCALE', 'SHELL', 'TERM', 'CPU'
+	The bug reporter now also collects info on the current working directory from which the application is being run, using os.getcwd()
+
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.3.1
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: pretty complete
+	- Code cleanup: Removed unused method 'runPyPrint'
+	- Bug Fix: Changed launching of external applications to use common method 'fork_process' from icewmcp_common and common variable 'BASH_SHELL_EXEC' to implement Bash shell location probing to fix BUG NUMBER 1523884 reported by david ['-at-'] jetnet.co.uk on Fri Oct 31 23:47:12 2003 about applets and applications failing to launch if the user was not using Bash as their shell.
+
+
+IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
+	- No changes
+
+icepref_search.py:
+	- A (partial) French translation has been added by Yves Perraudin (yploglib ['at'] free.fr);
+	status: not complete or really started
+
+
+The Installer (PyInstallShield):
+	- Upgraded the installer from PyInstallShield 0.4 to PyInstallShield 0.5, which includes the following changes:
+		- Version is now 0.5
+		- Added a 'coding' comment to the second line of the source to help 
+		fix deprecation 'no encoding specified' warnings  (This is needed now
+		that Spanish translations are stored internally)
+		- Removed unnecessary call to 'import GTK' which stopped the 
+		install process from starting on many systems; this is a MAJOR Bug Fix
+		- Set the wrap_mode for the event logger text area at the bottom of 
+		the screen to WRAP_WORD, instead of '1'
+		- Safety improvement: added a list of 'sacred directories' on Linux that 
+		will never be deleted during un-installation under any circumstances
+		- Improved un-installation by using os.removedirs() to help insure 
+		complete recursive deletion of directories; fixes a bug where empty 
+		directories were sometimes left on the system
+		- Important: Scripts INSTALL-ME.sh and UNINSTALL-ME.sh, and all startup scripts 
+		created on Linux for installed executables now force the use of Bash as 
+		the shell by referencing '#! /bin/bash' on the first line of all scripts.  
+		Developers using PyInstallShield should make an necessary adjustments 
+		if they rely on the presense of other shells.
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- See if we can get help from other users to finish the French translation Yves Perraudin started; also, can we get somebody to do a set of French applets and Help files?
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+
+
+
+_________________________________________________
+
+VERSION 3.0 - 10/15/2003 - 12/12/2003
+
+The focus of this release is to provide an official PyGtk-2/Gtk-2 port of all applications
+and to bring IceWMCP up-to-date with IceWM version 1.2.13.
+
+
+SUMMARY OF CHANGES:
+	All applications in the control panel now use the PyGtk-2/Gtk-2 user
+	interface libraries.  The new PyGtk-2 port includes mostly restructured 
+	code from version 2.5, but also includes code snippets and suggestions 
+	from David Moore's donated, experimental PyGtk-2 port for IceWMCP 
+	version 2.3.  Tarball installation packages are now using the new version 
+	0.4 of PyInstallShield (recently ported to PyGtk-2). The GdkImlib image 
+	loading module is no longer be used, and all image loading is being 
+	down through gtk.Image and gdkpixbuf. Numerous code cleanups have
+	been made. All commonly used libraries such as gtk, os, and sys are now 
+	imported throught icewmcp_common for most modules. IceWMCP is now 
+	compatibile with IceWM version 1.2.13.
+
+
+PangoXLFD        (pangoxlfd.py):
+	- New internal, non-GUI module added to handle the new Gtk-2 Font Selection Dialog's 'font description' format. 	Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs.  This module serves as a bridge between XLFD font descriptions and Pango's rebellion against an established standard.
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- All applications now import module 'pygtk' and call 'pygtk.require("2.0")
+	- David Moore (djm6202['at']yahoo.co.nz) has been officially added to the credits for his work creating the first prototype of a PyGtk-2 port for IceWMCP, from which many of the code snippets and ideas for the official PyGtk-2 port originate.
+	- Several methods have been added, removed, and redesigned to accommodate PyGtk-2.
+	- On Vasya's [Vasiliy Leushin (basileus['at']newmail.ru) ] suggestion, the default fonts for Russian are now Arial, instead of Helvetica.  (If he says Arial was working on his system, I'll believe him.)
+	- The freely available CJKCodecs for Python will now be used for all unicode conversions for Japanese, Chinese, and Korean languages.  Currently this only affects Traditional Chinese (zh_tw).  Traditional Chinese users will need to download and install the CJKCodecs if they do not already have them: http://cjkpython.berlios.de/ , since Python does not appear to natively support charsets lil Big-5, etc.
+	- Added a built-in default pixmap 'icon_icewmcp' and methods 'set_basic_window_icon' and  'set_special_window_icon' used by all applications for setting default window icons, which IceWM of course allows you to change as you please
+	- The background color of all Help windows is now forced to white to ensure all help colors are viewable
+	- New shared color 'COL_WHITE" added
+	- No longer using a hidden window for shared color allocation (using GDK's builtin rgb colormap object)
+	- Methods 'getIconButton', 'getPixmapVBox', and 'getPixmapButton' have been added and transferred from Ice Sound Manager for shared created of icon buttons and icon+text buttons (used by almost all of the applications now)
+	- The common Help interface now uses stock pixmaps for the help 'icon' instead of the old external pixmap
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added 'File' -> 'Help' to the menu
+	- An English language help file has been added
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The GUI has been completely redesigned to save maximum screen space (a HUGE screen space saver)
+	- GUI improvement: Gtk stock icons have been added to any buttons, any existing button icons have been replaced with stock icons
+	- Code consolidation: All help windows how use the common Help interface from icewmcp_common
+	- The help window now uses the Ice Sound Manager logo instead of the generic IceWMCP logo
+	- Code cleanup: The class 'icehelp' has been removed (replaced with common help interface)
+	- A button providing access to the main help file is now on the main GUI interface
+	- Methods 'getIconButton', 'getPixmapVBox', and 'getPixmapButton' have been moved to icewmcp_common.py from Ice Sound Manager for shared created of icon buttons and icon+text buttons (used by almost all of the applications now)
+	- The application is now only using 2 external pixmaps
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.2
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- IcePref2 is now compatible with IceWM 1.2.13, with support for the following new options added: DesktopBackgroundScaled, TaskBarShowShowDesktopButton, TaskBarWorkspacesLeft, DoubleBuffer
+	- Tearoff menus have been disabled due to a seg-fault I kept experiencing in PyGtk 2.0.0.  All of my apps were seg-faulting when Tearoff menus were clicked.  I don't know if this is a bug in PyGtk-2, or what, but I refuse to leave a feature in that's causing a known seg-fault.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The 'sample' text now has line breaks
+	- Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs: The Font selection widgets now rely on the new module 'pangoxlfd'
+	- Since Gtk-2 font selection dialogs are no longer returning and accepting XLFD-style font strings like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*', and Gtk-2 leaves you with NO way of getting such strings from a font dialog, all we can do is hope the home-spun conversion library 'pangoxlfd' does its job; however, this may create some bugs in font selection for some users. Sorry.  I tried putting Pango-style 'font descriptions' like "Arial 12" in the IceWM preferences file: It does not work!  So, we have to use XLFD font descriptions.
+	- Feature enhancement: When IcePref2 starts or a new preferences file is opened, the currently configured IceWM theme is now actually selected and scrolled to in the Themes section.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- The text entry in the Font selection widgets now only updates the sample text for the font after the Enter/Return key is pressed, instead of updating the font everytime a keystroke was made in the text entry field.
+	- The IcePref2 logo is now slightly smaller
+	- Improved scaling of the sample wallpaper image in the Desktop section
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- TODO: Merge in IceWM changes up to IceWM 1.2.13 (1.2.14pre is not really stable)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- 4 new translatable strings has been added to the gettext catalog; 4 new Spanish translations added
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- IcePref2-ThemeDesigner is now compatible with IceWM 1.2.13, with support for the following new option added: DesktopBackgroundScaled
+	- Tearoff menus have been disabled due to a seg-fault I kept experiencing in PyGtk 2.0.0.  All of my apps were seg-faulting when Tearoff menus were clicked.  I don't know if this is a bug in PyGtk-2, or what, but I refuse to leave a feature in that's causing a known seg-fault.
+	- The 'sample' text now has line breaks
+	- Some tricks had to be done to convert to/from the XLFD font strings needed by IceWM and the new "font description" format used by Pango and Gtk-2 font selection dialogs: The Font selection widgets now rely on the new module 'pangoxlfd'
+	- Since Gtk-2 font selection dialogs are no longer returning and accepting XLFD-style font strings like '-adobe-courier-medium-r-*-*-*-140-*-*-*-*-*-*', and Gtk-2 leaves you with NO way of getting such strings from a font dialog, all we can do is hope the home-spun conversion library 'pangoxlfd' does its job; however, this may create some bugs in font selection for some users. Sorry.  I tried putting Pango-style 'font descriptions' like "Arial 12" in the IceWM preferences file: It does not work!  So, we have to use XLFD font descriptions.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- The IcePref2 logo is now slightly smaller
+	- The text entry in the Font selection widgets now only updates the sample text for the font after the Enter/Return key is pressed, instead of updating the font everytime a keystroke was made in the text entry field.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The use of Gtk 'timeouts' is now more memory friendly, updating only things that need to be updated.
+	- The time zone list now only shows half of the list of available time zones at a time: Up/Down scroll arrows now appear next to the drop-down list of time zones allowing you to show the first half or the last half. Since many systems have upwards of 2,000 time zones available on the system, we don't want to overwhelm the GtkCombo widget by trying to display all at once.  Users should notice a smoother scrolling, faster drop-down list of time zones
+	- Two new translatable strings added; 2 new Spanish translations added.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application is now compatible with IceWM 1.2.13, with support for the following new option added: DesktopBackgroundScaled
+	- Image designated as 'centered' are now actually centered in the preview window
+	- Support for 'scaled' images has been added, and such images are now shown as 'scaled' in the preview window
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+	- Fixed a bug where clicking on a color selection button could result in an uncaught TraceBack error if the color specified in the text entry was not a valid color; The color selection dialog should now always open regardless of what has been typed in the text entry
+	- Feature enhancement: Now your selected background color can be previewed underneath whatever wallpaper you've selected on the IceWMCP-Wallpaper's 'preview monitor'; this is especially helpful if the wallpaper you are using has transparency
+	- User interface improvements: The 'directory' field has been moved up to the right of the 'Color' field, resulting in alot of saved screen space.
+	- Keyboard support improvements: Typing a color in the 'Color' field and pressing Enter now updates the selected color; Typing a directory in the 'Directory' field and pressing Enter now updates the directory being browsed
+	- Improvements when switching between normal mode and 'Run as Root': appropriate wallpapers, colors, and directories are loaded
+	- The width of the image list has been increased to aid in easier reading of long file names
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- When the application starts up, your selected wallpaper is now correctly selected and scrolled to in the list  (not sure what took me so long to remember to fix this)	
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+	- Added method 'parse_icewm_version': We can now set the background without restarting IceWM for   versions of IceWM of 1.2.11 and above
+	- 1 new translatable string has been added to the gettext catalog; 1 new Spanish translation added
+	- The English and Spanish language help files have been updated to include information about scaled images
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- Improvements when switching between normal mode and 'Run as Root': appropriate 'winoptions' file is now actually loaded
+	- More efficient image loading and scaling, resulting in noticeable speed improvements
+	- Usability fix: Switching between normal mode and "Run as Root' or opening a new 'winoptions' file clears the settings for the last select window option and automatically scrolls to and selects the first window option in the newly opened file
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceMe  (IceMe.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The 'Run As Root' CheckButton on the 'File' menu has been replaced with an appropriate 'CheckMenuItem' object
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- The icon selection dialog and the menu preview window now have wm_class and wm_name values and offer a built-in window icons (which, of course, can be changed in IceWM)
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Fixed a possible extra splash window that could show up but had no business showing up
+	- Fixed the About box (an important translated string was not showing up)
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
+	- Icons in IceMe and IceMe itself appear to be loading slightly faster; probably due to improvements in the GdkPixbuf code-set: all icons are now being loaded through GdkPixbuf/gtk.Image()
+	- GUI improvement: Gtk stock icons have been added to any buttons on the Icon Selection box
+	- The Up/Down arrows have been changed to something a little more normal looking
+	- Stock icons not added to the main GUI, I like the look/layout of IceMe as-is
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.3-beta
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Major bug fix: Several possible buffer overflows have been patched in the libicewmcphw.so library, eliminating possible seg-faults
+	- Major bug fix: Probing of PS/2 mice have been rewritten to avoid reading/writing to the /dev/psaux device in the libicewmcphw.so library - This should eliminate problems where a hardware probe resulted in the mouse behaving strangely or not being usable at all; however, the result is less information is collected about PS/2 mouse devices
+	- Several 'device categorization' improvements have been made
+	- /proc/filesystems and /proc/apm are now probed
+	- GUI improvement: Specialized fonts for the CTree have been removed
+	- GUI improvement: The window now opens centered on the screen
+	- GUI improvement: Clicking a 'section' instead of an actual hardware item now shows a nicely colored screen with the section's icon
+	- GUI improvement: Clicking a hardware item now forces the information window to a white background and black text to guarantee readability
+	- Fonts used for the 'information' window on the right come from the same fonts as the Help fonts in icewmcp_common
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.4
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Startup speed improvement: No longer attempting to load PCMCIA card facts if no cards are detected on the computer
+	- If no PC Cards are detected on the computer, a warning is also displayed in the first card slot tab as well as in a message dialog
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- The window's size is now set *before* it is shown, for smoother loading of the Run dialog and to make sure the window doesn't appear to be jumping around right after it has been opened
+	- The tooltips now rely on the common 'TIPS' object from icewmcp_common, instead of creating a new Tooltips() object
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Bug fix: An uncaught TraceBack error which could occur when adjusting the 'columns' Spin Button is now being caught
+	- The icon selection dialog's navigation buttons now have tooltips
+	- Memory usage improvement: immediately deletion from memory of temporary, unused pixmaps in the icon selection dialog window
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Version is now 3.0
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.3
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- GUI improvement: The column widths in the list of print jobs have been readjusted for better usability
+	- GUI improvement: The column labels now use Label widgets instead of Buttons, creating better clicking and resizing abilities
+	- GUI improvement: 2 pixmaps that were not properly loading are now loading
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- Application has now been assigned WM_CLASS and WM_NAME values
+	- GUI improvement: Gtk stock icons have been added to any buttons, any existing button icons have been changed to stock icons
+	- The application is now only using 1 external pixmap
+
+IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
+	- The application has been ported to PyGtk-2/Gtk-2.
+	- Okay, so I caved: The dialogs are now using Gtk-2 stock icons.  I didn't like the idea of using stock icons at first because I remembered those gross looking icons from Gtk-1, but after looking at the Gtk-2 stock icons, they are so bad.  So, this will help reduce the package sizes by a hair and save me the trouble of maintaining XPM structs in the code.
+	- The windows now offer built-in window icons (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+icepref_search.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+	- The application now offers a built-in window icon (which, of course, can be changed in IceWM)
+	- GUI improvement: Gtk stock icons have been added to any buttons
+
+icewmcp_dnd.py:
+	- The library has been ported to PyGtk-2/Gtk-2.
+	- Drag-and-drop color support no longer requires the hidden ColorSelection window which had been used for so long; DND color support now handles 'application/x-color' items using the Python 'binascii' module and some other tricks
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest? (I know, wishful thinking)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+
+
+
+
+_________________________________________________
+
+VERSION 2.5 - 8/15/2003 - 9/2/2003
+
+The focus of this release IceWM 1.2.10 and 1.2.11 compatibility and bug fixes.
+
+
+SUMMARY OF CHANGES:
+	A major GUI bug has been fixed in IceSoundManager.
+	IceSoundManager now produces command lines for executing 'icesound' which are compatible with the command line format of IceWM 1.2.10/1.2.11.
+	IcePref2 is now compatible with IceWM 1.2.10/1.2.11 and set themes and background images in a manner compatible with IceWM 1.2.10/1.2.11.
+	IceWMCP-Wallpaper now sets background images in a manner compatible with IceWM 1.2.10/1.2.11
+	Window options support has been updated to accomodate IceWM 1.2.11.
+	A new control panel applet has been added for managing EnergyStar features.
+	GUI bugs involving the 'Run As Root' option on the menu have been fixed.
+
+
+
+IceWMCP-EnergyStar         (IceWMCPEnergyStar.py):
+	- New control panel applet added: Small applet which serves as a frontend to 'xset' for managing EnergyStar/DPMS energy-saving features (this had been on the 'TODO' list for a while)
+	- Several gettext translation strings added to support the new applet; Spanish translations additions to support the new applet.
+	- Russian translation additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 2.5
+	- Spanish language translation catalog cleanups: a couple of duplicates removed
+	- Russian translation updates and additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.5
+	- Added new method 'get_pidof' for checking for the existence of a process ID for a given executable: used by IceSoundManger, IceWMCP-Wallpaper, and IcePref2
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.5
+	- Major user interface bug fix: All blocking/unblocking of signals on the text entry in the sound event selection combo has been removed, as this created a bug where the user interface would go 'blank' after a few selections.  Signals had been used to update the .wav sound associated with the selected sound event.  However, the signals have now been replaced with calls to gtk.timeout, which provides the exact functionality without the user interface appearing to go 'blank' or freeze after a few selections from the sound events list.
+	- Code cleanup: Removed the following methods and variables: 'blockSignals', 'unblockSignals', 'event_sig'  (for the purpose of getting rid of the buggy signal functionality)
+	- Added the following methods and variables: 'last_to' and 'showSoundEventTO'  (for the purpose of implementing the new gtk.timeout functionality for updating the .wav associated with the selected sound event)
+	- IceSoundManager now produces command lines that use the '--' option format which now seems to be required of 'icesound' as of IceWM 1.2.10, instead of the old singl '-' format.  The new command lines using the '--' format are still compatible with 'icesound' from IceWM 1.2.9 and below, but makes IceSoundManager also compatible with the new IceWM 1.2.10.
+	- Code cleanup/consolidation: The method 'serverIsRunning' has been changed to use the more efficient, common method 'get_pidof' from 'icewmcp_common.py' for checking for an existing process id for icesound.
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.1
+	- IcePref2 is now compatible with IceWM 1.2.10/1.2.11
+	- Clicking the 'Apply' button now also launches 'icewmbg' (if it's not already running)  in addition to 'killall -HUP icewm' to ensure that any new background images/colors are set (this appears to be needed by the new IceWM 1.2.10/1.2.11)  This should not create any incompatibilities with earlier versions of IceWM 1.2.x,  This affects the 'Desktop' tab of IcePref2 where the background image and color are selected.
+	- IceWM 1.2.10/1.2.11 theme compatibility added:  IcePref2 now writes the selected theme in the file ~/.icewm/theme in the format 'Theme=/some/dir/someTheme/default.theme' now required by IceWM 1.2.10/1.2.11 for saving theme preferences.  This affects the 'Theme' tab of IcePref2 where themes are selected. This should not create any incompatibilities with earlier versions of IceWM 1.2.x.
+	- Added support for the following new IceWM preference options: 'MoveSizeInterior', 'MoveSizeDimensionLines', 'MoveSizeGaugeLines', 'MoveSizeDimensionLabels', 'MoveSizeGeometryLabels', 'FocusRequestFlashTime', 'moveSizeFontName'
+	- Fix: The 'XineramaPrimaryScreen' property now supports a range of 1-63 instead of 1-36
+	- Usability and Error-reporting improvement: Warnings about invalid properties in 'corrupt preferences' files are now shown in a scrollable popup window instead of on the console; all messages are now shown at once instead of each message being shown one at a time, this should speed up initial startup time in cases where the default preferences file in ~/.icewm/preferences contains lots of corrupt or 'invalid'/unknown IceWM options
+	- 7 Gettext translation string additions; Spanish language translation additions and a couple corrections
+	- Spanish language translation catalog cleanups: a couple of duplicates removed
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+	- Russian translation updates and additions: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.5
+	- IceWMCP-Wallpaper is now compatible with IceWM 1.2.10/1.2.11
+	- Clicking the 'Apply' button now also launches 'icewmbg'  (if it's not already running) in addition to 'killall -HUP icewm' to ensure that any new background images/colors are set (this appears to be needed by the new IceWM 1.2.10/1.2.11)  This should not create any incompatibilities with earlier versions of IceWM 1.2.x
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.5
+	- Now compatible with IceWM 1.2.10/1.2.11
+	- Added support for new IceWM 1.2.11 window option 'forcedClose' to disable displaying of a confirmation dialog when closing certain special windows
+	- Usability improvement: Tooltips for the window options now show the real IceWM property name for the option in parenthesis, for those that wish to keep track of exactly which IceWM window option they are tinkering with
+	- One gettext translation string added for 'forcedClose'; Spanish language translation addition.
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+
+IceMe  (IceMe.py):
+	- Version is now 2.5
+	- GUI Bug Fix: Fixed menu bug involving the 'Run As Root' menu checkbox under 'File'; Sometimes the menu would  'stick' and hold the focus after toggling "Run As Root" on/off; This bug has been fixed by replacing menu calls to 'popdown()' with 'deactivate()'.	
+	- Russian language translation cleanups: removed duplicate translations from gettext catalog
+
+
+
+TODO     (My personal reminders - pay no attention to the woman behind the curtain):  
+	- Start the offical Gtk-2/PyGtk-2 port based on the generously donated, unofficial port written against version 2.3...target release date of the first official Gtk-2 port is about  2 months (less if possible); the port will be largely based on code donated by David, brining it up-to-date with version 2.5 and adding bug fixes, etc. as necessary
+	- It seems Petteri abandoned the Finnish translations...he did IceMe only and quit - would anybody like to complete the rest?
+	- PRIORITY: Speed up IceMe start-up (play with speed of icon loading)
+	- PhrozenClock:  Find a way to read and understand /etc/localtime even if its a 'hard file' instead of a symlink: This means we have to learn to read glibc's binary format for zoneinfo data, if possible  (8.25.2003 - still needs to be researched)
+	- PhrozenClock:  Is there a need to support multiple 'localtime' and 'timezone' file locations for PhrozenClock? Do some systems use more than one location for these files and need them 'synched'?  (8.25.2003 - still needs to be researched)
+	- New control panel applet under consideration:  Some type of 'font manager' or third-party font tool???  ...maybe hard to implement 'uniform' font installation under X, but at least an applet for viewing installed fonts??
+	- Decided to leave the IceSoundManager file selection dialog as-is, instead of forcing it into the 'icewmcp_common' file dialog format...working fine for now, now reason to tamper with it - may be ported to the 'common' format in the future, only if the need arises
+	- Is there a better way to handle the drag-n-drop support for the 'color buttons' in IcePref2 and Theme Designer?  Currently unable to handle the 'native unicode' junk returned the 'application/x-color' GtkSelectionData.data object - so letting it get handled by a hidden GtkColorSelectionDialog (global COLOR_HOLDER):
+			# I tried this:
+			#    import codecs
+			#    uni=codecs.utf_16_decode(drago[4].data)
+			# creates a tuple with a useless 'unicode' string that Python can do nothing with
+			# In fact, it can't even be turned into a string with str() - You can print the 
+			# tuple to stdout, but not the 'unicode' string at element '0' in the tuple
+- 	IceWM change log to monitor: (changelog on CVS server:  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/icewm/icewm-1.2/CHANGES?rev=HEAD&content-type=text/plain)
+
+
+
+
+
+
+
+_________________________________________________
+
+
+
+VERSION 2.4 - 5/27/2003 - 6/22/2003
+
+The focus of this release is translation additions, locale improvements, bug fixes, and IceWM 1.2.8 compatibility.
+
+
+SUMMARY OF CHANGES:
+	Full Traditional Chinese translation added (zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	Partial Finnish translation added (IceMe only); Big thanks to Petteri Aimonen (Pyrmiö Group) (jpa['at']pyrmio.org).
+	Lots of Russian language translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	A full set of Russian help files have been added; Big thanks to Roman Shiryaev  (mih_val['at']mail.ru) and Vasiliy Leushin (basileus['at']newmail.ru)
+	PhrozenClock is now more accomodating of diverse systems and any critical start-up errors.  There is a major bug-fix for PhrozenClock.
+	The following tools can now be run as 'root' by selecting 'Run As Root' on the 'File' menu: IceMe, IcePref2, IceWMCPWinOptions, IceWMCPKeyboard, IceWMCPMouse,  IceWMCPWallpaper, IceSoundManager
+	Several character display improvements when running under locales that need special fontsets. (Fixed Russian locale display bug on Mandrake - hopefully.)
+	IcePref2 is now completely compatible with IceWM 1.2.8.
+	File selection dialog boxes are now more keyboard-friendly.
+
+
+IMPORTANT WARNINGS ABOUT THIS RELEASE:
+	WARNING: Users of IceWM 1.2.7 using the latest version of IcePref2 may find their "Windows" keys suddenly stop working after using IcePref2.  This means that you need to UPGRADE to IceWM 1.2.8, or downgrade to IceWMCP 2.3 if the 'Windows' key-binding is important to you.  This is due to a change in IceWM.
+	WARNING: For some unknown reason, the latest version of IceWM (1.2.8) has eliminated the 'KeySysRun' key-binding option.   This is bad since it eliminates the key binding for the 'Run...' command.  Work-around: Run IceWMCP Keyboard, click 'Shortcut Keys' and create a key binding for the 'Run...' command if you would like.  This is due to a change in IceWM.
+
+
+
+IceWMCP         (IceWMCP.py):
+	- Version is now 2.4
+	- Traditional Chinese gettext translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Full set of Traditional Chinese .cpl control panel applets added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Locale/translation cleanups: removed duplicate and obsolete msgid's from .pot file, removed duplicate and obsolete msgid's from .po/.mo translation catalogs
+	- Russian locale bug fix:  Applets now load an appropriate 'cronyx' font when running under the Russian locale, instead of calling a font 'wildcard' load of any random Helvetica font; This should help fix a bug reported by Vasya (Vasiliy Leushin [basileus['at']newmail.ru])  where some Mandrake users had trouble displaying just the Russian applets while everything else in IceWMCP showed up fine
+	- Finnish support/improvement: IceWMCP now loads an appropriate 'iso8859-15' Helvetica font when running under the Finnish locale, instead of calling a font 'wildcard' load of any random Helvetica font;  This should aid in proper character rendering for control panel applets when running under the Finnish locale.  (Though Finnish translation for the control panel itself is not yet available.)
+	- Chinese (Traditional) support:  IceWM now loads appropriate Big-5 fonts when running under the zh_TW Chinese locale.  This should aid in proper character rendering for control panel applets when running under the Chinese locale. 
+	- Special fonts for non-English locales will not be set if no applets for that locale are available (since IceWMCP then defaults to loading the English lang. applets which may not be visible using a non-English font)
+
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.4
+	- Updated the common 'credits' window to include credits for Petteri Aimonen for the Finnish translation of IceMe
+	- Updated the common 'credits' window to include credits for Chao-Hsiung Liao for the Traditional Chinese translation
+	- Methods displayHelp and commonAbout now return the window shown (only useful to developers), but is now needed by PhrozenClock when a start-up critical error occurs (for showing a help file then quitting)
+	- Added a development feature (mostly useful for developers), but may also be useful for regular users: variable FORCE_LOCALE, to allow IceWMCP programs to be forced to run in a certain language/locale without having to change the LANG/LANGUAGE environment variables
+	-  Added common translatable string 'RUN_AS_ROOT' for use on menus of programs that have 'run-as-root' functionality.
+	- Added 'Run As Root' to translation catalog icewmcp.pot, with a translation made for the Spanish icewmcp.mo catalog.
+	- Added common/shared file selection functionality, with new methods and variables: ICEWMCP_FILE_WIN, ICEWMCP_LAST_FILE, FILE_SELECTOR_TITLE, CLOSE_FILE_SELECTOR, GET_SELECTED_FILE, SET_SELECTED_FILE, SELECT_A_FILE ; Almost all file selection dialogs throughout IceWMCP programs will be migrating to the new 'shared' file selection dialog, for consistent look, feel, and functionality (and to ensure all file selection dialogs are 'keyboard friendly' and close when 'Esc' is pressed.) - also reduces repetititive coding in of file selection functionality, and aids in the new functionality in many programs allowing you to open random configuration files
+	- Added shared locale fonts/fontsets dictionary 'font_lang_dict', so applications that need to load fonts in non-English locales requiring special fonts will load appropriate fonts instead of 'wildcard' fonts which may corrupt the character display  (greatly helps the Russian and Trad. Chinese translations)
+	- Development touch up: Moved 'rundlg' method and 'import IceWMCPRun' back to the very end of the common library where it belongs
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Added new 'Run As Root' functionality; useful for system admins wanting to configure system-wide sound events in the global IceWM sounds directory; added new method 'run_as_root'
+	- Added 'File -> Run As Root' to the menu
+	- A few Spanish locale corrections
+	- Updates and corrections to the Spanish and English help files and docs; added help sections for the new 'Run As Root' feature
+	- 'showStatus' method now uses 'gtk.timeout'
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.2-beta
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian language support is now available: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) for contributing the Russian language translation
+	- Locale support improvement: Improved character display for non-English locales that require special fonts by loading fonts/fontsets appropriate for the locale (when necessary), instead of loading 'wildcard' fonts which may corrupt the character display  (greatly helps the Russian and Trad. Chinese translations)
+
+
+
+IceMe  (IceMe.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net) for the contribution
+	- Finnish language translation added; Big thanks to Petteri Aimonen (Pyrmiö Group) (jpa['at']pyrmio.org)
+	- Russian help file added: Big thanks to Roman Shiryaev  (mih_val['at']mail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Russian locale bug fix: IceMe now loads an appropriate 'cronyx' font when running under the Russian locale, instead of calling a font 'wildcard' load of any random Helvetica font; This should help fix a bug reported by Vasya (Vasiliy Leushin [basileus['at']newmail.ru])  where some Mandrake users had trouble displaying Russian characters for some of the items at the bottom of the IceMe menu ('Toolbar', 'Clipboard', etc.)
+	- Finnish locale improvement: IceMe now loads an appropriate 'iso8859-15' Helvetica font when running under the Finnish locale, instead of calling a font 'wildcard' load of any random Helvetica font;  This should aid in proper character rendering for some of the items at the bottom of the IceMe menu ('Toolbar', 'Clipboard', etc.)
+	- Added "Run As Root" functionality with new methods in IceMe.py 'initCustomDir' (arbitrary loading of directories) and 'run_as_root':  This should be useful for system admins needing to edit menu, programs, and toolbar files for IceWM in the system configuration directory
+	- Added 'File -> Run As Root' to the menu, for root functionality for system admins
+	- Changed command line options '--ignore-home' to '--run-as-root'  (though command line options aren't really used, no need - but this was done for consistency)
+	- Added support for opening/editing ANY IceWM 'menu' file in any directory on the system (may require root privileges.):  With new methods in IceMe.py  'openCustomDir' and 'openCustomDirCB' - Useful for 'root' and other priviledged users, or users with access to more than one IceWM 'menu' file...or when the menu file that needs to be edited is neither in the 'home' directory or in the 'system' IceWM directory, but somewhere else on the system.
+	- Added 'File -> Open IceWM Menu File' to the menu, for functionality supporting opening/editing random IceWM menu files in random directories
+	- Added keyboard shortcut 'Ctrl+0', for functionality supporting opening/editing random IceWM menu files in random directories 
+	- Added translatable string 'Open IceWM Menu File' to the iceme.pot gettext catalog.
+	- Added Spanish translation for 'Open IceWM Menu File' to the Spanish IceMe translation catalog
+	- Updated Spanish and English language help files to include new info on the 'Run As Root' and 'Open IceWM Menu File' features
+	- Updated the copyright information that appears in the 'About' box.
+	- Changed methods "on_command_button_clicked" and "file_ok_close" to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Code cleanup: removed method "file_cancel" (no longer needed)
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added variable 'i_am_root' and rewrote method 'icewmcpKeyEdit' for "run as root" support; so the IceWMCPKeyEdit tool inside IceMe loads the appropriate 'keys' files based on whether IceMe is running as 'root' or not.
+
+
+IcePref2       (icepref.py):
+	- Version is now 3.0
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Roman Shiryaev  (mih_val['at']mail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Locale/translation cleanups: removed duplicate and obsolete msgid's from .pot file, removed duplicate and obsolete msgid's from .po/.mo translation catalogs
+	- Full compatibility with IceWM 1.2.8 (just released)
+	- Added support for new IceWM 1.2.8 preferences option 'EnableAddressBar' in the 'AddressBar' section
+	- Removed (temporarily??) the 'KeySysRun' option from the 'Key Bindings' section since IceWM 1.2.8 seems to no longer support the option and considers it a 'bad option'.  It is  bad that IceWM has removed the 'KeySysRun' option since it eliminates the key binding for the 'Run...' command.  Work-around: Run IceWMCP Keyboard, click 'Shortcut Keys' and create a key binding for the 'Run...' command if you would like. 
+	- No longer supporting both the old and new "Windows" key options (ModMetaIsCtrlAlt/ModSuperIsCtrlAlt).  Converted completely over to the new official Windows key option name 'ModSuperIsCtrlAlt' as of IceWM 1.2.8.  The old key for 'ModMetaIsCtrlAlt' in IceWM 1.2.7 and before is no longer supported.  For IceWM 1.2.8 users, this will eliminate the console warning about the 'deprecated option' when starting IceWM.  WARNING: Users of IceWM 1.2.7 using the latest version of IcePref2 may find their "Windows" keys suddenly stop working after using IcePref2 - this means that you need to UPGRADE to IceWM 1.2.8, or downgrade to IceWMCP 2.3 if the 'Windows' key-binding is important to you.
+	- 2 additions to the IcePref2 gettext foreign language support catalog; 2 additions to Spanish translations catalog; 1 addition to the Russian translations catalog
+	- Minor documentation updates (nothing major)
+	- Changed methods "ok" and "select"  in the 'File' class to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added "Run As Root" functionality, useful for people with 'root' access such as sys admins: added new methods 'run_as_root' and "run_as_root_cb' to the 'Application' class; added 'File -> Run As Root' to the menu
+	- Keyboard shortcut change: Change the keyboard shortcut combo for 'File -> Reload Preferences File' from Ctrl+O to Ctrl+P  (to accomodate new "open file" functionality)
+	- Added new functionality for opening ANY 'preferences' file anywhere on the system, with new methods 'open_preference_file' and 'open_preference_file_cb' in the 'Application' class.
+	- Added 'File -> Open IceWM Preferences File...' to the menu
+	- New keyboard shortcut assigned:  Ctrl+O runs 'File -> Open IceWM Preferences File...'
+	- Updated Spanish and English language help files to include new info on the 'Run As Root' and 'Open IceWM Preferences File' features
+	- A few Spanish locale corrections
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Roman Shiryaev  (mih_val['at']mail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Spanish translation improvements (added a couple of missing translations)
+	- Locale/translation cleanups: removed duplicate and obsolete msgid's from .pot file, removed duplicate and obsolete msgid's from .po/.mo translation catalogs
+	- Code Cleanup: Removed method "file_cancel" from class Application (no longer needed)
+	- Changed methods "ok" and "select"  in the 'File' class to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Changed method "ok"   in the 'ImageWidget' class to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Changed methods "select_a_file", "newThemeFileSetCB", and "openThemeCB"  in the 'Application' class to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Removed (temporarily??) the 'KeySysRun' option from the 'IceWM Keys' section since IceWM 1.2.8 seems to no longer support the option and considers it a 'bad option'.  It is  bad that IceWM has removed the 'KeySysRun' option since it eliminates the key binding for the 'Run...' command.  Work-around: Click the 'Shortcut Keys' tab and create a key binding for the 'Run...' command if you would like. 
+	- In 'keypanel' class (IceWMCPKeyEdit): Changed methods "selectfile" and "fileok" to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- In 'keypanel' class (IceWMCPKeyEdit): Code cleanup: removed method "filecancel" (no longer needed)
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added "Run As Root" functionality, useful for people with 'root' access such as sys admins: added new method 'run_as_root' to 'keywin' class'; added 'run_as_root' method to the 'keypanel' (IceWMCPKeyEdit) class ; added 'File -> Run As Root' to the menu in the 'keywin' class.  NOTE: Since setting the keyboard speed, bell, and repeat rate uses 'xset', that portion still remains per-user instead of 'system wide'; however, running as 'root' allows editing of 'system wide'  IceWM key bindings and shortcut keys
+	- Updated Spanish and English language help files to include new info on the 'Run As Root'  feature
+	- Minor changes to the '__init__' and 'loadUp' methods for IceMe compatibility and 'run as root' support
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 2.4
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Roman Shiryaev  (mih_val['at']mail.ru)
+	- Added support for the following environment variables if they exist: TZDEFAULT, TZ, and TZDIR, these environment variables are now checked FIRST before anything else if they are set in the environment  (example: TZDEFAULT=/etc/zoneinfo/localtime, TZDIR=/usr/local/lib/zoneinfo), some systems use these environment variables, but you can also use them as an easy way to control where PhrozenClook looks for time zone data without having to edit the phrozenclock.py script anymore.  TZ and TZDEFAULT are generally the same thing.  (S0, you can set either TZDEFAULT=/etc/zoneinfo/localtime or TZ=/etc/zoneinfo/localtime .)
+	- Added variable self.ZONE_DIRS and updated method locateZoneinfo() to look for the 'zoneinfo' directory in a more accomodating manner from a common list of 'zoneinfo' directories from many different *nix distributions, default is still /usr/share/zoneinfo/, but now probing is done if this is not correct
+	- Added variable self.LOCALTIME_FILES and new  method locateLocaltimeFile() to look for the 'localtime' file in a more accomodating manner from a common list from many different *nix distributions, default is still /etc/localtime, but now probing is done if this is not correct
+	- Added variable self.TIMEZONE_FILES and new  method locateTimezoneFile() to look for the 'timezone' file in a more accomodating manner from a common list from many different *nix distributions, default is still /etc/timezone, but now probing is done if this is not correct
+	- MAJOR startup improvment / Usability improvement:  If startup fails because the 'zoneinfo' directory could not be located, the user is now referred to the 'Environment Variables' section in the 'Help' file about setting the newly supported environment variables, the help file is then shown for the user to read - This is much better than the old method where the app just 'quit' with a 'critical error' and left the user with little or no information, also, it helps the user avoid having to edit the phrozenclock.py script.  This should be a big bonus for newbies and regular desktop users not familiar with coding.
+	- Bug Fix / System Safety Enhancement:  Added variable self.IGNORE_EXT and method isGlibc to distguish between standard Glibc 'zoneinfo' directory data and the .ics format 'zoneinfo' data commonly used in some applications such as Gnome Ximian's Evolution.  Every attempt is now made to ignore directories that have .ics format zoneinfo data instead of the standard Glibc zoneinfo data, since accidently linking .ics format timezones to 'localtime' when Glibc expects to find 'standard' format can create HUGE problems, and at the very least, screw up the system time.  I don't know of any Glibc versions that use .ics format anyways, so every attempt is now made to avoid feeding bogus .ics format zoneinfo files into 'localtime' (/etc/localtime).
+	- Updates to Spanish and English help files: to include info about .ics format zoneinfo data not being supported and why, and info about new support for environment variables.
+	- Updates to Spanish language locale support and icewmcp.pot locale file to add info in the 'critical error' startup message referring the user to the 'Environment Variables' section of the help file if something goes wrong.
+	- A few Spanish locale corrections
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added "Run As Root" functionality, useful for people with 'root' access such as sys admins: added new method 'run_as_root' to 'mousewin' class'; added 'run_as_root' method to the 'cursortab' (IceWMCPCursors) class ; added 'File -> Run As Root' to the menu in the 'mousewin' class.  NOTE: Since setting the mouse speed uses 'xset', that remains per-user instead of 'system-wide'; However, running as 'root' allows you to configure system-wide cursors and system-wide IceWM-specific mouse behavior
+	- Updated Spanish and English language help files to include new info on the 'Run As Root'  feature
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Changed methods "selectfile" and "fileok" to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Code cleanup: removed method "filecancel" (no longer needed)
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added "Run As Root" functionality, useful for people with 'root' access such as sys admins: added new method 'run_as_root'; added 'File -> Run As Root' to the menu
+	- Updated Spanish and English language help files to include new info on the 'Run As Root'  feature
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Changed methods "selectfile" and "fileok" to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Code cleanup: removed method "filecancel" (no longer needed)
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+	- Added "Run As Root" functionality, useful for people with 'root' access such as sys admins: added new method 'run_as_root'; added 'File -> Run As Root' to the menu
+	- Updated Spanish and English language help files to include new info on the 'Run As Root'  feature
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.3
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Vasiliy Leushin (basileus['at']newmail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- Code Cleanup: Removed method 'doFsHide' (no longer needed)
+	- Changed methods "showFileSel" and "grabFile" to use new common file selection functionality in 'icewmcp_common' instead for uniform file selection, look, feel, and behavior
+	- Keyboard support improvement: All file selection dialog boxes can now be closed by simply pressing 'Esc'
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Version is now 2.4
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian translation added: Thank you to Vasiliy Leushin (basileus['at']newmail.ru) 
+
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.2.3
+	- Traditional Chinese translation added (locale zh_TW); Big thanks to Chao-Hsiung Liao  (pesder.liao['at']msa.hinet.net)
+	- Russian help file added: Big thanks to Roman Shiryaev  (mih_val['at']mail.ru)
+	- Russian translation updates; Big thanks to Vasiliy Leushin (basileus['at']newmail.ru) 
+	- IceWMCP install packages and RPMs now create executable named 'IceWMCP-PySpool' for launching PySpool from outide of the control panel
+
+	
+_________________________________________________
+VERSION 2.3 - 5/3/2003 - 5/21/2003
+
+
+SUMMARY OF CHANGES:
+	This release focuses on user interface improvements, and some usability improvements.
+
+	The main IceWM Control Panel itself has undergone a major 'icon face-lift' and serious usability improvements.
+	IceMe has a whole new, modern toolbar and a major start-up bug-fix.
+	The IceWMCPMouse tool has been completely redesigned into a FULL-featured, all-in-one mouse configuration tool.
+	The IceWMCPKeyboard tool has been completely redesigned into a FULL-featured, all-in-one keyboard configuration tool.
+	Complete GUI redesign of the IceWMCPWallpaper desktop management tool.
+	IcePref2 and IcePref2 Theme Designer now have a 'search' feature.
+	Drastic 'start-up' speed improvement for IcePref2 when running in 'single module' mode.
+
+
+Removed modules:
+	IceWMCPCursors.py
+	IceWMCPKeyEdit.py
+
+Added modules:
+	icepref_search.py: 'icepref_search' providing shared 'search' capabilities to both IcePref2 and IcePref2 Theme Designer - internal module
+	icewmcp_dnd.py:  internal module for shared drag-n-drop code, to help reduce the size of all other modules needing drag-n-drop support
+	IceWMCPSystem.py (and dependencies) - as separate PLUGIN in separate package
+
+
+	- One new tool added:  IceWMCPSystem.py - A system information and hardware information tool built around a highly modified version of SuSe's 'libhd' hardware library.  Will be available as a PLUGIN for all i586-systems, 'source only' from CVS for all other systems.
+	- The IceWMCPCursors module (and all associated applets, icons, and help files) has been REMOVED, since it has been 'merged'  (see below)
+	- Tool merger: IceWMCPCursors has been merged with IceWMCPMouse and the 'Mouse' module of IcePref2 to form an all-in-one mouse configuration tool, so users no longer have to jump between 3 different applications to configure different mouse features.
+	- Tool merger: IceWMCPKeyEdit has been merged with IceWMCPKeyboard and the 'Key Bindings' module of IcePref2 to form an all-in-one keyboard configuration tool, so users no longer have to jump between 3 different applications to configure different keyboard features.
+
+
+
+IceWM Control Panel (IceWMCP)         (IceWMCP.py):
+	- Version is now 2.3
+	- New Feature:  IceWMCP now checks for the existence of the program an applet is attempting to launch - you are told if the program does not exist on your system: This gets rid of the problem of users potentially clicking applet icons for program that don't exist and wondering why it does 'nothing'
+	- New Feature:  Added a new 'Column View' - very similar to the 'column view' in Windows Control Panel, bringing the total 'views' available up to 3: Icons, List, Columns
+	- New Feature: A small 3-button toolbar for the available 'views' is available on the upper right hand corner of the IceWMCP screen, for one-click changing of icon views in the control panel
+	- Bug Fix:  Fixed a bug where groups of applets starting with the same string (such as 'IceWM') often did not appear in complete alphabetical order in the control panel window - alphabetization of control panel applets is now strictly enforced
+	- Changed several icons to better icons:  gfcc.png, gtop.png, usbview.png, soundprop.png, userinfo.png, kusers.png, sysinfo,png, gpassword.png, usermount.png, pyspool.png, icewmcp-keyboard.png, phrozenclock.png,godbc.png, icewmcp-ism.png, icewmcp-wallpaper.png, icewmcp-mouse.png, icesound.png, usbview.png, tkantivir.png, screensaver.png, iceme.png
+	- Icons added for installation into icon path for: icewmcp-wallpaper, icewmcp-keyedit,  icewmcp-mouse, icewmcp-keyboard
+	- As a consequence of the above, the default 'icon theme' looks slightly brighter and more modern, although the overall aqua-ish blue theme renames in place - overall feel is cleaner and more 3D-ish
+	- Applet change:  'System Information' applet renamed to 'System'
+	- Applet change:  new 'System' applet now launches new toon IceWMCPSystem instead of the old 'guname' program
+	- Deliberately made the icons for 'IceWMCPKeyEdit' and 'IceWMCPKeyboard' more distinct (they were too similar and created confusion)
+	- The 'IceWM Themes' applet now launches MUCH faster due to drastic start-up speed improvements in IcePref2 when running in 'single module' mode
+	- Icon and applet for old 'IceWMCPCursors' have been removed. (All mouse configuration now housed under 'IceWMCPMouse')
+	- Icon and applet for old 'IceWMCPKeyEdit' have been removed. (All keyboard configuration now housed under 'IceWMCPKeyboard')
+	- A few additions/corrections to the gettext locale and Spanish language locale support
+	- A couple of minor corrections to the 'Help' file
+	- Small addition to 'help' file to accomodate new 'column view' feature
+
+
+IceWMCP-DragNDrop       (icewmcp_dnd.py):
+	- Debut of new shared internal drag-n-drop module for shared, uniform, basic drag-n-drop functionality across all IceWMCP applications; also adds drag-n-drop support for all 'color buttons'
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.3
+	- Removed 'app_map' Help file and bug reporter binding for old 'IceWMCPCursors' module
+	- The small 'help' icon that appears on all common 'Help' windows has been changed to something that looks a little nicer (hopefully)
+	- Bug Fix / Usability improvements:  Changed the way common Help windows are created: Help windows are no longer 'modal', so that use of the program can still continue while Help windows are open, and users no longer have to close a Help window to get back to using the program
+	- Added new commonly used translated menu strings as constants:  HELP_MENU, ABOUT_MENU, FILE_MENU, EXIT_MENU, UPDATE_MENU
+	- Locale support fix / Bug fix: changed the directory for the IceWMCP gettext locale directory from './locale' to getBaseDir()+"./locale" in the 'locale_dirs' list of locale directories.  This will help ensure loading of locale gettext catalogs no matter what path IceWMCP programs are launched from; also eliminates the need to change to the IceWMCP directory get the right gettext cataloge to load.
+
+
+
+IceWMCP-Cursors        (IceWMCPCursors.py):
+	- This module as been removed and has been merged with IceWMCPMouse.py - see below... (the old stand-alone 'IceWMCPCursors.py' module is now status 'unmaintained'
+
+
+IceWMCP-Mouse        (IceWMCPMouse.py):
+	- Version is now 2.3
+	- Mouse tool has been drasticly overhauled and restructured, resulting in both usability and GUI improvements
+	- Tool now contains 3 'notebook' tabs (and 3 tools in one):  Speed, Cursors, and Behavior
+	- Tool merger: IceWMCPCursors has been merged with IceWMCPMouse and the 'Mouse' module of IcePref2 to form an all-in-one mouse configuration tool, so users no longer have to jump between 3 different applications to configure different mouse features.
+	- New user interface is more organized, less cluttered, and has a more familiar 'Windoze' feel to it
+	- The mouse tool is now a FULL featured mouse configuration tool, handling 3 tasks: managing mouse cursor speed, managing IceWM mouse cursors, and managing advanced mouse behavior under IceWM
+	- The 'mouse speed' feature now uses a number 'slider' (similar to Windoze) instead of the old, uncomfortable 'drop-down' list
+	- The 'panel' from IceWMCPCursors (and all its functionality) was added to the 2nd tab for easy configuration of IceWM mouse cursors
+	- Fixed a bug from the old 'IceWMCPCursors' where clicking 'Apply Changes Now' did nothing  (missing gtk signal 'connect' was fixed.)
+	- The 'panel' from IcePref2's 'mouse' module (and all its functionality) was added to the 2nd tab for configuring more advanced mouse features such as double-click speeds, desktop clicks, etc.
+	- Appropriately, the Help files for IceWMCPMouse and the old IceWMCPCursors have been merged into a 'sectioned' help file.
+	- The 'tab' first seen when the tool launches ('Speed') now features a small, but cute 3D image of a mouse...a la an actual 'control panel'  8-)
+	- Minor, appropriate changes to the 'about' box for this tool
+	- Minor updates, corrections, and additions to the locale and Spanish language locale support
+	- Icon has been modestly to include the standard 'IceWM mountain' in the icon, to denote that it is an IceWM-specific application
+	- Minor code adaptations to make program able to run inside new plugin 'IceWMCPSystem' 
+ without causing unwanted 'quits'
+
+
+
+IceWMCP-KeyEdit        (IceWMCPKeyEdit.py):
+	- This module as been removed and has been merged with IceWMCPKeyboard.py - see below... (the old stand-alone 'IceWMCPKeyEdit.py' module is now status 'unmaintained'
+
+
+IceWMCP-Keyboard        (IceWMCPKeyboard.py):
+	- Version is now 2.3
+	- Keyboard tool has been drasticly overhauled and redesigned, resulting in both usability and GUI improvements
+	- Tool now contains 4 'notebook' tabs (and 4 tools in one):  Repetition, Sound, Shortcut Keys, and IceWM Keys
+	- Tool merger: IceWMCPKeyEdit has been merged with IceWMCPKeyboard and the 'Key Bindings' module of IcePref2 to form an all-in-one keyboard configuration tool, so users no longer have to jump between 3 different applications to configure different keyboard features.
+	- * New feature *:  New functionality - 'Sound'.  Keyboard tool now can manage the keyboard's beep and click sounds  (often called the keyboard 'bell'), allowing you to turn on/off the keyboard clicks and beeps, and adjust and test the  volume, pitch, and length of keyboard beeps
+	- * New feature *: The keyboard repeat rate module (the 'Repetition') tab now allows you to turn keyboard repetition off/on, not just adjust the rate and delay.
+	- New user interface is more organized, less cluttered, and has a more familiar 'Windoze' feel to it
+	- The keyboard tool is now a FULL keyboard configuration tool, handling 4 major tasks: changing repeat rate/delay, changing keyboard bell sound, managing IceWM program shortcut keys, and managing IceWM-specific shortcut keys.
+	- The keyboard 'rate' and 'delay' features now use number 'sliders' (similar to Windoze) instead of the old, uncomfortable 'drop-down' lists
+	- The 'panel' from IceWMCPKeyEdit (and all its functionality) was added to the 2nd tab for easy configuration of IceWM shortcut keys
+	- The 'panel' from IcePref2's 'Key Bindings' module (and all its functionality) was added to the 2nd tab for configuring more advanced mouse features such as double-click speeds, desktop clicks, etc.
+	- Appropriately, the Help files for IceWMCPKeyboard and the old IceWMCPKeyEdit have been merged into a 'sectioned' help file.
+	- Help files for both Spanish and English now include a section on the new 'Sound' feature.
+	- An embedded version of 'IceWMCPKeyEdit' (now inside IceWMCPMouse) remains the shortcut editor for IceMe
+	- The help file for 'IceWMCPKeyEdit' still remains for use inside IceMe's 'key editor' tool
+	- The 'tab' first seen when the tool launches ('Repetition') now features a small, but cute 3D image of a keyboard...a la an actual 'control panel'  8-)
+	- Minor, appropriate changes to the 'about' box for this tool
+	- Minor updates, corrections, and additions to the locale and Spanish language locale support
+	- The 'IceWMCPKeyEdit' module inside IceWMCPKeyboard has now been restructured to allow for easy embedding of the shortcut key editor panel (used in IceWMCPKeyboard) or running as a 'windowed' application (a feature used by IceMe)
+	- GUI touch-up: Added a big of space around the column titles in the 'KeyEdit' module, so the words dont appear to right on the edge of the CList label
+	- Minor code adaptations to make program able to run inside new plugin 'IceWMCPSystem' 
+ without causing unwanted 'quits'
+
+
+
+IceMe  (IceMe.py):
+	- Version is now 2.3
+	- Icon has been modestly changed to include the standard 'IceWM mountain' in the icon, to denote that it is an IceWM-specific application
+	- Several corrections/updates to the Spanish language locale support, small corrections to the Spanish language help file
+	- Removed associated but unused .xpm files: right.xpm, left.xpm (now moved to 'unmaintained' CVS repository)
+	- Stability improvement / Bug fix : The __getTbButton method for loading pixmapped toolbar buttons  longer just 'crashes and quits' if a toolbar image can't be loaded, now it falls back to returning a regular GtkButton - so the program is still usable and helps guarantee that the program will not fail to start just because a pixmap can't be loaded.  Plain 'default' buttons on a toolbar when a image fails to load may not be pretty, but it's part of one of my goals to ensure that ALL programs always start and don't 'crash' because of little things like missing pixmaps.
+	- The __getTbButton now uses the 'loadScaledImage' method from 'icewmcp_common' for loading toolbar images, so something besides .xpm can now be loaded
+	- GUI touch-up: added a small amount of 'space' around the top tool bar, nothing drastic
+	- Complete GUI overhaul of the IceMe top toolbar:  Almost all of the icons have been replaced with newer looking, more colorful icons  (the boring black and white icons from the old IceMe had to GO!)  - The icons are also more distintive (i.e. 'delete' looks like a DELETE)
+	- GUI improvement:  Changed the 'clipboard' icon in the menu to something newer-looking and more colorful
+	- GUI improvement:  The icon for the 'open' folder in "Command:" has been changed to something new-looking and more colorful
+	- Top toolbar buttons now have the modern 'flat' look (though they become 'raised' when the mouse is moved over them.)
+	- All IceMe icons have been converted from .xpm to .png images
+	- Size of toolbar button icons changed from 22x22 to 23x23, not too big, but just enough to be more visible
+	- Shortcut key editor now uses new 'embedded' version of 'IceWMCPKeyEdit', now inside IceWMCPKeyboard
+	- Code Cleanup: Removed old, unused method 'on_add_shortcut_clicked' from the old IceMe
+	- Code cleanup/Consolidation: Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support dealing with menu item 'icons'  (This does not apply to d-n-d in the Menu 'tree')
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.3
+	- Complete user interface redesign of the 'preview window'
+	- Major GUI improvement: Instead of the old 'scroll' window for previewing wallpapers, the desktop tool now features a realistic-looking, modern, plasma-ish 'monitor' - similar to the 'monitor' seen on the Windows control panel desktop applet and other desktop tools. 
+	- As a consequence of the above, 4 'monitor' .png images had to be added and now there is no need to have to 'scroll' through the preview window
+	- Emulation improvemnt:  Tool now does a much better job of emulating how wallpapers will look based on your screen's resolution- for example: selecting a 'centered' wallpaper that is too big for your screen will show it is partially 'chopped off' the way IceWM will...selecting a 'centered' wallpaper that is too small for your screen will show the 'extra space' that will be left on the screen....attemption to 'tile' an image that is the same size or larger than your screen won't tile, since IceWM will only 'tile' screen-size images once on the screen
+	- Emulation improvement:  'Tiling' emulation has greatly improved - fiddled with a few of the algorithms in 'updateImage' method to make tiled images look more 'realistic' and 'true to life' on the 'monitor' preview screen
+	- New feature:  Selecting a wallpaper now shows the dimensions of the image in the 'status bar'
+	- New feature:  Attempting to 'tile' a image the same size or larger than your screen will show a small 'warning' in the 'status bar'  ("Too large to tile")
+	- New feature:  An "Edit' button has been added to the far right of the 'Tile' checkbox for easy opening of the wallpaper for editing with 'gimp-remote'
+	- New feature / GUI improvement:  Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support; Support has been added for dragging and dropping colors on the 'color button', the 'color folder', and the color 'entry' from other Gtk applications with color dialogs (such as GColorSel, Gimp, etc.)
+	- The overall default window size of the program is now not as wide (i.e. more compact), but not cramped...this is to help suit the new 'monitor' preview screen as well as lower resolution screens
+	- Drag-and-drop is still supported:  Just drag wallpaper images onto the 'monitor'
+	- 3 additions to the gettext locale and Spanish language locale support for 'Edit', "Edit with Gimp' and 'Too large to tile'
+	- Code cleanup/Consolidation: Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support
+	- Minor additions/updates to the Help file to accomodate the new 'Edit' feature
+
+
+
+IcePref2-Search       (icepref_search.py):
+	- Debut of new module 'icepref_search' providing shared 'search' capabilities to both IcePref2 and IcePref2 Theme Designer for the literally hundreds of IceWM 'properties' - the search functionality is pretty basic at this point...showing the section + the property that matches a search word.  Currently, clicking or double-clicking on the list of 'search results' does nothing special.  However, the search feature now saves you from having to jump from tab to tab looking for certain IceWM features; you can now lookup the property, find the tab that holds the property quickly, and go to the necessary tab
+
+
+
+IcePref2       (icepref.py):
+	- Version is now 2.9
+	- ** IMPORTANT CHANGE / PLEASE READ ** Coming in the next release of IceWM (1.2.8pre2) the preferences property 'ModMetaIsCtrlAlt' is being renamed to 'ModSuperIsCtrlAlt'.  (I checked the 'changelog' on the IceWM CVS server.) This name change in the IceWM 'preferences' file will have an effect on LOTS of users who rely on their 'Windows' key on their keyboards.   Currently IcePref2 will support BOTH the old 'ModMetaIsCtrlAlt' and the new 'ModSuperIsCtrlAlt' until the release of the final IceWM 1.2.8 ONLY.  This is to unsure that nobody's 'Windows' key stops 'working' due to an upgrade of IceWM Control Panel/IcePref2 while the developers of IceWM undergo preferences changes.   After that, all support for the now deprecated 'ModMetaIsCtrlAlt' will be REMOVED and users will need to upgrade to IceWM 1.2.8-final, whenever it is released.  Right now, ALL IcePref2 USERS MAY SEE A CONSOLE 'WARNING' WHEN LAUNCHING ICEWM saying that either the option 'ModMetaIsCtrlAlt' is 'deprecated' (if using IcePref 1.2.8pre2 or later) or the option 'ModSuperIsCtrlAlt' is 'unknown' (if using IcePref 1.2.8pre1 or before).  If you see this 'warning' please know that IT IS NOT A BUG, but is there by design while IceWM transitions from 1.2.7 to 1.2.8. This is an obvious draw-back, but is necessary to support both the old/new options until IceWM has released the final 1.2.8 version and people have a chance to upgrade to a 'stable' release with the new preferences property 'ModSuperIsCtrlAlt'.  Also, Win95keys are now enabled by default as of IceWM 1.2.8pre2, so the IcePref2 tradition of leaving Win95Keys on as 'default' is now officially 'in-sync' with the IceWM official defaults.  Watch for IceWM 1.2.8-final and UPGRADE to it when it is released if you do not want to see your 'Windows' key affected in future upgrades of IceWM Control Panel!
+	- *New feature* : Basic, but useful search capabilities via the new 'icepref_search' module: you may now search through the literally hundreds of IceWM 'properties' rather than having to jump from tab to tab looking for certain IceWM properties in many sections
+	- Added a new sub-class of 'Application' called 'PullTab', which allows for the embedding of IcePref2 'modules' (or tabs) into other applications - feature only accessible internally and is probably only of use to other programmers
+	- *Property name change*: 'Multiple click time' in the 'Mouse' category has been renamed to the much clearer 'Mouse double-click speed'; This should eliminate any confusion as to what it means and whether it is for the keyboard or mouse.
+	- Drastic 'start-up' speed improvement for IcePref2 when running in 'single module' mode. (by preventing IcePref2 from realizing/creating unnecessary widgets that will not be shown on the screen....useful for running IcePref2 with commands like 'icepref module=Themes')
+	- new 'PullTab' class is used to embed the IcePref2 'Mouse' module into the  IceWMCPMouse tool
+	- Bug Fix: fixed a bug where saving preferences could result in calls being made to non-existent widgets and 'blank' lines could be written into preferences files (i.e. some preferences could just be 'forgotten' during saving.)  This bug only existed when running in 'single module' mode
+	- Bug Fix: Fixed a small but annoying bug reported by Jon Rutherford [jonrutherford ['at'] sbcglobal.net], where the default value for 'UseRootButtons' was set to '0' in IcePref2, causing users who had never used IcePref2 (or had never set any 'UseRootButtons' value in their 'preferences' file) to lose the ability to invoke menus by clicking on the desktop with mouse buttons.  The new default value for 'UseRootButtons' is now '255', which turns menu clicks on the desktop ON by 'default' unless the user chooses to disable them (this is the 'default' behavior for IceWM anyways) - Thanks to Jon Rutherford  [jonrutherford ['at'] sbcglobal.net] for the bug report.
+	- Bug Fix: Fixed a long-standing, unwanted feature where the Apply/Restart button was 'disabled' when running on BSD systems
+	- Bug Fix:  Clicking the 'Apply' button now also automatically saves the IceWM 'preferences' file  (This should have been done back in version 2.2 when the 'Restart' button transitioned to the 'Apply' button.)  - now clicking the 'Apply' button is a one-step method of saving and applying new preferences
+	- Stability improvement: function for saving and reading preferences now catches ALL 'exceptions', not just 'IOError' exceptions
+	- Fixed all of the IcePref2 shell scripts for launching various IcePref2 modules (such as icepref-Themes, icepref-ToolTips, etc.)...all scripts now call the RIGHT IcePref2 modules, so users may easily run 'portions' of IcePref2 as they see fit
+	- *Major Spanish language improvements*:  major proofreading, grammatical and spelling corrections, and updates to the Spanish language support (gettext support); I finally found the time to proofread the whole gettext catalog; Still not yet close to 'perfect', but a SERIOUS improvement
+	- Code cleanups:  Removed all old 'DEBUG' code left over from David Mortensen's original version of IcePref (no longer needed...was just code bloat)
+	- Removed all but 2 archaic calls to 'print'  on the console (these 2 are needed), all others replaced with GUI dialogs, less 'junk' to be printed to stdout/stderr.
+	- Locale additions:  added 14 missing locale translations for BitMask and MouseButton classes, Spanish translations implemented
+	- Reconfigured many of the built-in IceWM 'defaults' to upgrade their values to the 'official' default values for IceWM version 1.2.7; All default fonts have been changed from Lucida fonts to Helvetica-family fonts.
+	- Important changes in the built-in 'defaults: The default theme is now set to 'icedesert/default.theme';  MultiByte internationalizations support is now ON by default; XFreeType font support is now ON by default; Continuous Edge Switching of workspaces is now ON by default; Desktop Window Menu Button has been changed from '1' to '0'; Several Quick-Switch 'defaults' have been updated.   
+	- Defaults that have been left with non-standard IceWM settings (for tweaks):  Support for Win95 keys [Win95Keys] is ON; TaskBarDoubleHeight is ON; ShowProgramsMenu is ON; 
+	- Feature enhancement: Increased the number of configurable workspace names from 8 to 12
+	- Feature enhancement: Actual IceWM 'pref' configuration keyword is now shown in the pop-up tooltips for each configurable feature, enclosed in [ ] - for example [MenuMouseTracking], for easier referencing to known configuration capabilities for people who have edited the 'preferences' file by hand before
+	- GUI improvements: Several - Entry and Toggle widgets no longer 'stretch' out unnecessarily when they appear next to considerably larger widgets; 'WorkspaceNames' configuration area no longer takes up more space than needed - divided into 2 shorter and less-wide columns, so the workspace tab does not appear to have 'gaps' all over the place.  Eliminated unnecessary line breaks that often appeared in Entry, Toggle, and Label widgets; 'Rows' of widgets in the dual-columns are now forced to match up top-to-top; overall look is now much cleaner, neater, and less chaotic
+	- New feature / GUI improvement:  Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support; Support has been added for dragging and dropping colors on the 'color button' objects from other Gtk applications with color dialogs (such as GColorSel, Gimp, etc.)
+	- GUI touch-up/usability improvement:  Tooltips added to the buttons next to the theme preview image box
+	- Locale/gettext fix: Categories (on the menu) and tabs now always come up in alphabetical order, even when not running under the English (EN) locale.  (Several Spanish and Russian users had reported 'unorganized' ordering of the categories and tabs.)
+
+
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 2.3
+	- *New feature* : Basic, but useful search capabilities via the new 'icepref_search' module: you may now search through the literally hundreds of IceWM 'properties' rather than having to jump from tab to tab looking for certain IceWM properties in many sections
+	- Code cleanups:  Removed all old 'DEBUG' code left over from David Mortensen's original version of IcePref (no longer needed...was just code bloat)
+	- Removed all archaic calls to 'print'  on the console, replaced with GUI dialogs, less 'junk' to be printed to stdout/stderr.
+	- fixed a bug where saving themes could result in calls being made to non-existent widgets and 'blank' lines could be written into theme files (i.e. some theme properties just be 'forgotten' during saving.)
+	- Reconfigured many of the built-in IceWM theme 'defaults' to upgrade their values to the 'official' default values for IceWM version 1.2.7; All default fonts have been changed from Lucida fonts to Helvetica-family fonts.
+	- New feature / GUI improvement:  Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support; Support has been added for dragging and dropping colors on the 'color button' objects from other Gtk applications with color dialogs (such as GColorSel, Gimp, etc.)
+	- *Major Spanish language improvements*:  major proofreading, grammatical and spelling corrections, and updates to the Spanish language support (gettext support); I finally found the time to proofread the whole gettext catalog; Still not yet close to 'perfect', but a SERIOUS improvement
+	- Locale/gettext fix: Categories (on the menu) and tabs now always come up in alphabetical order, even when not running under the English (EN) locale.  (Several Spanish and Russian users had reported 'unorganized' ordering of the categories and tabs.)
+	- Portability improvement:  The default 'Directory' for saving a theme in the 'New Theme...' window now uses getIceWMConfigPath()+"themes/", instead of the hard-coded '/usr/X11R6/lib/X11/icewm/themes/"
+	- GUI touch-up: Added a little space around the 'OK' and 'CANCEL' buttons in the 'New Theme...' window, so the words don't appear to be right on the edge when using Gtk themes with rounded buttons
+
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.3
+	- GUI touch-up: Added a big of space around the column titles in the 'KeyEdit' module, so the words dont appear to right on the edge of the CList label
+	- Code cleanup/Consolidation: Program now uses the shared drag-n-drop module 'icewmcp_dnd' for all drag-n-drop support
+
+
+IceWMCP_Dialogs  (IceWMCP_Dialogs.py):
+	- Dialog icons changed for all 'common dialogs', to clearer, more distinct, more colorful icons (most with nice 3D effects)
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.3
+	- The icon has been changed to a much nicer looking more 3D icon (icon now has the 'ice mountain' in the icon to denote that it is an IceWMCP app and IceWM-specific)
+	- *Major Spanish language improvements*:  major proofreading, grammatical and spelling corrections, and updates to the Spanish language support (gettext support); I finally found the time to proofread the whole gettext catalog; Still not yet close to 'perfect', but a SERIOUS improvement
+	- GUI touch-up: The 'Audio Interface' window now has extra space around the widgets, so the 'OK' and 'Cancel' buttons don't appear to be right on the bottom edge; main widget box is now a GtkVBox instead of a GtkFrame
+	- GUI touch-up: The 'Preferences' window now has extra space around the widgets, so the 'OK' and 'Cancel' buttons don't appear to be right on the bottom edge
+	- Minor updates to the Spanish language main 'Help' file
+	- Loads of updates and corrections to other 'internal' Spanish language help windows throughout the program  (part of the gettext corrections, really)
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 2.3
+	- The icon has been changed to a much nicer looking aqua/crystal type icon
+	- A separate, stand-alone version of PhrozenClock will NOT be released this time around (not enough changes to warrant a new release.)
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.2
+	- Minor code adaptations to make program able to run inside new plugin 'IceWMCPSystem' 
+ without causing unwanted 'quits'
+	- One minor Spanish locale update
+	- A separate, stand-alone version of GtkPCCard will NOT be released this time around (not enough changes to warrant a new release.)
+
+
+IceWMCP System and Hardware        (IceWMCPSystem.py):
+	- Version is now 1.0-beta
+	- New experimental tool added as a PLUGIN...i.e., not part of the main distribution packages.
+	- A system information and hardware information tool built around a highly modified version of SuSe's 'libhd' hardware library.  Uses C + Python
+	- Status: UNSUPPORTED  (but not unmaintained)
+	- No bug reports, help available
+	- Binary easy-to-install packages available for i586 systems only ....'source' for all other systems (no help compiling, building, installing, etc.)  You're on your own!
+	- Spanish language support is already implemented
+	- Russian language support is NOT (yet) available
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 2.3
+	- GUI touch-up: Added a little space around the 'Browse...' button, so the words don't appear to be right on the edge when using Gtk themes with rounded buttons
+
+
+_________________________________________________
+
+
+VERSION 2.2 - 4/21/2003 - 5/1/2003
+
+
+SUMMARY OF CHANGES:
+	This release focuses on bug fixes, usability improvements, improved internationalization support, and major documentation additions.
+
+
+	Russian language support has been completed and added to this release.
+	Several major bugs in IceMe have been fixed, including a major start-up bug in IceMe [found/reported by Francesco (fr4nk['at']email.it), 4/16/2003].	
+	An internal 'Help' system has been added with uniform display of help topics (w/ locale support). Documentation for almost all tools has been greatly improved.
+	Keyboard shortcut support has been greatly improved for all primary and secondary tools.
+
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.2
+	- 'Credits' dialog has been appropriately changed to reflect the completion of Vasya's Russian translation
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Portability improvement: Added the following new paths to the centraled 'getIceWMConfigPath()' method to support more diverse IceWM installations on different systems: "/usr/share/icewm/","/usr/X11R6/share/icewm/","/usr/lib/icewm/"
+	- Code cleanup/consolidation: added centralized method getLocaleDir() for finding locale-specific sub-directories for IceWMCP across all applicationsi in a uniform way, used by IceWMCP and IceWMCP's 'Help' system
+	- Small bug-fix to getBaseDir() method to make sure it always returns a path - this bug only affected things when testing was being done from the Python console...calling getBaseDir() from a Python console no longer return s '' (empty) string, but returns the relative path "./" instead
+	- Added a few new methods (displayHelp, renderHelp, getHelpDir, getHelpDirLocale) for implementing a small, but useful Help topics system throughout most apps
+	- Added string constants  APP_HELP_STR and APP_HELP_STRR for internal use throughout apps to references new Help topics functionality
+	- Five Gtk color constants now specfied (COL_*) for use with Help topics displaying functionality
+	- Three Gtk font constants specified (HELP_FONT*) for use with Help topics display functionality
+	- Added string constant 'DIALOG_CLOSE' for use with new 'Help' system windows
+	- Moved 'app_map' dictionary from Bug-Reporter module to 'common' module, to be shared with new Help functionality
+	- Keyboard usability improvement: Added new method 'keyPressClose' to allow for some secondary tools to be closed by simply clicking 'Esc' and/or Return
+	- Added variable TIPS for shared use of GtkTooltips objects for usability improvements
+	- All help and about windows now have a 'tooltip' for the 'close'/'ok' buttons
+	- Added new shared splash screen functionality for use with tools that take longer to start:  IceMe, IcePref2, IcePref2-TD
+	- Added the following variables and methods for new splash screen functionality: SPLASH_WINDOW, SPLASH_TEXT, SPLASH_LOGO, SPLASH_METHOD, setSplash, hideSplash, __initSplash, showSplash, NOSPLASH
+	- All static binary packages will show a splash screen before the start of any IceWMCP app (via the 'launcher.py' script only used in static binary packages)
+	- Added constant 'IS_STATIC_BINARY' for use with Bug Reporter
+
+
+IceWM Control Panel (IceWMCP)         (IceWMCP.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement:  Added key binding  for  View-)List  -) Ctrl+L
+	- Usability improvement:  Added key binding  for View-)Icons  -) Ctrl+I
+	- Usability improvement:  Added key binding  for "Configuration..." -) Ctrl+C
+	- Usability improvement:  Added key binding  for "Refresh View"  -) Ctrl+V
+	- Usability improvement: ALL widgets now have popup tooltips
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- Version is now 1.1
+	- Feature enhancement:  Window title now shows the program's version number.
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets now have popup tooltips
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Russian support not implemented here.
+	- Keyboard functionality improvement: Pressing 'Esc' on the keyboard now closes the Bug Reporter window
+	- Usability: 'Send Now' button now has a popup tooltip
+	- Bug reporter now reports whether or not the user is using the static-binary or pure python version of the application via the 'IS_STATIC_BINARY' constant from icewmcp_common
+
+
+IceWMCP-Dialogs        (IceWMCP_Dialogs.py):
+	- Usability Improvement: all common dialogs in IceWMCP_Dialogs now have 'tooltips' for all buttons in all dialog boxes
+
+
+IceWMCP-KeyEdit     (IceWMCPKeyEdit.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Usability improvement:  Added button for 'Apply Changes Now', so users no longer have to rely on the menu for this feature
+	- GUI improvement:  Default window size is now slightly larger, to require less scrolling and reduce the 'feel' feel
+	- Usability improvement:  Added key binding for 'Apply Changes Now...' -) Ctrl+A
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement:  almost all widgets now have tooltips
+	- Usability improvement:  Can now be closed by pressing 'Esc' when running inside IceMe menu editor
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Start-up improvement:  Startup now features a small splash screen while the program is loading
+	- Usability improvement: The 'Create new theme' window can now be closed by simply pressing 'Esc'
+	- Usability improvement: All buttons in the 'Create new theme' window now have tooltips
+	- Usability improvement: The 'sample font text' now also features numbers 0-9 for better font previewing
+	- Changed key binding for 'Restart IceWM...' from Ctrl+R to Ctrl+I
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets for ALL options now have popup tooltips
+	- One small addition the the locale and Spanish language locale support to accomodate the new Splash screen
+
+
+IcePref2       (icepref.py):
+	- Version is now 2.8
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Portability fix: The default icon path in the 'default' settings now uses cross-platform  getIceWMConfigPath()+"icons/" insteady of "/usr/X11R6/lib/X11/icewm/icons/"
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Start-up improvement:  Startup now features a small splash screen while the program is loading
+	- Usability improvement: The 'sample font text' now also features numbers 0-9 for better font previewing
+	- Changed menu item File -) 'Restart IceWM...' to File -) 'Apply Changes Now...' for a more consistent look across all applications
+	- Usability improvement:  Changed button 'Restart' to 'Apply'  (more user-friendly and less confusing.)
+	- Usability improvement:  Added key binding for 'Apply Changes Now...' -) Ctrl + A
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets for ALL options now have popup tooltips
+	- One small addition the the locale and Spanish language locale support to accomodate the new Splash screen
+	- Minor updates to the locale, and Spanish and Russian language locale support
+
+
+IceWMCP-Cursors        (IceWMCPCursors.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement:  Added button 'Apply Changes Now', so users no longer have to rely on the menu to access this feature
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Apply Changes Now...' -) Ctrl+A
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets for ALL options now have popup tooltips
+	- Usability improvement: ALL widgets now have popup tooltips
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Usability improvement:  Added  File -) Apply Changes Now to the menu
+	- Usability improvement:  Added key binding for 'Apply Changes Now' -) Ctrl+A
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets now have popup tooltips
+	- Spanish locale correction: app name changed from "Configuración del Papel Pintado" to "Configuración de Escritorio"...seems more accurate
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- The main IceSoundManager 'Help' now uses new uniform internal 'Help' system with a more user-friendly text display 
+	- Code cleanup: Global variable 'help_file' has been removed/disabled (no longer needed)
+	- Code cleanup: Method 'showGenericHelp' has been removed/disabled (no longer needed)
+	- Localization improvement: Spanish language help is now available from WITHIN the program (users are no longer forced to open the external HTML file, though the HTML file will still exist.)
+	- Documentation improvement: varios corrections and updates to the Spanish language HTML help file 'icesound-es-help.html'
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Changed key binding: "IceSound Server Help" from F2 to F6
+	- Changed key binding: "About" from F1 to F2
+	- Changed key binding: "Sample Server Script" from  F3 to F7
+	- Changed key binding: "Load Sound Theme" from Ctrl+L  to Ctrl+O (for consistency across applications)
+	- Changed key binding: "Bug Reports and Comments" from  F5 to F8  (F5 is now in use by the bug reporter)
+	- Usability improvement:  'About' window now uses the standard 'commonAbout' method from icewmcp_common.py, with a nice logo, window can now be closed by pressing 'Esc' or "Enter"
+	- Usability improvement:  All secondary windows can now be closed by simply pressing 'Esc'
+	- Usability improvement:  All 'help' and 'about' windows can be closed by simply pressing 'Esc' or 'Enter'
+	- GUI improvements:  Various improvements to the 'wav directory' and 'icesound executable' configuration windows  (larger more-visible builtin 'help' window for less scrolling, larger text field, removal of 'fixed' set_usize calls where not needed, windows no longer look 'cramped')
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement: Added a button for 'Apply changes now', so clicking File -) Apply Changes Now...is no longer necessary
+	- Usability improvement: Added a button for "Save', so clicking  File-)Save is not longer necessary
+	- Usability improvement: Added key binding for "Apply changes now" -)  Ctrl+A
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement:  The "Add...' window for adding program windows can now be closed by pressing 'Esc' on keyboard
+	- Usability improvement: Added tooltips to all buttons
+	- Usability improvement: Added tooltips to all 'window options' on the right side of the window, to avoid having to scroll horizontally for longer window option names	
+
+
+IceMe  (IceMe.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- Major bug fix: Fixed a bug [reported by Francesco (fr4nk['at']email.it), 4/16/2003] which caused IceMe not to start if getIceWMFile was called on a null/None value for self.GLOBAL_ICEWM_DIR when the global IceWM directory could not be detected. Work around: self.GLOBAL_ICEWM_DIR gets a default non-null value from the 'getIceWMConfigPath' method in 'icewmcp_common.py' if the global IceWM directory cannot be detected - this is also a good code cleanup.
+	- Major bug fix: Fixed a bug where closing the icon selection dialog in IceMe with the window's 'X' button, then re-opening the icon selection dialog resulted in a empty black window, "GtkCritical' messages on the console, and required a 'kill' of IceMe in most cases, problem should now be eliminated
+	- Major Start-up improvement: Got rid of the 'stalled' screen while menus and icons are loading, the main window now only shows after everything has loaded
+	- Major Start-up improvement: Added a small but nice-looking  'splash' screen which shows on start-up while menus and icons are loading, replaces the ugly 'stalled' window that appeared to make IceMe look like it had frozen	
+	- Major Start-up improvements: More error catching has been implemented for methods called at start up, to help ensure that IceMe starts regardless of any non-fatal errors.
+	- Usability improvement: When a user closes the icon selection dialog in IceMe with the window's 'X' button, they are now adviced to use the 'Cancel' button instead, as doing so will re-load icons faster the next time the icon  selection dialog is displayed
+	- Bug fix: Fixed a bug where running IcePref2 left the status bar as 'Running Icepref2...' indefinitely
+	- Bug fix: Fixed a bug where showing the Preview window left the status bar as 'Displaying preview window...' indefinitely
+	- Usability improvement: The icon selection dialog now reports any errors loading certain icons in a Dialog box, not on the console like the old IceMe
+	- GUI improvement: The menu 'Preview' window now has a little space around the edge of the menu, so icons don't appear to be right on the window's edge
+	- GUI improvement: The menu 'Preview' window title is now 'IceMe: Menu Preview' (looks better than the old 'IceMe: preview menu' thing), string is translated for Spanish language locale
+	- Several additions to the locale support, additional translations added to the Spanish language locale support
+	- IceMe appears to start slightly faster, but nothing drastic
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Key binding change: File -) 'Revert' shortcut changed from Ctrl+R to Ctrl+T  (Ctrl+R is now in use by the 'Run...' command.)
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement:  Added key binding for 'Delete' function  -) Ctrl+D
+	- Usability improvement:  Added key binding to launch IcePref2 -) F9
+	- Usability improvement:  Added key binding to open shortcut key editor  -) F10
+	- Code cleanup: tooltips are now accessed from the "icewmcp_common" module via 'TIPS' variable
+	- Usability improvement:  The Shortcut Editor (IceWMCPKeyEdit) can now be closed by pressing 'Esc'
+	- Usability improvement/Bug Fix:  Clicking 'Add shortcut...' to launch the Shortcut Editor (IceWMCPKeyEdit) now automatically inputs the name of the selected program in the Shortcut Editor.
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Version is now 2.2
+	- Portability fix: The default icon path in the now uses cross-platform getIceWMConfigPath()+"icons/" insteady of "/usr/X11R6/lib/X11/icewm/icons/"
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Keyboard functionality improvement: Pressing 'Esc' on the keyboard now closes the 'Run...' dialog window
+	- The window's wm_class/wm_name values have been changed to match the values of IceWMCP  (icewmcontrolpanel/IceWMControlPanel) - this is for a more 'integrated' look
+	- Feature enchancement: The 'Run...' dialog now stores up to 20 previously used commands  (use to be 10)
+
+
+IceWMCP-Mouse  (IceWMCPMouse.py):
+	- Version is now 2.2
+	- Feature enhancement:  Window title now shows the program's version number.
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Tool now has a menu in the window
+	- Added menus with the following functions: Quit, 'Help', 'Help-)About','Help-)Credits','Help-)Send a Bug Report...'
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets now have popup tooltips
+
+
+IceWMCP-Keyboard  (IceWMCPKeyboard.py):
+	- Version is now 2.2
+	- Feature enhancement:  Window title now shows the program's version number.
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))	- Tool now has a menu in the window
+	- Added menus with the following functions: Quit, 'Help', 'Help-)About','Help-)Credits','Help-)Send a Bug Report...'
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+	- Usability improvement: ALL widgets now have popup tooltips
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- Code cleanup: Version now same as 'this_software_version' from icewmcp_common.py
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Usability improvement:  All buttons now have tooltips
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.2.2
+	- Russian language support has been added (Vasya Leushin (basileus ['at'] newmail.ru))
+	- 'Help' -) 'Help...' has been added to the menu, accessible by pressing 'F4'
+	- Internationalization improvement: Spanish language help on this tool is now available,  accessible by pressing 'F4' 
+	- Internal help about this tool is now available, using the new uniform internal 'Help' system
+	- Usability improvement:  All buttons now have tooltips
+	- Usability improvement:  Added key binding for 'Run...' -) Ctrl+R
+	- Usability improvement: Added key binding for 'About'  -) F2
+	- Usability improvement:  Added key binding for 'Credits' -) F3
+	- Usability improvement:  Added key binding for 'Send a Bug Report...'  -) F5
+	- Usability improvement:  Added key binding  for 'Check for newer versions of this program..."  -) Ctrl+U
+
+
+
+______________________________________________________
+
+VERSION 2.0 - 3/30/2003 - 4/5/2003
+
+
+SUMMARY OF CHANGES:
+	This release focuses on the following: usability improvements, GUI improvements, 
+	feature enhancements, minor bug fixes, and code clean-up.
+
+	New tool: IceWMCP_GtkPCCard - a gtk-based PC Card manager
+	Removed tool:  tkPCCard (the old Tk-based PC Card Manager)
+	New internal modules:  ICEWMCP_BugReport.py, IceWMCP_Dialogs.py
+	Eliminated dependencies on: Tk/Tkinter, GtkExtra.py module
+	A 'developer's release' is also now available for programmers to create their own control panels
+
+
+tkPCCard     (tkPCCard.py):
+	- tkPCCard has been REMOVED from the official IceWM Control Panel distribution, since its Tk interface didn't fit with the whole Gtk scheme - eliminates the last dependency on Tk/Tkinter.  As of version 2.0, tkPCCard will no longer be maintained.
+
+
+IceWMCP_GtkPCCard     (IceWMCP_GtkPCCard.py):
+	- A Gtk-based re-write of tkPCCard: same functionality with a Gtk-based user interface
+
+
+IceWMCP-BugReport        (IceWMCP_BugReport.py):
+	- Added this new internal module to allow for quick, easy sending of bug reports from within almost all IceWMCP programs
+	- Updated the gettext and Spanish locale support to accomodate this new module
+
+
+IceWMCP-Dialogs        (IceWMCP_Dialogs.py):
+	- Added this new internal module for uniform, cleaner, and more visually-appealing dialogs throughout all IceWMP programs
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 2.0
+	- Added a 'commonAbout' function to provide a uniform look-n-feel to all 'About' windows in all tools
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added access to a centralized method for reporting bug via the functionality of the ICEWMCP_BugReport.py module
+
+
+IceWM Control Panel (IceWMCP)         (IceWMCP.py):
+	- Version is now 2.0
+	- Implemented some grammar corrections to 6 of the Spanish language control panel applets (Thanks to "Martintxo" (fundamento [at] sindominio.net))
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- The 'PCMCIA' control panel applet was changed to use the new 'IceWMCP_GtkPCCard.py' module, instead of the old 'tkPCCard.py' module
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceWMCP-KeyEdit     (IceWMCPKeyEdit.py):
+	- Version is now 2.0
+	- Usability cleanups: deleting a keyboard shortcut no longer leads to 'jumping' to the top of the list of shortcuts
+	- GUI cleanups and rearrangements: function buttons are now a uniform size
+	- Added a 'save' button, so the user doesn't have to click 'Save' on the top menu
+	- 'Delete' button is now away from the 'Add' button for safety
+	- Added a 'Test Key' button, and a function for testing configured keyboard shortcuts
+	- 'Test Key' function can check for the presence of the executable on your PATH or filesystem
+	- Minor additions to locale and Spanish locale language support
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Improved loading of 'keys' file from IceWM system path if 'keys' file cannot be loaded from the user's home directory of $ICEWM_PRVCFG path
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IcePref2-TD            (icepref_td.py):
+	- Version is now 2.0
+	- The 'mailbox' patch required in version 1.1 has now been integrated into the main code, no longer a need for a patch
+	- Added support for 9 new icons (both 16x16 & 32x32):  netscape, mozilla, galeon, opera, email, terminal, gimp, emacs, vim
+	- Bug fix:  Fixed the 'this does not appear to be a theme file" message that showed on start-up even when no file name was given
+	- Bug fix: "Tools" menu for running IceWM Control Panel now launches 'IceWMCP' instead of the old 'IceControlPanel'
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Code cleanup: Removed unnecessary method 'ConfirmDialog' since it is no longer needed
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Code cleanup: Removed dependency on GtkExtra module
+	- Usability improvement: File selection dialogs for opening and creating themes now have file 'memory', so that the file dialogs 'remember' the last file you selected
+	- Menu correction: "Tools" menu item for launching IceWMCP now says 'requires IceWMCP' instead of the  out-dated 'requires IceControlPanel'
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+	
+
+
+IcePref2       (icepref.py):
+	- Version is now 2.7
+	- Bug fix: "Tools" menu for running IceWM Control Panel now launches 'IceWMCP' instead of the old 'IceControlPanel'
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Code cleanup: Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Code cleanup: Removed unnecessary method 'ConfirmDialog' since it is no longer needed
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- The 'About Theme Previews' function now uses a scrollable window for easier reading
+	- Menu correction: "Tools" menu item for launching IceWMCP now says 'requires IceWMCP' instead of the  out-dated 'requires IceControlPanel'
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceWMCP-Cursors        (IceWMCPCursors.py):
+	- Version is now 2.0
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 2.0
+	- Now adds .ps (postscript) to the list of readable wallpaper images, works if your copy of Imlib supports loading of postscript files, and should work if your copy of IceWM is compiled with Imlib support
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceSoundManager        (icesound.py):
+	- Version is now 2.0
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Code cleanup: made the 'showServerHelp' method more efficient, same functionality with less code and more speed
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: new slicker-looking (hopefully) logo to match the other IceWMCP tools
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 2.0
+	- GUI cleanup: eliminated the unncessary 'space' around the top menu
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- 'Preview' box for window icons is now slightly larger, for easier viewing
+	- 'Preview' box for window icons is now to the right of the icon selection text field and button (save screen space)
+	- Spacing added between various widgets as needed to eliminate 'cluttered' feel
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+IceMe  (IceMe.py):
+	- Version is now 2.0
+	- Code cleanup: Eliminated dependency on the KeyEditor.py module, since it's no longer used (replaced with IceWMCPWinOptions.py module)
+	- Code cleanup:  Eliminated dependency on the VERSION.py module  (we don't need an entire module just for the version number, also people might mistakenly think it holds the version number of IceWMCP, instead of IceMe)
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Various spelling/grammar corrections to the Spanish locale support
+	- Eliminated dependency on MessageBox.py module, now uses improved IceWMCP_Dialogs.py module
+	- Menu icons are now slightly larger for greater visibility (before 18x18, now 22x22)
+	- Menu rows now have a little extra spacing in them, to eliminate 'cluttered' feel
+	- Added a little space between menu icon and menu text, to eliminate 'cluttered' feel
+	- Menu separator is now slightly larger for greater visibility
+	- 2nd column (which holds program command line) for Menu is now wider, to make seeing the command line easier without having to click on the menu item
+	- Added appropriate copyright info to all IceMe modules, so ALL IceMe modules give proper credit to the orginal authors
+	- IceMe makes a greater attempt avoid loading 'icons' that aren't really icons (wallpapers, logos, etc.)
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Removed dependency on GtkExtra module
+	- Added 'memory' to the file selection dialog: IceMe now 'remembers' the last file you selected when selecting a program for a menu item
+	-  Set the IceMe main window and file selection window wm_class/wm_name to "iceme"/"IceMe"  (this looks much better in the 'winoptions' file when setting window options for IceMe)
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+	
+
+IceWMCPRun  (IceWMCPRun.py):
+	- Version is now 2.0
+	- GUI enhancement: added an IceWMCP logo to the dialog box for a more professional look
+
+
+IceWMCP-Mouse  (IceWMCPMouse.py):
+	- Version is now 2.0
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+
+
+IceWMCP-Keyboard  (IceWMCPKeyboard.py):
+	- Version is now 2.0
+	- GUI improvement: slicker-looking (hopefully), more original logo with transparency
+
+
+IceWMCP-URLRead         (ICEWMCP_URLRead.py):
+	- Version is now 2.0
+	- Code cleanup: removed several unnecessary methods and variables to eliminate code bloat
+
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 2.0
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+PySpool  (pyspool.py, pyprintcommon.py):
+	- Version is now 0.2.1
+	- Removed dependency on GtkExtra module
+	- Dialog messages now use new classier dialogs from 'IceWMCP_Dialogs' common module
+	- GUI improvement: Cleaner-looking 'About' window uses new 'commonAbout' dialog from the 'common' module
+	- Several grammar corrections to the Spanish language locale support
+	- Added 'Credits' item to the 'Help' menu to give credit to translators and others who have contributed
+	- Added 'Send a bug report' to the 'Help' menu, for quick, easy bug-reporting from within IceWMCP
+
+
+
+TODO     (My personal reminders):  
+	- Known bug: Closing the icon selection dialog in IceMe with the window's 'X' button, then re-opening the 
+	icon selection dialog results in a empty black window and a "gtk critical' message on the console
+	- Add 'search' functionality to the hundreds of properties in IcePref2
+	- Add 'search' functionality to the hundreds of properties in IcePref2-TD
+	- Incorporate Russian language support as soon as it is completed
+	- Speed up IceMe start-up
+
+
+
+
+__________________________________________________
+VERSION 1.1  -  3/20/2003-3/21/2003
+
+The focus of this release is bug fixes and feature enhancements.
+One new internal tool added.
+
+
+IceWMCPRun  (IceWMCPRun.py):
+	- A new internal tool was added (accessible only from 'File' menus), a simple Gtk-based 'Run...' dialog with command 'memory'
+	- 'Run...' dialogs will now be available on the 'File' menu of most IceWMCP tools
+	- Minor updates/additions to the foreign language gettext .pot files and the Spanish language locale support to accomodate new 'Run' dialog
+	- Version is 1.1
+
+
+IcePref2       (icepref.py):
+	- Version is now 2.6
+	- Fixed a serious bug in IcePref2 which caused IcePref2 to reset user 'preferences' to system default 'preferences'  (users should upgrade for this exact reason).
+	- The 'Save' confirmation dialog now informs you of the location of the 'backup' file as well
+	- Basic code clean-up  (sys.argv[0] arguments switched to use common getBaseDir() function)
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+	
+IcePref2-TD            (icepref_td.py):
+	- Version is now 1.1
+	- All widgets which require images now have 'edit' and 'delete' buttons, for easy editing and deleting of theme pixmaps  (the 'edit' feature launches gimp-remote, the 'delete' button can remove the image from the hard disk)
+	-  If a theme background image cannot be found when the theme is saved, the 'DesktopBackgroundImage' property in the theme is commented out  (if a background image in a theme can't load, the user of the theme also cannot set their own background and are stuck with a 'plain' solid color background)
+	- Theme pixmaps (such as pixmaps for windows, taskbars, etc.) are now organized in a more logical order in the user interface and in the theme file itself
+	- File widgets (including the image widgets) now 'remember' the last file you selected
+	- Added support for the 'logoutbg.xpm' image
+	- Added support for the 'titleIL.xpm' image
+	- Minor updates/additions to the foreign language gettext .pot files and the Spanish language locale support
+
+
+IceWMCP-Cursors        (IceWMCPCursors.py):
+	- Version is now 1.1
+	- All widgets which require images now have 'edit' and 'delete' buttons, for easy editing and deleting of theme pixmaps  (the 'edit' feature launches gimp-remote, the 'delete' button can remove the image from the hard disk)
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- Version is now 1.1
+	- Added 'rundlg' method for global access to the 'Run...' dialog from all tools
+	- Added 'getDocDir' method for global access to the documentation directory
+
+
+IceWM Control Panel (IceWMCP)         (IceWMCP.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+IceWMCP-KeyEdit     (IceWMCPKeyEdit.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+	- Default window size is now slightly larger in height
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+IceMe  (IceMe.py, IconSelectionDialog.py, IceMenuTree.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+IceSoundManager        (icesound.py):
+	- Version is now 1.1
+	- The help file is now read in from the text document 'IceSoundManager_Help.txt', instead of being built into the code (eliminates code bloat)
+	- Added 'Run...' dialog menu command to the 'File' menu
+	- Updated both the English and Spanish help files
+
+
+PySpool         (pyspool.py):
+	- Version is now 0.2
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+PhrozenClock  (phrozenclock.py):
+	- Version is now 1.1
+	- Added 'Run...' dialog menu command to the 'File' menu
+
+
+
+_______________________________________
+VERSION 1.0  -  3/14/2003-3/16/2003
+
+- THREE NEW TOOLS ADDED to IceWMCP! 
+
+	
+IcePref2-TD            (icepref_td.py):
+	- Added a brand new Theme Designer/Editor for IceWM, the first truly usable IceWM Theme designer (based on IcePref2), features full drag-and-drop support and .theme files as commandline options
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Added support for software update checking from 'File' menu
+	- Hmmm...I think this makes IceWMCP worthy of a higher version number
+	- Updated locale (gettext) and Spanish language locale support
+	- Version 1.0
+
+
+IceWMCP-Cursors        (IceWMCPCursors.py):
+	- Added a brand new IceWM cursor configuration utility, featuring full drag-and-drop support and ability to easily add, delete, and change IceWM cursors
+	- Added support for software update checking from 'File' menu
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version 1.0
+
+
+IceWMCP-GtkIconSelection       (IceWMCPGtkIconSelection.py):
+	- Added new module named 'IceWMCP-Common  (icewmcp_common.py)', for easy, VISUAL browsing of system icons in user-configurable icon paths, based on a modified version of the IconSelectionDialog from IceME, features drag-n-drop support, making it useful for all other applications supporting drag-n-drop support, not just IceWMCP
+	- Updated locale (gettext) and Spanish language locale support
+
+
+IcePref2       (icepref.py):
+	- Brought IcePref2 up-to-date with IceWM 1.2.7
+	- Fix a small bug that caused IcePref2 not to read in some options from 'preferences' files
+	- Version is now 2.5
+	- Added a button on the 'Themes' part of the program for AUTOMATICALLY generating theme preview ('preview.jpg') images if they don't already exist (or for creating new ones of they do exist), making it easier than ever for users to get previews for themes and create previews for their own themes for distribution.  The user doesn't have to do anything but click a couple of quick buttons and IcePref2 does all the work to create professional-looking theme previews. Now, you don't have to hunt around for preview images or open up Gimp.
+	- Preferences which require colors how have a nice looking GUI 'color button', so you can SEE what color is 
+	  being used without having to open the color selection dialog
+	- Added support for the following new IceWM 'preferences' available in IceWM 1.2.7: ShowProgramsMenu,
+	  ShowRun, ShowLogoutSubMenu, ShowWindowList , ShowAbout , ShapesProtectClientWindow, AllowFullscreen           QuickSwitchGroupWorkspaces
+	- Added support for the following options: KeySysWindowList, KeySysWorkspace11,  KeySysWorkspace12   			 KeySysWorkspace12TakeWin, KeySysWorkspace11TakeWin,  KeySysWinListMenu
+	- Other minor GUI improvements
+	- Added 'Theme Designer' to the Tools menu
+	- Added support for software update checking from 'File' menu
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+
+
+IceWMCP-URLRead         (ICEWMCP_URLRead.py):
+	- Added new module named 'ICEWMCP_URLRead.py' which is used for quickly checking for new versions of the IceWMCP
+
+
+IceWMCP-Common        (icewmcp_common.py):
+	- added getIceWMConfigPath method, to search for IceWM configuration files in several likely locations, not just /usr/X11R6/lib/X11/icewm
+	- implemented centralized software update checking, so users can check for new versions of IceWMCP quickly from the control panel
+	- added centralized 'loadScaledImage' method to use gdkpixbuf to load any image format, and scale it if need be
+	- Implemented support for $ICEWM_PRIVCFG environment variable (but does anybody really use it), 
+	  new getIceWMPrivConfgPath method for finding the user's IceWM home directory
+	- Added a couple Hex/RGB color conversion methods
+
+
+
+IceWM Control Panel (IceWMCP)         (IceWMCP.py):
+	- Added support for software update checking from 'File' menu
+	- Added new control panel applet for system Icons, uses new IceWMCP-GtkIconSelection module
+	- Added new control panel applet for IceWMCP Cursors tool
+	- Added new control panel applet for IceWMCP Theme Designer tool
+	- Added support for a 'List View', similar to the list view in Windows Control Panel, uses completely vertical orientation and 22px small icons
+	- Added 'View'-) 'Icon View' and 'View' -) 'List View' to the menu 
+	- The user's preferred view style (icon or list) is saved to preferences file in  ~/.icewmcp_view
+	- Added support for icon formats other than .xpm  (can now use .png and .gif too)
+	- All icons converted to .png format to save space, also faster loading
+	- Noticeable speed improvements due to the use of .png icons instead of .xpm
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+
+IceWMCP-WinOptions          (IceWMCPWinOptions.py):
+	- Added support for 8 new window options: "Has HIDE button (if applicable)", "Has ROLLUP button (if applicable)", "Has LAYER button (if applicable)", "Ignore pre-set window positions", "Do not focus", "Start full-screen", "Start vertically maximized",  "Start horizontally maximized" 
+	- Updated gettext support to accomodate new window options and revised 'about' box
+	- Now only warns the user ONCE about restarting IceWM on BSD-based systems
+	- Now searches a list of possible IceWM configuration paths for icons and winoptions files
+	- Made default window size slightly larger
+	- Added drag-n-drop support to the 'Icon' text field, the 'Icon Browse...' button, and the 'Icon' preview box, so icons and images can be set just by dragging them to these widgets
+	- Added new IceWMCP-GtkIconSelection module as the new Icon browsing method for window icons, allowing users to SEE icons and drag-n-drop icons where they please
+	- Changing a window icon via the IceWMCP-GtkIconSelection module now automatically sets the window properties with the new icon
+	- Added support for software update checking from 'File' menu
+	- Added nice pixmap button for icon selection button
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+
+IceWMCP-KeyEdit     (IceWMCPKeyEdit.py):
+	- Added support for software update checking from 'File' menu
+	- Added nice pixmap button for program selection button
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- Added support for software update checking from 'File' menu
+	- Added a 'color sample' button for color selection 
+	- Added nice pixmap button for color selection button, so you can SEE what color is 
+	  being used without having to open the color selection dialog
+	- Added nice pixmap button for directory selection button
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+
+IceMe  (IceMe.py, IconSelectionDialog.py, IceMenuTree.py):
+	- Added support for software update checking from 'File' menu
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.1	
+
+
+IceSoundManager        (icesound.py):
+	- Added support for software update checking from 'File' menu
+	- Now supports the $ICEWM_PRIVCFG environment variable (but does anybody really use it)
+	- All new GUI pixmaps, with a more modern-looking blue-ish theme (check the latest screenshots)
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+
+PySpool         (pyspool.py):
+	- updated to use new version 0.2 from the Pythonol project (http://pythonol.sourceforge.net/pyprint.php)
+	- Gui improvements (nicer pixmaps)
+	- Added support for software update checking from 'File' menu
+	- Updated locale (gettext) and Spanish language locale support
+
+
+PyInstallShield  (PyInstallShield,INSTALL-ME.sh):
+	- added PyInstallShield version 0.3 as the installation method for .tar.gz packages from the Pythonol project (http://pythonol.sourceforge.net/pyinstall.php)
+
+
+PhrozenClock  (phrozenclock.py):
+	- Added support for software update checking from 'File' menu
+	- Updated locale (gettext) and Spanish language locale support
+	- Version is now 1.0
+
+_________________________________________
+VERSION 0.2 - 2/25/2003
+
+PyInstallShield  (PyInstallShield,INSTALL-ME.sh):
+	- added PyInstallShield version 0.2 as the installation method for .tar.gz packages
+	- full GUI installation support
+	- users cannot control the directory for installed icons and executables
+	- users can now save the text in the output screen to a file for printing/viewing
+	- improved uninstall process
+	- improved auto-clean process
+	- added foreign language support (gettext) when installing on Linux/Unix
+	- Window installations are still English-only
+	- Spanish language support implemented
+	- minor GUI improvements
+
+IceWMCP-Common  (icewmcp_common.py):
+	- added icewmcp_common.py
+	- used by all IceWMCP modules
+	- consoildates shared base directory (getBaseDir) finding methods
+	- consolidates shared pixmap directory (getPixDir) finding methods
+	- consolidates some shared image loading functions
+	- consolidates some commonly used dialog box strings
+	- holds new gettext (foreign language) support for all other modules
+
+IceWM Control Panel (IceWMCP)   (IceWMCP.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- added support for applets in foreign languages
+	- added Spanish language applets in ./applets/es/
+	- Control panel now sets the font for applet titles, for consistenency (Helvetica 12pt)
+	- Listing of applet directory now uses faster glob.glob(), instead of os.listdir()
+	- Changed the 'kron' applet's name from 'Cron Jobs' to 'Scheduled Tasks' (newbie-friendly)
+	- Added an applet for the Java Plugin that launchs Sun's 'ControlPanel'
+	- Updated 'ControlPanel-APPLETS.html' documentation
+
+IceWMCP-Mouse  (IceWMCPMouse.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+
+IceWMCP-Keyboard  (IceWMCPKeyboard.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+
+IceWMCP-KeyEdit  (IceWMCPKeyEdit.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+
+IceWMCP-Wallpaper    (IceWMCPWallpaper.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- added Drag-n-drop support for wallpaper preview (drag an image onto the preview window, directory entry, or directory button for immediate previewing and directory switching)
+
+IceWMCP-WinOptions  (IceWMCPWinOptions.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- fixed a bug that chopped off extra-long WM_CLASS/WM_NAME names (i.e. psmoke.py.PSmoke.py)
+	- fixed a couple of bugs causing IceWMCP-WinOptions to 'jump' around the list unnecessarily on add/delete
+
+PhrozenClock  (phrozenclock.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+
+tkPCCard  (tkPCCard.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- tkPCCard still starts up even if no PC Cards are found on the system (nice, but not useful)
+
+PySpool  (pyspool.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- version changed from 0.1a to 0.2b
+
+PyPrint-Common  (pyprintcommon.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- version changed from 0.1a to 0.1b
+
+IceSoundManager  (icesound.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- improved GUI so IceSoundManager uses less screen space, cleaner interface
+	- updated help file
+	- added Spanish help file 'icesound-es-help.html'
+
+IcePref2 (icepref.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- added Drag-n-drop support for desktop image preview (drag an image onto the preview window, file entry, or file button for immediate previewing and directory switching)
+	- added nice 'select' pixmaps for font, color, file, and path select widgets (instead of "..." button)
+	- cleaner GUI layout, no more 'long' property lines that force the window to scroll more than needed
+	- cleaned up toggle-button widgets so text is not right on top of checkmark
+	- changed version from 2.1 to 2.2
+
+IceMe  (IceMe.py, IconSelectionDialog.py, IceMenuTree.py):
+	- uses new shared 'icewmcp_common.py' module
+	- gettext (foreign language) support added
+	- complete Spanish language (gettext) support added (not yet perfected for grammar)
+	- the version of IceMe used in IceWMCP now know as "IceMe - IceWMCP Edition"
+	- kept IceMe 1.0.0 over 1.1.1 (found too many bugs in 1.1.1)
+	- made IceWMCP-KeyEdit the shortcut key editor (instead of builtin key editor - found bugs)
+	- added drag-n-drop support for the 'icon' field and button, .png and .xpm files can be dragged onto these widgets for automatic setting of the icon
+	- implemented some of the ideas attempted in IceMe 1.1.1
+	- icons show in menu 'preview'  (from IceMe 1.1.1)
+	- icon previewing and loading of .xpm and .png images (gdkpixbuf)  (from IceMe 1.1.1)
+	- larger icons in icon selection dialog (so you can actually SEE the icons, 16x16 was too small)
+	- slightly larger font used for menu  (more visible, easier to read)
+	- slightly larger icons used for the menu  (more visible)
+	- icon selection dialog now feaures icons as 'flattened' buttons, cleaner, like the Gnome Icon selection dialog
+	- made default size of the icon selection dialog window slightly larger, for less scrolling
+	- add 'tooltips' in the icon selection dialog to show the real path of the icons
+	- changed default size of IceMe main window to size itself based on the size of the user's desktop
+	- default size of the left pane (that holds menu tree) is now slightly larger
+	- fixed a bug causing some .xpm icons not to display properly when selected from icon dialog
+	- fixed a bug causing some icons with no 'mask' not to display properly
+	- selecting an icon now places the FULL PATH of the icon into the icon entry (more thorough than ambiguous 'short names' that IceWM may not be able to find, prevents IceWM from having to choose between 2 or more icons with the same 'short name')
+	- added 'icon discovery', the path of icons used in the menu file which are not on IceWM 'IconPath' will be added to the Icon Selection Dialog for viewing  (makes better sense)
+	- added the new maintainer of IceMe's name to the 'about' credits

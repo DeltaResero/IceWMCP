@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=IceWM\n聲音\n事件
+Exec=[PHROZEN-INTERNAL]icesound.py
+Icon=icesound.png
+Hint=啟用、停用或設定 IceWM 聲音事件

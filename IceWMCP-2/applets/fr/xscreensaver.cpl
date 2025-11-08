@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Économiseur\nd'écran
+Exec=xscreensaver-demo
+Icon=screensaver.png
+Hint=Propriétés de XScreensaver

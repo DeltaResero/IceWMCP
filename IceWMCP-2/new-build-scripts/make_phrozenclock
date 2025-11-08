@@ -1,0 +1,44 @@
+cd ../
+thisdir=`pwd`
+rm -fr /INSTALL-phrozenclock/*
+mkdir /INSTALL-phrozenclock/ &> /dev/null
+mkdir /INSTALL-phrozenclock/help/ &> /dev/null
+mkdir /INSTALL-phrozenclock/help/es/ &> /dev/null
+mkdir /INSTALL-phrozenclock/help/ru/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/es/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/ru/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/fr/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/zh_TW/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/es/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/fr/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-phrozenclock/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+cp -f icewmcp_common.py /INSTALL-phrozenclock/
+cp -f icewmcp_short.png /INSTALL-phrozenclock/
+cp -f icewmcp.png /INSTALL-phrozenclock/
+cp -f phrozenclock.py /INSTALL-phrozenclock/
+cp -f IceWMCPRun.py /INSTALL-phrozenclock/
+cp -f ICEWMCP_BugReport.py /INSTALL-phrozenclock/
+cp -f ICEWMCP_URLRead.py /INSTALL-phrozenclock/
+cp -f IceWMCP_Dialogs.py /INSTALL-phrozenclock/
+cp -f ./icons/icewmcp-phrozenclock.png /INSTALL-phrozenclock/
+cp -f ./licenses/GPL /INSTALL-phrozenclock/phrozenclock-LICENSE
+cp -f ./help/phrozenclock.txt /INSTALL-phrozenclock/help/
+cp -f ./help/es/phrozenclock.txt /INSTALL-phrozenclock/help/es/
+cp -f ./help/ru/phrozenclock.txt /INSTALL-phrozenclock/help/ru/
+cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-phrozenclock/locale/es/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-phrozenclock/locale/ru/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-phrozenclock/locale/fr/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-phrozenclock/locale/zh_TW/LC_MESSAGES/
+cp -f ./PyInstallShield/phrozenclock-install-config.txt /INSTALL-phrozenclock/install-config.txt
+cp -f ./PyInstallShield/PyInstallShield /INSTALL-phrozenclock/
+cp -f ./PyInstallShield/INSTALL-ME.sh /INSTALL-phrozenclock/
+cp -f ./new-build-scripts/make_file_list /INSTALL-phrozenclock/
+convert ./icons/icewmcp-phrozenclock.png  /INSTALL-phrozenclock/install-icon.xpm
+cd /INSTALL-phrozenclock/
+./make_file_list
+rm -f make_file_list
+cd $thisdir
+cd ./new-build-scripts/
+./update_install_phrozenclock

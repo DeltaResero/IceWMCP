@@ -1,0 +1,24 @@
+[PHTITLE] IceWMCP
+
+[PHSECTION] Running Control Panel Applets
+The control panel applets are the collection of icons seen in the main window of the IceWMCP. You may run any control panel applet by making a [PH-HI] single click [/PH-HI] on any of the available icons. (There is NO need to double-click any of the icons.)  Please be aware that some icons may point to third-party programs which are not included with IceWMCP and may not be available on your system.
+[PHSECTION] Icon View
+To view the control panel applets as [PH-HI] large [/PH-HI] icons, click [PH-HI] View -> Icon View [/PH-HI] on the menu.  This is the default view for IceWMCP.
+[PHSECTION] List View
+To view the control panel applets as a [PH-HI] list [/PH-HI] containing smaller icons, click [PH-HI] View -> List View [/PH-HI] on the menu.
+[PHSECTION] Column View
+To view the control panel applets as a [PH-HI] double-columned list [/PH-HI] containing smaller icons, click [PH-HI] View -> Column View [/PH-HI] on the menu.
+[PHSECTION] Configuring IceWMCP
+To configure the IceWMCP, click [PH-HI] File -> Configuration... [/PH-HI] on the menu. You will see a new window which will allow you to show or hide any control panel applet. To hide an applet, make sure the [PH-HI] 'Hide' [/PH-HI] feature next to applet is [PH-HI] 'Checked' [/PH-HI].  To show an applet, make sure the [PH-HI] 'Hide' [/PH-HI]  feature next to the applet is [PH-HI] NOT 'Checked' [/PH-HI]. When you are done, click [PH-HI] 'Save'  [/PH-HI] to save your new configuration. Otherwise, click [PH-HI] 'Cancel' [/PH-HI] if you wish to cancel your changes.
+[PHSECTION] Reloading Applets
+To reload all of the applets in the IceWMCP, click [PH-HI] File -> Refresh View [/PH-HI] on the menu.  All of the applets available to IceWMCP will be reloaded and redisplayed. This feature is useful if you have added or deleted a control panel applet and wish to see your changes without having to restart IceWMCP.
+[PHSECTION] Added, Deleting, or Changing Control Panel Applets
+For information on adding, deleting, or changing control panel applets, please read the [PH-HI] ControlPanel-APPLETS.html [/PH-HI] file in the IceWMCP documentation directory, or visit [PH-HI] http://icesoundmanager.sourceforge.net/applets.php [/PH-HI] for more information.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

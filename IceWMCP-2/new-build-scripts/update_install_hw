@@ -1,0 +1,29 @@
+#! /usr/bin/env python
+import os
+
+TO_DIR="/Compile/cvs/IceWMCP-HW/INSTALL/"
+VERSION="1.4-beta"
+
+def updateinstall():
+	f=open(TO_DIR+"install-config.txt")
+	flist=f.read().split("\n")
+	files=open(TO_DIR+"file_list.txt")
+	ffiles=files.read()
+	f.close()
+	files.close()
+	f=open(TO_DIR+"install-config.txt","w")
+	for yy in flist:
+		if yy.strip().startswith("install_app_version"):
+			f.write("install_app_version="+VERSION+"\n")
+		elif yy.strip().startswith("file="):
+			continue
+		else:
+			f.write(yy.strip()+"\n")
+	f.write("\n"+ffiles)
+	f.flush()
+	f.close()
+	ff=os.popen("rm -f "+TO_DIR+"file_list.txt")
+
+
+if __name__ == "__main__":
+	updateinstall()

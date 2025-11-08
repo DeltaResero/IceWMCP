@@ -1,0 +1,24 @@
+echo "Creating backups in /Upload/..."
+rm -f /Upload/IceWMCP*programmers*.tar.bz2
+rm -f /Upload/IceWMControlPanel*.tar.bz2
+cp -f /Compile/distro/icewmcp/IceWMCP*programmers*.tar.bz2 /Upload/
+cp -f /Compile/distro/icewmcp/IceWMControlPanel*.tar.bz2 /Upload/
+rm -f /Upload/IceWMControlPanel*static*.tar.bz2
+echo "Creating backups in /mnt/backup/..."
+rm -f /mnt/backup/Projects/IceWMCP*programmers*.tar.bz2
+rm -f /mnt/backup/Projects/IceWMControlPanel*.tar.bz2
+cp -f /Compile/distro/icewmcp/IceWMCP*programmers*.tar.bz2 /mnt/backup/Projects/
+cp -f /Compile/distro/icewmcp/IceWMControlPanel*.tar.bz2 /mnt/backup/Projects/
+rm -f /mnt/backup/Projects/IceWMControlPanel*static*.tar.bz2
+echo "Creating backups in /Projects/mine/..."
+rm -f /Projects/mine/IceWMCP*programmers*.tar.bz2
+rm -f /Projects/mine/IceWMControlPanel*.tar.bz2
+rm -f /Projects/mine/GtkPCCard*.tar.bz2
+rm -f /Projects/mine/IceWMControlPanel*.rpm
+rm -f /Projects/mine/PhrozenClock*.tar.bz2
+cp -f /Compile/distro/icewmcp/IceWMCP*programmers*.tar.bz2 /Projects/mine/
+cp -f /Compile/distro/icewmcp/IceWMControlPanel*.tar.bz2 /Projects/mine/
+cp -f /Compile/distro/icewmcp/GtkPCCard*.tar.bz2 /Projects/mine/
+cp -f /Compile/distro/icewmcp/PhrozenClock*.tar.bz2 /Projects/mine/
+cp -f /Compile/distro/icewmcp/IceWMControlPanel*.rpm /Projects/mine/
+rm -f /Projects/mine/IceWMControlPanel*static*.tar.bz2

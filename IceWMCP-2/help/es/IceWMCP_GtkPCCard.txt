@@ -1,0 +1,24 @@
+[PHTITLE]IceWMCP - GtkPCCard  
+[PHSECTION]Descripción  
+La herramienta GtkPCCard de IceWMCP permite que usted maneja tarjetas del tipo PCMCIA.  Las tarjetas PCMCIA, o las tarjetas PC, se encuentran generalmente en las computadoras portátil, pero existen en muchas otras computadoras también.  Para utilizar GtkPCCard, usted DEBE tener el programa nombrado  [PH-HI]'cardctl'[/PH-HI]  en su sistema (y en su $PATH).  El  programa nombrado [PH-HI]'cardctl'[/PH-HI] es parte paquete del [PH-HI]'pcmcia-cs'[/PH-HI], que se puede encontrar en [PH-HI]http://pcmcia-cs.sourceforge.net[/PH-HI]  y [PH-HI]http://speakeasy.rpmfind.net[/PH-HI].  GtkPCCard no podrá hacer cualquier cosa útil sin [PH-HI]'cardctl'[/PH-HI].  En hecho, GtkPCCard no podrá exhibir cualesquiera de sus tarjetas PC sin [PH-HI]'cardctl'[/PH-HI].  Además, usted generalmente tiene que ser [PH-HI]'root'[/PH-HI] para hacer cualquier cosa con GtkPCCard más allá simplemente de exhibir tarjetas PC disponibles.  
+[PHSECTION]Tarjetas  
+Cada tarjeta PC instalada en su sistema se llama una [PH-HI]'Tarjeta'[/PH-HI], denotada por los marbetes numerados, individuales en la ventana principal de GtkPCCard.  
+[PHSECTION]Expulsar  
+Para expulsar una tarjeta PC, seleccione el marbete conteniendo la tarjeta PC que usted desea expulsar.  Entonces, haga clic en el botón [PH-HI]Expulsar[/PH-HI].  
+[PHSECTION]Insertar  
+Para insertar una tarjeta PC, seleccione el marbete conteniendo la tarjeta PC que usted desea insertar.  Entonces, haga clic en el botón  [PH-HI]Insertar[/PH-HI].  
+[PHSECTION]Reajustar  
+Para reajustar una tarjeta PC, seleccione el marbete conteniendo la tarjeta PC que usted desea reajustar.  Entonces, haga clic en el botón  [PH-HI]Reajustar[/PH-HI].  
+[PHSECTION]Suspender  
+Para suspender una tarjeta PC, seleccione el marbete conteniendo la tarjeta PC que usted desea suspender.  Entonces, haga clic en el botón  [PH-HI]Suspender[/PH-HI].  
+[PHSECTION]Reasumir  
+Para reasumir una tarjeta PC, seleccione el marbete conteniendo la tarjeta PC que usted desea reasumir.  Entonces, haga clic en el botón  [PH-HI]Reasumir[/PH-HI].  
+[PHSECTION]Salir del Programa
+Para salir del programa, haga clic en [PH-HI]Fichero -> Salir[/PH-HI] en el menú, o presione [PH-HI]Ctrl+Q[/PH-HI] en su teclado.  
+[PHSECTION]Saber si hay una más nueva versión
+Para saber si hay una más nueva versión del programa, haga clic en  [PH-HI]Fichero -> Saber si hay más nuevas versiónes de este programa...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+U[/PH-HI] en su teclado.  Se requiere una conexión al Internet. 
+[PHSECTION]Lanzar Programas Al Azar  
+Usted puede lanzar programas al azar en su sistema haciendo clic en [PH-HI]Fichero -> Usar...[/PH-HI] en el menú, o presione [PH-HI]Ctrl+R[/PH-HI] en su teclado.  
+[PHSECTION]Envíe Un Informe De Problemas  
+Usted puede enviar un informe de problemas usando este software haciendo clic en [PH-HI]Ayuda -> Enviar informe de problema...[/PH-HI]  en el menú, o presione [PH-HI]F5[/PH-HI] en su teclado.   Usted verá instrucciones detalladas de ayudarle con el proceso corto. Se requiere una conexión al Internet. 
+

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Périphériques\nmontés
+Exec=usermount
+Icon=usermount.png
+Hint=Voir les disques et autres périphériques montés

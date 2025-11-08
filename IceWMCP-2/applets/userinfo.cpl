@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=My Info
+Exec=userinfo
+Icon=userinfo.png
+Hint=View and edit your user information

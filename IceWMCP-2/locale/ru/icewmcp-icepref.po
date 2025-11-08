@@ -1,0 +1,1758 @@
+# DESCRIPTIVE TITLE.
+# Copyright (C) 2003 ORGANIZATION
+# Vasiliy Leushin <basileus@newmail.ru>, 2003.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: IcePref2 3.1\n"
+"POT-Creation-Date: Thu Mar 20 18:23:04 2003\n"
+"PO-Revision-Date: 2003-08-27 17:57+0400\n"
+"Last-Translator: Vasiliy Leushin <basileus@newmail.ru>\n"
+"Language-Team: RUSSIAN <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: icepref.py
+msgid "Loading...please wait."
+msgstr "Загрузка...Подождите."
+
+#: icepref.py
+msgid "Delete"
+msgstr "Удалить"
+
+#: icepref.py
+msgid "Edit"
+msgstr "Редактировать"
+
+#: icepref.py
+msgid "Edit with Gimp"
+msgstr "Редактировать в Gimp"
+
+#: icepref.py
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: icepref.py
+msgid "NO"
+msgstr "НЕТ"
+
+#: icepref.py
+msgid "YES"
+msgstr "ДА"
+
+#: icepref.py:1066
+msgid "Ok"
+msgstr "OK"
+
+#: icepref.py:1071
+msgid "Cancel"
+msgstr "Отмена"
+
+#: icepref.py:1270
+#: icepref.py:1274
+msgid ""
+"WARNING:\n"
+"Newer IceWM themes often\n"
+"override this wallpaper setting. Apply Theme Now! "
+msgstr ""
+"ВНИМАНИЕ\n"
+"Новые темы часто\n"
+"перекрывают эти настройки обоев.Примените тему прямо сейчас!"
+
+#: icepref.py:1275
+msgid " About Theme Previews... "
+msgstr "О просмотре тем... "
+
+#: icepref.py:1296
+msgid "About Theme Previews"
+msgstr "О просмотре тем"
+
+#: icepref.py:1296
+msgid ""
+"Theme previewing is a new feature of IcePref 2.0 (an updated version of "
+"IcePref, improved by Erica Andrews [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"Theme previewing requires a JPEG image named $preview.jpg$ in each theme's "
+"directory. If your theme is in /usr/X11R6/lib/X11/icewm/themes/nice/, then "
+"your preview JPEG should be at "
+"/usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (the name MUST be "
+"$preview.jpg$). The image should be no larger in size than 200x200 pixels.\n"
+"\n"
+"There are three ways to get $preview$ images for your themes:\n"
+"[1] Download the package of (some) theme previews from "
+"icesoundmanager.sourceforge.net\n"
+"[2] Use the theme thumbnails at  "
+"http://themes.freshmeat.net/browse/925/?topic_id=925\n"
+"[3] Make the preview images yourself with scaled screenshots.\n"
+"\n"
+"Theme authors are encouraged to add $preview.jpg$ preview files to their "
+"distributed theme packages."
+msgstr ""
+"Просмотр Тем - это новая функция в IcePref 2.0 (обновленной версии "
+"IcePref, улучшенной Эрикой Эндрюс [PhrozenSmoke@yahoo.com]).\n"
+"\n"
+"Просмотру Тем требуется файл JPEG с именем $preview.jpg$ в директории "
+"каждой темы. Если ваша тема находится в /usr/X11R6/lib/X11/icewm/themes/nice/,"
+"тогда ваш JPEG просмотра должен быть в "
+"/usr/X11R6/lib/X11/icewm/themes/nice/preview.jpg (имя ДОЛЖНО БЫТЬ "
+"$preview.jpg$). Размер картинки не должен быть больше 200x200 пикселей.\n"
+"\n"
+"Существует три способа получить $preview.jpg$ для ваших тем:\n"
+"[1] Скачать пакет с некоторыми просмотрами с "
+"icesoundmanager.sourceforge.net\n"
+"[2] Использовать картинки на "
+"http://themes.freshmeat.net/browse/925/?topic_id=925\n"
+"[3] Сделать их самим при помощи уменьшенных скриншотов.\n"
+"\n"
+"Авторам тем рекомендуется включать файлы $preview.jpg$ в распространяемые"
+"пакеты с темами"
+#: icepref.py:1324
+msgid ""
+" SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr ""
+" ИЗВИНИТЕ:\n"
+" Просмотр изображения\n"
+" невозможен."
+
+#: icepref.py:1382
+msgid "Select Color"
+msgstr "Выбрать цвет"
+
+#: icepref.py:1464
+msgid "Select Font"
+msgstr "Выбрать шрифт"
+
+#: icepref.py:1490
+msgid "Select a file..."
+msgstr "Выбрать файл"
+
+#: icepref.py:1694
+msgid "File"
+msgstr "Файл"
+
+#: icepref.py:1694
+msgid "Theme Name"
+msgstr "Название темы"
+
+#: icepref.py:2049
+msgid "Unable to read local preferences file!"
+msgstr "Не могу прочитать файл локальных настроек!"
+
+#: icepref.py:2049
+#: icepref.py:2088
+#: icepref.py:2116
+#: icepref.py:2126
+msgid "Warning"
+msgstr "Внимание"
+
+#: icepref.py:2088
+msgid "There was no preferences file to backup!"
+msgstr "Нет файла настроек для резервного копирования"
+
+#: icepref.py:2114
+msgid "IceWM Preferences successfully saved to: "
+msgstr "Настройки IceWM сохранены в: "
+
+#: icepref.py:2114
+msgid "Success"
+msgstr "Успешно"
+
+#: icepref.py:2116
+msgid "There was an ERROR saving your IceWM 'preferences' file."
+msgstr "Произошла ОШИБКА сохранения файла ваших настроек IceWM"
+
+#: icepref.py:2126
+msgid ""
+"Restarting IceWM from IcePref is buggy on BSD systems.  You should restart "
+"IceWM yourself."
+msgstr ""
+" Перезапуск IceWM из IcePref на BSD-системах глючит. Следует перезапускать "
+"IceWM самим."
+
+#: icepref.py:2142
+msgid ""
+"IcePref %s : a Python-based configuration utility for IceWM.\n"
+"\n"
+"Original Author:  David Mortensen.\n"
+"Updated by: Erica Andrews\n"
+"Site: http://icesoundmananger.sourceforge.net\n"
+"\n"
+"IcePref %s is optimized for use with IceWM %s. This version of IcePref (%s) "
+"was updated by Erica Andrews (PhrozenSmoke@yahoo.com) in January 2003.  I, "
+"Erica Andrews, have modified IcePref in accordance with the GNU GPL under "
+"which IcePref is distributed.  I cannot say I have \"taken over\" the IcePref "
+"project, but got tired of it being abandoned and decided to make it more "
+"usable with newer versions of IceWM.  The new IcePref includes the new "
+"options available in the IceWM preferences file as of IceWM  %s.  The old "
+"IcePref site was at:  http://members.xoom.com/SaintChoj/icepref.html - but it "
+"appears that David Mortensen has abandoned his project, as he had not updated "
+"IcePref since the summer of 2000, and his site no longer exists.\n"
+"\n"
+"You can find UPDATED versions of IcePref (for IceWM 1.2 and higher) at  "
+"http://icesoundmananger.sourceforge.net.  This updated version of IcePref by "
+"Erica Andrews is distributed under the GNU GPL without ANY warranty "
+"whatsoever. Use at your own risk! "
+msgstr ""
+"IcePref %s : Утилита конфигурации IceWM, написанная на Питоне\n"
+"Первоначальный автор: David Mortensen.\n"
+"Доработка: Erica Andrews\n"
+"Сайт: http://icesoundmanager.sourceforge.net\n"
+"IcePref %s оптимизирован для использования с IceWM %s. Данная версия IcePref "
+"(%s) была доработана Эрикой Эндрюс (Erica Andrews) (PhrozenSmoke@yahoo.com)  "
+"в январе 2003 года. Я, Эрика Эндрюс, модифицировала IcePref в соответствии с "
+"GNU GPL, под которой он распространяется. Не могу сказать что я \" взяла "
+"проект в свои руки\", но я устала от того, что он заброшен, и решила сделать "
+"его более удобным для новых версий IceWM. Новый IcePref включает в себя новые "
+"опции, доступные в файле настроек IceWM %s. Сайт старого IcePref: "
+"http://members.xoom.com/SaintChoj/icepref.html. Но, видимо, Дэвид "
+"Мортенсен забросил свой проект, так как он не дорабатывал IcePref с лета "
+"2000-го года, и его сайта больше не существует.\n"
+"Вы можете найти ДОРАБОТАННУЮ версию IcePref (для IceWM 1.2 и выше) на "
+"http://icesoundmanager.sourceforge.net. Эта версия IcePref от Эрики Эндрюс "
+"распространяется под GNU GPL БЕЗ КАКОЙ-ЛИБО ГАРАНТИИ. Пользуйтесь ею на свой "
+"страх и риск!"
+
+#: icepref.py:2170
+msgid "/_File"
+msgstr "/_Файл"
+
+#: icepref.py:2171
+msgid "/File/tearoff1"
+msgstr "/_Файл/tearoff1"
+
+#: icepref.py:2172
+msgid "/File/_Reload Preferences File"
+msgstr "/Файл/_Перезагрузить файл настроек"
+
+#: icepref.py:2173
+msgid "/File/Reset _Defaults"
+msgstr "/Файл/Установить по умолчанию"
+
+#: icepref.py:2174
+msgid "/File/_Save Preferences"
+msgstr "/_Файл/_Сохранить настройки"
+
+#: icepref.py:2175
+msgid "/File/sep1"
+msgstr "/Файл/sep1"
+
+#: icepref.py:2176
+msgid "/File/_Restart IceWM"
+msgstr "/Файл/_Перезапуск IceWM"
+
+msgid "Apply"
+msgstr "Применить"
+
+msgid "/File/_Apply Changes Now..."
+msgstr "/Файл/_Применить Изменения..."
+
+#: icepref.py:2177
+msgid "/File/sep2"
+msgstr "/Файл/sep2"
+
+#: icepref.py:2179
+msgid "/_Category"
+msgstr "/_Раздел"
+
+#: icepref.py:2180
+msgid "/_Category/tearoff2"
+msgstr "/_Раздел/tearoff2"
+
+#: icepref.py:2181
+msgid "/_Tools"
+msgstr "/_Инструменты"
+
+#: icepref.py:2182
+msgid "/_Tools/Edit task bar menus (requires IceMe)..."
+msgstr "/_Инструменты/Редактировать меню панели задач (нужен IceMe)..."
+
+#: icepref.py:2183
+msgid "/_Tools/Manage sound events (requires IceSoundManager)..."
+msgstr "/_Инструменты/Управление звуками (нужен IceSoundManager)..."
+
+#: icepref.py:2184
+msgid "/_Tools/Open Control Panel (requires IceControlPanel)..."
+msgstr "/_Инструменты/Открыть панель управления (нужен IceControlPanel)..."
+
+#: icepref.py:2185
+msgid "/_Help"
+msgstr "/_Помощь"
+
+#: icepref.py:2186
+msgid "/Help/_About IcePref2..."
+msgstr "/Помощь/_О IcePref2..."
+
+#: icepref.py:2192
+msgid "/_Category/"
+msgstr "/_Раздел/"
+
+#: icepref.py:2375
+msgid "Save"
+msgstr "Сохранить"
+
+#: icepref.py:2375
+msgid "Save settings to your IceWM preferences file"
+msgstr "Сохранить установки в файл настроек IceWM"
+
+#: icepref.py:2376
+msgid "Defaults"
+msgstr "По Умолчанию"
+
+#: icepref.py:2376
+msgid "Reset default values"
+msgstr "Установить значения по умолчанию"
+
+#: icepref.py:2377
+msgid "Reload"
+msgstr "Перезагрузить"
+
+#: icepref.py:2377
+msgid "Reload the preferences file"
+msgstr "Перезагрузить файл настроек"
+
+#: icepref.py:2378
+msgid "Restart"
+msgstr "Перезапуск"
+
+#: icepref.py:2378
+msgid "Restart IceWM (does not work on all systems)"
+msgstr "Перезапуск IceWM (работает не на всех системах)"
+
+#: icepref.py:2379
+msgid "Exit"
+msgstr "Выход"
+
+#: icepref.py:2379
+msgid "Exit IcePref2"
+msgstr "Выход из IcePref2"
+
+# IcePref2 Options - appended
+msgid "\"Address bar\" shortcut"
+msgstr "Поле адреса"
+
+msgid "\"Arrange icons\" shortcut"
+msgstr "Упорядочить иконки"
+
+msgid "\"Arrange windows\" shortcut"
+msgstr "Упорядочить окна"
+
+msgid "\"Cascade windows\" shortcut"
+msgstr "Окна Каскадом"
+
+msgid "\"Close window\" shortcut"
+msgstr "Закрыть окно"
+
+msgid "\"Go to last workspace\" shortcut"
+msgstr "Перейти к последней раб.области"
+
+msgid "\"Hide all windows\" shortcut"
+msgstr "Скрыть все окна"
+
+msgid "\"Hide window\" shortcut"
+msgstr "Скрыть окно"
+
+msgid "\"Last item\" shortcut"
+msgstr "Последний элемент"
+
+msgid "\"Logout / screenlock dialog\" shortcut"
+msgstr "\"Выход/Блокировка\""
+
+msgid "\"Lower window\" shortcut"
+msgstr "Нижнее окно"
+
+msgid "\"Maximize window vertically\" shortcut"
+msgstr "Растянуть окно вертикально"
+
+msgid "\"Maximize window\" shortcut"
+msgstr "Развернуть окно"
+
+msgid "\"Minimize all windows\" shortcut"
+msgstr "Свернуть все окна"
+
+msgid "\"Minimize window\" shortcut"
+msgstr "Свернуть окно"
+
+msgid "\"Move window\" shortcut"
+msgstr "Переместить окно"
+
+msgid "\"Next item\" shortcut"
+msgstr "Следующий элемент"
+
+msgid "\"Next sys window\" shortcut"
+msgstr "След. системное окно"
+
+msgid "\"Next window\" shortcut"
+msgstr "Следующее окно"
+
+msgid "\"Next workspace\" shortcut"
+msgstr "След. Рабочая область"
+
+msgid "\"Occupy all\" shortcut"
+msgstr "Занять все"
+
+msgid "\"Previous sys window\" shortcut"
+msgstr "Предыд. системное окно"
+
+msgid "\"Previous window\" shortcut"
+msgstr "Предыдущее окно"
+
+msgid "\"Previous workspace\" shortcut"
+msgstr "Предыд. рабочая область"
+
+msgid "\"Program menu\" shortcut"
+msgstr "Меню Программ"
+
+msgid "\"Raise window\" shortcut"
+msgstr "Поднять окно"
+
+msgid "\"Restore window\" shortcut"
+msgstr "Восстановить окно"
+
+msgid "\"Rollup window\" shortcut"
+msgstr "Втянуть окно"
+
+msgid "\"Run\" shortcut"
+msgstr "Запуск"
+
+msgid "\"Size window\" shortcut"
+msgstr "Размер окна"
+
+msgid "\"Take window to next workspace\" shortcut"
+msgstr "Перенести окно на след. раб. область"
+
+msgid "\"Take window to previous workspace\" shortcut"
+msgstr "Перенести окно на предыд. раб. область"
+
+msgid "\"Take window to workspace 1\" shortcut"
+msgstr "\"Перенести окно в рабочую область 1\""
+
+msgid "\"Take window to workspace 10\" shortcut"
+msgstr "\"Перенести окно в рабочую область 10\""
+
+msgid "\"Take window to workspace 11\" shortcut"
+msgstr "\"Перенести окно в рабочую область 11\""
+
+msgid "\"Take window to workspace 12\" shortcut"
+msgstr "\"Перенести окно в рабочую область 12\""
+
+msgid "\"Take window to workspace 2\" shortcut"
+msgstr "\"Перенести окно в рабочую область 2\""
+
+msgid "\"Take window to workspace 3\" shortcut"
+msgstr "\"Перенести окно в рабочую область 3\""
+
+msgid "\"Take window to workspace 4\" shortcut"
+msgstr "\"Перенести окно в рабочую область 4\""
+
+msgid "\"Take window to workspace 5\" shortcut"
+msgstr "\"Перенести окно в рабочую область 5\""
+
+msgid "\"Take window to workspace 6\" shortcut"
+msgstr "\"Перенести окно в рабочую область 6\""
+
+msgid "\"Take window to workspace 7\" shortcut"
+msgstr "\"Перенести окно в рабочую область 7\""
+
+msgid "\"Take window to workspace 8\" shortcut"
+msgstr "\"Перенести окно в рабочую область 8\""
+
+msgid "\"Take window to workspace 9\" shortcut"
+msgstr "\"Перенести окно в рабочую область 9\""
+
+msgid "\"Tile windows horizontally\" shortcut"
+msgstr "Окна черепицей по горизонтали"
+
+msgid "\"Tile windows vertically\" shortcut"
+msgstr "Окна черепицей по вертикали"
+
+msgid "\"Undo arrange\" shortcut"
+msgstr "Отмена распределения"
+
+msgid "\"Window full-screen\" shortcut"
+msgstr "Окно в полный экран"
+
+msgid "\"Window list\" shortcut"
+msgstr "Список окон"
+
+msgid "\"Window menu\" shortcut"
+msgstr "Оконное меню"
+
+msgid "\"Workspace 1\" shortcut"
+msgstr "\"Раб. область 10\""
+
+msgid "\"Workspace 10\" shortcut"
+msgstr "\"Раб. область 10\""
+
+msgid "\"Workspace 11\" shortcut"
+msgstr "\"Раб. область 11\""
+
+msgid "\"Workspace 12\" shortcut"
+msgstr "\"Раб. область 12\""
+
+msgid "\"Workspace 2\" shortcut"
+msgstr "\"Раб. область 2\""
+
+msgid "\"Workspace 3\" shortcut"
+msgstr "\"Раб. область 3\""
+
+msgid "\"Workspace 4\" shortcut"
+msgstr "\"Раб. область 4\""
+
+msgid "\"Workspace 5\" shortcut"
+msgstr "\"Раб. область 5\""
+
+msgid "\"Workspace 6\" shortcut"
+msgstr "\"Раб. область 6\""
+
+msgid "\"Workspace 7\" shortcut"
+msgstr "\"Раб. область 7\""
+
+msgid "\"Workspace 8\" shortcut"
+msgstr "\"Раб. область 8\""
+
+msgid "\"Workspace 9\" shortcut"
+msgstr "\"Раб. область 9\""
+
+msgid "\"Workspace take last window\" shortcut"
+msgstr "\"Раб. область забирает последнее окно\""
+
+msgid "APM color"
+msgstr "Цвет APM"
+
+msgid "APM font"
+msgstr "Шрифт APM"
+
+msgid "APM text color"
+msgstr "Цвет текста APM"
+
+msgid "Active border color"
+msgstr "Цвет активной рамки"
+
+msgid "Active button color"
+msgstr "Цвет активной кнопки"
+
+msgid "Active button font"
+msgstr "Шрифт активной кнопки"
+
+msgid "Active button text color"
+msgstr "Цвет текста активной кнопки"
+
+msgid "Active menu item color"
+msgstr "Цвет элемента активного меню"
+
+msgid "Active menu item text color"
+msgstr "Цвет текста элемента активного меню"
+
+msgid "Active minimized window color"
+msgstr "Цвет активного свернутого окна"
+
+msgid "Active minimized window text color"
+msgstr "Цвет текста активного свернутого окна"
+
+msgid "Active taskbar app color"
+msgstr "Цвет активного приложения на панели задач"
+
+msgid "Active taskbar app text color"
+msgstr "Цвет текста активного приложения на панели задач"
+
+msgid "Active taskbar font"
+msgstr "Шрифт активной панели задач"
+
+msgid "Active title bar color"
+msgstr "Цвет заголовка активного окна"
+
+msgid "Active title bar shadow"
+msgstr "Оттенок заголовка активного окна"
+
+msgid "Active title bar text color"
+msgstr "Цвет текста заголовка активного окна"
+
+msgid "Active workspace  font"
+msgstr "Шрифт активной раб. области"
+
+msgid "Address bar font"
+msgstr "Шрифт поля адреса"
+
+msgid "Allow mouse actions on client windows (buggy with some programs)"
+msgstr "Разрешить действие мыши на клиентских окнах (глючит с некоторыми программами)"
+
+msgid ""
+"Alternate clock time format (for \"flashing\" effects - strftime format "
+"string - see man page \"strftime\" for more info)  Note: Leaving this blank "
+"may result in NO clock showing at all."
+msgstr ""
+"Альтернативный формат часов ( для эффекта \"flashing\"- формат строки "
+"strftime - смотри ман \"strftime\" Заметьте: Если оставить это пустым "
+"то часы могут совсем не показаться."
+
+msgid ""
+"Always maintain focus under mouse window (makes some keyboard support "
+"non-functional)"
+msgstr ""
+"Всегда поддерживать фокус под мышью (отключает некоторые функции клавиатуры)"
+
+msgid "Ask for confirmation on logout"
+msgstr "Спрашивать подтверждение при выходе"
+
+msgid "Auto hide task bar after delay"
+msgstr "Скрывать панель задач через задержку"
+
+msgid "Auto raise windows after delay"
+msgstr "Поднимать окно через задержку"
+
+msgid "Auto scroll delay"
+msgstr "Задержка автоскроллинга"
+
+msgid "Automatically disable some functions when running under GNOME"
+msgstr "Автоматически отключать некоторые функции при работе под GNOME"
+
+msgid "Autoscroll start delay"
+msgstr "Задержка начала автоскроллинга"
+
+msgid "Beep when new mail arrives"
+msgstr "Сигнал при новой почте"
+
+msgid "Bitmask of buttons that raise the window when pressed"
+msgstr "Битовая маска кнопок поднимающих окно при нажатии"
+
+msgid "Bitmask of root window button click to use in window manager"
+msgstr "Битмаска клика кнопки корневого окна для использования в оконном менеджере"
+
+msgid "Border size of quick-switch icons"
+msgstr "Размер рамок иконок быстрого переключения"
+
+msgid "CPU Idle color"
+msgstr "Цвет 'холостого хода' ЦПУ "
+
+msgid "CPU status WM_CLASS hint"
+msgstr "Подсказка WM_CLASS'а статуса ЦПУ"
+
+msgid "Center dialogs on owner window"
+msgstr "Центровать диалоги в окнах"
+
+msgid "Center maximixed windows"
+msgstr "Центровать развернутые окна"
+
+msgid "Change workspaces when focusing on a window on another workspace"
+msgstr "Менять раб.область при фокусе на окне на другой раб. области"
+
+msgid "Clock color"
+msgstr "Цвет часов"
+
+msgid ""
+"Clock date format for tooltip (strftime format string - see man page "
+"\"strftime\" for more info)"
+msgstr ""
+"Формат даты в часах для подсказки (формат строки strftime-смотри man "
+"\"strftime\")"
+
+msgid "Clock font"
+msgstr "Шрифт часов"
+
+msgid "Clock status WM_CLASS hint"
+msgstr "Подсказка WM_CLASS'а статуса часов"
+
+msgid "Clock text color"
+msgstr "Цвет текста часов"
+
+msgid ""
+"Clock time format (strftime format string - see man page \"strftime\" for "
+"more info)"
+msgstr ""
+"Формат времени в часах (формат строки strftime-смотри man \"strftime\")"
+
+msgid "Color of active workspace button"
+msgstr "Цвет активной кнопки раб. области"
+
+msgid "Color of disabled menu items"
+msgstr "Цвет отключенных пунктов меню"
+
+msgid "Color of inactive workspace button text"
+msgstr "Цвет текста неактивной кнопки раб. области"
+
+msgid "Color of normal workspace button"
+msgstr "Цвет нормальной кнопки раб. области"
+
+msgid "Color of normal workspace button text"
+msgstr "Цвет текста нормальной кнопки раб. области"
+
+msgid "Color of quick-switch highlight rectangle"
+msgstr "Цвет курсора подсветки в быстром переключателе"
+
+msgid "Color of received data on net monitor"
+msgstr "Цвет входящих данных на мониторе сети"
+
+msgid "Color of sent data on net monitor"
+msgstr "Цвет исходящих данных на мониторе сети"
+
+msgid "Color representing idle on net monitor"
+msgstr "Цвет представляющий idle на мониторе сети"
+
+msgid "Color to use for transparent applications"
+msgstr "Цвет для прозрачных приложений"
+
+msgid "Colormap follows pointer"
+msgstr "Colormap следует за указателем"
+
+msgid "Command to cancel logout"
+msgstr "Команда отмены выхода"
+
+msgid "Command to lock display or show screensaver"
+msgstr "Команда блокировки дисплея или показа скринсейвера"
+
+msgid "Command to reboot the system"
+msgstr "Команда перезагрузки системы"
+
+msgid ""
+"Command to run for address bar entries when [Enter] is pressed on the address "
+"bar"
+msgstr "Команда  для поля адреса при нажатом на нем [Enter]"
+
+msgid "Command to run when CPU status monitor is clicked"
+msgstr "Команда для клика на мониторе статуса процессора"
+
+msgid "Command to run when mailbox icon is clicked"
+msgstr "Команда для клика на пиктограмме почты"
+
+msgid "Command to run when net status monitor is clicked"
+msgstr "Команда для клика на мониторе статуса сети"
+
+msgid "Command to run when new mail arrives"
+msgstr "Команда при приходе новой почты"
+
+msgid "Command to run when the taskbar clock is clicked"
+msgstr "Команда для клика на часах панели задач"
+
+msgid ""
+"Command to select and run a program (The \"Run...\" command on the taskbar "
+"menu)"
+msgstr ""
+"Команда для выбора и запуска программы (команда \" Run \"  на панели задач"
+
+msgid "Command to shut down the system"
+msgstr "Команда для выключения системы"
+
+msgid "Command to start logout"
+msgstr "Команда для выхода"
+
+msgid "Count messages in mailbox"
+msgstr "Считать сообщения в почтовом ящике"
+
+msgid "Default IceWM dialog action (0 for \"Cancel\", 1 for \"OK\")"
+msgstr "Действие по умолчанию в диалоге (0 для \"Отмена\", 1 для \"OK\")"
+
+msgid "Default taskbar color"
+msgstr "Цвет панели задач по умолчанию"
+
+msgid "Delay before activating menu items"
+msgstr "Задержка перед активацией пунктов меню"
+
+msgid "Delay before activating menu submenus"
+msgstr "Задержка перед активацией подменю"
+
+msgid "Delay before click gets interpreted as drag"
+msgstr "Задержка клика для перетаскивания"
+
+msgid "Delay before task bar is automatically hidden"
+msgstr "Задержка перед автоматическим сокрытием панели задач"
+
+msgid "Delay before tooltip window is displayed"
+msgstr "Задержка перед показом подсказок"
+
+msgid "Delay before windows are auto raised"
+msgstr "Задержка перед автоматическим поднятием окна"
+
+msgid "Delay between new-mail checks in seconds"
+msgstr "Задержка между проверками почты в секундах"
+
+msgid "Delay for pointer focus switching"
+msgstr "Задержка для переключения фокуса указателя"
+
+msgid "Delay pointer focusing when mouse moves"
+msgstr "Задержка фокуса указателя при движении мыши"
+
+msgid "Desktop background color"
+msgstr "Цвет фона рабочего стола"
+
+msgid "Desktop wallpaper image"
+msgstr "Картинка для обоев рабочего стола"
+
+msgid "Dialog Label color"
+msgstr "Цвет метки диалога"
+
+msgid "Dialog Label font"
+msgstr "Шрифт метки диалога"
+
+msgid "Dialog Label text color"
+msgstr "Цвет текста метки диалога"
+
+msgid "Dialog box color"
+msgstr "Цвет окна диалога"
+
+msgid "Disable Gdk-Imlib image cache use"
+msgstr "Отключить использование кэша картинок Gdk-Imlib"
+
+msgid "Disabled menu item text color"
+msgstr "Цвет текста отключенного пункта меню"
+
+msgid "Display desktop wallpaper centered, instead of tiled."
+msgstr "Размешать  обои по центру а не черепицей "
+
+msgid "Display mini-icons on desktop for minimized windows"
+msgstr "Показывать мини-иконки на раб. столе для свернутых окон"
+
+msgid "Distance in pixels before windows snap together"
+msgstr "Расстояние в пикселях перед соединением окон"
+
+msgid "Do not rotate the mouse cursor when displaying a menu"
+msgstr "Не поворачивать курсор мыши при показе меню"
+
+msgid "Enable Alt+Tab to minimized windows"
+msgstr "Включить Alt+Tab для свернутых окон"
+
+msgid "Enable Alt+Tab to windows on other workspaces"
+msgstr "Включить Alt+Tab для окон на других раб. областях"
+
+msgid "Enable Alt-Tab to hidden windows"
+msgstr "Включить Alt+Tab для скрытых окон"
+
+msgid "Enable Quick-switch (Alt+Tab) window switching"
+msgstr "Включить быстрое переключение окон (Alt+Tab)"
+
+msgid "Enable XFreeType extension (buggy, may result in font-loading errors)"
+msgstr ""
+"Включить расширение XFreeType (глючит, может вызвать ошибки загрузки шрифтов)"
+
+msgid "Enable horizontal edge switch for the desktop"
+msgstr "Включить переключение по горизонтальному краю рабочего стола"
+
+msgid "Enable vertical edge switch for the desktop"
+msgstr "Включить переключение по вертикальному краю рабочего стола"
+
+msgid "FX Font font"
+msgstr "Шрифт FX Font"
+
+msgid "Fill highlight rectangle"
+msgstr "Заливка подсветки"
+
+msgid "Focus dialog window when initally mapped"
+msgstr "Фокус на окне диалога при первом появлении"
+
+msgid "Focus dialog window when initially mapped only if parent frame focused"
+msgstr "Фокус на окне диалога, только если родительское окно в фокусе"
+
+msgid "Focus normal window when initially mapped"
+msgstr "Фокус на обычном окне при первом появлении"
+
+msgid "Focus window when application window is raised"
+msgstr "Фокусировать окно при поднятии окна приложения"
+
+msgid "Focus window when client area clicked"
+msgstr "Фокусировать окно при клике клиентской области"
+
+msgid "Focus windows by clicking"
+msgstr "Фокусировать окна кликом"
+
+msgid "Horizontal dialog window border"
+msgstr "Горизонтальная граница окна диалога"
+
+msgid "Horizontal margin of quick-switch window"
+msgstr "Горизонтальные поля окна переключения задач"
+
+msgid "Horizontal scrollbar button size"
+msgstr "Размер кнопки горизонтального скроллбара"
+
+msgid "Horizontal window border"
+msgstr "Горизонтальная граница окна"
+
+msgid "IceWM Themes"
+msgstr "Темы IceWM"
+
+msgid "IceWM manages the root window"
+msgstr "IceWM управляет корневым окном"
+
+msgid "Icon search path (colon separated)"
+msgstr "Путь поиска иконок (через двоеточия)"
+
+msgid "Image to use for transparent applications"
+msgstr "Картинка используемая для прозрачных приложений"
+
+msgid "Inactive scrollbar button arrow color"
+msgstr "Цвет стрелки неактивного скроллбара "
+
+msgid "Inactive title bar shadow"
+msgstr "Оттенок неактивного заголовка"
+
+msgid "Initial scrollbar autoscroll delay"
+msgstr "Начальная задержка автоскроллинга"
+
+msgid "Input color (Address bar)"
+msgstr "Введите цвет"
+
+msgid "Input selection color (Address bar)"
+msgstr "Введите цвет выделения"
+
+msgid "Input selection text color (Address bar)"
+msgstr "Введите цвет текста выделения"
+
+msgid "Input text color (Address bar)"
+msgstr "Введите цвет текста"
+
+msgid "Invisible taskbar app color"
+msgstr "Цвет невидимого приложения в панели задач"
+
+msgid "Invisible taskbar app text"
+msgstr "Текст невидимого приложения в панели задач"
+
+msgid "KDE menu data directory"
+msgstr "Директория данных меню KDE"
+
+msgid "Keep tasbar below all other windows"
+msgstr "Панель задач ниже всех окон"
+
+msgid "Launch task bar programs (clock, etc.) on a single click"
+msgstr "Запускать программы панели задач (часы и т.д.) по одиночному клику"
+
+msgid "Limit by dock layer"
+msgstr "Ограничить слоеи пирса"
+
+msgid "Limit initial position of windows to screen"
+msgstr "Ограничить начальное положение окон экраном"
+
+msgid "Limit initial size of windows to screen"
+msgstr "Ограничить начальный размер окон экраном"
+
+msgid "List box color (Window list)"
+msgstr "Цвет списка окон "
+
+msgid "List box font (Window list box)"
+msgstr "Шрифт окна списка окон"
+
+msgid "List box selection color (Window list)"
+msgstr "Цвет выделения списка окон"
+
+msgid "List box selection text color (Window list)"
+msgstr "Цвет текста выделения  списка окон"
+
+msgid "List box text color (Window list)"
+msgstr "Цвет текста списка окон"
+
+msgid ""
+"List of battery names (directories) in /proc/acpi/battery to ignore for APM"
+msgstr ""
+"Список названий батарей (директории) в /proc/acpi/battery игнорируемых APM"
+
+msgid "List of gradient images in the current theme"
+msgstr "Список градиентных изображений в текущей теме"
+
+msgid "Lower a raised window if clicked a second time"
+msgstr "Убрать поднятое окно если кликнуто во второй раз"
+
+msgid "Mail status WM_CLASS hint"
+msgstr "Подсказка WM_CLASS'а статуса почты"
+
+msgid ""
+"Mailbox path ($MAIL is used if no value is specified).  Example: "
+"file:///var/spool/mail/my_username       Example: "
+"pop3://my_username:my_password@my.mail-host.com/      Example: "
+"imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+msgstr ""
+"Путь к мейлбоксу (если не указан, используется $MAIL). Пример: "
+"file:///var/spool/mail/my_username Пример: "
+"pop3:///my_username:my_password@my.mail-host.com/    Пример: "
+"imap://my_username@my.mail-host.com/INBOX.mail.icewm-user"
+
+msgid "Maximum menu width (0 to let IceWM decide)"
+msgstr "Максимальная ширина меню (0-авто)"
+
+msgid "Menu font"
+msgstr "Шрифт меню"
+
+msgid "Menus track mouse even with no mouse buttons held"
+msgstr "Меню отслеживает мышь без удержания кнопок"
+
+msgid "Minimized taskbar app color"
+msgstr "Цвет свернутого приложения в панели задач"
+
+msgid "Minimized taskbar app text"
+msgstr "Текст свернутого приложения в панели задач"
+
+msgid "Minimized window font"
+msgstr "Шрифт свернутого окна"
+
+msgid "Mouse-button clicked on desktop to show menu"
+msgstr "Показ меню по клику мышью на рабочем столе"
+
+msgid "Mouse-button clicked on desktop to show window list"
+msgstr "Показ списка окон по клику мышью на рабочем столе"
+
+msgid "Mouse-button clicked on desktop to show window list menu"
+msgstr "Показ меню списка окон по клику мышью на рабочем столе"
+
+msgid "Mouse-button clicked on titlebar to maximize window"
+msgstr "Развернуть окно по клику на заголовке окна"
+
+msgid "Mouse-button clicked on titlebar to roll up window"
+msgstr "Втянуть окно по клику на заголовке окна"
+
+msgid "Move mouse when doing focusing in pointer focus mode"
+msgstr "Двигать мышкой при фокусировке аыа             "
+
+msgid "Move/size status color"
+msgstr "Цвет статуса перемещения/изм. размера"
+
+msgid "Move/size status text color"
+msgstr "Цвет текста статуса перемещения/изм.размера"
+
+msgid "Multibyte internationalization support"
+msgstr "Поддержка многобайтной интернационализации"
+
+msgid "Mouse double-click speed"
+msgstr "Время многократных кликов"
+
+msgid "Names of the Workspaces"
+msgstr "Названия рабочих областей"
+
+msgid "Net status WM_CLASS hint"
+msgstr "Подсказка WM_CLASS для стасуса сети"
+
+msgid ""
+"Network device for which to show network status (examples:  ppp0, lo, eth0)"
+msgstr ""
+"Для какого сетевого устройства показывать статус сети (примеры: ppp0, lo, "
+"eth0)"
+
+msgid "Nice CPU usage color"
+msgstr "Цвет нормальной загрузки ЦПУ"
+
+msgid "Normal border color"
+msgstr "Нормальный цвет границы"
+
+msgid "Normal button color"
+msgstr "нормальный цвет кнопки"
+
+msgid "Normal button font"
+msgstr "Нормальный шрифт кнопки "
+
+msgid "Normal button text color"
+msgstr "Нормальный цвет текста кнопки"
+
+msgid "Normal menu color"
+msgstr "Нормальный цвет меню"
+
+msgid "Normal menu item text color"
+msgstr "Нормальный цвет текста пункта меню"
+
+msgid "Normal minimized window color"
+msgstr "Нормальный цвет свернутого окна"
+
+msgid "Normal minimized window text color"
+msgstr "Нормальный цвет текста свернутого окна"
+
+msgid "Normal taskbar app text color"
+msgstr "Нормальный цвет текста приложения на панели задач"
+
+msgid "Normal taskbar color"
+msgstr "Нормальный цвет панели задач"
+
+msgid "Normal taskbar font"
+msgstr "Нормальный шрифт панели задач"
+
+msgid "Normal title bar color"
+msgstr "Нормальный цвет заголовка окна"
+
+msgid "Normal title bar text color"
+msgstr "Нормальный цвет текста заголовка окна"
+
+msgid "Normal title button color"
+msgstr "Нормальный цвет кнопки в заголовке окна"
+
+msgid "Normal title button text color"
+msgstr "Нормальный цвет текста кнопки в заголовке окна"
+
+msgid "Normal workspace  font"
+msgstr "Нормальный шрифт рабочей области"
+
+msgid ""
+"Number of milliseconds to display the workspace tooltip when changing "
+"workspaces"
+msgstr "Время показа подсказки  при смене раб. областей (в миллисекундах)"
+
+msgid "Opaque window move"
+msgstr "Скрытое перемещение окна"
+
+msgid "Opaque window resize"
+msgstr "Скрытое изменение размера окна"
+
+msgid "Open command"
+msgstr "Открыть команду"
+
+msgid "Pass focusing click on client area to client"
+msgstr "Передать клиенту фокусирующий клик в области клиента"
+
+msgid "Pointer motion distance before click gets interpreted as drag"
+msgstr "Расстояние движения указателя для включения перетаскивания"
+
+msgid "Quick switch text color"
+msgstr "Цвет текста быстрого переключателя"
+
+msgid "Quick switch window color"
+msgstr "Цвет окна быстрого переключателя"
+
+msgid "Quick switch window font"
+msgstr "Шрифт окна быстрого переключателя"
+
+msgid "Raise when frame border is clicked"
+msgstr "Поднимать при клике на границе фрейма"
+
+msgid "Raise when frame button is clicked"
+msgstr "Поднимать при клике на кнопке фрейма"
+
+msgid "Raise window when client area clicked"
+msgstr "Поднимать окно при клике области клиента"
+
+msgid "Raise window when title bar is clicked"
+msgstr "Поднимать окно при клике на заголовке"
+
+msgid "Raise windows when focused"
+msgstr "Поднимать окно при его фокусировке"
+
+msgid "Reload menu files automatically"
+msgstr "Перезагружать файлы меню автоматически"
+
+msgid "Resistance in pixels when trying to move windows off the screen"
+msgstr "Сопротивление при попытке перемещения окна за экран (в пикселях)"
+
+msgid "Resize corner height"
+msgstr "Высота угла изменения размера"
+
+msgid "Resize corner width"
+msgstr "Ширина угла изменения размера"
+
+msgid "Screen edge workspace switching delay"
+msgstr "Задержка на краю экрана при смене раб. областей"
+
+msgid "Scroll bar arrow color"
+msgstr "Цвет стрелки скроллбара"
+
+msgid "Scroll bar color"
+msgstr "Цвет скроллбара"
+
+msgid "Scroll bar delay"
+msgstr "Задержка скроллбара"
+
+msgid "Scroll bar slider color"
+msgstr "Цвет ползунка скроллбара"
+
+msgid "Scrollbar button arrow color"
+msgstr "Цвет стрелки кнопки скроллбара"
+
+msgid "Scrollbar button color"
+msgstr "Цвет кнопки скроллбара"
+
+msgid "Send the clicks outside menus to target window"
+msgstr "Посылать клики вне меню для наведения на окна"
+
+msgid "Show \"Start\" menu on task bar"
+msgstr "Показывать меню \"Старт\" на панели задач"
+
+msgid "Show \"window list\" menu on task bar"
+msgstr "Показывать \"список окон\" на панели задач"
+
+msgid "Show Advanced Power Management (APM) status on task bar"
+msgstr "Показывать статус Управления Питанием на панели задач"
+
+msgid "Show Advanced Power Management time"
+msgstr "Показывать время для Управления Питанием"
+
+msgid "Show CPU status on task bar"
+msgstr "Показывать статус ЦПУ на панели задач"
+
+msgid "Show a small window"
+msgstr "Показывать маленькое окно"
+
+msgid "Show address bar on the task bar"
+msgstr "Показывать поле адреса на панели задач"
+
+msgid "Show all icons"
+msgstr "Показывать все иконки"
+
+msgid "Show all windows on the taskbar"
+msgstr "Показывать все окна на панели задач"
+
+msgid "Show application icon over menu button"
+msgstr "Показывать иконки приложений поверх кнопки меню"
+
+msgid "Show clock on task bar"
+msgstr "Показывать часы на панели задач"
+
+msgid "Show mailbox status on the task bar"
+msgstr "Показывать статус почты на панели задач"
+
+msgid "Show network status on task bar"
+msgstr "Показывать статус сети на панели задач"
+
+msgid "Show popup menus above mouse pointer"
+msgstr "Показывать выпадающие меню поверх указателя мыши"
+
+msgid "Show position status window during move/resize"
+msgstr "Показывать статус положения окна при перемещении/изм. размеров"
+
+msgid "Show task bar"
+msgstr "Показывать панель задач"
+
+msgid "Show task tray on task bar"
+msgstr "Показывать лоток на панели задач"
+
+msgid "Show text above icons"
+msgstr "Показывать текст поверх иконок"
+
+msgid "Show the \"logout\" menu on the task bar menu"
+msgstr "Показывать меню \"выход\" в меню панели задач"
+
+msgid "Show the IceWM \"help\" item on the task bar menu"
+msgstr "Показывать \"помощь\" по IceWM в меню панели задач"
+
+msgid "Show the submenu for selecting themes"
+msgstr "Показывать подменю для выбора тем"
+
+msgid "Show window icons on the task bar"
+msgstr "Показывать иконки окон на панели задач"
+
+msgid "Show windows from all workspaces on task bar"
+msgstr "Показывать на панели задач окна со всех раб. областей"
+
+msgid "Show windows on the task bar"
+msgstr "Показывать окна на панели задач"
+
+msgid "Show workspace switching buttons on task bar"
+msgstr "Показывать кнопки раб. областей на панели задач"
+
+msgid "Show workspace tooltip when changing workspaces"
+msgstr "Показывать подсказку при смене раб. областей"
+
+msgid "Size of icon margins of quick-switch icons"
+msgstr "Размер полей иконки в быстром переключателе"
+
+msgid "Size of the quick-switch window separator"
+msgstr "Размер разделителя в быстром переключателе"
+
+msgid "Smart window placement (minimize overlap)"
+msgstr "Размещать окон по-умному (с минимальным нахлестом)"
+
+msgid "Snap to nearest screen edge/window when moving windows"
+msgstr "Присоединение к ближнему краю/окну при перемещении окон"
+
+msgid "Status font"
+msgstr "Шрифт статуса"
+
+msgid "Support Windows95/98-style keyboard keys"
+msgstr "Поддержка клавиатур Windows95/98"
+
+msgid "Support mouse wheel"
+msgstr "Поддержка колеса мыши"
+
+msgid "Support semi-transparent applications like gnome-terminal"
+msgstr "Поддержка полу-прозрачных приложений типа gnome-terminal"
+
+msgid "System CPU usage color"
+msgstr "Цвет загрузки ЦПУ системой"
+
+msgid ""
+"Taking the mouse pointer to the edge of the screen moves to the next "
+"workspace"
+msgstr "Подведение указателя мыши к краю экрана переключает раб. область"
+
+msgid "Task bar at top of the screen"
+msgstr "Панель задач в верху экрана"
+
+msgid "Task bar clock uses nice pixmapped LCD display"
+msgstr "Часы панели задач используют ЖК-дисплей"
+
+msgid "Task tray has a bevel around it (Like the Windows system tray)"
+msgstr "Лоток имеет вогнутость (как в Windows)"
+
+msgid "Terminal emulator (must accept -e option)"
+msgstr "Эмулятор терминала (должен поддерживать опцию -e)"
+
+msgid "Theme author"
+msgstr "Автор темы"
+
+msgid "Theme description"
+msgstr "Описание темы"
+
+msgid "Time before tooltip is hidden"
+msgstr "Время перед сокрытием подсказки"
+
+msgid "Title bar font"
+msgstr "Шрифт заголовка"
+
+msgid "Title bar height"
+msgstr "Высота заголовка"
+
+msgid "Title bar join left"
+msgstr "Заголовок присоединяется слева"
+
+msgid "Title bar join right"
+msgstr "Заголовок присоединяется справа"
+
+msgid "Title bar text horizontal offset"
+msgstr "Горизонтальный отступ текста заголовка"
+
+msgid "Title bar text position"
+msgstr "Положение текста заголовка"
+
+msgid "Title bar text vertical offset"
+msgstr "Вертикальный отступ текста заголовка"
+
+msgid ""
+"Titlebar buttons from left to right (x=close, m=max, i=min, h=hide, r=rollup, "
+"s=sysmenu)"
+msgstr ""
+"Кнопки заголовка слева на право (x=закрыть m=макс i=мин h=скрыть r= втянуть "
+"s=сист. меню)"
+
+msgid ""
+"Titlebar buttons from right to left (x=close, m=max, i=min, h=hide, r=rollup, "
+"s=sysmenu)"
+msgstr ""
+"Кнопки заголовка с права налево (x=закрыть m=макс i=мин h=скрыть r= втянуть "
+"s=сист. меню)"
+
+msgid "Titlebar buttons supported by theme (x, m, i, r, h, s, d)"
+msgstr "Кнопки заголовка поддерживаемые темой (x, m, i, r, h, s ,d)"
+
+msgid "Tool Button font"
+msgstr "Шрифт кнопки инструментов "
+
+msgid "Toolbar button color"
+msgstr "Цвет кнопки инструментов"
+
+msgid "Toolbar button text color"
+msgstr "Цвет текста кнопки инструментов"
+
+msgid "Tooltip color"
+msgstr "Цвет подсказки"
+
+msgid "Tooltip font"
+msgstr "Шрифт подсказки"
+
+msgid "Tooltip text color"
+msgstr "Цвет текста подсказки"
+
+msgid "Treat Penguin/Meta_L/Meta_R/Windows keys as Ctrl+Alt"
+msgstr "Использовать клавиши Penguin/Meta_L/Meta_R/Windows как Ctrl+Alt"
+
+msgid "Use double height task bar (highly recommended)"
+msgstr "Использовать панель задач двойной высоты (очень рекомендуется)"
+
+msgid "Use large (48x48) icons in quick switch window"
+msgstr "Использовать в быстром переключателе большие (48x48) иконки"
+
+msgid "User CPU usage color"
+msgstr "Цвет пользовательской загрузки ЦПУ"
+
+msgid "Veritical window border"
+msgstr "Вертикальная граница окна"
+
+msgid "Vertical dialog window border"
+msgstr "Вертикальная граница окна диалога"
+
+msgid "Vertical margin of quick-switch window"
+msgstr "Вертикальные поля окна быстрого переключателя"
+
+msgid "Vertical scrollbar button size"
+msgstr "Размер кнопки вертикального скроллбара"
+
+msgid "Width of CPU Monitor"
+msgstr "Ширина монитора ЦПУ"
+
+msgid "Windows initially placed manually by user"
+msgstr "Изначально окно размещается пользователем"
+
+msgid "Workspace switches by moving mouse to left/right screen edge"
+msgstr ""
+"Раб. области переключаются движением мыши через левый/правый край экрана"
+
+msgid "Xinerama primary screen"
+msgstr "Первичный экран Xinerama"
+
+msgid "Windows"
+msgstr "Окна"
+
+msgid "Quick Switch"
+msgstr "Быстрый Переключатель"
+
+msgid "Dialogs"
+msgstr "Диалоги"
+
+msgid "Menus"
+msgstr "Меню"
+
+msgid "Task Bar"
+msgstr "Панель задач"
+
+msgid "Task Bar Applets"
+msgstr "Апплеты панели задач"
+
+msgid "Scroll Bars"
+msgstr "Скроллбары"
+
+msgid "Tool Tips"
+msgstr "Подсказки"
+
+msgid "Mouse"
+msgstr "Мышь"
+
+msgid "Title Bars"
+msgstr "Заголовки"
+
+msgid "Miscellaneous"
+msgstr "Разное"
+
+msgid "Themes"
+msgstr "Темы"
+
+msgid "Address Bar"
+msgstr "Поле адреса"
+
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+msgid "Key Bindings"
+msgstr "Привязки клавиш"
+
+msgid "Workspaces"
+msgstr "Рабочие области"
+
+#: icepref.py:2363
+msgid "/File/_Exit IcePref2"
+msgstr "/Файл/_Выход из IcePref2"
+
+#: icepref.py:2367
+msgid "/_Tools/Theme Designer (requires IcePref2-TD)..."
+msgstr "/_Инструменты/Дизайнер Тем (треб. IcePref2-TD)..."
+
+#: icepref.py:2323
+msgid "About IcePref2"
+msgstr "О IcePref2"
+
+#: icepref.py:1387
+#: icepref_td.py:963,  icepref.py:1359
+msgid ""
+"The theme has been applied,\n"
+"and IceWM is quickly restarting.\n"
+"When it has restarted, click 'OK'.\n"
+"This may take a moment. Create Theme Preview... "
+msgstr ""
+"Тема применена,\n"
+"и IceWM быстро перезапускается\n"
+"Когда он перезапустится, нажмите 'OK'\n"
+"Это может занять немного времениСоздать просмотр темы..."
+
+#: icepref_td.py:979
+msgid "Do you wish to replace it?"
+msgstr "Хотите заменить это?"
+
+
+
+#: icepref_td.py:979
+msgid "The image"
+msgstr "Изображение"
+
+#: icepref_td.py:979
+msgid "already exists."
+msgstr "уже существует."
+
+#: icepref_td.py:982
+msgid ""
+"Apply your theme by selecting it\n"
+"from the IceWM 'Themes' menu.\n"
+"When you are ready, click 'OK'."
+msgstr ""
+"Примените тему выбрав ее из меню 'Темы'Когда будете готовы, нажмите 'OK'"
+
+#: icepref_td.py:982 icepref_td.py:2064
+msgid "OK"
+msgstr "OK"
+
+#: icepref_td.py:994, icepref.py:1397
+msgid ""
+"A theme preview image could not be created. This features requires the "
+"'import' binary from ImageMagick to be on your path."
+msgstr ""
+"Просмотр темы не может быть создан. Для этого требуется бинарник 'import' из "
+"ImageMagick на вашем PATH"
+
+#: icepref_td.py:1028
+msgid "None"
+msgstr "Ничего"
+
+#: icepref_td.py:1042 icepref_td.py:1361
+msgid "NO IMAGE"
+msgstr "НЕТ ИЗОБРАЖЕНИЯ"
+
+#: icepref_td.py:1572 icepref_td.py:1604
+#: icepref_td.py:1608 icepref_td.py:1791
+msgid "Theme Designer"
+msgstr "Дизайнер тем"
+
+#: icepref_td.py:1771
+msgid "IceWM Theme successfully saved to: "
+msgstr "Тема IceWM успешно сохранена в: "
+
+#: icepref_td.py:1773
+msgid "There was an ERROR saving your IceWM 'theme' file."
+msgstr "ОШИБКА при сохранении файла темы"
+
+#: icepref_td.py:1791
+msgid "About IcePref2 Theme Designer"
+msgstr "О Дизайнере Тем для IcePref2"
+
+#: icepref_td.py:1791
+msgid "An IceWM Theme Designer based on IcePref2"
+msgstr "Дизайнер тем IceWM основан на IcePref2"
+
+#: icepref_td.py:1791
+msgid "This software is distributed under the GNU General Public License."
+msgstr "Данное ПО распространяется под GNU General Public License."
+
+#: icepref_td.py:1823
+msgid "/File/_New Theme..."
+msgstr "/Файл/_Новая Тема..."
+
+#: icepref_td.py:1824
+msgid "/File/_Open Theme..."
+msgstr "/Файл/_Открыть тему..."
+
+#: icepref_td.py:1826
+msgid "/File/_Save Theme"
+msgstr "/Файл/_Сохранить тему"
+
+#: icepref_td.py:1830
+msgid "Check for newer versions of this program..."
+msgstr "Проверка новых версий программы..."
+
+#: icepref_td.py:1832
+msgid "/File/_Exit IcePref2 Theme Designer"
+msgstr "/Файл/_Выход из Дизайнера..."
+
+#: icepref_td.py:1836
+msgid "/_Tools/Configure IceWM (requires IcePref2)..."
+msgstr "/_Инструменты/Настроить IceWM (треб. IcePref2)..."
+
+#: icepref_td.py:1841
+msgid "/Help/_About IcePref2 Theme Designer..."
+msgstr "/Помощь/_О Дизайнере Тем для IcePref2..."
+
+#: icepref_td.py:2046
+msgid "Create A New IceWM Theme"
+msgstr "Создать новую тему для IceWM"
+
+#: icepref_td.py:2049
+msgid "Theme Author"
+msgstr "Автор темы"
+
+#: icepref_td.py:2050
+msgid "Theme Description"
+msgstr "Описание темы"
+
+#: icepref_td.py:2051
+msgid "Directory"
+msgstr "Директория"
+
+#: icepref_td.py:2057
+msgid "Select"
+msgstr "Выбрать"
+
+#: icepref_td.py:2065
+msgid "CANCEL"
+msgstr "ОТМЕНА"
+
+#: icepref_td.py:2083
+msgid "Select a directory"
+msgstr "Выбрать директорию"
+
+#: icepref_td.py:2104
+msgid "You must complete all the fields first."
+msgstr "Сперва вы должны заполнить все поля."
+
+#: icepref_td.py:2132
+msgid "The file does not appear to be an IceWM theme file."
+msgstr "Файл не является файлом темы для IceWM."
+
+#: icepref_td.py:2156
+msgid "Save this theme"
+msgstr "Сохранить эту тему"
+
+#: icepref_td.py:2157
+msgid "Exit IcePref2 Theme Designer"
+msgstr "Выйти из Дизайнера Тем"
+
+# icepref_td.py
+msgid "Theme Info"
+msgstr "Инфо темы"
+
+# icepref_td.py
+msgid "Icons"
+msgstr "Иконки"
+
+# icepref_td.py
+msgid "Cursors"
+msgstr "Курсоры"
+
+msgid "Show \"Programs\" menu"
+msgstr "Показать меню \"Программы\""
+
+msgid "Show \"Run...\" on the menu"
+msgstr "Показать \"Запуск\"в меню"
+
+msgid "Show logout sub-menu"
+msgstr "Показать подменю выхода"
+
+msgid "Show window list on the menu"
+msgstr "Показать список окон в меню"
+
+msgid "Show \"About\" on the menu"
+msgstr "Показать \"О программе\" в меню"
+
+msgid "Shaped pixmaps protect client window"
+msgstr "Рисунки форм защищают клиентское окно"
+
+msgid "Enable full-screen mode for windows"
+msgstr "Разрешить полноэкранный режим для окон"
+
+msgid "Quick-Switch groups windows on current workspace"
+msgstr "Быстрый Переключатель группирует окна в текущей раб. области"
+
+msgid "\"Window list\" menu shortcut"
+msgstr "Меню\"Список окон\" shortcut "
+
+
+#: icepref.py:1967
+msgid "No mouse buttons"
+msgstr "Нет кнопок мыши"
+
+#: icepref.py:1968
+msgid "First button only"
+msgstr "Только первая кнопка"
+
+#: icepref.py:1969
+msgid "Second button only"
+msgstr "Только вторая кнопка"
+
+#: icepref.py:1970
+msgid "Third button only"
+msgstr "Только третья кнопка"
+
+#: icepref.py:1971
+msgid "First and second buttons"
+msgstr "Первая и вторая кнопки"
+
+#: icepref.py:1972
+msgid "First and third buttons"
+msgstr "Первая и третья кнопки"
+
+#: icepref.py:1973
+msgid "Second and third buttons"
+msgstr "Вторая и третья кнопки"
+
+#: icepref.py:1974
+msgid "All three buttons"
+msgstr "Все три кнопки"
+
+#: icepref.py:1981
+msgid "No mouse button"
+msgstr "Нет кнопок мыши"
+
+#: icepref.py:1982
+msgid "First mouse button"
+msgstr "Первая кнопка мыши"
+
+#: icepref.py:1983
+msgid "Second mouse button"
+msgstr "Вторая кнопка мыши"
+
+#: icepref.py:1984
+msgid "Third mouse button"
+msgstr "Третья кнопка мыши"
+
+#: icepref.py:1985
+msgid "Fourth mouse button"
+msgstr "Четвертая кнопка мыши"
+
+#: icepref.py:1986
+msgid "Fifth mouse button"
+msgstr "Пятая кнопка мыши"
+
+#: icepref_search.py
+msgid "Search"
+msgstr "Поиск"
+
+#: icepref_search.py
+msgid "Search Results"
+msgstr "Результаты поиска"
+
+#: icepref_search.py
+msgid "Section"
+msgstr "Раздел"
+
+#: icepref_search.py
+msgid "Property"
+msgstr "Свойства"
+
+#: icepref_search.py
+msgid "No matches found."
+msgstr "Совпадений не найдено."
+
+#: icepref_search.py
+msgid "Enter a search word"
+msgstr "Введите слово для поиска"
+
+#: icepref.py
+msgid "Enable address bar on the task bar"
+msgstr "Включить поле адреса на панели задач"
+
+# icepref.py
+# open an IceWM 'preferences' file in ANY directory
+msgid "Open IceWM Preferences File"
+msgstr "Открыть файл настроек IceWM"
+
+###########
+# added 8.25.2003, IceWM 1.2.10/1.2.11
+###########
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for inner decorations"
+msgstr "Битмаска для внутреннего оформления"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension lines"
+msgstr "Битмаска для линий измерения"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for gauge lines"
+msgstr "Битмаска для линий калибра"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for dimension labels"
+msgstr "Битмаска для ярлыков измерения"
+
+#: icepref.py, new in IceWM 1.2.10/1.2.11 - I have NO idea what this does yet
+msgid "Bitmask for geometry labels"
+msgstr "Битмаска для ярлыков геометрии"
+
+#: icepref.py, new in IceWM 1.2.10
+# number of seconds the taskbar flashes before finally focusing
+msgid "Number of seconds the taskbar application will blink when requesting focus"
+msgstr "Продолжительность мерцания панели задач при запросе фокуса (в секундах)"
+
+#: icepref.py
+# The font to be used for the 'hint' that IceWM shows when moving or resizing a window
+msgid "Font for the window's move/resize status"
+msgstr "Шрифт для статуса перемещения/изменения размера окна"
+
+

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Скринсейвер
+Exec=xscreensaver-demo
+Icon=screensaver.png
+Hint=Настройки XScreensaver'а 

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Окна\nIceWM
+Exec=[PHROZEN-INTERNAL]IceWMCPWinOptions.py
+Icon=icewmcp-winoptions.png
+Hint=Опции окон IceWM

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Salvapantalla
+Exec=xscreensaver-demo
+Icon=screensaver.png
+Hint=Configuración de Salvapantalla (XScreenSaver)

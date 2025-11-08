@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Disquette
+Exec=gfloppy
+Icon=gfloppy.png
+Hint=Formater une disquette

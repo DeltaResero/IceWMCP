@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Расписание\nзадач
+Exec=kcron
+Icon=kcron.png
+Hint=Управление работами  cron и расписанием задач  (KCron)

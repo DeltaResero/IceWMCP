@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=螢幕\n保護程式
+Exec=xscreensaver-demo
+Icon=screensaver.png
+Hint=XScreensaver 內容

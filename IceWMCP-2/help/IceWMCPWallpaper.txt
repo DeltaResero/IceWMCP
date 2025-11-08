@@ -1,0 +1,25 @@
+[PHTITLE] IceWMCP Wallpaper
+[PHSECTION] Overview
+The IceWMCP Wallpaper tool allows you to easily configure your desktop's background color and wallpaper image.
+[PHSECTION] Setting the Desktop Background Color
+To set your desktop's background color, click the [PH-HI]'color button'[/PH-HI] or the [PH-HI]'folder'[/PH-HI] button in the [PH-HI]Desktop Color[/PH-HI]  area at the top of the main window.  Select the color of your choice, then click [PH-HI]'OK'[/PH-HI].  You should now see a [PH-HI]'preview'[/PH-HI] of the color you have selected on the [PH-HI]'color button'[/PH-HI] itself.   If you wish to cancel any changes to the color, click the [PH-HI]'Cancel'[/PH-HI] button.
+[PHSECTION] Setting the Desktop Wallpaper Image
+To set your desktop's wallpaper image, click the [PH-HI]'folder'[/PH-HI] button in the area named [PH-HI]Directory[/PH-HI] on the right side of the main window.  Select the directory containing the wallpaper image you wish to use, then click [PH-HI]'OK'[/PH-HI].   On the left side of the main window, select the wallpaper image you wish to use from the list available in the [PH-HI]Image[/PH-HI] window.  (If you wish to use [PH-HI]NO wallpaper[/PH-HI] image at all, select [PH-HI][NONE][/PH-HI] from the top of the [PH-HI]Image[/PH-HI] list.)   You should now see a [PH-HI]'preview'[/PH-HI] of the wallpaper image in the large [PH-HI]'preview window'[/PH-HI] on the right side of the main window.  If you want your wallpaper image to tile repeatedly across the screen, select [PH-HI]'Tiled'[/PH-HI], just above the [PH-HI]'preview window'[/PH-HI].  If you want the image to be centered on the desktop, select [PH-HI]'Centered'[/PH-HI], just above the [PH-HI]'preview window'[/PH-HI].  If you want the image to be scaled to the screen size, select [PH-HI]'Scaled'[/PH-HI], just above the [PH-HI]'preview window'[/PH-HI]. (Note: Scaling of images is currently EXPERIMENTAL in IceWM.)
+[PHSECTION] Editing Wallpaper Images
+To edit a wallpaper image, click the  [PH-HI]'Edit'[/PH-HI] button to the right of your screen.   (The [PH-HI]'Edit'[/PH-HI] button has a picture of  [PH-HI]'pencil and paper'[/PH-HI].)  The wallpaper image will then be opened for editing with the executable [PH-HI]'gimp-remote'[/PH-HI] if  [PH-HI]'gimp-remote'[/PH-HI] is available on your system's $PATH.
+[PHSECTION] Reloading Images
+To see an updated list of available images from the directory you have selected in the [PH-HI]Directory[/PH-HI] area, click the [PH-HI]Reload Images[/PH-HI] button, to the lower left of the main window.  The updated list will appear in the [PH-HI]Image[/PH-HI] area.
+[PHSECTION] Applying Changes
+To [PH-HI]apply[/PH-HI] any changes you have made to the desktop background color or wallpaper image, click the [PH-HI]Apply[/PH-HI] button at the bottom of the main window, or press [PH-HI] Ctrl+A [/PH-HI] on your keyboard.  If you wish to apply your changes and [PH-HI]exit[/PH-HI], click the [PH-HI]Ok[/PH-HI] button on the bottom left of the main window.
+[PHSECTION] Cancelling Changes
+To [PH-HI]cancel[/PH-HI] any changes you have made to the desktop background color or wallpaper image, click the [PH-HI]Close[/PH-HI] button on the bottom right of the main window.
+[PHSECTION] Run As Root
+If you are the 'root' user and wish to edit the system-wide wallpaper configuration, select [PH-HI] File -> Run As Root [/PH-HI] on the menu.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.  You may also exit the program by clicking the [PH-HI]Close[/PH-HI] button on the bottom right of the main window.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

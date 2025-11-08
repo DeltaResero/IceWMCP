@@ -1,0 +1,14 @@
+echo "making 'dev' package"
+./make_dev
+echo "making 'make_ice_real' script"
+./make_ice
+echo "running 'make_ice_real' script"
+./make_ice_real
+echo "updating install-config.txt for IceWMCP"
+./update_install_ice
+echo "making 'gtkpccard' package"
+./make_gtkpccard
+echo "making 'phrozenclock' package"
+./make_phrozenclock
+echo "doing basic web site updates"
+./update_web

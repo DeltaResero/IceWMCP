@@ -1,0 +1,54 @@
+cd ../
+thisdir=`pwd`
+rm -fr /INSTALL-IceSoundManager/*
+mkdir /INSTALL-IceSoundManager/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/help/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/doc/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/pixmaps/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/help/es/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/help/ru/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/es/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/fr/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/ru/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/zh_TW/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/ &> /dev/null
+mkdir /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/ &> /dev/null
+cp -f icewmcp_common.py /INSTALL-IceSoundManager/
+cp -f icewmcp_short.png /INSTALL-IceSoundManager/
+cp -f icewmcp.png /INSTALL-IceSoundManager/
+cp -f icesound.py /INSTALL-IceSoundManager/
+cp -f IceWMCPRun.py /INSTALL-IceSoundManager/
+cp -f ICEWMCP_BugReport.py /INSTALL-IceSoundManager/
+cp -f ICEWMCP_URLRead.py /INSTALL-IceSoundManager/
+cp -f IceWMCP_Dialogs.py /INSTALL-IceSoundManager/
+cp -f ./icons/icewmcp-ism.png /INSTALL-IceSoundManager/
+cp -f ./licenses/GPL /INSTALL-IceSoundManager/IceSoundManager-LICENSE
+cp -f ./doc/icesound-es-help.html /INSTALL-IceSoundManager/doc/
+cp -f ./doc/IceSoundManager_Help.txt /INSTALL-IceSoundManager/doc/
+cp -f ./pixmaps/ism_header.png /INSTALL-IceSoundManager/pixmaps/
+cp -f ./pixmaps/ism_setup.png /INSTALL-IceSoundManager/pixmaps/
+cp -f ./help/icesound.txt /INSTALL-IceSoundManager/help/
+cp -f ./help/es/icesound.txt /INSTALL-IceSoundManager/help/es/
+cp -f ./help/ru/icesound.txt /INSTALL-IceSoundManager/help/ru/
+cp -f ./locale/es/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp.mo /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/
+cp -f ./locale/es/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/es/LC_MESSAGES/
+cp -f ./locale/fr/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/fr/LC_MESSAGES/
+cp -f ./locale/ru/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/ru/LC_MESSAGES/
+cp -f ./locale/zh_TW/LC_MESSAGES/icewmcp-ism.mo /INSTALL-IceSoundManager/locale/zh_TW/LC_MESSAGES/
+cp -f ./PyInstallShield/icesound-install-config.txt /INSTALL-IceSoundManager/install-config.txt
+cp -f ./PyInstallShield/PyInstallShield /INSTALL-IceSoundManager/
+cp -f ./PyInstallShield/INSTALL-ME.sh /INSTALL-IceSoundManager/
+cp -f ./new-build-scripts/make_file_list /INSTALL-IceSoundManager/
+convert ./icons/icewmcp-ism.png  /INSTALL-IceSoundManager/install-icon.xpm
+cd /INSTALL-IceSoundManager/
+./make_file_list
+rm -f make_file_list
+cd $thisdir
+cd ./new-build-scripts/
+./update_install_icesound

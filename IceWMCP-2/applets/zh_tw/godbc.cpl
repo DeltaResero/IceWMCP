@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=ODBC
+Exec=gODBCConfig
+Icon=godbc.png
+Hint=管理 ODBC 資料來源 (gODBCConfig)

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=圖示
+Exec=[PHROZEN-INTERNAL]IceWMCPGtkIconSelection.py
+Icon=icewmcp-iconselection.png
+Hint=瀏覽系統圖示

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Programmes\ninstallés
+Exec=gnorpm
+Icon=gnorpm.png
+Hint=Gèrer les paquets RPM

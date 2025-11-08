@@ -1,0 +1,1479 @@
+# SPANISH translation of IceWM Control Panel
+# Copyright (C) 2003-2004 Erica Andrews
+# Erica Andrews <PhrozenSmoke [at] yahoo.com>, 2003-2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceWM Control Panel 3.2\n"
+"POT-Creation-Date: 2003-02-18 11:35+0100\n"
+"PO-Revision-Date: 2004-02-20 15:51+0400\n"
+"Last-Translator: Erica Andrews <PhrozenSmoke [at] yahoo.com>\n"
+"Language-Team: SPANISH <PhrozenSmoke [at] yahoo.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: IceWMCPRun.py:28
+msgid "Run a program"
+msgstr "Usar un programa"
+
+#: IceWMCPRun.py:37
+msgid "Command to run"
+msgstr "Programa"
+
+#: IceWMCPRun.py:62
+msgid "Run"
+msgstr "Usar"
+
+#: IceWMCPRun.py:63
+msgid "Run the selected command"
+msgstr "Usar el mando seleccionado"
+
+#: IceWMCPRun.py:71
+msgid "Close and exit"
+msgstr "Cerrar y salir"
+
+#: IceWMCPRun.py:83
+msgid "Select A Program"
+msgstr "Seleccionar Un Programa"
+
+#: IceWMCPRun.py:87
+msgid "Select"
+msgstr "Seleccionar"
+
+
+#IceWMCP - menu
+msgid "/_View"
+msgstr "/_Ver"
+
+msgid "/_View/_Icon View"
+msgstr "/_Ver/_Iconos"
+
+msgid "/_View/_List View"
+msgstr "/_Ver/_Lista"
+
+msgid "Column View"
+msgstr "Columnas"
+
+msgid "You do not have the extra IceWMCPSystem program installed.  You must first download it from"
+msgstr "El programa adicional nombrado IceWMCPSystem no se podía encontrar en su sistema.  Usted debe primero descargarlo de"
+
+msgid "The program this applet points to does not exist on your system."
+msgstr "El programa que este applet señala no existe en su sistema."
+
+#: IceWMCPGtkIconSelection.py:106 IceWMCPGtkIconSelection.py:215
+msgid "IceWMCP Icon Browser"
+msgstr "IceWMCP: Navegador de Iconos"
+
+#: IceWMCPGtkIconSelection.py:128
+msgid "Columns:"
+msgstr "Columnas:"
+
+#: IceWMCPGtkIconSelection.py:137
+msgid "SELECT"
+msgstr "SELECCIONAR"
+
+#: IceWMCPGtkIconSelection.py:142
+#: IceWMCPKeyboard.py:70
+#: IceWMCPMouse.py:53
+#: IceWMCPWallpaper.py:161
+msgid "Close"
+msgstr "Cerrar"
+
+#: IceWMCPGtkIconSelection.py:147
+msgid "Reload"
+msgstr "Recargar"
+
+#: IceWMCPGtkIconSelection.py:152
+msgid "Icon Paths..."
+msgstr "Carpetas de Iconos..."
+
+#: IceWMCPGtkIconSelection.py:177
+msgid "You can drag-and-drop icons where needed."
+msgstr "Arrastre y caiga los iconos dondequiera desea."
+
+#: IceWMCPGtkIconSelection.py:221
+msgid "Enter a list of icon paths, separated by colons"
+msgstr "Escribe una lista de directorios con icons, separada por colones"
+
+#: IceWMCPGtkIconSelection.py:249
+#: icewmcp_common.py
+msgid "Loading"
+msgstr "Cargando"
+
+#: IceWMCPGtkIconSelection.py:249
+msgid "images...please wait."
+msgstr "iconos...espera, por favor."
+
+#: IceWMCPGtkIconSelection.py:375
+msgid "Icons loaded.  Ready."
+msgstr "Iconos cargados.  Listo."
+
+
+
+
+# Software update checker
+msgid "Check for newer versions of this program..."
+msgstr "Saber si hay más nuevas versiones de este programa..."
+
+msgid "You are currently using version"
+msgstr "Usted está utilizando actualmente la versión"
+
+msgid "The newest version available is"
+msgstr "La más nueva versión disponible es"
+
+msgid "You can download the newest version from"
+msgstr "Usted puede descargar la más nueva versión de"
+
+msgid "Could not check for software update."
+msgstr "No podía buscar las nuevas versiones del software."
+
+msgid "This feature requires an internet connection."
+msgstr "Se requiere una conexión del Internet."
+
+
+
+#: IceWMCP.py:41
+#: IceWMCP.py:98
+#: IceWMCP.py:201
+#: icewmcp_common.py:107
+msgid "IceWM Control Panel"
+msgstr "Panel de Control de IceWM"
+
+#: IceWMCP.py:53
+#: pyspool.py:49
+msgid "/ _File"
+msgstr "/ _Fichero"
+
+#: IceWMCP.py:54
+msgid "/ _File/_Refresh View"
+msgstr "/ _Fichero/_Recargar los iconos"
+
+#: IceWMCP.py:55
+msgid "/ _File/_Configuration..."
+msgstr "/ _Fichero/_Configuración..."
+
+#: IceWMCP.py:56
+msgid "/ _File/sep4"
+msgstr "/ _Fichero/sep4"
+
+#: IceWMCP.py:57
+#: pyspool.py:50
+msgid "/ _File/_Quit"
+msgstr "/ _Fichero/_Salir"
+
+#: IceWMCP.py:58
+#: IceWMCPKeyEdit.py:56
+#: IceWMCPWallpaper.py:54
+#: IceWMCPWinOptions.py:67
+#: pyspool.py:51
+msgid "/_Help"
+msgstr "/_Ayuda"
+
+#: IceWMCP.py:59
+msgid "/_Help/_About IceWM Control Panel..."
+msgstr "/_Ayuda/_Acerca del Panel De Control De IceWM..."
+
+#: IceWMCP.py:84
+msgid ""
+"HINT: Use SINGLE clicks instead of double-clicks.\n"
+"You will not see this message again."
+msgstr "NOTA:  Utilice los SOLOS tecleos en vez de doble-tecleos. \nUsted no verá este mensaje otra vez."
+
+#: IceWMCP.py:84
+msgid "Ice Control Panel"
+msgstr "Panel De Control De IceWM"
+
+#: IceWMCP.py:84
+#: icewmcp_common.py:108
+#: phrozenclock.py:143
+#: pyprintcommon.py:17
+msgid "OK"
+msgstr "Aceptar"
+
+#: IceWMCP.py:102
+msgid "  Choose which icons to hide or show:  "
+msgstr " Oculte o demuestre los iconos: "
+
+#: IceWMCP.py:112
+msgid "Hide"
+msgstr "Ocultar"
+
+#: IceWMCP.py:132
+msgid "Save"
+msgstr "Guardar"
+
+#: IceWMCP.py:201
+msgid ""
+"A simple Gtk-based control panel for IceWM - for people that prefer Gtk over the Qt-based 'IceCC'. It is modular, easy to use, with a Windows Control Panel like look. Although created for IceWM, it can be easily used as a control panel for any other window manager. It is highly configurable, and control panel applets can be created easily (simple text files).\n"
+"\n"
+"This program is distributed under the GNU General Public License (open source)."
+msgstr "Un panel de control Gtk-basado simple para IceWM - para la gente que prefiere Gtk.  Es modular, fácil utilizar, con un estilo similar el panel de control en Windows.  Aunque está creado para IceWM, puede ser utilizado fácilmente como panel de control para cualquier otro WM.  Es altamente configurable, y los applets del panel de control pueden ser creados fácilmente (los archivos simples del texto). \n\nEste programa se distribuye bajo  la GNU GPL (código abierto)."
+
+#: IceWMCP.py:207
+#: IceWMCP.py:212
+#: IceWMCP.py:213
+msgid "About IceWM Control Panel"
+msgstr "Acerca Del Panel De Control De IceWM"
+
+#: IceWMCP.py:224
+msgid " Close "
+msgstr " Cerrar "
+
+#: IceWMCPKeyEdit.py:44
+#: IceWMCPKeyEdit.py:401
+msgid "IceWM CP - Key Editor"
+msgstr "IceWMCP - Teclas Rápidas"
+
+#: IceWMCPKeyEdit.py:49
+#: IceWMCPWallpaper.py:52
+#: IceWMCPWinOptions.py:60
+msgid "/_File"
+msgstr "/_Fichero"
+
+#: IceWMCPKeyEdit.py:50
+#: IceWMCPWinOptions.py:61
+msgid "/File/_Open..."
+msgstr "/Fichero/_Abrir..."
+
+#: IceWMCPKeyEdit.py:51
+#: IceWMCPWinOptions.py:62
+msgid "/File/_Save"
+msgstr "/Fichero/_Guardar"
+
+#: IceWMCPKeyEdit.py:52
+#: IceWMCPWinOptions.py:63
+msgid "/File/sep1"
+msgstr "/Fichero/sep1"
+
+#: IceWMCPKeyEdit.py:53
+#: IceWMCPWinOptions.py:64
+msgid "/File/_Apply Changes Now..."
+msgstr "/Fichero/A_plicar los cambios..."
+
+#: IceWMCPKeyEdit.py:54
+#: IceWMCPWinOptions.py:65
+msgid "/File/sep2"
+msgstr "/Fichero/sep2"
+
+#: IceWMCPKeyEdit.py:55
+#: IceWMCPWallpaper.py:53
+#: IceWMCPWinOptions.py:66
+msgid "/File/_Exit"
+msgstr "/Fichero/_Salir"
+
+#: IceWMCPKeyEdit.py:57
+#: IceWMCPWallpaper.py:55
+#: IceWMCPWinOptions.py:68
+msgid "/Help/_About..."
+msgstr "/_Ayuda/_Acerca de..."
+
+#: IceWMCPKeyEdit.py:71
+msgid "Key Editor"
+msgstr "Configuración de Teclas Rápidas"
+
+#: IceWMCPKeyEdit.py:73
+msgid "Command"
+msgstr "Programa"
+
+#: IceWMCPKeyEdit.py:73
+msgid "Keys"
+msgstr "Teclas"
+
+#: IceWMCPKeyEdit.py:82
+msgid "Key:  "
+msgstr "Tecla:  "
+
+#: IceWMCPKeyEdit.py:94
+msgid "Program:  "
+msgstr "Programa:  "
+
+#: IceWMCPKeyEdit.py:97
+msgid "Browse..."
+msgstr "Seleccionar..."
+
+#: IceWMCPKeyEdit.py:102
+msgid " New Key "
+msgstr " Crear Tecla "
+
+#: IceWMCPKeyEdit.py:103
+msgid " Set "
+msgstr " Fijar "
+
+#: IceWMCPKeyEdit.py:104
+msgid " Add "
+msgstr " Añadir "
+
+#: IceWMCPKeyEdit.py:105
+msgid " Delete "
+msgstr " Borrar "
+
+#: IceWMCPKeyEdit.py:121
+#: IceWMCPKeyEdit.py:137
+#: IceWMCPWinOptions.py:204
+#: IceWMCPWinOptions.py:569
+msgid "Ready."
+msgstr "Listo."
+
+#: IceWMCPKeyEdit.py:159
+msgid ""
+"This key does not exist.\n"
+"Please create it by clicking the 'New Key' button."
+msgstr "Esta tecla no existe.\nHaga clic en 'Crear Tecla' para crearla."
+
+#: IceWMCPKeyEdit.py:162
+#: IceWMCPKeyEdit.py:180
+msgid "You must specify a program for this key combination"
+msgstr "Hay que escojer un programa para esta tecla"
+
+#: IceWMCPKeyEdit.py:167
+#: IceWMCPKeyEdit.py:187
+#: IceWMCPKeyEdit.py:204
+#: IceWMCPWinOptions.py:496
+#: IceWMCPWinOptions.py:520
+#: IceWMCPWinOptions.py:539
+msgid "Modified."
+msgstr "Modificado."
+
+#: IceWMCPKeyEdit.py:183
+msgid ""
+"' already exists and\n"
+"triggers the program: "
+msgstr "' ya existe y invoca el programa: "
+
+#: IceWMCPKeyEdit.py:183
+msgid "The key '"
+msgstr "La tecla '"
+
+#: IceWMCPKeyEdit.py:183
+msgid ""
+"You must either delete the existing key,\n"
+"or change the existing key's action using 'Set'."
+msgstr "Hay que borrar la tecla que existe ya o cambiar\n el programa esta tecla invocará por hacer clic en 'Fijar'."
+
+#: IceWMCPKeyEdit.py:199
+msgid "Are you sure you want to delete this key?"
+msgstr "¿Desea borrar esta tecla?"
+
+#: IceWMCPKeyEdit.py:327
+#: IceWMCPWallpaper.py:320
+#: IceWMCPWinOptions.py:546
+msgid "Select a file..."
+msgstr "Seleccione un fichero..."
+
+#: IceWMCPKeyEdit.py:349
+#: IceWMCPWinOptions.py:571
+msgid ""
+"No such file or directory:\n"
+msgstr "El fichero o el directorio no existe:\n"
+
+#: IceWMCPKeyEdit.py:374
+msgid ""
+"ERROR saving key configuration file:\n"
+msgstr "ERROR: No podía guardar la configuración de teclas rápidas:\n"
+
+#: IceWMCPKeyEdit.py:375
+msgid "Error saving."
+msgstr "ERROR: No podía guardar."
+
+#: IceWMCPKeyEdit.py:379
+#: IceWMCPWinOptions.py:254
+msgid ""
+"WARNING:\n"
+"This feature doesn't work perfectly on all systems.\n"
+"BSD and some other systems may experience problems."
+msgstr "ADVERTENCIA:\nEsta función no funcionar sin problemas para todos los sistemas.\nEs posible que BSD y otros sistemas sufrieren algunos problemas."
+
+
+#: IceWMCPKeyEdit.py:401
+msgid ""
+"A simple Gtk-based key configuration utility\n"
+"for IceWM (written in 100% Python).\n"
+"\n"
+"This program is distributed free\n"
+"of charge (open source) under the GNU\n"
+"General Public License."
+msgstr "Una herramienta para configurar las teclas.\nEs Gtk-basado, escrito con Python, y para IceWM.\nEste programa se distribuye gratis (código abierto)\n  bajo el acuerdo de la GNU GPL (General Public License)."
+
+#: IceWMCPKeyEdit.py:401
+msgid "About IceWM CP - Key Editor"
+msgstr "Acerca de IceWMCP - Teclas Rápidas"
+
+#: IceWMCPKeyEdit.py:121
+msgid " Test Key "
+msgstr " Probar Tecla "
+
+#: IceWMCPKeyEdit.py:453
+msgid "The executable is not on your PATH"
+msgstr "No podia encontrar el programa en su $PATH"
+
+#: IceWMCPKeyEdit.py:455
+msgid "The executable file does not exist"
+msgstr "El programa no existe"
+
+#: IceWMCPKeyboard.py:33
+msgid "IceWM CP - Keyboard Settings"
+msgstr "IceWM CP -  Configuración de Teclado"
+
+#: IceWMCPKeyboard.py:39
+msgid "IceWM Control Panel: Keyboard"
+msgstr "Panel De Control De IceWM:  Teclado"
+
+#: IceWMCPKeyboard.py:40
+msgid " Select your desired keyboard repeat rate: "
+msgstr " Seleccione la velocidad de la repetición del teclado: "
+
+#: IceWMCPKeyboard.py:53
+msgid "Delay: "
+msgstr "Retraso: "
+
+#: IceWMCPKeyboard.py:59
+msgid "Rate: "
+msgstr "Velocidad: "
+
+#: IceWMCPKeyboard.py:64
+msgid "Test: "
+msgstr "Probar: "
+
+#: IceWMCPKeyboard.py:68
+#: IceWMCPMouse.py:51
+#: IceWMCPWallpaper.py:160
+#: phrozenclock.py:147
+msgid "Apply"
+msgstr "Aplicar"
+
+#: IceWMCPKeyboard.py:69
+#: IceWMCPMouse.py:52
+#: phrozenclock.py:139
+#: tkPCCard.py:64
+msgid "Reset"
+msgstr "Reajustar"
+
+#: IceWMCPMouse.py:33
+msgid "IceWM CP - Mouse Settings"
+msgstr "IceWM CP -  Configuración de Ratón"
+
+#: IceWMCPMouse.py:39
+msgid "IceWM Control Panel: Mouse"
+msgstr "Panel De Control De IceWM:  Ratón"
+
+#: IceWMCPMouse.py:40
+msgid " Select your desired mouse speed: "
+msgstr " Seleccione la velocidad del puntero de ratón: "
+
+#: IceWMCPMouse.py:90
+msgid ""
+"'.\n"
+"If you are not happy with this mouse speed,\n"
+"wait 7 seconds and the mouse speed will be\n"
+"reset to a reasonable speed.\n"
+msgstr "'.\nSi usted no es feliz con esta velocidad del ratón,\n espere 7 segundos y la velocidad del ratón será\n reajustada a una velocidad razonable.\n"
+
+#: IceWMCPMouse.py:90
+msgid "Your mouse speed has been set to '"
+msgstr "Su velocidad del ratón se ha fijado a '"
+
+#: IceWMCPMouse.py:93
+msgid "CANCEL change and RESET the mouse"
+msgstr "CANCELAR el cambio y REAJUSTAR la velocidad del ratón"
+
+#: IceWMCPMouse.py:94
+msgid "KEEP the new mouse speed"
+msgstr "GUARDAR la nueva velocidad del ratón"
+
+#: IceWMCPMouse.py
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#: IceWMCPMouse.py
+msgid "Mouse Behavior"
+msgstr "Comportamiento del Ratón"
+
+#: IceWMCPMouse.py
+msgid "Speed"
+msgstr "Velocidad"
+
+#: IceWMCPWallpaper.py:47
+#: IceWMCPWallpaper.py:69
+#: IceWMCPWallpaper.py:182
+msgid "Wallpaper Settings"
+msgstr "Configuración de Escritorio"
+
+#: IceWMCPWallpaper.py:76
+msgid " Desktop Color "
+msgstr " Color del Fondo "
+
+#: IceWMCPWallpaper.py:78
+msgid " Change... "
+msgstr " Seleccionar... "
+
+#: IceWMCPWallpaper.py:92
+msgid " Image "
+msgstr " Imagen "
+
+#: IceWMCPWallpaper.py:102
+msgid " Reload Images "
+msgstr " Recargar la lista "
+
+#: IceWMCPWallpaper.py:115
+msgid " Directory "
+msgstr " Directorio "
+
+#: IceWMCPWallpaper.py:122
+msgid " Select... "
+msgstr " Seleccionar... "
+
+#: IceWMCPWallpaper.py:133
+msgid " Centered "
+msgstr " Centrado "
+
+#: IceWMCPWallpaper.py:134
+msgid " Tiled "
+msgstr " Embaldosado "
+
+#: IceWMCPWallpaper.py:159
+msgid "Ok"
+msgstr "Aceptar"
+
+#: IceWMCPWallpaper.py:182
+msgid ""
+"A simple Gtk-based utility for setting the background color\n"
+"and wallpaper settings in IceWM (written in 100% Python).\n"
+"This program is distributed under the GNU General\n"
+"Public License (open source).\n"
+"\n"
+"WARNING: Some newer IceWM themes override the wallpaper and\n"
+"background colors set here. If you see no changes, it may be that your\n"
+"theme controls the background colors and images."
+msgstr "Una herramienta para configurar el fondo.\nEs Gtk-basado, escrito con Python, y para IceWM.\nEste programa se distribuye gratis (código abierto)\n  bajo el acuerdo de la GNU GPL (General Public License).\n\nNOTA: Algunas temas para IceWM controlar \n las imágenes y los colores\n fijos aquí. Si no vea ningunos cambios aplicados, es\n posible que el color del fondo y el papel pintado se controlen\n por la tema usada por  IceWM."
+
+#: IceWMCPWallpaper.py:199
+msgid ""
+"Error backing up IceWM preferences to:\n"
+msgstr "ERROR: No podía copiar la configuración de IceWM a:\n"
+
+#: IceWMCPWallpaper.py:231
+msgid ""
+"Error while saving IceWM preferences to:\n"
+msgstr "ERROR: No podía guardar la configuración de IceWM como:\n"
+
+#: IceWMCPWallpaper.py:283
+msgid "Select Color"
+msgstr "Seleccione Un Color"
+
+#: IceWMCPWallpaper.py:424
+msgid ""
+"SORRY:\n"
+" Image could not\n"
+" be previewed."
+msgstr "ERROR:\nNo puede cargar la imagen."
+
+#: IceWMCPWinOptions.py:37
+#: IceWMCPWinOptions.py:87
+#: IceWMCPWinOptions.py:625
+msgid "Window Options"
+msgstr "Opciones de Ventana"
+
+#: IceWMCPWinOptions.py:42
+msgid "Normal"
+msgstr "Normal"
+
+#: IceWMCPWinOptions.py:43
+msgid "AboveDock"
+msgstr "SobreMuelle"
+
+#: IceWMCPWinOptions.py:44
+msgid "Dock"
+msgstr "Muelle"
+
+#: IceWMCPWinOptions.py:45
+msgid "Below"
+msgstr "Debajo"
+
+#: IceWMCPWinOptions.py:46
+msgid "Desktop"
+msgstr "Escritorio"
+
+#: IceWMCPWinOptions.py:47
+msgid "OnTop"
+msgstr "Arriba"
+
+#: IceWMCPWinOptions.py:48
+msgid "Menu"
+msgstr "Menú"
+
+#: IceWMCPWinOptions.py:99
+msgid "Add..."
+msgstr "Añadir..."
+
+msgid "Delete"
+msgstr "Borrar"
+
+msgid "Icon: "
+msgstr "Icono: "
+
+msgid " Browse... "
+msgstr "Seleccionar..."
+
+msgid "WorkSpace: "
+msgstr "Espacio de Trabajo: "
+
+msgid "Layer: "
+msgstr "Capa: "
+
+msgid "Geometry: "
+msgstr "Geometría: "
+
+msgid "Tray Icon: "
+msgstr "Icono de bandeja: "
+
+msgid "Set"
+msgstr "Fijar"
+
+
+#: IceWMCPWinOptions.py:413
+msgid "Step 1: Open the program you wish to set properties for."
+msgstr "1:  Abra el programa que Usted desea configurar."
+
+msgid "Step 2: Click the 'Grab...' button below."
+msgstr "2:  Haga clic en 'Coger...' abajo."
+
+msgid "Step 3: Click the crosshairs on the program you opened."
+msgstr "3:  Haga clic en la ventana de la program Usted ha abierto."
+
+#: IceWMCPWinOptions.py:432
+msgid "ADD"
+msgstr "Añadir"
+
+#: IceWMCPWinOptions.py:436
+#: phrozenclock.py:151
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: IceWMCPWinOptions.py:438
+msgid "Grab..."
+msgstr "Coger..."
+
+#: IceWMCPWinOptions.py:477
+msgid "You must complete at least the 'wm_class' field."
+msgstr "Hay que completar al menos 'wm_class'."
+
+#: IceWMCPWinOptions.py:483
+msgid ""
+"' already exists.\n"
+"Either edit or delete the existing '"
+msgstr "' ya existe.\nBorre o redacte las opciónes para '"
+
+#: IceWMCPWinOptions.py:483
+msgid "' window settings."
+msgstr "' que ya existen."
+
+#: IceWMCPWinOptions.py:483
+msgid "The wm_class/wm_name '"
+msgstr "La ventana '"
+
+#: IceWMCPWinOptions.py:532
+msgid ""
+"Are you sure you want to delete\n"
+"the window options associated with:\n"
+msgstr "Está seguro que desea borrar\nlas configuraciónes asociadas con:\n"
+
+#: IceWMCPWinOptions.py:617
+msgid "Saved."
+msgstr "Guardado."
+
+
+msgid "Has HIDE button (if applicable)"
+msgstr "Tiene botón para OCULTAR (si es aplicable)"
+
+msgid "Has ROLLUP button (if applicable)"
+msgstr "Tiene botón para RODAR PARA ARRIBA (si es aplicable)"
+
+msgid "Has LAYER button (if applicable)"
+msgstr "Tiene botón para la CAPA (si es aplicable)"
+
+msgid "Ignore pre-set window positions"
+msgstr "No haga caso de posiciones preestablecidas de ventana"
+
+msgid "Do not focus"
+msgstr "No se enfoque"
+
+msgid "Start full-screen"
+msgstr "Comienza de plena pantalla"
+
+msgid "Start vertically maximized"
+msgstr "Comienza maximizado verticalmente"
+
+msgid "Start horizontally maximized"
+msgstr "Comienza maximizado horizontalmente"
+
+msgid "Has title bar"
+msgstr "Tiene barra del título"
+
+msgid "Start maximized"
+msgstr "Comienza maximizado"
+
+msgid "Visible on all workspaces"
+msgstr "Visible en todos los espacios de trabajo"
+
+msgid "Has border"
+msgstr "Tiene frontera"
+
+msgid "Do not show in Quick-switch window"
+msgstr "No se muestra en ventana de Quick-switch"
+
+msgid "App is non-ICCCM compliant"
+msgstr "Es non-ICCCM obediente"
+
+msgid "Has MINIMIZE button"
+msgstr "Tiene botón para MINIMIZARSE"
+
+msgid "Maximizeable"
+msgstr "Se puede maximizar"
+
+msgid "Do not focus when app is raised"
+msgstr "No se enfoque cuando se levanta el programa"
+
+msgid "Has resize border"
+msgstr "Tiene frontera para volver a clasificar según el tamaño"
+
+msgid "Can be rolled up"
+msgstr "Se puede rodar para arriba"
+
+msgid "Moveable"
+msgstr "Se puede mover"
+
+msgid "Has MAXIMIZE button"
+msgstr "Tiene botón para MAXIMIZARSE"
+
+msgid "Resizeable"
+msgstr "Se puede volver a clasificar según el tamaño"
+
+msgid "Has CLOSE button"
+msgstr "Tiene botón para CERRARSE"
+
+msgid "Force focusing"
+msgstr "Fuerza al foco"
+
+msgid "Closeable"
+msgstr "Se puede cerrar"
+
+msgid "Do not show on taskbar"
+msgstr "No se demuestra en taskbar"
+
+msgid "Has system menu"
+msgstr "Tiene menú del sistema"
+
+msgid "Hideable"
+msgstr "Se puede ocultar"
+
+msgid "Do not cover"
+msgstr "No cubra"
+
+msgid "Start minimized"
+msgstr "Comienza minimizado"
+
+msgid "Reserve extra 'F[num]' keys"
+msgstr "Teclas 'F[num]' son reservadas"
+
+msgid "Do not show in Window List"
+msgstr "No se muestra en lista de ventanas"
+
+msgid "Minimizeable"
+msgstr "Se puede minmizar"
+
+#: IceWMCPWinOptions.py, added 8.25.2003, for IceWM option 'forcedClose'
+# Explanation: If set to 'true', a confirmation dialog will not be shown when closing this window.
+msgid "Do not show a confirmation dialog when closing the window"
+msgstr "No se muestra un diálogo de confirmación al cerrar la ventana"
+
+
+
+
+#: IceWMCPWinOptions.py:620
+msgid ""
+"There was an ERROR saving your window options to the file:\n"
+msgstr "ERROR: No se pudo guardar el fichero para las opciónes de ventanas:\n"
+
+#: IceWMCPWinOptions.py:625
+msgid ""
+"A simple Gtk-based window options configuration utility\n"
+"for IceWM (written in 100% Python).\n"
+"Optimized for IceWM version 1.2.7.\n"
+"\n"
+"This program is distributed free\n"
+"of charge (open source) under the GNU\n"
+"General Public License."
+msgstr "Una herramienta para configurar \nlos Opciones de la Ventana.\nEs Gtk-basado, escrito con Python, y para IceWM.\nEstá optimizado para IceWM 1.2.7.\nEste programa se distribuye gratis (código abierto)\n  bajo el acuerdo de la GNU GPL (General Public License)." 
+
+#: IceWMCPWinOptions.py:625
+msgid "Window Options Editor"
+msgstr "Redactor para Opciones de Ventana"
+
+#: IceWMCPWinOptions.py:625
+#: phrozenclock.py:135
+msgid "About"
+msgstr "Acerca de"
+
+#: icewmcp_common.py:109
+msgid "CANCEL"
+msgstr "CANCELAR"
+
+#: phrozenclock.py:156
+msgid "Date & Time"
+msgstr "Fecha Y Hora"
+
+#: phrozenclock.py:164
+msgid "Current Time Zone:"
+msgstr "Zona de Tiempo Actual:"
+
+#: phrozenclock.py:173
+msgid "To change the timezone,select your area from the list below:"
+msgstr "Para fijar la zona de tiempo, seleccione tu sitio de la lista:"
+
+#: phrozenclock.py:186
+msgid "Set Time Zone"
+msgstr "Fijar Zona de Tiempo"
+
+#: phrozenclock.py:191
+msgid "Time Zone"
+msgstr "Zona de Tiempo"
+
+#: phrozenclock.py:217
+msgid ""
+"CRITICAL ERROR\n"
+"\n"
+"PhrozenClock was unable to determine the location\n"
+"of your 'zoneinfo' time zone files, normally located in\n"
+" /usr/share/zoneinfo/.  You may have to edit the phrozenclock.py script and set\n"
+"the ZONEINFO_DIR variable manually (sorry!).\n"
+"Also, make sure that your /etc/localtime file is properly LINKED.\n"
+"\n"
+"Critical Error: Quitting."
+msgstr "ERROR: PhrozenClock no pudo encontrar los ficheros 'zoneinfo',\nusualmente localizados por /usr/share/zoneinfo/.\nEs posible que Usted tuviere que fijar el valor\n de ZONEINFO_DIR en el programa 'phrozenclock.py'.\nTambien, sea seguro que /etc/localtime esta enlazado  correctamente."
+
+#: phrozenclock.py:230
+msgid ""
+"Could not determine your timezone's 'nickname'.\n"
+"You may have to set this yourself."
+msgstr "No se puede determinar el nombre de \nla zona de tiempo para su sistema.\nTiene que fijarlo su mismo."
+
+#: phrozenclock.py:303
+msgid "'....Quitting."
+msgstr "...Saliendo."
+
+#: phrozenclock.py:303
+msgid "ERROR: Could not load available time zones from '"
+msgstr "ERROR:  No podía cargar zonas de tiempo disponibles de '"
+
+#: phrozenclock.py:350
+#: phrozenclock.py:357
+msgid ""
+"Unknown error setting your timezone.\n"
+"You may have to do this manually or edit the source for the phrozenclock.py script"
+msgstr "ERROR: No se puede fijar la zona de tiempo.\nTiene que fijarlo su mismo."
+
+#: phrozenclock.py:367
+msgid ""
+"Unknown error writing your timezone.\n"
+"You may have to do this manually or edit the source for the phrozenclock.py script"
+msgstr "Error desconocido que escribe su timezone.\nUsted puede tener que hacer esto manualmente o corregir la fuente para la escritura de phrozenclock.py"
+
+#: phrozenclock.py:370
+msgid ""
+"Phrozen Clock will now be quickly RESTARTED.\n"
+"This is absolutely necessary.\n"
+"\n"
+"You may see a quick flicker on your display,\n"
+"or may see the screen 'black' for a moment.\n"
+"Do not be alarmed, as this is normal."
+msgstr "PhrozenClock se reiniciará rapidamente.\nEs necesario.\nNo se preocupe si la pantalla relampaguee \nun poquito o se ennegrezca la pantalla por un segundo.\nEso es normal."
+
+
+#: phrozenclock.py:384
+msgid ""
+"WARNING: Changes in timezones do NOT\n"
+"take affect in ALL applications immediately.\n"
+"\n"
+"You may have to restart X or your window manager to\n"
+"see the timezone change in clocks on your taskbar or system tray.\n"
+"\n"
+"For IceWM users, you can just click 'Start' menu,\n"
+"then select 'Logout',\n"
+"then'Restart IceWM',\n"
+"or re-apply your current IceWM theme.\n"
+"\n"
+"For best results, you really should reboot your computer, or at\n"
+"least re-start X. Some applications may appear to be 'stuck'\n"
+"in the old timezone until the system is rebooted.\n"
+"Running 'xrefresh' will NOT be enough. If you are running\n"
+"mission critical or time-sensitive applications,\n"
+"you should reboot immediately. You have been warned."
+msgstr "ADVERTENCIA:  Los cambios en zonas de tiempo no \ntoman afecto en TODOS LOS programas inmediatamente.\nUsted puede tener que reiniciar a X o su gestor de ventanas  para\n ver la nueva zona de tiempo en relojes en su bandeja taskbar\n o del sistema.\nPara los mejores resultados, usted realmente debe reiniciar \nsu computadora, o por lo menos, reiniciar  X.\nAlgunos programas pueden aparecer ' ser pegado ' \nen la vieja zona de tiempo hasta que se reinicia el sistema."
+
+#: phrozenclock.py:395
+msgid ""
+"A simple Windows-like or KDE-like clock management application\n"
+"suitable for managing the clock in most window managers' system trays.\n"
+"PhrozenClock was orginally created for use with the system tray clock in IceWM,\n"
+"and was designed to be lightweight and less memory intensive than the KDE clock.\n"
+"\n"
+"PhrozenClock GTK is open source under the General Public License (GPL)."
+msgstr "Un simple Windows-como\n o KDE-como programa  \npara controlar el reloj.  PhrozenClock Gtk \nfue creado para el \nuso con el reloj de la bandeja\n del sistema en IceWM, y\n fue diseñado para ser ligero y\n menos memoria intensiva que el \nreloj de KDE. Es Gtk-basado \ny escrito con Python.\n\nEste programa se \ndistribuye gratis (código abierto)\n  bajo el acuerdo de la GNU GPL\n (General Public License)."
+
+#: pyprintcommon.py:21
+msgid "No"
+msgstr "No"
+
+#: pyprintcommon.py:21
+msgid "Yes"
+msgstr "Sí"
+
+#: pyprintcommon.py:26
+msgid ""
+" is open source under the General Public License (GPL).\n"
+"NO technical support will be provided for this application.\n"
+"Enjoy!"
+msgstr "está el código abierto debajo de la General Public License (GPL).\nNo se proporcionará NINGUNA ayuda técnica para este programa."
+
+#: pyprintcommon.py:26
+msgid "About "
+msgstr "Acerca de"
+
+#: pyprintcommon.py:26
+msgid "All rights reserved."
+msgstr "Todos los derechos reservados."
+
+#: pyspool.py:37
+msgid "Printer Queue"
+msgstr "Cola de Impresión"
+
+#: pyspool.py:52
+msgid "/_Help/_About"
+msgstr "/_Ayuda/Acerca"
+
+#: pyspool.py:66
+msgid "Select Printer:"
+msgstr "Seleccione Una Impresora:"
+
+#: pyspool.py:77
+msgid "  View  "
+msgstr "  Ver  "
+
+#: pyspool.py:89
+msgid "Description:"
+msgstr "Descripción:"
+
+#: pyspool.py:93
+msgid "Queue:"
+msgstr "Cola:"
+
+#: pyspool.py:97
+msgid "Server:"
+msgstr "Servidor:"
+
+#: pyspool.py:101
+msgid "Status:"
+msgstr "Estado:"
+
+#: pyspool.py:105
+msgid "Info:"
+msgstr "Info:"
+
+#: pyspool.py:132
+msgid "Refresh Queue Details"
+msgstr "Recargar Detalles De Cola"
+
+#: pyspool.py:136
+msgid "Cancel Selected Print Job"
+msgstr "Cancelar Trabajo Seleccionado"
+
+#: pyspool.py:158
+msgid "State"
+msgstr "Estado"
+
+#: pyspool.py:161
+msgid "Job ID"
+msgstr "ID de Trabajo"
+
+#: pyspool.py:164
+msgid "Size"
+msgstr "Tamaño"
+
+#: pyspool.py:167
+msgid "Files"
+msgstr "Ficheros"
+
+#: pyspool.py:170
+msgid "Owner/ID"
+msgstr "Dueño/ID"
+
+#: pyspool.py:173
+msgid "Time"
+msgstr "Hora"
+
+#: pyspool.py:176
+msgid "Class"
+msgstr "Clase"
+
+#: pyspool.py:235
+#: pyspool.py:318
+#: pyspool.py:319
+#: pyspool.py:330
+#: pyspool.py:331
+#: pyspool.py:338
+msgid "NONE FOUND"
+msgstr "NINGUNOS ENCONTRADOS"
+
+#: pyspool.py:238
+msgid " on printer '"
+msgstr " en la impresora '"
+
+#: pyspool.py:238
+msgid "Are you SURE you want to cancel print job "
+msgstr "Está usted SEGURO usted desea cancelar el empleo de impresora "
+
+#: pyspool.py:240
+msgid "Cancel Print Job "
+msgstr "Cancelar el Empleo de Impresora"
+
+#: pyspool.py:240
+msgid "Result"
+msgstr "Resultado"
+
+#: pyspool.py:266
+msgid "        Current printer: "
+msgstr "        Impresora actual: "
+
+#: pyspool.py:266
+msgid " Available printers: "
+msgstr " Impresoras disponibles: "
+
+#: pyspool.py:269
+msgid "description unavailable"
+msgstr "descripción inasequible"
+
+#: pyspool.py:270
+msgid "queue status unavailable"
+msgstr "estado de la cola inasequible"
+
+#: pyspool.py:271
+msgid "server status unavailable"
+msgstr "estado del servidor inasequible"
+
+#: pyspool.py:272
+msgid "status unavailable"
+msgstr "estado inasequible"
+
+#: pyspool.py:273
+msgid "info unavailable"
+msgstr "info inasequible"
+
+#: pyspool.py:355
+msgid "Error"
+msgstr "Error"
+
+#: pyspool.py:366
+msgid ""
+"PySpool is a simple Gtk-based spool monitor and manager written\n"
+"in 100% Python. It is intended to monitor LPRng and LPR-based\n"
+"printer spools. This is BETA code. PySpool has only been\n"
+"tested with LPRng 3.8.12 on local printers.\n"
+"PySpool requires the following executables on your PATH:\n"
+"lpstat, cancel, checkpc"
+msgstr "PySpool es un programa Gtk-basado simple para\nmanejar coletas de la impresora.\nescrito en Python 100%.  Se piensa para supervisar LPRng y \ncoletas LPR-basadas de la impresora. Este programa es muy EXPERIMENTAL.\n  PySpool requiere los executables siguientes en su $PATH:\nlpstat, cancel, checkpc"
+
+#: pyspool.py:377
+msgid "' into your PATH first."
+msgstr "' en su $PATH primero."
+
+#: pyspool.py:377
+msgid ""
+"The following executable does not appear to be on your PATH:\n"
+"\n"
+msgstr "El ejecutable siguiente no aparece estar en su $PATH:\n\n"
+
+#: pyspool.py:377
+msgid ""
+"You may experience problems running PySpool properly.\n"
+"Please install '"
+msgstr "Usted puede experimentar algunos problemas mientras que \nfunciona PySpool correctamente.\nInstale por favor '"
+
+#: tkPCCard.py:40
+msgid "Slot "
+msgstr "Tarjeta "
+
+#: tkPCCard.py:48
+#: tkPCCard.py:81
+msgid "Slot  "
+msgstr "Tarjeta  "
+
+#: tkPCCard.py:58
+msgid "Eject"
+msgstr "Expulsar"
+
+#: tkPCCard.py:61
+msgid "Insert"
+msgstr "Insertar"
+
+#: tkPCCard.py:67
+msgid "Suspend"
+msgstr "Suspender"
+
+#: tkPCCard.py:70
+msgid "Resume"
+msgstr "Reasumir"
+
+#: tkPCCard.py:105
+msgid "Empty"
+msgstr "Vacío"
+
+#: tkPCCard.py:123
+msgid "Error loading card data"
+msgstr "Error mientras que carga datos de la tarjeta"
+
+#: tkPCCard.py:130
+msgid ""
+"This card has been ejected.\n"
+"You may safely remove this device."
+msgstr "Se ha expulsado esta tarjeta.\nUsted puede quitar con seguridad esta tarjeta."
+
+#: tkPCCard.py:141
+msgid "This card's activity has been suspended"
+msgstr "Se ha suspendido la actividad de esta tarjeta"
+
+#: tkPCCard.py:144
+msgid "An error occurred while suspending this card."
+msgstr "Un error ocurrió mientras que suspendía esta tarjeta."
+
+#: tkPCCard.py:151
+msgid "This card's activity has been resumed."
+msgstr "Se ha reasumido la actividad de esta tarjeta."
+
+#: tkPCCard.py:154
+msgid "An error occurred while resuming this card."
+msgstr "Un error ocurrió mientras que reasumía esta tarjeta."
+
+#: tkPCCard.py:161
+msgid "This card has been inserted."
+msgstr "Se ha insertado esta tarjeta."
+
+#: tkPCCard.py:164
+msgid "An error occurred while inserting this card."
+msgstr "Un error ocurrió mientras que insertaba esta tarjeta."
+
+#: tkPCCard.py:175
+msgid "This card has been reset."
+msgstr "Se ha reajustado esta tarjeta."
+
+#: tkPCCard.py:178
+msgid "An error occurred while resetting this card."
+msgstr "Un error ocurrió mientras que reajustaba esta tarjeta."
+
+#: tkPCCard.py:212
+msgid "No PCMCIA slots detected on this computer."
+msgstr "Ningunas tarjetas de PCMCIA detectadas en esta computadora."
+
+#: tkPCCard.py:231
+msgid "   EXIT   "
+msgstr "   SALIR   "
+
+#: tkPCCard.py:234
+msgid "   About   "
+msgstr "   Acerca de   "
+
+
+#: IceWMCPCursors.py:36
+#: IceWMCPCursors.py:126
+msgid "IceWM CP - Cursor Editor"
+msgstr "IceWM CP - Punteros de Ratón"
+
+#: IceWMCPCursors.py:68
+msgid "Cursor Editor"
+msgstr "Configuración de Punteros de Ratón"
+
+#: IceWMCPCursors.py:126
+msgid "A Gtk-based mouse configuration utility"
+msgstr "Una utilidad Gtk-basada para configurar el ratón"
+
+#: IceWMCPCursors.py:126
+msgid "for IceWM (written in 100% Python)."
+msgstr "para IceWM (escrito con Python)."
+
+
+#: icewmcp_common.py:161
+msgid "Credits"
+msgstr "Créditos"
+
+#: icewmcp_common.py:318
+msgid "Translators"
+msgstr "Traductores"
+
+#: icewmcp_common.py:318
+msgid "If you wish to help us with the translations, please visit the following site on the web"
+msgstr "Si usted quiera ayudarnos con las traducciónes, por favor mire el sitio siguiente en la Red"
+
+
+
+#: icewmcp_common.py:162
+msgid "Send A Bug Report"
+msgstr "Enviar informe de problema"
+
+#: ICEWMCP_BugReport.py:47
+msgid "You did not specify a valid SMTP host."
+msgstr "Usted no especificó un servidor SMTP válido"
+
+#: ICEWMCP_BugReport.py:47 ICEWMCP_BugReport.py:57 ICEWMCP_BugReport.py:64
+#: ICEWMCP_BugReport.py:79 ICEWMCP_BugReport.py:81 ICEWMCP_BugReport.py:123
+#: ICEWMCP_BugReport.py:158 ICEWMCP_BugReport.py:163 ICEWMCP_BugReport.py:169
+#: ICEWMCP_BugReport.py:177
+msgid "Bug Report"
+msgstr "Informe de Problema"
+
+#: ICEWMCP_BugReport.py:57
+msgid "The FROM e-mail address you provided is invalid."
+msgstr "La dirección de correo-e que usted especificó es inválida."
+
+#: ICEWMCP_BugReport.py:64
+msgid "Unable to connect to SMTP server"
+msgstr "No podía conectar con el servidor SMTP"
+
+#: ICEWMCP_BugReport.py:79
+msgid "Be sure that you are connected to the internet."
+msgstr "Sea seguro que usted está conectado con el Internet."
+
+#: ICEWMCP_BugReport.py:79
+msgid "Unable to send your bug report message"
+msgstr "No podía enviar su informe de problema"
+
+#: ICEWMCP_BugReport.py:79
+msgid "Your SMTP server may require a password or may require you to check your POP3 mail first."
+msgstr "Su servidor SMTP puede requerir una contraseña o puede requerirle tener acceso a su correo-e POP3 primero."
+
+#: ICEWMCP_BugReport.py:81
+msgid "Your bug report message was successfully sent to"
+msgstr "Su informe de problema fue enviado con éxito a"
+
+#: ICEWMCP_BugReport.py:123
+msgid "There is not enough information to send a bug report."
+msgstr "No hay bastante información a enviar un informe de problema."
+
+#: ICEWMCP_BugReport.py:123
+msgid "You did not describe the bug or problem IN DETAIL in the 'bug report' area."
+msgstr "Usted no describió el problema DETALLADAMENTE."
+
+#: ICEWMCP_BugReport.py:158
+msgid "Unknown application"
+msgstr "Programa desconocida"
+
+#: ICEWMCP_BugReport.py:163
+msgid "A check for the NEWEST version of this software will now be conducted."
+msgstr "Una búsqueda rápida para la MÁS NUEVA versión de este software ahora será conducida."
+
+#: ICEWMCP_BugReport.py:163
+msgid "Before reporting a bug, please make sure you have the NEWEST version of this software."
+msgstr "Antes de enviar un informe de problema, sea seguro que usted tiene la MÁS NUEVA versión de este software."
+
+#: ICEWMCP_BugReport.py:163
+msgid "Do you wish to continue?"
+msgstr "¿Usted desea continuar?"
+
+#: ICEWMCP_BugReport.py:163
+msgid "If you are using an older version of this software, first upgrade to the NEWEST version."
+msgstr "Si usted está utilizando una más vieja versión de este software, primera mejora a la MÁS NUEVA versión."
+
+#: ICEWMCP_BugReport.py:163
+msgid "Please do not submit bug reports if you are using an older version of this software."
+msgstr "No envíe un informe si usted está utilizando una más vieja versión de este software."
+
+#: ICEWMCP_BugReport.py:163
+msgid "Send your bug report ONLY if you continue to have the same problem with the NEWEST version of this software."
+msgstr "Envíe su informe SOLAMENTE si usted continúa teniendo el mismo problema con la MÁS NUEVA versión de este software."
+
+#: ICEWMCP_BugReport.py:183
+msgid "To"
+msgstr "A"
+
+#: ICEWMCP_BugReport.py:184
+msgid "From"
+msgstr "De"
+
+#: ICEWMCP_BugReport.py:185
+msgid "SMTP Server"
+msgstr "Servidor SMTP"
+
+#: ICEWMCP_BugReport.py:196
+msgid "Please describe the bug or problem in detail"
+msgstr "Describa el problema que usted experimentó detalladamente (en inglés)"
+
+#: ICEWMCP_BugReport.py:205
+msgid "The following system information will be sent with your bug report"
+msgstr "La información siguiente sobre su sistema será enviada con su informe"
+
+#: ICEWMCP_BugReport.py:214
+msgid "SEND NOW"
+msgstr "ENVIAR AHORA"
+
+#: IceWMCP_GtkPCCard.py
+msgid "PC Card Manager"
+msgstr "Gestor de Tarjetas PC"
+
+#: icewmcp_common.py
+msgid "Could not open Help file"
+msgstr "No podia abrir el fichero de ayuda"
+
+#: icewmcp_common.py
+msgid "No such help topic"
+msgstr "No existe tal asunto de ayuda"
+
+
+# IceWMCPKeyboard.py
+msgid "Repetition"
+msgstr "Repetición"
+
+# IceWMCPKeyboard.py
+msgid "Shortcut Keys"
+msgstr "Teclas Rápidas"
+
+# IceWMCPKeyboard.py
+msgid "IceWM Keys"
+msgstr "Teclas de IceWM"
+
+# IceWMCPKeyboard.py
+msgid "Open Shortcut Key Configuration"
+msgstr "Abrir Configuración de Teclas Rápidas"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard"
+msgstr "Teclado"
+
+# IceWMCPKeyboard.py
+msgid "Additional IceWM Shortcut Keys"
+msgstr "Teclas Rápidas de IceWM Adicionales"
+
+# IceWMCPKeyboard.py
+msgid "To test the repetition, hold a key for a few seconds"
+msgstr "Para probar la repetición, presione una tecla por algunos segundos"
+
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard auto-repeat"
+msgstr "Permitir repetición de teclado"
+
+# IceWMCPKeyboard.py
+msgid "Sound"
+msgstr "Sonido"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Sounds"
+msgstr "Sonidos de Teclado"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Click"
+msgstr "Clic del Teclado"
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard clicks"
+msgstr "Permitir clic del teclado"
+
+# IceWMCPKeyboard.py
+msgid "Keyboard Beep"
+msgstr "Bip del Teclado"
+
+# IceWMCPKeyboard.py
+msgid "Volume"
+msgstr "Volumen"
+
+# IceWMCPKeyboard.py
+msgid "Allow keyboard beeps"
+msgstr "Permitir bip del teclado"
+
+# IceWMCPKeyboard.py
+msgid "Pitch"
+msgstr "Tono"
+
+# IceWMCPKeyboard.py
+msgid "Duration"
+msgstr "Duración"
+
+# IceWMCPKeyboard.py
+msgid "Test"
+msgstr "Probar"
+
+#: IceWMCPWallpaper.py
+msgid "Edit"
+msgstr "Redactar"
+
+#: IceWMCPWallpaper.py
+msgid "Edit with Gimp"
+msgstr "Redactar con Gimp"
+
+#: IceWMCPWallpaper.py
+msgid "Too large to tile"
+msgstr "Demasiado grande embaldosar"
+
+#: phrozenclock.py
+msgid "GLIBC 'zoneinfo' directory not found."
+msgstr "El directorio 'zoneinfo' de Glibc no podía ser encontrado."
+
+#: phrozenclock.py
+msgid "PLEASE READ THE 'ENVIRONMENT VARIABLES' SECTION OF THE HELP FILE YOU ARE ABOUT TO SEE."
+msgstr "POR FAVOR, LEA LA SECCIÓN NOMBRADA 'VARIABLES DE ENTORNO' EN EL FICHERO DE AYUDA QUE USTED ESTÁ A PUNTO DE VER."
+
+#: icewmcp_common.py
+msgid "Run As Root"
+msgstr "Usar Como Root"
+
+
+#############
+# added 8.25.2003, new in IceWMCP version 2.5
+#############
+
+#: IceWMCPEnergyStar.py:110 IceWMCPEnergyStar.py:111
+msgid "hours"
+msgstr "horas"
+
+#: IceWMCPEnergyStar.py:80 IceWMCPEnergyStar.py:101
+msgid "hour"
+msgstr "hora"
+
+#: IceWMCPEnergyStar.py:115 - Turn the computer off after being idle for a certain amount of time
+msgid "Turn the computer off after"
+msgstr "Cerrar la estación de trabajo después de"
+
+#: IceWMCPEnergyStar.py:171 - a quick 'About' description
+msgid "A simple Gtk-based application for managing Energy Star/DPMS features through xset."
+msgstr "Un programa básico (Gtk) para configurar las características EnergyStar/DPMS usando xset."
+
+#: IceWMCPEnergyStar.py:73 IceWMCPEnergyStar.py:94
+msgid "NEVER"
+msgstr "NUNCA"
+
+#: IceWMCPEnergyStar.py:115 - Suspend the computer after being idle for a certain amount of time
+msgid "Suspend the computer after"
+msgstr "Suspender la computadora después de"
+
+#: IceWMCPEnergyStar.py:68 - Enable Energy Star (DPMS) energy-saving features
+msgid "Enable Energy Star Features"
+msgstr "Permitir Energy Star (DPMS)"
+
+#: IceWMCPEnergyStar.py:115 - Put the computer on 'standby' afte being idle for a certain amount of time
+msgid "'Standby' after being idle for"
+msgstr "'Standby' después de ser inactivo por"
+
+#: IceWMCPEnergyStar.py:98 IceWMCPEnergyStar.py:99 IceWMCPEnergyStar.py:100
+msgid "minutes"
+msgstr "minutos"
+
+#: phrozenclock.py
+msgid "View the first half of the list of time zones"
+msgstr "Ver primero mitad de la lista de zonas de tiempo"
+
+#: phrozenclock.py
+msgid "View the last half of the list of time zones"
+msgstr "Ver segunda mitad de la lista de zonas de tiempo"
+
+#: IceWMCPWallpaper.py
+msgid " Scaled "
+msgstr " Escalado "

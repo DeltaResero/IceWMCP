@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=IceWM\nMouse
+Exec=[PHROZEN-INTERNAL]IceWMCPMouse.py
+Icon=icewmcp-mouse.png
+Hint=Configure the behavior, the cursors, and the speed of the mouse

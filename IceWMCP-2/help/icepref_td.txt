@@ -1,0 +1,21 @@
+[PHTITLE] IceWMCP IcePref2 Theme Designer
+[PHSECTION] Overview
+The IceWMCP IcePref2 Theme Designer tool allows you to easily create and modify themes for IceWM. This help text contains only the most basic information needed to use IcePref2 Theme Designer.
+[PHSECTION] IcePref2 Theme Designer
+The IcePref2 Theme Designer main window divides all of the features available in an IceWM theme into [PH-HI]self-explanatory categories[/PH-HI], such as 'Address Bar', 'Menus', and 'Task Bar'.  To jump quickly from category to another, select [PH-HI]File -> Category[/PH-HI] on the Theme Designer menu.  [PH-HI]Before you can do anything useful with the Theme Designer, you must either open an existing theme or create a new theme[/PH-HI].
+[PHSECTION] Opening Theme Files
+To [PH-HI]open[/PH-HI] an existing IceWM theme file for editing,  select [PH-HI]File -> Open...[/PH-HI] on the menu, or press [PH-HI]Ctrl+O[/PH-HI] on your keyboard.  Select the theme file you wish to open, then click [PH-HI]'OK'[/PH-HI].
+[PHSECTION] Creating A New Theme
+To [PH-HI]create[/PH-HI] a new IceWM theme,  select [PH-HI]File -> New Theme...[/PH-HI] on the menu, or press [PH-HI]Ctrl+N[/PH-HI] on your keyboard.  A new window will open.  Type a [PH-HI]name[/PH-HI] for the theme in the area [PH-HI]Theme Name:[/PH-HI].  Type [PH-HI]your own name[/PH-HI] (or alias) in the area [PH-HI]Theme Author:[/PH-HI].  If you wish, you may also type your e-mail address in the [PH-HI]Theme Author:[/PH-HI] area. Type a [PH-HI]short description[/PH-HI] of the theme in the area [PH-HI]Theme Description:[/PH-HI].  You should now select the [PH-HI]directory[/PH-HI] where the theme file will be stored by clicking the [PH-HI]'folder'[/PH-HI] button in the [PH-HI]Directory:[/PH-HI] area.  Please be sure that you have permission to save files in the directory you have selected.  Click the [PH-HI]OK[/PH-HI] button.  Your new theme will be created.
+[PHSECTION] Saving The Theme
+Before exiting the program, you should be sure to [PH-HI]save[/PH-HI] any changes you have made to your IceWM theme by selecting [PH-HI]File -> Save[/PH-HI] on the menu or by pressing [PH-HI]Ctrl+S[/PH-HI] on your keyboard.  You may also save your theme by clicking the [PH-HI]Save[/PH-HI] button on the bottom left side of the IcePref2 Theme Designer screen.
+[PHSECTION] Tools
+You may run several other tools for configuring IceWM by clicking [PH-HI] Tools [/PH-HI] on the IcePref2 Theme Designer menu.  Select the tool you wish to run.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit IcePref2 Theme Designer[/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.  You may also exit the program by clicking the [PH-HI]Exit[/PH-HI] button, found on the bottom right of the IcePref2 Theme Designer screen.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

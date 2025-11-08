@@ -1,0 +1,353 @@
+# traditional Chinese translation for iceme.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Chao-Hsiung Liao <pesder.liao@msa.hinet.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceWMCP IceMe 2.4\n"
+"POT-Creation-Date: Sat Feb 22 00:17:54 2003\n"
+"PO-Revision-Date: 2003-06-19 18:26+0800\n"
+"Last-Translator: Chao-Hsiung Liao <pesder.liao@msa.hinet.net>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=Big5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.4\n"
+
+#: IceMe.py:74 
+msgid "Name:"
+msgstr "名稱:"
+
+#: IceMe.py:82 
+msgid "Command:"
+msgstr "指令:"
+
+#: IceMe.py:103 
+msgid "Icon:"
+msgstr "圖示:"
+
+#: IceMe.py:128 
+msgid "Start as a new window manager"
+msgstr "以新的視窗管理程式起動"
+
+#: IceMe.py:132 
+msgid "Add shortcut..."
+msgstr "加入捷徑..."
+
+#: IceMe.py:151 
+msgid "Menu entry"
+msgstr "選單項目"
+
+#: IceMe.py:184 
+msgid "Click here to select an executable via a file selection box."
+msgstr "按這裡使用檔案選擇方塊選擇可執行檔。"
+
+#: IceMe.py:186 
+msgid "Click here to select another icon"
+msgstr "按這裡選擇另外的圖示"
+
+#: IceMe.py:188 
+msgid ""
+"If selected, this entry will cause IceWM to quit and start the command as "
+"new window manager."
+msgstr ""
+"如果選擇此項，這個項目會讓您離開 IceWM 並且啟動此命令做為新的視窗管理程式。"
+
+#: IceMe.py:206 
+msgid "/_File"
+msgstr "/檔案(_F)"
+
+#: IceMe.py:207 
+msgid "/_File/_Save"
+msgstr "/檔案(_F)/儲存(_S)"
+
+#: IceMe.py:208 
+msgid "/_File/_Revert"
+msgstr "/檔案(_F)/回復(_R)"
+
+#: IceMe.py:209 
+msgid "/_File/_Preview"
+msgstr "/檔案(_F)/預覽(_P)"
+
+#: IceMe.py:210 
+msgid "/_File/sep1"
+msgstr "/檔案(_F)/sep1"
+
+#: IceMe.py:211 
+msgid "/_File/_Exit"
+msgstr "/檔案(_F)/離開(_E)"
+
+#: IceMe.py:212 
+msgid "/_Edit"
+msgstr "/編輯(_E)"
+
+#: IceMe.py:213 
+msgid "/_Edit/_Cut"
+msgstr "/編輯(_E)/剪下(_C)"
+
+#: IceMe.py:214 
+msgid "/_Edit/C_opy"
+msgstr "/編輯(_E)/複製(_C)"
+
+#: IceMe.py:215 
+msgid "/_Edit/_Paste"
+msgstr "/編輯(_E)/貼上(_P)"
+
+#: IceMe.py:216 
+msgid "/_Edit/sep2"
+msgstr "/編輯(_E)/sep2"
+
+#: IceMe.py:217 
+msgid "/_Edit/_Delete"
+msgstr "/編輯(_E)/刪除(_D)"
+
+#: IceMe.py:218 
+msgid "/_Edit/sep3"
+msgstr "/編輯(_E)/sep3"
+
+#: IceMe.py:219 
+msgid "/_Edit/_IceWM preferences"
+msgstr "/編輯(_E)/_IceWM 偏好設定"
+
+#: IceMe.py:220 
+msgid "/_Edit/_Shortcuts"
+msgstr "/編輯(_E)/捷徑(_S)"
+
+#: IceMe.py:221 
+msgid "/_Help"
+msgstr "/說明(_H)"
+
+#: IceMe.py:222 
+msgid "/_Help/_About..."
+msgstr "/說明(_H)/關於(_A)..."
+
+#: IceMe.py:252 
+msgid "Save"
+msgstr "儲存"
+
+#: IceMe.py:253 
+msgid "Save the menu"
+msgstr "儲存此選單"
+
+#: IceMe.py:255 
+msgid "Revert"
+msgstr "回復"
+
+#: IceMe.py:256 
+msgid "Revert to last saved version"
+msgstr "回復為上次儲存的版本"
+
+#: IceMe.py:258 
+msgid "Preview"
+msgstr "預覽"
+
+#: IceMe.py:259 
+msgid "Preview the menu as IceWM would display it"
+msgstr "預覽 IceWM 顯示此選單的情形"
+
+#: IceMe.py:264 
+msgid "New Entry"
+msgstr "新增項目"
+
+#: IceMe.py:265 
+msgid "Create a new normal entry"
+msgstr "建立一個新的一般項目"
+
+#: IceMe.py:267 
+msgid "New Sep."
+msgstr "新增分隔線"
+
+#: IceMe.py:268 
+msgid "Create a new separator"
+msgstr "建立一個新的分隔線"
+
+#: IceMe.py:270 
+msgid "New Menu"
+msgstr "新增選單"
+
+#: IceMe.py:271 
+msgid "Create a new submenu"
+msgstr "建立一個新的子選單"
+
+#: IceMe.py:276 
+msgid "Cut"
+msgstr "剪下"
+
+#: IceMe.py:277 
+msgid "Cut selected entry to buffer"
+msgstr "剪下選擇的項目貼到緩衝區"
+
+#: IceMe.py:279 
+msgid "Copy"
+msgstr "複製"
+
+#: IceMe.py:280 
+msgid "Copy selected entry to buffer"
+msgstr "複製選擇的項目到緩衝區"
+
+#: IceMe.py:282 
+msgid "Paste"
+msgstr "貼上"
+
+#: IceMe.py:283 
+msgid "Paste buffer under current selection"
+msgstr "在目前的選擇區貼上緩衝區內容"
+
+#: IceMe.py:285 
+msgid "Delete"
+msgstr "刪除"
+
+#: IceMe.py:286 
+msgid "Delete selected entry"
+msgstr "刪除選擇的項目"
+
+#: IceMe.py:291 
+msgid "Up"
+msgstr "上移"
+
+#: IceMe.py:292 
+msgid "Move selected entry up"
+msgstr "將選擇的項目向上移動"
+
+#: IceMe.py:294 
+msgid "Down"
+msgstr "下移"
+
+#: IceMe.py:295 
+msgid "Move selected entry down"
+msgstr "將選擇的項目向下移動"
+
+#: IceMe.py:300 
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: IceMe.py:301 
+msgid "Edit the IceWM preferences with IcePref2"
+msgstr "以 IcePref2 編輯 IceWM 偏好設定"
+
+#: IceMe.py:303 
+msgid "Shortcuts"
+msgstr "捷徑"
+
+#: IceMe.py:304 
+msgid "Edit shortcuts"
+msgstr "編輯捷徑"
+
+#: IceMe.py:540 
+msgid "There were some errors."
+msgstr "發生一些錯誤。"
+
+#: IceMe.py:541 
+msgid "Error saving menu"
+msgstr "儲存此選單時發生錯誤"
+
+#: IceMe.py:543 
+msgid "Saved."
+msgstr "已儲存。"
+
+#: IceMe.py:685 
+msgid "Saving..."
+msgstr "儲存中..."
+
+#: IceMe.py:691 
+msgid "Reverting..."
+msgstr "回復中..."
+
+#: IceMe.py:693 
+msgid "Reverted to the last saved version."
+msgstr "已回復為上次儲存的版本。"
+
+#: IceMe.py:696 
+msgid "Displaying preview window..."
+msgstr "正在顯示預覽視窗..."
+
+#: IceMe.py:715 
+msgid "A menu editor for IceWM written in Python and GTK."
+msgstr "以 Python 和 GTK 寫的 IceWM 選單編輯器。"
+
+#: IceMe.py:721 
+msgid ""
+"This is a Special Edition of IceMe for IceWM Control Panel,\n"
+"with modifications and optimizations by"
+msgstr ""
+"這是用於 IceWM 控制台的 IceMe 特別版，\n"
+"為它修改及最佳化的人是"
+
+#: IceMe.py:725 
+msgid "New entry"
+msgstr "新增項目"
+
+#: IceMe.py:730 
+msgid "New submenu"
+msgstr "新增子選單"
+
+#: IceMenuTree.py:37 
+msgid "Command"
+msgstr "指令"
+
+#: IceMenuTree.py:37 
+msgid "Menu"
+msgstr "選單"
+
+#: IceMenuTree.py:67 
+msgid "Programs"
+msgstr "程式"
+
+#: IceMenuTree.py:75 
+msgid "Toolbar"
+msgstr "工具列"
+
+#: IceMenuTree.py:83 
+msgid "Clipboard"
+msgstr "剪貼簿"
+
+#: IconSelectionDialog.py:55  IconSelectionDialog.py:234
+msgid "Please select an icon."
+msgstr "請選擇圖示。"
+
+#: IconSelectionDialog.py:74 
+msgid "Columns:"
+msgstr "欄:"
+
+#: IconSelectionDialog.py:83 
+msgid "Ok"
+msgstr "確定"
+
+#: IconSelectionDialog.py:88 
+msgid "Cancel"
+msgstr "取消"
+
+#: IconSelectionDialog.py:93 
+msgid "Reload"
+msgstr "重新載入"
+
+#: IconSelectionDialog.py:130 
+msgid "Loading"
+msgstr "正在載入"
+
+#: IconSelectionDialog.py:130 
+msgid "images...please wait."
+msgstr "影像...請稍候"
+
+msgid "Check for newer versions of this program..."
+msgstr "檢查是否有這個程式的更新版本..."
+
+msgid "Please select an executable."
+msgstr "請撰擇可執行檔。"
+
+msgid "Done."
+msgstr "完成。"
+
+msgid "Running IcePref2"
+msgstr "執行 IcePref2"
+
+msgid "Menu Preview"
+msgstr "選單預覽"
+
+msgid ""
+"In the future, you should close the icon window with the 'Cancel' button to "
+"avoid having to reload the icons."
+msgstr "接下來，您應該使用“取消”按鈕來關閉圖示視窗以避免需要重新載入圖示。"
+
+msgid "Loading menus and icons...please wait."
+msgstr "正在載入選單與圖示...請稍候。"

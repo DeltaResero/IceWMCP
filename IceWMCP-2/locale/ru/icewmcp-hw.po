@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceWMCP Hardware and System Information 1.0-beta\n"
+"POT-Creation-Date: 2003-05-11 11:35+0100\n"
+"PO-Revision-Date: 2003-07-16 21:27+0400\n"
+"Last-Translator: Vasiliy Leushin <basileus@newmail.ru>\n"
+"Language-Team: RUSSIAN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.4\n"
+
+
+#: IceWMCPSystem.py:91
+msgid "Collecting system hardware information...please wait."
+msgstr "Сбор информации об оборудовании...пожалуйста подождите."
+
+#: IceWMCPSystem.py:91 IceWMCPSystem.py:100 IceWMCPSystem.py:142
+#: IceWMCPSystem.py:355 IceWMCPSystem.py:552 IceWMCPSystem.py:567
+msgid "Hardware and System Information"
+msgstr "Информация о системе и оборудовании"
+
+#: IceWMCPSystem.py:113 IceWMCPSystem.py:114 IceWMCPSystem.py:115
+#: IceWMCPSystem.py:116 IceWMCPSystem.py:117 IceWMCPSystem.py:118
+#: IceWMCPSystem.py:119 IceWMCPSystem.py:120
+msgid "Tools"
+msgstr "Инструменты"
+
+#: IceWMCPSystem.py:114
+msgid "Configure Keyboard"
+msgstr "Настроить клавиатуру"
+
+#: IceWMCPSystem.py:115
+msgid "Configure Mouse"
+msgstr "Настроить мышь"
+
+#: IceWMCPSystem.py:116
+msgid "Configure PC Cards"
+msgstr "Настроить PC карты"
+
+#: IceWMCPSystem.py:117
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: IceWMCPSystem.py:117 IceWMCPSystem.py:118 IceWMCPSystem.py:119
+#: IceWMCPSystem.py:120
+msgid "Eject"
+msgstr "Открыть"
+
+#: IceWMCPSystem.py:118
+msgid "Floppy"
+msgstr "Флоппи"
+
+#: IceWMCPSystem.py:119 IceWMCPSystem.py:185
+msgid "SCSI"
+msgstr "SCSI"
+
+#: IceWMCPSystem.py:120
+msgid "Tape"
+msgstr "Лента"
+
+#: IceWMCPSystem.py:169
+msgid "Mouse and Joystick"
+msgstr "Мышь и джойстик"
+
+#: IceWMCPSystem.py:170
+msgid "USB"
+msgstr "USB"
+
+#: IceWMCPSystem.py:171
+msgid "Display"
+msgstr "Дисплей"
+
+#: IceWMCPSystem.py:172
+msgid "Network"
+msgstr "Сеть"
+
+#: IceWMCPSystem.py:173
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: IceWMCPSystem.py:174
+msgid "Keyboard"
+msgstr "Клавиатура"
+
+#: IceWMCPSystem.py:175
+msgid "Modem"
+msgstr "Модем"
+
+#: IceWMCPSystem.py:176 - such as disk drive 'storage'
+msgid "Storage"
+msgstr "Хранение"
+
+#: IceWMCPSystem.py:177
+msgid "Multimedia"
+msgstr "Мультимедиа"
+
+#: IceWMCPSystem.py:178
+msgid "Braille"
+msgstr "Брайль"
+
+#: IceWMCPSystem.py:179
+msgid "System"
+msgstr "Система"
+
+#: IceWMCPSystem.py:180
+msgid "Printer"
+msgstr "Принтер"
+
+#: IceWMCPSystem.py:181
+msgid "Cameras, Scanners, and TV"
+msgstr "Камеры, сканеры и ТВ"
+
+#: IceWMCPSystem.py:182
+msgid "PCI"
+msgstr "PCI"
+
+#: IceWMCPSystem.py:183 - ISAPNP (Plug N Play)
+msgid "Plug-N-Play"
+msgstr "Plug-N-Play"
+
+#: IceWMCPSystem.py:184
+msgid "PCMCIA"
+msgstr "PCMCIA"
+
+#: IceWMCPSystem.py:186
+msgid "Firewire"
+msgstr "Firewire"
+
+#: IceWMCPSystem.py:187
+msgid "Hotplug"
+msgstr "Горячая замена"
+
+#: IceWMCPSystem.py:531 IceWMCPSystem.py:532
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: IceWMCPSystem.py:552
+msgid "No technical support is provided for this plug-in."
+msgstr "Техническая поддержка для данного плагина не предоставляется"
+
+#: IceWMCPSystem.py:552
+msgid "This is an unsupported plug-in for IceWMCP."
+msgstr "Это -  неподдерживаемый плагин для IceWMCP"
+
+#: IceWMCPSystem.py:552
+msgid "This software uses a modified version of the 'libhd' and 'hwinfo' software library from SuSe."
+msgstr "Данная программа использует модифицированную версию библиотеки 'libhd' и 'hwinfo' от SuSe."
+

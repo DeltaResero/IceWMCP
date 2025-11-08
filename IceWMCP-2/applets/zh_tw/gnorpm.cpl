@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=已安裝的\n程式
+Exec=gnorpm
+Icon=gnorpm.png
+Hint=管理已安裝的 RPM 套件

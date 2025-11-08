@@ -1,0 +1,22 @@
+[PHTITLE] IceWMCP EnergyStar
+
+[PHSECTION] Overview
+The IceWMCP EnergyStar tool allows you to easily configure the system's DPMS features, designed to conserve electric energy and battery power on EnergyStar-capable computers.
+[PHSECTION] Disabling/Enabling EnergyStar Features
+To enable EnergyStar features, be sure that [PH-HI] Enable Energy Star Features [/PH-HI] is [PH-HI] checked[/PH-HI]. To disable all EnergyStar features, be sure that [PH-HI] Enable Energy Star Features [/PH-HI] is [PH-HI] not checked[/PH-HI].
+[PHSECTION] Standby Mode
+If you want the computer to go into [PH-HI]'Standby'[/PH-HI] mode after it has not been used for a certain period of time, select the appropriate amount of time from the drop-down list [PH-HI]'Standby after being idle for:'[/PH-HI].  If you do not want the computer to ever go into [PH-HI]'Standby'[/PH-HI] mode, select [PH-HI]'NEVER'[/PH-HI].
+[PHSECTION] Suspended Mode
+If you want the computer to go into [PH-HI]'Suspended'[/PH-HI] mode after it has not been used for a certain period of time, select the appropriate amount of time from the drop-down list [PH-HI]'Suspend the computer after:'[/PH-HI].  If you do not want the computer to ever go into [PH-HI]'Suspended'[/PH-HI] mode, select [PH-HI]'NEVER'[/PH-HI].
+[PHSECTION] Computer-Off Mode
+If you want the computer [PH-HI]to automatically be turned off[/PH-HI] after it has not been used for a certain period of time, select the appropriate amount of time from the drop-down list [PH-HI]'Turn the computer off after:'[/PH-HI].  If you do not want the computer to ever [PH-HI]automatically be turned off[/PH-HI], select [PH-HI]'NEVER'[/PH-HI].
+[PHSECTION] Applying Changes
+You may apply any changes you made by clicking the [PH-HI]'Apply'[/PH-HI] button at the bottom-left of the screen.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.  You may also exit the program by clicking the [PH-HI]'Close'[/PH-HI] button at the bottom-right of the screen.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

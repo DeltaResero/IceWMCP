@@ -1,0 +1,21 @@
+[PHTITLE] PySpool
+[PHSECTION] Overview
+The IceWMCP PySpool tool allows you to easily manage the printer spool on your system.  This tool requires [PH-HI]LPRng  (http://www.lprng.com)[/PH-HI]  to be installed on your system.  Other printing systems, such as CUPS, are [PH-HI]not supported[/PH-HI] by this tool.
+[PHSECTION] Viewing Printers
+To view a specific printer, select the printer's name from the list [PH-HI]'Select Printer:'[/PH-HI], then click the [PH-HI]'View'[/PH-HI] button.   If no printer's are listed, PySpool was unable to find any printers on your system.  This may indicate a poorly installed or out-dated version of [PH-HI]LPRng[/PH-HI], or a problem connecting to or communicating with the [PH-HI]'lpd'[/PH-HI] server.
+[PHSECTION] Printer Information
+Information about the selected printer is displayed in the following areas: [PH-HI]Description, Queue, Server, Status, Info[/PH-HI]. 
+[PHSECTION] Printer Jobs Window
+Current [PH-HI]print jobs[/PH-HI] are shown at the bottom of the main PySpool window, in a scrollable window, containing such information as [PH-HI]'State'[/PH-HI], [PH-HI]'Job ID'[/PH-HI], and [PH-HI]'Size'[/PH-HI].  This window contains a list of documents currently scheduled to be printed by [PH-HI]LPrng[/PH-HI].
+[PHSECTION] Refresh Queue Details
+Click the button [PH-HI]'Refresh Queue Details'[/PH-HI] to get an updated list of print jobs and printer information.  Normally, updated information is retrieved automatically and continuously.
+[PHSECTION] Cancelling Print Jobs
+Generally, you have to be [PH-HI]'root[/PH-HI]' to cancel current print jobs.  To cancel a print job, select the job you wish to cancel from the list of jobs in the [PH-HI]'printer jobs window'[/PH-HI].  Click the button [PH-HI]'Cancel Selected Print Job'[/PH-HI].
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit [/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.    This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard. 
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.

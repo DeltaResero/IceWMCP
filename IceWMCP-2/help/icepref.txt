@@ -1,0 +1,28 @@
+[PHTITLE] IceWMCP IcePref2
+[PHSECTION] Overview
+The IceWMCP IcePref2 tool allows you to easily configure the look and behavior of IceWM.  The tool provides an easy way to modify IceWM's [PH-HI]'preferences'[/PH-HI] file. This help text contains only the most basic information needed to use IcePref2.
+[PHSECTION] IcePref2
+The IcePref2 main window divides all of the features available in IceWM into [PH-HI]self-explanatory categories[/PH-HI], such as 'Address Bar', 'Menus', and 'Mouse'.  To jump quickly from category to another, select [PH-HI]File -> Category[/PH-HI] on the IcePref2 menu.
+[PHSECTION] Resetting Defaults
+To reset your IceWM configuration to reasonable, default settings, click the [PH-HI]Defaults[/PH-HI] button on the bottom left side of the IcePref2 screen.
+[PHSECTION] Reloading Preferences
+To reload your IceWM configuration, click the [PH-HI]Reload[/PH-HI] button at the bottom of the IcePref2 screen.  This feature reloads your IceWM [PH-HI]'preferences'[/PH-HI] file.
+[PHSECTION] Saving Preferences
+Before exiting the program, you should be sure to [PH-HI]save[/PH-HI] any changes you have made to your IceWM configuration by selecting [PH-HI]File -> Save[/PH-HI] on the menu or by pressing [PH-HI]Ctrl+S[/PH-HI] on your keyboard.  You may also save your configuration by clicking the [PH-HI]Save[/PH-HI] button on the bottom left side of the IcePref2 screen.
+[PHSECTION] Applying Preferences
+If you want changes to your IceWM configuration to take effect immediately, click the [PH-HI]Apply[/PH-HI] button on the bottom right side of the IcePref2 screen, or press [PH-HI]Ctrl+A[/PH-HI] on your keyboard.  IceWM will be quickly restarted, and your new configuration will take effect immediately.
+[PHSECTION] Tools
+You may run several other tools for configuring IceWM by clicking [PH-HI] Tools [/PH-HI] on the IcePref2 menu.  Select the tool you wish to run.
+[PHSECTION] Run As Root
+If you are the 'root' user and wish to edit the system-wide IceWM configuration, select [PH-HI] File -> Run As Root [/PH-HI] on the menu.
+[PHSECTION] Open IceWM Preferences File
+To open an IceWM preferences file in ANY directory on the system, select [PH-HI] File -> Open IceWM Preferences File [/PH-HI] on the IcePref2 top menu, or press [PH-HI] Ctrl+O [/PH-HI] on your keyboard.  Please be aware that you may need to be 'root' to open and edit some 'preferences' files.
+[PHSECTION] Exiting the Program
+To exit the program, click [PH-HI] File -> Exit IcePref2[/PH-HI] on the menu, or press [PH-HI] Ctrl+Q [/PH-HI] on your keyboard.  You may also exit the program by clicking the [PH-HI]Exit[/PH-HI] button, found on the bottom right of the IcePref2 screen.
+[PHSECTION] Checking for New Versions of the Software
+To check for a newer version of the program click [PH-HI] File -> Check for newer versions of this program... [/PH-HI] on the menu, or press [PH-HI] Ctrl+U [/PH-HI] on your keyboard.   This feature requires a working connection to the internet.
+[PHSECTION] Launching Random Programs
+You may launch a random program on your system by clicking [PH-HI] File -> Run... [/PH-HI] on the menu, or press [PH-HI] Ctrl+R [/PH-HI] on your keyboard.
+[PHSECTION] Reporting Problems
+You may report problems using this software by clicking [PH-HI] Help -> Send A Bug Report... [/PH-HI] on the menu, or press [PH-HI] F5 [/PH-HI] on your keyboard.  You will be shown detailed instructions to guide you through the short process.
+

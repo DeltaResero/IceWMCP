@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=程序
+Exec=gtop
+Icon=gtop.png
+Hint=管理執行中的程序

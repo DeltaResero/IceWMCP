@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=IceWM\nTheme\nDesigner
+Exec=[PHROZEN-INTERNAL]icepref_td.py
+Icon=icewmcp-td.png
+Hint=IceWM Theme Designer - IcePref2 TD

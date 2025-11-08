@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Java\n外掛程式
+Exec=ControlPanel
+Icon=java.png
+Hint=管理 Java 外掛程式組態

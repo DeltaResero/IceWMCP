@@ -1,0 +1,18 @@
+echo "Creating Hardware plugin"
+./prep_hw_plugin
+echo "Creating Developer's package"
+./make_dev
+echo "Creating PhrozenClock"
+./make_phrozenclock
+echo "Creating IcePref2"
+./make_icepref
+echo "Creating IcePref2-TD"
+./make_icepref_td
+echo "Creating GtkPCCard"
+./make_gtkpccard
+echo "Creating IceSoundManager"
+./make_icesound
+echo "Making IceWMCP Tar-ball"
+./make_icewmcp
+echo "Updating Web Site"
+./update_web

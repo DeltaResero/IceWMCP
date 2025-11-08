@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=IceWM\nDesktop
+Exec=[PHROZEN-INTERNAL]IceWMCPWallpaper.py
+Icon=icewmcp-wallpaper.png
+Hint=IceWM Wallpaper Settings

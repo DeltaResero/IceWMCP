@@ -1,0 +1,45 @@
+echo "BUILDING STATIC BINARY"
+mkdir /usr/share/IceControlPanel-Static/ &> /dev/null
+rm -fr /usr/share/IceControlPanel-Static/*
+cp -f static-README.txt /usr/share/IceControlPanel-Static/README.txt
+cp -fr /usr/share/IceWMCP/* /usr/share/IceControlPanel-Static/
+rm -f /usr/share/IceControlPanel-Static/*.py
+rm -f /usr/share/IceControlPanel-Static/*.pyc
+rm -f /usr/share/IceControlPanel-Static/*.pyo
+rm -f /usr/share/IceControlPanel-Static/*.so
+rm -f /usr/share/IceControlPanel-Static/uninstall.log
+rm -f /usr/share/IceControlPanel-Static/es.mo
+rm -f /usr/share/IceControlPanel-Static/dir.xpm
+rm -f /usr/share/IceControlPanel-Static/close.xpm
+rm -f /usr/share/IceControlPanel-Static/next.xpm
+rm -f /usr/share/IceControlPanel-Static/PyInstallShield
+rm -f /usr/share/IceControlPanel-Static/install-pix.xpm
+rm -f /usr/share/IceControlPanel-Static/UNINSTALL-ME.sh
+rm -fr /usr/share/IceControlPanel-Static/pixmaps/hw-pixmaps/
+rm -f /usr/share/IceControlPanel-Static/doc/CHANGES_ALL.txt
+rm -f /usr/share/IceControlPanel-Static/help/IceWMCPSystem.txt
+rm -f /usr/share/IceControlPanel-Static/help/es/IceWMCPSystem.txt
+rm -f /usr/share/IceControlPanel-Static/locale/es/LC_MESSAGES/icewmcp-hw.mo
+rm -f /usr/share/IceControlPanel-Static/locale/ru/LC_MESSAGES/icewmcp-hw.mo
+rm -f /usr/share/IceControlPanel-Static/locale/zh_TW/LC_MESSAGES/icewmcp-hw.mo
+rm -f /usr/share/IceControlPanel-Static/locale/fi/LC_MESSAGES/icewmcp-hw.mo
+cd /Installer/
+rm -fr ./IceWMCP/distIceWMCP/*
+rm -fr ./IceWMCP/buildIceWMCP/*
+./build-icecp
+cp -f ./IceWMCP/distIceWMCP/* /usr/share/IceControlPanel-Static/
+cd /usr/share/IceControlPanel-Static/
+echo "Executing static binary 'icewmcp' for testing..."
+./icewmcp
+echo "Creating tar-ball ..."
+tar -cIf IceWMControlPanel-2.4_static_binary_i586.tar.bz2 *
+mv -f IceWMControlPanel*.tar.bz2  /Compile/distro/icewmcp/
+echo "Static binary tar-ball placed in  /Compile/distro/icewmcp/"
+echo "Cleaning up junk files..."
+cd /Installer/
+rm -fr ./IceWMCP/distIceWMCP/*
+rm -fr ./IceWMCP/buildIceWMCP/*
+rm -f /usr/share/IceWMCP/*.pyc
+rm -f /usr/share/IceWMCP/*.pyo
+rm -fr /usr/share/IceControlPanel-Static/*
+echo "Done building static binary"

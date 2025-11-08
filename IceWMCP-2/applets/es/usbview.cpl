@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Unidades\nUSB
+Exec=usbview
+Icon=usbview.png
+Hint=Unidades USB en este sistema

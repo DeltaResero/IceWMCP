@@ -1,0 +1,4 @@
+rm -f /Compile/distro/icewmcp/IceWMControlPanel*.rpm
+rpm  -bb  --target noarch ICEWMCP.spec
+cp -f  /usr/src/packages/RPMS/noarch/IceWMControlPanel*.rpm /Compile/distro/icewmcp/
+rm -f /usr/src/packages/RPMS/noarch/IceWMControlPanel*.rpm

@@ -1,0 +1,358 @@
+# SPANISH translation of IceMe - IceWMCP Edition
+# Copyright (C) 2003-2004 Erica Andrews
+# Erica Andrews <PhrozenSmoke [at] yahoo.com>, 2003-2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceMe - IceWMCP Edition 3.2\n"
+"POT-Creation-Date: 2003-02-22 11:35+0100\n"
+"PO-Revision-Date: 2004-02-20 15:51+0400\n"
+"Last-Translator: Erica Andrews <PhrozenSmoke [at] yahoo.com>\n"
+"Language-Team: SPANISH <PhrozenSmoke [at] yahoo.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+
+#: IceMe.py:74
+msgid "Name:"
+msgstr "Nombre:"
+
+#: IceMe.py:82
+msgid "Command:"
+msgstr "Mando:"
+
+#: IceMe.py:103
+msgid "Icon:"
+msgstr "Icono:"
+
+#: IceMe.py:128
+msgid "Start as a new window manager"
+msgstr "Comenzar como gestor de ventanas nuevo"
+
+#: IceMe.py:132
+msgid "Add shortcut..."
+msgstr "Añadir tecla rápida..."
+
+#: IceMe.py:151
+msgid "Menu entry"
+msgstr "Artículo de menú"
+
+#: IceMe.py:184
+msgid "Click here to select an executable via a file selection box."
+msgstr "Haga clic aquí para seleccionar un ejecutable."
+
+#: IceMe.py:186
+msgid "Click here to select another icon"
+msgstr "Haga clic aquí para seleccionar otro icono"
+
+#: IceMe.py:188
+msgid "If selected, this entry will cause IceWM to quit and start the command as new window manager."
+msgstr "Si está seleccionada, esta opción hará IceWM parar y comenzar el  mando como encargado de ventana nueva."
+
+#: IceMe.py:206
+msgid "/_File"
+msgstr "/_Fichero"
+
+#: IceMe.py:207
+msgid "/_File/_Save"
+msgstr "/_Fichero/_Guardar"
+
+#: IceMe.py:208
+msgid "/_File/_Revert"
+msgstr "/_Fichero/_Revertir"
+
+#: IceMe.py:209
+msgid "/_File/_Preview"
+msgstr "/_Fichero/_Vista Previa"
+
+#: IceMe.py:210
+msgid "/_File/sep1"
+msgstr "/_Fichero/sep1"
+
+#: IceMe.py:211
+msgid "/_File/_Exit"
+msgstr "/_Fichero/_Salir"
+
+#: IceMe.py:212
+msgid "/_Edit"
+msgstr "/_Corregir"
+
+#: IceMe.py:213
+msgid "/_Edit/_Cut"
+msgstr "/_Corregir/_Cortar"
+
+#: IceMe.py:214
+msgid "/_Edit/C_opy"
+msgstr "/_Corregir/C_opiar"
+
+#: IceMe.py:215
+msgid "/_Edit/_Paste"
+msgstr "/_Corregir/_Pegar"
+
+#: IceMe.py:216
+msgid "/_Edit/sep2"
+msgstr "/_Corregir/sep2"
+
+#: IceMe.py:217
+msgid "/_Edit/_Delete"
+msgstr "/_Corregir/_Borrar"
+
+#: IceMe.py:218
+msgid "/_Edit/sep3"
+msgstr "/_Corregir/sep3"
+
+#: IceMe.py:219
+msgid "/_Edit/_IceWM preferences"
+msgstr "/_Corregir/_Preferencias de IceWM"
+
+#: IceMe.py:220
+msgid "/_Edit/_Shortcuts"
+msgstr "/_Corregir/_Teclas Rápidas"
+
+#: IceMe.py:221
+msgid "/_Help"
+msgstr "/_Ayuda"
+
+#: IceMe.py:222
+msgid "/_Help/_About..."
+msgstr "/_Ayuda/_Acerca de..."
+
+#: IceMe.py:252
+msgid "Save"
+msgstr "Guardar"
+
+#: IceMe.py:253
+msgid "Save the menu"
+msgstr "Guardar el menú"
+
+#: IceMe.py:255
+msgid "Revert"
+msgstr "Revertir"
+
+#: IceMe.py:256
+msgid "Revert to last saved version"
+msgstr "Revertir a la versión guardada pasada"
+
+#: IceMe.py:258
+msgid "Preview"
+msgstr "Vista Previa"
+
+#: IceMe.py:259
+msgid "Preview the menu as IceWM would display it"
+msgstr "Ver una vista previa del menú como IceWM lo exhibiría"
+
+#: IceMe.py:264
+msgid "New Entry"
+msgstr "Nuevo artículo"
+
+#: IceMe.py:265
+msgid "Create a new normal entry"
+msgstr "Crear un nuevo artículo de menú"
+
+#: IceMe.py:267
+msgid "New Sep."
+msgstr "Separador Nuevo"
+
+#: IceMe.py:268
+msgid "Create a new separator"
+msgstr "Crear un separador nuevo"
+
+#: IceMe.py:270
+msgid "New Menu"
+msgstr "Nuevo menú"
+
+#: IceMe.py:271
+msgid "Create a new submenu"
+msgstr "Crear un submenú nuevo"
+
+#: IceMe.py:276
+msgid "Cut"
+msgstr "Cortar"
+
+#: IceMe.py:277
+msgid "Cut selected entry to buffer"
+msgstr "Cortar el artículo seleccionado"
+
+#: IceMe.py:279
+msgid "Copy"
+msgstr "Copiar"
+
+#: IceMe.py:280
+msgid "Copy selected entry to buffer"
+msgstr "Copiar el artículo seleccionado"
+
+#: IceMe.py:282
+msgid "Paste"
+msgstr "Pegar"
+
+#: IceMe.py:283
+msgid "Paste buffer under current selection"
+msgstr "Pegar el artículo"
+
+#: IceMe.py:285
+msgid "Delete"
+msgstr "Borrar"
+
+#: IceMe.py:286
+msgid "Delete selected entry"
+msgstr "Borrar el artículo seleccionado"
+
+#: IceMe.py:291
+msgid "Up"
+msgstr "Arriba"
+
+#: IceMe.py:292
+msgid "Move selected entry up"
+msgstr "Mover el artículo seleccionado por arriba"
+
+#: IceMe.py:294
+msgid "Down"
+msgstr "Abajo"
+
+#: IceMe.py:295
+msgid "Move selected entry down"
+msgstr "Mover el artículo seleccionado por abajo"
+
+#: IceMe.py:300
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: IceMe.py:301
+msgid "Edit the IceWM preferences with IcePref2"
+msgstr "Corregir las preferencias de IceWM con IcePref2"
+
+#: IceMe.py:303
+msgid "Shortcuts"
+msgstr "Teclas Rápidas"
+
+#: IceMe.py:304
+msgid "Edit shortcuts"
+msgstr "Corregir las teclas rápidas"
+
+#: IceMe.py:540
+msgid "There were some errors."
+msgstr "Había algunos errores."
+
+#: IceMe.py:541
+msgid "Error saving menu"
+msgstr "Error mientras que ahorra el menú"
+
+#: IceMe.py:543
+msgid "Saved."
+msgstr "Guardado."
+
+#: IceMe.py:685
+msgid "Saving..."
+msgstr "Guardando..."
+
+#: IceMe.py:691
+msgid "Reverting..."
+msgstr "Revirtiendo..."
+
+#: IceMe.py:693
+msgid "Reverted to the last saved version."
+msgstr "Revertido a la versión guardada pasada."
+
+#: IceMe.py:696
+msgid "Displaying preview window..."
+msgstr "Está demostrando la vista previa..."
+
+#: IceMe.py:715
+msgid "A menu editor for IceWM written in Python and GTK."
+msgstr "Un redactor de menú para IceWM escrito en Python y GTK."
+
+#: IceMe.py:721
+msgid ""
+"This is a Special Edition of IceMe for IceWM Control Panel,\n"
+"with modifications and optimizations by"
+msgstr "Ésta es una edición especial de IceMe para el Panel de \nControl de IceWM, con modificaciones y optimizaciones de"
+
+#: IceMe.py:725
+msgid "New entry"
+msgstr "Nuevo artículo"
+
+#: IceMe.py:730
+msgid "New submenu"
+msgstr "Nuevo submenú"
+
+#: IceMenuTree.py:37
+msgid "Command"
+msgstr "Mando"
+
+#: IceMenuTree.py:37
+msgid "Menu"
+msgstr "Menú"
+
+#: IceMenuTree.py:67
+msgid "Programs"
+msgstr "Programas"
+
+#: IceMenuTree.py:75
+msgid "Toolbar"
+msgstr "Barra de Herramientas"
+
+#: IceMenuTree.py:83
+msgid "Clipboard"
+msgstr "Sujetapapeles"
+
+#: IconSelectionDialog.py:55
+#: IconSelectionDialog.py:234
+msgid "Please select an icon."
+msgstr "Seleccione un icono."
+
+#: IconSelectionDialog.py:74
+msgid "Columns:"
+msgstr "Columnas:"
+
+#: IconSelectionDialog.py:83
+msgid "Ok"
+msgstr "Aceptar"
+
+#: IconSelectionDialog.py:88
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: IconSelectionDialog.py:93
+msgid "Reload"
+msgstr "Recargar"
+
+#: IconSelectionDialog.py:130
+msgid "Loading"
+msgstr "Cargando"
+
+#: IconSelectionDialog.py:130
+msgid "images...please wait."
+msgstr "imágenes...por favor espera."
+
+
+msgid "Check for newer versions of this program..."
+msgstr "Saber si hay más nuevas versiones de este programa..."
+
+msgid "Please select an executable."
+msgstr "Seleccione un ejecutable, por favor."
+
+msgid "Done."
+msgstr "Hecho."
+
+msgid "Running IcePref2"
+msgstr "IcePref2 se está lanzando"
+
+msgid "Menu Preview"
+msgstr "Vista Previa de Menú"
+
+msgid "In the future, you should close the icon window with the 'Cancel' button to avoid having to reload the icons."
+msgstr "En el futuro, Usted debería cerrar la ventana de iconos haciendo clic en 'Cancelar' para que los iconos no tendrán que cargarse de nuevo."
+
+msgid "Loading menus and icons...please wait."
+msgstr "Cargando los menús y los iconos...espera, por favor."
+
+msgid "Open IceWM Menu File"
+msgstr "Abrir Fichero de Menú IceWM"
+
+msgid "Create a new Gnome 1 menu"
+msgstr "Insertar un menú de Gnome 1"
+
+msgid "Create a new Gnome 2 menu"
+msgstr "Insertar un menú de Gnome 2"

@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=PCMCIA
+Exec=[PHROZEN-INTERNAL]IceWMCP_GtkPCCard.py
+Icon=icewmcp-gtkpccard.png
+Hint=Управление PCMCIA PC картами

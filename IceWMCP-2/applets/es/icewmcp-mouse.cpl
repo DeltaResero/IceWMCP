@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Ratón de\nIceWM
+Exec=[PHROZEN-INTERNAL]IceWMCPMouse.py
+Icon=icewmcp-mouse.png
+Hint=Configurar el comportamiento, los punteros, y la velocidad del ratón

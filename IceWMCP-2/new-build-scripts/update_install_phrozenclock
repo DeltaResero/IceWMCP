@@ -1,0 +1,39 @@
+#! /usr/bin/env python
+import os
+
+TO_DIR="/INSTALL-phrozenclock/"
+DISTRO_DIR="/Compile/distro/icewmcp/"
+PACKAGE="PhrozenClock"
+VERSION="3.2"
+
+def updateinstall():
+	f=open(TO_DIR+"install-config.txt")
+	flist=f.read().split("\n")
+	files=open(TO_DIR+"file_list.txt")
+	ffiles=files.read()
+	f.close()
+	files.close()
+	f=open(TO_DIR+"install-config.txt","w")
+	for yy in flist:
+		if yy.strip().startswith("install_app_version"):
+			f.write("install_app_version="+VERSION+"\n")
+		elif yy.strip().startswith("file="):
+			continue
+		else:
+			f.write(yy.strip()+"\n")
+	f.write("\n"+ffiles)
+	f.flush()
+	f.close()
+	ff=os.popen("rm -f "+TO_DIR+"file_list.txt")
+	ff.readlines()
+	print "building tar-ball:  "+PACKAGE+"-"+VERSION+".tar.bz2  "
+	ff=os.popen("tar -cjf "+PACKAGE+"-"+VERSION+".tar.bz2  "+TO_DIR)
+	ff.readlines()
+	print "moving tar-ball "+PACKAGE+"-"+VERSION+".tar.bz2   to  "+DISTRO_DIR
+	ff=os.popen("mv -f "+PACKAGE+"-"+VERSION+".tar.bz2  "+DISTRO_DIR)
+	ff.readlines()
+	
+
+
+if __name__ == "__main__":
+	updateinstall()

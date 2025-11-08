@@ -1,0 +1,4 @@
+./make_ice
+rm -fr /INSTALL-IceWMCP/*
+./make_ice_real
+./update_install_ice

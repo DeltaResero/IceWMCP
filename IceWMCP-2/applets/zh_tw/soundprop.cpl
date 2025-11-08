@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=音效\n內容
+Exec=gtkaumix
+Icon=soundprop.png
+Hint=聲音音量與混音器內容

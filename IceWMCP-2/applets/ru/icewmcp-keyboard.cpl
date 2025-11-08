@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Клавиатура\n(IceWM)
+Exec=[PHROZEN-INTERNAL]IceWMCPKeyboard.py
+Icon=icewmcp-keyboard.png
+Hint=Настройка клавиатуры - Упрвление горячими клавишами в IceWM

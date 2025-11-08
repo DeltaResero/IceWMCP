@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Аудио\nнастройки
+Exec=gtkaumix
+Icon=soundprop.png
+Hint=Громкость звука и настройки микшера

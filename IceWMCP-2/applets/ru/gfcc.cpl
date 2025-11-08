@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Брандмауэр
+Exec=gfcc
+Icon=gfcc.png
+Hint=Настройка брандмауэра (GFCC)

@@ -1,0 +1,7 @@
+pygettext -o icewmcp-messages.pot /usr/share/IceControlPanel/IceWMCP.py /usr/share/IceControlPanel/icewmcp_common.py /usr/share/IceControlPanel/IceWMCPMouse.py /usr/share/IceControlPanel/IceWMCPKeyboard.py /usr/share/IceControlPanel/IceWMCPKeyEdit.py /usr/share/IceControlPanel/IceWMCPWallpaper.py /usr/share/IceControlPanel/IceWMCPWinOptions.py /usr/share/IceControlPanel/phrozenclock.py /usr/share/IceControlPanel/pyspool.py /usr/share/IceControlPanel/pyprintcommon.py /usr/share/IceControlPanel/tkPCCard.py 
+
+pygettext -o icepref-messages.pot /usr/share/IceControlPanel/icepref.py
+
+pygettext -o icesound-messages.pot /usr/share/IceControlPanel/icesound.py
+
+pygettext -o iceme-messages.pot /usr/share/IceControlPanel/IceMe.py /usr/share/IceControlPanel/IceMenuTree.py /usr/share/IceControlPanel/IconSelectionDialog.py

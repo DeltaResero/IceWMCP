@@ -1,0 +1,349 @@
+# IceWM Menu Editor FINNISH locale.
+# Copyright (C) 2003 Pyrmiö Group
+# Petteri Aimonen <jpa@pyrmio.org>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IceMe - IceWMCP Edition 2.5\n"
+"POT-Creation-Date: Sat Feb 22 00:17:54 2003\n"
+"PO-Revision-Date: 2003-05-26 17:27+2\n"
+"Last-Translator: Petteri Aimonen <jpa@pyrmio.org>\n"
+"Language-Team: Finnish, Pyrmiö Group <jpa@pyrmio.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+
+#: IceMe.py:74
+msgid "Name:"
+msgstr "Nimi:"
+
+#: IceMe.py:82
+msgid "Command:"
+msgstr "Komento:"
+
+#: IceMe.py:103
+msgid "Icon:"
+msgstr "Kuvake:"
+
+#: IceMe.py:128
+msgid "Start as a new window manager"
+msgstr "Käynnistä uutena ikkunamanagerina"
+
+#: IceMe.py:132
+msgid "Add shortcut..."
+msgstr "Lisää pikanäppäin..."
+
+#: IceMe.py:151
+msgid "Menu entry"
+msgstr "Valikkokohde"
+
+#: IceMe.py:184
+msgid "Click here to select an executable via a file selection box."
+msgstr "Valitse ohjelma selausikkunan avulla."
+
+#: IceMe.py:186
+msgid "Click here to select another icon"
+msgstr "Vaihda kuvake"
+
+#: IceMe.py:188
+msgid "If selected, this entry will cause IceWM to quit and start the command as new window manager."
+msgstr "Valitse tämä, jos haluat että IceWM lopetetaan ja ohjelma käynnistetään uutena ikkunointimanagerina."
+
+#: IceMe.py:206
+msgid "/_File"
+msgstr "/_Tiedosto"
+
+#: IceMe.py:207
+msgid "/_File/_Save"
+msgstr "/_Tiedosto/_Tallenna"
+
+#: IceMe.py:208
+msgid "/_File/_Revert"
+msgstr "/_Tiedosto/_Palauta"
+
+#: IceMe.py:209
+msgid "/_File/_Preview"
+msgstr "/_Tiedosto/_Esikatsele"
+
+#: IceMe.py:210
+msgid "/_File/sep1"
+msgstr "/_Tiedosto/sep1"
+
+#: IceMe.py:211
+msgid "/_File/_Exit"
+msgstr "/_Tiedosto/_Lopeta"
+
+#: IceMe.py:212
+msgid "/_Edit"
+msgstr "/_Muokkaa"
+
+#: IceMe.py:213
+msgid "/_Edit/_Cut"
+msgstr "/_Muokkaa/_Leikkaa"
+
+#: IceMe.py:214
+msgid "/_Edit/C_opy"
+msgstr "/_Muokkaa/_Kopioi"
+
+#: IceMe.py:215
+msgid "/_Edit/_Paste"
+msgstr "/_Muokkaa/_Liitä"
+
+#: IceMe.py:216
+msgid "/_Edit/sep2"
+msgstr "/_Muokkaa/sep2"
+
+#: IceMe.py:217
+msgid "/_Edit/_Delete"
+msgstr "/_Muokkaa/_Poista"
+
+#: IceMe.py:218
+msgid "/_Edit/sep3"
+msgstr "/_Muokkaa/sep3"
+
+#: IceMe.py:219
+msgid "/_Edit/_IceWM preferences"
+msgstr "/_Muokkaa/_IceWM:n asetukset"
+
+#: IceMe.py:220
+msgid "/_Edit/_Shortcuts"
+msgstr "/_Muokkaa/_Pikanäppäimet"
+
+#: IceMe.py:221
+msgid "/_Help"
+msgstr "/_Ohje"
+
+#: IceMe.py:222
+msgid "/_Help/_About..."
+msgstr "/_Ohje/_Tietoja ohjelmasta"
+
+#: IceMe.py:252
+msgid "Save"
+msgstr "Tallenna"
+
+#: IceMe.py:253
+msgid "Save the menu"
+msgstr "Tallenna valikko"
+
+#: IceMe.py:255
+msgid "Revert"
+msgstr "Palauta"
+
+#: IceMe.py:256
+msgid "Revert to last saved version"
+msgstr "Palauta edellinen tallennettu versio"
+
+#: IceMe.py:258
+msgid "Preview"
+msgstr "Esikatsele"
+
+#: IceMe.py:259
+msgid "Preview the menu as IceWM would display it"
+msgstr "Esikatsele millaiselta valikko näyttäisi"
+
+#: IceMe.py:264
+msgid "New Entry"
+msgstr "Uusi kohde"
+
+#: IceMe.py:265
+msgid "Create a new normal entry"
+msgstr "Luo uusi tavallinen kohde"
+
+#: IceMe.py:267
+msgid "New Sep."
+msgstr "Uusi Jak."
+
+#: IceMe.py:268
+msgid "Create a new separator"
+msgstr "Luo uusi jakajapalkki"
+
+#: IceMe.py:270
+msgid "New Menu"
+msgstr "Uusi valikko"
+
+#: IceMe.py:271
+msgid "Create a new submenu"
+msgstr "Luo uusi alavalikko"
+
+#: IceMe.py:276
+msgid "Cut"
+msgstr "Leikkaa"
+
+#: IceMe.py:277
+msgid "Cut selected entry to buffer"
+msgstr "Leikkaa valittu kohde leikepöydälle"
+
+#: IceMe.py:279
+msgid "Copy"
+msgstr "Kopioi"
+
+#: IceMe.py:280
+msgid "Copy selected entry to buffer"
+msgstr "Kopioi valittu kohde leikepöydälle"
+
+#: IceMe.py:282
+msgid "Paste"
+msgstr "Liitä"
+
+#: IceMe.py:283
+msgid "Paste buffer under current selection"
+msgstr "Liitä leikepöydältä valitun kohteen alapuolelle"
+
+#: IceMe.py:285
+msgid "Delete"
+msgstr "Poista"
+
+#: IceMe.py:286
+msgid "Delete selected entry"
+msgstr "Poista valittu kohde"
+
+#: IceMe.py:291
+msgid "Up"
+msgstr "Ylös"
+
+#: IceMe.py:292
+msgid "Move selected entry up"
+msgstr "Siirrä kohdetta ylöspäin"
+
+#: IceMe.py:294
+msgid "Down"
+msgstr "Alas"
+
+#: IceMe.py:295
+msgid "Move selected entry down"
+msgstr "Siirrä kohdetta alaspäin"
+
+#: IceMe.py:300
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: IceMe.py:301
+msgid "Edit the IceWM preferences with IcePref2"
+msgstr "Muokkaa IceWM:n asetuksia IcePref2:lla"
+
+#: IceMe.py:303
+msgid "Shortcuts"
+msgstr "Pikanäppäimet"
+
+#: IceMe.py:304
+msgid "Edit shortcuts"
+msgstr "Muokkaa pikanäppäimiä"
+
+#: IceMe.py:540
+msgid "There were some errors."
+msgstr "Löytyi virheitä/puuttuvia tietoja"
+
+#: IceMe.py:541
+msgid "Error saving menu"
+msgstr "Virhe tallennuksessa"
+
+#: IceMe.py:543
+msgid "Saved."
+msgstr "Tallennettu."
+
+#: IceMe.py:685
+msgid "Saving..."
+msgstr "Tallennetaan..."
+
+#: IceMe.py:691
+msgid "Reverting..."
+msgstr "Palautetaan..."
+
+#: IceMe.py:693
+msgid "Reverted to the last saved version."
+msgstr "Palautettiin edellinen tallennettu versio"
+
+#: IceMe.py:696
+msgid "Displaying preview window..."
+msgstr "Näytetään esikatseluikkuna..."
+
+#: IceMe.py:715
+msgid "A menu editor for IceWM written in Python and GTK."
+msgstr "IceWM:n valikkoeditori, kirjoittettu Pythonilla ja GTK:lla"
+
+#: IceMe.py:721
+msgid ""
+"This is a Special Edition of IceMe for IceWM Control Panel,\n"
+"with modifications and optimizations by"
+msgstr ""
+"Tämä on erikoisversio IceMe:stä, muutoksia ja parannuksia tehnyt"
+#: IceMe.py:725
+msgid "New entry"
+msgstr "Uusi kohde"
+
+#: IceMe.py:730
+msgid "New submenu"
+msgstr "Uusi alavalikko"
+
+#: IceMenuTree.py:37
+msgid "Command"
+msgstr "Komento"
+
+#: IceMenuTree.py:37
+msgid "Menu"
+msgstr "Valikko"
+
+#: IceMenuTree.py:67
+msgid "Programs"
+msgstr "Ohjelmat"
+
+#: IceMenuTree.py:75
+msgid "Toolbar"
+msgstr "Tehtäväpalkki"
+
+#: IceMenuTree.py:83
+msgid "Clipboard"
+msgstr "Leikepöytä"
+
+#: IconSelectionDialog.py:55
+#: IconSelectionDialog.py:234
+msgid "Please select an icon."
+msgstr "Valitse kuvake"
+
+#: IconSelectionDialog.py:74
+msgid "Columns:"
+msgstr "Sarakkeet:"
+
+#: IconSelectionDialog.py:83
+msgid "Ok"
+msgstr "Ok"
+
+#: IconSelectionDialog.py:88
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: IconSelectionDialog.py:93
+msgid "Reload"
+msgstr "Päivitä"
+
+#: IconSelectionDialog.py:130
+msgid "Loading"
+msgstr "Ladataan"
+
+#: IconSelectionDialog.py:130
+msgid "images...please wait."
+msgstr "kuvia, odota."
+
+msgid "Check for newer versions of this program..."
+msgstr "Tarkista onko tästä ohjelmasta uudempaa versiota..."
+
+msgid "Please select an executable."
+msgstr "Valitse ohjelma."
+
+msgid "Done."
+msgstr "Valmis."
+
+msgid "Running IcePref2"
+msgstr "Käynnistetään IcePref2"
+
+msgid "Menu Preview"
+msgstr "Valikon esikatselu"
+
+msgid "In the future, you should close the icon window with the 'Cancel' button to avoid having to reload the icons."
+msgstr "Tulevaisuudessa sinun tulisi sulkea kuvakeikkuna Peruuta-napilla, jottei kuvakkeita tarvitsisi ladata uudelleen."
+
+msgid "Loading menus and icons...please wait."
+msgstr "Ladataan valikoita ja kuvakkeita...odota."
+

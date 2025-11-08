@@ -1,0 +1,5 @@
+# Ice Control Panel Applet
+Name=Дата-Время
+Exec=[PHROZEN-INTERNAL]phrozenclock.py
+Icon=phrozenclock.png
+Hint=Настройка времени и даты
