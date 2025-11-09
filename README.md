@@ -2,7 +2,7 @@
 
 This fork serves as a continuation of the original IceWM Control Panel, created to modernize
 and resume its development. The control panel integrates several open source components to
-provide an easy and comprehensive configuration tool for IceWM.
+provide a comprehensive graphical configuration tool for Ice Window Manager (IceWM).
 
 ## Status
 

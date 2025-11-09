@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icewmcp"
+version = "3.3.0-alpha0"
+description = "A comprehensive graphical control panel for the Ice Window Manager (IceWM)"
+readme = "README.md"
+requires-python = ">=3.6"
+license = { text = "GPL-2.0-or-later" }
+authors = [
+  { name = "DeltaResero", email = "3397617+DeltaResero@users.noreply.github.com" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Desktop Environment :: Window Managers",
+]
+
+[project.scripts]
+icewmcp = "icewmcp.IceWMCP:main"
