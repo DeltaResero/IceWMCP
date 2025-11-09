@@ -24,9 +24,9 @@ The original project page can be found here:
 ## Disclaimer
 
 The continued development of this fork is not affiliated with, endorsed by, nor sponsored
-by the original authors. It is distributed under the terms of the **GNU General Public
-License version 2 only (GPLv2)**. You can redistribute and/or modify this software under
-the terms of the GPLv2 as published by the Free Software Foundation.
+by the original authors. This software is free software; you can redistribute it and/or
+modify it under the terms of the **GNU General Public License** as published by the Free
+Software Foundation; either **version 2 of the License, or (at your option) any later version**.
 
 This software is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**;
 without even the implied warranty of **MERCHANTABILITY** or **FITNESS FOR A PARTICULAR PURPOSE**.
