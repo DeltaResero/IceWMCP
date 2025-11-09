@@ -89,11 +89,29 @@ venv.bak/
 .spyproject
 .ropeproject
 
+# Stgit generated dirs
+patches-*
+
+# Quilt's files
+patches
+series
+
+# Programmer's notepad files
+*.pnproj
+*.pnps
+
+# Cscope files
+cscope.*
+ncscope.*
+
 # Other
 .mypy_cache/
 .pyre/
 .pytype/
 cython_debug/
-
+*.orig
+*.rej
+*~
+\#*#
 
 # EOF
