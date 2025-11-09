@@ -109,6 +109,7 @@ ncscope.*
 .pyre/
 .pytype/
 cython_debug/
+*.bak
 *.orig
 *.rej
 *~
