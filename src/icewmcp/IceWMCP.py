@@ -50,7 +50,7 @@
 #############################
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
@@ -194,7 +194,7 @@ class controlwin:
 
     def showConfig(self,*args) :
 	applets=self.loadApplets()
-	alist=applets.keys()
+	alist=list(applets.keys())
 	alist.sort()
 	global WMCLASS
 	global WMNAME
@@ -258,7 +258,7 @@ class controlwin:
     def saveConfig(self,*args) :
 	if not args[0].get_data("applets")==None:
 		self.ignore_list=[]
-		for ii in args[0].get_data("applets").values():
+		for ii in list(args[0].get_data("applets").values()):
 			if ii.get_data("ignored")==1:
 				ig=ii.get_data("my_name")
 				if not ig in self.ignore_list: self.ignore_list.append(ig)
@@ -343,7 +343,7 @@ class controlwin:
 	totaly=starty
 	col_count=0
 	max_y=starty
-	a_list=applet_dict.keys()
+	a_list=list(applet_dict.keys())
 	a_list.sort()
 	col_x=0
 	for ii in a_list:  # get the width of the widest applet, 5/6/2003
@@ -525,7 +525,7 @@ class controlwin:
 	# Will only load special fonts if the applets for this locale are there...
 	if len(glob.glob(APPLET_DIRECTORY+getLocaleDir()+"*.cpl"))>0: 
 		APPLET_DIRECTORY=APPLET_DIRECTORY+getLocaleDir()
-		if special_fonts_map.has_key(mylocale):
+		if mylocale in special_fonts_map:
 			font1=special_fonts_map[mylocale][0]
 			font2=special_fonts_map[mylocale][1]
 

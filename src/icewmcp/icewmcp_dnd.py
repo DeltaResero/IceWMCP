@@ -46,7 +46,7 @@
 #############################
 
 import binascii
-from icewmcp_common import *
+from .icewmcp_common import *
 
 # drag-n-drop support, added 2.23.2003
 # for basic 'string'-based drag-n-drop

@@ -386,7 +386,7 @@ if __name__ == "__main__":
                   ("Ok",),ICON_ALERT,gtk.FALSE)
     ret = message("Test MessageBox #1", "America\n\nRich and\nPowerful".split("\n"),
                   ("Ok",),ICON_QUESTION,gtk.FALSE)
-    print "ret:  "+str(message("Test","Sample\nMessage".split("\n"),("OK","Cancel",),3,1))
+    print("ret:  "+str(message("Test","Sample\nMessage".split("\n"),("OK","Cancel",),3,1)))
 
 
 

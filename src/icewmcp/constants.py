@@ -77,7 +77,7 @@ SCRIPT_DIR = sys.path[0]
 HOME = os.environ["HOME"]
 
 # the icewm dir in the users home:
-from icewmcp_common import *
+from .icewmcp_common import *
 HOME_ICEWM = getIceWMPrivConfigPath()
 
 # the list of paths in the environment variable $PATH:

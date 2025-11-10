@@ -56,8 +56,8 @@
 #############################
 
 #set translation support
-import icewmcp_common
-from icewmcp_common import *
+from . import icewmcp_common
+from .icewmcp_common import *
 
 
 def _(somestr):
@@ -66,8 +66,8 @@ def _(somestr):
 
 icewmcp_common.NOSPLASH=1  # disable splash window from icepref_td,icepref
 
-import icepref_td
-import icepref
+from . import icepref_td
+from . import icepref
 
 global ICE_TAB
 ICE_TAB=None

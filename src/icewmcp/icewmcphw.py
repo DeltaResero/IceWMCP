@@ -50,7 +50,7 @@
 				counter=counter+1
 
 """
-import pyicewmcphw as hardware
+from . import pyicewmcphw as hardware
 
 hw_options= [
    "packages",

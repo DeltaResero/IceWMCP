@@ -59,7 +59,7 @@
 #############################
 
 import sys,string,os,getopt
-from constants import *
+from .constants import *
 
 
 class Preferences:
@@ -74,7 +74,7 @@ class Preferences:
         try:
             optlist, _args = getopt.getopt(args[1:], "hr",
                                           ["help", "run-as-root"])
-        except getopt.error, msg:
+        except getopt.error as msg:
             sys.stderr.write("%s: error: %s\n" % (args[0], msg))
             self.ERROR = 2
             return
@@ -257,12 +257,12 @@ class Preferences:
 
 def test():
     prefs = Preferences("")
-    print "IconPath:", prefs.getIconPaths()
-    print "IceWM uses the following files:"
-    print prefs.getIceWMFile("menu")
-    print prefs.getIceWMFile("programs")
-    print prefs.getIceWMFile("toolbar")
-    print prefs.getIceWMFile("keys")
+    print("IconPath:", prefs.getIconPaths())
+    print("IceWM uses the following files:")
+    print(prefs.getIceWMFile("menu"))
+    print(prefs.getIceWMFile("programs"))
+    print(prefs.getIceWMFile("toolbar"))
+    print(prefs.getIceWMFile("keys"))
 
 if __name__ == "__main__":
     test()

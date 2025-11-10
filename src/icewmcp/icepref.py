@@ -74,11 +74,11 @@
 #############################################
 
 from string import *
-import re,commands,math,icepref_search
-import pangoxlfd
+import re,subprocess,math,icepref_search
+from . import pangoxlfd
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateP(somestr))  # from icewmcp_common.py
@@ -90,8 +90,8 @@ def donada(*args):  # does nothing, just a 'dummy' method for the Splash screen,
 	pass
 
 # import drag-n-drop support, 5.16.2003
-import icewmcp_dnd
-from icewmcp_dnd import *
+from . import icewmcp_dnd
+from .icewmcp_dnd import *
 initColorDrag()      # enable dnd support for 'color buttons'
 addDragSupportColor=icewmcp_dnd.addDragSupportColor
 
@@ -143,28 +143,28 @@ BD = 5
 
 # some environmental variables -- more than are needed, really.
 
-if os.environ.has_key('OSTYPE'):
+if 'OSTYPE' in os.environ:
     OSTYPE   = os.environ['OSTYPE']
 else:
     OSTYPE   = os.uname()[0]
 
-if os.environ.has_key('MACHTYPE'):
+if 'MACHTYPE' in os.environ:
     MACHTYPE = os.environ['MACHTYPE']
 else:
     MACHTYPE = 'i386-pc-linux-gnu'
 
-if os.environ.has_key('HOME'):
+if 'HOME' in os.environ:
     HOME     = os.environ['HOME']
 else:
     import user
     HOME     = user.home
 
-if os.environ.has_key('USER'):
+if 'USER' in os.environ:
     USER     = os.environ['USER']
 else:
     USER = os.uname()[1]
     
-if os.environ.has_key('PATH'):
+if 'PATH' in os.environ:
     PATH     = os.environ['PATH']
 else:
     PATH = ''
@@ -2163,26 +2163,26 @@ class ThemeSel(VBox):
 	    if self.value == '':
 		self.value = self.theme_list[0].path
 	    selval=self.value
-	    if self.t_map.has_key(self.value):
+	    if self.value in self.t_map:
 		previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
 	   	if not self.iprev==None: 
 			self.iprev.update_image(previm)
 	    if self.value.rfind("themes/")>-1:
 	    	shortval=self.value[self.value.rfind("themes/")+len("themes/"):]
-	    	if self.t_map.has_key(shortval):
+	    	if shortval in self.t_map:
 			selval=shortval
 			previm=self.t_map[shortval][0:self.t_map[shortval].rfind(os.sep)+1]+"preview.jpg"
 	   		if not self.iprev==None: 
 				self.iprev.update_image(previm)
-	    if (self.a_map.has_key(self.value)) :	  
+	    if (self.value in self.a_map) :	  
 		if not self.author_entry==None:
 			self.author_entry.set_value(self.a_map[self.value])
-	    if (self.d_map.has_key(self.value)) :	  
+	    if (self.value in self.d_map) :	  
 		if not self.desc_entry==None:
 			self.desc_entry.set_value(self.d_map[self.value])
 	    # added 12.2.2003, Erica Andrews - highlight and scroll to the row of the current theme
 	    try:
-				k=self.t_map.keys()
+				k=list(self.t_map.keys())
 				k.sort()
 				self.CLIST.moveto(k.index(selval),0,0 ,0)
 				self.CLIST.select_row(k.index(selval),0)
@@ -2231,15 +2231,15 @@ class ThemeSel(VBox):
 	def clist_cb(self, widget, row, col, event):
 		self.value = widget.get_row_data(row)[0]
 		self.fvalue= widget.get_row_data(row)[1]
-		if self.t_map.has_key(self.value):
+		if self.value in self.t_map:
 			previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
 			#print previm
 			if not self.iprev==None: 
 				self.iprev.update_image(previm)
-		if (self.a_map.has_key(self.value)) :	  
+		if (self.value in self.a_map) :	  
 			if not self.author_entry==None:
 				self.author_entry.set_value(self.a_map[self.value])
-		if (self.d_map.has_key(self.value)) :	  
+		if (self.value in self.d_map) :	  
 			if not self.desc_entry==None:
 				self.desc_entry.set_value(self.d_map[self.value])
 
@@ -2401,7 +2401,7 @@ class Application(Window):
 			'solaris'  : ['Solaris',  'Unix'] }
 	    self.os = 'Linux'
 	    self.distribution = 'Generic'
-	    for os_type in os_list.keys():
+	    for os_type in list(os_list.keys()):
 		if find( MACHTYPE, os_type ) != -1:
 		    self.distribution = os_list[os_type][0]
 		    self.os = os_list[os_type][1]
@@ -2429,7 +2429,7 @@ class Application(Window):
 	    
 	    # This probably isn't that useful anymore.
 	    
-	    exec_path = commands.getoutput('whereis icewm')
+	    exec_path = subprocess.getoutput('whereis icewm')
 	    exec_path = split(exec_path) # split output of whereis into tokens at whitespace
 	    exec_path = exec_path[1] # get second token (should be executable)
 	    
@@ -2478,7 +2478,7 @@ class Application(Window):
 		
 	def init_settings(self):
 		self.settings = {}
-		for key in DEFAULTS.keys():
+		for key in list(DEFAULTS.keys()):
 			self.settings[key] = DEFAULTS[key][:]
 	
 	# Goes through each of the configuration options and forces the widgets
@@ -2549,11 +2549,11 @@ class Application(Window):
 	    # set that option in self.settings to the value from current.
 
 	    open_errors=""
-	    for option in current.keys():
-		if self.settings.has_key( option ):
+	    for option in list(current.keys()):
+		if option in self.settings:
 			self.settings[option][VALUE] = current[option]
 		else:
-			if not self.settings.has_key( option.replace("FontNameXft","FontName") ):
+			if option.replace("FontNameXft","FontName") not in self.settings:
 				xxerr='Corrupt preferences file:  %s=%s does not seem to be a valid option' % (option, current[option])
 				open_errors=open_errors+xxerr+"\n\n"
 	    if len(open_errors)>0:		
@@ -2561,7 +2561,7 @@ class Application(Window):
 
 
 	def save_current_theme_settings(self, *data):
-		if self.widget_dict.has_key('Theme'):
+		if 'Theme' in self.widget_dict:
 			try:
 				f=open(THEME_SET_FILE,"w")
 				f.write("Theme="+str(self.widget_dict['Theme'].get_value()))
@@ -2604,12 +2604,12 @@ class Application(Window):
 				# this sets up the comment descriptor, which is the same
 				# as the label text.
 				comment = '# ' + self.settings[name][TITLE] + '\n'
-				if self.widget_dict.has_key(name):
+				if name in self.widget_dict:
 					line = name + '=' + str(self.widget_dict[name].get_value()) + string + '\n'
 					if name.endswith("FontName"):
 						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
 				else:
-					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
+					if name in self.settings:  # added 5.5.2003, fall back to default
 						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
 						if name.endswith("FontName"):
 							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
@@ -2641,12 +2641,12 @@ class Application(Window):
 				# this sets up the comment descriptor, which is the same
 				# as the label text.
 				comment = '# ' + self.settings[name][TITLE] + '\n'
-				if self.widget_dict.has_key(name):
+				if name in self.widget_dict:
 					line = name + '=' + str(self.widget_dict[name].get_value()) + string + '\n'
 					if name.endswith("FontName"):
 						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
 				else:
-					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
+					if name in self.settings:  # added 5.5.2003, fall back to default
 						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
 						if name.endswith("FontName"):
 							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
@@ -2804,7 +2804,7 @@ class Application(Window):
   				(_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5006, ""),
 					]
 					
-		ikeys=self.my_tabs.keys()
+		ikeys=list(self.my_tabs.keys())
 		ikeys.sort()
 		for ii in ikeys:
 			menu_items.append((_('/_Category/')+ii, None, self.switchTab, self.my_tabs[ii], '', ))
@@ -3119,12 +3119,12 @@ def run():
 				global SHOW_MODULE
 				SHOW_MODULE=_(choice_mod)
 				if not SHOW_MODULE in TABS_NAMES:
-					print "\nWarning: No module named '"+SHOW_MODULE+"' - displaying all modules.\n\nRun icepref with the command-line option '--listmodules' for a list of available modules."
+					print("\nWarning: No module named '"+SHOW_MODULE+"' - displaying all modules.\n\nRun icepref with the command-line option '--listmodules' for a list of available modules.")
 		if str(mm).lower().find("listmodules")>-1:
-			print "\nAvailable IcePref modules:\n\n"
+			print("\nAvailable IcePref modules:\n\n")
 			for yy in TABS_NAMES:
-				print "\t"+str(yy)
-			print "\n"
+				print("\t"+str(yy))
+			print("\n")
 			sys.exit(0)
 
 	app = Application(sys.argv)

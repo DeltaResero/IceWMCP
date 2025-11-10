@@ -64,13 +64,13 @@ try:
 	from gtk import *
 	import pango
 except:
-	print "You do not have PyGtk-2 or one of its libraries properly installed."
-	print "This application requires PyGtk-2 1.99/2.00 or better."
+	print("You do not have PyGtk-2 or one of its libraries properly installed.")
+	print("This application requires PyGtk-2 1.99/2.00 or better.")
 	sys.exit(0)
 	pass
 
 
-import icewmcp_common,ICEWMCP_BugReport
+from . import icewmcp_common,ICEWMCP_BugReport
 icewmcp_common.setSplash(icewmcp_common.getLocaleDir)
 icewmcp_common.showSplash(0)
 icewmcp_common.IS_STATIC_BINARY="yes"
@@ -83,7 +83,7 @@ import os,sys,IceWMCP,IceWMCPWinOptions,IceWMCPMouse,IceWMCPKeyboard,IceWMCPWall
 
 global HW_SUPPORT
 try:
-	import IceWMCPSystem
+	from . import IceWMCPSystem
 	HW_SUPPORT=1
 except:
 	HW_SUPPORT=0
@@ -116,14 +116,14 @@ if __name__== "__main__" :
 			if HW_SUPPORT==1:
 				IceWMCPSystem.run()
 			else:
-				print "Sorry, the IceWMCPSystem.py plug-in module is not available or could not be loaded."
-				print "You may download the module from http://icesoundmanager.sourceforge.net/download.php"
+				print("Sorry, the IceWMCPSystem.py plug-in module is not available or could not be loaded.")
+				print("You may download the module from http://icesoundmanager.sourceforge.net/download.php")
 				sys.exit(0)
 		if ar not in mods:
-			print "\n\nAvailable IceWM Control Panel Modules:\n"
+			print("\n\nAvailable IceWM Control Panel Modules:\n")
 			for ii in mods:
-				print "\t"+ii
-			print "\nUSAGE: "+sys.argv[0][0:sys.argv[0].rfind(os.sep)+1]+"icewmcp [module]\n\n"
+				print("\t"+ii)
+			print("\nUSAGE: "+sys.argv[0][0:sys.argv[0].rfind(os.sep)+1]+"icewmcp [module]\n\n")
 			sys.exit(0)
 	else: IceWMCP.run(1)
 	

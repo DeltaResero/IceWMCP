@@ -69,8 +69,8 @@ try:
 	from gtk import *
 	import pango
 except:
-	print "You do not have PyGtk-2 or one of its libraries properly installed."
-	print "This application requires PyGtk-2 1.99/2.00 or better."
+	print("You do not have PyGtk-2 or one of its libraries properly installed.")
+	print("This application requires PyGtk-2 1.99/2.00 or better.")
 	sys.exit(0)
 	pass
 
@@ -102,20 +102,20 @@ def to_utf8(somestr):
 		pass
 	try:
 		if LANGUAGE_CODEC==None:
-			unistr = unicode(str(somestr),DEFAULT_CHARSET)
+			unistr = str(str(somestr),DEFAULT_CHARSET)
 		else: unistr=LANGUAGE_CODEC.decode(str(somestr))[0]
 		utfstr = unistr.encode("utf-8")
 		return utfstr
 	except:
-		print " "
-		print "Your Python installation does not support the character set"
-		print "'"+str(DEFAULT_CHARSET)+"' needed to translate this application into your language." 
-		print "If you are are attempting to run this application in Chinese,"
-		print "Korean, or Japanese, you will need to download and install the"
-		print "appropriate Python language codecs from http://cjkpython.berlios.de/"
-		print "or get a pre-compiled copy from http://icesoundmanager.sourceforge.net"
-		print "You can also simply run this application in English or another supported language."
-		print " "
+		print(" ")
+		print("Your Python installation does not support the character set")
+		print("'"+str(DEFAULT_CHARSET)+"' needed to translate this application into your language.") 
+		print("If you are are attempting to run this application in Chinese,")
+		print("Korean, or Japanese, you will need to download and install the")
+		print("appropriate Python language codecs from http://cjkpython.berlios.de/")
+		print("or get a pre-compiled copy from http://icesoundmanager.sourceforge.net")
+		print("You can also simply run this application in English or another supported language.")
+		print(" ")
 		sys.exit(0)
 
 # Added 2.20.2004, a way to convert UTF-8 strings back to locale strings:
@@ -445,7 +445,7 @@ def getLocaleDir():
 
 # Set up locale for Pango, 12.1.2003 - Erica Andrews 
 ice_locale_check=getLocaleDir().replace("/","").strip()
-if INTL_CHARSETS.has_key(ice_locale_check):
+if ice_locale_check in INTL_CHARSETS:
 	DEFAULT_CHARSET=INTL_CHARSETS[ice_locale_check]
 
 #Setup Chinese language support
@@ -535,7 +535,7 @@ global MY_ICEWM_PATH
 MY_ICEWM_PATH=None
 
 def getIceWMPrivConfigPath():  # implemented in 0.3 - check environ variable, though who really uses this variable?
-	if os.environ.has_key("ICEWM_PRVCFG"): 	ppath=os.environ['ICEWM_PRVCFG']
+	if "ICEWM_PRVCFG" in os.environ: 	ppath=os.environ['ICEWM_PRVCFG']
 	else: 	ppath=os.environ['HOME']+os.sep+".icewm"+os.sep
 	if not ppath.endswith(os.sep): ppath=ppath+os.sep
 	return ppath
@@ -709,7 +709,7 @@ def getImage(im_file,lab_err=DIALOG_TITLE) : # GdkImlib Image loading
 
 
 # added 4.2.2003 - common message dialogs with attractive icons, version 1.2
-import IceWMCP_Dialogs
+from . import IceWMCP_Dialogs
 IceWMCP_Dialogs.icon_setter_method=set_special_window_icon
 IceWMCP_Dialogs.pix_button_setter=getPixmapButton
 def msg_info(wintitle,message):
@@ -750,7 +750,7 @@ SOFTWARE_UPDATE_URL= "http://icesoundmanager.sourceforge.net/ICEWMCP_WEB_VERSION
 
 def checkSoftUpdate(*args):
     try:
-        import ICEWMCP_URLRead
+        from . import ICEWMCP_URLRead
         up_content=ICEWMCP_URLRead.openUrl(SOFTWARE_UPDATE_URL)
         if up_content.find(",")==-1: raise TypeError  # such as "404 Not Found"
         if len(up_content.split(","))<2: raise TypeError
@@ -830,7 +830,7 @@ def keyPressClose(widget, event,*args):
 # added 4.4.2003 - support for sending e-mail bug reports directly from within the program
 # using new ICEWMCP_BugReport module, new in version 1.2
 
-from ICEWMCP_BugReport import *
+from .ICEWMCP_BugReport import *
 
 
 
@@ -896,7 +896,7 @@ HELP_FONTS={
 # load special fonts if the locale requires it
 MY_LANG_LOCALE=getLocaleDir().replace(os.sep,"").lower()
 
-if HELP_FONTS.has_key(MY_LANG_LOCALE):
+if MY_LANG_LOCALE in HELP_FONTS:
 	my_locale_lang_fonts=HELP_FONTS[MY_LANG_LOCALE]
 else : my_locale_lang_fonts=HELP_FONTS["all"]
 
@@ -1287,7 +1287,7 @@ def fork_process(some_proc):
 	os.popen(BASH_SHELL_EXEC+" -c \""+str(some_proc).strip()+" &\"")
 
 
-import IceWMCPRun    # THis should always be the last function defined in this module
+from . import IceWMCPRun    # THis should always be the last function defined in this module
 def rundlg(*args):  # new in versin 1.1, global access to a 'Run...' dialog	
 	IceWMCPRun.runwindow()
 

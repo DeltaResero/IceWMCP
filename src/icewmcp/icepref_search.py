@@ -45,7 +45,7 @@
 #	October/November 2003
 #############################
 
-from icewmcp_common import *
+from .icewmcp_common import *
 
 #set translation support
 def _(somestr):
@@ -109,12 +109,12 @@ def search_tabs(keyword, tab_list, default_dict):
 			tabname=ii[0]
 			for mj in ilist:
 				if (mj.lower().find(keyword.lower())>-1) or (_(mj).lower().find(keyword.lower())>-1):
-					if default_dict.has_key(mj): 
+					if mj in default_dict: 
 						prop=default_dict[mj][2]
 						pair_list.append([_(tabname), _(prop)])
 
 				if (default_dict[mj][2].lower().find(keyword.lower())>-1) or (_(default_dict[mj][2]).lower().find(keyword.lower())>-1):
-					if default_dict.has_key(mj): 
+					if mj in default_dict: 
 						prop=default_dict[mj][2]
 						pair_list.append([_(tabname), _(prop)])
 		except:

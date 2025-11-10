@@ -62,14 +62,14 @@
 import glob,stat
 from popen2 import popen2
 
-import icewmcp_common
+from . import icewmcp_common
 # disable splash for internal IcePref stuff coming from IceWMCPKeyboard
 icewmcp_common.NOSPLASH=1
 
-import icepref  # added 12.20.2003 for menu behavior tab, Erica Andrews
+from . import icepref  # added 12.20.2003 for menu behavior tab, Erica Andrews
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateME(somestr))
@@ -77,14 +77,14 @@ def _(somestr):
 def _CP(somestr): # added 12.20.2003 for menu behavior tab, Erica Andrews
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
-from constants import *
-from Preferences import Preferences
-from IceMenuTree import IceMenuTree
-from MenuParser import MenuParser
+from .constants import *
+from .Preferences import Preferences
+from .IceMenuTree import IceMenuTree
+from .MenuParser import MenuParser
 #from IconSelectionDialog import IconSelectionDialog     # disabled, 4/25/2003 - Erica Andrews
-import IconSelectionDialog     # import module, instead of class, 4/25/2003 - Erica Andrews
-from PreviewWindow import PreviewWindow
-from icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
+from . import IconSelectionDialog     # import module, instead of class, 4/25/2003 - Erica Andrews
+from .PreviewWindow import PreviewWindow
+from .icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
 
 
 VERSION = this_software_version+"/IceWMCP Edition"
@@ -413,7 +413,7 @@ class IceMe(Window):
     def menu_sel_file_box(self, *args):
 	#    added 12.21.2003, Erica Andrews: allow opening of abitrary
 	#    menu, programs, and toolbar files for editing
-	import icewmcp_common
+	from . import icewmcp_common
 	need_menu=0
 	if icewmcp_common.ICEWMCP_LAST_FILE==getIceWMPrivConfigPath(): need_menu=1
 	if icewmcp_common.ICEWMCP_LAST_FILE==None: need_menu=1
@@ -529,7 +529,7 @@ class IceMe(Window):
 		pass
         self.show()  # do not use "show_all"
 	hideSplash()
-	import IceWMCPKeyboard
+	from . import IceWMCPKeyboard
 	self.IceWMCPKeyboard=IceWMCPKeyboard
 	hideSplash()  # just to be extra sure
 	return 0
@@ -771,25 +771,25 @@ class IceMe(Window):
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-10]  # 'short names' removed - 2.23.2003
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 if os.path.getsize(name)<maxsize: icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "mini", "*.xpm"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]  # 'short names' removed - 2.23.2003
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 if os.path.getsize(name)<maxsize: icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "*.xpm"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]  # 'short names' removed - 2.23.2003
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 if os.path.getsize(name)<maxsize: icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "*.png"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]  # 'short names' removed - 2.23.2003
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 if os.path.getsize(name)<maxsize: icons[name] = filename
       except:
 	pass
@@ -911,7 +911,7 @@ class IceMe(Window):
 				shortname=os.path.join(ii,shortname+"_16x16.xpm")
 
 	if os.path.exists(shortname): # find paths dynamically from icons used, but not on IconPath, 2/21/2003
-		if not self.icons.has_key(shortname):  
+		if shortname not in self.icons:  
 			self.icons[shortname]=shortname
 		if not (shortname[0:shortname.rfind(os.sep)+1]) in self.IPATHS: 
 			self.IPATHS.append(shortname[0:shortname.rfind(os.sep)+1])
@@ -1007,7 +1007,7 @@ class IceMe(Window):
             # try to save to the original location (should only work as root):
             try:
                 f = open(full_filename, "w")
-            except IOError, msg:
+            except IOError as msg:
                 errmsgs.append(
                     "You specified '--ignore-home', but I couldn't\n"
                     "write the %s file, probably because you\n"
@@ -1019,7 +1019,7 @@ class IceMe(Window):
             try:
                 if not os.path.isdir(HOME_ICEWM): os.mkdir(HOME_ICEWM)
                 f = open(home_filename, "w")
-            except IOError, msg:
+            except IOError as msg:
                 errmsgs.append(
                     "I couldn't write the %s file to your home dir.\n"
                     "The error message was:\n"
@@ -1101,12 +1101,12 @@ class IceMe(Window):
         icons = self.icons
         class MyIconSelectionDialog(IconSelectionDialog.IconSelectionDialog):
             def getPictureList(self):
-                keys = icons.keys()
+                keys = list(icons.keys())
                 keys.remove("-")
                 keys.remove("$ice_me_clipboard$")
                 keys.remove("$ice_me_icewm$")
                 keys.sort()
-                picturelist = map(lambda x, icons=icons: (x, icons[x]), keys)
+                picturelist = list(map(lambda x, icons=icons: (x, icons[x]), keys))
                 return picturelist
 
 	# bug fix below, if the IconSelectionDialog was killed by 'X'-ing out the window, re-create entire window
@@ -1294,8 +1294,8 @@ class IceMe(Window):
 ############################################################################
 
 def usage():
-    print "Usage: %s [OPTION]... [DIR]" % sys.argv[0]
-    print """A menueditor for IceWM.
+    print("Usage: %s [OPTION]... [DIR]" % sys.argv[0])
+    print("""A menueditor for IceWM.
 If DIR is specified, the global icewm menu, programs and toolbar files as
 well as the icons subdir are taken from this directory. Otherwise the program
 will look in some well known standard locations, usually /usr/local/lib/icewm
@@ -1308,7 +1308,7 @@ lookup.
   -h, --help           Print this help and exit.
 
 Report bugs to <dmoebius@gmx.net>.
-"""
+""")
 
 
 def main():

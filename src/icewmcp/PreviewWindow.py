@@ -60,10 +60,10 @@
 
 import string, stat
 from popen2 import popen2
-from constants import *
+from .constants import *
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateME(somestr))

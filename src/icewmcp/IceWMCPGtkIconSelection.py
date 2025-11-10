@@ -66,7 +66,8 @@
 import glob,string
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
+from functools import cmp_to_key
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
@@ -84,7 +85,7 @@ def findIcons(paths):    # added as separate method by Erica Andrews
         for filename in xpmfiles:
             filename=os.path.realpath(filename)
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
 	     try:
                 if os.path.getsize(filename)< 12000: icons[name] = filename  # ignore large files that arent likely to be icons
              except:
@@ -93,7 +94,7 @@ def findIcons(paths):    # added as separate method by Erica Andrews
         for filename in xpmfiles:
             filename=os.path.realpath(filename)
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
 	     try:
                 if os.path.getsize(filename)< 12000: icons[name] = filename
              except:
@@ -102,7 +103,7 @@ def findIcons(paths):    # added as separate method by Erica Andrews
         for filename in xpmfiles:
             filename=os.path.realpath(filename)
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
 	     try:
                 if os.path.getsize(filename)< 12000: icons[name] = filename
              except:
@@ -111,7 +112,7 @@ def findIcons(paths):    # added as separate method by Erica Andrews
         for filename in xpmfiles:
             filename=os.path.realpath(filename)
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
 	     try:
                 if os.path.getsize(filename)< 11000: icons[name] = filename
              except:
@@ -349,7 +350,7 @@ class IconSelectionDialog(Window):
 
                   newheight,newwidth = 30,30   # 2.21.2003 - added larger icons (PhrozenSmoke [at] yahoo.com)
 		  global CACHED
-		  if not CACHED.has_key(filename):
+		  if filename not in CACHED:
                   	img = GDK.pixbuf_new_from_file(filename)
                   	img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
                   	pix,mask = img2.render_pixmap_and_mask()
@@ -468,8 +469,8 @@ class IconSelectionDialog(Window):
         self.icons_loaded = 0
 	global findIcons
 	icons=findIcons(self.MYPATHS)
-    	picturelist = icons.items()
-   	picturelist.sort(lambda a,b: cmp(a[0],b[0]))
+    	picturelist = list(icons.items())
+   	picturelist.sort(key=cmp_to_key(lambda a,b: cmp(a[0],b[0])))
 	self.getPictureList=lambda : picturelist
         self.__initIcons()
 
@@ -514,8 +515,8 @@ def create_dlg(MY_PATHS,update_meth=None):
     paths =MY_PATHS 
     icons = findIcons(paths)
 
-    picturelist = icons.items()
-    picturelist.sort(lambda a,b: cmp(a[0],b[0]))
+    picturelist = list(icons.items())
+    picturelist.sort(key=cmp_to_key(lambda a,b: cmp(a[0],b[0])))
     # create IconSelectionDialog:
     class MyIconSelectionDialog(IconSelectionDialog):
         def getPictureList(self):

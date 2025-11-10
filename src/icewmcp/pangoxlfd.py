@@ -36,7 +36,7 @@
 #	02111-1307, USA.
 #############################################
 
-from icewmcp_common import *
+from .icewmcp_common import *
 
 
 # "Houston we have a problem..."
@@ -90,7 +90,7 @@ def get_pango_font_weight(some_val):
 	pango.WEIGHT_ULTRABOLD: "ultrabold",
 	pango.WEIGHT_ULTRALIGHT:"ultralight"
 				}
-	if weights.has_key(some_val): 
+	if some_val in weights: 
 		return weights[some_val]
 	return "*"  # wildcard
 
@@ -107,7 +107,7 @@ def get_pango_font_condense(some_val):
 	pango.STRETCH_ULTRA_CONDENSED: "ultracondensed",
 	pango.STRETCH_ULTRA_EXPANDED: "ultraexpanded",
 				}
-	if condense.has_key(some_val): 
+	if some_val in condense: 
 		return condense[some_val]
 	return "*"  # wildcard
 
@@ -140,9 +140,9 @@ def get_valid_pango_font_desc(mystr):
 def pango2XLFD(pango_str):
     try:
 	mystr=pango_str
-	print "here1"
+	print("here1")
 	fontdesc=pango.FontDescription(get_valid_pango_font_desc(mystr))
-	print "here2"
+	print("here2")
 	face=fontdesc.get_family().strip()
 	weight=get_pango_font_weight(fontdesc.get_weight())
 	fsize=fontdesc.get_size()/1024

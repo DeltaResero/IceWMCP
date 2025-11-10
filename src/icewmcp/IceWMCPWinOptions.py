@@ -49,15 +49,15 @@
 #############################
 
 import string
-import IceWMCPGtkIconSelection as icons_dlg
+from . import IceWMCPGtkIconSelection as icons_dlg
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
-from icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
+from .icewmcp_dnd import *  # 5.16.2003 - drag-n-drop support
 
 class wallwin:
     def __init__(self) :
@@ -87,7 +87,7 @@ class wallwin:
 	self.layer_conv={"Normal":self.LAYER_NORMAL , "AboveDock":self.LAYER_ABOVED, "Dock":self.LAYER_DOCK  , "Menu":self.LAYER_MENU , "Desktop":self.LAYER_DESKTOP  , "OnTop":self.LAYER_ONTOP  , "Below":self.LAYER_BELOW}
 
 	self.rlayer_conv={}
-	for i,v in self.layer_conv.items():
+	for i,v in list(self.layer_conv.items()):
 		self.rlayer_conv[v]=i
 
 	self.layers_list=[self.LAYER_NORMAL,self.LAYER_ABOVED,self.LAYER_BELOW,self.LAYER_DESKTOP,self.LAYER_DOCK,self.LAYER_ONTOP,self.LAYER_MENU]
@@ -316,7 +316,7 @@ class wallwin:
     def show_keys(self,*args) :
 	self.winlist.freeze()
 	self.winlist.clear()
-	klist=self.window_options.keys()
+	klist=list(self.window_options.keys())
 	klist.sort()
 	inum=0
 	for ii in klist:
@@ -376,9 +376,9 @@ class wallwin:
 	return l
 
     def createDefaults(self,mywmclass):
-	if not self.window_options.has_key(mywmclass):
+	if mywmclass not in self.window_options:
 		d={}
-		for ii in self.windefaults.keys():
+		for ii in list(self.windefaults.keys()):
 			d[ii]=self.windefaults[ii]
 		self.window_options[mywmclass]=d
 
@@ -406,7 +406,7 @@ class wallwin:
 			d=self.window_options[mywmclass]
 			d[myprop]=myval
 			if myprop=="layer":
-				if myval in self.layer_conv.keys(): d[myprop]=self.layer_conv[myval] #locale support 2/18/2003
+				if myval in list(self.layer_conv.keys()): d[myprop]=self.layer_conv[myval] #locale support 2/18/2003
 			#if str(mywmclass).lower().find("callerid")>-1: print "GtkCallerID:  "+myval
 			self.window_options[mywmclass]=d
 		return {}
@@ -439,11 +439,11 @@ class wallwin:
 	rowd = widget.get_row_data(row)
 	self.current_row=row
 	self.current_wmclass=str(rowd)
-	if self.window_options.has_key(rowd):
+	if rowd in self.window_options:
 		d=self.window_options[rowd]
-		for ival in d.keys():
+		for ival in list(d.keys()):
 			iprop=d[ival]
-			if ival in self.winwidgets.keys():
+			if ival in list(self.winwidgets.keys()):
 				if str(iprop)=="0": self.winwidgets[ival].set_active(0)
 				elif str(iprop)=="1": self.winwidgets[ival].set_active(1)
 				else: self.winwidgets[ival].set_active(self.windefaults[ival])
@@ -598,10 +598,10 @@ class wallwin:
 		wm=args[0].get_data("wm_class").get_text().strip()
 		if len(args[0].get_data("wm_name").get_text().strip())>0:
 			wm=wm+"."+args[0].get_data("wm_name").get_text().strip()
-		if self.window_options.has_key(wm):
+		if wm in self.window_options:
 			msg_err(DIALOG_TITLE,_("The wm_class/wm_name '")+wm+_("' already exists.\nEither edit or delete the existing '")+wm+_("' window settings."))	
 			try:
-				k=self.window_options.keys()
+				k=list(self.window_options.keys())
 				k.sort()
 				self.winlist.moveto(k.index(wm),0,0,0)
 				self.winlist.select_row(k.index(wm),0)
@@ -614,7 +614,7 @@ class wallwin:
 		self.show_keys()
 		self.setStatus(_("Modified."))
 		try:
-			k=self.window_options.keys()
+			k=list(self.window_options.keys())
 			k.sort()
 			self.winlist.select_row(k.index(wm),0)
 			self.winlist.moveto(k.index(wm),0,0,0)
@@ -634,7 +634,7 @@ class wallwin:
 			d["workspace"]=self.workentry.get_text().strip()
 			d["geometry"]=self.geoentry.get_text().strip()
 			d["layer"]=self.rlayer_conv[self.layentry.get_text().strip()]
-			for ii in self.winwidgets.keys():
+			for ii in list(self.winwidgets.keys()):
 				d[ii]=int(self.winwidgets[ii].get_active())
 			self.setStatus(_("Modified."))
 			if len(self.iconentry.get_text().strip())>0: 
@@ -672,7 +672,7 @@ class wallwin:
 
     def select_first_row(self,*args):
 			try:
-				if len(self.window_options.keys())>0:
+				if len(list(self.window_options.keys()))>0:
 					self.winlist.moveto(0,0,0,0)
 					self.winlist.select_row(0,0)
 					self.current_row=0
@@ -700,11 +700,11 @@ class wallwin:
 		f=open(self.preffile,"w")
 		f.write(self.x_comments)
 		f.flush()
-		k=self.window_options.keys()
+		k=list(self.window_options.keys())
 		k.sort()
 		for ii in k:
 			kdict=self.window_options[ii]
-			h=kdict.keys()
+			h=list(kdict.keys())
 			h.sort()
 			for jj in h:
 				if jj=="icon":
@@ -727,7 +727,7 @@ class wallwin:
 					#if str(ii).lower().find("callerid")>-1: print "GtkCallerID:  "+ival
 				else: 
 					# dont write default stuff - wastes space
-					if self.windefaults.has_key(str(jj)):
+					if str(jj) in self.windefaults:
 						if str(self.windefaults[str(jj)])==str(kdict[jj]): continue
 					f.write(str(ii)+"."+str(jj)+": "+str(kdict[jj])+"\n")
 			f.write("\n")

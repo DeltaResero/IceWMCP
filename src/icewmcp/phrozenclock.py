@@ -56,7 +56,7 @@
 import time
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
@@ -74,7 +74,7 @@ class clockwin:
 	self.ZONE_DIRS=['/usr/share/zoneinfo/','/usr/lib/zoneinfo/','/usr/share/lib/zoneinfo/','/usr/local/share/zoneinfo/','/usr/local/share/lib/zoneinfo/','/etc/zoneinfo/']
 
 	# added 6.3.2003, add support for TZDIR environment variable if it exist
-	if os.environ.has_key('TZDIR'):
+	if 'TZDIR' in os.environ:
 		if len(os.environ['TZDIR'].strip())>0:
 			self.ZONE_DIRS.insert(0,os.environ['TZDIR'].strip()+"/")
 
@@ -86,12 +86,12 @@ class clockwin:
 
 	# added 6.3.2003, add support for TZ and TZDEFAULT environment variables if they exist
 	var_timezone=''
-	if os.environ.has_key('TZDEFAULT'):
+	if 'TZDEFAULT' in os.environ:
 		if os.environ['TZDEFAULT'].find("localtime")>-1:
 			self.LOCALTIME_FILES.insert(0,os.environ['TZDEFAULT'].strip())
 			if os.environ['TZDEFAULT'].find(os.sep)>-1:
 				var_timezone=os.environ['TZDEFAULT'][0:os.environ['TZDEFAULT'].rfind(os.sep)+1]+"timezone"
-	if os.environ.has_key('TZ'):
+	if 'TZ' in os.environ:
 		if os.environ['TZ'].find("localtime")>-1:
 			self.LOCALTIME_FILES.insert(0,os.environ['TZ'].strip())
 			if os.environ['TZ'].find(os.sep)>-1:
@@ -145,7 +145,7 @@ class clockwin:
 	#print "ZONEINFO_DIR:   "+ZONEINFO_DIR  # for debugging, comment out
 	#print "TIME_ZONE_INFO_FILE:  "+TIME_ZONE_INFO_FILE # for debug, comment out
 	#print "TIME_ZONE_DESC_FILE:  "+TIME_ZONE_DESC_FILE # for debug comment out
-	tznames=TZ_DICT.keys()
+	tznames=list(TZ_DICT.keys())
 	tznames.sort()
 	# added 12.1.2003 - split time zone list in half
 	# so we don't overwhelm the Combo widget

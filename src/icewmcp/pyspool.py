@@ -46,10 +46,10 @@
 #############################################
 
 import copy
-from pyprintcommon import *
+from .pyprintcommon import *
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py

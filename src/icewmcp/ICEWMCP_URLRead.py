@@ -35,10 +35,10 @@
 #	02111-1307, USA.
 #############################################
 
-import httplib
-import urllib
+import http.client
+import urllib.request, urllib.parse, urllib.error
 import string
-import urlparse
+import urllib.parse
 from threading import RLock
 
 global __monitor
@@ -53,20 +53,20 @@ def __parseUrl(my_url):
   if my_url:
     try:
       hdata=[]
-      if not urlparse.urlparse(my_url)[0].lower().strip()=="http":
+      if not urllib.parse.urlparse(my_url)[0].lower().strip()=="http":
         return None
 
-      hinfo=str(urlparse.urlparse(my_url)[1])
+      hinfo=str(urllib.parse.urlparse(my_url)[1])
       if hinfo.find(":") == -1:
         hdata.append(hinfo.strip())
         hdata.append(80)
-        hdata.append(urlparse.urlparse(my_url)[2])
-        hdata.append(urlparse.urlparse(my_url)[4])
+        hdata.append(urllib.parse.urlparse(my_url)[2])
+        hdata.append(urllib.parse.urlparse(my_url)[4])
       else:  #another port was declared
         hdata.append(hinfo[0:string.find(hinfo,":")].strip())
         hdata.append(string.atoi(hinfo[string.find(hinfo,":")+1:len(hinfo)].strip()))
-        hdata.append(urlparse.urlparse(my_url)[2])
-        hdata.append(urlparse.urlparse(my_url)[4])
+        hdata.append(urllib.parse.urlparse(my_url)[2])
+        hdata.append(urllib.parse.urlparse(my_url)[4])
       return hdata
     except:
       return None
@@ -92,7 +92,7 @@ def openUrl(my_url,user_name=None,doGet=1,_params={},_referer="http://icesoundma
     beenHere=0
     base_url=my_url
     try:
-      base_url=str(urlparse.urlparse(my_url)[0])+"://"+str(urlparse.urlparse(my_url)[1])
+      base_url=str(urllib.parse.urlparse(my_url)[0])+"://"+str(urllib.parse.urlparse(my_url)[1])
     except:
       pass
 
@@ -148,14 +148,14 @@ def __readPage(my_url,user_name=None,doGet=1,_params={},_referer="http://icesoun
   global __BROWSER
   hdata=__parseUrl(str(my_url))
   if hdata:
-    hc=httplib.HTTP(hdata[0],hdata[1])
+    hc=http.client.HTTP(hdata[0],hdata[1])
     meth="GET"
     if not doGet:
       meth="POST"
     if not hdata[2]:
       hc.putrequest(meth,"/")
     else:
-      content=urllib.urlencode(_params)
+      content=urllib.parse.urlencode(_params)
       if not doGet:  # using post method
         hc.putrequest(meth,hdata[2])
       else:  # using GET method

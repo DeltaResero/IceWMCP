@@ -70,10 +70,10 @@ BUG_REPORT_ADDRESS="PhrozenSmoke [at] yahoo.com"   # who to send bug reports to
 DEFAULT_SMTP_PORT="25"
 
 
-from icewmcp_common import getImage, getBaseDir, msg_err, msg_info, checkSoftUpdate 
-from icewmcp_common import msg_confirm,app_map, this_software_version, keyPressClose
-from icewmcp_common import TIPS, IS_STATIC_BINARY, GTK, GDK, translateCP, getPixmapButton
-from icewmcp_common import to_utf8 , set_basic_window_icon , STOCK_GO_FORWARD
+from .icewmcp_common import getImage, getBaseDir, msg_err, msg_info, checkSoftUpdate 
+from .icewmcp_common import msg_confirm,app_map, this_software_version, keyPressClose
+from .icewmcp_common import TIPS, IS_STATIC_BINARY, GTK, GDK, translateCP, getPixmapButton
+from .icewmcp_common import to_utf8 , set_basic_window_icon , STOCK_GO_FORWARD
 
 from gtk import *
 
@@ -183,7 +183,7 @@ def sendBugReport(*args):
 
 
 def file_bug_report(app_num=5000,*args):
-        if not app_map.has_key(app_num):
+        if app_num not in app_map:
                 msg_err(_("Bug Report"),_("Unknown application"))  # we called an un-mapped application number
                 return
         app_name=app_map[app_num][0]

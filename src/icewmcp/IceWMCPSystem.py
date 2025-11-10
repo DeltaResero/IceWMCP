@@ -43,14 +43,14 @@ import random,string,copy
 #sys.path.append("/Compile/IceWMCP")
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateHW(somestr))  # from icewmcp_common.py
 
-from icewmcphw import *
-import DndCTree
-from constants import *
+from .icewmcphw import *
+from . import DndCTree
+from .constants import *
 
 
 def getHwIconDir():
@@ -317,7 +317,7 @@ class hardwaregui:
 	"Hotplug":["hotplug"],
 					}
 
-	l=self.mycats.values()
+	l=list(self.mycats.values())
 	self.info={}  # holds all hardware info
 	self.mynodes={}
 	self.hw_real={}
@@ -334,19 +334,19 @@ class hardwaregui:
     def menu_cb(self, appnum, *args):
 	if appnum==530:
 		try:
-			import IceWMCPKeyboard
+			from . import IceWMCPKeyboard
 			IceWMCPKeyboard.run(0)
 		except: 
 			pass
 	if appnum==531:
 		try:
-			import IceWMCPMouse
+			from . import IceWMCPMouse
 			IceWMCPMouse.run(0)
 		except: 
 			pass
 	if appnum==532:
 		try:
-			import IceWMCP_GtkPCCard
+			from . import IceWMCP_GtkPCCard
 			IceWMCP_GtkPCCard.run(0)
 		except: 
 			pass
@@ -442,17 +442,17 @@ class hardwaregui:
 	except:
 		pass
 	try:  # get locale/language
-		if os.environ.has_key("LANG") or os.environ.has_key("LANGUAGE"):
+		if "LANG" in os.environ or "LANGUAGE" in os.environ:
 			ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
 			ADDITIONAL_INFO.append("Model: Language (locale)")
 			ADDITIONAL_INFO.append("Device: Language")
 			ADDITIONAL_INFO.append("Hardware Class: display\n")		
 			vals=['LANG','LANGUAGE']
 			for myval in vals:
-			  if os.environ.has_key(myval):
+			  if myval in os.environ:
 				lang1=os.environ[myval]
 				lang2=None
-				for ii in self.locales.keys():
+				for ii in list(self.locales.keys()):
 					if lang1.lower().find(ii)>-1: 
 						lang2=ii
 						break
@@ -464,7 +464,7 @@ class hardwaregui:
 	except:
 		pass
 	try:  # get display name 
-		if os.environ.has_key("DISPLAY"):
+		if "DISPLAY" in os.environ:
 			ADDITIONAL_INFO.append("[HARDWARE-ENTRY]")
 			ADDITIONAL_INFO.append("Model: X Display")
 			ADDITIONAL_INFO.append("Device: X Display")
@@ -639,11 +639,11 @@ class hardwaregui:
 	if len(args)>1:
 		nodename=self.treeleft.getNodeName(args[1])
 		hw_real=None
-		if self.hw_real.has_key(args[1]): hw_real=self.hw_real[args[1]]
+		if args[1] in self.hw_real: hw_real=self.hw_real[args[1]]
 		#hw_real=args[1].get_data("hw_real")
 		#print "NODE:   "+nodename+"     hw_real:  "+str(hw_real)
 		if not hw_real==None:
-			if self.info.has_key(hw_real):
+			if hw_real in self.info:
 				self.setText("\n "+string.join(self.info[hw_real],"").replace("\n","\n    "))
 
 		else:
@@ -660,7 +660,7 @@ class hardwaregui:
 					pass
 
     def getSpecialIcon(self,hw_list):
-	for ii in self.special_icons.keys():
+	for ii in list(self.special_icons.keys()):
 		if hw_list[0].lower().find(ii)>-1: return getHwIconDir()+self.special_icons[ii]
 		if hw_list[1].lower().find(ii)>-1: return getHwIconDir()+self.special_icons[ii]
 		if hw_list[2].lower().find(ii)>-1: return getHwIconDir()+self.special_icons[ii]
@@ -668,14 +668,14 @@ class hardwaregui:
 	return None
 
     def getIcon(self,hw_cat_str):  # make more specific
-	if self.icons.has_key(hw_cat_str):
+	if hw_cat_str in self.icons:
 		return getHwIconDir()+self.icons[hw_cat_str]
 	eng_cat=hw_cat_str
-	for ii in self.mycats.keys():
+	for ii in list(self.mycats.keys()):
 		if self.mycats[ii]==hw_cat_str:
 			eng_cat=ii
 			break
-	if self.icons.has_key(eng_cat):
+	if eng_cat in self.icons:
 		return getHwIconDir()+self.icons[eng_cat]
 	return getHwIconDir()+"hwunknown.png"
 
@@ -731,7 +731,7 @@ class hardwaregui:
 	rootnode=self.treeleft.init()
 	self.treeleft.connect("tree-select-row",self.click_cb)
 	self.rootnote=rootnode
-	l=self.mynodes.keys()
+	l=list(self.mynodes.keys())
 	l.sort()
 	l.reverse()
 	for ii in l:

@@ -59,7 +59,7 @@
 #############################
 
 #call up common libraries
-from icewmcp_common import *
+from .icewmcp_common import *
 
 class DndCTree(CTree):
 

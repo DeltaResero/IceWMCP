@@ -59,7 +59,7 @@
 #############################
 
 import string, sys
-from constants import *
+from .constants import *
 
 
 class MenuParser:
@@ -156,10 +156,10 @@ def prettyprint(filename):
             return
         else:
             if entry[0] == MENUTREE_SEPARATOR:
-                print "%sseparator" % ("    "*level)
+                print("%sseparator" % ("    "*level))
             elif entry[0] == MENUTREE_SUBMENU_END:
                 level = level - 1
-                print "%s}" % ("    "*level)
+                print("%s}" % ("    "*level))
             elif entry[0] == MENUTREE_UNKNOWN:
                 pass
             else:
@@ -168,11 +168,11 @@ def prettyprint(filename):
                 else:
                     icon = '"' + entry[2] + '" '
                 if entry[0] == MENUTREE_PROG:
-                    print '%sprog "%s" %s%s' % ("    "*level, entry[1], icon, entry[3])
+                    print('%sprog "%s" %s%s' % ("    "*level, entry[1], icon, entry[3]))
                 elif entry[0] == MENUTREE_RESTART:
-                    print '%srestart "%s" %s%s' % ("    "*level, entry[1], icon, entry[3])
+                    print('%srestart "%s" %s%s' % ("    "*level, entry[1], icon, entry[3]))
                 elif entry[0] == MENUTREE_SUBMENU:
-                    print '%smenu "%s" %s{' % ("    "*level, entry[1], icon)
+                    print('%smenu "%s" %s{' % ("    "*level, entry[1], icon))
                     level = level + 1
 
 

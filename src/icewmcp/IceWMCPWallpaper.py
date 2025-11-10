@@ -56,15 +56,15 @@ import math
 from string import atoi
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 
 # import drag-n-drop support, 5.16.2003
-import icewmcp_dnd
-from icewmcp_dnd import *
+from . import icewmcp_dnd
+from .icewmcp_dnd import *
 initColorDrag()      # enable dnd support for 'color buttons'
 addDragSupportColor=icewmcp_dnd.addDragSupportColor
 

@@ -58,12 +58,12 @@
 #	October/November 2003
 #############################
 
-from DndCTree import DndCTree
-from MenuParser import *
-from constants import *
+from .DndCTree import DndCTree
+from .MenuParser import *
+from .constants import *
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateME(somestr))
@@ -149,7 +149,7 @@ class IceMenuTree(DndCTree):
                 parent = parent_stack[-1]
             else:
                 params = (parent, None) + tuple(entry)
-                node = apply(self.__insertNode, params)
+                node = self.__insertNode(*params)
                 if entry[0] == MENUTREE_SUBMENU:
                     parent = node
                     parent_stack.append(parent)

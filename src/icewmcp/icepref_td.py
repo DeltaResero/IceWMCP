@@ -81,11 +81,11 @@
 #############################################
 
 from string import *
-import re,commands,math,icepref_search
-import pangoxlfd
+import re,subprocess,math,icepref_search
+from . import pangoxlfd
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateP(somestr))  # from icewmcp_common.py
@@ -98,8 +98,8 @@ def donada(*args):  # does nothing, just a 'dummy' method for the Splash screen,
 	pass
 
 # import drag-n-drop support, 5.16.2003
-import icewmcp_dnd
-from icewmcp_dnd import *
+from . import icewmcp_dnd
+from .icewmcp_dnd import *
 initColorDrag()      # enable dnd support for 'color buttons'
 addDragSupportColor=icewmcp_dnd.addDragSupportColor
 
@@ -155,28 +155,28 @@ BD = 5
 
 # some environmental variables -- more than are needed, really.
 
-if os.environ.has_key('OSTYPE'):
+if 'OSTYPE' in os.environ:
     OSTYPE   = os.environ['OSTYPE']
 else:
     OSTYPE   = os.uname()[0]
 
-if os.environ.has_key('MACHTYPE'):
+if 'MACHTYPE' in os.environ:
     MACHTYPE = os.environ['MACHTYPE']
 else:
     MACHTYPE = 'i386-pc-linux-gnu'
 
-if os.environ.has_key('HOME'):
+if 'HOME' in os.environ:
     HOME     = os.environ['HOME']
 else:
     import user
     HOME     = user.home
 
-if os.environ.has_key('USER'):
+if 'USER' in os.environ:
     USER     = os.environ['USER']
 else:
     USER = os.uname()[1]
     
-if os.environ.has_key('PATH'):
+if 'PATH' in os.environ:
     PATH     = os.environ['PATH']
 else:
     PATH = ''
@@ -1745,26 +1745,26 @@ class ThemeSel(VBox):
 	    if self.value == '':
 		self.value = self.theme_list[0].path
 	    selval=self.value
-	    if self.t_map.has_key(self.value):
+	    if self.value in self.t_map:
 		previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
 	   	if not self.iprev==None: 
 			self.iprev.update_image(previm)
 	    if self.value.rfind("themes/")>-1:
 	    	shortval=self.value[self.value.rfind("themes/")+len("themes/"):]
-	    	if self.t_map.has_key(shortval):
+	    	if shortval in self.t_map:
 			selval=shortval
 			previm=self.t_map[shortval][0:self.t_map[shortval].rfind(os.sep)+1]+"preview.jpg"
 	   		if not self.iprev==None: 
 				self.iprev.update_image(previm)
-	    if (self.a_map.has_key(self.value)) :	  
+	    if (self.value in self.a_map) :	  
 		if not self.author_entry==None:
 			self.author_entry.set_value(self.a_map[self.value])
-	    if (self.d_map.has_key(self.value)) :	  
+	    if (self.value in self.d_map) :	  
 		if not self.desc_entry==None:
 			self.desc_entry.set_value(self.d_map[self.value])
 	    # added 12.2.2003, Erica Andrews - highlight and scroll to the row of the current theme
 	    try:
-				k=self.t_map.keys()
+				k=list(self.t_map.keys())
 				k.sort()
 				self.CLIST.moveto(k.index(selval),0,0 ,0)
 				self.CLIST.select_row(k.index(selval),0)
@@ -1810,15 +1810,15 @@ class ThemeSel(VBox):
 		
 	def clist_cb(self, widget, row, col, event):
 		self.value = widget.get_row_data(row)
-		if self.t_map.has_key(self.value):
+		if self.value in self.t_map:
 			previm=self.t_map[self.value][0:self.t_map[self.value].rfind(os.sep)+1]+"preview.jpg"
 			#print previm
 			if not self.iprev==None: 
 				self.iprev.update_image(previm)
-		if (self.a_map.has_key(self.value)) :	  
+		if (self.value in self.a_map) :	  
 			if not self.author_entry==None:
 				self.author_entry.set_value(self.a_map[self.value])
-		if (self.d_map.has_key(self.value)) :	  
+		if (self.value in self.d_map) :	  
 			if not self.desc_entry==None:
 				self.desc_entry.set_value(self.d_map[self.value])
 
@@ -1932,7 +1932,7 @@ class Application(Window):
 			'solaris'  : ['Solaris',  'Unix'] }
 	    self.os = 'Linux'
 	    self.distribution = 'Generic'
-	    for os_type in os_list.keys():
+	    for os_type in list(os_list.keys()):
 		if find( MACHTYPE, os_type ) != -1:
 		    self.distribution = os_list[os_type][0]
 		    self.os = os_list[os_type][1]
@@ -1959,7 +1959,7 @@ class Application(Window):
 						self.widget_dict[widget].iprev.update_image(CONFIG_THEME_PATH+self.settings[widget][VALUE].replace("\"",""))
 			except:
 				pass
-		for widget in self.widget_dict.keys():
+		for widget in list(self.widget_dict.keys()):
 			try:
 				if not self.settings[widget][TYPE]==IMAGE_WIDGET: continue
 				self.widget_dict[widget].set_value("\""+CONFIG_THEME_PATH+self.widget_dict[widget].get_data("my_image")+"\"")
@@ -2017,7 +2017,7 @@ class Application(Window):
 	    # check for a matching option in self.settings.  If there
 	    # is no matching option, report it and record it.  If there is a matching option,
 	    # set that option in self.settings to the value from current.
-	    for option in current.keys():
+	    for option in list(current.keys()):
 		if option in ORDER:
 			# added 1.26.2003 - dont erase default value if the current value is set to nothing (i.e. "")
 			self.settings[option][VALUE] = current[option]
@@ -2059,7 +2059,7 @@ class Application(Window):
 				# this sets up the comment descriptor, which is the same
 				# as the label text.
 				comment = '# ' + self.settings[name][TITLE] + '\n'
-				if self.widget_dict.has_key(name):
+				if name in self.widget_dict:
 					line = name + '=' + self.widget_dict[name].get_value() + string + '\n'
 					if name.endswith("FontName"):
 						line=line+name+'Xft="'+XLFD2Xft(self.widget_dict[name].get_value())+'"\n'
@@ -2075,7 +2075,7 @@ class Application(Window):
 						if not os.path.exists(CONFIG_THEME_PATH+self.widget_dict[name].get_value()):
 							line="# "+line
 				else:
-					if self.settings.has_key(name):  # added 5.5.2003, fall back to default
+					if name in self.settings:  # added 5.5.2003, fall back to default
 						line = name + '=' + str(self.settings[name][VALUE]) + string + '\n'
 						if name.endswith("FontName"):
 							line=line+name+'Xft="'+XLFD2Xft(str(self.settings[name][VALUE]))+'"\n'
@@ -2188,7 +2188,7 @@ class Application(Window):
 
 					]
 					
-		ikeys=self.my_tabs.keys()
+		ikeys=list(self.my_tabs.keys())
 		ikeys.sort()
 		for ii in ikeys:
 			menu_items.append((_('/_Category/')+ii, None, self.switchTab, self.my_tabs[ii], ''))

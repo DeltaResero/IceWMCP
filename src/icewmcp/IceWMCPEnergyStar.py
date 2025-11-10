@@ -37,7 +37,7 @@
 #############################################
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
@@ -177,11 +177,11 @@ class energywin:
 		standby=0
 		suspend=0
 		compoff=0
-		if self.times.has_key(self.combos[0].entry.get_text()): 
+		if self.combos[0].entry.get_text() in self.times: 
 			standby=self.times[self.combos[0].entry.get_text()]
-		if self.times.has_key(self.combos[1].entry.get_text()): 
+		if self.combos[1].entry.get_text() in self.times: 
 			suspend=self.times[self.combos[1].entry.get_text()]
-		if self.times.has_key(self.combos[2].entry.get_text()): 
+		if self.combos[2].entry.get_text() in self.times: 
 			compoff=self.times[self.combos[2].entry.get_text()]
 		enline="xset dpms "+str(standby)+" "+str(suspend)+" "+str(compoff)
 		#print "CMDLINE:  "+enline

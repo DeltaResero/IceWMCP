@@ -62,15 +62,15 @@
 import time
 
 #set translation support
-import icewmcp_common
-from icewmcp_common import *
+from . import icewmcp_common
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
 
 icewmcp_common.NOSPLASH=1  # disable splash window from icepref_td,icepref
 
-import icepref
+from . import icepref
 
 global ICE_TAB
 ICE_TAB=None
@@ -313,7 +313,7 @@ class keypanel:
 	self.mykeys=self.get_keys()
 	self.display_keys(self.mykeys)
 	self.new_key()
-	if len(self.mykeys.keys())>0:
+	if len(list(self.mykeys.keys()))>0:
 		self.clist.select_row(0,0)
 	self.setStatus(_("Ready."))
 
@@ -340,7 +340,7 @@ class keypanel:
 
     def set_key(self,*args):
 	if self.current_key==None: return
-	if not self.mykeys.has_key(self.current_key):
+	if self.current_key not in self.mykeys:
 		msg_warn(DIALOG_TITLE,_("This key does not exist.\nPlease create it by clicking the 'New Key' button."))	
 		return
 	if not len(self.progentry.get_text().strip())>0:
@@ -352,7 +352,7 @@ class keypanel:
 	self.new_key(1)
 	self.setStatus(_("Modified."))
 	try:
-		l=self.mykeys.keys()
+		l=list(self.mykeys.keys())
 		l.sort()
 		self.clist.select_row(l.index(self.current_key),0)
 		self.clist.moveto(l.index(self.current_key),0,0,0)
@@ -366,7 +366,7 @@ class keypanel:
 	if not len(self.progentry.get_text().strip())>0:
 		msg_warn(DIALOG_TITLE,_("You must specify a program for this key combination")+":\n"+s)	
 		return
-	if self.mykeys.has_key(s):
+	if s in self.mykeys:
 		msg_warn(DIALOG_TITLE,_("The key '")+s+_("' already exists and\ntriggers the program: ")+self.mykeys[s]+"\n\n"+_("You must either delete the existing key,\nor change the existing key's action using 'Set'."))
 		return
 	self.clist.freeze()
@@ -374,7 +374,7 @@ class keypanel:
 	self.display_keys(self.mykeys)
 	self.setStatus(_("Modified."))
 	try:
-		l=self.mykeys.keys()
+		l=list(self.mykeys.keys())
 		l.sort()
 		self.clist.select_row(l.index(s),0)
 		self.clist.moveto(l.index(s),0,0,0)
@@ -388,7 +388,7 @@ class keypanel:
 	try:
 		if msg_confirm(DIALOG_TITLE,_("Are you sure you want to delete this key?")+"\n\n"+self.current_key+"\n"+self.mykeys[self.current_key])==1:
 
-			l=self.mykeys.keys()
+			l=list(self.mykeys.keys())
 			l.sort()
 			prev_row=l.index(self.current_key)-1
 
@@ -456,7 +456,7 @@ class keypanel:
 	
 
     def display_keys(self,key_dict):
-	klist=key_dict.keys()
+	klist=list(key_dict.keys())
 	klist.sort()
 	self.clist.freeze()
 	self.clist.clear()	
@@ -563,7 +563,7 @@ class keypanel:
     def doSave(self,*args):
 	try:
 		f=open(self.preffile,"w")
-		flist=self.mykeys.keys()
+		flist=list(self.mykeys.keys())
 		flist.sort()
 		wrotex=0
 		f.write(self.start_comment)

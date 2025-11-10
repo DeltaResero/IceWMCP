@@ -45,7 +45,7 @@
 #############################################
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
 
 def _(somestr):
 	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
@@ -74,7 +74,7 @@ def showAbout(message_text,myappname="PyPrint"):
 
 def readOSLines(os_popen_cmd):
 	try:
-		return list(os.popen(str(os_popen_cmd)).xreadlines())
+		return list(os.popen(str(os_popen_cmd)))
 	except:
 		return []
 
@@ -90,7 +90,7 @@ def getPrinterNames() :
 	return printers
 
 def isOnPath(binary):
-  if os.environ.has_key("PATH"):
+  if "PATH" in os.environ:
     paths=os.environ["PATH"].split(":")
     for i in paths:
       p=i

@@ -61,7 +61,8 @@
 import glob, string
 
 #set translation support
-from icewmcp_common import *
+from .icewmcp_common import *
+from functools import cmp_to_key
 
 def _(somestr):
 	return to_utf8(translateME(somestr))
@@ -385,28 +386,28 @@ def create_dlg():
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-10]
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "mini", "*.xpm"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "*.xpm"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 icons[name] = filename
         xpmfiles = glob.glob(os.path.join(dir, "*.png"))
         for filename in xpmfiles:
             #name = os.path.basename(filename)[:-4]
 	    name=filename
-            if not icons.has_key(name):
+            if name not in icons:
                 icons[name] = filename
-    picturelist = icons.items()
-    picturelist.sort(lambda a,b: cmp(a[0],b[0]))
+    picturelist = list(icons.items())
+    picturelist.sort(key=cmp_to_key(lambda a,b: cmp(a[0],b[0])))
     # create IconSelectionDialog:
     class MyIconSelectionDialog(IconSelectionDialog):
         def getPictureList(self):

@@ -53,7 +53,7 @@
 #	October/November 2003
 #############################
 
-from icewmcp_common import *
+from .icewmcp_common import *
 
 import types, string, signal, copy, time
 from threading import RLock, Thread
@@ -153,30 +153,30 @@ def getSuggestedCommandLine(*args):
      def_se=getServerExec()+" --interface=ESD --server=localhost:16001 -v  --sample-dir="+wavd+" &"
    try:
      se=getServerExec()+" "
-     if audio_defaults.has_key("interface"):
+     if "interface" in audio_defaults:
        iface=str(audio_defaults["interface"]).lower()
        se=se+"--interface="+iface.upper()
        if iface=="oss":
-         if audio_defaults.has_key("oss_dev"): se=se+" --device="+str(audio_defaults["oss_dev"])
+         if "oss_dev" in audio_defaults: se=se+" --device="+str(audio_defaults["oss_dev"])
        if iface=="esd":
 	 is_loc=0
-	 if audio_defaults.has_key("esd_local"):
+	 if "esd_local" in audio_defaults:
 		if str(audio_defaults["esd_local"])=="1": 
 			is_loc=1
 	 if is_loc==0:
-         	if audio_defaults.has_key("esd_host"): 
+         	if "esd_host" in audio_defaults: 
 			se=se+" --server="+str(audio_defaults["esd_host"])+":"
-         		if audio_defaults.has_key("esd_port"): 
+         		if "esd_port" in audio_defaults: 
            			se=se+str(audio_defaults["esd_port"])
         	 	else:
            			se=se+"16001"
        if iface=="yiff":
-         if audio_defaults.has_key("yiff_host"): se=se+"  --server="+str(audio_defaults["yiff_host"])+":"
-         if audio_defaults.has_key("yiff_port"): 
+         if "yiff_host" in audio_defaults: se=se+"  --server="+str(audio_defaults["yiff_host"])+":"
+         if "yiff_port" in audio_defaults: 
            se=se+str(audio_defaults["yiff_port"])
          else:
            se=se+"9433"
-         if audio_defaults.has_key("yiff_auto"): 
+         if "yiff_auto" in audio_defaults: 
            if str(audio_defaults["yiff_auto"])=="1":
              se=se+" --audio-mode-auto"
        return se+" -v --sample-dir="+wavd+" &"
@@ -311,7 +311,7 @@ class icewindow :
 
 	eventcombo = Combo ()
         global event_desc
-        el=event_desc.keys()
+        el=list(event_desc.keys())
         el.sort()
         eventcombo.set_popdown_strings(el)
 	eventcombo.set_border_width ( 3)
@@ -823,7 +823,7 @@ def setWavDir(wdir,*args):
     serr=[]
     showStatus(_("Updating Wav Storage Directory..."))
     try:  # try to delete any old sound event files in the new wav_directory
-      s=sound_events.keys()
+      s=list(sound_events.keys())
       for i in s:
         try:
           f=os.popen("rm -f "+wdir+s+".wav > /dev/null")
@@ -841,7 +841,7 @@ def setWavDir(wdir,*args):
     except:
       pass
     try:  # transfer the new sound events to new directory
-      s=sound_events.keys()
+      s=list(sound_events.keys())
       for i in s:
         try:
           stat=setSoundForEvent(i,sound_events[i],0,0,1)
@@ -972,10 +972,10 @@ class themewindow  :
 	self.filecombo = filecombo
 	file_entry = filecombo.entry
         if len(themes):
-          tf=themes.values()
+          tf=list(themes.values())
           tf.sort()
           filecombo.set_popdown_strings(copy.copy(tf))
-          tf=themes.keys()
+          tf=list(themes.keys())
           tf.sort()
           namecombo.set_popdown_strings(copy.copy(tf))
 	tips.set_tip (file_entry, _("Theme files"))
@@ -1077,7 +1077,7 @@ def saveThemeFile(*args):
       try:
         f=open(remove_utf8(str(current_theme_file)),"w")
         f.write("# Ice Sound Manager "+ism_version+" Sound Theme\n# The line below is necessary for Ice Sound Manager to identify this as a legitimate theme.\n# Include NO spaces at the end of the next 2 lines. Comments must be on their OWN line.\nTYPE=PhrozenSoundTheme\nThemeName="+remove_utf8(current_theme)+"\nstartup="+getSoundForEvent("startup",3)+"\nshutdown="+getSoundForEvent("shutdown",3)+"\nrestart="+getSoundForEvent("restart",3)+"\ncloseAll="+getSoundForEvent("closeAll",3)+"\nlaunchApp="+getSoundForEvent("launchApp",3)+"\nworkspaceChange="+getSoundForEvent("workspaceChange",3)+"\nwindowOpen="+getSoundForEvent("windowOpen",3)+"\nwindowClose="+getSoundForEvent("windowClose",3)+"\ndialogOpen="+getSoundForEvent("dialogOpen",3)+"\ndialogClose="+getSoundForEvent("dialogClose",3)+"\nwindowMin="+getSoundForEvent("windowMin",3)+"\nwindowMax="+getSoundForEvent("windowMax",3)+"\nwindowRestore="+getSoundForEvent("windowRestore",3)+"\nwindowHide="+getSoundForEvent("windowHide",3)+"\nwindowLower="+getSoundForEvent("windowLower",3)+"\nwindowRollup="+getSoundForEvent("windowRollup",3)+"\nwindowSized="+getSoundForEvent("windowSized",3)+"\nwindowMoved="+getSoundForEvent("windowMoved",3)+"\nstartMenu="+getSoundForEvent("startMenu",3)+"\n")
-        for y in disabled_sounds.keys():
+        for y in list(disabled_sounds.keys()):
           f.write(str(y)+"=[DISABLED]\n")
         f.flush()
         f.close()
@@ -1091,7 +1091,7 @@ def saveThemeFile(*args):
 def disableSoundEvent(sevt,refresh=1,doSave=1,doCheck=1,quiet=0,*args):
    global sound_events
    global disabled_sounds
-   if sound_events.has_key(str(sevt)):
+   if str(sevt) in sound_events:
      disabled_sounds[str(sevt)]=str(sevt)
      try:
        i=setSoundForEvent(str(sevt),getSoundForEvent(str(sevt)),refresh,doSave,doCheck)
@@ -1101,7 +1101,7 @@ def disableSoundEvent(sevt,refresh=1,doSave=1,doCheck=1,quiet=0,*args):
        pass
 
 def enableSoundEvent(sevt,*args):
-   if disabled_sounds.has_key(str(sevt)):
+   if str(sevt) in disabled_sounds:
      del disabled_sounds[str(sevt)]
      try:
        i=setSoundForEvent(str(sevt),getSoundForEvent(str(sevt)))
@@ -1119,11 +1119,11 @@ def checkEnable(*args):
 
 def isDisabled(sevt,*args):
    global disabled_sounds
-   return disabled_sounds.has_key(str(sevt))
+   return str(sevt) in disabled_sounds
 
 def getSoundForEvent(sevt,fixit=0,*args):
    global sound_events
-   if sound_events.has_key(str(sevt)):
+   if str(sevt) in sound_events:
      iisound=str(sound_events[str(sevt)])
      if fixit==3: 
 	if iisound==_("[NONE]"): iisound="[NONE]" # ignore foreign language and save in English
@@ -1134,7 +1134,7 @@ def setSoundForEvent(sevt,sfile,refresh=1,doSave=1,doCheck=1,*args):
    global wav_dir
    global copy_wavs
    global disabled_sounds
-   if sound_events.has_key(str(sevt)):
+   if str(sevt) in sound_events:
      if str(sfile).strip():
        sound_events[str(sevt)]=str(sfile).strip()
        if doSave: 
@@ -1148,7 +1148,7 @@ def setSoundForEvent(sevt,sfile,refresh=1,doSave=1,doCheck=1,*args):
        if not wavd.endswith("/") : wavd=wavd+"/"
        try:
          deregisterWav(wavd+str(sevt).strip()+".wav") # erase old file
-         if disabled_sounds.has_key(str(sevt)) or str(sfile)==_("[NONE]"): 
+         if str(sevt) in disabled_sounds or str(sfile)==_("[NONE]"): 
            if refresh:  refreshServer()
            if not doCheck: return 1
            return fileExists(wavd+str(sevt).strip()+".wav")==0  #done removing/disabling
@@ -1187,7 +1187,7 @@ def deregisterWav(wavFile):
 
 def getSoundEventForDesc(desc,*args):
    global event_desc
-   if event_desc.has_key(str(desc).strip()):
+   if str(desc).strip() in event_desc:
      return str(event_desc[str(desc).strip()])
 
 
@@ -1382,13 +1382,13 @@ def loadTheme(fname,quiet=0,refresh=1,*args):
                else: 
                  if propval.upper()=="[DISABLED]":
                    disableSoundEvent(propname,0,0,0,1)
-                   if s.has_key(propname): del s[propname]
+                   if propname in s: del s[propname]
                  else: 
                    sstat=setSoundForEvent(propname,checkFile(_(propval)),0,0,1) # dont refresh, save, or check while loading
-                   if s.has_key(propname): del s[propname]
+                   if propname in s: del s[propname]
                    if not sstat:  serrors.append(propname+"  :    "+propval)
      if len(s): # any unaccounted for sounds get set to None
-       for i in s.keys():
+       for i in list(s.keys()):
          sstat=setSoundForEvent(i,_("[NONE]"),0,0,0)
      associateTheme(current_theme,current_theme_file)
      refreshServer()
@@ -1409,7 +1409,7 @@ def updateThemes(*args):
    global current_theme
    if  len(themes):
      try: 
-       l=themes.keys()
+       l=list(themes.keys())
        l.sort()
        icey.themelist.set_popdown_strings(l)
        icey.themelist.show_all()
@@ -1448,7 +1448,7 @@ def selectTheme(*args):
     global themes
     t=icey.themetext.get_text()
     if not t==_("[NONE]"):
-      if themes.has_key(t):
+      if t in themes:
         loadTheme(themes[t],0,1)
     return TRUE
 
@@ -1617,7 +1617,7 @@ def saveAudioOptions(*args):
        f=open(audio_file,"w")
        f.write("")
        f.write("# Ice Sound Manager "+ism_version+" audio interface preferences\n# DO NOT EDIT!\n")
-       for i in audio_defaults.keys():
+       for i in list(audio_defaults.keys()):
          f.write(str(i).strip().lower()+"="+str(audio_defaults[i]).strip().lower()+"\n")
        f.flush()
        f.close()
@@ -1649,7 +1649,7 @@ def showAudioHelp(*args):
 
 def setAudioProp(propname,propval):
    global audio_defaults
-   if audio_defaults.has_key(str(propname).strip().lower()):
+   if str(propname).strip().lower() in audio_defaults:
      if str(propval).strip():
        audio_defaults[str(propname).strip().lower()]=str(propval).strip().lower()
 
@@ -1800,10 +1800,10 @@ def setupFiles(*args):
   global audio_file
   global pref_file
   global xterm
-  if os.environ.has_key("HOME"):
+  if "HOME" in os.environ:
     audio_file=os.path.join(str(os.environ["HOME"]),".IceSoundManagerAudioRC")
     pref_file=os.path.join(str(os.environ["HOME"]),".IceSoundManagerRC")
-  if os.environ.has_key("TERM"):
+  if "TERM" in os.environ:
     if str(os.environ["TERM"]).strip():
       xterm=str(os.environ["TERM"])
 
