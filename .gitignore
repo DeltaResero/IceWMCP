@@ -108,6 +108,7 @@ ncscope.*
 .mypy_cache/
 .pyre/
 .pytype/
+.venv/
 cython_debug/
 *.bak
 *.orig
