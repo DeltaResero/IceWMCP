@@ -1,208 +1,216 @@
-#! /usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-#############################
-#  IceWM Control Panel - Energy Star 
-#  
-#  Copyright (c) 2003-2004
-#  Erica Andrews
-#  PhrozenSmoke ['at'] yahoo.com
-#  http://icesoundmanager.sourceforge.net
-#  
-#  A simple Gtk-based application for managing
-#  Energy Star/DPMS features through xset.
-#  
-#  This program is distributed free
-#  of charge (open source) under the GNU
-#  General Public License
-#############################
-#############################################
-#	This program is free software; you can redistribute
-#	it and/or modify it under the terms of the GNU 
-#	General Public License as published by the 
-#	Free Software Foundation; either version 2 of the
-#	License, or (at your option) any later version.
+################################################################################
+#  IceWMCP-EnergyStar: A utility to manage Energy Star (DPMS) settings.
 #
-#	This program is distributed in the hope that it will 
-#	be useful, but WITHOUT ANY WARRANTY; 
-#	without even the implied warranty of 
-#	MERCHANTABILITY or FITNESS FOR A 
-#	PARTICULAR PURPOSE.
+#  Copyright (c) 2003-2004, Erica Andrews
+#  Copyright (c) 2025, DeltaResero
 #
-#	You should have received a copy of the GNU 
-#	General Public License along with this program; 
-#	if not, write to the Free Software Foundation, Inc., 
-#	59 Temple Place - Suite 330, Boston, MA 
-#	02111-1307, USA.
-#############################################
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  SPDX-License-Identifier: GPL-2.0-or-later
+################################################################################
 
-#set translation support
-from .icewmcp_common import *
+import tkinter as tk
+from tkinter import ttk, messagebox
+import subprocess
+import re
+import sys
+import os
 
-def _(somestr):
-	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
-
-
-
-class energywin:
-    def __init__(self) :
-	self.version=this_software_version
-	global WMCLASS
-	WMCLASS="icewmcpEnergyStar"
-	global WMNAME
-	WMNAME="IceWMCPEnergyStar"
-	energywin=Window(WINDOW_TOPLEVEL)
-	set_basic_window_icon(energywin)
-	energywin.set_wmclass(WMCLASS,WMNAME)
-	energywin.realize()
-	energywin.set_title("IceWM CP - Energy Star "+self.version)
-	energywin.set_position(WIN_POS_CENTER)
-	self.energywin=energywin
-
-	menu_items = [
-				(_('/_File'), None, None, 0, '<Branch>'),
- 				(_("/_File")+"/_"+FILE_RUN,"<control>R", rundlg,421,""),
-  				(_("/_File")+"/_"+_("Check for newer versions of this program..."), "<control>U", checkSoftUpdate,420,""),
-				(_('/File/sep2'), None, None, 2, '<Separator>'),
-				(_('/File/_Exit'), '<control>Q', self.doQuit, 0, ''),
-				(_('/_Help'), None, None, 0, '<LastBranch>'),
-				(_('/Help/_About...'), "F2", self.do_about, 0, ''),
-				(_("/_Help")+"/_"+APP_HELP_STR, "F4", displayHelp,5015, ""),
-  				(_("/_Help")+"/_"+CONTRIBUTORS+"...", "F3", show_credits,913, ""),
-  				(_("/_Help")+"/_"+BUG_REPORT_MENU+"...", "F5", file_bug_report,5015, ""),
-					]
-
-	ag = AccelGroup()
-	self.ag=ag
-	itemf = ItemFactory(MenuBar, '<main>', ag)
-	self.itemf=itemf
-	energywin.add_accel_group(ag)
-	itemf.create_items(menu_items)
-	self.menubar = itemf.get_widget('<main>')
-	mainvbox1=VBox(0,1)
-	mainvbox=VBox(0,1)
-	mainvbox1.pack_start(self.menubar,0,0,0)
-	mainvbox1.pack_start(mainvbox,1,1,0)
-	mainvbox.set_border_width(4)
-	mainvbox.set_spacing(4)
-	mainvbox.pack_start(getImage(getBaseDir()+"icewmcp.png",DIALOG_TITLE),0,0,2)
-	mainvbox.pack_start(Label("Energy Star  (DPMS)"),0,0,1)	
+# This block allows the script to be run standalone for testing.
+try:
+    # Standard relative import for when the app is run as a package.
+    from .icewmcp_common import get_data_path
+except ImportError:
+    # Fallback for standalone execution. Adds the parent 'src' directory
+    # to the path to allow finding the 'icewmcp' package.
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    from icewmcp.icewmcp_common import get_data_path
 
 
-	self.onoff=CheckButton(" "+_("Enable Energy Star Features"))
-	TIPS.set_tip(self.onoff,_("Enable Energy Star Features"))
-	mainvbox.pack_start(self.onoff,0,0,3)
-	self.onoff.set_active(1)
+class EnergyStarApp:
+    """A Tkinter application for managing DPMS (Energy Star) settings via xset."""
 
-	self.times={
-		_("NEVER"):0,
-		"5 "+_("minutes"):5*60,
-		"10 "+_("minutes"):10*60,
-		"15 "+_("minutes"):15*60,
-		"20 "+_("minutes"):20*60,
-		"30 "+_("minutes"):30*60,
-		"45 "+_("minutes"):45*60,
-		"1 "+_("hour"):60*60,
-		"1.5 "+_("hours"):90*60,
-		"2 "+_("hours"):120*60,
-		"3 "+_("hours"):180*60,
-		"4 "+_("hours"):240*60,
-		"5 "+_("hours"):300*60,
-		"6 "+_("hours"):360*60,
-		"9 "+_("hours"):540*60,
-		"12 "+_("hours"):720*60,
-		"18 "+_("hours"):1080*60,
-		"24 "+_("hours"):1440*60,
-				}
+    def __init__(self, root):
+        self.root = root
+        self.root.title("IceWM CP - Energy Star")
+        self.root.protocol("WM_DELETE_WINDOW", self.root.destroy)
+        self.root.resizable(False, False)
 
-	timeorder=[
-		_("NEVER"),
-		"5 "+_("minutes"),
-		"10 "+_("minutes"),
-		"15 "+_("minutes"),
-		"20 "+_("minutes"),
-		"30 "+_("minutes"),
-		"45 "+_("minutes"),
-		"1 "+_("hour"),
-		"1.5 "+_("hours"),
-		"2 "+_("hours"),
-		"3 "+_("hours"),
-		"4 "+_("hours"),
-		"5 "+_("hours"),
-		"6 "+_("hours"),
-		"9 "+_("hours"),
-		"12 "+_("hours"),
-		"18 "+_("hours"),
-		"24 "+_("hours"),
-				]
+        # --- Data Mapping (as in the original PyGtk2 version) ---
+        self.times = {
+            "NEVER": 0, "5 minutes": 300, "10 minutes": 600, "15 minutes": 900,
+            "20 minutes": 1200, "30 minutes": 1800, "45 minutes": 2700,
+            "1 hour": 3600, "1.5 hours": 5400, "2 hours": 7200,
+            "3 hours": 10800, "4 hours": 14400, "5 hours": 18000,
+            "6 hours": 21600, "9 hours": 32400, "12 hours": 43200,
+            "18 hours": 64800, "24 hours": 86400
+        }
+        self.time_order = list(self.times.keys())
+        self.seconds_to_string = {v: k for k, v in self.times.items()}
 
-	self.combos=[]
-	dpms=[_("'Standby' after being idle for"),_("Suspend the computer after"),_("Turn the computer off after")]
+        # --- UI Construction ---
+        main_frame = ttk.Frame(self.root, padding="10")
+        main_frame.pack(expand=True, fill='both')
 
-	for ii in dpms:
-		combo=Combo()
-		combo.entry.set_editable(0)
-		combo.set_popdown_strings(timeorder)
-		self.combos.append(combo)
-		hbox=HBox(0,0)
-		hbox.pack_start(Label(ii),0,0,0)
-		hbox.pack_start(Label(":  "),1,1,0)
-		hbox.pack_start(combo,0,0,0)
-		mainvbox.pack_start(hbox,0,0,1)
+        try:
+            self.logo_image = tk.PhotoImage(file=get_data_path('pixmaps/icewmcp.png'))
+            ttk.Label(main_frame, image=self.logo_image).pack(pady=5)
+        except Exception as e:
+            print(f"Warning: Could not load logo image. {e}", file=sys.stderr)
 
-	mainvbox.pack_start(Label("  "),0,0,2)
-	botbox=HBox(0,0)
-	botbox.set_border_width(3)
-	appbutt=getPixmapButton(None, STOCK_APPLY ,_("Apply"))
-	closebutt=getPixmapButton(None, STOCK_CANCEL ,_("Close"))
-	botbox.pack_start(appbutt,1,1,0)
-	botbox.pack_start(Label("          "),0,0,0)
-	botbox.pack_start(closebutt,1,1,0)
-	mainvbox.pack_start(botbox,0,0,2)
-	appbutt.connect("clicked",self.apply_settings)
-	closebutt.connect("clicked",self.doQuit)
-	TIPS.set_tip(closebutt,_("Close"))
-	TIPS.set_tip(appbutt,_("Apply"))
+        ttk.Label(main_frame, text="Energy Star (DPMS)", font=("-weight", "bold")).pack()
 
-	energywin.add(mainvbox1)
-	energywin.connect("destroy",self.doQuit)
-	#energywin.set_default_size(450,375)
-	energywin.show_all()
+        self.enabled_var = tk.BooleanVar()
+        self.on_off_check = ttk.Checkbutton(
+            main_frame,
+            text="Enable Energy Star Features",
+            variable=self.enabled_var,
+            command=self.update_widget_states
+        )
+        self.on_off_check.pack(pady=10)
 
-    def apply_settings(self,*args) :
-	if self.onoff.get_active():
-		# turn Energy Star features on
-		os.popen("xset +dpms")
+        settings_frame = ttk.Frame(main_frame, padding=5)
+        settings_frame.pack(pady=5, fill='x', expand=True)
+        self.combos = {}
+        labels = ["'Standby' after idle for:", "Suspend after idle for:", "Turn monitor off after:"]
+        keys = ["standby", "suspend", "off"]
 
-		standby=0
-		suspend=0
-		compoff=0
-		if self.combos[0].entry.get_text() in self.times: 
-			standby=self.times[self.combos[0].entry.get_text()]
-		if self.combos[1].entry.get_text() in self.times: 
-			suspend=self.times[self.combos[1].entry.get_text()]
-		if self.combos[2].entry.get_text() in self.times: 
-			compoff=self.times[self.combos[2].entry.get_text()]
-		enline="xset dpms "+str(standby)+" "+str(suspend)+" "+str(compoff)
-		#print "CMDLINE:  "+enline
-		os.popen(enline)
+        for key, label_text in zip(keys, labels):
+            row_frame = ttk.Frame(settings_frame)
+            row_frame.pack(fill='x', pady=2)
+            ttk.Label(row_frame, text=label_text).pack(side='left')
+            combo = ttk.Combobox(row_frame, values=self.time_order, state='readonly', width=12)
+            combo.pack(side='right')
+            self.combos[key] = combo
 
-	else:  # turn EnergyStar features off
-		os.popen("xset -dpms")
+        button_frame = ttk.Frame(main_frame, padding=(0, 10, 0, 0))
+        button_frame.pack(fill='x', expand=True)
 
+        self.about_button = ttk.Button(button_frame, text="About", command=self.do_about)
+        self.about_button.pack(side='left', expand=True, fill='x', padx=2)
 
-    def doQuit(self,*args) :
-	gtk.mainquit()
+        self.reset_button = ttk.Button(button_frame, text="Reset", command=self.set_initial_values)
+        self.reset_button.pack(side='left', expand=True, fill='x', padx=2)
 
-    def do_about(self,*args):
-	commonAbout(_("About")+" IceWMCP - Energy Star  "+self.version,  "IceWMCP - Energy Star "+self.version+"\n\n"+_("A simple Gtk-based application for managing Energy Star/DPMS features through xset."))	
+        self.apply_button = ttk.Button(button_frame, text="Apply", command=self.apply_settings)
+        self.apply_button.pack(side='left', expand=True, fill='x', padx=2)
 
-def run() :
-	energywin()
-	hideSplash()
-	gtk.mainloop()
+        self.close_button = ttk.Button(button_frame, text="Close", command=self.root.destroy)
+        self.close_button.pack(side='left', expand=True, fill='x', padx=2)
 
-if __name__== "__main__" :
-	run()
+        self.set_initial_values()
+        self.center_window()
 
+        # Run environment check after UI is built
+        self._check_environment()
 
+    def _check_environment(self):
+        """Check for incompatible environments like Wayland and notify the user."""
+        if os.environ.get("XDG_SESSION_TYPE") == "wayland":
+            messagebox.showerror(
+                "Unsupported Environment",
+                "This tool relies on the 'xset' command, which is not supported in a native Wayland session.\n\n"
+                "Controls will be disabled."
+            )
+            # Disable all controls that modify settings
+            self.on_off_check.config(state='disabled')
+            self.reset_button.config(state='disabled')
+            self.apply_button.config(state='disabled')
+            for combo in self.combos.values():
+                combo.config(state='disabled')
+
+    def center_window(self):
+        """Center the application window on the screen."""
+        self.root.update_idletasks()
+        width = self.root.winfo_width()
+        height = self.root.winfo_height()
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (height // 2)
+        self.root.geometry(f'{width}x{height}+{x}+{y}')
+
+    def get_current_settings(self):
+        """Query xset for current DPMS settings and return them in a dictionary."""
+        settings = {'enabled': False, 'standby': 0, 'suspend': 0, 'off': 0}
+        try:
+            result = subprocess.run(['xset', 'q'], capture_output=True, text=True, check=True)
+            output = result.stdout
+            settings['enabled'] = "DPMS is Enabled" in output
+            values_match = re.search(r"Standby:\s+(\d+)\s+Suspend:\s+(\d+)\s+Off:\s+(\d+)", output)
+            if values_match:
+                settings['standby'] = int(values_match.group(1))
+                settings['suspend'] = int(values_match.group(2))
+                settings['off'] = int(values_match.group(3))
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            # No need for a message box here, as the startup check will have already warned the user
+            pass
+        return settings
+
+    def set_initial_values(self):
+        """Populate all UI widgets with the current system state."""
+        settings = self.get_current_settings()
+        self.enabled_var.set(settings['enabled'])
+        for key, combo in self.combos.items():
+            seconds = settings.get(key, 0)
+            combo.set(self.seconds_to_string.get(seconds, "NEVER"))
+        self.update_widget_states()
+
+    def update_widget_states(self):
+        """Enable or disable comboboxes based on the main 'Enable' checkbox."""
+        # Don't do anything if controls are already disabled by the environment check
+        if self.apply_button['state'] == 'disabled':
+            return
+        state = 'readonly' if self.enabled_var.get() else 'disabled'
+        for combo in self.combos.values():
+            combo.config(state=state)
+
+    def apply_settings(self):
+        """Apply the selected settings to the system using the 'xset' command."""
+        try:
+            if self.enabled_var.get():
+                standby = self.times[self.combos['standby'].get()]
+                suspend = self.times[self.combos['suspend'].get()]
+                off = self.times[self.combos['off'].get()]
+                subprocess.run(['xset', '+dpms'], check=True)
+                subprocess.run(['xset', 'dpms', str(standby), str(suspend), str(off)], check=True)
+                messagebox.showinfo("Success", "Energy Star settings have been applied.")
+            else:
+                subprocess.run(['xset', '-dpms'], check=True)
+                messagebox.showinfo("Success", "Energy Star features have been disabled.")
+        except (FileNotFoundError, subprocess.CalledProcessError) as e:
+            messagebox.showerror("Error", f"Failed to apply settings:\n{e}")
+        finally:
+            self.set_initial_values()
+
+    def do_about(self):
+        """Displays the standard About dialog with updated attribution."""
+        messagebox.showinfo(
+            "About IceWMCP Energy Star",
+            "IceWMCP Energy Star\n\n"
+            "Copyright (c) 2003-2004, Erica Andrews\n"
+            "Tkinter Port (c) 2025, DeltaResero\n\n"
+            "A simple application for managing Energy Star (DPMS) features."
+        )
+
+if __name__ == '__main__':
+    try:
+        root = tk.Tk()
+        try:
+            icon_path = get_data_path('icons/icewmcp-energystar.png')
+            if os.path.exists(icon_path):
+                 img = tk.PhotoImage(file=icon_path)
+                 root.tk.call('wm', 'iconphoto', root._w, img)
+        except Exception as e:
+            print(f"Warning: Could not set window icon. {e}", file=sys.stderr)
+        app = EnergyStarApp(root)
+        root.mainloop()
+    except Exception as e:
+        messagebox.showerror("Fatal Error", f"An unexpected error occurred on startup:\n{e}")
+        sys.exit(1)
+
+# EOF
