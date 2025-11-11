@@ -38,9 +38,11 @@ class EnergyStarApp:
 
     def __init__(self, root):
         self.root = root
-        self.root.title("IceWM CP - Energy Star")
+
+        # --- Window Setup ---
+        self.root.title("IceWM CP - Monitor Energy Saving")
         self.root.protocol("WM_DELETE_WINDOW", self.root.destroy)
-        self.root.resizable(False, False)
+        self.root.resizable(False, False) # Disable resizing
 
         # --- Data Mapping (as in the original PyGtk2 version) ---
         self.times = {
@@ -64,12 +66,12 @@ class EnergyStarApp:
         except Exception as e:
             print(f"Warning: Could not load logo image. {e}", file=sys.stderr)
 
-        ttk.Label(main_frame, text="Energy Star (DPMS)", font=("-weight", "bold")).pack()
+        ttk.Label(main_frame, text="Monitor Energy Saving (DPMS)", font=("-weight", "bold")).pack(pady=(0, 10))
 
         self.enabled_var = tk.BooleanVar()
         self.on_off_check = ttk.Checkbutton(
             main_frame,
-            text="Enable Energy Star Features",
+            text="Enable Monitor Power Saving Features",
             variable=self.enabled_var,
             command=self.update_widget_states
         )
@@ -78,15 +80,20 @@ class EnergyStarApp:
         settings_frame = ttk.Frame(main_frame, padding=5)
         settings_frame.pack(pady=5, fill='x', expand=True)
         self.combos = {}
-        labels = ["'Standby' after idle for:", "Suspend after idle for:", "Turn monitor off after:"]
-        keys = ["standby", "suspend", "off"]
+        labels = [
+            "Monitor Standby after:",
+            "Monitor Suspend after:",
+            "Turn Monitor Off after:"
+        ]
+        self.keys = ["standby", "suspend", "off"]
 
-        for key, label_text in zip(keys, labels):
+        for key, label_text in zip(self.keys, labels):
             row_frame = ttk.Frame(settings_frame)
             row_frame.pack(fill='x', pady=2)
             ttk.Label(row_frame, text=label_text).pack(side='left')
             combo = ttk.Combobox(row_frame, values=self.time_order, state='readonly', width=12)
             combo.pack(side='right')
+            combo.bind('<<ComboboxSelected>>', self._on_combo_change)
             self.combos[key] = combo
 
         button_frame = ttk.Frame(main_frame, padding=(0, 10, 0, 0))
@@ -104,10 +111,9 @@ class EnergyStarApp:
         self.close_button = ttk.Button(button_frame, text="Close", command=self.root.destroy)
         self.close_button.pack(side='left', expand=True, fill='x', padx=2)
 
+        # --- Finalization ---
         self.set_initial_values()
         self.center_window()
-
-        # Run environment check after UI is built
         self._check_environment()
 
     def _check_environment(self):
@@ -126,13 +132,16 @@ class EnergyStarApp:
                 combo.config(state='disabled')
 
     def center_window(self):
-        """Center the application window on the screen."""
+        """Center the application window and lock its size."""
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()
         x = (self.root.winfo_screenwidth() // 2) - (width // 2)
         y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry(f'{width}x{height}+{x}+{y}')
+        # Lock the window size to prevent resizing
+        self.root.wm_minsize(width, height)
+        self.root.wm_maxsize(width, height)
 
     def get_current_settings(self):
         """Query xset for current DPMS settings and return them in a dictionary."""
@@ -169,6 +178,38 @@ class EnergyStarApp:
         for combo in self.combos.values():
             combo.config(state=state)
 
+    def _on_combo_change(self, event):
+        """
+        When a combobox value changes, this function enforces the rule that for
+        any non-zero values, standby <= suspend <= off.
+        """
+        changed_key = None
+        for key, combo in self.combos.items():
+            if combo == event.widget:
+                changed_key = key
+                break
+        if not changed_key: return
+
+        vals = {k: self.times[c.get()] for k, c in self.combos.items()}
+
+        if changed_key == 'standby':
+            if vals['standby'] > vals['suspend'] and vals['suspend'] != 0:
+                self.combos['suspend'].set(self.seconds_to_string[vals['standby']])
+                vals['suspend'] = vals['standby']
+            if vals['suspend'] > vals['off'] and vals['off'] != 0:
+                self.combos['off'].set(self.seconds_to_string[vals['suspend']])
+        elif changed_key == 'suspend':
+            if vals['suspend'] < vals['standby'] and vals['suspend'] != 0:
+                self.combos['standby'].set(self.seconds_to_string[vals['suspend']])
+            if vals['suspend'] > vals['off'] and vals['off'] != 0:
+                self.combos['off'].set(self.seconds_to_string[vals['suspend']])
+        elif changed_key == 'off':
+            if vals['off'] < vals['suspend'] and vals['off'] != 0:
+                self.combos['suspend'].set(self.seconds_to_string[vals['off']])
+                vals['suspend'] = vals['off']
+            if vals['suspend'] < vals['standby'] and vals['suspend'] != 0:
+                self.combos['standby'].set(self.seconds_to_string[vals['suspend']])
+
     def apply_settings(self):
         """Apply the selected settings to the system using the 'xset' command."""
         try:
@@ -178,23 +219,25 @@ class EnergyStarApp:
                 off = self.times[self.combos['off'].get()]
                 subprocess.run(['xset', '+dpms'], check=True)
                 subprocess.run(['xset', 'dpms', str(standby), str(suspend), str(off)], check=True)
-                messagebox.showinfo("Success", "Energy Star settings have been applied.")
+                messagebox.showinfo("Success", "Monitor power settings have been applied.")
             else:
                 subprocess.run(['xset', '-dpms'], check=True)
-                messagebox.showinfo("Success", "Energy Star features have been disabled.")
+                messagebox.showinfo("Success", "Monitor power saving has been disabled.")
         except (FileNotFoundError, subprocess.CalledProcessError) as e:
             messagebox.showerror("Error", f"Failed to apply settings:\n{e}")
         finally:
             self.set_initial_values()
 
     def do_about(self):
-        """Displays the standard About dialog with updated attribution."""
+        """Displays the standard About dialog with updated attribution and explanation."""
         messagebox.showinfo(
             "About IceWMCP Energy Star",
             "IceWMCP Energy Star\n\n"
             "Copyright (c) 2003-2004, Erica Andrews\n"
             "Tkinter Port (c) 2025, DeltaResero\n\n"
-            "A simple application for managing Energy Star (DPMS) features."
+            "This utility configures your monitor's power saving features using the "
+            "Display Power Management Signaling (DPMS) standard, which was widely "
+            "adopted as part of the Energy Star program."
         )
 
 if __name__ == '__main__':
