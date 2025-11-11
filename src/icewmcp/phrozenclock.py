@@ -35,8 +35,20 @@ class ClockApp:
     """A Tkinter application for managing system time, date, and timezone."""
     def __init__(self, root):
         self.root = root
-        self.root.title("PhrozenClock")
+        self.root.title("Phrozen Clock")
         self.root.protocol("WM_DELETE_WINDOW", self.root.destroy)
+
+        # Withdraw the window so it is not visible during the setup process.
+        self.root.withdraw()
+
+        # Set application icon
+        try:
+            icon_path = get_data_path('icons/icewmcp-phrozenclock.png')
+            if os.path.exists(icon_path):
+                phrozen_icon = tk.PhotoImage(file=icon_path)
+                self.root.iconphoto(True, phrozen_icon)
+        except Exception as e:
+            print(f"Warning: Could not load application icon: {e}", file=sys.stderr)
 
         self.is_relaunch = False
         for arg in sys.argv[1:]:
@@ -62,13 +74,22 @@ class ClockApp:
         self.ntp_var = tk.BooleanVar(); self.initial_ntp_state = False
         self.create_tab1_widgets(); self.create_tab2_widgets()
         self.set_initial_values(); self.update_clock()
+
         if not self.is_relaunch: self.center_window()
+
+        # Now that setup is complete and the window is centered, make it visible.
+        self.root.deiconify()
 
     def center_window(self):
         """Calculates and sets the window geometry to center it on the screen."""
-        self.root.update_idletasks(); width = self.root.winfo_width(); height = self.root.winfo_height()
-        x = (self.root.winfo_screenwidth() // 2) - (width // 2); y = (self.root.winfo_screenheight() // 2) - (height // 2)
+        self.root.update_idletasks()
+        width = self.root.winfo_reqwidth()
+        height = self.root.winfo_reqheight()
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry(f'{width}x{height}+{x}+{y}')
+        self.root.minsize(width, height)
+
 
     def _create_menu(self):
         """Creates the main application menu bar."""
@@ -99,7 +120,10 @@ class ClockApp:
             self.current_tz_entry.insert(0, tz_abbr); self.current_tz_entry.config(state='readonly')
         except Exception as e: print(f"Could not get timezone abbreviation: {e}")
         try:
-            status_output = subprocess.check_output(["timedatectl", "status"], text=True)
+            # Suppress stderr to prevent the RTC local time zone warning on dual-boot systems.
+            status_output = subprocess.check_output(
+                ["timedatectl", "status"], text=True, stderr=subprocess.DEVNULL
+            )
             self.initial_ntp_state = "NTP service: active" in status_output; self.ntp_var.set(self.initial_ntp_state)
         except (FileNotFoundError, subprocess.CalledProcessError): self.initial_ntp_state = False; self.ntp_var.set(False)
         self.update_widget_states()
@@ -207,8 +231,64 @@ class ClockApp:
         self.apply_changes(); self.root.destroy()
 
     def do_about(self):
-        """Displays the About dialog."""
-        messagebox.showinfo("About PhrozenClock", "PhrozenClock\n\nCopyright (c) 2003-2004, Erica Andrews\nTkinter Port (c) 2025, The IceWMCP Project Contributors\n\nA simple clock management application for lightweight desktops.")
+        """Displays a custom, centered 'About' dialog."""
+        about_dialog = tk.Toplevel(self.root)
+        about_dialog.title("About Phrozen Clock")
+        about_dialog.transient(self.root)
+
+        # Define a reliable, fixed size for the dialog.
+        dialog_width = 380
+        dialog_height = 202
+
+        # Prevent the user from shrinking the window smaller than its intended size.
+        about_dialog.minsize(dialog_width, dialog_height)
+
+        # This outer frame expands if the window is resized, keeping the content centered.
+        centering_frame = ttk.Frame(about_dialog)
+        centering_frame.pack(expand=True, fill='both')
+
+        # This inner frame holds the content and is placed in the middle.
+        content_frame = ttk.Frame(centering_frame)
+        content_frame.place(relx=0.5, rely=0.5, anchor='center')
+
+        text_frame = ttk.Frame(content_frame)
+        text_frame.pack(padx=15, pady=10)
+
+        title_label = ttk.Label(text_frame, text="Phrozen Clock", font=('Helvetica', 14, 'bold'))
+        title_label.pack(pady=(0, 10))
+
+        copyright_text = ("Copyright (c) 2003-2004, Erica Andrews\n"
+                          "Tkinter Port (c) 2025, DeltaResero")
+        copyright_label = ttk.Label(text_frame, text=copyright_text, justify=tk.CENTER)
+        copyright_label.pack(pady=5)
+
+        desc_label = ttk.Label(text_frame, text="A simple clock management application for lightweight desktops.", justify=tk.CENTER, wraplength=300)
+        desc_label.pack(pady=10)
+
+        ok_button = ttk.Button(content_frame, text="OK", command=about_dialog.destroy)
+        ok_button.pack(pady=(5, 10))
+
+        # Ensure any pending Tkinter tasks are done before we get geometry info.
+        about_dialog.update_idletasks()
+
+        # Get parent window's position and size for centering.
+        root_x = self.root.winfo_x()
+        root_y = self.root.winfo_y()
+        root_w = self.root.winfo_width()
+        root_h = self.root.winfo_height()
+
+        # Calculate the position to perfectly center the dialog.
+        x = root_x + (root_w // 2) - (dialog_width // 2)
+        y = root_y + (root_h // 2) - (dialog_height // 2)
+
+        # Set the final size and position of the dialog.
+        about_dialog.geometry(f'{dialog_width}x{dialog_height}+{x}+{y}')
+
+        # Make the dialog modal.
+        about_dialog.grab_set()
+        about_dialog.focus_set()
+        ok_button.focus()
+        self.root.wait_window(about_dialog)
 
     def apply_zone(self):
         """Sets the system timezone and relaunches the application."""
