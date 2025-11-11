@@ -2,16 +2,15 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-#  IceWMCP Common Module (Python 3 / Tkinter)
+#  IceWMCP Common Module: Shared library for the IceWMCP suite.
 #
-#  This is the modernized common library for the IceWMCP suite. It contains
-#  shared, UI-agnostic helper functions.
-#
-#  Based on original work by:
 #  Copyright (c) 2003-2004, Erica Andrews
-#
-#  Modernization by:
 #  Copyright (c) 2025, DeltaResero
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
 #
 #  SPDX-License-Identifier: GPL-2.0-or-later
 ################################################################################
