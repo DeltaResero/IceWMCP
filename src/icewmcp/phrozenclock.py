@@ -148,9 +148,15 @@ class ClockApp:
         for widget in [self.hour_combo, ttk.Label(time_entry_frame, text=":"), self.minute_combo, ttk.Label(time_entry_frame, text=":"), self.second_combo]: widget.pack(side='left')
         self.ampm_combo.pack(side='left', padx=5)
         ntp_check = ttk.Checkbutton(right_frame, text="Synchronize with network time servers", variable=self.ntp_var, command=self.update_widget_states); ntp_check.pack(pady=20)
-        button_frame = ttk.Frame(self.tab1); button_frame.pack(fill='x', pady=10)
+
+        # --- Buttons ---
+        outer_button_frame = ttk.Frame(self.tab1)
+        outer_button_frame.pack(side='bottom', fill='x', pady=(10, 0))
+        inner_button_frame = ttk.Frame(outer_button_frame)
+        inner_button_frame.pack() # Center the inner frame
+
         for text, command in [("About", self.do_about), ("Reset", self.set_initial_values), ("OK", self.apply_and_quit), ("Apply", self.apply_changes), ("Cancel", self.root.destroy)]:
-            ttk.Button(button_frame, text=text, command=command).pack(side='left', expand=True)
+            ttk.Button(inner_button_frame, text=text, command=command).pack(side='left', padx=2)
 
     def create_tab2_widgets(self):
         """Creates and places all widgets for the 'Time Zone' tab."""

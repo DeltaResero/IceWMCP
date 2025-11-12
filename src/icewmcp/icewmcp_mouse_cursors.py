@@ -87,6 +87,15 @@ class MouseCursorsApp:
         self.root = root
         self.root.title("IceWM CP - Mouse Cursors")
 
+        self.root.withdraw()
+        try:
+            icon_path = get_data_path('icons/icewmcp-mouse.png')
+            if os.path.exists(icon_path):
+                app_icon = tk.PhotoImage(file=icon_path)
+                self.root.iconphoto(True, app_icon)
+        except Exception as e:
+            print(f"Warning: Could not load application icon: {e}", file=sys.stderr)
+
         self.cursor_dir = os.path.join(os.environ.get('HOME', ''), '.icewm', 'cursors')
         self.status_var = tk.StringVar(value="Ready.")
 
@@ -97,13 +106,13 @@ class MouseCursorsApp:
             "Resize Top-Left": "sizeTL.xpm", "Resize Top-Right": "sizeTR.xpm",
         }
 
+        self._create_menu()
         main_frame = ttk.Frame(self.root, padding=10)
         main_frame.pack(fill='both', expand=True)
 
-        # --- FIX: Create, Pack, and then immediately Hide the warning label ---
         self.warning_label = ttk.Label(main_frame, text="Warning: Not in an IceWM session. Changes may not be visible.", background="yellow", foreground="black", padding=5, anchor='center')
         self.warning_label.pack(fill='x', pady=(0, 10))
-        self.warning_label.pack_forget() # Hide it until needed
+        self.warning_label.pack_forget()
 
         container = ttk.Frame(main_frame)
         container.pack(fill='both', expand=True)
@@ -127,33 +136,47 @@ class MouseCursorsApp:
             row = CursorRow(scrollable_frame, name, filename, self.cursor_dir)
             self.cursor_rows.append(row)
 
-        button_frame = ttk.Frame(main_frame)
-        button_frame.pack(fill='x', pady=(10, 0))
-
-        self.restart_button = ttk.Button(button_frame, text="Restart IceWM to Apply", command=self.restart_icewm)
-        self.restart_button.pack(side='left', expand=True, fill='x', padx=2)
-        self.close_button = ttk.Button(button_frame, text="Close", command=self.root.destroy)
-        self.close_button.pack(side='left', expand=True, fill='x', padx=2)
+        outer_button_frame = ttk.Frame(main_frame)
+        outer_button_frame.pack(fill='x', pady=(10, 0))
+        inner_button_frame = ttk.Frame(outer_button_frame)
+        inner_button_frame.pack()
+        self.restart_button = ttk.Button(inner_button_frame, text="Restart IceWM to Apply", command=self.restart_icewm)
+        self.restart_button.pack(side='left', padx=2)
 
         ttk.Label(main_frame, textvariable=self.status_var, relief='sunken').pack(fill='x', pady=(10, 0))
 
         self.center_window()
         self._check_environment()
+        self.root.deiconify()
+
+    def _create_menu(self):
+        menubar = tk.Menu(self.root)
+        self.root.config(menu=menubar)
+        file_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="Close", command=self.root.destroy)
+        help_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Help", menu=help_menu)
+        help_menu.add_command(label="About...", command=self.do_about)
 
     def _check_environment(self):
         session = os.environ.get('XDG_CURRENT_DESKTOP', '').lower()
         if "icewm" not in session:
-            # --- FIX: Simply re-pack the label to make it visible ---
             self.warning_label.pack(fill='x', pady=(0, 10))
             self.restart_button.config(state='disabled')
             self.status_var.set("Warning: Not in an IceWM session.")
 
     def center_window(self):
         self.root.update_idletasks()
-        self.root.minsize(self.root.winfo_width(), self.root.winfo_height())
-        x = (self.root.winfo_screenwidth() // 2) - (self.root.winfo_width() // 2)
-        y = (self.root.winfo_screenheight() // 2) - (self.root.winfo_height() // 2)
-        self.root.geometry(f'+{x}+{y}')
+        width = self.root.winfo_reqwidth()
+        height = self.root.winfo_reqheight()
+
+        min_height = height + 34
+
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (min_height // 2)
+        self.root.geometry(f'{width}x{min_height}+{x}+{y}')
+        self.root.minsize(width, min_height)
 
     def restart_icewm(self):
         if messagebox.askyesno("Confirm Restart", "This will attempt to restart IceWM to apply the new cursors.\n\nContinue?"):
@@ -162,6 +185,30 @@ class MouseCursorsApp:
                 self.status_var.set("IceWM restart signal sent.")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to send restart signal to IceWM:\n{e}")
+
+    def do_about(self):
+        about_dialog = tk.Toplevel(self.root)
+        about_dialog.title("About Mouse Cursors")
+        about_dialog.transient(self.root)
+        dialog_width, dialog_height = 380, 190
+        about_dialog.minsize(dialog_width, dialog_height)
+        centering_frame = ttk.Frame(about_dialog); centering_frame.pack(expand=True, fill='both')
+        content_frame = ttk.Frame(centering_frame); content_frame.place(relx=0.5, rely=0.5, anchor='center')
+        text_frame = ttk.Frame(content_frame); text_frame.pack(padx=15, pady=10)
+        title_label = ttk.Label(text_frame, text="Mouse Cursors", font=('Helvetica', 14, 'bold')); title_label.pack(pady=(0, 10))
+        copyright_text = ("Copyright (c) 2003-2004, Erica Andrews\n" "Tkinter Port (c) 2025, DeltaResero")
+        copyright_label = ttk.Label(text_frame, text=copyright_text, justify=tk.CENTER); copyright_label.pack(pady=5)
+        desc_label = ttk.Label(text_frame, text="A utility for managing the IceWM cursor theme.", justify=tk.CENTER, wraplength=300); desc_label.pack(pady=10)
+        ok_button = ttk.Button(content_frame, text="OK", command=about_dialog.destroy); ok_button.pack(pady=(5, 10))
+        about_dialog.update_idletasks()
+        root_x, root_y, root_w, root_h = self.root.winfo_x(), self.root.winfo_y(), self.root.winfo_width(), self.root.winfo_height()
+        x = root_x + (root_w // 2) - (dialog_width // 2)
+        y = root_y + (root_h // 2) - (dialog_height // 2)
+        about_dialog.geometry(f'{dialog_width}x{dialog_height}+{x}+{y}')
+        about_dialog.grab_set()
+        about_dialog.focus_set()
+        ok_button.focus()
+        self.root.wait_window(about_dialog)
 
 if __name__ == '__main__':
     try:

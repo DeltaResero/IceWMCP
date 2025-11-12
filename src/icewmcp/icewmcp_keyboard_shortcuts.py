@@ -36,6 +36,15 @@ class KeyShortcutsApp:
         self.root = root
         self.root.title("IceWM CP - Keyboard Shortcuts")
 
+        self.root.withdraw()
+        try:
+            icon_path = get_data_path('icons/icewmcp-keyboard.png')
+            if os.path.exists(icon_path):
+                app_icon = tk.PhotoImage(file=icon_path)
+                self.root.iconphoto(True, app_icon)
+        except Exception as e:
+            print(f"Warning: Could not load application icon: {e}", file=sys.stderr)
+
         self.keys_file = os.path.join(os.environ.get('HOME', ''), '.icewm', 'keys')
         self.keys_data = {}
         self.selected_key_id = None
@@ -47,18 +56,15 @@ class KeyShortcutsApp:
         self.command_var = tk.StringVar()
         self.status_var = tk.StringVar(value="Ready.")
 
+        self._create_menu()
+
         main_frame = ttk.Frame(self.root, padding="10")
         main_frame.pack(fill='both', expand=True)
         main_frame.columnconfigure(0, weight=1)
         main_frame.rowconfigure(1, weight=1) # Allow treeview to expand
 
         # --- Warning Label (Context-Aware) ---
-        self.warning_label = ttk.Label(
-            main_frame,
-            text="Warning: Not in an IceWM session. Changes will not apply to the current desktop.",
-            background="yellow", foreground="black", padding=5, anchor='center',
-            font=("-weight", "bold")
-        )
+        self.warning_label = ttk.Label(main_frame, text="Warning: Not in an IceWM session. Changes will not apply to the current desktop.", background="yellow", foreground="black", padding=5, anchor='center', font=("-weight", "bold"))
         # This will be shown or hidden by _check_environment
 
         tree_frame = ttk.Frame(main_frame)
@@ -71,7 +77,6 @@ class KeyShortcutsApp:
         self.tree.heading('command', text='Command')
         self.tree.column('keys', width=150)
         self.tree.column('command', width=350)
-
         vsb = ttk.Scrollbar(tree_frame, orient="vertical", command=self.tree.yview)
         hsb = ttk.Scrollbar(tree_frame, orient="horizontal", command=self.tree.xview)
         self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
@@ -87,7 +92,6 @@ class KeyShortcutsApp:
         ttk.Label(entry_frame, text="Key:").grid(row=0, column=0, sticky='w', padx=5, pady=5)
         key_fields_frame = ttk.Frame(entry_frame)
         key_fields_frame.grid(row=0, column=1, sticky='ew')
-
         ttk.Checkbutton(key_fields_frame, text="Ctrl", variable=self.ctrl_var).pack(side='left', padx=2)
         ttk.Checkbutton(key_fields_frame, text="Alt", variable=self.alt_var).pack(side='left', padx=2)
         ttk.Checkbutton(key_fields_frame, text="Shift", variable=self.shift_var).pack(side='left', padx=2)
@@ -103,32 +107,48 @@ class KeyShortcutsApp:
         browse_btn = ttk.Button(cmd_frame, text="...", width=3, command=self.browse_for_command)
         browse_btn.grid(row=0, column=1, padx=5)
 
-        button_frame = ttk.Frame(main_frame, padding=(0, 10, 0, 0))
+        # --- Button Rows ---
+        button_frame = ttk.Frame(main_frame)
         button_frame.grid(row=3, column=0, columnspan=2, sticky='ew')
-
-        self.new_btn = ttk.Button(button_frame, text="New", command=self.clear_selection)
-        self.add_btn = ttk.Button(button_frame, text="Add", command=self.add_key)
-        self.update_btn = ttk.Button(button_frame, text="Update", command=self.update_key)
-        self.delete_btn = ttk.Button(button_frame, text="Delete", command=self.delete_key)
-        self.test_btn = ttk.Button(button_frame, text="Test", command=self.test_command)
+        inner_button_frame1 = ttk.Frame(button_frame)
+        inner_button_frame1.pack() # Center the inner frame
+        self.new_btn = ttk.Button(inner_button_frame1, text="New", command=self.clear_selection)
+        self.add_btn = ttk.Button(inner_button_frame1, text="Add", command=self.add_key)
+        self.update_btn = ttk.Button(inner_button_frame1, text="Update", command=self.update_key)
+        self.delete_btn = ttk.Button(inner_button_frame1, text="Delete", command=self.delete_key)
+        self.test_btn = ttk.Button(inner_button_frame1, text="Test", command=self.test_command)
         for btn in [self.new_btn, self.add_btn, self.update_btn, self.delete_btn, self.test_btn]:
-            btn.pack(side='left', expand=True, fill='x', padx=2)
+            btn.pack(side='left', padx=2)
 
-        action_frame = ttk.Frame(main_frame, padding=(0, 10, 0, 0))
-        action_frame.grid(row=4, column=0, columnspan=2, sticky='ew')
-
-        self.save_button = ttk.Button(action_frame, text="Save to File", command=self.save_file)
-        self.restart_button = ttk.Button(action_frame, text="Restart IceWM", command=self.restart_icewm)
-        self.close_button = ttk.Button(action_frame, text="Close", command=self.root.destroy)
-        for btn in [self.save_button, self.restart_button, self.close_button]:
-            btn.pack(side='left', expand=True, fill='x', padx=2)
+        action_frame = ttk.Frame(main_frame)
+        action_frame.grid(row=4, column=0, columnspan=2, sticky='ew', pady=(5,0))
+        inner_button_frame2 = ttk.Frame(action_frame)
+        inner_button_frame2.pack() # Center the inner frame
+        self.save_button = ttk.Button(inner_button_frame2, text="Save to File", command=self.save_file)
+        self.restart_button = ttk.Button(inner_button_frame2, text="Restart IceWM", command=self.restart_icewm)
+        self.save_button.pack(side='left', padx=2)
+        self.restart_button.pack(side='left', padx=2)
 
         ttk.Label(main_frame, textvariable=self.status_var, relief='sunken').grid(row=5, column=0, columnspan=2, sticky='ew', pady=(10, 0))
 
+        # Initialization
         self.load_file()
         self.update_ui_state()
         self.center_window()
         self._check_environment()
+        self.root.deiconify()
+
+    def _create_menu(self):
+        self.menubar = tk.Menu(self.root)
+        self.root.config(menu=self.menubar)
+        file_menu = tk.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="Save", command=self.save_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="Close", command=self.root.destroy)
+        help_menu = tk.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="Help", menu=help_menu)
+        help_menu.add_command(label="About...", command=self.do_about)
 
     def _check_environment(self):
         """Check for IceWM session and adapt UI for safety."""
@@ -139,9 +159,12 @@ class KeyShortcutsApp:
 
     def center_window(self):
         self.root.update_idletasks()
-        x = (self.root.winfo_screenwidth() // 2) - (self.root.winfo_width() // 2)
-        y = (self.root.winfo_screenheight() // 2) - (self.root.winfo_height() // 2)
-        self.root.geometry(f'+{x}+{y}')
+        width = self.root.winfo_reqwidth()
+        height = self.root.winfo_reqheight()
+        x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.root.winfo_screenheight() // 2) - (height // 2)
+        self.root.geometry(f'{width}x{height}+{x}+{y}')
+        self.root.minsize(width, height)
 
     def build_key_string(self):
         parts = []
@@ -157,7 +180,6 @@ class KeyShortcutsApp:
         self.ctrl_var.set("Ctrl" in parts)
         self.alt_var.set("Alt" in parts)
         self.shift_var.set("Shift" in parts)
-
         non_modifier_keys = [p for p in parts if p not in {"Ctrl", "Alt", "Shift"}]
         self.key_var.set("+".join(non_modifier_keys))
 
@@ -184,7 +206,6 @@ class KeyShortcutsApp:
         self.update_btn.config(state='normal' if is_item_selected else 'disabled')
         self.delete_btn.config(state='normal' if is_item_selected else 'disabled')
         self.test_btn.config(state='normal' if is_item_selected else 'disabled')
-
         is_editable = not is_item_selected
         self.key_entry.config(state='normal' if is_editable else 'disabled')
         for cb in self.key_entry.master.winfo_children():
@@ -281,6 +302,38 @@ class KeyShortcutsApp:
                 self.status_var.set("IceWM restart signal sent.")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to send restart signal:\n{e}")
+
+    def do_about(self):
+        about_dialog = tk.Toplevel(self.root)
+        about_dialog.title("About Keyboard Shortcuts")
+        about_dialog.transient(self.root)
+        dialog_width = 380
+        dialog_height = 190
+        about_dialog.minsize(dialog_width, dialog_height)
+        centering_frame = ttk.Frame(about_dialog)
+        centering_frame.pack(expand=True, fill='both')
+        content_frame = ttk.Frame(centering_frame)
+        content_frame.place(relx=0.5, rely=0.5, anchor='center')
+        text_frame = ttk.Frame(content_frame)
+        text_frame.pack(padx=15, pady=10)
+        title_label = ttk.Label(text_frame, text="Keyboard Shortcuts", font=('Helvetica', 14, 'bold'))
+        title_label.pack(pady=(0, 10))
+        copyright_text = ("Copyright (c) 2003-2004, Erica Andrews\n" "Tkinter Port (c) 2025, DeltaResero")
+        copyright_label = ttk.Label(text_frame, text=copyright_text, justify=tk.CENTER)
+        copyright_label.pack(pady=5)
+        desc_label = ttk.Label(text_frame, text="A utility to manage custom keyboard shortcuts.", justify=tk.CENTER, wraplength=300)
+        desc_label.pack(pady=10)
+        ok_button = ttk.Button(content_frame, text="OK", command=about_dialog.destroy)
+        ok_button.pack(pady=(5, 10))
+        about_dialog.update_idletasks()
+        root_x, root_y, root_w, root_h = self.root.winfo_x(), self.root.winfo_y(), self.root.winfo_width(), self.root.winfo_height()
+        x = root_x + (root_w // 2) - (dialog_width // 2)
+        y = root_y + (root_h // 2) - (dialog_height // 2)
+        about_dialog.geometry(f'{dialog_width}x{dialog_height}+{x}+{y}')
+        about_dialog.grab_set()
+        about_dialog.focus_set()
+        ok_button.focus()
+        self.root.wait_window(about_dialog)
 
 if __name__ == '__main__':
     try:
