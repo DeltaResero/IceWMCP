@@ -1,555 +1,394 @@
-#! /usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-################################################
-## IceMe
-# =====
+################################################################################
+#  IceWMCP Icon Selection Dialog
 #
-# Copyright 2000-2002, Dirk Moebius <dmoebius@gmx.net> 
-# and Mike Hostetler <thehaas@binary.net>
+#  Copyright (c) 2000-2002, Dirk Moebius <dmoebius@gmx.net>
+#  Copyright (c) 2000-2002, Mike Hostetler <thehaas@binary.net>
+#  Copyright (c) 2003, David Moore <djm6202@yahoo.co.nz>
+#  Copyright (c) 2003-2004, Erica Andrews <PhrozenSmoke@yahoo.com>
+#  Copyright (c) 2026, DeltaResero
 #
-# This work comes with no warranty regarding its suitability for any purpose.
-# The author is not responsible for any damages caused by the use of this
-# program.
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
 #
-# This software is distributed under the GNU General Public License
-#################################################
-#################################
-#  With Modifications by Erica Andrews 
-#  (PhrozenSmoke ['at'] yahoo.com)
-#  February 2003-February 2004
-#  
-#  This is a modified version of IceMe 
-#  1.0.0 ("IceWMCP Edition"), optimized for 
-#  IceWM ControlPanel. This is a modified 
-#  version of the Icon Selection dialog from 
-#  IceMe, all changes have 'comments' next 
-#  to them in the code
-#  
-#  Copyright (c) 2003-2004
-#  Erica Andrews
-#  PhrozenSmoke ['at'] yahoo.com
-#  http://icesoundmanager.sourceforge.net
-#################################
-#############################################
-#	This program is free software; you can redistribute
-#	it and/or modify it under the terms of the GNU 
-#	General Public License as published by the 
-#	Free Software Foundation; either version 2 of the
-#	License, or (at your option) any later version.
-#
-#	This program is distributed in the hope that it will 
-#	be useful, but WITHOUT ANY WARRANTY; 
-#	without even the implied warranty of 
-#	MERCHANTABILITY or FITNESS FOR A 
-#	PARTICULAR PURPOSE.
-#
-#	You should have received a copy of the GNU 
-#	General Public License along with this program; 
-#	if not, write to the Free Software Foundation, Inc., 
-#	59 Temple Place - Suite 330, Boston, MA 
-#	02111-1307, USA.
-#############################################
-#############################
-#  PyGtk-2 Port Started By: 
-#  	David Moore (djm6202@yahoo.co.nz)
-#	March 2003
-#############################
-#############################
-#  PyGtk-2 Port Continued By: 
-#	Erica Andrews
-#  	PhrozenSmoke ['at'] yahoo.com
-#	October/November 2003
-#############################
+#  SPDX-License-Identifier: GPL-2.0-or-later
+################################################################################
 
+import os
+import sys
+import glob
+import tkinter as tk
+from tkinter import ttk
 
-import glob,string
+# --- Helper Functions (Local) ---
 
-#set translation support
-from .icewmcp_common import *
-from functools import cmp_to_key
+def getIceWMConfigPath():
+    """Returns the path to the IceWM config directory."""
+    home = os.path.expanduser("~/.icewm")
+    if os.path.isdir(home):
+        return home
+    return "/etc/icewm"
 
 def _(somestr):
-	return to_utf8(translateCP(somestr))  # from icewmcp_common.py
+    """Translation stub (pass-through for now)."""
+    return somestr
 
+# --- Icon Cache ---
+CACHED = {}
 
-global CACHED # added new image cache, Erica Andrews
-CACHED={}
+def findIcons(paths):
+    """
+    Scans directories for icons (.xpm, .png) under a size threshold.
+    Ported from original logic by Erica Andrews.
+    
+    Returns dict: {filepath: filepath}
+    """
+    icons = {}
+    
+    for d in paths:
+        if not os.path.isdir(d):
+            continue
+            
+        # 1. *_16x16.xpm < 12kb
+        for f in glob.glob(os.path.join(d, "*_16x16.xpm")):
+            try:
+                if os.path.getsize(f) < 12000:
+                    icons[f] = f
+            except:
+                pass
 
-global findIcons
+        # 2. mini/*.xpm < 12kb
+        for f in glob.glob(os.path.join(d, "mini", "*.xpm")):
+            try:
+                if os.path.getsize(f) < 12000:
+                    icons[f] = f
+            except:
+                pass
 
-def findIcons(paths):    # added as separate method by Erica Andrews
-    icons={}
-    for dir in paths:
-        xpmfiles = glob.glob(os.path.join(dir, "*_16x16.xpm"))
-        for filename in xpmfiles:
-            filename=os.path.realpath(filename)
-	    name=filename
-            if name not in icons:
-	     try:
-                if os.path.getsize(filename)< 12000: icons[name] = filename  # ignore large files that arent likely to be icons
-             except:
-		pass
-        xpmfiles = glob.glob(os.path.join(dir, "mini", "*.xpm"))
-        for filename in xpmfiles:
-            filename=os.path.realpath(filename)
-	    name=filename
-            if name not in icons:
-	     try:
-                if os.path.getsize(filename)< 12000: icons[name] = filename
-             except:
-		pass
-        xpmfiles = glob.glob(os.path.join(dir, "*.xpm"))
-        for filename in xpmfiles:
-            filename=os.path.realpath(filename)
-	    name=filename
-            if name not in icons:
-	     try:
-                if os.path.getsize(filename)< 12000: icons[name] = filename
-             except:
-		pass
-        xpmfiles = glob.glob(os.path.join(dir, "*.png"))
-        for filename in xpmfiles:
-            filename=os.path.realpath(filename)
-	    name=filename
-            if name not in icons:
-	     try:
-                if os.path.getsize(filename)< 11000: icons[name] = filename
-             except:
-		pass
+        # 3. *.xpm < 12kb
+        for f in glob.glob(os.path.join(d, "*.xpm")):
+            try:
+                if os.path.getsize(f) < 12000:
+                    icons[f] = f
+            except:
+                pass
+
+        # 4. *.png < 11kb
+        for f in glob.glob(os.path.join(d, "*.png")):
+            try:
+                if os.path.getsize(f) < 11000:
+                    icons[f] = f
+            except:
+                pass
+            
     return icons
 
-class IconSelectionDialog(Window):
 
-    def __init__(self, num_columns=8,my_paths=[],update_meth=None):
-        Window.__init__(self, WINDOW_TOPLEVEL)
-	self.MYPATHS=my_paths
-	self.UPDATER=update_meth
-	self.set_wmclass("icon-selector","Icon-Selector")
-	set_basic_window_icon(self)
-	self.set_position(WIN_POS_CENTER)
+class IconSelectionDialog(tk.Toplevel):
+    """
+    A dialog for browsing and selecting icons from the filesystem.
+    """
+    
+    def __init__(self, parent=None, num_columns=9, my_paths=None, update_meth=None):
+        super().__init__(parent)
+        
+        self.MYPATHS = my_paths if my_paths else []
+        self.UPDATER = update_meth
         self.num_columns = num_columns
-        self.icons_loaded = 0
+        self.selected = (None, None)  # (name, filepath)
+        
         self.buttons = []
-        self.selected = (None, None)
-        self.initGUI()
+        self.photo_refs = []  # Keep references alive to prevent GC
+        
+        self.title(_("IceWMCP Icon Browser"))
+        self.geometry("550x500")
+        
+        self.protocol("WM_DELETE_WINDOW", self.do_close)
+        
+        # Build the UI
+        self._init_gui()
+        
+        # Center on screen (or parent if visible)
+        self._center_window(parent)
+        
+        # Start loading icons after a brief delay
+        self.after(100, self._load_icons)
 
-    def initGUI(self):
-        # the widget tree:
-        #
-        # Window self
-        #   VBox vbox
-        #     ScrolledWindow scr
-        #       Table table
-        #     HBox hbox
-        #       Label label_columns
-        #       SpinButton columns
-        #       Button ok
-        #       Button cancel
-        #       Button reload
-        #     Progressbar progressbar
-        #
-        self.set_title(_("IceWMCP Icon Browser"))
-        #self.set_policy(FALSE, TRUE, FALSE)
-        #self.set_modal(TRUE)  # commented out by Erica Andrrews
-        self.set_default_size(400, 390)
-        self.connect("delete_event", self.on_delete)
-        self.connect("key-press-event", self.on_key)
-
-        self.table=Table(1,1, FALSE)
-        self.table.set_row_spacings(5)
-        self.table.set_col_spacings(5)
-        self.table.show()
-
-        self.scr = ScrolledWindow()
-        self.scr.set_policy(POLICY_AUTOMATIC, POLICY_AUTOMATIC)
-        self.scr.set_border_width(10)
-        self.scr.add_with_viewport(self.table)
-        self.scr.show()
-
-        self.file_entry = Entry()
-	self.file_entry.show()
-
-        self.label_columns = Label()
-        self.label_columns.set_text(_("Columns:"))
-        self.label_columns.show()
-
-        self.columns = SpinButton(Adjustment(self.num_columns, 1, 30, 1, 10, 10), 1, 0)
-        self.columns.set_numeric(TRUE)
-        self.columns.set_editable(FALSE)
-        self.columns.connect("changed", self.on_columns_changed)
-        self.columns.show()
-
-        self.ok = getPixmapButton(None, STOCK_APPLY ,_("SELECT"))
-	TIPS.set_tip(self.ok,_("SELECT"))
-        self.ok.set_flags(CAN_DEFAULT|CAN_FOCUS|HAS_FOCUS|HAS_DEFAULT)
-        self.ok.connect("clicked", self.do_ok)
-        self.ok.show()
-
-        self.cancel = getPixmapButton(None, STOCK_CANCEL ,_("Close"))
-	TIPS.set_tip(self.cancel,_("Close"))
-        self.cancel.set_flags(CAN_DEFAULT|CAN_FOCUS)
-        self.cancel.connect("clicked", self.do_close)
-        self.cancel.show()
-
-        self.reload = getPixmapButton(None, STOCK_REFRESH ,_("Reload"))
-	TIPS.set_tip(self.reload,_("Reload"))
-        self.reload.set_flags(CAN_DEFAULT|CAN_FOCUS)
-        self.reload.connect("clicked", self.do_reload)
-        self.reload.show() 
-
-        self.ipath = getPixmapButton(None, STOCK_OPEN ,_("Icon Paths..."))
-	TIPS.set_tip(self.ipath,_("Icon Paths..."))
-        self.ipath.set_flags(CAN_DEFAULT|CAN_FOCUS)
-        self.ipath.connect("clicked", self.showIconsPath)
-        self.ipath.show()  
-
-        self.hbox = HBox(FALSE, 10)
-        self.hbox.set_border_width(10)
-        self.hbox.pack_start(self.label_columns, FALSE, FALSE, 0)
-        self.hbox.pack_start(self.columns,       FALSE, FALSE, 0)
-        if not self.UPDATER==None: self.hbox.pack_start(self.ok,            TRUE,  TRUE,  0)
-        self.hbox.pack_start(self.cancel,        TRUE,  TRUE,  0)
-        self.hbox.pack_start(self.reload,        TRUE,  TRUE,  0)
-        self.hbox.pack_start(self.ipath,        TRUE,  TRUE,  0)
-        self.hbox.show()
-
-        self.progressbar = ProgressBar()
-        self.progressbar.set_text("")
-        #self.progressbar.set_show_text(TRUE)
-        self.progressbar.show()
-
-        self.vbox = VBox(FALSE, 0)
-        self.vbox.pack_start(self.scr,         TRUE,  TRUE,  0)
-        self.vbox.pack_start(self.file_entry,        FALSE, FALSE, 3)
-        self.vbox.pack_start(self.hbox,        FALSE, FALSE, 0)
-        self.vbox.pack_start(self.progressbar, FALSE, FALSE, 0)
-        self.vbox.pack_start(Label(_("You can drag-and-drop icons where needed.")), FALSE, FALSE, 4)
-	
-        self.vbox.show_all()
-
-        self.add(self.vbox)
-
-    # ADDITIONS by Erica Andrews
-    def saveMyIcons(self,some_line):
-	try:
-		some_line=some_line.replace(";",":").replace("\n","").replace("\r","").replace("\t","").replace(" :",":").replace(": ",":").strip()
-		f=open(os.environ['HOME']+os.sep+".icewmcp_icons","w")
-		f.write(some_line)
-		f.close()
-	except:
-		pass
-
-    def closeIconSetWin(self,*args):
-	try:
-		if len(args[0].get_data("entry").get_text().strip())>0:
-			self.saveMyIcons(args[0].get_data("entry").get_text().strip())
-			self.MYPATHS=args[0].get_data("entry").get_text().replace(";",":").replace("\n","").replace("\r","").replace("\t","").replace(" :",":").replace(": ",":").strip().split(":")
-	except:
-		pass
-	try:
-		args[0].get_data("window").hide()
-		args[0].get_data("window").destroy()
-		args[0].get_data("window").unmap()
-	except:
-		pass
-	try:
-		args[0].get_data("reload")(args[0])  # call reload method
-	except:
-		pass
-
-    def showIconsPath2(self,some_str,reload_meth):
-		w=Window(WINDOW_TOPLEVEL)
-		w.set_wmclass("icon-selector","Icon-Selector")
-		set_basic_window_icon(w)
-		w.realize()
-		w.set_title(_("IceWMCP Icon Browser"))
-		w.set_position(WIN_POS_CENTER)
-		w.set_default_size(430,200)
-		v=VBox(0,0)
-		v.set_spacing(4)
-		v.set_border_width(7)
-		v.pack_start(Label(_("Enter a list of icon paths, separated by colons")+":"),1,1,0)
-		e=Entry()
-		e.set_text(some_str)
-		v.pack_start(e,1,1,2)
-		b=getPixmapButton(None, STOCK_YES ,DIALOG_OK)
-		b.set_data("entry",e)
-		b.set_data("reload",reload_meth)
-		b.set_data("window",w)
-		w.set_data("window",w)
-		w.connect("destroy",self.closeIconSetWin)
-		b.connect("clicked",self.closeIconSetWin)
-		v.pack_start(b,0,0,4)
-		w.add(v)
-		w.show_all()
-
-
-    # END ADDITIONS BY Erica Andrews
-
-
-    def __initIcons(self):
-        if self.icons_loaded:
-            return
-        i = 0
-        self.buttons = []
-        first_butt = None
-        picturelist = self.getPictureList()
-        size = len(picturelist)
-        #self.progressbar.configure(0, 0, size - 1)
-        self.progressbar.set_fraction(0.0)
-        self.progressbar.set_text(_("Loading")+" "+str(size)+" "+_("images...please wait.") )
-        buttongroup = self.__addButton(None, "-", "-", None, None)
-        if picturelist:
-            for name, val in picturelist:
-                i = i + 1
-		self.progressbar.set_fraction(float(i)/size)
-                #self.progressbar.set_value(i)
-                while events_pending():
-                    mainiteration()
-                if len(val) == 3:
-                    filename, pix, mask = val
-                elif type(val) == type(""):
-                    filename, pix, mask = val, None, None
-                else:
-                    filename, pix, mask = val[0], None, None
-		try:
-                	self.__addButton(buttongroup, name, filename, pix, mask)
-		except:
-			pass
-        self.icons_loaded = 1
-        self.__fillTable()
-        #self.__setSelectedIcon(None) # commented out by Erica Andrews
-        #self.progressbar.set_value(0)
-        self.progressbar.set_fraction(0.0)
-        del picturelist
-
-    def setDragAway(self,*args):
-	drago=args
-	if len(drago)<3: 
-		args[0].drag_highlight()
-		args[0].grab_focus()
-	else: 
-		if str(drago[2].target)=='text/uri-list': drago[2].set(drago[2].target,8,str(args[0].get_data("filename")+"\r\n"))
-		else: drago[2].set(drago[2].target,8,str(args[0].get_data("filename")))
-
-
-    def addDragSupport(self,swidget):
-      swidget.drag_source_set(GDK.BUTTON1_MASK, [('STRING', 0, 0), ('text/plain', 0,1), ('text/uri-list', 0, 2) ], GDK.ACTION_COPY)
-      swidget.connect("drag_begin",self.setDragAway)
-      swidget.connect("drag_data_get",self.setDragAway)
-
-    def __addButton(self, group, name, filename, pix, mask):
-        butt = None
-	tips=TIPS
-        try:
-            if filename == "-":
-                butt = RadioButton(group, "None")
-            else:
-                if pix is None or mask is None:
-
-                  newheight,newwidth = 30,30   # 2.21.2003 - added larger icons (PhrozenSmoke [at] yahoo.com)
-		  global CACHED
-		  if filename not in CACHED:
-                  	img = GDK.pixbuf_new_from_file(filename)
-                  	img2 = img.scale_simple(newheight,newwidth,GDK.INTERP_BILINEAR)
-                  	pix,mask = img2.render_pixmap_and_mask()
-			del img
-			CACHED[filename]=[pix,mask]
-		  else: # grab from cache
-			pix=CACHED[filename][0]
-			mask=CACHED[filename][1]
-
-		  icon=Image()
-                  icon.set_from_pixmap(pix, mask)
-                  icon.show()
-                  butt = RadioButton(group)
-                  butt.add(icon)
-		  tips.set_tip(butt,filename)
-		  butt.set_relief(2) # new relief - flat added 2.21.2003
-                  butt.set_mode(FALSE)
-                  butt.set_data("filename", filename)
-                  butt.set_data("name", name)
-		  self.addDragSupport(butt)
-                  butt.connect("clicked", self.on_iconbutton_clicked)
-                  butt.connect("button-press-event", self.on_iconbutton_pressed)
-                  butt.show()
-                  self.buttons.append(butt)
-        except:
-                pass
-        return butt
-
-    def __fillTable(self):
-        rows = (len(self.buttons) / self.num_columns) + 1
-        for button in self.table.get_children():
-            self.table.remove(button)
-        self.table.resize(rows, self.num_columns)
-        self.table.set_row_spacings(5)
-        self.table.set_col_spacings(5)
-        i = r = c = 0
-        for button in self.buttons:
-            self.table.attach(button, c, c+1, r, r+1, yoptions=0)
-            i = i + 1
-            c = c + 1
-            if c == self.num_columns:
-                c = 0
-                r = r + 1
-
-    def __setSelectedIcon(self, name):
-        if name is None:
-            self.buttons[0].set_active(TRUE)
-            #self.buttons[0].set_flags(HAS_FOCUS)
-            self.buttons[0].grab_focus()
-            self.on_iconbutton_clicked(self.buttons[0])
+    def _center_window(self, parent):
+        """Centers the window on screen or relative to parent."""
+        self.update_idletasks()
+        w = self.winfo_width()
+        h = self.winfo_height()
+        if w < 100:
+            w = 550
+        if h < 100:
+            h = 500
+            
+        if parent and parent.winfo_viewable():
+            x = parent.winfo_rootx() + (parent.winfo_width() // 2) - (w // 2)
+            y = parent.winfo_rooty() + (parent.winfo_height() // 2) - (h // 2)
         else:
-            for b in self.buttons:
-                if b.get_data("name") == name:
-                    b.set_active(TRUE)
-                    #b.set_flags(HAS_FOCUS)
-                    b.grab_focus()
-                    self.on_iconbutton_clicked(b)
-                    return
-            for b in self.buttons:
-                if b.get_data("filename") == name:
-                    b.set_active(TRUE)
-                    #b.set_flags(HAS_FOCUS)
-                    b.grab_focus()
-                    self.on_iconbutton_clicked(b)
-                    return
-            self.buttons[0].set_active(TRUE)
-            #self.buttons[0].set_flags(HAS_FOCUS)
-            self.buttons[0].grab_focus()
-            self.on_iconbutton_clicked(self.buttons[0])
+            sw = self.winfo_screenwidth()
+            sh = self.winfo_screenheight()
+            x = (sw // 2) - (w // 2)
+            y = (sh // 2) - (h // 2)
+            
+        self.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
 
-    def getSelectedIcon(self, default_selected_icon_name = None):
-        #grab_add(self)   # commented out by Erica Andrews
-        self.show()
-        self.__initIcons()
-        #self.__setSelectedIcon(default_selected_icon_name)  # commented out by Erica Andrews
-        #self.progressbar.set_value(0)
-        self.progressbar.set_fraction(0.0)
-        self.progressbar.set_text(_("Icons loaded.  Ready."))
-        mainloop()
-        #grab_remove(self)  # commented out by Erica Andrews  
-        self.hide()
-        return self.selected
+    def _init_gui(self):
+        """Constructs the dialog UI."""
+        main_frame = ttk.Frame(self, padding=5)
+        main_frame.pack(fill='both', expand=True)
 
-    def getPictureList(self):
-        """Subclasses must override this to return a list of image
-        descriptions in the form (shortname, filename) or
-        (shortname, filename, pixmap, pixmap_mask).
-        """
-        pass
+        # 1. Top Entry (Selected File)
+        top_frame = ttk.Frame(main_frame)
+        top_frame.pack(fill='x', pady=5)
+        
+        ttk.Label(top_frame, text=_("Selected:")).pack(side='left')
+        self.file_entry = ttk.Entry(top_frame)
+        self.file_entry.pack(side='left', fill='x', expand=True, padx=5)
+
+        # 2. Scrollable Canvas for Icon Grid
+        canvas_frame = ttk.Frame(main_frame, relief='sunken', borderwidth=1)
+        canvas_frame.pack(fill='both', expand=True, pady=5)
+        
+        self.canvas = tk.Canvas(canvas_frame, background='#ffffff')
+        self.scrollbar = ttk.Scrollbar(canvas_frame, orient='vertical', command=self.canvas.yview)
+        
+        self.scroll_frame = ttk.Frame(self.canvas)
+        self.scroll_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+        
+        self.canvas.create_window((0, 0), window=self.scroll_frame, anchor='nw')
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        
+        self.canvas.pack(side='left', fill='both', expand=True)
+        self.scrollbar.pack(side='right', fill='y')
+        
+        # Mousewheel scrolling
+        self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
+        self.canvas.bind_all("<Button-4>", self._on_mousewheel)
+        self.canvas.bind_all("<Button-5>", self._on_mousewheel)
+
+        # 3. Progress Bar
+        self.progress = ttk.Progressbar(main_frame, mode='determinate')
+        self.progress.pack(fill='x', pady=2)
+        self.status_lbl = ttk.Label(main_frame, text=_("Ready"), font=("Sans", 8))
+        self.status_lbl.pack(fill='x')
+
+        # 4. Control Buttons
+        control_frame = ttk.Frame(main_frame)
+        control_frame.pack(fill='x', pady=5)
+        
+        # Columns Spinner
+        ttk.Label(control_frame, text=_("Columns:")).pack(side='left')
+        self.spin_col = ttk.Spinbox(control_frame, from_=1, to=20, width=3, command=self._on_columns_change)
+        self.spin_col.set(self.num_columns)
+        self.spin_col.pack(side='left', padx=5)
+        self.spin_col.bind('<Return>', self._on_columns_change)
+
+        # Buttons on the right
+        btn_box = ttk.Frame(control_frame)
+        btn_box.pack(side='right')
+        
+        ttk.Button(btn_box, text=_("Icon Paths..."), command=self._show_paths_dialog).pack(side='left', padx=2)
+        ttk.Button(btn_box, text=_("Reload"), command=self.do_reload).pack(side='left', padx=2)
+        ttk.Button(btn_box, text=_("Close"), command=self.do_close).pack(side='left', padx=2)
+        
+        self.btn_select = ttk.Button(btn_box, text=_("SELECT"), command=self.do_ok, state='disabled')
+        self.btn_select.pack(side='left', padx=2)
+
+    def _on_mousewheel(self, event):
+        """Handle mousewheel scrolling."""
+        if event.num == 5 or event.delta < 0:
+            self.canvas.yview_scroll(1, "units")
+        elif event.num == 4 or event.delta > 0:
+            self.canvas.yview_scroll(-1, "units")
+
+    def _load_icons(self):
+        """Scans for icons and populates the grid."""
+        self.status_lbl.config(text=_("Scanning for icons..."))
+        self.update()
+        
+        icons_map = findIcons(self.MYPATHS)
+        sorted_items = sorted(icons_map.items(), key=lambda x: x[0])
+        
+        total = len(sorted_items)
+        self.progress['maximum'] = total if total > 0 else 1
+        self.progress['value'] = 0
+        
+        self.buttons = []
+        self.photo_refs = []
+        
+        # Clear old widgets
+        for widget in self.scroll_frame.winfo_children():
+            widget.destroy()
+            
+        count = 0
+        
+        for name, path in sorted_items:
+            img = self._load_image(path)
+            if img:
+                self.photo_refs.append(img)
+                btn = ttk.Button(self.scroll_frame, image=img, takefocus=True)
+                btn.path = path
+                btn.name = name
+                btn.config(command=lambda b=btn: self._on_icon_click(b))
+                self.buttons.append(btn)
+                
+            count += 1
+            if count % 20 == 0:
+                self.progress['value'] = count
+                self.status_lbl.config(text=f"Loading {count}/{total}...")
+                self.update()
+                
+        self.status_lbl.config(text=f"Found {len(self.buttons)} icons.")
+        self.progress['value'] = 0
+        
+        self._reflow_grid()
+
+    def _load_image(self, path):
+        """Loads an image, caching the result."""
+        if path in CACHED:
+            return CACHED[path]
+        try:
+            img = tk.PhotoImage(file=path)
+            CACHED[path] = img
+            return img
+        except Exception:
+            return None
+
+    def _reflow_grid(self):
+        """Arranges icons in a grid based on the current column count."""
+        cols = int(self.spin_col.get())
+        
+        for i, btn in enumerate(self.buttons):
+            r = i // cols
+            c = i % cols
+            btn.grid(row=r, column=c, padx=2, pady=2)
+
+    def _on_columns_change(self, *args):
+        """Handles column count spinner changes."""
+        try:
+            val = int(self.spin_col.get())
+            if val < 1:
+                val = 1
+            self.num_columns = val
+            self._reflow_grid()
+        except:
+            pass
+
+    def _on_icon_click(self, btn):
+        """Handles clicking on an icon button."""
+        self.selected = (btn.name, btn.path)
+        self.file_entry.delete(0, 'end')
+        self.file_entry.insert(0, btn.path)
+        self.btn_select.config(state='normal')
+        self.status_lbl.config(text=os.path.basename(btn.path))
+
+    def do_reload(self):
+        """Reloads the icon list."""
+        self._load_icons()
+
+    def _show_paths_dialog(self):
+        """Shows a dialog to edit icon search paths."""
+        d = tk.Toplevel(self)
+        d.title(_("Icon Paths"))
+        d.geometry("400x200")
+        d.transient(self)
+        
+        # Position near parent
+        self.update_idletasks()
+        dx = self.winfo_rootx() + 50
+        dy = self.winfo_rooty() + 50
+        d.geometry(f"+{dx}+{dy}")
+        
+        lbl = ttk.Label(d, text=_("Enter icon paths, separated by colons:"))
+        lbl.pack(padx=10, pady=5, anchor='w')
+        
+        txt = tk.Text(d, height=5)
+        txt.pack(padx=10, pady=5, fill='both', expand=True)
+        current_paths = ":".join(self.MYPATHS)
+        txt.insert('1.0', current_paths)
+        
+        def save_and_reload():
+            raw = txt.get('1.0', 'end').strip().replace("\n", "")
+            new_paths = [p.strip() for p in raw.split(':') if p.strip()]
+            self.MYPATHS = new_paths
+            # Save to file
+            try:
+                with open(os.path.expanduser("~/.icewmcp_icons"), "w") as f:
+                    f.write(raw)
+            except:
+                pass
+            
+            d.destroy()
+            self.do_reload()
+            
+        ttk.Button(d, text=_("Save & Reload"), command=save_and_reload).pack(pady=10)
+
+    def do_ok(self, event=None):
+        """Confirms the selection and closes the dialog."""
+        if self.selected[1]:
+            if self.UPDATER:
+                self.UPDATER(self.selected[1])
+            else:
+                print(self.selected[1])  # Debug fallback
+        self.destroy()
+
+    def do_close(self):
+        """Closes the dialog without selection."""
+        self.destroy()
 
 
-    def showIconsPath(self,*args):  # added here by Erica Andrews
-	s=string.join(self.MYPATHS,":")
-	self.showIconsPath2(s,self.do_reload)
-		
-	
-    def do_close(self, button = None):  # modified here by Erica Andrews
-        self.selected = (None, None)
-	self.destroy()
-	self.unmap()
-        mainquit()
+# --- Default Icon Paths ---
 
-    def do_ok(self, button = None):  # modified here by Erica Andrews
-	if not self.UPDATER==None:
-		if not self.selected[1]==None:
-			self.UPDATER(self.selected[1])
-			self.destroy()
-			self.unmap()
-			mainquit()
-        else: 
-		self.destroy()
-		self.ummap()
-		mainquit()
+DEFAULT_ICON_PATHS = [
+    getIceWMConfigPath() + "/icons",
+    "/usr/share/icons",
+    "/usr/share/pixmaps",
+    "/usr/share/icewmcp/applet-icons",
+    "/usr/local/share/icons",
+    "/usr/share/icons/hicolor/48x48/apps",
+    "/usr/share/icons/hicolor/48x48/devices",
+]
 
-    def do_reload(self, button=None):
-        self.icons_loaded = 0
-	global findIcons
-	icons=findIcons(self.MYPATHS)
-    	picturelist = list(icons.items())
-   	picturelist.sort(key=cmp_to_key(lambda a,b: cmp(a[0],b[0])))
-	self.getPictureList=lambda : picturelist
-        self.__initIcons()
-
-    def on_columns_changed(self, x):
-	try:
-        	self.num_columns = int(str(self.columns.get_text()).strip())
-        	self.__fillTable()
-	except:
-		pass
-
-    def on_iconbutton_clicked(self, button):
-        if button.get_active():
-            filename = button.get_data("filename")
-            shortname = filename
-            self.selected = (shortname, filename)
-            self.progressbar.set_text(os.path.basename(filename))
-	    self.file_entry.set_text(str(filename))
-
-    def on_iconbutton_pressed(self, button, event):
-        if event.type == GDK._2BUTTON_PRESS:
-            self.do_ok(button)
-
-    def on_delete(self, win, event):
-        self.selected = (None, None)
-	self.destroy()
-	self.unmap()
-        mainquit()
-
-    def on_key(self, widget, keyevent):
-        if keyevent.keyval == gtk.keysyms.Escape:
-            self.do_close()
-        elif keyevent.keyval == gtk.keysyms.Return:
-            self.do_ok()
-
-
-
-
-def create_dlg(MY_PATHS,update_meth=None):
-    global ic
-    global picturelist
-    # create picturelist:
-    paths =MY_PATHS 
-    icons = findIcons(paths)
-
-    picturelist = list(icons.items())
-    picturelist.sort(key=cmp_to_key(lambda a,b: cmp(a[0],b[0])))
-    # create IconSelectionDialog:
-    class MyIconSelectionDialog(IconSelectionDialog):
-        def getPictureList(self):
-            return picturelist
-    ic = MyIconSelectionDialog(9,MY_PATHS,update_meth)
-    return ic
-
-def show_dlg(x):
-    (shortname, filename) = ic.getSelectedIcon("folder")
-    #print "choose: %s (%s)" % (filename, shortname)
-
-## ADDED EVERYTHING BELOW HERE - 3.14.2003, Erica Andrews
-
-default_icon_paths=(getIceWMConfigPath()+"icons","/usr/share/icons","/usr/share/pixmaps","/opt/kde3/share/icons","/usr/share/icons/hicolor/48x48/apps","/usr/share/icons/hicolor/48x48/devices","/usr/share/icons/hicolor/48x48/filetypes","/usr/share/icons/hicolor/48x48/mimetypes","/usr/share/icons/special","/usr/share/icons/special/sky","/usr/share/icons/special/desk","/usr/share/icons/special/mimetypes","/usr/share/icons/faux","/usr/share/pixmaps/mc","/usr/share/IceControlPanel/applet-icons","/usr/share/IceControlPanel/pixmaps","/usr/local/share/icons") 
-
-#default_icon_paths=("/usr/X11R6/lib/X11/icewm/icons","/usr/share/icons/faux") 
 
 def getMyIcons():
-	try:
-		f=open(os.environ['HOME']+os.sep+".icewmcp_icons")
-		flist=f.read().replace("\n","").replace("\r","").split(":")
-		f.close()
-		return flist
-	except:
-		return default_icon_paths
+    """Loads custom icon paths from ~/.icewmcp_icons or returns defaults."""
+    try:
+        path_file = os.path.expanduser("~/.icewmcp_icons")
+        if os.path.exists(path_file):
+            with open(path_file, 'r') as f:
+                content = f.read().strip().replace("\n", "")
+                return [p for p in content.split(':') if p]
+    except:
+        pass
+    return DEFAULT_ICON_PATHS
 
 
-def run_icons(updater=None):  # commandline 
-    icpaths=getMyIcons()
-    #icpaths=["/usr/share/IceWMCP/pixmaps"]
-    ic=create_dlg(icpaths,updater)
-    hideSplash()
-    ic.getSelectedIcon()
+def show_dlg(updater=None):
+    """Shows the Icon Selection Dialog (standalone mode)."""
+    root = tk.Tk()
+    root.withdraw()  # Hidden root
+    
+    paths = getMyIcons()
+    
+    dlg = IconSelectionDialog(parent=root, my_paths=paths, update_meth=updater)
+    
+    # Wait for the dialog to close
+    dlg.wait_window()
+    
+    # Clean up root
+    root.destroy()
+
 
 if __name__ == "__main__":
-    run_icons()
+    # Test Mode
+    def test_update(path):
+        print(f"SELECTED: {path}")
+        
+    show_dlg(updater=test_update)
