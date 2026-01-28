@@ -1,5 +1,0 @@
-# Ice Control Panel Applet
-Name=Printer\nSpool
-Exec=[PHROZEN-INTERNAL]pyspool.py
-Icon=pyspool.png
-Hint=View the LPRng printer spool
